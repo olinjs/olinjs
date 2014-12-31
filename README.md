@@ -2,6 +2,7 @@ Olin.js - Spring 2015
 ===
 
 ##Course Contents
+* [Class 0 - Getting Ready for the Course](./class0)
 * [Class 1 - Course Introduction and The Internet](./class1)
 * [Class 2 - Intro to Javascript](./class2)
 * [Class 3 - Express, Templating, and MongoDB](./class3)
