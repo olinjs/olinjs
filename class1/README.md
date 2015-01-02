@@ -83,4 +83,49 @@ Many of you are likely familiar with Javascript, but don't worry if you aren't. 
 Acording to the official website Node.js is:<br/>
 "Node.js® is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices." <br />
 What this really means is that it is Javascript running on the server, accepting incoming requests and handling them. The thing that makes Node.js so awesome, is that it is entirely **non-blocking**. To understand exactly what this means, realize that with other server frameworks, when a request comes in, the server has to process that request and send the response before it can accept the next incoming request. Node is structured in such a way that when a request comes in, it can immediately continue listening for other requests. 
-![Non-blocking diagram](http://thomashunter.name/wp-content/uploads/2012/07/Screen-Shot-2012-07-23-at-3.38.08-PM-640x475.png)
+
+##Setup for homework
+We are going to be using git for homework submission. The way this will work is that you will fork this git repo into your own account and then you will push your homework to that repository when you finish it. You will next add another remote to your 
+
+### 1. Forking
+
+"Forking" is to copy a repository. It's termed "forking" because you copy the entire history of the project, but from here on out, any changes you make to your new repository are distinct from those you make in the original repository. It's totally fine to keep two repositories ongoing with the same history, it's just data! 
+
+Github makes this very easy. Do this:
+
+![http://i.imgur.com/AnpW5Bx.png](http://i.imgur.com/AnpW5Bx.png)
+
+This will bring you to your own copy of this lesson. When you make changes to your version, it won't mess with anyone else's work.
+
+### 2. Cloning 
+Now that you have your own copy of the repository, it's time to "clone" it, aka, download a copy to your computer. It's termed "cloning" because your downloaded copy and the version that exists on Github have a special relationship: you can "push", aka upload, all of your changes to the server with a single command. Cloned repositories exist to push and be pushed.
+
+We want to clone your copy of this lesson's repository. Replace the `_____` in the below example with your Github username. If you get an ssh error, refer here https://help.github.com/articles/generating-ssh-keys/ 
+
+```sh
+$ cd ~ # go to your home directory
+$ git clone git@github.com:____/olinjs.git
+```
+
+###3. Adding a remote to the original
+The last thing is to create the remote back to the original repository. This will allow you to pull additions to add to the original repository into your own repository without overriding any of your work. To add a remote:
+
+```sh
+$ cd ~/olinjs # go to your newly cloned repository
+$ git remote add upstream git@github.com:olinjs/olinjs.git
+```
+
+###4. Pulling from upstream
+To pull any new additions from the upstream remote, simply run
+```sh
+$ git pull upstream master
+```
+If everything is going according to plan, there shouldn't be any conflicts, but if there are, you will have to resolve them. 
+
+##Homework for next class:
+The homework for next class will be to go through an introductory tutorial on Node. To get to the tutorial, run these commands from your terminal:
+```sh
+$ sudo npm install learnyounode -g
+$ learnyounode
+```
+If you are interested the git repo for this tutorial can be found here: https://github.com/rvagg/learnyounode, though you should not have need of it. 
