@@ -1,10 +1,13 @@
 #Getting Ready for Olin.js
 
 ##Ubuntu
-[Startup Guide with recommended settings etc.]
+If you need help install Ubuntu check out this [guide](https://gist.github.com/benkahle/892fdb2531c5f388296a) written specifically for Olin laptops. It also includes some other useful packages and tips if you are new to Ubuntu.
 
 ##Node
-[Pull PPA instructions from https://github.com/joyent/node/wiki/installing-node.js-via-package-manager]
+We will install node from a package repository which will give us automatic updates:
+* `curl -sL https://deb.nodesource.com/setup | sudo bash -` (install curl with `sudo apt-get install curl` if needed)
+* `sudo apt-get install -y nodejs`
+* `sudo apt-get install build-essential` (needed for some npm packages)
 
 ##Github
 We are going to be using git for homework submission and many other things in this course. The way this will work is that you will fork this git repo into your own account and then you will push your homework to that repository when you finish it.
