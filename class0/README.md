@@ -8,6 +8,8 @@ We will install node from a package repository which will give us automatic upda
 * `curl -sL https://deb.nodesource.com/setup | sudo bash -` (install curl with `sudo apt-get install curl` if needed)
 * `sudo apt-get install -y nodejs`
 * `sudo apt-get install build-essential` (needed for some npm packages)
+* To test: `node --version` should return v0.10.35 and `npm --version` should return 2.1.17
+* If your npm is not up-to-date run `sudo npm install -g npm`
 
 ##Github
 We are going to be using git for homework submission and many other things in this course. The way this will work is that you will fork this git repo into your own account and then you will push your homework to that repository when you finish it.
@@ -57,4 +59,4 @@ git pull upstream master
 If everything is going according to plan, there shouldn't be any conflicts, but if there are, you will have to resolve them. 
 
 ##Pre-course survey
-[Make and link here, include url of forked repository and github username in survey]
+Please fill out this [form](http://goo.gl/forms/4G0ZWM9Ezv) to help contribute to the direction of the course. 
