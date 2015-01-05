@@ -107,3 +107,50 @@ express expressintro
 ```
 This creates a series of directories `public`, `routes`, and `views`. The public directory is used for client side assets such as images, stylesheets, and client side javacript. Views are used to store template files which we will cover later. Routes, which we will focus on first, contain all the routing logic of our applications.
 More often then not, I find the generated app provides more structure and example files then you actually want and you end up deleting much of it. Feel free to explore the generator if you're curious, but for now we'll steal the folder structure and build the contents ourselves.
+
+Create this folder structure in the same directory as your `app.js` file by running `mkdir views routes public public/images public/javascripts public/stylesheets`. The create a new files `index.js` in the `routes` folder. This is where we will add some of the main routing logic for our app. You will often see another file like `users.js` in the routes folder which would contain routes that might manage login, logout, view profile, or other actions like that. You may even see `routes/cat.js` in your near future!
+
+To move the "hello world" routing into this new structure, paste the following into the `routes/index.js` file:
+```javascript
+var home = function(req, res){
+  res.send("Welcome home!");
+};
+
+module.exports.home = home;
+```
+
+Then replace the contents of `app.js` with:
+```javascript
+var express = require('express');
+var index = require('routes/index');
+var app = express();
+
+app.get('/', index.home);
+
+app.listen(3000);
+```
+Note that this time we `require` the new route file as the variable `index` then instead of defining the route function inline we just write `index.home`, which is the function we defined in the index.js file. This structure helps to keep the `app.js` file a bit leaner and makes it more clear where in the project our routes are defined.
+
+### Application Configuration and Useful Settings
+
+There are some initial configurations we want our app to do, such as running on a specific port, using routes, and setting up the public directory as well as some useful tricks to add to our `app.js` file.
+
+First, were going to install 3 more modules that are used in pretty much every Express app: `npm install --save body-parser cookie-parser morgan`.
+Next we'll use them in `app.js` by doing the following:
+Add these lines to the top of the file, next to the rest of the requires:
+```javascript
+var path = require('path');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+```
+We add `path` here which we did not need to install because it is included within node. It gives us some useful directory path functionality you'll see in a second.
+Add these lines of configuration below the line `var app = express();`:
+```javascript
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+```
+This sets up some basic command line logging functionality using the [Morgan](...) module, request body parsing, cookie parsing, and establishes the `public` directory as a static folder. This means that going to `http://localhost:3000/images/foo.jpg` will load the file `./public/images/foo.jpg` without any additional work from us. The same will work for javascript files, stylesheets, static html files, or anything else you may want to serve directly.

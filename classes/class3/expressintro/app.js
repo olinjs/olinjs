@@ -1,8 +1,7 @@
 var express = require('express');
+var index = require('./routes/index');
 var app = express();
 
-app.get('/', function(req, res){
-  res.send('hello world');
-});
+app.get('/', index.home);
 
 app.listen(3000);
