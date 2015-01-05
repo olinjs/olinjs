@@ -7,7 +7,7 @@ If you need help install Ubuntu check out this [guide](https://gist.github.com/b
 We will install node from a package repository which will give us automatic updates:
 * `curl -sL https://deb.nodesource.com/setup | sudo bash -` (install curl with `sudo apt-get install curl` if needed)
 * `sudo apt-get install -y nodejs`
-* `sudo apt-get install build-essential` (needed for some npm packages)
+* `sudo apt-get install -y build-essential` (needed for some npm packages)
 * To test: `node --version` should return v0.10.35 and `npm --version` should return 2.1.17
 * If your npm is not up-to-date run `sudo npm install -g npm`
 
@@ -25,7 +25,7 @@ Lastly, ensure you are setup to use SSH to communicate with Github. SSH is a com
 
 ### 1. Forking
 
-"Forking" is to copy a repository. It's termed "forking" because you copy the entire history of the project, but from here on out, any changes you make to your new repository are distinct from those you make in the original repository. It's totally fine to keep two repositories ongoing with the same history, it's just data! 
+"Forking" makes your own personal copy of a repository. The term is "forking" because you copy the entire history of the project, but from here on out, any changes you make to your new repository are distinct from those made in the original repository. It's totally fine to keep two repositories ongoing with the same history, it's just data! 
 
 Github makes this very easy. Do this:
 
