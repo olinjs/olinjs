@@ -1,5 +1,10 @@
 var home = function(req, res){
-  res.send("Welcome home!");
+  res.render("home", {"classes": [
+    "Olin.js",
+    "other class 1",
+    "other class 2",
+    "other class 3"]
+  });
 };
 
 module.exports.home = home;
