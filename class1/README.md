@@ -6,7 +6,7 @@
 - Fundamentals of Node and JavaScript
 
 ##Homework Due Link:
-* [Class 0 - Getting Ready for the Course](./../classes/class0)
+* [Class 0 - Getting Ready for the Course](../class0/README.md)
 
 ##Welcome to OlinJS! 
 We are excited to have you in this class and look forward to a great semester of learning Node.js together. To start off, here is your teaching team: 
