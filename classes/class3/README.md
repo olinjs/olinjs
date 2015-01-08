@@ -1,4 +1,4 @@
-#Class 3
+#Class 3 - Express, Templating, and MongoDB
 
 ##Express
 Now that we've explored Node.js a little, we will abstract the details away with the [Express](http://expressjs.com/) development framework. Before, in the Node Beginner's Book, our code looked a lot like this:
@@ -257,3 +257,108 @@ res.render("home", {"classes": [
 The second parameter that we are passing to the `render` function is the *context* for the template. That means that the word `classes` in the handlebars file is looking for a array named `classes` and it will create a new list item for *each* of the elements in the array. There's plenty more power in templates and we'll see them shortly.
 
 ## MongoDB
+
+Node has the ability to store some information as variables. But all of the variables are stored in the process memory. If you restart the server (or the server crashes) the data will be wiped away. If you are storing information from users or information based on user input, we need a more permanent solution. That's very persistent storage comes in. A file, like `data.txt`, is a form of persistent storage. It can be written to, read from, and maintains information regardless of whether your server is running or has long since stopped. But files aren't useful for much more than storing log information because of their organization. When we want to retrieve data from persistent storage quickly, we need a solution like a database!
+
+MongoDB is a NoSQL database. It stores data in JSON-like documents, is relatively performant and offers useful features for production level systems. We're going to use it for these reasons, but also because it is very easy to integrate with Node and doesn't require learning too much about data storage. Alternatives, for example the ubiquitous MySQL, are also very common database solutions, but tend to take a bit more time to get set up in a Node environment and do not have as easy abstraction layers to shield you from interacting with the database directly (through the wonders of SQL). You will likely see them in any internships or jobs doing web-dev, but MongoDB more than suits our purposes and will teach you the basics of data storage without taking a couple weeks of class time to get comfortable with. So, let's get Mongo running and see what we can do with it:
+
+```sh
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10;
+echo "deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen" | sudo tee /etc/apt/sources.list.d/10gen.list;
+sudo apt-get update;
+sudo apt-get install -y mongodb-org
+```
+
+Once installed, start the database by running:
+```sh
+sudo service mongod start
+
+```
+If you ever run into errors connection to your database, ensure the `mongod` service (mongo daemon) is still running, and restart it if necessary.
+
+While the server is running in the background you can exit it safely by running:
+```sh
+sudo service mongod stop
+```
+
+While the database is running you can access it directly through your terminal using the `mongo` command. This will connect on the default Mongo port (27017) and allow you to issue MongoDB commands directly:
+```sh
+$ mongo
+MongoDB shell version: 2.6.6
+connecting to: test
+>
+```
+You can see all the databases you have on your machine by typing
+```sh
+> show dbs
+admin  (empty)
+local  0.078GB
+```
+Let's create a new database and a new entry in that database:
+```sh
+> use test
+switched to db test
+> db.users.insert({'name':'alice'})
+> db.users.find()
+{ "_id" : ObjectId("51007865e481634f390b162f"), "name" : "alice" }
+> db.users.insert({'name': 'bob', 'grade': 'A', 'assignments':[{1: 'A', 2: 'B'}]})
+> db.users.find()
+{ "_id" : ObjectId("51007865e481634f390b162f"), "name" : "alice" }
+{ "_id" : ObjectId("510078bee481634f390b1630"), "name" : "bob", "grade" : "A",
+"assignments" : [ { "1" : "A", "2" : "B" } ] }
+> show dbs
+admin (empty)
+local 0.078GB
+test  0.203125GB
+```
+Mongo creates a database for us as soon as we start inserting items into it. It stores data in what's known as a `collection`. So in our case, users would be a collection. Items within a collection don't have to be consistant with each other (alice only has a name while bob has a name and a grade).
+
+We can also delete items:
+```sh
+> db.users.remove({'name': 'alice'})
+> db.users.find()
+{ "_id" : ObjectId("510078bee481634f390b1630"), "name" : "bob", "grade" : "A",
+"assignments" : [ { "grade" : "A", "grade" : "B" } ] }
+```
+Modify items:
+```sh
+> db.users.update({'name': 'bob'}, {$set: {'class': 2013}})
+> db.users.find()
+{ "_id" : ObjectId("510078bee481634f390b1630"), "assignments" : [ { "grade" : "A", "grade" : "B" } ],
+"class" : 2013, "grade" : "A", "name" : "bob" }
+```
+And search for items:
+```sh
+> db.users.find({'grade': 'A'})
+{ "_id" : ObjectId("510078bee481634f390b1630"), "assignments" : [ { "grade" : "A", "grade" : "B" } ],
+"class" : 2013, "grade" : "A", "name" : "bob" }
+```
+There are loads more Mongo commands that can be found through the [documentation](http://docs.mongodb.org/manual/).
+## Mongoose
+[Mongoose](http://mongoosejs.com/) is a javascript wrapper for MongoDB that allows us to save javascript objects into our database without having to deal with the underlying Mongo commands. Install it by opening up a console and typing:
+```sh
+npm install --save mongoose
+```
+You configure Mongoose to save objects using a [schema](http://mongoosejs.com/docs/guide.html). In a schema we define what kind of data we expect an object to have.
+```javascript
+var userSchema = mongoose.Schema({
+  name: String,
+  grade: String,
+  class: Number
+});
+```
+We can now use this schema to create and save users:
+```javascript
+var User = mongoose.model('User', userSchema);
+var bob = new User({name: 'bob', grade: 'A', class: '2013'});
+bob.save(function (err) {
+  if (err) {
+    console.log("Problem saving bob", err);
+  }
+});
+```
+Check out the [getting started](http://mongoosejs.com/docs/index.html) guide on Mongoose to learn how to connect to your MongoDB database and the basics of saving and loading records.
+
+In the homework you will explore more about how to leverage MongoDB and Mongoose to store data persistantly.
+
+For next class finish this [homework](./homework.md).
