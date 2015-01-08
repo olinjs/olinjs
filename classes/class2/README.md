@@ -3,7 +3,7 @@
 ## JavaScript is Everywhere
 
 ### Atwood's Law
-	
+
 >Any application that can be written in JavaScript, will eventually be written in JavaScript.
 
 [Jeff Atwood](http://blog.codinghorror.com/the-principle-of-least-power/)
@@ -25,7 +25,7 @@ Type `node` in your command line to bring up the Node JavaScript REPL (read-eval
 
 For the rest of this lesson (unless otherwise specified), `x` will be equal to the number `5` at the start of every example.
 
-Variable assignments in JavaScript start with `var`. If you omit `var`, the variable will be *implicitly global*. This is ***very bad*** -- almost worse than the program just crashing with an error message. We'll go into why later.
+Variable assignments in JavaScript start with `var`. If you omit `var`, the variable will be *implicitly global*. This is ***very bad*** — almost worse than the program just crashing with an error message. We'll go into why later.
 
 ### Operators
 
@@ -42,7 +42,14 @@ true
 ...
 ```
 
-The `...` means the REPL is waiting for a certain input. In this case, it just means it's confused. Press `Ctrl+C` to get back to the prompt.
+The `...` means the REPL is waiting for a certain input. In this case, it just means it's confused. Press `Ctrl+C` to get back to the prompt. The way to exponentiate in JavaScript is `Math.pow`:
+
+```node
+> Math.pow(4, 2) // raise 4 to the power of 2
+16
+```
+
+The [`Math` object](http://www.w3schools.com/jsref/jsref_obj_math.asp) (we'll cover objects later) has lots of other useful constants and functions.
 
 #### Checking for equality
 
@@ -81,7 +88,7 @@ Usually, you're expecting this behavior. If in doubt, use `===` (triple-equals).
 
 ##### Checking for inequality
 
-JavaScript also has `!=` and `!==`. All the same rules apply -- `!==` is generally safer.
+JavaScript also has `!=` and `!==`. All the same rules apply — `!==` is generally safer.
 
 ## Types
 
@@ -109,7 +116,7 @@ true
 
 The `Number()` typecast supports strings and floating point numbers (and even rounds!). No need to write your own number parsing code!
 
-The next behavior is arguably worse than breaking, but also cool: You *can* do string multiplication in JavaScript!
+The next behavior is arguably worse than throwing an error, but also cool: You *can* do string multiplication in JavaScript!
 
 ```node
 > "3" * "4"
@@ -136,7 +143,7 @@ String addition works as expected.
 
 Well, anyway...
 
-JavaScript, like Python, is dynamically typed. This means that a variable's type is determined at runtime. But since JavaScript is also very weakly typed (while Python is not), functions will usually be able to operate on arguments of the wrong type (by coercing them, for example), which means a program can fail unexpectedly long after a type-related mistake is made. In this case, error messages are usually not helpful, so the best thing to do is be careful and think ahead as you write your code.
+JavaScript, like Python, is dynamically typed. This means that a variable's type isn't determined until runtime. But since JavaScript is also very weakly typed (while Python is not), functions will usually be able to operate on arguments of the wrong type (by coercing them, for example), which means a program can fail unexpectedly long after a type-related mistake is made. In this case, error messages are usually not helpful, so the best thing to do is be careful and think ahead as you write your code.
 
 ## Functions
 
@@ -154,7 +161,7 @@ function func1() {
 You can run it like this:
 
 ```bash
-❯❯❯ node functions.js
+$ node functions.js
 ```
 
 In `functions.js`, we declare a function named `func1` that takes no arguments and returns the number `1`.
@@ -168,15 +175,15 @@ console.log( func1 )
 console.log( func1() )
 ```
 
-The function `console.log` does what you might expect -- it logs arguments to the console.
+The function `console.log` does what you might expect — it logs arguments to the console.
 
 ``` bash
-❯❯❯ node functions.js
+$ node functions.js
 [Function: func1]
 1
 ```
 
-The two print statements we added to `functions.js` look almost the same, but the console output shows that they're very different. The first statement prints the function object `func1` -- that is, the actual *entity* that represents the function itself (the code, the arguments, the scope in which it was declared -- more on scope later). Node says that `func1` is a `Function` named `func1` -- nothing unexpected here.
+The two print statements we added to `functions.js` look almost the same, but the console output shows that they're very different. The first statement prints the function object `func1` — that is, the actual *entity* that represents the function itself (the code, the arguments, the scope in which it was declared — more on scope later). Node says that `func1` is a `Function` named `func1` — nothing unexpected here.
 
 Putting `()` next to the name of a function calls the function, so when we print `func1()` we get the return value of `func1`, which is `1`.
 
@@ -220,11 +227,11 @@ console.log( func1() )
 ```
 
 ```bash
-❯❯❯ node functions.js
+$ node functions.js
 [Function]
 ```
 
-The function `func1` is a named function that returns the variable `func2`. We set `func2` equal to a function definition without a name -- the function on the right hand side of this assignment is known as an **anonymous function**.
+The function `func1` is a named function that returns the variable `func2`. We set `func2` equal to a function definition without a name — the function on the right hand side of this assignment is known as an **anonymous function**.
 
 So, `func1` returns an anonymous function which returns `2`. How do we get at the return value of the returned function?
 
@@ -235,7 +242,7 @@ console.log( func1()() )
 ```
 
 ```bash
-❯❯❯ node functions.js
+$ node functions.js
 2
 ```
 
@@ -253,20 +260,20 @@ func1()() // let's add parentheses to show the order of evaluation
 
 Function objects let us pass around pieces of code that can be run at arbitrary times.
 
-Here's a really common situation: A client application requests data from a URL, and wants to process the data when it arrives. There's no way to know how long it will take the data to arrive, and even if there was, we wouldn't want to just block execution and wait until we got the data. It would be great if we could request the data and go about our business until we received it -- then we could run the code that depends on the data.
+Here's a really common situation: A client application requests data from a URL, and wants to process the data when it arrives. There's no way to know how long it will take the data to arrive, and even if there was, we wouldn't want to just block execution and wait until we got the data. It would be great if we could request the data and go about our business until we received it — then we could run the code that depends on the data.
 
 That's what callbacks are for. Here's an example with real code:
 
 ```node
-jQuery.get(url, success)
+$.get(url, success)
 ```
 
-You might be familiar with dot syntax from Python -- if you're not, we'll cover it soon. jQuery is a ubiquitous JavaScript library that adds a lot of much-needed functionality to JavaScript. `jQuery.get` is a real method that requests data from the provided `url`.
+You might be familiar with dot syntax from Python — if you're not, we'll cover it soon. The `$` is a stand-in for jQuery, a ubiquitous client-side JavaScript library that adds a lot of useful functionality (like better DOM/CSS manipulation and asynchronous request functions) to JavaScript. `jQuery.get` (or `$.get`) is a method that requests data from the provided `url`.
 
-The second argument is a success callback -- it is a function that will be called, and passed the response data as an argument, if the request is successful. We could call `jQuery.get` like this:
+The second argument is a success callback — it is a function that will be called, and passed the response data as an argument, if the request is successful. We could call `$.get` like this:
 
 ```node
-jQuery.get("www.some.url", function(data) {
+$.get("www.some.url", function(data) {
 	console.log(data)
 	console.log("Request was successful!")
 })
@@ -280,7 +287,7 @@ var handleSuccess = function(data) {
 	console.log("Request was successful!")
 }
 
-jQuery.get("www.some.url", handleSuccess)
+$.get("www.some.url", handleSuccess)
 ```
 
 It could even be a function declared somewhere else entirely, like this.
@@ -290,7 +297,7 @@ function globalSuccessHandler(data) {
 	...
 }
 ...
-jQuery.get("www.some.url", globalSuccessHandler)
+$.get("www.some.url", globalSuccessHandler)
 ```
 
 ### Closures
