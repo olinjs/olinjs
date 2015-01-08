@@ -254,7 +254,7 @@ res.render("home", {"classes": [
   "other class 3"]
 });
 ```
-The second parameter that we are passing to the `render` function is the *context* for the template. That means that the word `classes` in the handlebars file is looking for a array named `classes` and it will create a new list item for *each* of the elements in the array. There's plenty more power in templates and we'll see them shortly.
+The second parameter that we are passing to the `render` function is the *context* for the template. That means that the word `classes` in the handlebars file is looking for an array named `classes` and it will create a new list item for *each* of the elements in the array. There's plenty more power in templates and we'll see them shortly.
 
 ## MongoDB
 
