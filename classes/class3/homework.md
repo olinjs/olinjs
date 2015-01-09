@@ -12,7 +12,9 @@ Create an Express application that has the following routes:
   * Optional: Display a verification that a cat was deleted, perhaps by stating which cat was deleted.
 * Deploy this to Heroku (see [Additional Information](#additional-information))
 
+In this assignment we are doing something very bad. GET should be a [safe method](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Safe_methods) that is guaranteed to not modify or delete data. We should be using a DELETE or POST request when we intend to modify the server's data. Check out this [video](https://www.youtube.com/watch?v=cIliEo0zOwg) for an example of why this is important.
 
+We are using GET requests in this horrible way because without writing a front end, sending other types of requests becomes much more difficult. We'll get there soon though.
 ## Submission
 Fill out [this survey](http://goo.gl/forms/pzXSFUl10f) to turn in this assignment.
 Also remember to read through the next [class](../class4) and come prepared with an understanding of:
@@ -30,8 +32,31 @@ This homework will require deploying to Heroku. We talked about it briefly in cl
 heroku config | grep MONGOLAB_URI
 MONGOLAB_URI => mongodb://heroku_app1234:random_password@ds029017.mongolab.com:29017/heroku_app1234
 ```
-Make sure you replace your `localhost` database with the new MongoLab URI in your `app.js` file.
+In order to seamlessly transition between localhost and heroku, while also keeping your URI outside of your public git repo we will use environment variables.
+Save your local URI to an environment variable in your current terminal session with:
+```sh
+$ export MONGOURI=mongodb://localhost/test
+```
+If you add this line to your `~/.bashrc` file, the environment variable will be added to all of your terminal sessions on startup.
+You can print the current state of the environment variable with:
+```sh
+$ echo $MONGOURI
+mongodb://localhost/test
+```
+Inside your Node app, the value of that variable is accessible within the process object:
+```javascript
+var mongoURI = process.env.MONGOURI;
+mongoose.connect(mongoURI);
+```
+Once you've retrieved your MongoLab URI, you can set your Heroku instance to connect to that database by setting the environment variable:
+```sh
+$ heroku config:set MONGOURI=mongodb://heroku_app1234:random_password@ds029017.mongolab.com:29017/heroku_app1234
+Adding config vars and restarting heroku_app1234... done, v12
+MONGOURI: mongodb://heroku_app1234:random_password@ds029017.mongolab.com:29017/heroku_app1234
+```
+You can run `heroku config` to list all set variables and their values.
 
+With this set up your app will connect to localhost when you run it from your computer, and your MongoLab database from Heroku.
 ## Some Parting Words
 In order to complete this assignment, you're also going to have to use some arrays and sort your data from Mongoose. We didn't cover this in class, but it's not that much of a stretch to Google.
 
