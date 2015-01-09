@@ -1,11 +1,12 @@
 #Class 1
 
 ##Goals
-- You should understand course plan and resources
-- Development environments ready
-- Fundamentals of Node and JavaScript
+After this class, you should:
+- Understand the course plan and resources
+- Have your development environments ready
+- Be familiar with the fundamentals of Node and JavaScript
 
-##Homework Du
+##Homework Due
 * [Class 0 - Getting Ready for the Course](../class0/README.md)
 
 ##Welcome to Olin.js!
