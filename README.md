@@ -6,7 +6,7 @@ Olin.js - Spring 2015
 * [Class 1 - Course Introduction and The Internet](./classes/class1)
 * [Class 2 - Intro to Javascript](./classes/class2)
 * [Class 3 - Express, Templating, and MongoDB](./classes/class3)
-* [Class 4 - The Clientside](./classes/class4)
+* [Class 4 - The Client](./classes/class4)
 * [Class 5 - Sessions, Users, Errors, CSS, and Debugging](./classes/class5)
 * [Class 6 - Application Integration](./classes/class6)
 * [Class 7 - Unit Testing and Task Running](./classes/class7)
