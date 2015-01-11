@@ -16,7 +16,7 @@ As a quick aside, all browsers are different.
 They have gotten much closer in recent years (HTML5 browsers),
 but you will still run into some differences in how your sites look and function due to these differences.
 It's worth understanding the different browsers with which people may view your site you so can choose what to optimize:
-![Browser Share](images/desktop_browser_share.png)
+<img src="images/desktop_browser_share.png" width="400px"/>
 Some key trends to note include the rise of Chrome as well as the fall of IE and Firefox.
 Also worth noting is the rapid growth of mobile browsing (pink).
 We won't address [mobile web design](http://www.smashingmagazine.com/guidelines-for-mobile-web-development/) in this class,
@@ -54,7 +54,7 @@ While HTML can include presentation specifications,
 it is highly recommended to use HTML for structure and [Cascading Style Sheets](http://en.wikipedia.org/wiki/Cascading_Style_Sheets) (CSS)
 for define the look and layout of the page. There are *many* [HTML tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element),
 but you will mostly use a small number:
-* [`<a>`]((https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a):
+* [`<a>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a):
 The Anchor element defines a hyperlink like those seen in blue throughout this document.
 * [`<article>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article):
 Articles are used to signify a self-contained composition within a page, ei. forum post, documentation entry, newspaper article, etc.
