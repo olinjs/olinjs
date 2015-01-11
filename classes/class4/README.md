@@ -17,6 +17,7 @@ They have gotten much closer in recent years (HTML5 browsers),
 but you will still run into some differences in how your sites look and function due to these differences.
 It's worth understanding the different browsers with which people may view your site you so can choose what to optimize:
 <img src="images/desktop_browser_share.png" width="400px"/>
+
 Some key trends to note include the rise of Chrome as well as the fall of IE and Firefox.
 Also worth noting is the rapid growth of mobile browsing (pink).
 We won't address [mobile web design](http://www.smashingmagazine.com/guidelines-for-mobile-web-development/) in this class,
@@ -81,7 +82,7 @@ Display an image with the image tag. `<img>` tags cannot have children and do no
   [`<li>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li):
 Un-ordered list, ordered list, and list element tags are used for structuring list content in HTML.
 * [`<p>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p):
-The *Paragraph* element defines a block of text.
+The paragraph element defines a block of text.
 * [`<span`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span):
 The span element is like a div in that it is a generic container element.
 However, in contrast, spans are inline elements by default (they do not break the flow of elements on the page)
@@ -91,6 +92,10 @@ Prior to the use of CSS, the table element, along with `<th>` (table header), `<
 were often used as a method for page layout. Don't do this please.
 They can still be used for the categorization of data,
 but the styling and layout should all be controlled by CSS.
+
+Check out this [site](http://www.htmldog.com/guides/css/intermediate/layout/)
+or Google "HTML layout tips" to read more about formatting techniques.
+
 ## jQuery
 
 ## HTML Forms
