@@ -1,4 +1,4 @@
-#JavaScript
+#Class2 - JavaScript
 
 ## JavaScript is Everywhere
 
@@ -67,9 +67,9 @@ true
 But it will also do things you probably won't be expecting, like this:
 
 ```node
-> "5" == 5
+> '5' == 5
 true
-> " " == 0
+> ' ' == 0
 true
 ```
 
@@ -78,9 +78,9 @@ This happens because the `==` operator performs what's known as "type coercion",
 The `===` operator is also known as "identically equal" or "strict equals". It doesn't perform type coercion, so variables of different types will not be reported equal.
 
 ```node
-> "5" === 5
+> '5' === 5
 false
-> " " === 0
+> ' ' === 0
 false
 ```
 
@@ -110,7 +110,7 @@ The types `Boolean`, `String`, `Number`, and `Object` all provide functions to c
 false
 > Boolean(5) // any non-zero number
 true
-> Number("5.6789123456789123456789")
+> Number('5.6789123456789123456789')
 5.678912345678913
 ```
 
@@ -119,25 +119,25 @@ The `Number()` typecast supports strings and floating point numbers (and even ro
 The next behavior is arguably worse than throwing an error, but also cool: You *can* do string multiplication in JavaScript!
 
 ```node
-> "3" * "4"
+> '3' * '4'
 12
 ```
 
 Not really, though. It's a number now.
 
 ```node
-> typeof("3" * "4")
+> typeof('3' * '4')
 'number'
 ```
 
 String addition works as expected.
 
 ```node
-> "a" + "b"
+> 'a' + 'b'
 'ab'
-> "5" + "5"
+> '5' + '5'
 '55'
-> "5" - "5"
+> '5' - '5'
 0
 ```
 
@@ -171,8 +171,8 @@ We can add to `functions.js` to learn more about `func1`.
 ###### functions.js
 ```node
 ...
-console.log( func1 )
-console.log( func1() )
+console.log(func1)
+console.log(func1())
 ```
 
 The function `console.log` does what you might expect — it logs arguments to the console.
@@ -198,8 +198,8 @@ A variable can also store a function declaration, so we could have done this ins
 
 ```node
 var func1 = function() {
-	return 1
-}
+	return 1;
+};
 ```
 
 The above example wouldn't have acted *quite* the same, though, which brings us to what makes JavaScript functions so special.
@@ -213,8 +213,8 @@ The print statements above hinted at this: in JavaScript, functions are objects.
 function func1() {
 	var func2 = function() {
 		return 2
-	}
-	return func2
+	};
+	return func2;
 }
 ```
 
@@ -223,7 +223,7 @@ What will happen when we call `func1`?
 ###### functions.js
 ```node
 ...
-console.log( func1() )
+console.log(func1());
 ```
 
 ```bash
@@ -233,12 +233,12 @@ $ node functions.js
 
 The function `func1` is a named function that returns the variable `func2`. We set `func2` equal to a function definition without a name — the function on the right hand side of this assignment is known as an **anonymous function**.
 
-So, `func1` returns an anonymous function which returns `2`. How do we get at the return value of the returned function?
+So, `func1` returns a variable containing an anonymous function which returns `2`. How do we call the returned anonymous function?
 
 ###### functions.js
 ```node
 ...
-console.log( func1()() )
+console.log(func1()());
 ```
 
 ```bash
@@ -249,10 +249,9 @@ $ node functions.js
 This is totally legal. It might help to break down the expression we just printed:
 
 ```node
-func1()() // let's add parentheses to show the order of evaluation
-( func1() )() // first, func1 is called
-( func2 )() // it returns func2
-( function() { return 2 } )() // func2 holds an anonymous function
+func1()(); // first, func1 is called
+func2(); // it returns func2
+(function() { return 2; })(); // func2 holds an anonymous function
 2 // the anonymous function is called and returns 2
 ```
 
@@ -265,7 +264,7 @@ Here's a really common situation: A client application requests data from a URL,
 That's what callbacks are for. Here's an example with real code:
 
 ```node
-$.get(url, success)
+$.get(url, success);
 ```
 
 You might be familiar with dot syntax from Python — if you're not, we'll cover it soon. The `$` is a stand-in for jQuery, a ubiquitous client-side JavaScript library that adds a lot of useful functionality (like better DOM/CSS manipulation and asynchronous request functions) to JavaScript. `jQuery.get` (or `$.get`) is a method that requests data from the provided `url`.
@@ -273,21 +272,21 @@ You might be familiar with dot syntax from Python — if you're not, we'll cover
 The second argument is a success callback — it is a function that will be called, and passed the response data as an argument, if the request is successful. We could call `$.get` like this:
 
 ```node
-$.get("www.some.url", function(data) {
-	console.log(data)
-	console.log("Request was successful!")
-})
+$.get('www.some.url', function(data) {
+	console.log(data);
+	console.log('Request was successful!');
+});
 ```
 
 `success` could also be a variable containing an anonymous function:
 
 ```node
 var handleSuccess = function(data) {
-	console.log(data)
-	console.log("Request was successful!")
-}
+	console.log(data);
+	console.log('Request was successful!');
+};
 
-$.get("www.some.url", handleSuccess)
+$.get('www.some.url', handleSuccess);
 ```
 
 It could even be a function declared somewhere else entirely, like this.
@@ -297,7 +296,7 @@ function globalSuccessHandler(data) {
 	...
 }
 ...
-$.get("www.some.url", globalSuccessHandler)
+$.get('www.some.url', globalSuccessHandler);
 ```
 
 ### Closures
