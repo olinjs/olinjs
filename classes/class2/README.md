@@ -259,9 +259,9 @@ func2(); // it returns func2
 
 Function objects let us pass around pieces of code that can be run at arbitrary times.
 
-Here's a really common situation: A client application requests data from a URL, and wants to process the data when it arrives. There's no way to know how long it will take the data to arrive, and even if there was, we wouldn't want to just block execution and wait until we got the data. It would be great if we could request the data and go about our business until we received it — then we could run the code that depends on the data.
+Here's a really common situation: A client application requests data from a URL, and wants to process the data when it arrives. There's no way to know how long it will take the data to arrive, and even if there was, we wouldn't want to just block execution and wait until we got the data. This would be **synchronous execution**, where code is executed one line at a time, in order. It would be great if we could request the data and go about our business until we received it — then we could run the code that depends on the data. **Asynchronous execution**, where code is executed out of order (often in response to events), allows this. Luckily, this behavior is the norm in JavaScript.
 
-That's what callbacks are for. Here's an example with real code:
+**Callbacks** are functions that we provide to be run when an event occurs. Here's an example with real code:
 
 ```node
 $.get(url, success);
