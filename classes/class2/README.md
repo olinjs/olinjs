@@ -18,7 +18,7 @@ Type `node` in your command line to bring up the Node JavaScript REPL (read-eval
 
 ```node
 > var x = 5
-
+undefined
 > x
 5
 ```
@@ -154,7 +154,7 @@ At this point we should start putting our code in files. If you have a JavaScrip
 ###### functions.js
 ```node
 function func1() {
-	return 1
+	return 1;
 }
 ```
 
@@ -300,10 +300,220 @@ $.get('www.some.url', globalSuccessHandler);
 ```
 
 ### Closures
-## Explain scoping
 ## Objects
 
-weird array stuff
-object <-> associative array
+Objects in JavaScript are simple key-value stores, which you may know from Python as **dictionaries**.
+
+We can create an empty object like this:
+
+```node
+> var obj = {}
+undefined
+```
+
+Properties can be added and accessed with dot syntax.
+
+```node
+> obj.color = 'blue'
+'blue'
+> obj.color
+'blue'
+```
+
+Bracket syntax lets us use variables as keys.
+
+```node
+> var colorKey = 'color'
+undefined
+> obj[colorKey]
+'blue'
+```
+
+Dot syntax is more concise than bracket syntax, so it's preferable unless bracket syntax is necessary (like if your key has a space, for some reason):
+
+```node
+> obj['another color'] = 'red'
+'red'
+> obj['another color']
+'red'
+> obj
+{ color: 'blue',
+'another color': 'red' }
+```
+
+Printing `obj` shows exactly how to declare objects that aren't empty. Objects can contain any variable type, including functions and other objects:
+
+```node
+> var obj = {
+... aBool: true,
+... aString: 'string',
+... aNum: 5.6,
+... aFunc: function() { return 6; },
+... anObj: { key: 'nesting is pretty great' }
+... }
+undefined
+```
+
+Properties can be treated like you might expect:
+
+```node
+> obj.aFunc
+[Function]
+> obj.aFunc()
+6
+> obj.anObj.key
+'nesting is pretty great'
+```
+
+JavaScript objects are versatile and ubiquitous — you'll see them everywhere. This brings us to the next section.
+
+### Arrays
+
+Arrays in JavaScript are also objects, which is why we covered objects first. Declare an array like this:
+
+```node
+> var arr = []
+undefined
+```
+
+Or a filled one like this:
+
+```node
+> var array = [1, 2, 3, 4]
+undefined
+```
+
+Arrays can contain any type, and need not contain variables of the same type.
+
+```node
+> var jsArray = [true, 'string', function() { return 'why would anyone do this'; }]
+undefined
+> jsArray[2]()
+'why would anyone do this'
+```
+
+### Array Methods
+
+#### Array length
+
+Retrieve the length of an array with `Array.length`:
+
+```node
+> array
+[ 1, 2, 3, 4 ]
+> array.length
+4
+```
+
+#### Appending and Prepending
+
+Use `push` to append an element to an array:
+
+```node
+> array.push(5)
+5
+> array
+[ 1, 2, 3, 4, 5 ]
+```
+
+And `pop` to remove the last element (`pop` returns the last element):
+
+```node
+> array.pop()
+5
+> array
+[ 1, 2, 3, 4 ]
+```
+
+Conversely, use `unshift` to prepend an element:
+
+```node
+> array.unshift(0)
+5
+> array
+[ 0, 1, 2, 3, 4 ]
+```
+
+And `shift` to remove the first element (`shift` returns the first element):
+
+```node
+> array.shift()
+0
+> array
+[ 1, 2, 3, 4 ]
+```
+
+#### Further Reading
+
+There are more built-in array methods, but we'll cover them later. JavaScript arrays generally act like Python arrays.
+
+Two good sources for documentation are [w3schools](http://www.w3schools.com/jsref/jsref_obj_array.asp) (easier to follow) and [Mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) (official and more complete).
+
+### Weird JavaScript Array Behavior (Optional)
+
+Since JavaScript arrays are objects, they kind of act like them:
+
+```node
+> jsArray
+[ true, 'string', [Function] ]
+> jsArray.question = 'Am I an object?'
+'Am I an object?'
+> jsArray
+[ true,
+'string',
+[Function],
+question: 'Am I an object?' ]
+```
+
+That string was actually stored as a property, not an element of the array:
+
+```node
+> jsArray[3]
+undefined
+> jsArray.question
+'Am I an object?'
+```
+
+Arrays are, in fact, objects, but they're special. When you index an array with a non-negative integer, it acts like an array. Indexing an object similarly just casts the integer to a string and adds it as a key.
+
+```node
+> typeof(jsArray)
+'object'
+> typeof(obj)
+'object'
+> obj[4] = 6
+6
+> obj
+{ '4': 6,
+aBool: true,
+aString: 'string',
+aNum: 5.6,
+aFunc: [Function],
+anObj: { key: 'nesting' } }
+```
+
+So if you index an array with an invalid number, it won't throw an error.
+
+```node
+> jsArray[-1] = -2
+-2
+> jsArray[3.141] = 'pi'
+'pi'
+> jsArray[6] = 5
+5
+> jsArray
+[ true,
+'string',
+[Function],
+,
+,
+,
+5,
+question: 'Am I an object?',
+'-1': -2,
+'3.141': 'pi' ]
+```
+
+The moral of the story is that JavaScript is remarkably robust, whether you like it or not. It will run happily where other languages would choke, so it often falls to you to write good code that will prevent weird things from happening.
 
 ## Prototypes
