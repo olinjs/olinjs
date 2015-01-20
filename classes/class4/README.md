@@ -266,6 +266,23 @@ In order to use AJAX we need to run some JavaScript on our website.
 
 ## Client JavaScript and jQuery
 
+JavaScript is a language. Node (server-side) is a "platform".
+Your browser (client-side) is also a "platform" that runs JavaScript,
+with a lot of different capabilities.
+
+**What is client-side JS good for?**
+Before, we used JavaScript to serve websites.
+Now we'll use client-side JS to add interactivity to a page.
+You used Handlebars in the last lesson to make templates that display content, forms, etc.
+After a user gets your template, though, they can't do much until they submit a form or go to a new page.
+With client-side JS, we can make your website much more useful and powerful.
+
+**One important caveat:**
+client-side code knows nothing about your server.
+For all it cares you could be running Python, Ruby, ALGOL or on a Commodore 64.
+So when you write JavaScript in Node.js, you can't run the same functions in your web browser.
+We'll explain later how to make them communicate with each other.
+
 The first step to doing any sort of dynamic actions on your websites is running some JavaScript.
 You can include JavaScript directly in an HTML document using `<script>` tags,
 but writing any significant code within an HTML document would be silly.
