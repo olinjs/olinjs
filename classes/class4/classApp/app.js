@@ -10,6 +10,8 @@ var getCat = require("./routes/getCat");
 
 var app = express();
 
+var PORT = 3000;
+
 app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 
@@ -23,4 +25,6 @@ app.get("/", index.home);
 app.get("/getCat", getCat.getCatGET);
 app.post("/getCat", getCat.getCatPOST);
 
-app.listen(3000);
+app.listen(PORT, function() {
+  console.log("App running on port:", PORT);
+});

@@ -154,7 +154,7 @@ Replace the contents of `home.handlebars` with:
 ```
 This may seem like a very redundant page. That's because it is.
 We are creating 3 forms to walk through some of the differences in how we can communicate between the client and server.
-If you run app and navigate to http://localhost:3000, you should see this:
+If you run the app and navigate to http://localhost:3000, you should see this:
 ![Forms](images/formpage.png)
 If you fill out the first form and press submit you will get a 404 error and the
 URL will change to something like: http://localhost:3000/getCat?name=bob&mood=happy.
@@ -198,7 +198,7 @@ GET /getCat?name=bob&sex=male 200 0.876 ms - -
 POST /getCat 200 0.538 ms - -
 ```
 Both the POST and GET request parameters are stored in the same format.
-That's convenient as it will allow us to parse both parameters the same way.
+That's convenient as it will allow us to use both parameters in the same way.
 
 Replace the contents of `getCat.js` with:
 ```javascript
@@ -334,7 +334,26 @@ So now let's change the DOM again:
 ```javascript
 $("h1").html("That was easy")
 ```
+Try these guys:
+```javascript
+// hide all the inputs
+$("input").hide()
+// show all the inputs
+$("input").show()
+// Add some pretty backgrounds
+$("h2").css("background", "blue")
+// Chain some changes
+$("h2").css("background","red").text("headings!")
+// Add some content
+$('body').append('<img src="http://i.minus.com/iFxelkyarGr5D.gif">');
+// And this:
+$('*').css('background-image', 'url(http://omfgdogs.com/omfgdogs.gif)');
+```
+You can clear any changes you make with jQuery by refreshing to page
+as that will reload the original HTML without your changes.
 
+jQuery is a very useful library that will allow you to make some dynamic
+and engaging front-ends to your applications.
 
 The `$("")` syntax is a jQuery [Selector](http://api.jquery.com/category/selectors/).
 Within the quotes you can place any CSS style selector to retrieve DOM elements.
@@ -431,9 +450,9 @@ and the sets the contents the `<div id=result>` element to that image.
 This means that if that form raises a "submit" event then the callback function will be run with the event object as a parameter.
   * The first thing we do in the callback is `event.preventDefault();`.
   This line stops the default action of the event from being triggered.
-  In this case, this is what stops a the browser from sending the request and loading a new page.
+  In this case, this is what stops the browser from sending the request and loading a new page.
   * Using some jQuery DOM searching we get the values of the "name" text input and the "mood" radio button.
-  * We then initiate an AJAX request using the GET method. jQuery similarly has a `$.post()` function for POST.
+  * We then initiate an AJAX request using the GET method with `$.get()`. jQuery similarly has a `$.post()` function for POST.
   We pass the two parameters into the GET request which are internally packaged into the same query string we've seen before.
   * Lastly, we specify what should happen if the request is successful or if it returns with an error.
   The `$.get()` function returns a jQuery XHR object ('jqXHR') which implements a Promise interface.
