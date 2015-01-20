@@ -282,7 +282,7 @@ The above example wouldn't have acted *quite* the same, though, which brings us 
 
 ### Functions are Objects
 
-The print statements above hinted at this: in JavaScript, functions are objects. So something like this is possible:
+The print statements above hinted at this: in JavaScript, functions can be stored in variables and passed around to be executed elsewhere. This ability demonstrates that functions are objects. So something like this is possible:
 
 ###### functions.js
 ```node
@@ -555,6 +555,8 @@ Arrays are, in fact, objects, but they're special. When you index an array with 
 ```node
 > typeof(jsArray)
 'object'
+> jsArray instanceof Array // Array is a type of object
+true
 > typeof(obj)
 'object'
 > obj[4] = 6
@@ -590,6 +592,6 @@ question: 'Am I an object?',
 '3.141': 'pi' ]
 ```
 
-The moral of the story is that JavaScript is remarkably robust, whether you like it or not. It will run happily where other languages would choke, so it often falls to you to write good code that will prevent weird things from happening.
+The moral of the story is that JavaScript is remarkably robust, whether you like it or not. It will run happily where other languages would choke, so it often falls to you to write good code that will prevent weird things from happening. Leverage the flexibility of JavaScript to write elegant code — don't let it bite you.
 
 ## Prototypes
