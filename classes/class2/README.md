@@ -331,6 +331,31 @@ func2(); // it returns func2
 2 // the anonymous function is called and returns 2
 ```
 
+## Closures
+
+When a function object is declared, it has access to the variables in the scope in which it was declared.
+
+###### closures.js
+```node
+var multSum = function(x, y) {
+	var mult = function() {
+		return x*y
+	}
+	return mult() + x + y
+}
+
+console.log(multSum(5, 6)) // 5*6 + 5 + 6
+```
+
+```bash
+$ node closures.js
+41
+```
+
+The function `mult` declared inside `multSum` has access to the variables `x` and `y`, because they are in the scope in which `mult` was declared. Here, `mult` is a closure — it encompasses not just the function itself, but also the scope in which it was declared (the outer scope), and the global scope, of course (all functions have access to the global scope).
+
+Closures are often seen in practice as callbacks, explained next. The Mozilla Developer Network offers [a more in-depth explanation of closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures.
+
 ## Callbacks
 
 Function objects let us pass around pieces of code that can be run at arbitrary times.
