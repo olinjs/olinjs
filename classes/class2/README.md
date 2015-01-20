@@ -90,6 +90,82 @@ Usually, you're expecting this behavior. If in doubt, use `===` (triple-equals).
 
 JavaScript also has `!=` and `!==`. All the same rules apply — `!==` is generally safer.
 
+## Control Flow
+
+JavaScript's control flow will be familiar to Python users, with largely syntactical differences. The keywords `break` and `continue` are unchanged.
+
+### Conditionals
+
+```node
+if (x === 5) {
+
+}
+else if () {
+
+}
+else {
+	//
+}
+```
+
+### Iteration
+
+#### For loop
+
+For loops will run a block of code a certain number of times, based on the conditions in the declaration. There are two ways to declare a for loop, each with its ideal use case.
+
+If the loop iterates through an array or object, this syntax is recommended:
+
+```node
+for (var index in array) {
+	var element = array[index]
+	...
+}
+
+for (var key in object) {
+	var value = object[key]
+	...
+}
+```
+
+If the code just needs to run a set number of times, this syntax may be preferable:
+
+```node
+for (initialization; condition; final-expression) {
+	statement
+}
+```
+
+The `initialization` declares the variable that will be used to determine whether or not the `statement` should execute again each time the loop runs. The `condition` is evaluated before the loop runs each time — if it evalutes to `true`, the loop runs; otherwise, it stops. The `final-expression` is jsut code that runs after each iteration of the loop. In practice, for loop declarations look something like this:
+
+```node
+for (var i = start; i < end; i++) {
+	...
+}
+```
+
+But many variations are possible.
+
+#### While loop
+
+A while loop is useful if the amount of times the loop should run is not known before it runs (for example, it should run until a conditional evaluates to `false`).
+
+```node
+while (condition) {
+	statement
+}
+```
+
+#### Do...while loop
+
+The do...while loop is simply a while loop where the `statement` is guaranteed to run at least once.
+
+```node
+do {
+	statement
+} while (condition);
+```
+
 ## Types
 
 JavaScript variables can have one of the following types:
