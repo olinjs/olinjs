@@ -95,7 +95,7 @@ Your application will need the following http endpoints:
   which the server will update. The edits should change the ingredient list without refreshing.
 * `/order` =>
   * Shows a form which allows customers to create a new burger.
-  * There should be a checklist of all available ingredients and their price.
+  * There should be a [checklist](http://www.w3schools.com/tags/att_input_type.asp) of all available ingredients and their price.
   * There should a Submit button that will send the server the new order without refreshing the page.
   You should give your customer a nice congratulatory message for completing their order
   (maybe a free cat picture since you're so good at that?!)
