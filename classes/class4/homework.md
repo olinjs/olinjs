@@ -107,7 +107,6 @@ Your application will need the following http endpoints:
 
 ### Submission
 
-Deploy your application to Heroku and fill out the homework submission survey (Link if the form doesn't show up below http://goo.gl/forms/Ibq7ELqBfS):
-<iframe src="https://docs.google.com/forms/d/1VUCRmA16cp_5pehdMS9hXrurmTWphDBxr_WNh1FADWQ/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+Deploy your application to Heroku and fill out the [homework submission survey](http://goo.gl/forms/Ibq7ELqBfS)
 
 ### Hints
