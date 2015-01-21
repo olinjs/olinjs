@@ -66,7 +66,7 @@ compared to 1 per hour if you had used referencing.
 This becomes an even bigger problem when you're a product like Twitter and your
 "bookstores" are users and books are people those users follow. Let's say you want
 to update information about the book "Lady Gaga", which is stocked by 33 million "bookstores".
-This would be nearly impossible with embedded data, but is a synch with references.
+This would be nearly impossible with embedded data, but is a cinch with references.
 
 In the end which way you use (reference or embedding) depends what your data access patterns will be like.
 You'll likely be using embeds 80% of the time, but references also have their place, so know how to do both.
