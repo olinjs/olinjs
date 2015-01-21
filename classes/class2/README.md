@@ -114,7 +114,31 @@ else {
 
 For loops will run a block of code a certain number of times, based on the conditions in the declaration. There are two ways to declare a for loop, each with its ideal use case.
 
-If the loop iterates through an array or object, this syntax is recommended:
+##### For
+
+This is the basic for loop syntax:
+
+```node
+for (initialization; condition; final-expression) {
+	statement
+}
+```
+
+The `initialization` declares the variable that will be used to determine whether or not the `statement` should execute again each time the loop runs. The `condition` is evaluated before the loop runs each time — if it evalutes to `true`, the loop runs; otherwise, it stops. The `final-expression` is just code that runs after each iteration of the loop. In practice, for loop declarations look something like this:
+
+```node
+for (var i = start; i < end; i++) {
+	...
+}
+```
+
+This loop reads
+
+>The loop will start with the iterator `i` equal to `start` and run while `i` is less than `end`, and `i` will increase by `1` after each iteration.
+
+##### For...in
+
+If the loop iterates through an array or object, you can also use this shorthand:
 
 ```node
 for (var index in array) {
@@ -127,24 +151,6 @@ for (var key in object) {
 	...
 }
 ```
-
-If the code just needs to run a set number of times, this syntax may be preferable:
-
-```node
-for (initialization; condition; final-expression) {
-	statement
-}
-```
-
-The `initialization` declares the variable that will be used to determine whether or not the `statement` should execute again each time the loop runs. The `condition` is evaluated before the loop runs each time — if it evalutes to `true`, the loop runs; otherwise, it stops. The `final-expression` is jsut code that runs after each iteration of the loop. In practice, for loop declarations look something like this:
-
-```node
-for (var i = start; i < end; i++) {
-	...
-}
-```
-
-But many variations are possible.
 
 #### While loop
 
@@ -550,7 +556,7 @@ There are more built-in array methods, but we'll cover them later. JavaScript ar
 
 Two good sources for documentation are [w3schools](http://www.w3schools.com/jsref/jsref_obj_array.asp) (easier to follow) and [Mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) (official and more complete).
 
-### Weird JavaScript Array Behavior (Optional)
+### Weird JavaScript Array Behavior
 
 Since JavaScript arrays are objects, they kind of act like them:
 
@@ -618,13 +624,3 @@ question: 'Am I an object?',
 ```
 
 The moral of the story is that JavaScript is remarkably robust, whether you like it or not. It will run happily where other languages would choke, so it often falls to you to write good code that will prevent weird things from happening. Leverage the flexibility of JavaScript to write elegant code — don't let it bite you.
-
-## Homework for next class:
-
-Read the [node beginner book](http://www.nodebeginner.org) (much shorter than an actual book). This resource ties together a lot of what we covered in class 1 by implementing a basic web server in Node.js. You'll gain an understanding of how Express works while flexing your newly acquired JavaScript muscle.
-
-### Turning in Homework
-
-#### [Homework completion survey](https://docs.google.com/forms/d/1JiqQHBtdqHVmJcvL4wzNgztf7pxNHPX-Xp0nDK0FD6g/viewform?usp=send_form)
-
-When you've completed your homework, fill out the homework completion survey above.
