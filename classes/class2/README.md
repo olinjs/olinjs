@@ -619,4 +619,12 @@ question: 'Am I an object?',
 
 The moral of the story is that JavaScript is remarkably robust, whether you like it or not. It will run happily where other languages would choke, so it often falls to you to write good code that will prevent weird things from happening. Leverage the flexibility of JavaScript to write elegant code — don't let it bite you.
 
-## Prototypes
+## Homework for next class:
+
+Read the [node beginner book](http://www.nodebeginner.org) (much shorter than an actual book). This resource ties together a lot of what we covered in class 1 by implementing a basic web server in Node.js. You'll gain an understanding of how Express works while flexing your newly acquired JavaScript muscle.
+
+### Turning in Homework
+
+#### [Homework completion survey](https://docs.google.com/forms/d/1JiqQHBtdqHVmJcvL4wzNgztf7pxNHPX-Xp0nDK0FD6g/viewform?usp=send_form)
+
+When you've completed your homework, fill out the homework completion survey above.
