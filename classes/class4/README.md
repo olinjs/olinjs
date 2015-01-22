@@ -117,7 +117,7 @@ Now we're going to look at a better way to do this using HTML forms.
 
 To start we'll need a basic Express app again.
 You can start a new app or modify your homework, but we'd recommend starting from last class's app.
-From the class4 folder, use this command to copy it over:
+From the class4 folder, use this command to copy last class's app over:
 ```
 cp -r ../class3/::expressintro:: ./::formsApp::
 ```
