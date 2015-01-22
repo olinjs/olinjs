@@ -26,11 +26,11 @@ Instead of creating two collections for your bookstore,
 you'll just have one bookstore collection that has a list of every book inside of the bookstore.
 ```
 bookstore
-location
-manager
-book
-author
-price
+  location
+  manager
+  book
+    author
+    price
 ```
 
 This will lead you to repeat books across bookstores (but who cares because space is cheap).
