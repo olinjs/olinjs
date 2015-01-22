@@ -485,4 +485,4 @@ This means that if that form raises a "submit" event then the callback function 
 Putting all of this together allows us to communicate with the server without
 sending GET requests from the URL bar and without reloading the page. We can then
 dynamically change the contents of the DOM without changing the entire page.
-That is a taste of the power of client-side JavaScript and AJAX.
+That is just a taste of the power of client-side JavaScript and AJAX.
