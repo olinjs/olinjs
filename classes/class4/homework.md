@@ -93,15 +93,16 @@ Then it will allow Jessica's chefs to see all the pending orders, fill them, and
 
 Your application will need the following http endpoints:
 * `/ingredients` =>
-  * Shows a list of current ingredients (Name and Price) with delete and edit button.
-  * Delete button will tell the server to remove the ingredient for new orders (???).
+  * Shows a list of current ingredients (Name and Price) with Out-of-Stock and edit button.
+  * Out-of-Stock button will tell the server to label the ingredient as disabled. (Optional: make it toggleable to "add" more of the ingredient.)
   The ingredient should be removed from the current page without refreshing.
   * Edit button allows the user to submit a new name or price for the ingredient
   which the server will update. The edits should change the ingredient list without refreshing.
 * `/order` =>
   * Shows a form which allows customers to create a new burger.
-  * There should be a [checklist](http://www.w3schools.com/tags/att_input_type.asp) of all available ingredients and their price.
-  * There should a Submit button that will send the server the new order without refreshing the page.
+  * There should be a [checklist](http://www.w3schools.com/tags/att_input_type.asp) of all ingredients and their price.
+  * Out-of-stock ingredients should have a disabled checkbox (`<input type="checkbox" disabled>`)
+  * There should be a Submit button that will send the server the new order without refreshing the page.
   You should give your customer a nice congratulatory message for completing their order
   (maybe a free cat picture since you're so good at that?!)
   * A running counter of total cost: Should update whenever a new ingredient is added or removed.
