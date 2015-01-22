@@ -167,7 +167,7 @@ We are submitting the form information to the server in two different ways, GET 
 as specified by the `method` attribute of the opening `<form>` tag.
 The `action` attribute specifies the URL.
 
-Now lets hook up the routing to make these forms actually do something.
+Now let's hook up the routing to make these forms actually do something.
 
 Create a new file in the `routes` directory named `getCat.js` and put the following in it:
 ```javascript
