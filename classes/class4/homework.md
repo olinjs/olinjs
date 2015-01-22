@@ -17,7 +17,35 @@ bookstore
 ```
 Keep in mind that a lot of books will be repeated across bookstores.
 How would we convert this to a Mongo datastore?
-There are 2 main ways: **Referencing** and **Embedding**.
+Perhaps the obvious solution would be to just throw it all into an object that looks like the above.
+This is called **embedding** and is one of two ways that Mongo allows us to store objects within other objects.
+
+**Embedding** is when you store a Mongo document inside of another Mongo document.
+This is the default way to do things in Mongo, and is the most obvious.
+Instead of creating two collections for your bookstore,
+you'll just have one bookstore collection that has a list of every book inside of the bookstore.
+```
+bookstore
+location
+manager
+book
+author
+price
+```
+
+This will lead you to repeat books across bookstores (but who cares because space is cheap).
+However, it will also mean that if you want to change the price of a book across all bookstores you have to go through each bookstore,
+search for the book, then change the attribute of the book.
+This isn't too bad if the book changes price very rarely, or if there are only a few stores which stock the book.
+However, think back to the Amazon.com example.
+If the price of the book changes every hour, and 1000 bookstores stock the book,
+you now have to update 1000 objects every hour.
+This becomes an even bigger problem when you're a product like Twitter and your
+"bookstores" are users and books are people those users follow. Let's say you want
+to update information about the book "Lady Gaga", which is stocked by 33 million "bookstores".
+This would be nearly impossible with embedded data, but is a cinch with references.
+
+The other method of putting objects within other objects is called **referecing**.
 
 **Referencing** is when you reference a Mongo document (usually by _id)
 inside of another document.
@@ -43,30 +71,7 @@ Imagine that this bookstore based the price of their books on the Amazon.com pri
 Now every time the price of the book changes you have to make only one change to one object,
 and the next time a store looks up the book it will see the updated price.
 
-**Embedding** is when you store a Mongo document inside of another Mongo document.
-This is the default way to do things in Mongo, and is the most obvious.
-Instead of creating two collections for your bookstore,
-you'll just have one bookstore collection that has a list of every book inside of the bookstore.
-```
-bookstore
-location
-  manager
-  book
-    author
-    price
-```
 
-This will lead you to repeat books across bookstores (but who cares because space is cheap).
-However, it will also mean that if you want to change the price of a book across all bookstores you have to go through each bookstore,
-search for the book, then change the attribute of the book.
-This isn't too bad if the book changes price very rarely, or if there are only a few stores which stock the book.
-However, if we think back to the Amazon.com example, if the price of the book changes every hour,
-and you have 1000 bookstores which stock the book. That means you have to go update 1000 objects every hour,
-compared to 1 per hour if you had used referencing.
-This becomes an even bigger problem when you're a product like Twitter and your
-"bookstores" are users and books are people those users follow. Let's say you want
-to update information about the book "Lady Gaga", which is stocked by 33 million "bookstores".
-This would be nearly impossible with embedded data, but is a cinch with references.
 
 In the end which way you use (reference or embedding) depends what your data access patterns will be like.
 You'll likely be using embeds 80% of the time, but references also have their place, so know how to do both.
@@ -82,7 +87,7 @@ Jessica's Burgers is looking to update their aging ordering system to the 21st c
 So in an effort to ~~make us loads of cash~~ improve your coding skills,
 this homework will focus on making a web app which will help Jessica's customers
 get their delicious burgers even quicker (and more delicously).
-Your application will allow users to build orders for single burger from a list of ingredients
+Your application will allow users to build orders for a single burger from a list of ingredients
 (which will need to be updated as new stock arrives).
 Then it will allow Jessica's chefs to see all the pending orders, fill them, and alert customers that their burger is ready.
 
@@ -108,5 +113,3 @@ Your application will need the following http endpoints:
 ### Submission
 
 Deploy your application to Heroku and fill out the [homework submission survey](http://goo.gl/forms/Ibq7ELqBfS)
-
-### Hints

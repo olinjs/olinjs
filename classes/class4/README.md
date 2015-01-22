@@ -39,7 +39,7 @@ This can be useful for debugging your server's responses or other API's.
 * Sources: The holy grail of JavaScript debugging tools. Set breakpoints, step through code,
 all the fun stuff that an IDE would give you. We'll get back to this when we go over debugging in more depth.
 * Console: A full JavaScript console that operates in the current scope of the Javascript on the page (including inside breakpoints).
-Run commands, and read through your `console.logs` in this window.
+Run commands, and read through your client-side `console.logs` in this window.
 As a bonus, if you click the "console icon" ![console icon](images/consoleicon.png) in the upper-right corner,
 the console will pop up below whatever other tab you want to reference.
 
@@ -53,8 +53,8 @@ Some elements cannot have content or children and do not have an end tag.
 Instead their start tag ends with a slash (`<br/>`)
 While HTML can include presentation specifications,
 it is highly recommended to use HTML for structure and [Cascading Style Sheets](http://en.wikipedia.org/wiki/Cascading_Style_Sheets) (CSS)
-for define the look and layout of the page. There are *many* [HTML tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element),
-but you will mostly use a small number:
+to define the look and layout of the page. There are *many* [HTML tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element),
+but you will mostly use a small number (click the link to see the official documentation for the tags):
 * [`<a>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a):
 The Anchor element defines a hyperlink like those seen in blue throughout this document.
 * [`<article>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article):
@@ -83,7 +83,7 @@ Display an image with the image tag. `<img>` tags cannot have children and do no
 Un-ordered list, ordered list, and list element tags are used for structuring list content in HTML.
 * [`<p>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p):
 The paragraph element defines a block of text.
-* [`<span`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span):
+* [`<span>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span):
 The span element is like a div in that it is a generic container element.
 However, in contrast, spans are inline elements by default (they do not break the flow of elements on the page)
 and are often used to style text: `<p><span class="fancy-text">Some text</span></p>`.
@@ -101,6 +101,8 @@ Check out [JSFiddle](http://jsfiddle.net/vsw1vLz6/).
 It is a super useful tool that allows you to test small snippets of HTML, CSS, and JavaScript and see the output.
 You can also share and do some other cool stuff with it.
 
+[CodePen](http://codepen.io/) is a similar site which also highlights a lot of cool code examples.
+
 ## HTML Forms
 In the last homework, we passed information to the server through the URL.
 This required us to do everything as a GET request, which is BAD, and was pretty limiting.
@@ -115,11 +117,11 @@ Now we're going to look at a better way to do this using HTML forms.
 
 To start we'll need a basic Express app again.
 You can start a new app or modify your homework, but we'd recommend starting from last class's app.
-From the class4 folder:
+From the class4 folder, use this command to copy it over:
 ```
-cp -r ../class3/expressintro ./formsApp
+cp -r ../class3/::expressintro:: ./::formsApp::
 ```
-Replace `expressintro` with whatever you named your application directory and `formsApp`
+Replace `::expressintro::` with whatever you named your application directory and `::formsApp::`
 with whatever you want to name this week's.
 
 Replace the contents of `home.handlebars` with:
