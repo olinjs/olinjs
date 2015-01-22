@@ -462,7 +462,8 @@ $form.submit(function(event) {
 
 Let's work through this file one step at a time:
 * First we store the jQuery selector for the 3rd form so we don't need to keep searching for it.
-* We define an `onSuccess` function. this takes `data` and `status`, creates a new `<img>` tag as a string
+* We define an `onSuccess` function. This function takes `data` and `status` as parameters, which `$.get()` supplies.
+  It then uses the `data` returned from the server to create a new `<img>` tag and add it to the page.
 and the sets the contents the `<div id=result>` element to that image.
 * We define an `onError` function, which prints the status and contents of the error.
 * We add an event handler for the "submit" event to the 3rd form.
@@ -473,7 +474,7 @@ This means that if that form raises a "submit" event then the callback function 
   * Using some jQuery DOM searching we get the values of the "name" text input and the "mood" radio button.
   * We then initiate an AJAX request using the GET method with `$.get()`. jQuery similarly has a `$.post()` function for POST.
   We pass the two parameters into the GET request which are internally packaged into the same query string we've seen before.
-  * Lastly, we specify what should happen if the request is successful or if it returns with an error.
+  * Finally, we specify what should happen if the request is successful or if it returns with an error.
   The `$.get()` function returns a jQuery XHR object ('jqXHR') which implements a Promise interface.
   Promises are a structure that allow management of lots of callbacks in a simple, easier to read manner.
   We wont talk too much about promises for now, but the important part is to know that the `.done()` callback is called
@@ -481,6 +482,7 @@ This means that if that form raises a "submit" event then the callback function 
   when there is an error, and the `.always()` callback (which we did not include here)
   is called on completion whether successful or not.
 
-  All of this put together allows us to communicate with the server without sending browser requests,
-  and dynamically change the contents of the DOM without changing the entire page.
-  That is a taste of the power of client-side JavaScript and AJAX.
+Putting all of this together allows us to communicate with the server without
+sending GET requests from the URL bar and without reloading the page. We can then
+dynamically change the contents of the DOM without changing the entire page.
+That is a taste of the power of client-side JavaScript and AJAX.
