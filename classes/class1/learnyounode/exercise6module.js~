@@ -1,5 +1,5 @@
-var fs = require('fs')
-var path = require('path')
+var fs = require('fs');
+var path = require('path');
 
 module.exports = function (dirName,ext,callback) {
   fs.readdir(dirName, function (err,data) {

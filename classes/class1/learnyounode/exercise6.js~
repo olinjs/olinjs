@@ -4,9 +4,9 @@ var extension = process.argv[3];
 
 filterFunction(dirName, extension, function (err, data) {
   if (err) {
-    return console.error('Error:',err);
+    return console.error('Error:', err);
   }
   data.forEach(function (file) {
     console.log(file)
   })
-})
+});
