@@ -179,3 +179,6 @@ $ learnyounode
 ####[Homework completion survey](https://docs.google.com/forms/d/1VBVzpTce0jf731CFUQV46HAhVKffCtNuVFKL8Ba-yjs/viewform?usp=send_form)
 
 When you've completed your homework, fill out the homework completion survey above.
+
+### Other Tutorials
+Stuff like javascripting and learnyounode can be found at [Node School](https://nodeschool.io).
