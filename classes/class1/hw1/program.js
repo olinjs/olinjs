@@ -35,7 +35,7 @@ function logNumLines(callback) {
 numLines(logNumLines);*/
 
 //Exercise 5
-var fs = require('fs');
+/*var fs = require('fs');
 var path = require('path');
 var filteredArray = [];
 
@@ -58,7 +58,24 @@ function logFiles() {
 	
 };
 
-getFiles(logFiles);
+getFiles(logFiles);*/
+
+//Exercise 6
+
+var filteredls = require('./filteredls.js');
+
+filteredls (process.argv[2], process.argv[3], function (err, filteredArray) {
+	if (err) {
+		console.error("Error:", err);
+	}
+	else {
+		for (var j=0; j < filteredArray.length; j++) {
+		console.log(filteredArray[j]);
+		}
+	}
+	
+}); 
+
 
 
 
