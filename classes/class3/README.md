@@ -321,7 +321,7 @@ admin (empty)
 local 0.078GB
 test  0.203125GB
 ```
-Mongo creates a database for us as soon as we start inserting items into it. It stores data in what's known as a `collection`. So in our case, users would be a collection. Items within a collection don't have to be consistant with each other (alice only has a name while bob has a name and a grade).
+Mongo creates a database for us as soon as we start inserting items into it. It stores data in what's known as a `collection`. So in our case, users would be a collection. Items within a collection don't have to be consistent with each other (alice only has a name while bob has a name and a grade).
 
 We can also delete items:
 ```sh
