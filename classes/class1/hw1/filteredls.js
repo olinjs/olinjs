@@ -4,7 +4,7 @@ module.exports = function (dirName, fileExt, callback) {
 	var fs = require('fs');
 	var path = require('path');
 
-	fs.readdir(dirName, function doneReading(err, fileArray) {
+	fs.readdir(dirName, function(err, fileArray) {
 		if (err) {
 			return callback(err);
 		};
@@ -14,7 +14,7 @@ module.exports = function (dirName, fileExt, callback) {
 				filteredArray.push(fileName);
 			};
 		};
-		callback(null, filteredArray);
+	callback(null, filteredArray);
 	});
 };
 
