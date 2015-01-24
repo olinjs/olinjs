@@ -1,0 +1,1 @@
+every-sum.js
