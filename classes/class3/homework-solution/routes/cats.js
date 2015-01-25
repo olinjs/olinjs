@@ -15,6 +15,7 @@ cats.new = function(req, res) {
   for (var i = Math.floor(Math.random()*3)+1; i > 0; i--) {
     catColors.push(colors[Math.floor(Math.random()*numColors)].toLowerCase());
   }
+  catColors = catColors.filter(function(val, ind, arr) { return arr.indexOf(val) === ind;})
   var name = names[Math.floor(Math.random()*numNames)];
   var age = Math.floor(Math.random()*numNames);
   var catObj = {
