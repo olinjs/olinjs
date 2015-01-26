@@ -8,3 +8,5 @@ function  callback1 (err, listy){
 		console.log (listy[i]);
 	}
 }
+
+//thing.ForEach is a thing that loops through everything in a list
