@@ -31,6 +31,8 @@ module.exports = function filterTheFiles (dirName, extension, callback) {
 	}
 };
 
+
+
 //they have a more elegant soln
 /*
     var fs = require('fs')
