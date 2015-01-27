@@ -1,0 +1,40 @@
+objects in js
+
+var obj = {}
+
+obj.color = "blue"
+
+obj["color"]
+-> 'blue'
+
+obj.anyname = function(){
+    return "hi"
+}
+
+obj.anyname
+-> [Function]
+
+obj.anyname()
+-> 'hi'
+
+______________________
+
+Functions w/ fewer arguments
+
+var test = function(a,b,c){
+    returnt
+}
+
+
+______________________
+
+Ternary assignment
+
+a = a ? a : 4;
+// var x = (condition) ? x if true : x if false
+
+____________________________
+
+Scope
+
+Any function inherits scope of 'larger' function
