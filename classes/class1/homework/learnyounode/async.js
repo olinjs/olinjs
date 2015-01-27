@@ -1,7 +1,7 @@
 var bl = require('bl');
 var http = require('http');
 var full = [];
-var done = 0
+var done = 0;
 
 function getter(ind) {
 	http.get(process.argv[ind], function(response){
