@@ -324,7 +324,7 @@ test  0.203125GB
 Mongo creates a database for us as soon as we start inserting items into it. It stores data in what's known as a `collection`. So in our case, users would be a collection. Items within a collection don't have to be consistent with each other (alice only has a name while bob has a name and a grade).
 
 We can also delete items:
-```sh
+```
 > db.users.remove({'name': 'alice'})
 > db.users.find()
 { "_id" : ObjectId("510078bee481634f390b1630"), "name" : "bob", "grade" : "A",
@@ -367,6 +367,18 @@ bob.save(function (err) {
   }
 });
 ```
+
+The schema can also be used for querying:
+```javascript
+User.find({name: 'bob'})
+  .sort({grade: -1})
+  .exec(function(err, users) {
+    console.log(users);
+  });
+```
+Find all users with the name 'bob', sort them in descending order based on their grade, and then print them to the console.
+Using the exec function allows you to chain multiple query elements (like `find` and `sort`) together before providing a callback.
+This allows Mongoose to form one large Mongo query and be more performant than running additional queries in the callbacks of other queries.
 Check out the [getting started](http://mongoosejs.com/docs/index.html) guide on Mongoose to learn how to connect to your MongoDB database and the basics of saving and loading records.
 
 In the homework you will explore more about how to leverage MongoDB and Mongoose to store data persistently.

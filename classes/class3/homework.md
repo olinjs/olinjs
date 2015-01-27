@@ -23,38 +23,61 @@ Also remember to read through the next [class](../class4) and come prepared with
 
 
 ## Additional Information
-This homework will require deploying to Heroku. We talked about it briefly in class but now its time to set it up. First you'll need an account which you can create at https://www.heroku.com/.
+This homework will require deploying to Heroku. We talked about it briefly in class but now its time to set it up.
+First you'll need an account which you can create at https://www.heroku.com/.
 
 * To setup your local computer, install the [Heroku Toolbelt](https://toolbelt.heroku.com/debian).
 * Work through the [Node.js guide](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction) to practice deploying a sample application.
-* In order to use MongoDB in Heroku we will use a third-party addon called MongoLab. Follow their [setup guide](https://devcenter.heroku.com/articles/mongolab#adding-mongolab) to create a data store. You only need to read until you get your URI which will look something like this:
-```sh
-heroku config | grep MONGOLAB_URI
-MONGOLAB_URI => mongodb://heroku_app1234:random_password@ds029017.mongolab.com:29017/heroku_app1234
+  * Note: Running `heroku create` will add a new remote (`heroku`) to the git repo you are within when you run the command.
+    In this case, you are inside the Olinjs repository which we will use for multiple Heroku deployments.
+    In order to run multiple deployments from within one git repository we are going to do something a bit strange:
+    create new git repositories within the Olinjs repo. Within the folder in which you created your homework application,
+    run `git init`. Then when you run `heroku create` your internal git repo will only have one remote server.
+    To update your heroku instance, run `git push heroku master`.
+    To push your code to Github, change directory out of your homework folder, then add the changed files, and commit.
+    Run the `heroku create` command as `heroku create --ssh-git` if you use ssh to connect to github.
+* In order to use MongoDB in Heroku we will use a third-party addon called MongoLab.
+  You will need to create an account at http://mongolab.com, create a new database (Single Node, free tier), and create a user for that database.
+
+When you have finished creating the database and user you will be presented with a URI that looks something like the following:
 ```
-In order to seamlessly transition between localhost and heroku, while also keeping your URI outside of your public git repo we will use environment variables.
-Save your local URI to an environment variable in your current terminal session with:
-```sh
-$ export MONGOURI=mongodb://localhost/test
+mongodb://<dbuser>:<dbpassword>@ds031631.mongolab.com:31631/olinjs
 ```
-If you add this line to your `~/.bashrc` file, the environment variable will be added to all of your terminal sessions on startup.
-You can print the current state of the environment variable with:
-```sh
-$ echo $MONGOURI
-mongodb://localhost/test
-```
-Inside your Node app, the value of that variable is accessible within the process object:
+Where `<dbuser>` and `<dbpassword>` are the user and password you created for your database user account,
+NOT your MongoLab username and password.
+
+In order to seamlessly transition between localhost and heroku, while also keeping the URI outside of our public git repo we will use environment variables.
+
+Inside your Node app, we'll set the URI variable to be the environment variable, if it exists, or the localhost link, if not.
 ```javascript
-var mongoURI = process.env.MONGOURI;
+var mongoURI = process.env.MONGOURI || "mongodb://localhost/test";
 mongoose.connect(mongoURI);
 ```
 Once you've retrieved your MongoLab URI, you can set your Heroku instance to connect to that database by setting the environment variable:
 ```sh
-$ heroku config:set MONGOURI=mongodb://heroku_app1234:random_password@ds029017.mongolab.com:29017/heroku_app1234
+$ heroku config:set MONGOURI=mongodb://<dbuser>:<dbpassword>@ds031631.mongolab.com:31631/olinjs
 Adding config vars and restarting heroku_app1234... done, v12
-MONGOURI: mongodb://heroku_app1234:random_password@ds029017.mongolab.com:29017/heroku_app1234
+MONGOURI: mongodb://<dbuser>:<dbpassword>@ds031631.mongolab.com:31631/olinjs
 ```
 You can run `heroku config` to list all set variables and their values.
+
+You will want to do a similar setup for the port number that the application runs on.
+Locally we use port 3000, as it tends to be a standard for Node development.
+However, Heroku may not use the same port number.
+They configure the port number through an environment variable, so we will do the same thing.
+Within `app.js`, add this line:
+```javascript
+var PORT = process.env.PORT || 3000;
+```
+This will capture the environment variable, if it exists, or use 3000 otherwise.
+We use the fully capitalized `PORT` as this is a configuration variable/a [magic number](http://en.wikipedia.org/wiki/Magic_number_%28programming%29).
+
+When you specify the port that the application should listen on, make sure you use the new PORT variable:
+```javascript
+app.listen(PORT, function() {
+  console.log("Application running on port:", PORT);
+});
+```
 
 With this set up your app will connect to localhost when you run it from your computer, and your MongoLab database from Heroku.
 ## Some Parting Words
