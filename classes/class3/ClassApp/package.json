@@ -1,0 +1,14 @@
+{
+  "name": "ClassApp",
+  "version": "1.0.0",
+  "description": "In class app. See also 'express-1' app in /tests directory.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ryan Eggert",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.11.1"
+  }
+}
