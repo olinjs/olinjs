@@ -47,19 +47,10 @@ Where `<dbuser>` and `<dbpassword>` are the user and password you created for yo
 NOT your MongoLab username and password.
 
 In order to seamlessly transition between localhost and heroku, while also keeping the URI outside of our public git repo we will use environment variables.
-Save your local URI to an environment variable in your current terminal session with:
-```sh
-$ export MONGOURI=mongodb://localhost/test
-```
-If you add this line to your `~/.bashrc` file, the environment variable will be added to all of your terminal sessions on startup.
-You can print the current state of the environment variable with:
-```sh
-$ echo $MONGOURI
-mongodb://localhost/test
-```
-Inside your Node app, the value of that variable is accessible within the process object:
+
+Inside your Node app, we'll set the URI variable to be the environment variable, if it exists, or the localhost link, if not.
 ```javascript
-var mongoURI = process.env.MONGOURI;
+var mongoURI = process.env.MONGOURI || "mongodb://localhost/test";
 mongoose.connect(mongoURI);
 ```
 Once you've retrieved your MongoLab URI, you can set your Heroku instance to connect to that database by setting the environment variable:
@@ -75,7 +66,7 @@ Locally we use port 3000, as it tends to be a standard for Node development.
 However, Heroku may not use the same port number.
 They configure the port number through an environment variable, so we will do the same thing.
 Within `app.js`, add this line:
-```javacript
+```javascript
 var PORT = process.env.PORT || 3000;
 ```
 This will capture the environment variable, if it exists, or use 3000 otherwise.
