@@ -62,7 +62,7 @@ getFiles(logFiles);*/
 
 //Exercise 6
 
-var filteredls = require('./filteredls.js');
+/*var filteredls = require('./filteredls.js');
 
 filteredls (process.argv[2], process.argv[3], function (err, filteredArray) {
 	if (err) {
@@ -74,7 +74,17 @@ filteredls (process.argv[2], process.argv[3], function (err, filteredArray) {
 		}
 	}
 	
-}); 
+}); */
+
+//Exercise 7
+
+var http = require('http');
+
+var blah = http.get(process.argv[2], function(response) {
+	console.log("status: " + response.statusCode);
+});
+
+
 
 
 
