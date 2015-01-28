@@ -205,7 +205,7 @@ app.post('/getCat', getCat.getCatPOST);
 If you now submit the first two forms again you can see how Express parses the data:
 ```shell
 { name: 'bob', mood: 'happy' }
-GET /getCat?name=bob&sex=male 200 0.876 ms - -
+GET /getCat?name=bob&mood=happy 200 0.876 ms - -
 { name: 'alice', mood: 'grumpy' }
 POST /getCat 200 0.538 ms - -
 ```
