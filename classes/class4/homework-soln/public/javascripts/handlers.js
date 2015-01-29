@@ -10,23 +10,23 @@ var HANDLERS = {
 			var addVal = $(checkbox).is(":checked") ? checkbox.value : -checkbox.value;
 			var newVal = Number(curVal) + Number(addVal);
 			$price.html(newVal.toFixed(2));
-	    },
-	    edit: function(event) {
-	    // Kitchen page - on ingredient edit button click
-	    // Bring up two prompts; fail out of sequence if cancel or input is ""
+		},
+		edit: function(event) {
+		// Kitchen page - on ingredient edit button click
+		// Bring up two prompts; fail out of sequence if cancel or input is ""
 			var $form = $(event.target).closest('form')
 			var id = $form.attr('id');
 			var name = prompt('Edit ingredient name');
 			if (name != null && name.length > 0) {
 				var price = prompt('Edit ingredient price');
 				if (price != null && price.length > 0) {
-				  $.post('/editIngredient', {
-				    id: id,
-				    name: name,
-				    price: price
-				  })
-				    .done(CALLBACKS.success.editIngredient)
-				    .error(CALLBACKS.error);
+					$.post('/editIngredient', {
+						id: id,
+						name: name,
+						price: price
+				})
+					.done(CALLBACKS.success.editIngredient)
+					.error(CALLBACKS.error);
 				}
 			}
 		}
@@ -43,8 +43,8 @@ var HANDLERS = {
 				$.post(route, {
 					id: event.target.id
 				})
-				  .done(success)
-				  .error(CALLBACKS.error);
+					.done(success)
+					.error(CALLBACKS.error);
 			}
 		},
 
