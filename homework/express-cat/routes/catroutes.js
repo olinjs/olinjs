@@ -44,7 +44,7 @@ var killcat = function(req, res) {
     Cat.findOneAndRemove({}, {sort: {age: -1}, select:'name age colors'}, function(err, oldcat) {
         if (err) return console.error(err);
         console.log(oldcat);
-        if (!oldcat) {res.send('all your cats are dead.')} else{res.send(oldcat)};
+        if (!oldcat) {res.send('all of your cats are already dead.')} else{res.send(oldcat)};
       })
 }
 
