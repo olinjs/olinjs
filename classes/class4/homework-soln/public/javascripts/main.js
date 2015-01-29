@@ -26,10 +26,10 @@ function registerSubmitHandlers () {
   $orderOpt = $('input.orderOpt').unbind();
 
   // register new handler for each jquery object w/ non-default action
-  $kitchen.submit(HANDLERS.submit.id('fulfilled', CALLBACKS.success.orderFulfilled));
-  $inStock.submit(HANDLERS.submit.id('markOutOfStock', CALLBACKS.success.toggleIngredient));
-  $outOfStock.submit(HANDLERS.submit.id('markInStock', CALLBACKS.success.toggleIngredient));
-  $addIngr.submit(HANDLERS.submit.ingr('addIngredient', CALLBACKS.success.newIngredient));
+  $kitchen.submit(HANDLERS.makeSubmitHandler('fulfilled', CALLBACKS.success.orderFulfilled));
+  $inStock.submit(HANDLERS.makeSubmitHandler('markOutOfStock', CALLBACKS.success.toggleIngredient));
+  $outOfStock.submit(HANDLERS.makeSubmitHandler('markInStock', CALLBACKS.success.toggleIngredient));
+  $addIngr.submit(HANDLERS.makeSubmitHandler('addIngredient', CALLBACKS.success.newIngredient, true));
   $editIngr.click(HANDLERS.click.edit);
   $orderOpt.click(HANDLERS.click.orderOpt);
 }

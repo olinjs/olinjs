@@ -32,38 +32,27 @@ var HANDLERS = {
 		}
 	},
 
-	submit: {
-	// Define submit handlers (/functions to create them) here
-		id: function(route, success) {
-		// Creates a submit handler w/ specified POST route & success callback
-		// **Post data ONLY contains mongo _id
-		// Uses default error callback
-			return function(event) {
-				event.preventDefault();
-				$.post(route, {
-					id: event.target.id
-				})
-					.done(success)
-					.error(CALLBACKS.error);
-			}
-		},
+	makeSubmitHandler: function(route, success, ingrData) {
+	// Creates a submit handler w/ specified POST route & success callback
+	// Post data ONLY contains mongo _id if ingrData is false;
+	// 	includes new ingredient name and price if ingrData is true.
+	// Uses default error callback
+		return function(event) {
+			var $form = $(event.target);
 
-		ingr: function(route, success) {
-		// Same as ID handler, but...
-		// **Post data contains new ingredient name and new ingredient price
-		// Uses default error callback
-			return function(event) {
-				event.preventDefault();
-				var $form = $(event.target);
-				var name = $form.find('input#name').val();
-				var price = $form.find('input#price').val();
-				$.post(route, {
-					name: name,
-					price: price
-				})
-					.done(success)
-					.error(CALLBACKS.error);
+			var postData = {};
+			if (ingrData) {
+				var form = $(event.target);
+				postData.name = $form.find('input#name').val();
+				postData.price = $form.find('input#price').val();
+			} else {
+				postData.id = event.target.id;
 			}
+			
+			event.preventDefault();
+			$.post(route, postData)
+				.done(success)
+				.error(CALLBACKS.error);
 		}
 	}
 }
