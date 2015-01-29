@@ -17,7 +17,8 @@ db.once('open', function (callback) {
     console.log('Yay!')
     var Cat = models.catModel
 });
-mongoose.connect('mongodb://localhost/test');
+var mongoURI = process.env.MONGOURI || "mongodb://localhost/test";
+mongoose.connect(mongoURI);
 
 var app = express();
 
@@ -33,16 +34,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', index.home);
 
 app.get('/cats/new', catroutes.makecat);
-app.get('/cats/new', index.newcat); // display page with newly created cats
 
-app.get('/cats', catroutes.allcats);
-app.get('/cats', index.listcats); // display page which lists all cats
+app.get('/cats/', catroutes.allcats);
 
 app.get('/cats/:color', catroutes.getcolorcats);
-app.get('/cats/:color', index.listclrcats);
-
 
 app.get('/cats/delete/old', catroutes.killcat); //curiousity
-app.get('/cats/delete/old', index.rationalize);
 
-app.listen(3002);
+app.get('/catmageddon', catroutes.catmageddon);
+
+
+var PORT = process.env.PORT || 3000;
+
+app.listen(PORT, function() {
+  console.log("Application running on port:", PORT);
+});

@@ -26,7 +26,7 @@ var makecat = function(req, res) {
     });
 }
 
-var allcats = function(req, res, next) {
+var allcats = function(req, res) {
     Cat.find({}, 'name age colors', function (err, allcats) {
       if (err) return console.error(err);
       res.send(allcats)
@@ -41,14 +41,26 @@ var getcolorcats = function(req, res) {
 }
 
 var killcat = function(req, res) {
-    Cat.findOneAndRemove({}, {sort: {age: -1}}, function(err, oldcat) {
+    Cat.findOneAndRemove({}, {sort: {age: -1}, select:'name age colors'}, function(err, oldcat) {
         if (err) return console.error(err);
         console.log(oldcat);
-        res.send('Old cat ees ded.');
+        if (!oldcat) {res.send('all your cats are dead.')} else{res.send(oldcat)};
       })
+}
+
+var catmageddon = function(req, res) {
+    Cat.find({})
+      .sort({age: '-1'})
+      .remove()
+      .exec(function(err, cats) {
+        if (err) return console.error(err);
+        console.log(cats);
+        res.send('Each and every cat you own has spontaneously died. Tragic, isn\'t it')
+      });
 }
 
 module.exports.makecat = makecat;
 module.exports.allcats = allcats;
 module.exports.getcolorcats = getcolorcats;
 module.exports.killcat = killcat;
+module.exports.catmageddon = catmageddon;
