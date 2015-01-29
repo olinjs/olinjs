@@ -13,20 +13,24 @@ div#nav {
 	padding: 10px 0;
 	background-color: #ddd;
 }
-	div#nav a {
-		color: #666;
-		margin-right: 10px;
-	}
-		div#nav a:visited {
-			color: #666;
-		}
-		div#nav a:hover {
-			color: #444;
-		}
-	div#nav h1 {
-		display: inline-block;
-		margin: 0 20px 0 15px;
-	}
+
+div#nav a {
+	color: #666;
+	margin-right: 10px;
+}
+
+div#nav a:visited {
+	color: #666;
+}
+
+div#nav a:hover {
+	color: #444;
+}
+
+div#nav h1 {
+	display: inline-block;
+	margin: 0 20px 0 15px;
+}
 
 /* main div */
 div#main {
@@ -37,9 +41,10 @@ div#main {
 form#order p {
 	margin: 20px 0;
 }
-	form#order p.ingredient {
-		margin: 5px 0;
-	}
+
+form#order p.ingredient {
+	margin: 5px 0;
+}
 
 /* kitchen page, ingredient page */
 form.kitchen input,
@@ -48,13 +53,15 @@ form.outOfStock input,
 form#newIngredient input.submit {
 	float: right;
 }
-	form.kitchen input,
-	form.inStock input.edit,
-	form.outOfStock input.edit,
-	form#newIngredient input.submit {
-		margin-right: 50px;
-	}
-	form.inStock input.submit, 
-	form.outOfStock input.submit {
-		margin-right: 10px;
-	}
+
+form.kitchen input,
+form.inStock input.edit,
+form.outOfStock input.edit,
+form#newIngredient input.submit {
+	margin-right: 50px;
+}
+
+form.inStock input.submit, 
+form.outOfStock input.submit {
+	margin-right: 10px;
+}
