@@ -5,8 +5,11 @@ var CatMod = require(path.join(__dirname,'../modelsdb'));
 var catSchema = CatMod.CatSchema;
 var Cat = mongoose.model('Cat', catSchema);
 
-var makecat = function(req, res, next) {
-    var newcat = new Cat({name:cns.getCatName(), age:cns.getCatAge(), colors:cns.getCatColors()})
+var makecat = function(req, res) {
+    var ncName = cns.getCatName();
+    var ncAge = cns.getCatAge();
+    var ncColors = cns.getCatColors();
+    var newcat = new Cat({name:ncName, age:ncAge, colors:ncColors})
     newcat.save(function (err) {
       if (err) {
         console.log("Problem saving new cat", err);
@@ -17,7 +20,11 @@ var makecat = function(req, res, next) {
       console.log(kittens)
     })
     // res.send('saved new cat')
-    next()
+    res.render('catstat', {
+        name : ncName,
+        age : ncAge,
+        colors : ncColors
+    });
 }
 
 var allcats = function(req, res, next) {
