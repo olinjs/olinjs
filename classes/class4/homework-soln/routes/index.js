@@ -1,36 +1,32 @@
-/* CONNECT TO MONGOOSE */
 var mongoose = require('mongoose');
-mongoose.connect(process.env.MONGOURI || 'mongodb://localhost/test');
-
-
-/* DEFINE SCHEMAS */
-var ingredientSchema = mongoose.Schema({
-	name: String,
-	price: Number,
-	inStock: Boolean
-});
-var Ingredient = mongoose.model('Ingredient', ingredientSchema);
-
-var orderSchema = mongoose.Schema({
-	customer: String,
-	ingredients: Array,
-	ingredientStr: String
-});
-var Order = mongoose.model('Order', orderSchema);
-
+var Ingredient = require('./../models/ingredientModel.js');
+var Order = require('./../models/orderModel.js');
 
 /* DEFINE ROUTE CALLBACKS */
 var routes = {};
 
+routes.home = function(req, res) {
+	res.render('message', {'message':'Welcome!'});
+}
+
 routes.ingredients = function(req, res) {
-// query for in stock & out of stock ingredients separately and render
-	Ingredient.find({'inStock':true}, function(err, inData) {
-		Ingredient.find({'inStock':false}, function(err, outData) {
-			var hbsData = {'inStock':formatPrice(inData), 
-						   'outOfStock':formatPrice(outData)};
-			res.render('ingredients', hbsData);
+// query for all ingredients, separate by availability, and render
+	Ingredient.find({}, function(err, data) {
+		// separate in stock & out of stock
+		var inData = [];
+		var outData = [];
+		data.forEach(function(d) {
+			var list = d.inStock ? inData : outData;
+			list.push(d);
 		});
+
+		// package data and render
+		var hbsData = {'inStock':formatPrice(inData), 
+					   'outOfStock':formatPrice(outData)};
+		res.render('ingredients', hbsData);
 	});
+
+	
 }
 
 routes.order = function(req, res) {
@@ -49,7 +45,7 @@ routes.kitchen = function(req, res) {
 	});
 }
 
-routes.markOutOfStockPOST = function(req, res) {
+routes.markOutOfStock = function(req, res) {
 // mark an ingredient out of stock
 	var ingredientId = req.body.id;
 	Ingredient.update({'_id':ingredientId}, {'inStock':false}, function(err, num, data) {
@@ -57,7 +53,7 @@ routes.markOutOfStockPOST = function(req, res) {
 	});
 }
 
-routes.markInStockPOST = function(req, res) {
+routes.markInStock = function(req, res) {
 // mark an ingredient in stock
 	var ingredientId = req.body.id;
 	Ingredient.update({'_id':ingredientId}, {'inStock':true}, function(err, num, data) {
@@ -65,7 +61,7 @@ routes.markInStockPOST = function(req, res) {
 	});
 }
 
-routes.fulfilledPOST = function(req, res) {
+routes.fulfilled = function(req, res) {
 // remove an order
 	var orderId = req.body.id;
 	Order.findOneAndRemove({'_id': orderId}, function(err, data) {
@@ -73,7 +69,7 @@ routes.fulfilledPOST = function(req, res) {
 	});
 }
 
-routes.placeOrderPOST = function(req, res) {
+routes.placeOrder = function(req, res) {
 // add an order
 	// Process data - sort through customer name and ingredients
 	var data = req.body;
@@ -94,18 +90,18 @@ routes.placeOrderPOST = function(req, res) {
 
 	var o = new Order(hbsData);
 	o.save(function(err) {
-		res.render('thankyou');
+		res.render('message', {'message':'Thanks for your order!'});
 	});
 }
 
-routes.editIngredientPOST = function(req, res) {
+routes.editIngredient = function(req, res) {
 	var updated = req.body;
 	Ingredient.update({'_id':updated.id}, updated, function(err, num, data) {
 		res.end(JSON.stringify(updated));
 	});
 }
 
-routes.addIngredientPOST = function(req, res) {
+routes.addIngredient = function(req, res) {
 	// create ingredient
 	var data = req.body;
 	data.inStock = true;
