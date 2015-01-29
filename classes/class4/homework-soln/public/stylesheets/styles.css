@@ -74,3 +74,7 @@ form.inStock input.submit,
 form.outOfStock input.submit {
 	margin-right: 10px;
 }
+
+form#newIngredient input#price {
+	width: 75px;
+}
