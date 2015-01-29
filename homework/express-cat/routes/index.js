@@ -8,7 +8,7 @@ var home = function(req, res){
 };
 
 var newcat = function(req, res) {
-    res.render('catstat');
+    // res.render('catstat');
 }
 
 var listcats = function(req, res) {

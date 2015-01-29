@@ -15,11 +15,10 @@ var makecat = function(req, res) {
         console.log("Problem saving new cat", err);
       }
     });
-    Cat.find(function (err, kittens) {
+    Cat.find(function (err, allcats) {
       if (err) return console.error(err);
-      console.log(kittens)
+      console.log(allcats)
     })
-    // res.send('saved new cat')
     res.render('catstat', {
         name : ncName,
         age : ncAge,
@@ -28,24 +27,25 @@ var makecat = function(req, res) {
 }
 
 var allcats = function(req, res, next) {
-    // get cat name
-    // get cat color(s)
-    // get cat age
-    // store in database
+    Cat.find({}, 'name age colors', function (err, allcats) {
+      if (err) return console.error(err);
+      res.send(allcats)
+    })
 }
 
-var getcolorcats = function(req, res, next) {
-    // get cat name
-    // get cat color(s)
-    // get cat age
-    // store in database
+var getcolorcats = function(req, res) {
+    Cat.find({colors: req.params.color}, 'name age colors', function (err, colorcats) {
+      if (err) return console.error(err);
+      res.send(colorcats)
+    })
 }
 
-var killcat = function(req, res, next) {
-    // get cat name
-    // get cat color(s)
-    // get cat age
-    // store in database
+var killcat = function(req, res) {
+    Cat.findOneAndRemove({}, {sort: {age: -1}}, function(err, oldcat) {
+        if (err) return console.error(err);
+        console.log(oldcat);
+        res.send('Old cat ees ded.');
+      })
 }
 
 module.exports.makecat = makecat;
