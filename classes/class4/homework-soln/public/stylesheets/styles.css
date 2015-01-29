@@ -46,22 +46,27 @@ form#order p.ingredient {
 	margin: 5px 0;
 }
 
-/* kitchen page, ingredient page */
+/* kitchen page, ingredient page forms */
+form.inStock, 
+form.outOfStock {
+	margin: 20px 0;
+}
+
 form.kitchen input,
+form#newIngredient input.submit, 
 form.inStock input,
-form.outOfStock input,
-form#newIngredient input.submit {
+form.outOfStock input {
 	float: right;
 }
 
 form.kitchen input,
+form#newIngredient input.submit,
 form.inStock input.edit,
-form.outOfStock input.edit,
-form#newIngredient input.submit {
+form.outOfStock input.edit {
 	margin-right: 50px;
 }
 
-form.inStock input.submit, 
+form.inStock input.submit,
 form.outOfStock input.submit {
 	margin-right: 10px;
 }
