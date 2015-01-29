@@ -1,0 +1,38 @@
+<h2>Ingredients</h2>
+
+<h3>In Stock</h3>
+<div id="in">
+	{{#each inStock}}
+		<form class="inStock" id={{this._id}} action="markOutOfStock" method="POST">
+			<p>
+				<span>{{this.name}} - ${{this.price}}</span>
+				<input type="button" class="edit" value="Edit">
+				<input type="submit" class="submit" value="Out of Stock">
+			</p>
+		</form>
+	{{/each}}
+</div>
+
+<h3>Out Of Stock</h3>
+<div id="out">
+	{{#each outOfStock}}
+		<form class="outOfStock" id={{this._id}} action="markInStock" method="POST">
+			<p>
+				<span>{{this.name}} - ${{this.price}}</span>
+				<input type="button" class="edit" value="Edit">
+				<input type="submit" class="submit" value="Restock">
+			</p>
+		</form>
+	{{/each}}
+</div>
+
+<h3>New Ingredient</h3>
+<div id="new">
+	<form id="newIngredient" action="addIngredient" method="POST">
+		<p>
+			<input type="text" id="name"> - 
+			$<input type="text" id="price">
+			<input type="submit" class="submit" value="Add">
+		</p>
+	</form>
+</div>
