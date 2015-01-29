@@ -47,6 +47,10 @@ form#order p.ingredient {
 }
 
 /* kitchen page, ingredient page forms */
+div#main {
+	width: 500px;
+}
+
 form.inStock, 
 form.outOfStock {
 	margin: 20px 0;
