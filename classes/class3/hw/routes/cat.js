@@ -53,7 +53,7 @@ var sortedWithColor = function(req,res){
 	Cat.find({colorlist:req.params.color})
 	   .sort({age: 1})
   	   .exec(function(err, cats) {
-    	  res.render('catlistcolor',{'cats':cats});
+    	  res.render('catlistcolor',{'cats':cats, 'colorFilterMessage':req.params.color});
   	});
 }
 
