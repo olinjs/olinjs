@@ -76,7 +76,7 @@ The two routes we created are for the index page (`/`) and the olin page (`/olin
 
 So what does `app.get` do? It tells Express that every time that particular route (the first string argument) receives a `HTTP GET` request, we want to execute the anonymous function (the second argument). HTTP allows you to make different types of requests on a particular route, and these types are called **methods**. `GET` is just one of the methods you can perform, and is the most common (every time you request an image or a script for example). You can [view the other types of HTTP methods on wikipedia](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods). But for now, let's only consider these two:
 * `GET` returns a resource (such as an image or an html page). This is used for when your browser wants to read information from a server. Parameters and options are communicated in the request header as part of the path (`/olin`) and query string parameters (`?pageid=12&button=2&coolsetting=super`) which you may recognize from various websites.
-* `POST` is used when your browser wants to send information over to the server. For example, when you fill out an online form, that data is sent over to the server as `POST` data. This information is sent in the body of the request (not the header), and is therefor encrypted when communicating over an HTTPS connection.
+* `POST` is used when your browser wants to send information over to the server. For example, when you fill out an online form, that data is sent over to the server as `POST` data. This information is sent in the body of the request (not the header), and is therefore encrypted when communicating over an HTTPS connection.
 
 ### Organizing an Express Application
 Express offers a tool called the `express-generator` to get a new directory up a running. This is also an example of a node module that provides a command line tool. To run node modules in your console you must install them globally using the `-g` flag and sudo permissions. Whenever you install a node module using sudo, ensure to add `-H` to prevent your cache from saving write protected files.
@@ -121,7 +121,7 @@ module.exports.home = home;
 Then replace the contents of `app.js` with:
 ```javascript
 var express = require('express');
-var index = require('routes/index');
+var index = require('./routes/index');
 var app = express();
 
 app.get('/', index.home);
@@ -134,7 +134,7 @@ Note that this time we `require` the new route file as the variable `index` then
 
 There are some initial configurations we want our app to have, such as running on a specific port, using routes, and setting up the public directory as well as some useful tricks to add to our `app.js` file.
 
-First, were going to install 3 more modules that are used in pretty much every Express app: `npm install --save body-parser cookie-parser morgan`.
+First, we're going to install 3 more modules that are used in pretty much every Express app: `npm install --save body-parser cookie-parser morgan`.
 Next we'll use them in `app.js` by doing the following:
 Add these lines to the top of the file, next to the rest of the requires:
 ```javascript
@@ -321,10 +321,10 @@ admin (empty)
 local 0.078GB
 test  0.203125GB
 ```
-Mongo creates a database for us as soon as we start inserting items into it. It stores data in what's known as a `collection`. So in our case, users would be a collection. Items within a collection don't have to be consistant with each other (alice only has a name while bob has a name and a grade).
+Mongo creates a database for us as soon as we start inserting items into it. It stores data in what's known as a `collection`. So in our case, users would be a collection. Items within a collection don't have to be consistent with each other (alice only has a name while bob has a name and a grade).
 
 We can also delete items:
-```sh
+```
 > db.users.remove({'name': 'alice'})
 > db.users.find()
 { "_id" : ObjectId("510078bee481634f390b1630"), "name" : "bob", "grade" : "A",
@@ -367,6 +367,18 @@ bob.save(function (err) {
   }
 });
 ```
+
+The schema can also be used for querying:
+```javascript
+User.find({name: 'bob'})
+  .sort({grade: -1})
+  .exec(function(err, users) {
+    console.log(users);
+  });
+```
+Find all users with the name 'bob', sort them in descending order based on their grade, and then print them to the console.
+Using the exec function allows you to chain multiple query elements (like `find` and `sort`) together before providing a callback.
+This allows Mongoose to form one large Mongo query and be more performant than running additional queries in the callbacks of other queries.
 Check out the [getting started](http://mongoosejs.com/docs/index.html) guide on Mongoose to learn how to connect to your MongoDB database and the basics of saving and loading records.
 
 In the homework you will explore more about how to leverage MongoDB and Mongoose to store data persistently.
