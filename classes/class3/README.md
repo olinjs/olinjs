@@ -134,7 +134,7 @@ Note that this time we `require` the new route file as the variable `index` then
 
 There are some initial configurations we want our app to have, such as running on a specific port, using routes, and setting up the public directory as well as some useful tricks to add to our `app.js` file.
 
-First, were going to install 3 more modules that are used in pretty much every Express app: `npm install --save body-parser cookie-parser morgan`.
+First, we're going to install 3 more modules that are used in pretty much every Express app: `npm install --save body-parser cookie-parser morgan`.
 Next we'll use them in `app.js` by doing the following:
 Add these lines to the top of the file, next to the rest of the requires:
 ```javascript
