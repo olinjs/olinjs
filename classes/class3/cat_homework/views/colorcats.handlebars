@@ -1,0 +1,8 @@
+<h2>All cats containing the color {{colorSearch}} from youngest to oldest.</h2>
+<ul>
+{{#each colorCats}}
+	{{#with this}}
+		<li>{{name}}, Age {{age}}, Colors: {{color}}</li>
+	{{/with}}
+{{/each}}
+</ul>
