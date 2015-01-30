@@ -6,6 +6,8 @@ var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
 var index = require('./routes/index');
 
+var PORT = process.env.PORT || 3000;
+
 var app = express();
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
@@ -23,4 +25,6 @@ app.get('/cats/new', index.newcat);
 app.get('/cats/bycolor/:color', index.bycolor);
 app.get('/cats/delete/old', index.old);
 
-app.listen(3000)
+app.listen(PORT, function() {
+  console.log("Application running on port:", PORT);
+});

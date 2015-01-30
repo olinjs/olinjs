@@ -1,3 +1,5 @@
+var mongoose = require('mongoose');
+
 var mongoURI = process.env.MONGOURI || "mongodb://localhost/test";
 mongoose.connect(mongoURI);
 
@@ -56,7 +58,9 @@ var old = function(req, res){
 		if (err) return console.error(err);
 		res.render("oldcat",allcats[0]);
 		console.log(allcats[0]['_id']);
-		Cat.find({_id: allcats[0]['_id']}).remove();
+		Cat.findOneAndRemove({_id: allcats[0]['_id']},null,function(err, data) {
+			if(err) return console.error(err);
+		});
 	});
 };
 
