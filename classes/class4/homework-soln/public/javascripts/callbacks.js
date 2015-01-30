@@ -37,14 +37,13 @@ var CALLBACKS = {
 	    },
 	    newIngredient: function(data, status) {
 	    // Ingredients page - add newly created ingredient
-	    	if (data === '{}') {
+	    	if (!data) {
 	    		alert("Can't save - duplicate of existing ingredient");
 	    	} else {
 		    	// get existing form & make a clone (avoid modifying it)
 		    	var $form = $('form.inStock').first().clone();
 
 		    	// update it w/ new ingredient's parameters; assume in stock
-		    	data = JSON.parse(data);
 		    	var label = data.name + ' - $' + Number(data.price).toFixed(2);
 		    	var newVals = ['Out Of Stock', 'markOutOfStock', 'div#in'];
 		    		// [new button text, new form action, target div]

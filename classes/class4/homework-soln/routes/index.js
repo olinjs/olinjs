@@ -103,23 +103,23 @@ routes.editIngredient = function(req, res) {
 
 routes.addIngredient = function(req, res) {
 	// create ingredient
-	var data = req.body;
-	data.inStock = true;
-	var i = new Ingredient(data);
+	var newIngr = req.body;
+	newIngr.inStock = true;
+	var i = new Ingredient(newIngr);
 
 	// check if ingredient exists already
-	Ingredient.count(req.body, function (err, count) {
+	Ingredient.count({'name':newIngr.name}, function (err, count) {
 		if (!count) {
 			// not a duplicate - save
 			i.save(function(err) {
 				// find in database - need _id for client-side purposes
-				Ingredient.findOne(req.body, function(err, data) {
-					res.end(JSON.stringify(data));
+				Ingredient.findOne(newIngr, function(err, data) {
+					res.json(data);
 				});
 			});
 		} else {
 			// don't save duplicate
-			res.end('{}');
+			res.end();
 		}
 	});
 }
