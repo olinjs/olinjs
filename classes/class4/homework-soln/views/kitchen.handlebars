@@ -1,0 +1,10 @@
+<h2>Kitchen</h2>
+
+{{#each orders}}
+	<form class='kitchen' id={{this._id}} action="updateKitchen" method="POST">
+		<p>
+			<span>{{this.customer}} - {{this.ingredientStr}}</span>
+			<input type="submit" value="Fulfilled">
+		</p>
+	</form>
+{{/each}}
