@@ -1,0 +1,17 @@
+<h3>You asked for cats</h3>
+<ul>
+  {{#each cats}}
+    <li>
+	    {{this.name}} is {{this.age}} years old.  
+	    The cats fur is the following colors: 
+	    {{#each this.colors}} 
+	    	{{#if @last}}
+	    		and {{this}}.
+	    	{{else}}
+		    	{{this}},
+		    {{/if}}
+	    {{/each}}
+    </li>
+  {{/each}}
+</ul>
+ 
