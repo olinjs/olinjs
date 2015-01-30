@@ -29,14 +29,15 @@ var makecat = function(req, res) {
 var allcats = function(req, res) {
     Cat.find({}, 'name age colors', function (err, allcats) {
       if (err) return console.error(err);
-      res.send(allcats)
+      res.render('cats', {'catslist': allcats, 'title': 'All of your cats'})
     })
 }
 
 var getcolorcats = function(req, res) {
     Cat.find({colors: req.params.color}, 'name age colors', function (err, colorcats) {
       if (err) return console.error(err);
-      res.send(colorcats)
+      console.log(req.params.color)
+      if (colorcats.length === 0) {res.render('cats', {'catslist':colorcats, 'title':'No '+req.params.color+ ' cats.'})} else{res.render('cats', {'catslist':colorcats, 'title':req.params.color+ ' cats.'})};
     })
 }
 
@@ -44,7 +45,7 @@ var killcat = function(req, res) {
     Cat.findOneAndRemove({}, {sort: {age: -1}, select:'name age colors'}, function(err, oldcat) {
         if (err) return console.error(err);
         console.log(oldcat);
-        if (!oldcat) {res.send('all of your cats are already dead.')} else{res.send(oldcat)};
+        if (!oldcat) {res.render('deadcat', {'catlist':{'name': 'Everybody', 'age': 'dead', 'colors': 'dead'}, 'title':'All of your cats have already died.'})} else{res.render('deadcat', {'catlist':oldcat, 'title':'This cat died.'})};
       })
 }
 
@@ -55,7 +56,7 @@ var catmageddon = function(req, res) {
       .exec(function(err, cats) {
         if (err) return console.error(err);
         console.log(cats);
-        res.send('Each and every cat you own has spontaneously died. Tragic, isn\'t it')
+        res.render('cats', {'catslist':{}, 'title':'All of your cats have spontaneously died. That\'s sad.'})
       });
 }
 
