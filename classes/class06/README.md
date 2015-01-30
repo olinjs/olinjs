@@ -121,4 +121,46 @@ With this property set, the `width` and `height` properties set the dimensions o
 
 Try playing with these properties in Codepen to see the effect of `box-sizing: border-box`.
 
-###
+### Cookies
+
+A cookie is a key-value store that lives on the client and can be read and modified by a website. In express, cookies are stored in `req.cookies`. I added `console.log(req.cookies)` to see what my cookies look like:
+
+```bash
+{ 'connect.sid': 's:oJzNzHd1WX-xlEBtpFoy7VoP4UzoqTQ8.VjMIMfdIZqI0oLGy1zh5JwWPbdost5USN9jFYeL9ITY' }
+```
+
+As you can see, a cookie is a key-value store that our cookier parser has converted to JSON. This is probably a unique ID that we can use to associate a cookie with other data stored on the client.
+
+### Sessions
+
+One of the most common ways to use cookies is to keep track of "sessions". A session stores data specific to a given client that can only be accessed by that client (based on the client's cookie identity). Here are the results of `console.dir(req.session)`.
+
+```bash
+{ cookie:
+   { path: '/',
+     _expires: null,
+     originalMaxAge: null,
+     httpOnly: true } }
+```
+
+The session object (managed by the `express-session` middleware) stores a reference to the client's cookie. `_expires` is a deprecated property that specifies the time at which the cookie should expire. Cookies usually have a maximum age set – if the max age is `null`, the cookie will last for the life of the browser session, which is perfect for our needs.
+
+The session object is stored locally on the server, so we can modify it directly:
+
+```node
+if (req.session.counter)
+	req.session.counter++;
+else
+	req.session.counter = 1;
+```
+
+This code checks for the `counter` property and adds it if it doesn't exist. Next time that user accesses the page, `req.session.counter` is incremented. Here's the result after refreshing the page a few times:
+
+```node
+{ cookie:
+   { path: '/',
+     _expires: null,
+     originalMaxAge: null,
+     httpOnly: true },
+  counter: 4 }
+```
