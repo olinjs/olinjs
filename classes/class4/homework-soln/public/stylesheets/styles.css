@@ -1,0 +1,77 @@
+/* defaults */
+body {
+	margin: 0;
+}
+
+p {
+	margin: 15px 0;
+}
+
+/* nav bar */
+div#nav {
+	color: #666;
+	padding: 10px 0;
+	background-color: #ddd;
+}
+
+div#nav a {
+	color: #666;
+	margin-right: 10px;
+}
+
+div#nav a:visited {
+	color: #666;
+}
+
+div#nav a:hover {
+	color: #444;
+}
+
+div#nav h1 {
+	display: inline-block;
+	margin: 0 20px 0 15px;
+}
+
+/* main div */
+div#main {
+	width: 500px;
+	margin-left: 15px;
+}
+
+/* order page */
+form#order p {
+	margin: 20px 0;
+}
+
+form#order p.ingredient {
+	margin: 5px 0;
+}
+
+/* kitchen page, ingredient page forms */
+form.inStock, 
+form.outOfStock {
+	margin: 20px 0;
+}
+
+form.kitchen input,
+form#newIngredient input.submit, 
+form.inStock input,
+form.outOfStock input {
+	float: right;
+}
+
+form.kitchen input,
+form#newIngredient input.submit,
+form.inStock input.edit,
+form.outOfStock input.edit {
+	margin-right: 50px;
+}
+
+form.inStock input.submit,
+form.outOfStock input.submit {
+	margin-right: 10px;
+}
+
+form#newIngredient input#price {
+	width: 75px;
+}
