@@ -1,3 +1,6 @@
+//USED FOR HELP because I could not figure it out:
+//https://github.com/rvagg/learnyounode/tree/master/exercises
+
 var http = require('http');
 var map = require('through2-map');
 

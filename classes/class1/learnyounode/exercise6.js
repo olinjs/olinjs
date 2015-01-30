@@ -1,3 +1,6 @@
+//USED FOR HELP because I could not figure it out:
+//https://github.com/rvagg/learnyounode/tree/master/exercises
+
 var filterFunction = require('./exercise6module.js');
 var dirName = process.argv[2];
 var extension = process.argv[3];

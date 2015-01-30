@@ -1,3 +1,6 @@
+//USED FOR HELP because I could not figure it out:
+//https://github.com/rvagg/learnyounode/tree/master/exercises
+
 var net = require('net');
 
 function zeroFill(i) {
