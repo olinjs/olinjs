@@ -10,7 +10,7 @@ db.once('open', function (callback) {
 
 var catSchema = mongoose.Schema({
 	name: String,
-	color: String,
+	colors: [String],
 	age: Number
 })
 
