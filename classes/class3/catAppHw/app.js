@@ -9,7 +9,8 @@ var index = require('./routes/index');
 
 var app = express();
 
-mongoose.connect("mongodb://localhost/test");
+var mongoURI = process.env.MONGOURI || "mongodb://localhost/test";
+mongoose.connect(mongoURI);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function (callback) {
@@ -44,7 +45,8 @@ app.get('/olin', function(req,res){
 	res.send('hello olin');
 });
 
-app.listen(3000);
+var PORT = process.env.PORT || 3000;
+app.listen(PORT);
 
 //mkdir myhw, cd myhw, git init, git remote -v, git push heroku master
 //back out of hw app to class 3 to push to github
