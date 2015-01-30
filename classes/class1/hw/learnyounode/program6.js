@@ -10,7 +10,7 @@ module.exports = function (dir_path, file_extension, callback) {
 		}
 
 		var filteredList = list.filter(function (file){
-			return path.extname(file) == '.' + file_extension
+			return path.extname(file) === '.' + file_extension
 		});
 
 	callback(null, filteredList);
