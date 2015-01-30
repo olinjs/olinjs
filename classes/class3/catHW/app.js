@@ -7,13 +7,13 @@ var exphbs = require('express-handlebars');
 var mongoose = require('mongoose');
 
 var index = require('./routes/index');
-var Cat = require('./public/schema').Cat;
+var schema = require('./public/schema');
+var Cat = schema.Cat;
 
 var app = express();
 
 var PORT = process.env.PORT || 3000;
 var mongoURI = process.env.MONGOURI || "mongodb://localhost/test";
-mongoose.connect(mongoURI);
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -29,6 +29,8 @@ app.get('/cats', index.allcats);
 app.get('/cats/new', index.create);
 app.get('/cats/delete/old', index.old);
 app.get('/cats/bycolor/:color', index.bycolor);
+
+mongoose.connect(mongoURI);
 
 app.listen(PORT, function() {
   console.log("Application running on port:", PORT);

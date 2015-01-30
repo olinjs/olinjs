@@ -5,24 +5,18 @@ var names = ['Ben', 'Brosky', 'Evan S', 'TNatty', 'Joshe', 'Sarah'];
 var colors_list = ['blue', 'green', 'red', 'orange', 'purple', 'green'];
 
 var home = function(request, response) {
-  response.render("home", {"classes": [
-    "Olin.js",
-    "other class 1",
-    "other class 2",
-    "other class 3"],
-  });
+  response.render("home");
 }
 
 var allcats = function(request, response) {
   Cat.find({})
     .sort({age: -1})
     .exec(function(err, cats) {
-      console.log(cats);
-      console.log(cats.length);
+    var err = '';
       if (err) {
         response.send('The cats could not be displayed :(', err);
       } else {
-        response.render("allcats", {"cats": cats});
+        response.render("allcats", {cats: cats});
       }
     });
 }
@@ -62,7 +56,7 @@ var bycolor = function(request, response) {
       if (err) {
         response.send('The cats could not be displayed :(', err);
       } else {
-        response.render("bycolor", {"cats": cats});
+        response.render("bycolor", {cats: cats});
       }
     });
 }
