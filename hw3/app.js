@@ -1,26 +1,11 @@
 var express = require('express');
-var catinfo = require('./catinfo');
+var catinfo = require('./public/catinfo.js');
 var app = express();
+var Cat = require('./public/catData').Cat;
 var exphbs = require('express-handlebars');
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
-
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function (callback) {
-    //
-});
-
-var catSchema = mongoose.Schema({
-	name: String,
-	age: Number,
-	color : String
-})
-
-var Cat = mongoose.model('Cat', catSchema);
 
 app.listen(3000);
 
@@ -57,13 +42,8 @@ app.get('/cats/bycolor/:color', function (req, res) {
 app.get('/cats/delete/old', function (req, res){
 	Cat.findOne().sort('-age').exec(function (err, cat){
 		if (err) console.error(err);
+		res.render('home', {'cats':cat});
 		cat.remove();
-	});
-
-	Cat.find().sort({age: -1})
-	.exec(function (err, cats){
-		if (err) console.error(err);
-		res.render('home', {'cats':cats});
 	});
 });
 
