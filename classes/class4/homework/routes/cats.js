@@ -4,7 +4,7 @@ module.exports = function(){
     var Cat = require('../models/cat_model.js')
 
     router.get('/', function(req,res,next) {
-      Cat.find(function (err,cats){
+      Cat.find({}).sort({age: -1}).exec(function(err,cats){
         if (err) {
             console.log('Error displaying all cats!');
             res.status(404).send('Error displaying all cats!');
@@ -56,7 +56,7 @@ module.exports = function(){
 
     router.get('/bycolor/:color', function(req,res,ext) {
         search_color = req.params.color;
-        Cat.find({}, function(err,cats){
+        Cat.find({}).sort({age: -1}).exec(function(err,cats){
             if (err) {
                 console.log('Error finding colored cat!');
                 res.status(404).send('Error finding colored cat!');

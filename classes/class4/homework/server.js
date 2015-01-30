@@ -5,11 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function (callback) {
-});
+/*MongoLab Environment vars*/
+var mongoURI = process.env.MONGOURI || "mongodb://localhost/test";
+mongoose.connect(mongoURI);
+var PORT = process.env.PORT || 3000;
 
 var app = express();
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
@@ -23,4 +22,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 /*Routes with cats.js*/
 app.use('/cats', require('./routes/cats.js'));
 
-app.listen(3000);
+app.listen(PORT, function() {
+  console.log("Application running on port:", PORT);
+});
