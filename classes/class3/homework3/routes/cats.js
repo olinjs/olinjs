@@ -13,6 +13,7 @@ var names = ["Whiskers", "Skittles", "Spots", "Tinky", "Sophie", "Agatha", "Doro
 var colors = ["black", "white", "tabby", "orange", "golden"];
 
 var catList = function(req, res) {
+	//List all of the cats currently stored in the database
 	Cat.find({}, function(err, catList) {
 		if (err) {
 			console.error("Couldn't find cat list: ", err);
@@ -32,12 +33,9 @@ var addCat = function(req, res) {
 
 	//Choose a random color from the possible colors
 	var catColor = colors[0];
-	//[Math.floor(Math.random()*colors.length)];
 	
 	//Chooses a 2nd random color from the possible colors
 	var catColor2 = colors[1];
-	//[Math.floor(Math.random()*colors.length)];
-
 
 	//Create a new cat
 	var newCat = new Cat({name: catName, age: Math.floor(Math.random() * 30 + 1) , colors: [catColor, catColor2]});
@@ -52,6 +50,8 @@ var addCat = function(req, res) {
 };
 
 var removeCat = function(req, res) {
+
+	//Sort the cats in descending order by age
 	Cat.find().sort({age: -1}).exec(function(err, catList) {
 		if (err) {
 			console.error("Couldn't find and sort cats by age:", err);
@@ -65,7 +65,8 @@ var removeCat = function(req, res) {
 			res.render('deletecat', {oldestCat: oldestCat});
 			});
 		} else {
-			res.send("Uh oh! no more cats to delete!");
+			//If the database is empty
+			res.render('nocats');
 		}
 	});
 };
