@@ -7,12 +7,10 @@ var catSchema = mongoose.Schema({
 var Cat = mongoose.model('Cat', catSchema);
 
 //These are the possible names
-var names = ["Whiskers", "Skittles", "Spots", +
-"Tinky", "Sophie", "Agatha", "Dorothy", +
-"Taz", "Oreo", "Muffin"];
+var names = ["Whiskers", "Skittles", "Spots", "Tinky", "Sophie", "Agatha", "Dorothy", "Taz", "Oreo", "Muffin"];
 
 //These are the possible colors
-var colors = ["black", "white", "tabby", "orange", "brown", "golden"];
+var colors = ["black", "white", "tabby", "orange", "golden"];
 
 var catList = function(req, res) {
 	Cat.find({}, function(err, catList) {
@@ -27,11 +25,18 @@ var addCat = function(req, res) {
 	//Choose a random name from the possible names
 	var catName = names[Math.floor(Math.random()*names.length)];
 
+	//Shuffle the cat array
+	colors.sort(function() {
+  		return .5 - Math.random();
+	});
+
 	//Choose a random color from the possible colors
-	var catColor = colors[Math.floor(Math.random()*colors.length)];
+	var catColor = colors[0];
+	//[Math.floor(Math.random()*colors.length)];
 	
 	//Chooses a 2nd random color from the possible colors
-	var catColor2 = colors[Math.floor(Math.random()*colors.length)];
+	var catColor2 = colors[1];
+	//[Math.floor(Math.random()*colors.length)];
 
 
 	//Create a new cat
@@ -42,8 +47,6 @@ var addCat = function(req, res) {
 		if (err) {
 			console.error("Couldn't successfully save cat: ", err);
 		};
-		console.log(newCat.name + " has been added and he is " + newCat.age 
-		+ " years old and is " + [catColor, catColor2]);
 		res.render('newcat', {newCat: newCat});
 	});
 };
@@ -52,18 +55,19 @@ var removeCat = function(req, res) {
 	Cat.find().sort({age: -1}).exec(function(err, catList) {
 		if (err) {
 			console.error("Couldn't find and sort cats by age:", err);
-		};
-
+			};
+		if (catList.length > 0) {
 		//Now that we know the oldest cat's age, remove it
 		Cat.findOneAndRemove({age: catList[0].age}, function(err, oldestCat) {
 			if (err) {
 				console.error("Couldn't remove " + catList[0].name, err);
 			};
-			console.log("Removed cat " + oldestCat.name + ", who is " + oldestCat.age);
 			res.render('deletecat', {oldestCat: oldestCat});
-		});
+			});
+		} else {
+			res.send("Uh oh! no more cats to delete!");
+		}
 	});
-
 };
 
 var sortedCats = function(req, res, next) {
