@@ -2,10 +2,11 @@
 var home = function(req, res){
   // res.render('home');
   res.render("home", {"classes": [
-  "Olin.js",
-  "other class 1",
-  "other class 2",
-  "other class 3"]
+  "Links available below for Cats homework ",
+  "/cats",
+  "/cats/new",
+  "/cats/bycolor/:color",
+  "/cats/delete/old"]
 });
 };
 
