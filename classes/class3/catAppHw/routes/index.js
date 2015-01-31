@@ -48,21 +48,34 @@ var catsNew = function(req, res){
 module.exports.catsNew = catsNew
 
 
-var deleteOldCat = function(req, res){
-	Cat.find().sort({age: -1}).exec(function(err, cats){
-		if(err){
-			console.log("no cats", err);
-		}
-		var toDel = cats[0];
-		Cat.findOneAndRemove({'name': toDel.name}, function(err, data){
-			if(err){
-				console.log("couldn't remove", err);
-			}
-			res.render("cats", {catslist:[]});
-		});
+// var deleteOldCat = function(req, res){
+// 	Cat.find().sort({age: -1}).exec(function(err, cats){
+// 		if(err){
+// 			console.log("no cats", err);
+// 		}
+// 		var toDel = cats[0];
 
+// 		if 
+// 		Cat.findOneAndRemove({'name': toDel.name}, function(err, data){
+// 			if(err){
+// 				console.log("couldn't remove cats", err);
+// 			}
+// 			res.render("cats", {catslist:[]});
+// 		});
+
+// 	});
+// }
+
+var deleteOldCat = function(req, res){
+	Cat.findOneAndRemove({}, {sort: {age:-1}}, function(err, cat){
+		if(err){
+			console.log("oh no");
+		}
+		res.render("cats", {catslist:[]});
 	});
 }
+
+
 module.exports.deleteOldCat = deleteOldCat
 
 
