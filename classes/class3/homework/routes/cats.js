@@ -1,10 +1,11 @@
 var path = require('path');
-var Cat = require('../models/cat');
+var Cat = require(path.join(__dirname, '../models/cat'));
 
 var colors = ['yellow',
               'green',
               'red',
               'black',
+              'blue',
               'orange',
               'tabby',
               'NaN',
@@ -40,7 +41,7 @@ function all(req, res) {
 function create(req, res) {
   var color = colors[Math.floor(Math.random() * colors.length)];
   var name = names[Math.floor(Math.random() * names.length)];
-  var age = Math.floor(Math.random() * 15);
+  var age = Math.floor(Math.random() * name.length);
   var catObject = {
     name: name,
     age: age,
@@ -51,9 +52,7 @@ function create(req, res) {
     if (err) {
       console.log('Cat object couldn\'t be saved');
     } else {
-      res.render('cats', {
-        cats: [catObj]
-      });
+      res.render('cats', [catObj]);
     }
   });
 }
@@ -69,17 +68,23 @@ function list(req, res) {
     if (err) {
       console.log('Couldn\'t find cat');
     } else {
-      res.render('cats', {
-        cats: cats
-      });
+      res.render('cats', {cats: cats});
     }
   });
 }
 
-// function delete(req, res) {
-// 
-// }
+function remove(req, res) {
+  Cat.findOneAndRemove({}, {sort: {age: -1}}, function(err, cat) {
+    if (err) {
+      console.log('Unable to find/remove cat');
+    } else {
+      console.log('Cat removed');
+      res.render('cats', {cats: cats});
+    }
+  })
+}
 
 module.exports.all = all;
 module.exports.list = list;
 module.exports.create = create;
+module.exports.remove = remove;

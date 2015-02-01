@@ -12,7 +12,7 @@ var cats = require('./routes/cats')
 var app = express();
 
 var PORT = process.env.PORT || 3000;
-var mongoURI = process.env.MONGOURI;
+var mongoURI = process.env.MONGOURI || 'mongodb://localhost/test';
 
 //html render engine
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
@@ -28,7 +28,7 @@ app.get('/', index.home);
 app.get('/cats', cats.all);
 app.get('/cats/new', cats.create);
 app.get('/cats/bycolor/:color', cats.list);
-// app.get('/cats/delete/old', cats.delete);
+app.get('/cats/delete/old', cats.remove);
 
 mongoose.connect(mongoURI);
 
