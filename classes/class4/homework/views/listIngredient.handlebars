@@ -1,0 +1,21 @@
+<table>
+    <tr>
+        <td>Name</td>
+        <td>Cost</td>
+        <td>In-Stock</td>
+    </tr>
+    {{#each cats}}
+        <tr>
+          <td>{{this.name}}</li>
+          <td>{{this.cost}}</li>
+          <td>{{this.stock}}</li>
+        </tr>
+    {{/each}}
+</table>
+
+<form id="ajax-form" action="addIngredient" method="POST">
+  Name: <input type="text" name="name"/><br/>
+  <input type="text" name="name"/>
+  ;nbsp;nbsp$<input type="text" name="cost"/>
+  <input type="submit" value="Submit">
+</form>
