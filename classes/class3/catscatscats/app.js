@@ -28,4 +28,7 @@ app.post('/olin', function(req, res) {
 	res.send('hello olin');
 });
 
-app.listen(3000);
+var PORT = process.env.PORT || 3000;
+app.listen(PORT, function() {
+  console.log("Application running on port:", PORT);
+});

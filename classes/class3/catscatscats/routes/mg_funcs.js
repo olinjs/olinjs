@@ -1,9 +1,13 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+
+console.log(process.env.MONGORURI);
+var mongoURI = process.env.MONGOURI || "mongodb://catsuser:jscats@ds039411.mongolab.com:39411/olinjs";
+mongoose.connect(mongoURI);
+
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function (callback) {
-  console.log('Successfully opened mongo database.');
+  console.log('Successfully opened mongo database: ', mongoURI);
 });
 
 var catSchema = mongoose.Schema({
