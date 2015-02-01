@@ -1,0 +1,9 @@
+<h1>{{head}}</h1>
+<ul>
+  {{#each ac}}
+    <li>Name: {{name}}</li>
+	<li>Age: {{age}}</li>
+	<li>Colors: {{#each colors}}{{this}}, {{/each}}</li>
+	<br>
+  {{/each}}
+</ul>
