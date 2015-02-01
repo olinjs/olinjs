@@ -1,19 +1,14 @@
 {
-  "name": "expressintro",
+  "name": "class3",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "dependencies": {
-    "body-parser": "^1.10.1",
-    "cookie-parser": "^1.3.3",
-    "express": "^4.10.6",
-    "express-handlebars": "^1.1.0",
-    "morgan": "^1.5.1"
-  },
-  "devDependencies": {},
+  "description": "##Express Now that we've explored Node.js a little, we will abstract the details away with the [Express](http://expressjs.com/) development framework. Before, in the Node Beginner's Book, our code looked a lot like this: ```javascript var http = require(\"http\");",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.11.1"
+  }
 }

@@ -1,0 +1,12 @@
+<h1>List of cats by age with color {{color}} </h1>
+
+<ul>
+	{{#each bycolor}}
+	  <li>
+	  	 {{this.name}}
+	  	 {{this.age}}
+		 {{this.color}}
+      </li>
+	{{/each}}
+</ul>
+
