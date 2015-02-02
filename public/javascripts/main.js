@@ -25,7 +25,7 @@ $ingredientform.submit(function(event) {
     available: available
    };
   console.log(formData);
-  $.get("postIngredient", formData)
+  $.post("postIngredient", formData)
     .done(onSuccess)
     .error(onError);
 });
