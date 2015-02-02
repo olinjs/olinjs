@@ -1,5 +1,7 @@
 var $ingredientform = $(".form-group.ingredient-form");
 
+console.log("javascript");
+
 var onSuccess = function(data, status) {
 };
 
