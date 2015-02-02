@@ -15,6 +15,7 @@ var getIngredients = function(req, res){
 }
 
 var postIngredient = function(req, res){
+    console.log(req.params);
     Ingredient.findOne({name:req.params.oldName}, function (err, ingredient){
         ingredient.name = req.params.newName;
         ingredient.price = req.params.price;
