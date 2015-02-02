@@ -1,4 +1,4 @@
-var $ingredientform = $(".form-group.ingredient-form");
+var $ingredientform = $(".form-inline.ingredient-form");
 
 console.log("javascript");
 
