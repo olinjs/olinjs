@@ -12,7 +12,7 @@ var onError = function(data, status) {
 
 $ingredientform.submit(function(event) {
   console.log("form submitted");
-  event.preventDefault();
+ // event.preventDefault();
   formData = $ingredientform.serialize();
   var oldName = $ingredientform.attr('id');
   var newName = $ingredientform.find("[name='name']").val();
