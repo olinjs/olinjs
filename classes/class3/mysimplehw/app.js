@@ -8,6 +8,8 @@ var exphbs = require('express-handlebars');
 var index = require('./routes/index');
 var cats = require('./routes/cats');
 
+var PORT = process.env.PORT || 3000;
+
 var app = express();
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
@@ -25,4 +27,4 @@ app.get('/cats', cats.sortedByAge);
 app.get('/cats/bycolor/:color', cats.ofColorSortedByAge);
 app.get('/cats/delete/old', cats.deleteOldest);
 
-app.listen(3000);
+app.listen(PORT);
