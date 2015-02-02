@@ -145,6 +145,11 @@ Acording to the official website,
 
 What this really means is that it is JavaScript running on the server, accepting incoming requests and handling them. The thing that makes Node.js so awesome is that it is entirely **non-blocking**. To understand exactly what this means, realize that with other server frameworks, when a request comes in, the server has to process that request and send the response before it can accept the next incoming request. Node is structured in such a way that when a request comes in, it can immediately continue listening for other requests.
 
+##Questions
+* Are there other **non-blocking** alternatives to Node?
+* Tell me more why Javascripts Callback structure makes it a good choice for this asynchronous I/O.  Are there any other languages that are good for this?
+* Byzantine General's Problem Algorithm (think Ernie Andrade!) as related to TCP figuring out if all information has been sent.
+
 ##Homework for next class:
 The homework for next class will be to go through introductory tutorials on JavaScript and Node.
 
@@ -174,3 +179,6 @@ $ learnyounode
 ####[Homework completion survey](https://docs.google.com/forms/d/1VBVzpTce0jf731CFUQV46HAhVKffCtNuVFKL8Ba-yjs/viewform?usp=send_form)
 
 When you've completed your homework, fill out the homework completion survey above.
+
+### Other Tutorials
+Stuff like javascripting and learnyounode can be found at [Node School](https://nodeschool.io).
