@@ -10,7 +10,7 @@ var kitchen  = require("./routes/kitchen");
 
 var app = express();
 
-var PORT = 3000;
+var PORT = process.env.PORT || 3000
 
 app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
