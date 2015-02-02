@@ -23,7 +23,7 @@ $ingredientform.submit(function(event) {
     price: price,
     available: available
    }
-  $.post("postIngredient",formData)
+  $.get("postIngredient",formData)
     .done(onSuccess)
     .error(onError);
 });

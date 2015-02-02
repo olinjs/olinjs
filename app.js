@@ -26,7 +26,7 @@ app.get("/ingredients", kitchen.getIngredients);
 app.get("/order", kitchen.newOrder);
 app.get("/kitchen",kitchen.getOrders);
 
-app.post("/postIngredient",kitchen.postIngredient);
+app.get("/postIngredient",kitchen.postIngredient);
 
 app.listen(PORT, function() {
   console.log("App running on port:", PORT);
