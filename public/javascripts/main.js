@@ -17,7 +17,7 @@ $ingredientform.submit(function(event) {
   var oldName = $ingredientform.attr('id');
   var newName = $ingredientform.find("[name='name']").val();
   var price   = $ingredientform.find("[name='price']").val();
-  var available = $ingredientform.find("[name='available']:checked").val() ? true : false;
+  var available = $ingredientform.find("[name='available']").prop('checked');
   var formData = {
     oldName: oldName,
     newName: newName,
