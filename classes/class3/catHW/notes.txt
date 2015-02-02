@@ -1,0 +1,11 @@
+List of links and commands that I found helpful during this HW
+
+http://stackoverflow.com/questions/5915096/get-random-item-from-javascript-array
+
+ssh shit https://devcenter.heroku.com/articles/keys
+
+ssh-add -l
+
+https://devcenter.heroku.com/articles/keys
+
+http://stackoverflow.com/questions/5129598/how-to-link-a-folder-with-an-existing-heroku-app

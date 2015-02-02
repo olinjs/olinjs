@@ -1,5 +1,57 @@
 #Class2 - JavaScript
 
+## Homework Notes
+
+- Use `===` instead of `==` unless you intend to use coersion
+- Callbacks are weird, I should probably understand them better
+- Variables defined in high level function can also be accessed by their nested functions (often their callback functions)
+- If you don't use `var` to declare variables, nothing will break, but it will become an implicit global variable instead of a local variable, which is VERY BAD
+- There's a cool idea in javascript called `promises`, which is implemented by several modules, that checks when callbacks have been called
+
+## Airbnb Notes
+
+- With primitive types (str, num, bool, null, undefined) you access a value, but with complex types (obj, array, func) you access a reference to a value
+- Avoid using reserved words: `http://es5.github.io/#x7.6.1`
+- `.push()` is javaScript's equivalent of `.append()`
+- If you want to copy an array instead of getting a reference to it, use `.slice()`
+- Strings longer than 80 characters should use string concatenation (`+`) instead of continuous strings (`/`)
+- Use `.join()` to programmatically building up strings instead of string concatenation (`+`)
+- Never declare functions in non-function blocks (if, while, etc). Declare a variable for the function first
+- Never name a parameter `arguments`, which is a default
+- Use dot notation to access properties from objects instaed of subscript notation (`[]`)
+- Use subscript notation (`[]`) when accessing properties with a variable
+- Use one `var` declaration per variable, and declare unassigned variables last
+- Assign variables at the top of their scope
+- With variable declarations, there's a weird scope thing called hoisting that you can read about more at `http://www.adequatelygood.com/JavaScript-Scoping-and-Hoisting.html`
+- Use `===` and `!==` over `==` and `!=`
+- Conditional expressions are evaluated using coercion with the `ToBoolean` method and always follow these simple rules:
+    + **Objects** evaluate to **true**
+    + **Undefined** evaluates to **false**
+    + **Null** evaluates to **false**
+    + **Booleans** evaluate to **the value of the boolean**
+    + **Numbers** evaluate to **false** if **+0, -0, or NaN**, otherwise **true**
+    + **Strings** evaluate to **false** if an empty string `''`, otherwise **true**
+- Be terse with evaluations if possible
+- Use braces with all multi-line blocks
+- Use `/** ... */` for multiline comments. Include a description, specify types and values for parameters and return values
+- Use `//` for single line comments, leave blank line above comment
+- Use `FIXME` and `TODO` as notes to other developers
+- Use soft tabs set to 2 spaces
+- Place 1 space before the leading brace
+- Set off operators with spaces
+- End files with a single newline character
+- Use indentation when making long method chains
+- No leading or trailing commas
+- Perform type coercion at the beginning of a statement
+- Use `parseInt()` for numbers, and a radix for type casting
+- Bitshift operations always return a 32-bit integer
+- Use camelCase to name objects, functions, and instances
+- Use PascalCase to name constructors and classes
+- Use a leading underscore `_` when naming private properties
+- When saving a reference to `this` use `_this`
+- Name your functions
+- Stopped at accessors
+
 ## JavaScript is Everywhere
 
 ### Atwood's Law
@@ -104,7 +156,7 @@ else if () {
 
 }
 else {
-	//
+    //
 }
 ```
 
@@ -120,7 +172,7 @@ This is the basic for loop syntax:
 
 ```node
 for (initialization; condition; final-expression) {
-	statement
+    statement
 }
 ```
 
@@ -128,7 +180,7 @@ The `initialization` declares the variable that will be used to determine whethe
 
 ```node
 for (var i = start; i < end; i++) {
-	...
+    ...
 }
 ```
 
@@ -142,13 +194,13 @@ If the loop iterates through an array or object, you can also use this shorthand
 
 ```node
 for (var index in array) {
-	var element = array[index]
-	...
+    var element = array[index]
+    ...
 }
 
 for (var key in object) {
-	var value = object[key]
-	...
+    var value = object[key]
+    ...
 }
 ```
 
@@ -158,7 +210,7 @@ A while loop is useful if the amount of times the loop should run is not known b
 
 ```node
 while (condition) {
-	statement
+    statement
 }
 ```
 
@@ -168,7 +220,7 @@ The do...while loop is simply a while loop where the `statement` is guaranteed t
 
 ```node
 do {
-	statement
+    statement
 } while (condition);
 ```
 
@@ -236,7 +288,7 @@ At this point we should start putting our code in files. If you have a JavaScrip
 ###### functions.js
 ```node
 function func1() {
-	return 1;
+    return 1;
 }
 ```
 
@@ -280,7 +332,7 @@ A variable can also store a function declaration, so we could have done this ins
 
 ```node
 var func1 = function() {
-	return 1;
+    return 1;
 };
 ```
 
@@ -293,10 +345,10 @@ The print statements above hinted at this: in JavaScript, functions can be store
 ###### functions.js
 ```node
 function func1() {
-	var func2 = function() {
-		return 2
-	};
-	return func2;
+    var func2 = function() {
+        return 2
+    };
+    return func2;
 }
 ```
 
@@ -344,10 +396,10 @@ When a function object is declared, it has access to the variables in the scope 
 ###### closures.js
 ```node
 var multSum = function(x, y) {
-	var mult = function() {
-		return x*y
-	}
-	return mult() + x + y
+    var mult = function() {
+        return x*y
+    }
+    return mult() + x + y
 }
 
 console.log(multSum(5, 6)) // 5*6 + 5 + 6
@@ -380,8 +432,8 @@ The second argument is a success callback — it is a function that will be call
 
 ```node
 $.get('www.some.url', function(data) {
-	console.log(data);
-	console.log('Request was successful!');
+    console.log(data);
+    console.log('Request was successful!');
 });
 ```
 
@@ -389,8 +441,8 @@ $.get('www.some.url', function(data) {
 
 ```node
 var handleSuccess = function(data) {
-	console.log(data);
-	console.log('Request was successful!');
+    console.log(data);
+    console.log('Request was successful!');
 };
 
 $.get('www.some.url', handleSuccess);
@@ -400,7 +452,7 @@ It could even be a function declared somewhere else entirely, like this.
 
 ```node
 function globalSuccessHandler(data) {
-	...
+    ...
 }
 ...
 $.get('www.some.url', globalSuccessHandler);
