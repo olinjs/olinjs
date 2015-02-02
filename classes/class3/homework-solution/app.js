@@ -12,7 +12,7 @@ var cats = require("./routes/cats");
 var app = express();
 
 var PORT = process.env.PORT || 3000;
-var mongoURI = process.env.MONGOURI;
+var mongoURI = process.env.MONGOURI || "mongodb://localhost/test";
 
 app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
