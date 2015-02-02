@@ -19,6 +19,10 @@ var postIngredient = function(req, res){
         ingredient.name = req.params.newName;
         ingredient.price = req.params.price;
         ingredient.available = req.params.available;
+        
+        console.log(ingredient.name);
+        console.log(ingredient.price);
+        console.log(ingredient.available);
 
         ingredient.save(function (err){
             if(err){
