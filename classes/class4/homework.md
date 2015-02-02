@@ -45,7 +45,7 @@ This becomes an even bigger problem when you're a product like Twitter and your
 to update information about the book "Lady Gaga", which is stocked by 33 million "bookstores".
 This would be nearly impossible with embedded data, but is a cinch with references.
 
-The other method of putting objects within other objects is called **referecing**.
+The other method of putting objects within other objects is called **referencing**.
 
 **Referencing** is when you reference a Mongo document (usually by _id)
 inside of another document.
