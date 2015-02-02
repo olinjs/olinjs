@@ -1,8 +1,6 @@
-var $ingredientform = $(".ingredient-form");
+var $ingredientform = $(".form-group.ingredient-form");
 
 var onSuccess = function(data, status) {
-  var img = "<img src='"+data+"'/>";
-  $("#result").html(img);
 };
 
 var onError = function(data, status) {
@@ -11,6 +9,7 @@ var onError = function(data, status) {
 };
 
 $ingredientform.submit(function(event) {
+  console.log("form submitted");
   event.preventDefault();
   formData = $ingredientform.serialize();
   var oldName = $ingredientform.attr('id');
