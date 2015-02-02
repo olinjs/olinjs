@@ -62,3 +62,5 @@ var getOrders = function(req, res){
 module.exports.getIngredients = getIngredients;
 module.exports.newOrder = newOrder;
 module.exports.getOrders = getOrders;
+module.exports.postIngredient = postIngredient;
+

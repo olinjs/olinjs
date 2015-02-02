@@ -23,8 +23,10 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", kitchen.getIngredients);
 app.get("/ingredients", kitchen.getIngredients);
-app.post("/order", kitchen.newOrder);
-app.post("/kitchen",kitchen.getOrders);
+app.get("/order", kitchen.newOrder);
+app.get("/kitchen",kitchen.getOrders);
+
+app.post("/postIngredient",kitchen.postIngredient);
 
 app.listen(PORT, function() {
   console.log("App running on port:", PORT);
