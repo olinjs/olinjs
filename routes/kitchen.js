@@ -16,7 +16,7 @@ var getIngredients = function(req, res){
 
 var postIngredient = function(req, res){
     console.log(req.body);
-    Ingredient.findOne({id:req.body.id}, function (err, ingredient){
+    Ingredient.findOne({_id:req.body.id}, function (err, ingredient){
         ingredient.name = req.body.newName;
         ingredient.price = req.body.price;
         ingredient.available = req.body.available;
