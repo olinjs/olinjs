@@ -15,11 +15,11 @@ var getIngredients = function(req, res){
 }
 
 var postIngredient = function(req, res){
-    console.log(req.params);
-    Ingredient.findOne({name:req.params.oldName}, function (err, ingredient){
-        ingredient.name = req.params.newName;
-        ingredient.price = req.params.price;
-        ingredient.available = req.params.available;
+    console.log(req.body);
+    Ingredient.findOne({name:req.body.oldName}, function (err, ingredient){
+        ingredient.name = req.body.newName;
+        ingredient.price = req.body.price;
+        ingredient.available = req.body.available;
         
         console.log(ingredient.name);
         console.log(ingredient.price);
@@ -44,9 +44,12 @@ var newOrder = function(req, res){
 
 var postOrder = function(req, res){
     var ingredients = [];
-    Ingredient.findOne({name: req.params.ingredients[i]}, function (err, ingredient){
-        ingredients.push(ingredient);
-     });
+    for(var i=0; i<req.body.ingredients.length; i++){
+        Ingredient.findOne({name: req.body.ingredients[i]}, function (err, ingredient){
+            ingredients.push(ingredient);
+         });
+    }
+
     var order = new Burger ({ingredients: ingredients});
 
     order.save(function (err){
