@@ -34,14 +34,17 @@ var makeIngredient = function(params){
 			console.log("Problem adding Ingredient", err);
 		}
 	});
+	return ingredient
 }
 
-routes.editIngredients = function(req, res){
-
+routes.editIngredientsPOST = function(req, res){
+	console.log(req.body);
+	res.end();
 };
 
-routes.outOfStock = function(req, res){
-
+routes.outOfStockPOST = function(req, res){
+	console.log(req.body);
+	res.end();
 };
 
 module.exports = routes;

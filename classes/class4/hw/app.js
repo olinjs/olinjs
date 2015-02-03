@@ -24,8 +24,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', ingredients.addIngredients);
 app.post('/newIngredient', ingredients.addIngredientsPOST);
 app.get('/ingredients', ingredients.ingredientsRender);
-app.post('/edit', ingredients.editIngredients);
-app.post('/outOfStock', ingredients.outOfStock)
+app.post('/edit', ingredients.editIngredientsPOST);
+app.post('/outOfStock', ingredients.outOfStockPOST)
 app.get('/order');
 app.get('/kitchen');
 

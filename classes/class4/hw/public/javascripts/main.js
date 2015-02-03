@@ -3,17 +3,11 @@ var $form = $("#ajax-form");
 var onSuccess = function(data, status){
 	console.log('success');
 	console.log(data);
-	var out = "<li>"+data.name+"</li>" +
-			"<ul>" +
-			"<li>"+data.price+"</li>" +
-			"</ul>" +
-			"<form id= 'ajax-form1' action='outOfStock' method= 'POST'>" +
+	var out = "<form id= 'ajax-form1' action='outOfStock' method= 'POST'>" +
+			"<input type='text' name='name' value='"+data.name+"'/><br/>" +
+  			"<input type='text' name='price' value='"+data.price+"'/><br/>"+
+  			"<input type ='submit' value='Edit' formaction = 'edit'>"+
 			"<input type ='submit' value='Out of Stock'>" +
-			"</form>" +
-			"<form id='ajax-form2' action='edit' method= 'POST'>" +
-			"Name: <input type='text' name='name'/><br/>" +
-			"Price: <input type='text' name='price'/><br/>" +
-			"<input type ='submit' value='Edit'>" +
 			"</form>";
 	$("#result").html(out);
 };

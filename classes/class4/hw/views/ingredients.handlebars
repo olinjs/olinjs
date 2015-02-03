@@ -6,17 +6,11 @@
 </form>
 <ul>
 {{#each ingredients}}
-  <li>{{this.name}}</li>
-  <ul>
-  	<li>$ {{this.price}}</li>
-  </ul>
-  <form id="ajax-form" action="outOfStock" method= "POST">
+<form id="ajax-form" action="outOfStock" method= "POST">
+  	<input type="text" name="name" value="{{this.name}}"/><br/>
+  	<input type="text" name="price" value="{{this.price}}"/><br/>
+  	<input type ="submit" value="Edit" formaction = "edit">
 	<input type ="submit" value="Out of Stock">
-</form>
-<form id="ajax-form" action="edit" method= "POST">
-	Name: <input type="text" name="name"/><br/>
-	Price: <input type="text" name="price"/><br/>
-	<input type ="submit" value="Edit">
 </form>
 {{/each}}
 <div id="result"></div>
