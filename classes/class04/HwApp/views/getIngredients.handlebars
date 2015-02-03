@@ -29,6 +29,28 @@
                     </form> 
 				</li>
 			</ul>
-		{{/each}}
+         {{/each}}
+
+        <h1 style="text-indent: 10px"> <small> New Ingredient!  </small> </h1>
+        <ul>
+            <li class="list-group-item">
+                <form class="form-inline new-ingredient-form">
+                    <div class="form-group">
+                        <label> Name </label>
+                        <input type="text" class="form-control" name=name placeholder="Buns">
+                    </div>
+                    <div class="form-group">
+                        <label> Price </label>
+                        <input type="text" class="form-control" name=price placeholder=".50">
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" checked name=available> Available
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-default">Add</button>
+                </form> 
+            </li>
+        </ul>
 	</ul>
 </div>
