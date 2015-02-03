@@ -1,0 +1,3 @@
+[submodule "classes/class4/jessicas-burgers"]
+	path = classes/class4/jessicas-burgers
+	url = git@github.com:youralien/jessicas-burgers.git
