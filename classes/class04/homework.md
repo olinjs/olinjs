@@ -45,7 +45,7 @@ This becomes an even bigger problem when you're a product like Twitter and your
 to update information about the book "Lady Gaga", which is stocked by 33 million "bookstores".
 This would be nearly impossible with embedded data, but is a cinch with references.
 
-The other method of putting objects within other objects is called **referecing**.
+The other method of putting objects within other objects is called **referencing**.
 
 **Referencing** is when you reference a Mongo document (usually by _id)
 inside of another document.
@@ -94,8 +94,11 @@ Then it will allow Jessica's chefs to see all the pending orders, fill them, and
 Your application will need the following http endpoints:
 * `/ingredients` =>
   * Shows a list of current ingredients (Name and Price) with Out-of-Stock and edit button.
-  * Out-of-Stock button will tell the server to label the ingredient as disabled. (Optional: make it toggleable to "add" more of the ingredient.)
+  * An `Add` button should allow the user to specify the name and price of a new ingredient which should appear on the page without requiring a refresh.
+  * Out-of-Stock button will tell the server to label the ingredient as disabled.
   The ingredient should be removed from the current page without refreshing.
+ (Optional: make it toggleable to "add" more of the ingredient.
+In this case, do not remove the ingredient from the page, but make note through words or style that it is unavailable.)
   * Edit button allows the user to submit a new name or price for the ingredient
   which the server will update. The edits should change the ingredient list without refreshing.
 * `/order` =>
