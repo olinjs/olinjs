@@ -1,13 +1,15 @@
 var express = require('express');
-var catinfo = require('./public/catinfo.js');
 var app = express();
-var Cat = require('./public/catData').Cat;
+var catinfo = require('./model/catinfo.js');
+var Cat = require('./model/catData').Cat;
 var exphbs = require('express-handlebars');
+var PORT = process.env.PORT || 3000;
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
-
-app.listen(3000);
+app.listen(PORT, function (){
+	console.log('Running on port: ', PORT);
+});
 
 app.get('/cats/new', function (req, res){
 	var cat = new Cat({
@@ -28,21 +30,21 @@ app.get('/cats', function (req, res){
 	Cat.find().sort({age: -1})
 	.exec(function (err, cats){
 		if (err) console.error(err);
-		res.render('home', {'cats':cats});
+		res.render('catslist', {'cats':cats});
 	});
 });
 
 app.get('/cats/bycolor/:color', function (req, res) {
 	Cat.find({color: req.params.color}, function (err, cats){
 		if (err) console.error(err);
-		res.render('home', {'cats':cats});
+		res.render('catslist', {'cats':cats});
 	});
 });
 
 app.get('/cats/delete/old', function (req, res){
 	Cat.findOne().sort('-age').exec(function (err, cat){
 		if (err) console.error(err);
-		res.render('home', {'cats':cat});
+		res.render('deadcat', {'cats':cat});
 		cat.remove();
 	});
 });
