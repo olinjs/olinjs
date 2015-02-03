@@ -4,16 +4,16 @@
 
 In the real world (and in this class), it's not good practice to commit directly to the `master` branch. If a real project is under version control, committing a bug to `master` could break live code. The `master` branch is generally reserved for code that has been tested and shown to work in a branch.
 
-1. Create a new branch on your olinjs repository.
+1. Create a new branch on your `olinjs` repository.
 
-```bash
-$ git checkout -b branchname
-```
+  ```bash
+  $ git checkout -b branchname
+  ```
 
-1. Commit something on the branch.
-1. Pull request that branch on GitHub.
-1. We will comment on the pull request and give you a grade (out of 1).
-1. We will close the pull request.
+2. Commit something on the branch.
+3. Pull request that branch to `origin` (your fork of `olinjs`) on GitHub.
+4. We will comment on the pull request and give you a grade (out of 1).
+5. We will close the pull request.
 
 ## .gitignore
 
