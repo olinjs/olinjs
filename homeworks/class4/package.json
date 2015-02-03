@@ -1,0 +1,31 @@
+{
+  "name": "Burger Joint",
+  "version": "1.0.0",
+  "description": "A web-app simulating a (very) basic burger-joint online ordering and management application. An assignment for homework 4 of the olin.js class.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ManickYoj/Burger-Joint.git"
+  },
+  "keywords": [
+    "node",
+    "template"
+  ],
+  "author": "Nick Francisci",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ManickYoj/Burger-Joint/issues"
+  },
+  "homepage": "https://github.com/ManickYoj/Burger-Joint",
+  "dependencies": {
+    "body-parser": "^1.10.2",
+    "cookie-parser": "^1.3.3",
+    "express": "^4.11.1",
+    "express-handlebars": "^1.1.0",
+    "mongoose": "^3.8.22",
+    "morgan": "^1.5.1"
+  }
+}

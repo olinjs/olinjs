@@ -1,0 +1,58 @@
+#cat-text {
+	margin: 0 0 30px 40px;
+}
+
+.big {
+	font-size: 4em;
+	margin-bottom: 0;
+}
+
+.no-top-margin {
+	margin-top: 0;
+}
+
+.nav-placeholder {
+	height: 50px;
+}
+
+.cat-pic {
+	border-radius: 100px;
+	float: right;
+}
+
+.cat-pic-lg{
+	border-radius: 200px;
+}
+
+.vert-center {
+    margin-top: 50px;
+}
+
+.jumbotron {
+	margin: 0;
+}
+
+.h2 {
+	margin: 0;
+}
+
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.row {
+  height: 60px;
+}
+
+.row td {
+  vertical-align: middle!important;
+}
+
+.full {
+  background: url("/images/bg.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
