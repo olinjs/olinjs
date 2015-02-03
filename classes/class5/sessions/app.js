@@ -22,7 +22,11 @@ app.use(session({
 app.get('/', function(req, res) {
 	console.dir(req.cookies);
 	console.dir(req.session);
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> bb231803fc6d2855c4645533a3ccab2225afe9d2
 	if (req.session.counter)
 		req.session.counter++;
 	else
