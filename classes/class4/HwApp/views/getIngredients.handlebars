@@ -7,7 +7,7 @@
 			<h1 style="text-indent: 10px"> <small> {{this.name}} </small> </h1>
 			<ul>
                 <li class="list-group-item">
-                    <form class="form-inline ingredient-form" id={{this.name}}>
+                    <form class="form-inline ingredient-form" id={{this.id}}>
                         <div class="form-group">
                             <label> Name </label>
                             <input type="text" class="form-control" name=name value={{this.name}}>
@@ -19,9 +19,9 @@
                         <div class="checkbox">
                             <label>
                                 {{#if this.available}}
-                                    <input type="checkbox" name=available> Available
-                                {{else}}
                                     <input type="checkbox" checked name=available> Available
+                                {{else}}
+                                    <input type="checkbox" name=available> Available
                                 {{/if}}
                             </label>
                         </div>
