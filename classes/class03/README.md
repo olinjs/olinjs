@@ -1,3 +1,5 @@
+<<<<<<< HEAD:classes/class3/README.md
+=======
 #Class 3 - Express, Templating, and MongoDB
 
 ##Express
@@ -384,3 +386,4 @@ Check out the [getting started](http://mongoosejs.com/docs/index.html) guide on 
 In the homework you will explore more about how to leverage MongoDB and Mongoose to store data persistently.
 
 For next class finish this [homework](./homework.md).
+>>>>>>> e313a700e38c893d15b57456c7aaa8a0685e7ad3:classes/class03/README.md
