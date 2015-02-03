@@ -1,0 +1,31 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<h1>Forms and Stuff</h1>
+
+<h2>GET request</h2>
+<form action="getCat" method="GET">
+  Name: <input type="text" name="name"/><br/>
+  <input type="radio" name="mood" value="happy" checked/>Happy<br/>
+  <input type="radio" name="mood" value="grumpy"/>Grumpy<br/>
+  <input type="submit" value="Submit">
+</form>
+
+<h2>POST request</h2>
+<form action="getCat" method="POST">
+  Name: <input type="text" name="name"/><br/>
+  <input type="radio" name="mood" value="happy" checked/>Happy<br/>
+  <input type="radio" name="mood" value="grumpy"/>Grumpy<br/>
+  <input type="submit" value="Submit">
+</form>
+
+<h2>AJAX request</h2>
+<form id="ajax-form" action="getCat" method="POST">
+  Name: <input type="text" name="name"/><br/>
+  <input type="radio" name="mood" value="happy" checked/>Happy<br/>
+  <input type="radio" name="mood" value="grumpy"/>Grumpy<br/>
+  <input type="submit" value="Submit">
+</form>
+<div id="result">
+</div>
+<script type="text/javascript" src="javascripts/main.js">
+</script>

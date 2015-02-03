@@ -1,0 +1,39 @@
+<body>
+	<div class="container">
+		<div class="jumbotron">
+		    <div class="container">
+				{{!-- Jumbotron Display --}}
+				{{#each cat}}
+					<div class="row">
+						<div class="col-sm-4 col-sm-offset-2">
+							<img class="cat-pic" src="http://lorempixel.com/200/200/cats/">
+						</div>
+						<div class="col-sm-4">
+							<div class="vert-center">
+								<h2>{{name}} <br/>
+								<small>Colors: {{#each color}}{{this}}&nbsp&nbsp&nbsp {{/each}}</small> <br/>
+								<small>Age: {{age}}</small><br/><h2/>
+							</div>
+						</div>
+					</div>
+				{{/each}}
+			</div>
+		</div>
+
+		{{!-- Optional Success Message --}}
+		{{#if success}}
+		<div class="alert alert-success alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+			<strong>{{success}}</strong>
+		</div>
+		{{/if}}
+
+		{{!-- Optional Error Message --}}
+		{{#if error}}
+		<div class="alert alert-danger alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+			<strong>{{error}}</strong>
+		</div>
+		{{/if}}
+	</div>
+</body>
