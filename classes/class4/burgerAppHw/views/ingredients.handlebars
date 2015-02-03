@@ -1,0 +1,16 @@
+<style>
+
+</style>
+
+<h1>Ingredients</h1>
+<ul id="inStock">
+{{#each ingList}}
+	<form id=this._id>
+		<li>Name: {{this.name}}
+		Price: {{this.price}}
+		Stock:{{this.stock}}
+		</li>
+
+	</form>
+{{/each}}
+</ul>
