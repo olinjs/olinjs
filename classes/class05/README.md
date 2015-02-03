@@ -11,7 +11,7 @@ In the real world (and in this class), it's not good practice to commit directly
   ```
 
 2. Commit something on the branch.
-3. Pull request that branch to `origin` (your fork of `olinjs`) on GitHub.
+3. Pull request that branch to `master` on your fork of `olinjs/olinjs` on GitHub.
 4. We will comment on the pull request and give you a grade (out of 1).
 5. We will close the pull request.
 
