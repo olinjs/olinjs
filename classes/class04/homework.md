@@ -94,6 +94,7 @@ Then it will allow Jessica's chefs to see all the pending orders, fill them, and
 Your application will need the following http endpoints:
 * `/ingredients` =>
   * Shows a list of current ingredients (Name and Price) with Out-of-Stock and edit button.
+  * An `Add` button should allow the user to specify the name and price of a new ingredient which should appear on the page without requiring a refresh.
   * Out-of-Stock button will tell the server to label the ingredient as disabled. (Optional: make it toggleable to "add" more of the ingredient.)
   The ingredient should be removed from the current page without refreshing.
   * Edit button allows the user to submit a new name or price for the ingredient
