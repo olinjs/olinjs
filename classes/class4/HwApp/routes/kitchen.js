@@ -16,7 +16,7 @@ var getIngredients = function(req, res){
 
 var postIngredient = function(req, res){
     console.log(req.body);
-    Ingredient.findOne({name:req.body.oldName}, function (err, ingredient){
+    Ingredient.findOne({_id:req.body.id}, function (err, ingredient){
         ingredient.name = req.body.newName;
         ingredient.price = req.body.price;
         ingredient.available = req.body.available;
@@ -36,6 +36,7 @@ var postIngredient = function(req, res){
         });
     });
 }
+
 var newOrder = function(req, res){
 	Ingredient.find().sort({available: 1}).exec(function (err, ingredients){
     	res.render('newOrder', {"ingredients": ingredients});
