@@ -20,5 +20,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', index.home);
+app.get('/cats', index.home);
+app.get('/cats/new', cats.new);
+app.get('/cats/delete/old', cats.delete);
+app.get('/cats/bycolor/black', cats.sort);
+app.get('/cats/byage', cats.sort);
 
 app.listen(3000);
