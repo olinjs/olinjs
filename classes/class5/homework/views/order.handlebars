@@ -1,0 +1,15 @@
+<h1>Create your burger!</h1>
+<form id="ajax-form" action="orderBurger" method="POST">
+    {{#each ingredients_and_prices}}
+        <input type="checkbox" name="{{@key}}" value="yes" price="{{this}}">{{@key}} (+ {{this}}) <br>
+    {{/each}}
+    {{#each in_stock}}
+        <p hidden id="stock" ingredient="{{@key}}", in_stock="{{this}}"> </p>
+    {{/each}}
+        <h2>Price of addons:</h2><h2 id="total_price" >$0.00</h2>
+    <input type="submit" value="Submit">
+</form>
+<div id="success_message"> </div>
+<div id="success_image"> </div>
+
+<script type="text/javascript" src="javascripts/order.js"></script>
