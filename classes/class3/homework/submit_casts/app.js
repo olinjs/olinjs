@@ -27,6 +27,10 @@ app.get('/casts/new', index.newcast);
 app.get('/casts/bymember/*', index.bymember);
 app.get('/casts/delete/old', index.deleteold);
 
+app.get('/cats', index.casts);
+app.get('/cats/new', index.newcast);
+app.get('/cats/bycolor/*', index.bymember);
+app.get('/cats/delete/old', index.deleteold);
 
 app.listen(PORT);
 
