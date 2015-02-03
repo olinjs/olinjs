@@ -98,7 +98,7 @@ All HTML elements can be modeled as boxes. CSS allows us to modify that box to a
   background-color: blue;
   color: white;
   text-align: center;
-
+  
   /* metrics */
   margin: 8px;
   border: 2px dotted black;
