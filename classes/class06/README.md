@@ -121,7 +121,7 @@ With this property set, the `width` and `height` properties set the dimensions o
 
 Try playing with these properties in Codepen to see the effect of `box-sizing: border-box`.
 
-### Cookies
+## Cookies
 
 A cookie is a key-value store that lives on the client and can be read and modified by a website. In express, cookies are stored in `req.cookies`. I added `console.log(req.cookies)` to see what my cookies look like:
 
@@ -131,7 +131,7 @@ A cookie is a key-value store that lives on the client and can be read and modif
 
 As you can see, a cookie is a key-value store that our cookier parser has converted to JSON. This is probably a unique ID that we can use to associate a cookie with other data stored on the client.
 
-### Sessions
+## Sessions
 
 One of the most common ways to use cookies is to keep track of "sessions". A session stores data specific to a given client that can only be accessed by that client (based on the client's cookie identity). Here are the results of `console.dir(req.session)`.
 
@@ -164,3 +164,64 @@ This code checks for the `counter` property and adds it if it doesn't exist. Nex
      httpOnly: true },
   counter: 4 }
 ```
+
+Basically, sessions allow websites to keep track of user-specific data for as long as a user keeps their cookies (or until the cookies become invalid, either from expiring or server refresh).
+
+## Error Handling
+
+### Operational vs. Programmer
+
+**Operational errors** are problems that the user can experience while running your program that are not caused by errors with your program's code. Some examples are below:
+
+- The system runs out of memory
+- The user input was invalid
+- 
+
+**Programmer errors** are bugs in the program code that can be resolved by fixing the code.
+
+Even correct programs cannot avoid all operation errors, so they must handle them correctly. It's up to the programmer both to avoid programmer errors (by writing good code and debugging effectively — we'll cover this later), and to _handle_ operational errors as gracefully as possible.
+
+### Error vs. Exception
+
+### Asynchronous vs. Synchronous
+
+###s Asynchronous
+
+The convention for error handling in Node callbacks looks like this:
+
+```node
+function(err) {
+	if (err) {
+		console.error()
+	}
+}
+```
+
+### Response Status
+
+As we touched on in class 1, there are [many HTTP status codes](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes). Express makes it easy to set the status of a response. You can simply chain a call to `status` in your response, like this:
+
+```node
+res.status(404).render('error_404', { data })
+...
+res.status(500).json({ error: 'message' })
+```
+
+Whenever possible, you should set the appropriate response status in this way.
+
+
+Joyent has great documentation on error handling in Node [https://www.joyent.com/developers/node/design/errors](here).
+
+## Debugging
+
+Learning how to debug is one of the most important things you can get out of learning to program. It's a skill you'll use everywhere. You already do.
+
+### Know your entire system
+
+Effectively debugging a system means debugging it in context. Your Node webserver runs from your UNIX terminal running on a distribution of Linux, on a computer connected to the internet through a wireless router or ethernet connection.
+
+### Read error messages and stack traces
+
+Error messages are not bad. They exist to help you! Without them, you would have no indication of where to start when something went wrong — your app would just crash.
+
+### Know your tools
