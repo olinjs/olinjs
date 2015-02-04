@@ -1,0 +1,40 @@
+var colors = ['white',
+'silver',
+'gray',
+'black',
+'navy',
+'blue',
+'cerulean',
+'sky blue',
+'turquoise',
+'blue green',
+'azure',
+'teal',
+'cyan',
+'green',
+'lime',
+'chartreuse',
+'olive',
+'yellow',
+'gold',
+'amber',
+'orange',
+'brown',
+'red',
+'maroon',
+'rose',
+'pink',
+'magenta',
+'purple',
+'indigo',	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 
+'violet',
+'peach',
+'apricot',
+'ochre',
+'plum'];
+
+function color(){
+	return colors[Math.round(Math.random()* colors. length)-1];
+}
+
+module.exports.choose = color;

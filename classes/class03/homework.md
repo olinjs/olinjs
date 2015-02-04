@@ -1,3 +1,5 @@
+<<<<<<< HEAD:classes/class3/homework.md
+=======
 # Homework 3
 In this homework you will build your first Express application, create some dynamic Handlebars templates, and store and load information in a MongoDB database using Mongoose.
 ## Assignment
@@ -87,3 +89,4 @@ We encourage you to look at documentation and search for code/answers to problem
 
 Are you running into errors that the first page of Google results doesn't solve? Email out to the mailing list. Chances are, we've already had this error before.
 As always, ask for help in Slack or come to office hours if you are running into trouble or need some guidance with this assignment.
+>>>>>>> e313a700e38c893d15b57456c7aaa8a0685e7ad3:classes/class03/homework.md
