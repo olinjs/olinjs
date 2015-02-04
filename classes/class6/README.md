@@ -1,7 +1,7 @@
 #Class 6: APIs and Debugging Strategies
 ##APIs: Your *real* on-ramp to the information superhighway
 
-![Take it to the moon, take it to the stars.](/images/tothemoon.jpg)
+![Take it to the moon, take it to the stars.](./images/tothemoon.jpg)
 
 *Get in loser, we're going to programmatically acquire JSON data.*
 
@@ -65,14 +65,14 @@ Authentication is handled by assigning two unique values to each application tha
 
 Authorization occurs after your application has been authenticated by the service, and requires that you redirect the user to their OAuth authorization page. There, the service can authenticate the user using their own auth flow, and ask their permission to give you access to their data. If the users says yes, they are redirected back to you, and you get a special access token that allows you to request data specific to that user.
 
-![Facebook authorization window](/images/facebook.png)
+![Facebook authorization window](./images/facebook.png)
 *Example authorization page for Facebook.*
 
 You'll find that some services like Facebook have different levels of permissions, each of which will give you an access token which only allows access to data within each permission tier.
 
 The full exchange of requests involved in OAuth can be seen in the graphic below. You can read more about OAuth on the [official website](http://oauth.net/), but I recommend this easy-to-follow, yet [comprehensive overview](http://www.cubrid.org/blog/dev-platform/dancing-with-oauth-understanding-how-authorization-works/).
 
-![OAuth auth flow.](/images/oauth.png)
+![OAuth auth flow.](./images/oauth.png)
 *Image via oauth.net*
 
 ###OAuth Exercise
