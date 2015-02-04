@@ -80,17 +80,75 @@ The full exchange of requests involved in OAuth can be seen in the graphic below
 ##Passport and "Sign in using __"
 
 ##Designing APIs with REST-ful Semantics
-
-
-###URLs
+Up until now, we've only had experience using URL routes that we created ourselves, all used for interacting with web pages. In this lesson, we've started exposing you to APIs other people have designed specifically for you to use. What about when *you* want to create an API for *other people* to use? We won't go into detail about picking what kind of data or functionality to expose, as that will vary based on your application, but what we will cover is _how_ to expose that data and functionality in a way that is easy for others to understand and use.
 
 ###GET and PUT
+When designing a REST API, it's best to think of GET and PUT routes as reciprocal methods. When you ask to PUT put a resource at a specific route, you should get that same resource back when you GET it. Of course, this really only applies to those routes in which we match some identifier for a resource (like `/cats/bycolor/:color` in homework 3). As an example, suppose we have a messaging website that has a unique id for every message created. We can see any specific message through our API by GET-ing `/messages/:id`. Similarly we could update a message by PUT-ing the updated information to `/messages/:id`.
 
 ###POST
+One thing a lot of people struggle with is knowing when to use POST vs. PUT. If you think of the example above, however, it should be pretty obvious to you. If PUT is used for putting a resource at a route, a POST request is used for any route where you might want do something that modifies the database or server in some way, but not in a way that is reciprocal with a GET request. For example, you could provide a single route for creating messages `/messages/new`, which will take care of making a message that could then be GET-ed and PUT-ed by its assigned id. You can't really think of any reasonable reciprocal for `/messages/new`, can you? It wouldn't make sense to return the last message created, so we would just have the one method available on routes like that.
 
 ###DELETE
+Probably the most self-explanatory method available to us. DELETE requests should only be used when we want to remove the resource at the URL we send the request to. Say we accidentally sent a _really_ embarrassing message to one of our professors. With a DELETE request we can make sure that `/messages/:embarrassing_message_id` returns a 404 by getting rid of the message altogether. Crisis averted!
+
+###Naming Routes
+To get started designing an API, you're going to need to come up with some routes that describe the content or functionality we are going to provide. One strategy we will try to stick to throughout the course is using **semantic routes**. This means that you should read the route, along with the method you'll use to request it, and from that alone have a good idea of what the result will be. What would you expect the following requests to do?
+
+```
+POST /blog/new
+```
+```
+POST /login
+```
+```
+GET /teacher/evan.simpson
+```
+```
+DELETE /cats/age/15
+```
+
+Let's look at what's going on here. We'll start by examining the first part of the path, which we call the **collection**. Yes, this encompasses the same concept of collection as in MongoDB, but it is just a (convenient) coincidence we call them both that. Some collection routes we've used in the past include `/cats`, and `/ingredients`, and they describe the type of resource we are trying to access or manipulate. The next part of our paths will generally specify the action or resource, like `/cats/new` or `/ingredients/:name`. We can add specificity by extending a route as in `/cats/bycolor/:color`. Now of course, since we've been showing you the right way to create routes since the beginning, it's likely none of this is news to you, so let's look at some examples of bad, non-semantic URLs so you can appreciate the good ones. As always, Wikipedia has some great examples:
+
+Non-semantic URL | Semantic URL
+---------------- | --------------
+`http://example.com/index.php?page=name` | `http://example.com/name`
+`http://example.com/index.php?page=consulting/marketing` | `http://example.com/consulting/marketing`
+`http://example.com/products?category=2&pid=25` | `http://example.com/products/2/25`
+`http://example.com/cgi-bin/feed.cgi?feed=news&frm=rss` | `http://example.com/news.rss`
+`http://example.com/services/index.jsp?category=legal&id=patents` | `http://example.com/services/legal/patents`
+`http://example.com/kb/index.php?cat=8&id=41` | `http://example.com/kb/8/41`
+`http://example.com/index.php?mod=profiles&id=193` | `http://example.com/profiles/193`
+*Source: http://en.wikipedia.org/wiki/Semantic_URL*
+
+Now if we combine everything we've learned about REST methods, semantic paths, and Wikipedia being a great resource for explaining things graphically, we get something like the following table.
+
+Resource | GET | PUT | POST | DELETE
+---------|-----|-----|------|-------
+**Collection URI**, such as http://example.com/resources/ | List the URIs and perhaps other details of the collection's members. | Replace the entire collection with another collection. | Create a new entry in the collection. The new entry's URI is assigned automatically and is usually returned by the operation. | Delete the entire collection.
+**Element URI**, such as http://example.com/resources/item17 | Retrieve a representation of the addressed member of the collection, expressed in an appropriate Internet media type. | Replace the addressed member of the collection, or if it doesn't exist, create it. | Not generally used. Treat the addressed member as a collection in its own right and create a new entry in it. | Delete the addressed member of the collection.
+
+*Source: http://en.wikipedia.org/wiki/Representational_state_transfer*
 
 ###Versioning with Accept headers
+One thing you almost always see API providers doing in a way that is not semantic is specifying the version of the API to be used for the request by prefixing it to the resource route. Can you guess why this isn't semantic? That's right - the route is supposed to describe the resource, and our API version does not (or should not) do that. Thankfully, we know better than that, so where else can we put it? In the HTTP headers! Specifically the `Accept` header. The API version value would look something like `application/vnd.myapp.v1`, added to whatever values need to be sent in the `Accept` header. Then in our application, we can check it easily with the `accepts` package (install via npm):
+```js
+var accepts = require('accepts');
 
+app.use('/api*', function(req, res, next) {
+  var accept = accepts(req);
+  if (accept.types('application/vnd.myapp.v1')) {
+    next();
+  } else {
+    return res.json(400, {
+      message: "Incorrect API version"
+    });
+  }
+});
+```
+
+###Can I set up my own OAuth server?
+So you want to use OAuth to authenticate and authorize your API users, huh? Unfortunately that's _just_ outside the scope of this class, but know that if you do get to that point someday, there are some great packages available (on npm) that can help you get a basic setup running fairly quickly.
+
+_If this readme hasn't been enough for you and you want more REST, feel free to check out [this cool guide](http://www.infoq.com/articles/rest-introduction) on your own time._
 
 ##Debugging
