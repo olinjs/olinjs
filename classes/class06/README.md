@@ -4,17 +4,13 @@
 
 Client-side web development is dominated by three technologies.
 
-### HTML
+- **HTML** specifies the _structure_ and _content_ of a webpage.
+- **CSS** specifies the _presentation_ or _appearance_ of elements on a webpage.
+- **JavaScript** lets the developer create _interactive_ elements. It's how the client communicates with the server and the user.
 
-HTML specifies the _structure_ and _content_ of a webpage.
+Before CSS, HTML was also used to control the appearance of webpages. This is why websites from the '90s look terrible.
 
-### CSS
-
-CSS specifies the _presentation_ or _appearance_ of elements on a webpage.
-
-### JavaScript
-
-JavaScript lets the developer create _interactive_ elements. It's how the client communicates with the server and the user.
+These three technologies embody the principle of _separation of concerns_ — they are each completely responsible for a single aspect of a complex web app.
 
 ## App file structure/hierarchy
 
@@ -179,7 +175,7 @@ Basically, sessions allow websites to keep track of user-specific data for as lo
 
 ## Error Handling
 
-By now you've probably seen a lot 
+By now you've probably seen a lot of errors in your console. Handling errors well is key to writing robust Node apps.
 
 ### Operational vs. Programmer
 
@@ -189,19 +185,29 @@ By now you've probably seen a lot
 
 Even correct programs cannot avoid all operation errors, so they must handle them correctly. It's up to the programmer both to avoid programmer errors (by writing good code and debugging effectively — we'll cover this later), and to _handle_ operational errors as gracefully as possible.
 
-### Error vs. Exception
+### Asynchronous Error Handling
 
-### Asynchronous vs. Synchronous
-
-The convention for error handling in Node callbacks looks like this:
+The standard method signature for a Node callback is this:
 
 ```node
-function(err) {
-	if (err) {
-		console.error()
-	}
+function(err, result) {
+	...
 }
 ```
+
+If there was no error, `err` is `null` and `result` is not. Otherwise, `err` is _not_ `null` and result is. This is about the simplest way to handle errors:
+
+```node
+function(err, result) {
+	if (err)
+		return console.error(err);
+	...
+}
+```
+
+We can do much more sophisticated things, from attempting to recover from the error to simply informing the user of the error (`console.error` prints to the server console, so the client is never informed).
+
+Most of our functions are asynchronous (callbacks), so this is a very common way to handle errors in Node. We may cover other ways to handle errors in future classes or deep dives.
 
 ### Response Status
 
@@ -215,8 +221,7 @@ res.status(500).json({ error: 'message' })
 
 Whenever possible, you should set the appropriate response status in this way.
 
-
-Joyent has great documentation on error handling in Node [here](https://www.joyent.com/developers/node/design/errors).
+#### Joyent has great documentation on error handling in Node [here](https://www.joyent.com/developers/node/design/errors).
 
 ## Debugging
 
