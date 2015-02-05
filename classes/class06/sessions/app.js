@@ -12,7 +12,6 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
 	secret: 'secret',
 	resave: false,
@@ -22,6 +21,8 @@ app.use(session({
 app.get('/', function(req, res) {
 	console.dir(req.cookies);
 	console.dir(req.session);
+
+	req.cookies.count.count = 2;
 	
 	if (req.session.counter)
 		req.session.counter++;
