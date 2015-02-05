@@ -1,10 +1,20 @@
 # Class5 - CSS, Development Style and Grace
 
-## Project File Organization
-
 ## Separation of Concerns
 
+Client-side web development is dominated by three technologies.
 
+### HTML
+
+HTML specifies the _structure_ and _content_ of a webpage.
+
+### CSS
+
+CSS specifies the _presentation_ or _appearance_ of elements on a webpage.
+
+### JavaScript
+
+JavaScript lets the developer create _interactive_ elements. It's how the client communicates with the server and the user.
 
 ## App file structure/hierarchy
 
@@ -169,13 +179,11 @@ Basically, sessions allow websites to keep track of user-specific data for as lo
 
 ## Error Handling
 
+By now you've probably seen a lot 
+
 ### Operational vs. Programmer
 
-**Operational errors** are problems that the user can experience while running your program that are not caused by errors with your program's code. Some examples are below:
-
-- The system runs out of memory
-- The user input was invalid
-- 
+**Operational errors** are problems that the user can experience while running your program that are not caused by errors with your program's code. The user's system could be out of memory, or the user could supply invalid input.
 
 **Programmer errors** are bugs in the program code that can be resolved by fixing the code.
 
@@ -184,8 +192,6 @@ Even correct programs cannot avoid all operation errors, so they must handle the
 ### Error vs. Exception
 
 ### Asynchronous vs. Synchronous
-
-###s Asynchronous
 
 The convention for error handling in Node callbacks looks like this:
 
@@ -210,18 +216,46 @@ res.status(500).json({ error: 'message' })
 Whenever possible, you should set the appropriate response status in this way.
 
 
-Joyent has great documentation on error handling in Node [https://www.joyent.com/developers/node/design/errors](here).
+Joyent has great documentation on error handling in Node [here](https://www.joyent.com/developers/node/design/errors).
 
 ## Debugging
 
-Learning how to debug is one of the most important things you can get out of learning to program. It's a skill you'll use everywhere. You already do.
+Learning how to debug is one of the most important things you can get out of learning to program. It's a skill you'll use everywhere, every day. You already do.
 
 ### Know your entire system
 
-Effectively debugging a system means debugging it in context. Your Node webserver runs from your UNIX terminal running on a distribution of Linux, on a computer connected to the internet through a wireless router or ethernet connection.
+Effectively debugging a system means debugging it in context. Your Node webserver runs from your UNIX terminal running on a distribution of Linux, on a computer connected to the internet through a wireless router or ethernet connection. To debug effectively, you have to acknowledge that any part of your system could break and cause problems.
 
 ### Read error messages and stack traces
 
 Error messages are not bad. They exist to help you! Without them, you would have no indication of where to start when something went wrong — your app would just crash.
 
+So you should always read them. Focus on the parts of the error message that you understand.
+
+_Google error messages!_
+
+### Remember that someone else has done this before
+
+Someone else has already found your error and asked about it on the internet — this is why Googling your error messages is so helpful. You'll often find an answered StackOverflow question. This is the best place to start — error messages are designed to be helpful, but they only contain so much information on their own.
+
 ### Know your tools
+
+#### The Console
+
+Calls to `console.log`, exceptions, and stack traces go to the console. Both the client and server have consoles — server-side JavaScript outputs to the server console, client-side JavaScript to the client console in the browser.
+
+In your development environment, the client console is your browser console, and the server console is the Terminal you run your Node app from. When you deploy to Heroku, you can access your server console output with `heroku logs`.
+
+It's easy to go very far down a debugging path only to realize that it was the wrong path. One of the most difficult things about debugging is deciding where to start.
+
+### Know that you have full control
+
+The computer doesn't know what you mean, just what you say. Programming is an exercise of boiling down your understanding of a problem to something a machine can understand. The computer does exactly what you tell it to do, 100% of the time.
+
+_All the time._
+
+This means that no matter what, something you did is always responsible for the behavior of your program. In one sense, every error is your fault. But more importantly, _you always have complete control_. If you can break your program, you can make it run.
+
+_Starting with something that works_ and _making incremental changes_ are the two best ways to maintain an understanding of how the code you write controls the behavior of your program.
+
+**Git** is a fantastic enabler in this endeavor!
