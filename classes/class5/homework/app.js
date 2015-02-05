@@ -26,6 +26,7 @@ app.get('/ingredients', index.ingredients);
 app.get('/order', index.order);
 app.post('/order_submit', index.order_submit);
 app.post('/edit_ingredients', index.edit_ingredients);
+app.post('/add_ingredient', index.add_ingredient);
 app.get('/kitchen', index.kitchen);
 app.get('/stock_kitchen', index.stock_kitchen);
 

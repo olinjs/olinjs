@@ -1,8 +1,7 @@
-//submit button behavior
-var $forms = $('form');
+//edit ingredients behavior
+var $forms = $('form[id!=add_ingredient]');
 
 var onSuccess = function(data, status){
-    console.log('In onSuccess!');
     console.log(data);
 }
 
@@ -24,4 +23,17 @@ $forms.each(function(){
             .done(onSuccess)
             .error(onError);
     });
+});
+
+//add ingredients behavior
+
+var $submit_form = $('#add_ingredient');
+
+$submit_form.submit(function(event){
+    var form_data = $submit_form.serialize()
+    event.preventDefault();
+    console.log(form_data);
+    $.post("add_ingredient", $submit_form.serialize())
+        .done(onSuccess)
+        .error(onError);
 });

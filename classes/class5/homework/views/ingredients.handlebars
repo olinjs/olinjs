@@ -4,23 +4,24 @@
 <p id={{this.name}} name="info_display"> {{this.name}} x {{this.stock}}, price: {{this.price}} </p>
 
 <form id="ajax-{{this.name}}" action="out_of_stock" method="POST">
-        <input type="submit" name="out_of_stock" ><br>
+        <input type="submit" name="remove_stock" value="Remove stock!" ><br>
 </form>
 
 <form id="ajax-{{this.name}}" action="edit_name" method="POST">
         <input type="text" value="" name="edit_name" ><br>
-        <input type="submit" name="edit_name" value="edit_name" ><br>
+        <input type="submit" name="edit_name" value="Edit name!" ><br>
 </form>
 
 <form id="ajax-{{this.name}}" action="edit_price" method="POST">
         <input type="text" value="" name="edit_price" ><br>
-        <input type="submit" name="edit_price" value="edit_price"><br>
+        <input type="submit" name="edit_price" value="Edit price!"><br>
 </form>
 
 {{/each}}
 
 <h1>Add a new ingredient!<h1>
-<form id="ajax-{{this.name}}" action="edit_name" method="POST">
-        <input type="text" value="" ><br>
-        <input type="submit" name="edit_name" value="edit_name" ><br>
+<form id="add_ingredient" action="edit_name" method="POST">
+        Name: <input type="text" value="" name="name"><br>
+        Price: <input type="text" value="" name="price"><br>
+        <input type="submit" name="edit_name" value="Add new ingredient!" ><br>
 </form>
