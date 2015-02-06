@@ -5,5 +5,6 @@ var ingredientSchema = mongoose.Schema({
 	price: Number,
 	available: String
 });
+var Ingredient = mongoose.model('Ingredient', ingredientSchema);
 
-module.exports = ingredientSchema;
+module.exports = Ingredient;

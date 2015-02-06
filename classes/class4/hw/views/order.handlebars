@@ -1,0 +1,14 @@
+<h1> Order Form </h1>
+<form id="orderForm" action="orderSubmit" method="POST"> 
+
+{{#each stuff}}
+
+	<input type="checkbox" name="name" value="{{this.name}}"/>{{this.name}} <div id="{{this.name}}">{{this.price}}</div><br/>
+{{else}}
+	<h3> No Ingredients Available</h3>
+{{/each}}
+<input type="submit" value="Submit">
+</form>
+<div id="cost">0</div>
+<div id="result"></div>
+<script type="text/javascript" src="javascripts/order.js"></script>

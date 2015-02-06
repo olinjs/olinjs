@@ -5,6 +5,7 @@ var logger = require('morgan');
 var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
 var ingredients = require('./routes/ingredients')
+var order = require('./routes/order')
 // var ingredient = require('./models/ingredientModel')
 
 var app = express();
@@ -26,7 +27,8 @@ app.post('/newIngredient', ingredients.addIngredientsPOST);
 app.get('/ingredients', ingredients.ingredientsRender);
 app.post('/edit', ingredients.editIngredientsPOST);
 app.post('/outOfStock', ingredients.outOfStockPOST)
-app.get('/order');
+app.get('/order', order.orderRender);
+app.post('/orderSubmit', order.orderSubmit);
 app.get('/kitchen');
 
 
