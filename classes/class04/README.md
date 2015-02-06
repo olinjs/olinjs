@@ -192,10 +192,20 @@ If you forget to send a response for a route, the browser will keep waiting unti
 You'll note that for the GET request, we look at the `req.query` object into which Express parses the URL query string.
 For the POST request we look at `req.body` where the `body-parser` middleware has parsed the POST parameters.
 
+Now that you've created functions which handle the get and post requests from your forms, you need to tell the app to use them. Open app.js and add the following line somewhere near the rest of your require statements:
+```javascript
+var getCat = require('./routes/getCat.js');
+```
+and these two lines with the rest of the express routing:
+```javascript
+app.get('/getCat', getCat.getCatGET);
+app.post('/getCat', getCat.getCatPOST);
+```
+
 If you now submit the first two forms again you can see how Express parses the data:
 ```shell
 { name: 'bob', mood: 'happy' }
-GET /getCat?name=bob&sex=male 200 0.876 ms - -
+GET /getCat?name=bob&mood=happy 200 0.876 ms - -
 { name: 'alice', mood: 'grumpy' }
 POST /getCat 200 0.538 ms - -
 ```
