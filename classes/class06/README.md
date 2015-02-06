@@ -470,3 +470,5 @@ If you can break your program, you can make it run.
 _Starting with something that works_ and _making incremental changes_ are the two best ways to maintain an understanding of how the code you write controls the behavior of your program.
 
 **Git** is a fantastic enabler in this endeavor!
+
+#### Finish the [homework](./homework.md) for next class.
