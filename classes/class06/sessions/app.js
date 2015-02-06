@@ -21,13 +21,16 @@ app.use(session({
 app.get('/', function(req, res) {
 	console.dir(req.cookies);
 	console.dir(req.session);
-	
-	if (req.session.counter)
+	var message;
+	if (req.session.counter) {
 		req.session.counter++;
-	else
+		message = "Hello again! Thanks for visiting " + req.session.counter + " times";
+	} else {
+		message = "Hello, thanks for visiting this site!";
 		req.session.counter = 1;
+	}
+	res.send(message);
 
-	res.send('hello');
 });
 
 app.listen(3000);
