@@ -21,8 +21,6 @@ app.use(session({
 app.get('/', function(req, res) {
 	console.dir(req.cookies);
 	console.dir(req.session);
-
-	req.cookies.count.count = 2;
 	
 	if (req.session.counter)
 		req.session.counter++;

@@ -16,10 +16,6 @@ This is why websites from the '90s look terrible.
 
 These three technologies embody the principle of _separation of concerns_ — they are each completely responsible for a single aspect of a complex web app.
 
-### Your Code
-
-How can you embody this principle in your code?
-
 ## App file structure/hierarchy
 
 Most of you have been using a folder structure like the one below.
@@ -36,6 +32,44 @@ Let's just briefly formalize it:
 - **/node_modules** - created by `npm`
 
 There's room for variation in the organization of your static content (you may see an **assets** folder containing **images** and other folders if you have many different types of assets) but the other folders are fairly standard, and good for a variety of reasons.
+
+## jQuery and `this`
+
+A brief word on jQuery and the JavaScript variable `this`:
+
+Every JavaScript function is implicitly passed an argument called `this`.
+The variable `this` is a way of passing a function call a context.
+
+One great application of this is accessing the element that fired a jQuery event.
+Here's a common case: I want to bind a `click` event to all elements with a class `my-class`, but I want to perform an action specific to the specific element that is clicked. If I bind the event like this:
+
+```node
+$('.my-class').click(clickHandler);
+```
+
+Then simply doing this in my click handler:
+
+```node
+function clickHandler() {
+	var $clicked = $('.my-class');
+	// do things with $clicked
+}
+```
+
+Won't do. The selection `$('.my-class')` will always return an array containing every single element in the entire document with the class `my-class`. However, jQuery solves this problem elegantly:
+
+### Every jQuery event handler is passed the element that fired the event as `this`.
+
+In the example above, `clickHandler` is our event handler. When an element with `my-class` is clicked, jQuery handles the event by calling `clickHandler` and passing the clicked element to the function as `this`. So we can do this:
+
+```node
+function clickHandler() {
+	var $clicked = $('this'); // wrap it in a jQuery selector
+	// do things with $clicked
+}
+```
+
+This is how we operate on the element that was clicked.
 
 ## CSS
 
@@ -71,7 +105,10 @@ The units below are the most common.
 |----|----|
 | `px` | Usually a single pixel on the client's screen (a line of width `1px` is guaranteed to be "sharp and visible")
 | `em` | Relative to the font-size of the element (`0.5em` is half of the current font-size)
+| `rem` | Relative to the font-size of the `<html>` or "root" element (`0.5em` is half of the root font-size)
 | `%` | Percent of the parent element along the relevant dimension (horizontally or vertically)
+| `vh` | (New in CSS3) 1/100th of the viewport height
+| `vw` | (New in CSS3) 1/100th of the viewport width
 
 CSS also supports the absolute units `cm`, `mm`, `in`, `pt`, and `pc`, but these are better suited for print than the screen.
 
@@ -110,11 +147,9 @@ A quick aside on colors, which can be specified in CSS in multiple ways.
 
 | Method | Description |
 |----|----
-| `#RRGGBB` | Red, green, and blue are each specified by a two-digit hex number, `00` to `FF`.
-White is `#FFFFFF` and black is `#000000`.
+| `#RRGGBB` | Red, green, and blue are each specified by a two-digit hex number, `00` to `FF`. White is `#FFFFFF` and black is `#000000`.
 | `#RGB` | Same as above but with half the precision.
-| `name` | Certain colors (like red, blue, yellow, etc.) can be specified simply by name.
-They're mostly hideous but black and white are fine.
+| `name` | Certain colors (like red, blue, yellow, etc.) can be specified simply by name. They're mostly hideous but black and white are fine.
 | `rgb(r,g,b)` | Red, green, and blue are specified on a 0-255 scale.
 | `rgba(r,g,b,a)` | Same as above, but alpha (opacity) is specified on a 0-1 scale.
 
@@ -221,6 +256,16 @@ Now add this line to your `require` list:
 var session = require('express-session');
 ```
 
+And this line at the end of your `app.use` list:
+
+```node
+app.use(session({
+	secret: 'secret',
+	resave: false,
+	saveUninitialized: true
+}));
+```
+
 Install `express-session` with `npm`, and add this line of code to the route below `console.dir(req.cookies)`:
 
 ```node
@@ -228,7 +273,7 @@ console.dir(req.session);
 ```
 
 The session object stores a reference to the client's cookie.
-The `express-session` middleware retrieves the session data from memory based on the cookie id. Visit your page and check the output to see your cookies and session:
+The `express-session` middleware retrieves the session data from memory (often stored in a database in a real web app) based on the cookie ID. Visit your page and check the output to see your cookies and session:
 
 ```bash
 { 'connect.sid': 's:oJzNzHd1WX-xlEBtpFoy7VoP4UzoqTQ8.VjMIMfdIZqI0oLGy1zh5JwWPbdost5USN9jFYeL9ITY' }
@@ -397,13 +442,14 @@ This is the best place to start — error messages are designed to be helpful, b
 
 ### Know your tools
 
-#### The Console
+#### The Server Console
 
-Calls to `console.log`, exceptions, and stack traces go to the console.
-Both the client and server have consoles — server-side JavaScript outputs to the server console, client-side JavaScript to the client console in the browser.
-
-In your development environment, the client console is your browser console, and the server console is the Terminal you run your Node app from.
+Calls by your Node server to `console.log`, error messages, exceptions, and stack traces go to the server console.
 When you deploy to Heroku, you can access your server console output with `heroku logs`.
+
+#### The Browser Console
+
+When you write and debug front-end JavaScript, all `console.log` calls, error messages, exceptions, and stack traces go to the console in your browser, accessible through the web inspector.
 
 It's easy to go very far down a debugging path only to realize that it was the wrong path.
 One of the most difficult things about debugging is deciding where to start.
