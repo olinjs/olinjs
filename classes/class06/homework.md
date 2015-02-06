@@ -21,11 +21,14 @@ A "twote" is a small piece of text written by a user. You can call it whatever y
 
 - The login page has:
 	- A form to log in
+		- There is zero authentication! Just enter a username to log in as that user — the user will be created if it doesn't exist. This is clearly not secure, but it'll let us play around with user/session management before we dive into the world of authentication and security starting next class.
 
 - A user can:
 	- Post a twote (the twote will appear at the top of the list without a page refresh)
 	- Delete their twotes (a user can only delete their own twotes)
 	- Logout (with the logout button)
+
+- All actions happen without a page refresh! (Except for redirecting to/from the Login page)
 
 You're also going to make your clone look something like this:
 

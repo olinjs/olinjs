@@ -290,10 +290,14 @@ Cookies usually have a maximum age set – if the max age is `null`, the cookie 
 The session object is stored locally on the server, so we can modify it directly. Add this code to your route before `res.send('hello')`:
 
 ```node
-if (req.session.counter)
+var message;
+if (req.session.counter) {
 	req.session.counter++;
-else
+	message = "Hello again! Thanks for visiting " + req.session.counter + " times";
+} else {
+	message = "Hello, thanks for visiting this site!";
 	req.session.counter = 1;
+}
 ```
 
 This code checks for the `counter` property and adds it if it doesn't exist.
