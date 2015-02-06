@@ -133,7 +133,7 @@ var add_ingredient = function(req,res){
       console.log("in add_ingredient!")
       Pantry.findOne({owner:'Jessica'}).exec(function(err,pantry){
           console.log("pantry length!")
-          if (err || pantry.length < 1){
+          if (err){
               console.log("Couldn't get pantry data!");
               res.status(404).send('Error getting pantry data!');
           } else{
@@ -234,7 +234,7 @@ var edit_ingredients = function(req, res){
             console.log(formatted_req_form_text);
             console.log('formatted form text above!');
             Pantry.findOne({owner:'Jessica'}).exec(function(err,pantry){
-                if (err || pantry.length < 1){
+                if (err){
                   error_msg = 'no pantry to edit!'
                   console.log(error_msg);
                   var info = {success:false, error_message:error_msg};
@@ -275,7 +275,7 @@ var edit_ingredients = function(req, res){
             console.log(req_ingredient); 
             console.log(formatted_req_form_text);
             Pantry.findOne({owner:'Jessica'}).exec(function(err,pantry){
-                if (err || pantry.length < 1){
+                if (err){
                   error_msg = 'no pantry to edit!'
                   console.log(error_msg);
                   var info = {success:false, error_message:error_msg};
@@ -320,7 +320,7 @@ var edit_ingredients = function(req, res){
         else if (req_type === 'edit_stock'){
             var formatted_req_form_text = req_form_text.slice(11);
             Pantry.findOne({owner:'Jessica'}).exec(function(err,pantry){
-                if (err || pantry.length < 1){
+                if (err){
                   error_msg = 'no pantry to edit!'
                   console.log(error_msg);
                   var info = {success:false, error_message:error_msg};
@@ -361,7 +361,7 @@ var edit_ingredients = function(req, res){
         }
         else if (req_type === 'delete'){
             Pantry.findOne({owner:'Jessica'}).exec(function(err,pantry){
-                if (err || pantry.length < 1){
+                if (err){
                   error_msg = 'no pantry to edit!'
                   console.log(error_msg);
                   var info = {success:false, error_message:error_msg};

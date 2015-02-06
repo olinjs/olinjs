@@ -2,7 +2,7 @@
 $('input').each(function(){
     var ingredient_name = $(this).attr('name');
     //there are hidden html paragraphs that tell us whether an ingredient is in stock or not
-    var in_stock =  ($('*[id*=stock]:hidden[ingredient='+ingredient_name+']').attr('in_stock') === 'true');
+    var in_stock =  ($('*[id*="stock"]:hidden[ingredient="'+ingredient_name+'"]').attr('in_stock') === 'true');
     var is_submit_button = ($(this).attr('type') === 'submit');
     if (!in_stock && !is_submit_button){
         $(this).attr('disabled',true);
