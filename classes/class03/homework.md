@@ -7,7 +7,7 @@ Create an Express application that has the following routes:
   * Optional: Display a verification that a new cat was created, perhaps by stating the details of the new cat.
 * GET `/cats` = > Shows a sorted list of cats by age. This should display their names, colors and age.
   * The display doesn't have to be pretty as long as its clear. Feel free to explore some HTML formatting, but we will cover it more next time.
-* GET `/cats/bycolor/:color` => Shows a sorted list of cats by age that have a specific color, where `:color` is a parameter, such as "orange", or "grey" that specifies the color.
+* GET `/cats/bycolor/:color` => Shows a sorted list of cats by age that have a specific color, where `:color` is a parameter, such as "orange", or "grey" that specifies the color. See [the Express API Docs](http://expressjs.com/4x/api.html#req.params) for a hint on how to parse the URL easily.
 * GET `/cats/delete/old` => Deletes the record of the oldest cat (send it to a nice farm in the country). The cat should not longer appear on any lists
   * Optional: Display a verification that a cat was deleted, perhaps by stating which cat was deleted.
 * Deploy this to Heroku (see [Additional Information](#additional-information))
