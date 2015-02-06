@@ -1,5 +1,6 @@
 var Pantry = require('../models/pantry_model.js').pantry;
 var Ingredient = require('../models/pantry_model.js').ingredient;
+var Order = require('../models/order_model.js');
 
 //Helper functions for validating input data
 function is_white_space(str){
@@ -19,21 +20,27 @@ function needs_form_text(req_type){
 };
 
 function isNumber(n) {
+  if (parseFloat(n) < 0){
+      return false;
+  }
   return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
 function is_valid_price(str){
-    if (str.length !== 4){
-        return false;
+    var f = parseFloat(str);
+    if(isNaN(f)){
+        return false
     }
-    if (!isNumber(str[0]) || !isNumber(str[2]) || !isNumber(str[3])){
-        return false;
-    }
-    if (str[1] != '.'){
+    if (str.slice(-3,-2) != '.'){
         return false;
     }
     return true;
 };
+
+function is_valid_stock(str){
+    var num = parseInt(str);
+    return (num % 1 === 0 && num >= 0);
+}
 
 function is_valid_add_data(req) {
     var new_ingredient_name = req.body.name;
@@ -47,21 +54,63 @@ var order = function(req, res){
           console.log("Couldn't get pantry data!");
           res.status(404).send('Error getting pantry data!');
       } else{
-          res.render('ingredients',pantry);
+          var obj_ingredients_and_prices = {};
+          var obj_in_stock = {};
+          var ingredients = pantry.ingredients;
+          for (var i = 0; i < ingredients.length; i++) {
+           console.log(ingredients[i]);
+           obj_ingredients_and_prices[ingredients[i].name] = ingredients[i].price;
+           console.log(ingredients[i].stock);
+           if (ingredients[i].stock === 0){
+               obj_in_stock[ingredients[i].name] = false;
+           }else{
+               obj_in_stock[ingredients[i].name] = true;
+           }
+          }
+          prices_and_stock = {ingredients_and_prices:obj_ingredients_and_prices, in_stock:obj_in_stock};
+          console.log(prices_and_stock)
+          res.render('order', prices_and_stock);
       }
   });
-  var prices_and_stock = {ingredients_and_prices: {potato:1.67, bread:3.18, catsup:.99}, in_stock: {potato:true, bread:false,catsup:false}};
-  res.render('order', prices_and_stock);
 };
 
 var order_submit = function(req, res){
-    console.log(req.body); 
-    res.send('success!');
+    var order_text = "Toppings requested: "+Object.keys(req.body).join(', ')
+    var order = {ingredients:order_text};
+    if (Object.keys(req.body).length < 1) {
+        order.ingredients = 'No additional toppings!';
+    }
+    var new_order = new Order(order);
+    new_order.save(function (err) {
+        if (err){
+            console.log('Error saving your order');
+            res.status(404).send('Error saving your order');
+        } else {
+            res.send('success!')
+        }
+    });
 };
 
-var kitchen = function(req, res){
-    res.render('kitchen');
+var order_remove = function(req,res){
+    Order.find({'_id':req.body.id_to_delete}).remove().exec(function (err,data){
+      if (err) {res.status(404).send('Failed to delete order!');}
+      else {
+        console.log(data)
+        res.send({id_deleted:req.body.id_to_delete});
+      }
+    });
+}
+
+
+var kitchen = function(req,res){
+    Order.find({}).exec(function (err,orders){
+      if (err) {res.status(404).send('Failed to search database!');}
+      else {
+        res.render('kitchen',{all_orders:orders});
+      }
+    });
 };
+
 
 var ingredients = function(req, res){
   Pantry.findOne({owner:'Jessica'}).exec(function(err,pantry){
@@ -88,20 +137,34 @@ var add_ingredient = function(req,res){
               console.log("Couldn't get pantry data!");
               res.status(404).send('Error getting pantry data!');
           } else{
-              var new_ing = new Ingredient({name:req.body.name,stock:60,price:req.body.price});
-              console.log(pantry);
-              pantry.ingredients.push(new_ing);
-              pantry.save(function (err){
-                  if (err){
-                      error_msg = 'could not save to pantry!'
-                      console.log(error_msg);
-                      var info = {success:false, error_message:error_msg};
-                      res.status(404).send(info);
-                  } else {
-                      var info = {success:true, form_to_update:req.body.form_submitted};
-                      res.send(info);
+              var already_exists = false;
+              var ingredient_list = pantry.ingredients;
+              for (var i = 0; i < ingredient_list.length; i++){
+                  if (ingredient_list[i].name === req.body.name){
+                      already_exists = true;
                   }
-              });
+              }
+              if (already_exists){
+                  error_msg = 'Invalid inputs!'
+                  console.log(error_msg);
+                  var info = {success:false, error_message:error_msg};
+                  res.send(info);
+              } else {
+                  var new_ing = new Ingredient({name:req.body.name,stock:60,price:req.body.price});
+                  console.log(pantry);
+                  pantry.ingredients.push(new_ing);
+                  pantry.save(function (err){
+                      if (err){
+                          error_msg = 'could not save to pantry!'
+                          console.log(error_msg);
+                          var info = {success:false, error_message:error_msg};
+                          res.status(404).send(info);
+                      } else {
+                          var info = {success:true, ingredient_name:req.body.name, stock:60, price:req.body.price};
+                          res.send(info);
+                      }
+                  });
+              }
           }
       });
     }
@@ -136,17 +199,22 @@ var edit_ingredients = function(req, res){
     };
 
     function isNumber(n) {
+      if (parseFloat(n) < 0){
+          return false;
+      }
       return !isNaN(parseFloat(n)) && isFinite(n);
     }
 
     function is_valid_price(str){
-        if (str.length !== 4){
+        var f = parseFloat(str);
+        if (f < 0){
             return false;
         }
-        if (!isNumber(str[0]) || !isNumber(str[2]) || !isNumber(str[3])){
+        if(isNaN(f)){
+            console.log("not a num");
             return false;
         }
-        if (str[1] != '.'){
+        if (str.slice(-3,-2) != '.'){
             return false;
         }
         return true;
@@ -174,11 +242,15 @@ var edit_ingredients = function(req, res){
                 } 
                 else{
                   var ingredient_list = pantry.ingredients;
+                  var stock;
+                  var price;
                   for (var i = 0; i < ingredient_list.length; i++){
                       if (ingredient_list[i].name === req_ingredient){
                           console.log('list matched req ingredient');
                           console.log(formatted_req_form_text);
                           ingredient_list[i].name = formatted_req_form_text;
+                          stock = ingredient_list[i].stock;
+                          price = ingredient_list[i].price;
                       }
                   }
                   console.log(pantry);
@@ -189,7 +261,7 @@ var edit_ingredients = function(req, res){
                           var info = {success:false, error_message:error_msg};
                           res.status(404).send(info);
                       } else {
-                      var info = {success:true, form_to_update:req.body.form_submitted};
+                      var info = {success:true, form_to_update:req.body.form_submitted, req:req.body.form_type, rstock:stock, rprice:price, ringredient:formatted_req_form_text};
                       res.send(info);
                       }
                   });
@@ -214,15 +286,19 @@ var edit_ingredients = function(req, res){
                       error_msg = 'Enter a valid price (ex 1.00)!'
                       console.log(error_msg);
                       var info = {success:false, error_message:error_msg};
-                      res.status(404).send(info);
+                      res.send(info);
                     } 
                     else {
                       var ingredient_list = pantry.ingredients;
+                      var stock;
+                      var price;
                       for (var i = 0; i < ingredient_list.length; i++){
                           if (ingredient_list[i].name === req_ingredient){
                               console.log('list matched req ingredient');
                               console.log(formatted_req_form_text);
                               ingredient_list[i].price = formatted_req_form_text;
+                              stock = ingredient_list[i].stock;
+                              price = ingredient_list[i].price;
                           }
                       }
                       console.log(pantry);
@@ -233,7 +309,7 @@ var edit_ingredients = function(req, res){
                           var info = {success:false, error_message:error_msg};
                           res.status(404).send(info);
                           } else {
-                          var info = {success:true, form_to_update:req.body.form_submitted};
+                          var info = {success:true, form_to_update:req.body.form_submitted, req:req.body.form_type, rstock:stock, rprice:price, ringredient:req_ingredient};
                           res.send(info);
                           }
                       });
@@ -241,8 +317,8 @@ var edit_ingredients = function(req, res){
                 }
             });
         }
-        else if (req_type === 'out_of_stock'){
-            console.log('in section 3');
+        else if (req_type === 'edit_stock'){
+            var formatted_req_form_text = req_form_text.slice(11);
             Pantry.findOne({owner:'Jessica'}).exec(function(err,pantry){
                 if (err || pantry.length < 1){
                   error_msg = 'no pantry to edit!'
@@ -251,12 +327,21 @@ var edit_ingredients = function(req, res){
                   res.status(404).send(info);
                 } 
                 else{
+                    if (!is_valid_stock(formatted_req_form_text)){
+                      error_msg = 'Enter a valid stock number (ex. 30)!'
+                      console.log(error_msg);
+                      var info = {success:false, error_message:error_msg};
+                      res.send(info);
+                    } 
+                    else {
                       var ingredient_list = pantry.ingredients;
+                      var stock;
+                      var price;
                       for (var i = 0; i < ingredient_list.length; i++){
                           if (ingredient_list[i].name === req_ingredient){
-                              console.log('deleted ingredient');
-                              console.log(formatted_req_form_text);
-                              ingredient_list.splice(i, 1);
+                              ingredient_list[i].stock = parseInt(formatted_req_form_text);
+                              stock = ingredient_list[i].stock;
+                              price = ingredient_list[i].price;
                           }
                       }
                       console.log(pantry);
@@ -267,21 +352,49 @@ var edit_ingredients = function(req, res){
                           var info = {success:false, error_message:error_msg};
                           res.status(404).send(info);
                       } else {
-                          var info = {success:true, form_to_update:req.body.form_submitted};
-                          console.log(res);
+                          var info = {success:true, form_to_update:req.body.form_submitted, req:req.body.form_type, rstock:stock, rprice:price, ringredient:req_ingredient};
                           res.send(info);
                       }});
+                    }
+                }
+            });
+        }
+        else if (req_type === 'delete'){
+            Pantry.findOne({owner:'Jessica'}).exec(function(err,pantry){
+                if (err || pantry.length < 1){
+                  error_msg = 'no pantry to edit!'
+                  console.log(error_msg);
+                  var info = {success:false, error_message:error_msg};
+                  res.status(404).send(info);
+                } 
+                else{
+                  var ingredient_list = pantry.ingredients;
+                  for (var i = 0; i < ingredient_list.length; i++){
+                      if (ingredient_list[i].name === req_ingredient){
+                          ingredient_list.splice(i,1);
+                      }
+                  }
+                  console.log(pantry);
+                  pantry.save(function (err){
+                      if (err) {
+                      error_msg = 'could not save to pantry!'
+                      console.log(error_msg);
+                      var info = {success:false, error_message:error_msg};
+                      res.status(404).send(info);
+                  } else {
+                      var info = {success:true, form_to_update:req.body.form_submitted, req:req.body.form_type, name:req_ingredient};
+                      res.send(info);
+                  }});
                 }
             });
         }
     }
 };
 
-//this method gives us a way to initially stock and reset our kitchen with some items to test things out
+//this method gives us a way to reset our kitchen with some items to test things out
 var stock_kitchen = function(req,res){
     Pantry.find({}).remove().exec(function (err,pantry){
         if (err){
-          console.log(pantry)
           console.log("Couldn't delete pantry data!");
           res.status(404).send('Error deleting pantry data!');
         } else {
@@ -308,6 +421,7 @@ var stock_kitchen = function(req,res){
 };
 
 module.exports.order = order;
+module.exports.order_remove = order_remove;
 module.exports.order_submit = order_submit;
 module.exports.kitchen = kitchen;
 module.exports.stock_kitchen = stock_kitchen;

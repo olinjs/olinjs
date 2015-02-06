@@ -15,6 +15,7 @@ $('input').click(function() {
     $('input').each(function(){
         if ($(this).is(':checked')) {
         total += parseFloat($(this).attr('price'));
+        total = Math.floor(total * 100) / 100;
         } 
     });
     $('#total_price').text('$'+total);
