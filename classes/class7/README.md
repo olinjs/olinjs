@@ -77,8 +77,6 @@ The full exchange of requests involved in OAuth can be seen in the graphic below
 
 ###OAuth Exercise
 
-##Passport and "Sign in using __"
-
 ##Designing APIs with REST-ful Semantics
 Up until now, we've only had experience using URL routes that we created ourselves, all used for interacting with web pages. In this lesson, we've started exposing you to APIs other people have designed specifically for you to use. What about when *you* want to create an API for *other people* to use? We won't go into detail about picking what kind of data or functionality to expose, as that will vary based on your application, but what we will cover is _how_ to expose that data and functionality in a way that is easy for others to understand and use.
 
