@@ -6,6 +6,7 @@ var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
 var ingredients = require('./routes/ingredients')
 var order = require('./routes/order')
+var kitchen = require('./routes/kitchen')
 // var ingredient = require('./models/ingredientModel')
 
 var app = express();
@@ -29,7 +30,8 @@ app.post('/edit', ingredients.editIngredientsPOST);
 app.post('/outOfStock', ingredients.outOfStockPOST)
 app.get('/order', order.orderRender);
 app.post('/orderSubmit', order.orderSubmit);
-app.get('/kitchen');
+app.get('/kitchen',kitchen.kitchenRender);
+app.post('/kitchenButton', kitchen.orderComplete)
 
 
 app.listen(PORT, function() {

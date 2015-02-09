@@ -1,0 +1,7 @@
+<h1>Pending Orders</h1>
+{{#each order}}
+<div id={{this._id}}>
+	{{this.ingredients}}<button type = "button" id="{{this._id}}""> Completed </button>
+</div>
+{{/each}}
+<script type="text/javascript" src="javascripts/kitchen.js"></script>

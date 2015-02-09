@@ -63,7 +63,7 @@ routes.outOfStockPOST = function(req, res){
 			res.end();
 		}
 		else{
-			doc.available = "Out of Stock";
+			doc.available = "";
 			doc.save();
 			res.send(doc);
 		}
