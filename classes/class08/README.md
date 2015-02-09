@@ -1,1 +1,9 @@
-#Class 7
+#Class 8 - Unit Testing and Task Running
+
+##Why Unit Test?
+
+Obviously unit testing helps catch bugs and make sure your code works, but it also provides other benefits in terms of overall code quality. Having a good test suite for a project increases maintainability as it becomes harder to inroduce new bugs in new versions without breaking tests. Additionally, high quality code tends to be very well encapsulated, and well encapsulated code tends to be easier to test. That said, when you sit down to test something and realize that the test is going to be complicated to write, consider first refactoring the code you are testing so you end up with several tests that are all easier to write, and better code in general as a result. 
+
+##Test Driven Development (TDD)
+
+A common development workflow is to write a bunch of code and then test that code. TDD turns that workflow on its head, calling instead for each piece of functionality to already have tests for it before implementing it. This approach has several benefits, most notably that tests get written for everything during the process of development, not as an afterthoguht. Additionally, writing tests before functionality effectively specifies interface for the code you have not written yet, so be the time you need to implement functionality, you already have a very clear specification for what that code should look like. This ties developers to functionality requirements better than just letting them write whatever, so you end up with less code that you do not need. TDD does have the disadvantage of requiring frequent refactoring, as implementing one feature at a time focusing on passing tests probably won't lead to very well organized code. That said, there are many more pros and cons of TDD outside the scope of this class. We will not require you to use TDD practices, but we recommend trying them out at some point. If you want to read more on TDD, [Wikipedia](http://en.wikipedia.org/wiki/Test-driven_development) is a good place to start.
