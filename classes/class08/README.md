@@ -24,6 +24,8 @@ There are several terms used in association with testing that are useful to unde
 
 >**Code Coverage**: Pretty straightforward, code coverage tells you how much of your code actually gets run when your test suite runs, so you know if you need to write more tests. Again, that's a little beyond the scope of the class for now, but [Istanbul with Karma](http://karma-runner.github.io/0.8/config/coverage.html) is our recommendation if you want to try it out.
 
+Javascript testing, for things like client-side interaction and client-server interactions brings with it some unique challenges. Consider, for example, testing one of your client-side ajax requests and the callback it executes. For that test, you don't really care what the server is doing as long as it responds correctly, and you will be testing the server code separately anyway, so ideally you would fake the ajax call and just go straight to having the correct response without ever talking to the server at all. Turns out, you can do that, using [Sinon.js](http://sinonjs.org/), which provides several useful mocks of things like Ajax and XHR requests, and even the passage of time. 
+
 As you can see, there are tons of options for what to use for your javascript testing environment. We'll be going onwards with our recommendations, but they are just that, and any time you start a new project, it's a good idea to survey your testing options to see what will best fit your project.
 
 ##Getting Started with Karma and Mocha
