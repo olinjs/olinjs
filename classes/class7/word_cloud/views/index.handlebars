@@ -1,172 +1,42 @@
+<script src="/javascripts/main.js"></script>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2">
+    </div>
+    <div class="col-lg-8">
+      <p class="text-center header"> 
+        Twitter Word Cloud Generator
+      </p>
+    </div>
+  </div>
+  <div class="row search-form">
+    <div class="col-lg-3">
+    </div>
+    <div class="col-lg-6">
+      <div class="input-group">
+        <input type="text" id="search-input" class="form-control well well-lg" placeholder="Search for...">
+        <span class="input-group-btn">
+          <button id="search" class="btn btn-default btn-lg submit" type="button">Go!</button>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8" id="cloud">
+    </div>
+  </div>
+</div>
+
 <script>
-
-  var pageCount = 0;
-  var words = [];
-  var stop_words = ["", "-", "_", ".", "a", "about", "above", "after", "again", "against", "all", "am", "an", "and", "any", "are", "aren't", "as", "at", "be", "because", "been", "before", "being", "below", "between", "both", "but", "by", "can't", "cannot", "could", "couldn't", "did", "didn't", "do", "does", "doesn't", "doing", "don't", "down", "during", "each", "few", "for", "from", "further", "had", "hadn't", "has", "hasn't", "have", "haven't", "having", "he", "he'd", "he'll", "he's", "her", "here", "here's", "hers", "herself", "him", "himself", "his", "how", "how's", "I", "I'm", "i", "i'd", "i'll", "i'm", "i've", "if", "in", "into", "is", "isn't", "it", "it's", "its", "itself", "let's", "me", "more", "most", "mustn't", "my", "myself", "no", "nor", "not", "of", "off", "on", "once", "only", "or", "other", "ought", "our", "ours", "ourselves", "out", "over", "own", "same", "shan't", "she", "she'd", "she'll", "she's", "should", "shouldn't", "so", "some", "such", "than", "that", "that's", "the", "their", "theirs", "them", "themselves", "then", "there", "there's", "these", "they", "they'd", "they'll", "they're", "they've", "this", "those", "through", "to", "too", "under", "until", "up", "very", "was", "wasn't", "we", "we'd", "we'll", "we're", "we've", "were", "weren't", "what", "what's", "when", "when's", "where", "where's", "which", "while", "who", "who's", "whom", "why", "why's", "with", "won't", "would", "wouldn't", "you", "you'd", "you'll", "you're", "you've", "your", "yours", "yourself", "yourselves"];
-  
-  Array.prototype.pushArray = function() {
-    var toPush = this.concat.apply([], arguments);
-    for (var i = 0, len = toPush.length; i < len; ++i) {
-      this.push(toPush[i]);
+  document.getElementById("search").addEventListener("click", function(){
+    var input = document.getElementById("search-input");
+    if(!!input.value){
+      var val = input.value.split(' ')[0];
+      $.getJSON('/tweets?q=' + val, function(data) {
+        generateWordCloud(JSON.parse(data));
+      });
     }
-  };
-
-  // This is called with the results from from FB.getLoginStatus().
-  function statusChangeCallback(response) {
-    // The response object is returned with a status field that lets the
-    // app know the current login status of the person.
-    // Full docs on the response object can be found in the documentation
-    // for FB.getLoginStatus().
-    if (response.status === 'connected') {
-      // Logged into your app and Facebook.
-      var loginButton = document.getElementById('fb-login');
-      loginButton.parentNode.removeChild(loginButton);
-      document.getElementById('load-status').innerHTML =
-        'Successfully logged in to Facebook.';
-      getStatuses();
-    }
-  }
-
-  // This function is called when someone finishes with the Login
-  // Button.  See the onlogin handler attached to it in the sample
-  // code below.
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  }
-
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '153845214778530',
-      cookie     : true,  // enable cookies to allow the server to access 
-      // the session
-      xfbml      : true,  // parse social plugins on this page
-      version    : 'v2.1' // use version 2.1
-    });
-    
-    // Now that we've initialized the JavaScript SDK, we call 
-    // FB.getLoginStatus().  This function gets the state of the
-    // person visiting this page and can return one of three states to
-    // the callback you provide.  They can be:
-    //
-    // 1. Logged into your app ('connected')
-    // 2. Logged into Facebook, but not your app ('not_authorized')
-    // 3. Not logged into Facebook and can't tell if they are logged into
-    //    your app or not.
-    //
-    // These three cases are handled in the callback function.
-    
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-    
-  };
-
-  // Load the SDK asynchronously
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-
-  function getStatuses() {
-    document.getElementById('load-status').innerHTML = 
-      'Loading Facebook post data...';
-    FB.api('/me/posts?limit=200', function(response) {
-      collectData(response);
-    });
-  };
-  
-  function collectData(dat){
-    if (pageCount < 10) {
-      document.getElementById('load-status').innerHTML = 
-        'Loading Facebook post data...' + Array(pageCount).join(".");
-    } else {
-      document.getElementById('load-status').innerHTML =
-        'Wow you post a lot of statuses...' + Array(Math.round(pageCount/2)).join(".");
-    }
-    
-    for ( i=0; i < dat.data.length; i++){
-      if (!!dat.data[i].message){
-        words.pushArray(dat.data[i].message.toLowerCase().split(" "));
-      }
-    }
-    if ( typeof(dat.paging) != 'undefined' && !!dat.paging.next  && words.length < 10000) {
-      pageCount++;
-      FB.api(dat.paging.next, {}, function(response){ collectData(response); } );
-    } else {
-      document.getElementById('load-status').innerHTML =
-        'Generating word cloud...'; 
-      window.setTimeout(generateWordCloud, 1000);
-    }
-  };
-  
-  function generateWordCloud(){
-    
-    var fill = d3.scale.category20();
-    var largest = 0;
-    
-    // get word freqs - put in objects, sort objects by freq, take top 200 & normalize around 100
-    var word_objects = _(words).chain()
-    .groupBy(_.identity)
-    .map(function (values, key) {
-      return {
-        size: values.length,
-        text: key
-      };
-    })
-    .filter(function (d){
-      return (stop_words.indexOf(d.text) < 0);
-    })
-    .sortBy(function (d) { return -d.size; })
-    .first(50)
-    .map(function(d){
-      if (largest == 0){ largest = d.size};
-      return {
-        size: Math.round(Math.log10(1 + 999 * d.size/largest)*20),
-        text: d.text
-      }
-    })
-    .value();
-    
-    console.log(word_objects);
-    
-    window.setTimeout(function(){
-      d3.layout.cloud().size([800, 500])
-      .words(word_objects)
-        .padding(5)
-        // .rotate(function() { return ~~(Math.random() * 2) * 90; })
-        .font("Impact")
-        .fontSize(function(d) { return d.size; })
-        .on("end", draw)
-        .start();
-        
-        function draw(words) {
-          d3.select("body").append("svg")
-          .attr("width", 800)
-          .attr("height", 500)
-          .append("g")
-          .attr("transform", "translate(400,250)")
-          .selectAll("text")
-          .data(words)
-          .enter().append("text")
-          .style("font-size", function(d) { return d.size + "px"; })
-          .style("font-family", "Impact")
-          .style("fill", function(d, i) { return fill(i); })
-          .attr("text-anchor", "middle")
-          .attr("transform", function(d) {
-            return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
-          })
-          .text(function(d) { return d.text; });
-        }
-      }, 3000);
-  }
+  });
 </script>
-
-<div id="load-status">Please log in to facebook.</div>
-<fb:login-button id="fb-login" scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
-<div id="cloud-holder"></div>
