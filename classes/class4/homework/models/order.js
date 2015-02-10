@@ -1,9 +1,8 @@
 var mongoose = require('mongoose');
 
 var orderSchema = mongoose.Schema({
-  name: String,
-  age: Number,
-  color: [String]
+  customer: String,
+  ingredients: Array
 });
 
 var Order = mongoose.model('Order', orderSchema);

@@ -24,9 +24,16 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get('/', index.home);
-app.get('/ingredients', orders.ingredients);
-app.get('/order', orders.order);
-app.get('/kitchen', orders.kitchen);
+app.get('/ingredients', index.ingredients);
+app.get('/order', index.order);
+app.get('/kitchen', index.kitchen);
+
+app.post('/done', index.done);
+app.post('/outOfStock', index.outOfStock);
+app.post('/inStock', index.inStock);
+app.post('/placeOrder', index.placeOrder);
+app.post('/editIngredient', index.editIngredient);
+app.post('/addIngredient', index.addIngredient);
 
 mongoose.connect(mongoURI);
 
