@@ -21,13 +21,15 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/", kitchen.getIngredients);
+app.get("/", kitchen.newOrder);
 app.get("/ingredients", kitchen.getIngredients);
 app.get("/order", kitchen.newOrder);
 app.get("/kitchen",kitchen.getOrders);
 
 app.post("/postIngredient", kitchen.postIngredient);
-
+app.post("/newIngredient", kitchen.newIngredient);
+app.post("/postOrder", kitchen.postOrder);
+app.post("/deleteOrder", kitchen.deleteOrder);
 app.listen(PORT, function() {
   console.log("App running on port:", PORT);
 });
