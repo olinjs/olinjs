@@ -1,0 +1,18 @@
+{{#each ingredients }}
+<div class="ingredient">
+
+	<div class="ingredient-name">{{ name }}</div>
+	<div class="money">{{ price }}</div>
+
+	{{!-- Toggle between whether the ingredient is available or not. --}}
+	<input type="checkbox" class="edit-ingredient {{ price }}" id="{{ id }}" type="button"
+	{{#if instock }} > {{else}}	disabled> {{/if}} </input>
+	
+</div>
+{{/each }}
+
+{{!-- Displays the total price of checked items. --}}
+<h3>Total Money</h3>
+<div class="money" id="price-counter">0</div>
+
+<script type="text/javascript" src="javascripts/csOrderList.js"></script>

@@ -1,0 +1,22 @@
+{{#each ingredients }}
+<div class="ingredient">
+
+	<div class="ingredient-name">{{ name }}</div>
+	<div class="money">{{ price }}</div>
+
+	<button class="toggle-stock {{ id }}" type="button">
+		{{#if instock }}
+			Out of stock.
+		{{else}}
+			Restock.
+		{{/if}}
+	</button>
+
+	<button class="edit-ingredient" id="{{ id }}" name="{{ name }}" price="{{ price }}" type="button">
+		Edit
+	</button>
+	
+</div>
+{{/each }}
+
+<script type="text/javascript" src="javascripts/csIngredientList.js"></script>
