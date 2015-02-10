@@ -1,0 +1,9 @@
+<h1>These are the current orders!</h1>
+{{#each all_orders}}
+    <form id={{this._id}} action="remove_order" method="POST">
+        <p> {{this.ingredients}} </p>
+        <input type="submit" name="remove_order" value="Remove this order!"><br>
+    </form>
+{{/each}}
+
+<script type="text/javascript" src="javascripts/kitchen.js"></script>

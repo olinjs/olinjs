@@ -1,0 +1,34 @@
+<h1>Here are the ingredients!</h1>
+{{#each ingredients}}
+
+<p id="ajax-{{this.name}}" name="info_display"> {{this.name}} x {{this.stock}}, price: {{this.price}} </p>
+
+<form id="ajax-{{this.name}}" action="delete" method="POST">
+        <input type="submit" name="delete" value="Delete this ingredient forever!" ><br>
+</form>
+
+<form id="ajax-{{this.name}}" action="edit_stock" method="POST">
+        <input type="text" value="" name="edit_stock" ><br>
+        <input type="submit" name="edit_stock" value="Edit stock!" ><br>
+</form>
+
+<form id="ajax-{{this.name}}" action="edit_name" method="POST">
+        <input type="text" value="" name="edit_name" ><br>
+        <input type="submit" name="edit_name" value="Edit name!" ><br>
+</form>
+
+<form id="ajax-{{this.name}}" action="edit_price" method="POST">
+        <input type="text" value="" name="edit_price" ><br>
+        <input type="submit" name="edit_price" value="Edit price!"><br>
+</form>
+
+{{/each}}
+
+<h1 id="ingredient_header">Add a new ingredient!</h1>
+<form id="add_ingredient" action="edit_name" method="POST">
+        Name: <input type="text" value="" name="name"><br>
+        Price: <input type="text" value="" name="price"><br>
+        <input type="submit" name="edit_name" value="Add new ingredient!" ><br>
+</form>
+
+<script type="text/javascript" src="javascripts/ingredients.js"></script>
