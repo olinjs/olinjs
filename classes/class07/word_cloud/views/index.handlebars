@@ -1,0 +1,42 @@
+<script src="/javascripts/main.js"></script>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2">
+    </div>
+    <div class="col-lg-8">
+      <p class="text-center header"> 
+        Twitter Word Cloud Generator
+      </p>
+    </div>
+  </div>
+  <div class="row search-form">
+    <div class="col-lg-3">
+    </div>
+    <div class="col-lg-6">
+      <div class="input-group">
+        <input type="text" id="search-input" class="form-control well well-lg" placeholder="Search for...">
+        <span class="input-group-btn">
+          <button id="search" class="btn btn-default btn-lg submit" type="button">Go!</button>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8" id="cloud">
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById("search").addEventListener("click", function(){
+    var input = document.getElementById("search-input");
+    if(!!input.value){
+      var val = input.value.split(' ')[0];
+      $.getJSON('/tweets?q=' + val, function(data) {
+        generateWordCloud(JSON.parse(data));
+      });
+    }
+  });
+</script>
