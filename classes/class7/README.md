@@ -76,6 +76,7 @@ The full exchange of requests involved in OAuth can be seen in the graphic below
 *Image via oauth.net*
 
 ###OAuth Exercise
+We have an small example application using OAuth in the `word_cloud` folder in this class that will use Twitter's API to generate a word cloud. This example will show you how to build an OAuth request from scratch. While we hope you won't have to do that out in the real world unless absolutely necessary, we thought it might be nice to show you one so you can appreciate all of the heavy lifting some of the OAuth libraries take care of for you.
 
 ##Designing APIs with REST-ful Semantics
 Up until now, we've only had experience using URL routes that we created ourselves, all used for interacting with web pages. In this lesson, we've started exposing you to APIs other people have designed specifically for you to use. What about when *you* want to create an API for *other people* to use? We won't go into detail about picking what kind of data or functionality to expose, as that will vary based on your application, but what we will cover is _how_ to expose that data and functionality in a way that is easy for others to understand and use.
@@ -148,5 +149,3 @@ app.use('/api*', function(req, res, next) {
 So you want to use OAuth to authenticate and authorize your API users, huh? Unfortunately that's _just_ outside the scope of this class, but know that if you do get to that point someday, there are some great packages available (on npm) that can help you get a basic setup running fairly quickly.
 
 _If this readme hasn't been enough for you and you want more REST, feel free to check out [this cool guide](http://www.infoq.com/articles/rest-introduction) on your own time._
-
-##Debugging
