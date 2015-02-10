@@ -1,0 +1,12 @@
+.header {
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 44px;
+  margin: auto;
+  margin-top: 75px;
+}
+
+.submit {
+  padding-top: 12.5px;
+  padding-bottom: 12px;
+}
