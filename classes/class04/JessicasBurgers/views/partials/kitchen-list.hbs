@@ -1,0 +1,13 @@
+{{#each orders }}
+	<h3>{{ personName }}</h3>
+	<ul>
+		{{#each orderItems}}
+			<li>{{ name }}</li>
+		{{/each}}
+	</ul>
+	
+
+	<button id="{{ id }}" type="button">Completed</button>
+{{/each }}
+
+<script type="text/javascript" src="javascripts/csKitchenList.js"></script>
