@@ -64,7 +64,7 @@ In the example above, `clickHandler` is our event handler. When an element with 
 
 ```node
 function clickHandler() {
-	var $clicked = $('this'); // wrap it in a jQuery selector
+	var $clicked = $(this); // wrap it in a jQuery selector
 	// do things with $clicked
 }
 ```
@@ -433,7 +433,7 @@ TypeError: Cannot set property 'count' of undefined
     at Object.immediate._onImmediate (timers.js:372:16)
 ```
 
-When Node is confused, you'll often see mentions of `undefined`, like `undefined is not a [function|object]`.
+At some point, you'll probably encounter an error message which mentions `undefined`, like `undefined is not a [function|object]`.
 The broken code (which should be your code) is usually at the top of the stack trace — here we can see that it is still in `app.js`, this time on line 25. The offending line tried to set a property of an undefined property on the `req.cookies` object.
 
 Stack traces are useful to find what line of code caused the app to crash. Depending on the error, this line could be all the information you need, or could be relatively useless. But the computer is always following a set of unbreakable rules, so no information should be completely discounted when bugging.
