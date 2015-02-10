@@ -23,5 +23,9 @@
 
 <h3>New Ingredient</h3>
 <div id="new">
-  <form id="newIngredient"
+  <form id="newIngredient" action="addIngredient" method="POST">
+    Ingredient: <input type="text" id="name">
+    Price: $<input type="text" id="price">
+    <input type="submit" class="submit" value="Complete">
+  </form>  
 </div>

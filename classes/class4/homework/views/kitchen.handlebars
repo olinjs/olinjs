@@ -1,0 +1,8 @@
+<h2>Kitchen</h2>
+
+{{#each orders}}
+  <form class="kitchen" id={{this.id}} action="updateKitchen" method="POST">
+    <span>{{this.customer}} - {{ingredients}}</span>
+    <input type="submit" value="Done">
+  </form>
+{{/each}}

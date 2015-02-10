@@ -77,7 +77,7 @@ routes.editIngredient = function(req, res) {
   var updated = req.body;
   Ingredient.update({'id': updated.id}, updated, 
                     function(err, num, data) {
-                      //what here???
+                      //stuck here, not sure what to do with 'updated'
                     })
 }
 
@@ -85,12 +85,13 @@ routes.addIngredient = function(req, res) {
   var newIngredient = req.body;
   newIngredient.stock = true;
   var ingr = new Ingredient(newIngredient);
-  Ingredient.count({'name': newIngredient.name},
-                   function(err, food) {
-                    ingr.save(function(err) {
-                      //and stuck again
-                    });
-                   });
+  Ingredient.count({'name': newIngredient.name}, function(err, data) {
+    ingr.save(function(err) {
+      Ingredient.findOne(newIngredient, function(err, food) {
+        res.json(food);
+      });
+    });
+  });
 }
 
 module.exports = routes;

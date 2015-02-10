@@ -1,8 +1,6 @@
 var $inStock = $('#in form');
 var $outOfStock = $('#out form');
 
-$
-
 $inStock.submit(function(event) {
   event.preventDefault();
   var $curForm = $(this);
