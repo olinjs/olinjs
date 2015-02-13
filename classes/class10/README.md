@@ -17,7 +17,7 @@ You may wonder why this is not how it has always been done. The simple answer to
 ##MVC on the client
 
 ##Your First Client Templating:
-[Underscore in-class follow along goes here]
+[Handlebars  in-class templating]
 
 You can probably imagine that organizing a very complex application with dozens of pages and hundreds of models can get really complicated and messy really fast. Luckily, there are really fantastic publically available and free frameworks you can utilize to organize your application. We will explore these next. 
 
@@ -25,6 +25,14 @@ You can probably imagine that organizing a very complex application with dozens 
 It turns out that there are a TON of different javascript client-side frameworks to choose from for any project. These frameworks have various strengths and weaknesses. The source code for all of these frameworks are available on github (and yes, you can fork them). A chart of their popularity (as measured by number of stars is show below)
 
 ![FrameworkPopularity](frameworkPopularity.png)
+[Find out about framework popularity]
+[Angular: 35,118]
+[Backbone: 20,709]
+[Ember: 12,683]
+[Flight: 5,865]
+[Knockout: 6,034]
+[React: 15,670]
+[Riot: 5,110]
 
 Every framework have different features and organizational structures. Best way to understand these differences is to visit the webpage of the framework and just try to implement some very basic system in the framework. 
 
@@ -44,7 +52,10 @@ Any framework or library will always have documentation that you can read throug
 For lots of popular frameworks, there are often lots of people who have created excellent walkthroughts of the framework. They (often) do a good job of taking the listener through a logical explanation of the framework, building on top of content previously explained, and showing how you can build an actual application with the framework. These can, however, take some time to go through, cost money, and depending on your skill/ familiarity they can feel too fast or slow. 
 
 ###Sample Apps
-If the framework is popular enough, it likely has hundreds of applications that have been written in the framework. Many of these are public and open source. All these can be sources of learning from experts who likely are very familiar with the framework. They can, however, be very hard to dig through and are by no means necessarily well done or structured so you shouldn't take them as the only or best way to use the framework. Additionally, there are applications 
+There are applications that are written specifically as example applications to show how to put an application together with actual functionallity 
+
+If the framework is popular enough, it likely also has hundreds of actual applications that have been written in the framework and are publically available. All these can be sources of learning from experts who likely are very familiar with the framework. They can, however, be very hard to dig through and are by no means necessarily well done or structured so you shouldn't take them as the only or best way to use the framework. 
+
 
 
 
