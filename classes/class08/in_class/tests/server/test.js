@@ -7,9 +7,6 @@ var index = require('../../routes/index');
 
 // Sample tests
 describe("A test suite", function() {
-	beforeEach(function() { });
-	afterEach(function() { });
-
 	// Syncronous
 	it('should pass', function() { 
 		expect(true).to.be.true; 
@@ -24,8 +21,8 @@ describe("A test suite", function() {
 	});
 });
 
-describe("index", function() {
-	it('should have an attribute ten equal to 10', function() {
-		expect(index.ten).to.equal(10);
-	});
-})
+// describe("index", function() {
+// 	it('should have an attribute ten equal to 10', function() {
+// 		expect(index.ten).to.equal(10);
+// 	});
+// });
