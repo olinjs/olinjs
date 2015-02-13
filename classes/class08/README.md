@@ -2,7 +2,7 @@
 
 ##What is Unit Testing?
 
-Quoth [Wikipedia](http://en.wikipedia.org/wiki/Unit_testing), "unit testing is a software testing method by which individual units of source code, sets of one or more computer program modules together with associated control data, usage procedures, and operating procedures, are tested to determine whether they are fit for use." Really what that means is that each piece of functionality gets a test to see if it works in isolation from all other pieces of functionality. +
+Quoth [Wikipedia](http://en.wikipedia.org/wiki/Unit_testing), "unit testing is a software testing method by which individual units of source code, sets of one or more computer program modules together with associated control data, usage procedures, and operating procedures, are tested to determine whether they are fit for use." Really what that means is that each piece of functionality gets a test to see if it works in isolation from all other pieces of functionality.
 
 Most of you have probably have heard the words "unit testing" before and probably have some association with lots of print statements to see if things are equal, and really it just takes a lot of time and isn't that important. Not so. 
 
