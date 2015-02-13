@@ -39,10 +39,12 @@ As you can see, there are tons of options for what to use for your javascript te
 That was a lot of high-level explanation of what we are trying to do, why, and what tools we have for it, so now it's time to get into setting up our testing environment, starting with server-side tests, which are generally simpler. There's a very basic app set up in the `in_class` subdirectory, so let's go in there and check it out. From that directory, run `npm install` to get all your dependencies, then start by seeing what the app actually does, with `node app.js`. As you can see, it's very, very basic, and it just tells you hello, but it is a working express app. Checking out the directory structure shows us that we have a new folder called tests, and in that a folder called client and a folder called server. That structure allows us to keep tests separate from source code and server tests separate from client tests. Inside the server tests you will see `test.js`, a file with everything commented out right now. Before we start writing tests, let's make sure that mocha is working in the first place. When we installed mocha, it gave us a binary file that will run our tests with the location of our tests as a command line argument. We can run our server tests with `./node_modules/mocha/bin/mocha tests/server`, which should give output like `0 passing (2ms)`, which makes sense because we don't have any tests written.
 
 Time to write some tests then. In `test.js`, uncomment up through line 5, so you have:
-```// Setup our assertion library
+```
+// Setup our assertion library
 var expect = require('chai').expect;
 
-var index = require('../../routes/index');```
+var index = require('../../routes/index');
+```
 The first line loads the [Chai](http://chaijs.com/) assertion library and assigns it's 'expect' test syntax to the variable `expect`, which we will use to write tests. The second line just loads our index route, because we will want to test that. If we run our tests again, we should still see nothing passing, but no errors. Now uncomment up to line 17, as well as line 22, leaving you with:
 ```
 describe("A test suite", function() {
