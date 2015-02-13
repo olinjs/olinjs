@@ -2,13 +2,16 @@
 
 ##What is Unit Testing?
 
-Quoth [Wikipedia](http://en.wikipedia.org/wiki/Unit_testing), "unit testing is a software testing method by which individual units of source code, sets of one or more computer program modules together with associated control data, usage procedures, and operating procedures, are tested to determine whether they are fit for use." Really what that means is that each piece of functionality gets a test to see if it works in isolation from all other pieces of functionality. +
+Quoth [Wikipedia](http://en.wikipedia.org/wiki/Unit_testing):
+>Unit testing is a software testing method by which individual units of source code, sets of one or more computer program modules together with associated control data, usage procedures, and operating procedures, are tested to determine whether they are fit for use.
+
+Really what that means is that each piece of functionality gets a test to see if it works in isolation from all other pieces of functionality.
 
 Most of you have probably have heard the words "unit testing" before and probably have some association with lots of print statements to see if things are equal, and really it just takes a lot of time and isn't that important. Not so. 
 
 ##Why Unit Test?
 
-Obviously unit testing helps catch bugs and make sure your code works, but it also provides other benefits in terms of overall code quality. Having a good test suite for a project increases maintainability as it becomes harder to inroduce new bugs in new versions without breaking tests. Additionally, high quality code tends to be very well encapsulated, and well encapsulated code tends to be easier to test. That said, when you sit down to test something and realize that the test is going to be complicated to write, consider first refactoring the code you are testing so you end up with several tests that are all easier to write, and better code in general as a result. 
+Obviously unit testing helps catch bugs and make sure your code works, but it also provides other benefits in terms of overall code quality. Having a good test suite for a project increases maintainability as it becomes harder to introduce new bugs in new versions without breaking tests. Additionally, high quality code tends to be very well encapsulated, and well encapsulated code tends to be easier to test. That said, when you sit down to test something and realize that the test is going to be complicated to write, consider first refactoring the code you are testing so you end up with several tests that are all easier to write, and better code in general as a result. 
 
 ##Test Driven Development (TDD)
 
@@ -55,3 +58,44 @@ describe("A test suite", function() {
 Now running the tests should tell us that 1 test is passing! Let's take a look at what we just did. First off, we call the `describe` function, which creates our test suite. It takes a string, which servers as the name of the test suite, as well as a function with no arguments that runs the tests in the suite. Next we call `it`, which sets up a test for some piece of functionality, taking first the name of that test, and then a function, in this case with no arguments. Inside that function we finally make an assertion using `expect`, which we loaded from chai earlier. `expect` takes some value and returns an object with a bunch of useful comparison methods that will compare to the object we passed in. In this case, `expect(true).to.be.true` means, in English, "Take the value 'true' and see if it is truthy" which, of course, it is. The syntax here probably feels a little weird, and in fact t is. the `to` and `be` methods actually do nothing, they just chain together because somebody, sometime decided it was a good idea to be able to write test assertions that sound like English. We happen to agree with them, but if you do not, check out Chai's other assertion syntaxes and find one you like, they all have the same functionality. `true` is what actually does a comparison. All you really need to know is that it checks what comes before it to see if it is truthy, and if so it passes the test and otherwise it fails, and mocha takes care of the details of reporting that out. Every asserion you write will start with a call to `expect`, have some chaining methods (or maybe none), and some comparison method at the end. Chai's assertion methods are documented [here](http://chaijs.com/api/bdd/).
 
 This is all great for synchronous testing, but how do we deal with asynchronicity? We need some way to tell mocha to wait for our callbacks to run and assertions in them to fire before it finishes testing. We can do that in our call to `it` when setting up our tests. The second argument to `it` is a function, and that function can have 0 or 1 arguments. In the 0 argument case, it does synchronous tests like above. In the 1 argument case, however, your `it` function receives as an argument another function, idiomatically called `done`. Now, mocha will wait until `done` is called before it proceeds with more testing, allowing you to call `done` after running assertions in a callback to run async tests. Uncomment lines 15-21 and you can see this in action. Running our tests now shows 2 passing, one of which takes about a second, showing that our async test is working. Async tests aren't that complicated to do in mocha, but they are a little dangerous. If `done` never gets called for some reason (like an error in your callback), mocha will not know to stop waiting for it, and your tests will hang. To prevent haning, mocha has a default timeout of 2 seconds on async tests, after which they will fail
+
+##Running Tasks with `npm`
+
+We can configure `npm` to do quite a bit more than just manage packages. In your `package.json`, you can specify scripts that `npm` can then run.
+
+###### package.json
+```
+{
+  ...
+  "main": "index.js",
+  "scripts": {
+  	"hello": "echo hi"
+  }
+  ...
+}
+```
+
+Run scripts with `npm run scriptname`
+
+```bash
+$ npm run hello
+hi
+```
+
+Below is the `scripts` section from the in-class exercise `package.json` showing how we can use `npm` to run our unit tests. As you can see, you can even run `npm` tasks with `npm`!
+
+###### package.json
+```
+{
+  ...
+  "main": "index.js",
+  "scripts": {
+    "karma": "./node_modules/karma/bin/karma start karma.conf.js",
+    "mocha": "./node_modules/mocha/bin/mocha tests/server",
+    "cover-mocha": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha tests/server -- -R spec",
+    "test": "npm run karma && npm run cover-mocha",
+    "start": "nodemon app.js"
+  }
+  ...
+}
+```
