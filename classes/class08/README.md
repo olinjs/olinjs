@@ -28,7 +28,7 @@ There are several terms used in association with testing that are useful to unde
 
 **Continous Integration (CI)**: We aren't going to deal with CI today, but it may come up during project time. CI goes one step past a test runner and runs your tests for you automatically whenever relevant code changes. Check out [Travis CI](http://docs.travis-ci.com/) if you are interested. 
 
-**Code Coverage**: Pretty straightforward, code coverage tells you how much of your code actually gets run when your test suite runs, so you know if you need to write more tests. It's extraordinarily easy to set up and quite useful. We will be using [Istanbul](https://gotwarlost.github.io/istanbul/) and [Istanbul with Karma](http://karma-runner.github.io/0.8/config/coverage.html).
+**Code Coverage**: Pretty straightforward, code coverage tells you how much of your code actually gets run when your test suite runs, so you know if you need to write more tests. It's extraordinarily easy to set up and quite useful. We will be using [Istanbul](https://gotwarlost.github.io/istanbul/) and [Istanbul with Karma](http://karma-runner.github.io/0.8/config/coverage.html). High percentages of code coverage are good, but sometimes it's not worth the time it takes to squeeze out coverage on that last 5% or so of hard to test code.
 
 The client-server divide causes serious problems for javascript testers. A problem that we do not have because we are working in nodejs is that most servers aren't even written in javascript. Additionally, server-client communications rely on network connectivity, and we really don't want our tests to care about whether the network is working. The same applies to any database interactions the server might execute. How then, do we test code that relies on sending out a request and receiving a response? Consider, for example, testing one of your client-side ajax requests and the callback it executes. For that test, you don't really care what the server is doing as long as it responds correctly, and you will be testing the server code separately anyway, so ideally you would fake the ajax call and just go straight to having the correct response without ever talking to the server at all. Turns out, you can do that, using [Sinon.js](http://sinonjs.org/), which provides several useful mocks of things like Ajax and XHR requests, and even the passage of time. The general idea is that any request-response interface can be faked, and Sinon provides a library to do that.
 
@@ -62,7 +62,25 @@ Those are the basics of mocha and chai, so now you can write server-side tests!
 
 ##Client-Side Testing with Karma
 
-Client-side tests are a lot more complicated, since we need to run things in browsers.
+Client-side tests are a lot more complicated, since we need to run things in browsers, but thankfully, karma deals with most of that for us once we set up some configuration stuff. We also will not be going into much detail for client-side testing for now, beyond just setting it up and running trivial tests, since dealing with DOM manipulation gets complicated when you are used to rendering templates server-side and don't actually have a server to talk to. That said, don't worry if you are a little confused with this stuff.
+
+In terms of actually syntax of tests, everything should be identical since we are using mocha and chai still with karma. If you take a look at `tests/client/test.js`, you can see that we have the same tests as before (except for our server side route). We don't need to load chai this time, since karma will do that for us.
+
+What's different with karma is its configuration file, which you can find at `karma.conf.js`. Take a look inside- most of this is boilerplate, but we will highlight a few important things that you will want to know about. The most important attribute for our config object is `files`, which tells karma where are tests are and also where any client-side source files live. Note that you can include remote URLs here if you are using a CDN for something like JQuery.
+```
+files: [
+  'https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js',
+  'public/javascripts/*.js',
+  'tests/client/*.js',
+],
+```
+tells karma to grab JQuery, anything in `public/javascripts` with a `.js` extention, and anything in `tests/client` or its subdirectories with a `.js` extension.
+
+`browsers` is also of note, as that tells karma which browser environments to run the tests in. `PhantomJS` is what we call a headless browser, essentially meaning it has all the browsery features like a DOM and being able to run javascript, but it doesn't have a GUI so it's good for running command line tests. Chrome is also supported by default, and other browsers have plugins.
+
+All the other options you can pretty much keep as-is, but if you want to read about them, check the [docs](http://karma-runner.github.io/0.8/config/configuration-file.html). 
+
+We can run our test suite with `./node_modules/karma/bin/karma start karma.conf.js`, similar to how we ran our mocha suite earlier. In addition to reporting the test results, since we set up the `coverage` reporter in our conf file, we also now have a `coverage` folder which contains code coverage data as html files. You can take a look at them, but they aren't very exciting since there's not actually any code in our `javascripts` directory to cover, but they take little effort to set up and when you are testing real code they are nice to have. 
 
 ##Running Tasks with `npm`
 
@@ -88,6 +106,7 @@ hi
 ```
 
 Below is the `scripts` section from the in-class exercise `package.json` showing how we can use `npm` to run our unit tests. As you can see, you can even run `npm` tasks with `npm`!
+The `cover-mocha` script also shows how to generate server-side code coverage using Istanbul. It's just an extra simple command, and you can pretty much copy it to any new project. `test` is also a special npm keyword, so you can omit `run` and just run `npm test` to run all our tests. Try that now and take a look at Istanbul's coverage output for the server-side!
 
 ###### package.json
 ```
@@ -104,4 +123,3 @@ Below is the `scripts` section from the in-class exercise `package.json` showing
   ...
 }
 ```
->>>>>>> c51aa4f29c15a5863fbe098cb9e6d96d63e2137b
