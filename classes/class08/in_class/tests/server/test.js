@@ -8,7 +8,7 @@
 // // Sample tests
 // describe("A test suite", function() {
 // 	// Syncronous
-// 	it('should pass', function() { 
+// 	it('should use expect syntax', function() { 
 // 		expect(true).to.be.true; 
 // 	});
 

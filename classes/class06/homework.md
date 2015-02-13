@@ -13,7 +13,7 @@ A "twote" is a small piece of text written by a user. You can call it whatever y
 - The main page displays:
 	- A list of all twotes, with the most recent at the top
 		- Each twote displays text and the author
-	- A form to post a twote
+	- A form to post a twote (**Disabled or not visible if user is not logged in**)
 		- Including a display of the logged-in user
 	- A list of all users
 		- Clicking on a user highlights that user's twotes
@@ -23,9 +23,9 @@ A "twote" is a small piece of text written by a user. You can call it whatever y
 	- A form to log in
 		- There is zero authentication! Just enter a username to log in as that user — the user will be created if it doesn't exist. This is clearly not secure, but it'll let us play around with user/session management before we dive into the world of authentication and security starting next class.
 
-- A user can:
+- A logged in user can:
 	- Post a twote (the twote will appear at the top of the list without a page refresh)
-	- Delete their twotes (a user can only delete their own twotes)
+	- Delete their twotes (a user can only delete their own twotes and only when logged in)
 	- Logout (with the logout button)
 
 - All actions happen without a page refresh! (Except for redirecting to/from the Login page)
