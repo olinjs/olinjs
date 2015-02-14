@@ -1,0 +1,45 @@
+<div class="container">
+	<div class="header">
+		<div class="columnOneFourth Top">
+			<ul class="navBar">
+				<li><a clss="loginLink" href="/login">Login</a></li>
+				<li><a href="/profile">Profile</a></li>
+			</ul> 
+		</div>
+		<div class="Top columnOneHalf">
+			<h1 id="topHeader">Tweeter</h1>	
+		</div>
+		<div class="columnOneFourth Top" id="user">
+		</div>
+	</div>
+	<div class="spacer">
+	</div>
+	<div class="row">
+		<div class="columnTwoThirds">
+			<div class="input-group">
+				<input type="text" id="twitMesssage" class="textWell" placeholder="How are you feeling..."> 
+				<span class="input-group-btn">
+					<button id="postHome" class="btn" type="button"> > </button>
+				</span>
+			</div>
+			<ul>
+			<div id="result"></div>
+			{{#each twit}}
+				<li>
+				<div id='author'>{{this.author}}</div>
+				<div id='text'> {{this.text}}</div>
+				</li>
+			{{/each}}
+			</ul>
+		</div>
+		<div class="columnOneThird">
+			<h3> Users </h3>
+			<ul>
+			{{#each user}}
+				<li>{{this.username}}</li>
+			{{/each}}
+			</ul>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="javascripts/main.js"></script>
