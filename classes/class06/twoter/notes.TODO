@@ -1,3 +1,5 @@
-☐ Set up Mongoose communication
-  ☐ Users
-  ☐ Tweets (Embedded with the users)
+✔ Set up Mongoose communication @done (15-02-15 12:04)
+  ✔ Users @done (15-02-15 12:04)
+  ✔ Tweets (Embedded with the users) @done (15-02-15 12:04)
+ ✔ Create a basic form for inputting different authors @done (15-02-15 12:14)
+ ✔ Set up basic login form @done (15-02-15 12:14)
