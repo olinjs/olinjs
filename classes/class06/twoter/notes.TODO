@@ -1,5 +1,9 @@
 ✔ Set up Mongoose communication @done (15-02-15 12:04)
-  ✔ Users @done (15-02-15 12:04)
-  ✔ Tweets (Embedded with the users) @done (15-02-15 12:04)
- ✔ Create a basic form for inputting different authors @done (15-02-15 12:14)
- ✔ Set up basic login form @done (15-02-15 12:14)
+✔ Users @done (15-02-15 12:04)
+✔ Tweets (Embedded with the users) @done (15-02-15 12:04)
+✔ Create a basic form for inputting different authors @done (15-02-15 12:14)
+✔ Set up basic login form @done (15-02-15 12:14)
+✔ Signup button creates a new account. @done (15-02-15 21:35)
+☐ Home button redirects to login if no account made.
+✔ Create basic form for putting in twotes. @done (15-02-16 11:18)
+☐ Save communicated twotes into actual documents.
