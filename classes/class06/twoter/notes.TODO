@@ -6,4 +6,6 @@
 ✔ Signup button creates a new account. @done (15-02-15 21:35)
 ☐ Home button redirects to login if no account made.
 ✔ Create basic form for putting in twotes. @done (15-02-16 11:18)
-☐ Save communicated twotes into actual documents.
+✔ Save communicated twotes into actual documents. @done (15-02-16 11:26)
+✔ Display all twotes everyone has made. @done (15-02-16 12:10)
+☐ Add author name and id into the cookie

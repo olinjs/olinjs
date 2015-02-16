@@ -5,28 +5,60 @@ var router = express.Router();
 var Author = require('../models/author');
 var Twote = require('../models/twote');
 
+var sendTwotes = function (res){
+	Twote.find()
+		.sort({_id: -1})
+		.exec(function (err, twotes) {
+			res.render("partials/twote", {
+				layout: false,
+				twotes: twotes
+			})
+		});
+};
+
 router.get('/', function(req, res, next) {
-	var message;
-	if (req.session.counter) {
-	    req.session.counter++;
-	    message = "Hello again! Thanks for visiting " + req.session.counter + " times";
+
+	var is_ajax_request = req.xhr;
+	if (is_ajax_request) {
+		sendTwotes(res);
 	} else {
-	    message = "Hello, thanks for visiting this site!";
-	    req.session.counter = 1;
+
+		req.session.authorName = "David";
+		req.session.author_id = "12345";
+
+		// var message;
+		// console.log("This is a test: " + req.session.test);
+		// if (req.session.counter) {
+		//     req.session.counter++;
+		//     message = "Hello again! Thanks for visiting " + req.session.counter + " times";
+		// } else {
+		//     message = "Hello, thanks for visiting this site!";
+		//     req.session.counter = 1;
+		// }
+
+		// console.log(message);
+
+		// console.log(req.headers.cookie);
+		console.dir(req.session);
+	  res.render('main', {
+	  	isAuthenticated: req.isAuthenticated(),
+	  	user: req.user
+	  });
 	}
-
-	console.log(message);
-
-	// console.log(req.headers.cookie);
-	console.dir(req.session);
-  res.render('main', {
-  	isAuthenticated: req.isAuthenticated(),
-  	user: req.user
-  });
 });
 
 router.post('/', function (req, res) {
-	console.log(req.body.twote);
+	// console.log(req.body.twote);
+
+	var newTwote = new Twote({
+		twote: req.body.twote,
+		author_id: null
+	});
+
+	newTwote.save(function (err) {
+		if (err) return console.error(err);
+  	sendTwotes(res);
+	});
 });
 
 router.get('/login', function (req, res, next) {
