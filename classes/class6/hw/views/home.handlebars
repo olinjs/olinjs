@@ -10,6 +10,7 @@
 			<h1 id="topHeader">Tweeter</h1>	
 		</div>
 		<div class="columnOneFourth Top" id="user">
+			<h3>{{login}}</h3>
 		</div>
 	</div>
 	<div class="spacer">
@@ -17,13 +18,13 @@
 	<div class="row">
 		<div class="columnTwoThirds">
 			<div class="input-group">
-				<input type="text" id="twitMesssage" class="textWell" placeholder="How are you feeling..."> 
+				<input type="text" id="twitMessage" class="textWell" placeholder="How are you feeling..."> 
 				<span class="input-group-btn">
-					<button id="postHome" class="btn" type="button"> > </button>
+					<button id="postTwit" class="btn" type="button"> > </button>
 				</span>
 			</div>
 			<ul>
-			<div id="result"></div>
+				<div id="result"></div>
 			{{#each twit}}
 				<li>
 				<div id='author'>{{this.author}}</div>
@@ -42,4 +43,4 @@
 		</div>
 	</div>
 </div>
-<script type="text/javascript" src="javascripts/main.js"></script>
+<script type="text/javascript" src="javascripts/newTwit.js"></script>

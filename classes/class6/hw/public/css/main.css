@@ -18,7 +18,7 @@
 	width: 100vw;
 }
 .oneColumn{
-	/*position:relative;*/
+	position:relative;
 	height: 60px;
 	width: 100%;
 }
@@ -52,7 +52,7 @@
 }
 
 .spacer{
-	height: 60px;
+	height: 70px;
 	width: 100vw;
 }
 
@@ -81,7 +81,7 @@
 	float: left;
 	text-align: left;
 	width: 66%;
-	height: 100vw;
+	height: 100vh;
 }
 
 .columnOneThird{

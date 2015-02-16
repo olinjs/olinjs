@@ -1,18 +1,21 @@
-var HANDLERS = require('./handlers');
-var CALLS = require('./calls');
 //Elements to handle
 var $newTwitHome;
 var $loginForm;
-
+var $deleteTwit;
+var $newTwitProfile;
 
 
 setHandlers();
 
 function setHandlers(){
-	$newTwitHome = $("#postHome").unbind();
-	$loginForm = $("#loginBtn").unbind();
+	$newTwitHome = $("button#postHome").unbind();
+	$loginForm = $("form.login").unbind();
+	$deleteTwit = $("button#deletePost").unbind();
+	$newTwitProfile = $("button#postProfile").unbind();
 
-	$newTwitHome.click(HANDLERS.newTwitHandler('homeTwit', CALLS.success.postHome, 'twitMessage'));
-	$loginForm.click(HANDLERS.loginHandler('loginUser', CALLS.success.userLogin));
+	$newTwitHome.click(HANDLERS.newTwitHandler('homeTwit', CALLS.success.postHome, '#twitMessage'));
+	$loginForm.submit(HANDLERS.loginHandler('loginUser', CALLS.success.userLogin));
+	$deleteTwit.click(HANDLERS.deleteHandler('deleteTwit', CALLS.success.deletPost, $(this).val));
+	$newTwitProfile.click(HANDLERS.newTwitHandler('profilePost', CALLS.success.postProfile,'#twitMessage'));
 
 }
