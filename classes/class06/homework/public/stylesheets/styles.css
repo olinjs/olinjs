@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+}
+h1 {
+  font-family: sans-serif;
+  text-align: center;
+  font-weight: 900;
+  font-size: 250%;
+  color: #ECF0F1;
+}
+h2 {
+  position:fixed;
+  text-align: left;
+  font-weight: 800;
+  font-size: 150%;
+  color: #3498DB;
+}
+p {
+  font-size: 150%;
+  margin: 15px 0;
+  color: #ECF0F1;
+}
+a {
+  text-decoration: none;
+  color: #ECF0F1;
+}
+body#main {
+  background-image: url(../images/outline.png);
+}
+div#nav {
+  color: #ECF0F1;
+  text-align: center;
+  font-size: 150%;
+  padding: 10px 0;
+  background-color: #3498DB;
+}
+div#nav h1 {
+  font-size: 200%;
+  margin: 15px 0;
+}
+div#nav a {
+  margin: 15px 15px 0;
+}
+div#create {
+  width: 250px;
+  margin-left: 15px;
+}
+div#twotes {
+  width: 500px;
+  margin-left: 15px;
+}
