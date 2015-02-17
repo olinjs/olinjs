@@ -42,4 +42,10 @@ routes.create = function(req, res) {
   });
 }
 
+routes.twote = function(req, res) {
+  var user = req.session.user;
+  if (!user)
+    return res.redirect('/login');
+}
+
 module.exports = routes;
