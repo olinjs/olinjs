@@ -9,8 +9,8 @@ var Users = mongoose.model('Users', users.usersSchema);
 var Tvveets = mongoose.model('Tvveets', tvveets.tvveetsSchema);
 
 var renderUsers = function(res, current_user){
-	Users.find().exec(function (err, users){
-        Tvveets.find().sort({_id: 1}).exec(function (err, tvveets){
+	Users.find().sort({_id: -1}).exec(function (err, users){
+        Tvveets.find().sort({_id: -1}).exec(function (err, tvveets){
             console.log(users);
             console.log(tvveets);
             res.render('home', {"users": users,

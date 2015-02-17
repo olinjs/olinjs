@@ -25,10 +25,10 @@ var deleteTvveet = function (event){
     });
 }
 
-var enable_delete = function () {
+function enable_delete () {
+    console.log("Enabling Deletes")
     $tvveetsGroup.each(function (){
         var $tvveet = $(this);
-        console.log($tvveet.attr('author_id'));
         if($tvveet.attr('author_id') == user_id){
             $tvveet.find('button').prop('disabled', false);
             console.log('Our users got a tvveet');   
@@ -42,7 +42,6 @@ enable_delete();
 $loginBtn.click(function (event){
     $.get("/login")
     .done(function (data, status){
-        console.log(data);
         document.open();
         document.write(data);
         document.close();
@@ -56,7 +55,6 @@ $loginBtn.click(function (event){
 $logoutBtn.click(function (event){
     $.get("/")
     .done(function (data, status){
-        console.log(data);
         document.open();
         document.write(data);
         document.close();
@@ -69,7 +67,6 @@ $logoutBtn.click(function (event){
 
 $loginForm.submit(function (event){
     event.preventDefault()
-    console.log($loginForm);
     var name = $loginForm.find("[name='name']").val();
     var formData = {
         name : name,
@@ -105,11 +102,10 @@ $tvveetForm.submit(function (event){
     $.post("/tvveet", formData)
     .done(function (data, status){
         clonedForm =  $tvveetsGroup.first().closest('.well').clone();
-        console.log(clonedForm.find('h4'));
-        clonedForm.attr("tvveet_id", data.id);
+        clonedForm.find('.tvveet').attr("tvveet_id", data.id);
         clonedForm.find("h4").text(author + ":"); 
         clonedForm.find("span").text(text);
-        console.log(clonedForm.find('h4').val());
+        clonedForm.find('.tvveet').attr("author_id", author_id);
         $(".tvveets-col").append(clonedForm);
         $tvveetsGroup = $('.tvveet');
         $tvveetsGroup.unbind();
