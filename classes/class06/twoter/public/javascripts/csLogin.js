@@ -11,6 +11,7 @@ var onError = function(data, status) {
 	$("#loginErrors").html(data);
 };
 
+// Handle the sign up process.
 var $signUp = $("#sign_up");
 $signUp.submit(function(event) {
 	event.preventDefault();
@@ -29,6 +30,7 @@ $signUp.submit(function(event) {
 	}
 });
 
+// Handle the login process.
 var $login = $("#login");
 $login.submit(function(event) {
 	event.preventDefault();

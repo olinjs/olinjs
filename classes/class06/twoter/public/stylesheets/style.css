@@ -115,6 +115,9 @@ textarea {
 #authorName {
 	opacity: 0;
 	background-color: red;
+	position: absolute;
+	left:-500%;
+	top: -500%;
 }
 
 .deleteTwote {

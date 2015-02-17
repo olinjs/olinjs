@@ -3,7 +3,10 @@
 		Welcome, {{ authorName }}!
 		<button id="logout">Logout</button>
 	{{else}}
-		Welcome! Please <button id="logout">Login</button>
+		Welcome! Please
+		<form action="/login" style="display: inline">
+		    <input type="submit" value="Login">
+		</form>
 	{{/if}}
 </div>
 
