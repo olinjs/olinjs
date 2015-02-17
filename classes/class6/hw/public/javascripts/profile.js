@@ -1,5 +1,5 @@
 var $twitBtn = $('#postTwit');
-var $delBtn = $('#deletePost');
+var $delBtn = $('.deletePost');
 
 $twitBtn.click(function(event){
 	var twitMessage = $('#twitMessage').val();
@@ -10,15 +10,22 @@ $twitBtn.click(function(event){
 });
 
 $delBtn.click(function(event){
-	$.post('deleteTwit',{}).done(onSuccessDel).error(onError);
+	var val = $(this).attr('id');
+	$.post('deleteTwit',{ del: val }).done(onSuccessDel).error(onError);
 });
 
 var onSuccessDel = function(data, status){
-
+	$("#"+data).remove();
 };
 
 var onSuccessTwit = function(data, status){
-
+	var out = "<div id="+data.timeMade+">"+
+				"<span>"+
+				"<li>"+data.text+"</li>"+
+				"<button class='deletePost' id="+data.timeMade+" type='button'> x </button>"+
+				"</span>"+
+				"</div>"
+	$("#result").html(out);
 };
 
 var onError = function(data, status){

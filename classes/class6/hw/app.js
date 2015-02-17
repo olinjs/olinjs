@@ -31,6 +31,7 @@ app.use(session({
 
 app.get('/', home.homeRender);
 app.post('/homeTwit', home.postTwit);
+app.post('/logout', home.logoutUser);
 app.get('/login', login.loginRender);
 app.post('/loginUser', login.loginPost)
 app.get('/profile', profile.profileRender);

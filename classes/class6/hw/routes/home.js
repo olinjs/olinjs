@@ -9,7 +9,6 @@ routes.homeRender = function(req,res){
 		console.log(users.length);
 		for(var i=0;i<users.length;i++){
 			var twitArray = users[i].twits;
-			console.log(twitArray.length)
 			for (var j= 0; j<twitArray.length;j++){
 				var twit = {
 					timeMade: twitArray[j].timeMade,
@@ -17,23 +16,22 @@ routes.homeRender = function(req,res){
 					author: users[i].username
 				}
 				twits.push(twit);
-				console.log('Twit Array',twitArray)
 			};
 		};
-		twits.sort(function(a,b){
-			console.log('a', a, 'b', b);
-			var diff = a.timeMade - b.timeMade;
-			return diff
-		});
+		console.log(twits);
+
+		twits.sort(function(a, b){
+			return Number(b.timeMade) - Number(a.timeMade); 
+		})
 		// var userList = users.map(function(val){
 		// 	return val.username;
 		// });
 		if(req.session.username){
 			console.log(twits);
-			res.render('home',{'twit': twits, 'user': users, 'login': req.session.username});
+			res.render('home', {'twit': twits, 'user': users, 'login': req.session.username});
 		} else {
 			console.log(twits);
-			res.render('home',{'twit': twits, 'user': users});
+			res.render('home', {'twit': twits, 'user': users});
 		}	
 	});
 };
@@ -64,5 +62,32 @@ routes.postTwit = function(req,res){
 	};
 };
 
+routes.logoutUser = function(req,res){
+	User.find({},function(err,users){
+		req.session.username = '';
+		var twits = [];
+		console.log(users.length);
+		for(var i=0;i<users.length;i++){
+			var twitArray = users[i].twits;
+			for (var j= 0; j<twitArray.length;j++){
+				var twit = {
+					timeMade: twitArray[j].timeMade,
+					text: twitArray[j].text,
+					author: users[i].username
+				}
+				twits.push(twit);
+			};
+		};
+		console.log(twits);
+
+		twits.sort(function(a, b){
+			return Number(b.timeMade) - Number(a.timeMade); 
+		})
+		// var userList = users.map(function(val){
+		// 	return val.username;
+		// });
+		res.send('logout');
+	});
+};
 
 module.exports = routes;

@@ -1,8 +1,9 @@
 <div class="header">
 	<div class="columnOneFourth Top">
 		<ul class="navBar">
-			<li><a class="home" href="/">Home</a></li>
-			<li><a href="/login">Login</a></li>
+			{{#if login}}
+			<li><a href="/">Home</a></li>
+			{{/if}}
 		</ul> 
 	</div>
 	<div class="Top columnOneHalf">
@@ -17,7 +18,7 @@
 	<div class="oneColumn">
 		<h1>Profile</h1>
 		<div class="input-group">
-			<input type="text" id="twitMesssage" class="textWell" placeholder="How are you feeling..."> 
+			<input type="text" id="twitMessage" class="textWell" placeholder="How are you feeling..."> 
 			<span class="input-group-btn">
 				<button id="postTwit" class="btn" type="button"> > </button>
 			</span>
@@ -25,10 +26,10 @@
 		<ul>
 			<div id="result"></div>
 		{{#each twit}}
-			<div id="{{this.text}}">
+			<div id="{{this.timeMade}}">
 				<span>
 				<li>{{this.text}}</li>
-				<button id="deletePost" value="{{this.text}}" class="btn" type="button"> x </button>
+				<button class="deletePost" id="{{this.timeMade}}" type="button"> x </button>
 				</span>
 			</div>
 		{{/each}}

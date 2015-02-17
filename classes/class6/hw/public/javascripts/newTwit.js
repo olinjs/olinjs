@@ -1,4 +1,5 @@
 var $btn = $('#postTwit');
+var $logoutBtn = $('#logout');
 
 $btn.click(function btnClick(event){
 	var twitMessage = $('#twitMessage').val();
@@ -9,7 +10,6 @@ $btn.click(function btnClick(event){
 });
 
 var onSuccess = function(data, status){
-
 	var out = "<li>"+
 		"<div id='author'>"+data.username+"</div>"+
 		"<div id='text'>"+data.text+"</div>"+
@@ -21,3 +21,12 @@ var onError = function(data, status){
 	console.log('Error' + data);
 	console.log(status);
 }
+
+$logoutBtn.click(function(event){
+	$.post('logout',{}).done(onLogout).error(onError)
+});
+
+var onLogout = function(data, status){
+	console.log('Logout');
+	window.location.replace("/");
+};

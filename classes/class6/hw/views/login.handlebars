@@ -1,8 +1,12 @@
 <div class="header">
 	<div class="columnOneFourth Top">
 		<ul class="navBar">
-			<li><a class="home" href="/">Home</a></li>
+			{{#if login}}
 			<li><a href="/profile">Profile</a></li>
+			<li><button id="logout" class="btn" type="button">Logout</button></li> 
+			{{else}}
+			<li><a clss="loginLink" href="/">Home</a></li>
+			{{/if}}
 		</ul> 
 	</div>
 	<div class="Top columnOneHalf">

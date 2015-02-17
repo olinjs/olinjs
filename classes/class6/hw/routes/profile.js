@@ -26,12 +26,24 @@ routes.profileRender = function(req,res){
 
 routes.deleteTwit = function(req,res){
 	// delete a twit by the user
+	console.log('Delete Twit');
+	User.findOne({username: req.session.username}, function(err, user){
+		var del = req.body.del
+		console.log(del);
+		for(var i = 0; i<user.twits.length; i++){
+			if(user.twits[i].timeMade == del){
+				user.twits[i].remove();
+			}
+		}
+		user.save();
+		res.send(del);
+	})
 
 };
 
 routes.profilePost = function(req,res){
 	//post a new twit
-	if(req.session.username){
+	if (req.session.username) {
 		User.findOne({username: req.session.username}, function(err, user){
 			var d = new Date();
 			var time = d.getTime();
@@ -42,11 +54,14 @@ routes.profilePost = function(req,res){
 			user.twits.push(twitObj);
 			user.save();
 			var out = ({ 
+				timeMade: time,
 				text: req.body.text,
 				username: req.session.username
 			}); 
 			res.send(out);
-	}else{
+		});
+	} 
+	else {
 		res.send('')
 	}
 };
