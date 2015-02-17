@@ -7,10 +7,14 @@ var routes = {};
 
 routes.home = function(req, res) {
   var user = req.session.user;
+  if (!user)
+    return res.redirect('/login');
+
+  res.render('home', {'body': 'this'});
 }
 
 routes.login = function(req, res) {
-  res.render('home', {'twotes': 'Login!'});
+  res.render('login', {redir: req.query.redir});
 }
 
 module.exports = routes;

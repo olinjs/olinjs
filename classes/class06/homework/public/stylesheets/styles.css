@@ -3,17 +3,18 @@ body {
   background-image: url(../images/outline.png);
 }
 h1 {
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
   text-align: center;
   font-weight: 900;
   font-size: 250%;
   color: #ECF0F1;
 }
 h2 {
-  position:fixed;
   text-align: left;
   font-weight: 800;
   font-size: 150%;
+  margin: 15px 15px 15px;
+  font-family: 'Roboto', sans-serif;
   color: #3498DB;
 }
 p {
@@ -26,6 +27,7 @@ a {
   color: #ECF0F1;
 }
 div#nav {
+  font-family: 'Roboto', sans-serif;
   color: #ECF0F1;
   text-align: center;
   font-size: 150%;
@@ -33,7 +35,7 @@ div#nav {
   background-color: #3498DB;
 }
 div#nav h1 {
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 200%;
   margin: 15px 0;
 }
@@ -47,4 +49,45 @@ div#create {
 div#twotes {
   width: 500px;
   margin-left: 15px;
+}
+h2#twot-login {
+  text-align: center;
+  margin: 200px 0px 0px 0px;
+}
+.twot-form {
+  text-align: center;
+  margin: 15px 0;
+  font-family: 'Roboto', sans-serif;
+  color: #ECF0F1;
+  padding: 10px;
+}
+.twot-input {
+  font-size: 18px;
+  font-style: italic;
+  text-align: center;
+  width: 20%;
+  height: 40px;
+  outline: none;
+  border-radius: 3px;
+  border-color: transparent;
+}
+.twot-input:focus {
+  background-color: #BABDBE;
+}
+.twot-submit {
+  font-size: 18px;
+  font-style: italic;
+  text-align: center;
+  width: 5%;
+  height: 40px;
+  outline: none;
+  margin: 15px 0;
+  border-radius: 3px;
+  border-color: transparent;
+}
+.twot-submit:focus {
+  background-color: #BABDBE;
+}
+.twot-submit:hover {
+  background-color: #BABDBE;
 }

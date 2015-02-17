@@ -1,0 +1,9 @@
+<h2 id=twot-login>Login to Twoter</h2>
+{{#if redir}}
+  Please login to post twotes.
+{{/if}}
+<form method="POST" class="twot-form" action="/user/create">
+  <input type="text" class="twot-input" name="username" placeholder="Username">
+  <br>
+  <input type="submit" class="twot-submit">
+</form>
