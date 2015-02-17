@@ -1,0 +1,34 @@
+<div class="container-fluid">
+	<div class="page-header">
+		<h1>Your Ingredients <small>aren't they tasty?</small></h1>
+	</div>
+	<ul class="list-group", style = "padding-bottom: 18px">
+		{{#each ingredients}}
+			<h1 style="text-indent: 10px"> <small> {{this.name}} </small> </h1>
+			<ul>
+                <li class="list-group-item">
+                    <form class="form-inline ingredient-form" id={{this.id}}>
+                        <div class="form-group">
+                            <label> Name </label>
+                            <input type="text" class="form-control" name=name value={{this.name}}>
+                        </div>
+                        <div class="form-group">
+                            <label> Price </label>
+                            <input type="text" class="form-control" name=price value={{this.price}}>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                {{#if this.available}}
+                                    <input type="checkbox" checked name=available> Available
+                                {{else}}
+                                    <input type="checkbox" name=available> Available
+                                {{/if}}
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-default">Edit</button>
+                    </form> 
+				</li>
+			</ul>
+		{{/each}}
+	</ul>
+</div>

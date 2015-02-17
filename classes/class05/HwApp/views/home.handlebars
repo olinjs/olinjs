@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="row">
+        <div class="title-col">
+            <div class="page-header">
+		        <h1>Welcome to Tvvitter <small>Time to tvveet!</small></h1>
+	         </div>
+         </div>
+         <div class="login-col">
+             {{#if current_user}}
+                <button class="btn btn-primary" id="Logout">Log Out</button>
+             {{else}}
+                <button class="btn btn-primary" id="Login">Log In</button>
+             {{/if}}
+         </div>
+     </div>
+
+     <div class="row">
+         <!--Tvveet Col--!>
+         <div class="tvveets-col">
+            <h2> Tvveets </h2>
+            {{#if current_user}} 
+                <form class="form-inline tvveet-form" user_id={{current_user.id}} user_name={{current_user.name}}>
+                    <div class="well">
+                        <div class="form-group">
+                            <label for="text-field">Tvveet:</label>
+                            <input type="text" class="form-control floating-label" id="text-field" placeholder="Put yo tvveet here">
+                        </div>
+                        <button type="submit" class="btn btn-primary post-tvveet">Tvveet!!</button>
+                    </div>
+                </form>
+            {{/if}}
+
+            {{#each tvveets}}
+                <div class="well tvveet-well">
+                    <form class="inline-form tvveet" tvveet_id={{this.id}} author_id={{this.author_id}}>
+                        <div class="form-group">
+                            <h4>{{this.author}}:</h4>
+                            <span> {{this.text}} </span>
+                            <button class="btn btn-warning delete-btn" disabled>Delete</button>
+                        </div>
+                    </form>
+                </div>
+             {{/each}}
+         </div>
+
+         <!--User Col--!>
+         <div class="users-col">
+            <h2> Users <h2>
+            {{#each users}}
+                <button class ="btn btn-default btn-raised user-btn" user_id={{this.id}}> {{this.name}} </button>
+            {{/each}}
+        </div>
+    </div>
+</div>
+
+

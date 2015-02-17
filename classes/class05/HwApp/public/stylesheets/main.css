@@ -1,0 +1,40 @@
+body{
+    background: #FDF9F3;
+}
+
+.btn.btn-default.user-btn{
+     background-color: #FFFFFF;
+     width: 90%;
+}
+
+#name-field{
+    margin-right: 15%;
+}
+
+.tvveets-col, .users-col, .title-col, .login-col{
+    float: left;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.tvveets-col, .title-col{
+    width: 83.3333%;
+}
+
+.users-col, .login-col{
+    text-align: center;
+    text-align: center;
+    width: 16.667%;
+}
+
+.delete-btn{
+    vertical-align: center;
+    float: right;
+}
+
+.post-tvveet{
+    vertical-align:center;
+    float:right;
+}
