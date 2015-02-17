@@ -3,8 +3,8 @@ var User = require('../models/user');
 
 routes.profileRender = function(req,res){
 	//render the Profile page
-	if(req.session.username){
-		User.findOne({username: req.session.username}, function(err,user){
+	if(!emptyObjTest(req.session.passport)){
+		User.findOne({username: req.session.passport.user.displayName}, function(err,user){
 			var twits = [];
 			var twitArray = user.twits
 			for(var i=0; i<twitArray.length;i++){
@@ -17,7 +17,7 @@ routes.profileRender = function(req,res){
 				var diff = a.timeMade - b.timeMade;
 				return diff;
 			});
-			res.render('profile',{'twit': twits, 'login': req.session.username})
+			res.render('profile',{'twit': twits, 'login': req.session.passport.user.displayName})
 		})
 	} else{
 		res.render('profile');
@@ -27,7 +27,7 @@ routes.profileRender = function(req,res){
 routes.deleteTwit = function(req,res){
 	// delete a twit by the user
 	console.log('Delete Twit');
-	User.findOne({username: req.session.username}, function(err, user){
+	User.findOne({username: req.session.passport.user.displayName}, function(err, user){
 		var del = req.body.del
 		console.log(del);
 		for(var i = 0; i<user.twits.length; i++){
@@ -43,8 +43,8 @@ routes.deleteTwit = function(req,res){
 
 routes.profilePost = function(req,res){
 	//post a new twit
-	if (req.session.username) {
-		User.findOne({username: req.session.username}, function(err, user){
+	if (!emptyObjTest(req.session.passport)) {
+		User.findOne({username: req.session.passport.user.displayName}, function(err, user){
 			var d = new Date();
 			var time = d.getTime();
 			var twitObj = {
@@ -56,7 +56,7 @@ routes.profilePost = function(req,res){
 			var out = ({ 
 				timeMade: time,
 				text: req.body.text,
-				username: req.session.username
+				username: req.session.passport.user.displayName
 			}); 
 			res.send(out);
 		});
@@ -64,6 +64,10 @@ routes.profilePost = function(req,res){
 	else {
 		res.send('')
 	}
+};
+
+function emptyObjTest(obj){
+	return Object.keys(obj).length === 0;
 };
 
 module.exports = routes;

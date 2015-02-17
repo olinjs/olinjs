@@ -11,8 +11,8 @@ $btn.click(function btnClick(event){
 
 var onSuccess = function(data, status){
 	var out = "<li>"+
-		"<div id='author'>"+data.username+"</div>"+
 		"<div id='text'>"+data.text+"</div>"+
+		"<div id='author'>"+data.username+"</div>"+
 		"</li>";
 	$("#result").html(out);
 };

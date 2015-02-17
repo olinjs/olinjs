@@ -26,9 +26,9 @@ routes.homeRender = function(req,res){
 		// var userList = users.map(function(val){
 		// 	return val.username;
 		// });
-		if(req.session.username){
-			console.log(twits);
-			res.render('home', {'twit': twits, 'user': users, 'login': req.session.username});
+		console.log(req.session.passport);
+		if(!emptyObjTest(req.session.passport)){
+			res.render('home', {'twit': twits, 'user': users, 'login': req.session.passport.user.displayName});
 		} else {
 			console.log(twits);
 			res.render('home', {'twit': twits, 'user': users});
@@ -36,11 +36,21 @@ routes.homeRender = function(req,res){
 	});
 };
 
+function emptyObjTest(obj){
+	// for (var prop in obj){
+	// 	if(obj.hasOwnProperty(prop)){
+	// 		return false;
+	// 	}
+	// }
+	// return true;
+
+	return Object.keys(obj).length === 0;
+}
 
 routes.postTwit = function(req,res){
 	//Handles the new twit form
-	if(req.session.username){
-		User.findOne({username: req.session.username}, function(err, user){
+	if(!emptyObjTest(req.session.passport)){
+		User.findOne({username: req.session.passport.user.displayName}, function(err, user){
 			var d = new Date();
 			var time = d.getTime();
 			var twitObj = {
@@ -53,7 +63,7 @@ routes.postTwit = function(req,res){
 			console.log(user.twits);
 			var out = ({ 
 				text: req.body.text,
-				username: req.session.username
+				username: req.session.passport.user.displayName
 			}); 
 			res.send(out);
 		})	
@@ -64,7 +74,7 @@ routes.postTwit = function(req,res){
 
 routes.logoutUser = function(req,res){
 	User.find({},function(err,users){
-		req.session.username = '';
+		req.session.passport = {};
 		var twits = [];
 		console.log(users.length);
 		for(var i=0;i<users.length;i++){

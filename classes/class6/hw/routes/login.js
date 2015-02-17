@@ -12,7 +12,7 @@ routes.loginPost = function(req,res){
 	var usersName = req.body.username;
 	console.log(usersName);
 	console.log(req.session.username);
-	if (req.session.username){
+	if (!emptyObjTest(req.session.passport)){
 			res.send('error')
 	} else {
 		User.findOne({username: usersName}, function(error, user){
@@ -22,18 +22,20 @@ routes.loginPost = function(req,res){
 			if(user){
 				console.log('Returning User', user)
 				req.session.username = user.username;
-				console.log(req.session.username)
 				res.send(user.username)
 			} else {
 				console.log('New User', user)
 				var newUser = new User({username: usersName, twits: []});
 				newUser.save();
 				req.session.username = usersName;
-				console.log(req.session.username, newUser)
 				res.send(usersName);
 			};
 		});
 	}
+};
+
+function emptyObjTest(obj){
+	return Object.keys(obj).length === 0;
 };
 
 module.exports = routes;
