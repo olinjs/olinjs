@@ -1,8 +1,126 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800);
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 12pt "Open Sans", Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+.highlighted {
+	background-color: yellow;
+}
+
+textarea {
+  font: 12pt "Open Sans", Arial, sans-serif;
+}
+
+#welcomeLogout {
+	position: absolute;
+	left: 0;
+	top: 0;
+	padding: 5px;
+	border: 1px dotted gray;
+}
+
+#submit_twote {
+	position: absolute;
+	left: 50%;
+	top: 100px;
+	width: 1000px;
+	margin-left: -500px;
+}
+
+#twoteBox {
+	width: 600px;
+}
+
+#twoteSubmitButton {
+	width: 93px;
+	height: 50px;
+	position: absolute;
+	font-size: 28pt;
+	background-color: white;
+	border: 1px dotted gray;
+}
+
+#twoteSubmitButton:hover {
+	background-color: red;
+}
+
+#mainContent {
+	position: absolute;
+	left: 50%;
+	top: 170px;
+	width: 1000px;
+	margin-left: -500px;
+}
+
+#twote_list {
+	position: relative;
+	float: left;
+	width: 700px;
+}
+
+#author_list {
+	box-sizing: border-box;
+	position: relative;
+	float: right;
+	width: 280px;
+}
+
+.authors {
+	padding: 20px;
+	margin-bottom: 20px;
+	border: 1px dotted gray;
+	text-align: left;
+}
+
+
+.oneTwote {
+	box-sizing: border-box;
+	padding: 20px;
+	border: 1px dotted gray;
+	margin-bottom: 20px;
+}
+
+.twoteText {
+	line-height: 200%;
+}
+
+.signature {
+	text-align: right;
+	font-style: italic;
+}
+
+#loginBox {
+	box-sizing: border-box;
+	position: absolute;
+	width: 400px;
+	height: 500px;
+	left: 50%;
+	top: 50%;
+	border: 1px dotted gray;
+	margin-left: -200px;
+	margin-top: -250px;
+	padding: 50px;
+	text-align: right;
+}
+
+#loginBox > h3 {
+	text-align: left;
+}
+
+#authorName {
+	opacity: 0;
+	background-color: red;
+}
+
+.deleteTwote {
+	display: none;
+}
+
+.deleteOn {
+	display: block;
 }

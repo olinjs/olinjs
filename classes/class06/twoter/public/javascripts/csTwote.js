@@ -2,18 +2,19 @@ var $submitTwote = $("#submit_twote");
 
 var onSuccess = function(data, status) {
 	console.log("Successful!");
-	console.log(data);
 	$("#twote_list").html(data);
 };
 
 var onError = function(data, status) {
 	console.log("Failed!");
-	console.log(data);
 };
 
 // After the page loads, send an AJAX get request to collect the list of ingredients.
 $(function() {
   $.get("/").done(onSuccess).error(onError);
+  $.get("/authors").done(function (data, status){
+  	$("#author_list").html(data);
+  }).error(onError);
 });
 
 $submitTwote.submit(function(event) {
@@ -25,4 +26,11 @@ $submitTwote.submit(function(event) {
 	$.post("/", {
 		twote: writtenTwote
 	}).done(onSuccess).error(onError);
+});
+
+// Logging out.
+$("#logout").click(function (event) {
+	$.get("/logout").success(function(data) {
+       window.location = data;
+    }).error(onError);
 });

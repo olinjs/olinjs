@@ -1,6 +1,9 @@
 {{#each twotes}}
-<p>Text: {{ twote }}</p>
-<p>Author Name:{{ author_name }}</p>
+<div class="oneTwote">
+	<p class="twoteText">{{ twote }}</p>
+	<p class="signature">- {{ authorName }}</p>
+	<button class="deleteTwote" id="{{ _id }}">Delete</button>
+</div>
 {{/each}}
 
 <script type="text/javascript" src="javascripts/csTwoteList.js"></script>
