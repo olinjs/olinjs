@@ -97,7 +97,7 @@ You might find it easier to draw these out by hand at first, or use a tool like 
 ####Network Layout
 If you ever get to the point that you're working on a *really* big application that's distributed across multiple different severs, you'll need to start diagramming a map of all of your different servers, databases, and other networked components, and how they all connect.
 We'll never get around to anything remotely close to the system shown below (in fact I'd be surprised if anyone has a configuration like that), but the principle is still there.
-![AWS network layout](images/AWSExample.png)
+![AWS network layout](images/AWSexample.png)
 
 ##Refactoring
 As you develop (or let's be honest - have been developing), you might find yourself doing hacky things just to get your code to work.
