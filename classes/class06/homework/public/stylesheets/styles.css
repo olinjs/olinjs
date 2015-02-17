@@ -74,6 +74,9 @@ h2#twot-login {
 .twot-input:focus {
   background-color: #BABDBE;
 }
+.twot-input:hover {
+  background-color: #BABDBE;
+}
 .twot-submit {
   font-size: 18px;
   font-style: italic;

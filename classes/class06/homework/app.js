@@ -29,7 +29,8 @@ app.use(session({
 }));
 
 app.get('/', index.home);
-app.get('/login', index.login);
+app.get('/login', index.login)
+app.post('/', index.test)
 
 mongoose.connect(mongoURI);
 
