@@ -7,19 +7,6 @@ var routes = {};
 
 routes.home = function(req, res) {
   var user = req.session.user;
-  Twote.find({}).populate('creator').exec(function(err, twotes) {
-    twotes = twotes.map(function(twote) {
-      twote.userName = twote.creator? twote.creator.name: 'test';
-      return twote;
-    });
-    User.find({}, function(err, users) {
-      res.render('home', {
-        user: user? user.name : '',
-        users: users,
-        twotes: twotes.reverse()
-      });
-    });
-  });
 }
 
 routes.login = function(req, res) {
