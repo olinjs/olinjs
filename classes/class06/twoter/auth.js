@@ -9,7 +9,6 @@ passport.use(new LocalStrategy(
 		if (username === 'admin' && password === 'lynda') {
 			return done(null, {username: 'admin'});
 		}
-
 		return done(null, false);
 	}
 ));
