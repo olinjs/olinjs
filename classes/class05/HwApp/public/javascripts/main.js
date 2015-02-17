@@ -1,65 +1,74 @@
-var $ingredientforms = $(".form-inline.ingredient-form");
-var $newIngredientform = $(".form-inline.new-ingredient-form");
+var $loginBtn = $("#Login");
+var $logoutBtn = $('#Logout');
+var $loginForm = $('.login-form');
+var $tvveetForm = $('.tvveet-form');
+var $tvveetsGroup = $('.tvveet');
+var $usersGroup = $('.user-btn');
 
-var $addBoxes = $(".add-box");
-var $orderBtn = $(".btn-order");
-var ingredients = [];
+var user_id = $tvveetForm.attr('user_id');
+console.log($usersGroup);
+$.material.init();
 
-var $doneBoxes = $(".done-box");
+var deleteTvveet = function (event){
+    event.preventDefault();
+    var $tvveet = $(this)
+    var tvveet_id = $tvveet.attr('tvveet_id')
+    var data = {id:tvveet_id}
+    $.post('delete', data)
+    .done(function (data, status){
+        $tvveet.closest('.well').remove();
+    })
+    .error(function (data, status){
+        console.log(status);
+        console.log(data);  
+    });
+}
 
-$ingredientforms.each(function (){
-    var $ingredientform = $(this);
-    console.log($ingredientform.find("[name='name']").val());
-    $ingredientform.submit(function(event) {
-        console.log("form submitted");
-        event.preventDefault();
-        var ingredient_id = $ingredientform.closest(".ingredient-group").attr('id');
-        var newName = $ingredientform.find("[name='name']").val();
-        var price   = $ingredientform.find("[name='price']").val();
-        var available = $ingredientform.find("[name='available']").prop('checked');
-        var formData = {
-            ingredient_id: ingredient_id,
-            newName: newName,
-            price: price,
-            available: available
-        };
-        console.log(formData);
-        $.post("postIngredient", formData)
-        .done(function (data, status){
-            console.log(data.name);
-            $("#"+ingredient_id).find("small").text(data.name);
-            console.log("#"+ingredient_id); 
-        })
-        .error(function (data, status){
-            console.log(status);
-            console.log(data);  
-        });
+$tvveetsGroup.submit(deleteTvveet);
+
+$loginBtn.click(function (event){
+    $.get("/login")
+    .done(function (data, status){
+        console.log(data);
+        document.open();
+        document.write(data);
+        document.close();
+    })
+    .error(function (data, status){
+        console.log(status);
+        console.log(data);  
     });
 });
 
-$newIngredientform.submit(function(event) {
-    console.log("new ingredient!!! submitted");
-    event.preventDefault();
-    //formData = $ingredientform.serialize();
-    var newName = $newIngredientform.find("[name='name']").val();
-    var price   = $newIngredientform.find("[name='price']").val();
-    var available = $newIngredientform.find("[name='available']").prop('checked');
+$logoutBtn.click(function (event){
+    $.get("/")
+    .done(function (data, status){
+        console.log(data);
+        document.open();
+        document.write(data);
+        document.close();
+    })
+    .error(function (data, status){
+        console.log(status);
+        console.log(data);  
+    });
+});
+
+$loginForm.submit(function (event){
+    event.preventDefault()
+    console.log($loginForm);
+    var name = $loginForm.find("[name='name']").val();
     var formData = {
-        newName: newName,
-        price: price,
-        available: available
+        name : name,
     };
+
     console.log(formData);
-    $.post("newIngredient", formData)
+    $.post("/login", formData)
     .done(function (data, status){
-        clonedForm =  $(".ingredient-group").first().clone();
-        clonedForm.attr("id", data.id);
-        clonedForm.find("small").text(newName);
-        clonedForm.find("[name='name']").val(newName);
-        clonedForm.find("[name='price']").val(price);
-        clonedForm.find("[name='available']").prop('checked', available);
-        console.log(clonedForm.find("[name='name']").val());
-        $(".list-group").append(clonedForm);
+        console.log(data);
+        document.open();
+        document.write(data);
+        document.close();
     })
     .error(function (data, status){
         console.log(status);
@@ -67,66 +76,64 @@ $newIngredientform.submit(function(event) {
     });
 });
 
-$addBoxes.each(function() {
-    var $addBox = $(this);
-   $addBox.change(function(event){
-        event.preventDefault();
-        if($addBox.prop('checked')){
-            $(".cost-group").find("h3").text(Number($(".cost-group").find("h3").text())+Number($addBox.closest(".list-group-item").attr('price')));
-            ingredients.push($addBox.closest(".list-group-item").attr('ingredient_name'));
-            console.log(ingredients)
-            console.log(Number($addBox.closest(".list-group-item").attr('price')));
-        } else {
-            $(".cost-group").find("h3").text(Number($(".cost-group").find("h3").text())-Number($addBox.closest(".list-group-item").attr('price')));
-            var index = $.inArray($addBox.closest(".list-group-item").attr('ingredient_name'), ingredients );
-            ingredients.splice(index, 1);
-            console.log(ingredients)
-            console.log(Number($(".cost-group").find("h3").text())-Number($addBox.closest(".price").text()))
-        }
-    });
-});
-
-console.log($orderBtn);
-$orderBtn.click(function (event){
+$tvveetForm.submit(function (event){
     event.preventDefault();
-    console.log("Order submitted");
-    formData = {
-        ingredientList: ingredients
-    };
+    var text = $('#text-field').val();
+    var author = $tvveetForm.attr("user_name");
+    var author_id = $tvveetForm.attr("user_id");
+
+    var formData = {
+        text : text,
+        author : author,
+        author_id : author_id
+    }
+    
     console.log(formData);
-    $.post("postOrder",formData)
+    $.post("/tvveet", formData)
     .done(function (data, status){
-        ingredients = [];
-        console.log("Adding order")
-        $addBoxes.each(function(){
-           $(this).prop('checked', false);
-        })
-        alert("Your Order is submitted!!!");
+        clonedForm =  $tvveetsGroup.first().closest('.well').clone();
+        console.log(clonedForm.find('h4'));
+        clonedForm.attr("tvveet_id", data.id);
+        clonedForm.find("h4").text(author + ":"); 
+        clonedForm.find("span").text(text);
+        console.log(clonedForm.find('h4').val());
+        $(".tvveets-col").append(clonedForm);
+        $tvveetsGroup = $('.tvveet');
+        $tvveetsGroup.unbind();
+        $tvveetsGroup.submit(deleteTvveet);
     })
     .error(function (data, status){
         console.log(status);
         console.log(data);  
     });
-});
+})
 
-console.log($doneBoxes);
 
-$doneBoxes.each(function() {
-    var $doneBox = $(this);
-    $doneBox.change(function(event){
-        var order_id = $doneBox.closest('.list-inline').attr('order_id');
-        formData = {
-            order_id: order_id
+
+$usersGroup.click(function (){
+    var $user_btn = $(this);
+    var clicked_user_id = $user_btn.attr('user_id');
+
+    $usersGroup.css("background-color", "#FFF");
+    $user_btn.css("background-color", '#e6f9ff');
+    
+    $tvveetsGroup.each(function (){
+        var $tvveet = $(this);
+        if($tvveet.attr('author_id') == clicked_user_id){
+            $tvveet.closest('.well').css("background-color", "#e6f9ff");
         }
-        console.log(formData);
-        $.post("deleteOrder", formData)
-        .done(function (data, status){
-            console.log("removing order");
-            $doneBox.closest('.list-inline').remove();
-        })
-        .error(function (data, status){
-            console.log(data);
-            console.log(status);
-        })
+        else{
+            $tvveet.closest('.well').css("background-color", "#FFF");
+        }
     });
-});
+})
+
+$tvveetsGroup.each(function (){
+    var $tvveet = $(this);
+    console.log($tvveet.attr('author_id'));
+    if($tvveet.attr('author_id') == user_id){
+        $tvveet.find('button').prop('disabled', false);
+        console.log('Our users got a tvveet');   
+    }
+})
+

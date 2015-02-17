@@ -5,12 +5,11 @@ var cookieParser = require("cookie-parser");
 var bodyParser = require("body-parser");
 var exphbs  = require("express-handlebars");
 
-var index = require("./routes/index");
-var kitchen  = require("./routes/kitchen");
+var tvvitter  = require("./routes/tvvitter");
 
 var app = express();
 
-var PORT = process.env.PORT || 3000
+var PORT = process.env.PORT || 3001
 
 app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
@@ -21,15 +20,14 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/", kitchen.newOrder);
-app.get("/ingredients", kitchen.getIngredients);
-app.get("/order", kitchen.newOrder);
-app.get("/kitchen",kitchen.getOrders);
+app.get("/", tvvitter.getHome);
+app.get("/login", tvvitter.getLogin);
 
-app.post("/postIngredient", kitchen.postIngredient);
-app.post("/newIngredient", kitchen.newIngredient);
-app.post("/postOrder", kitchen.postOrder);
-app.post("/deleteOrder", kitchen.deleteOrder);
+app.post("/login", tvvitter.postLogin);
+
+app.post("/tvveet", tvvitter.postTvveet);
+app.post("/delete", tvvitter.deleteTvveet);
+
 app.listen(PORT, function() {
   console.log("App running on port:", PORT);
 });
