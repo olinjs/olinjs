@@ -76,14 +76,28 @@ draw.io is a cool web-based application that offers a lot of nice tools for maki
 
 ![Example diagram from draw.io](images/draw_example.png)
 
+We aren't going to require any one specific type of diagram for your projects in this class.
+Instead, we're going to recommend a couple of different options that you might consider diagramming for managing complexity in your application.
+Let's look at things you might consider diagramming.
+
 ####Logic Flow
+if your application involves a lot of different routes and middleware, you might consider mapping how a request moves through your application.
+As an example, let's look at how we might diagram a simple application with a few routes and a few pieces of middleware.
 ![Example application logic flow](images/app_flow.png)
+If we follow a request in from the user, we can clearly see how it moves through the router to a route, which routes need to access our database, and which ones redirect.
+You can pick and choose which components inside your application you choose to represent, but make sure that the amount of information you show is useful.
+Too much information and the diagram might be difficult to follow, too little and it might not be useful, or could even be misleading.
 
 ####Interactions
-
+If you anticipate having a lot of different interfaces you might want to create a diagram that represents what the user will see happen in response to certain actions.
+You might find it easier to draw these out by hand at first, or use a tool like [balsamiq](https://balsamiq.com/) or [inVision](http://www.invisionapp.com/), but don't think you need a high resolution representation to make something of value.
+![](http://www.seanlemme.com/assets/img/portfolio/nurse2.png)
+*Image via seanlemme.com*
 
 ####Network Layout
-
+If you ever get to the point that you're working on a *really* big application that's distributed across multiple different severs, you'll need to start diagramming a map of all of your different servers, databases, and other networked components, and how they all connect.
+We'll never get around to anything remotely close to the system shown below (in fact I'd be surprised if anyone has a configuration like that), but the principle is still there.
+![AWS network layout](images/AWSExample.png)
 
 ##Refactoring
 As you develop (or let's be honest - have been developing), you might find yourself doing hacky things just to get your code to work.
@@ -132,7 +146,7 @@ If the top level starts to get out of hand with too many templates, consider cre
 
 `models/` This folder should be the keeper of all of your database models, or schemas.
 Good practice is to have one file per model or schema, rather than keep them all in the same one.
-Again, it might have been easier up until now to put all of your small schemas in the same folder, but looking ahead, you'll be doing yourself a huge favor if you start getting used to separating things into their own files.
+Again, it might have been easier up until now to put all of your small schemas in the same file, but looking ahead, you'll be doing yourself a huge favor if you start getting used to separating things into their own files.
 
 `routes/` We haven't seen very many issues with people catching on to using this folder properly.
 In general, you'll want a separate route file for each schema you have, to contain that particular item's collection of routes.
