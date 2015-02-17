@@ -1,0 +1,26 @@
+<div id="welcomeLogout">
+	{{#if authorLoggedIn }}
+		Welcome, {{ authorName }}!
+		<button id="logout">Logout</button>
+	{{else}}
+		Welcome! Please
+		<form action="/login" style="display: inline">
+		    <input type="submit" value="Login">
+		</form>
+	{{/if}}
+</div>
+
+{{#if authorLoggedIn }}
+<form id="submit_twote">
+	<textarea id="twoteBox" type="text" name="writtenTwote" placeholder="What's happening?" required></textarea>
+	<input id="twoteSubmitButton" type="submit" value=">>">
+</form>
+{{/if}}
+
+<div id="mainContent">
+	<div id="twote_list"></div>
+	<div id="author_list"></div>
+</div>
+
+<div id="authorName">{{ authorName }}</div>
+<script type="text/javascript" src="javascripts/csTwote.js"></script>
