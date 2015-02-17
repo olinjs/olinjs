@@ -69,10 +69,15 @@ If you write all of your tests first, not only are you always validating your ap
 How convenient!
 
 ###Diagramming
-process example
+Many of us understand systems better when we're able to visualize them.
+To this end, diagramming different aspects of your application can be a very effective means of creating an easy to understand, meaningful representation.
+In the past you might have used tools like PowerPoint or Visio to create flow charts or UML diagrams, but in this class we're rocking our Windows-free dev environments, so let's check out [draw.io](http://draw.io).
+draw.io is a cool web-based application that offers a lot of nice tools for making process diagrams and flow charts like the one below, check it out!
+
+![Example diagram from draw.io](images/draw_example.png)
 
 ####Logic Flow
-
+![Example application logic flow](images/app_flow.png)
 
 ####Interactions
 
@@ -81,7 +86,11 @@ process example
 
 
 ##Refactoring
-
+As you develop (or let's be honest - have been developing), you might find yourself doing hacky things just to get your code to work.
+Avoid this if you can.
+However if you do, it's valuable to take a few minutes to **refactor** your code.
+If you're unfamiliar with this term, refactoring basically refers to restructuring how your code is laid out across files, functions, modules, etc. without necessarily modifying any functionality.
+In order for you to be effective at refactoring, let's go through a typical folder structure for one of our applications and look at what goes where.
 
 ###Folder Structure
 ```
@@ -108,15 +117,42 @@ MyApp/
 |  +--users.js
 |  +--twotes.js
 +--util/
++--tests/
 +--app.js
 +--package.json
 ```
+
+`public/` We all know that we've been using this folder to host all of our front-end javascript, css, and any other static content we want the user to have direct access to. 
+What we failed to mention before is what does **not** belong here. 
+Any files that you do not want your users to have public access to - files with secret keys, proprietary application logic, or authentication flow - should by no means end up here. 
+We name this folder public for a reason - everything in it is publicly available.
+
+`views/` Again, we've gotten pretty good at this one. Keep all of your handlebars templates, layouts, and partials here. 
+If the top level starts to get out of hand with too many templates, consider creating subfolders for logical groups of templates.
+
+`models/` This folder should be the keeper of all of your database models, or schemas.
+Good practice is to have one file per model or schema, rather than keep them all in the same one.
+Again, it might have been easier up until now to put all of your small schemas in the same folder, but looking ahead, you'll be doing yourself a huge favor if you start getting used to separating things into their own files.
+
+`routes/` We haven't seen very many issues with people catching on to using this folder properly.
+In general, you'll want a separate route file for each schema you have, to contain that particular item's collection of routes.
+You might also have a collection of generic application routes that aren't necessarily tied to any one model item.
+From time to time you might also see or hear this folder referred to as controllers rather than routes.
+For now, consider the two interchangeable.
+
+`util/` This can be a generic catch-all folder for housing any utility scripts you might have that don't fit in to any of the other categories.
+As an example, we saw many people creating scripts for generating random cat names in a previous homework.
+This folder would be a great place to put that script.
+
+`tests/` Pretty self-explainatory - keep all of your test scripts in this folder.
+
+So there we have it - some simple guidlines for keeping your application neat and orderly.
 
 ##Exercise
 Form groups of 4-5 people and select one of the following websites.
 We're going to deconstruct these websites and design a simple specification for these sites as if we were going to implement them ourselves.
 Don't worry about trying to capture all of the functionality of these sites and instead focus on a few core features that you might reasonably be able to implement at this time.
-Expect to spend about 10-15 minutes on this exercise.
+Expect to spend about 20-30 minutes on this exercise.
 
 [Netflix](http://netflix.com/)
 
