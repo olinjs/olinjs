@@ -7,6 +7,7 @@ var $usersGroup = $('.user-btn');
 
 var user_id = $tvveetForm.attr('user_id');
 console.log($usersGroup);
+
 $.material.init();
 
 var deleteTvveet = function (event){
@@ -24,7 +25,19 @@ var deleteTvveet = function (event){
     });
 }
 
+var enable_delete = function () {
+    $tvveetsGroup.each(function (){
+        var $tvveet = $(this);
+        console.log($tvveet.attr('author_id'));
+        if($tvveet.attr('author_id') == user_id){
+            $tvveet.find('button').prop('disabled', false);
+            console.log('Our users got a tvveet');   
+        }
+    })
+}
+
 $tvveetsGroup.submit(deleteTvveet);
+enable_delete();
 
 $loginBtn.click(function (event){
     $.get("/login")
@@ -101,6 +114,7 @@ $tvveetForm.submit(function (event){
         $tvveetsGroup = $('.tvveet');
         $tvveetsGroup.unbind();
         $tvveetsGroup.submit(deleteTvveet);
+        enable_delete();
     })
     .error(function (data, status){
         console.log(status);
@@ -126,14 +140,5 @@ $usersGroup.click(function (){
             $tvveet.closest('.well').css("background-color", "#FFF");
         }
     });
-})
-
-$tvveetsGroup.each(function (){
-    var $tvveet = $(this);
-    console.log($tvveet.attr('author_id'));
-    if($tvveet.attr('author_id') == user_id){
-        $tvveet.find('button').prop('disabled', false);
-        console.log('Our users got a tvveet');   
-    }
 })
 
