@@ -1,0 +1,145 @@
+*{
+	color: hsl(180, 0%, 0%);
+	/*background-color: */
+	box-sizing: border-box;
+	font-family:sans-serif; 
+}
+
+.container{
+	margin: 0;
+	padding: 0;
+}
+
+.header{
+	position:absolute;
+	background-color: hsl(100, 90%, 40%);
+	top: 0;
+	left: 0;
+	width: 100vw;
+}
+.oneColumn{
+	position:relative;
+	height: 60px;
+	width: 100%;
+}
+
+.Top{
+	height: 60px !important;
+}
+
+#topHeader{	
+	color: hsl(0, 0%, 100%);
+	vertical-align: middle;
+	text-align: left;
+	height: 60px;
+	line-height: 58px;
+	margin:0;
+}
+
+.navBar{
+	height: 60px;
+	float:left;
+	color: hsl(0,0%,100%);
+	margin: 0;
+}
+
+.navBar li{
+	line-height: 58px;
+	vertical-align: middle;
+	display: inline;
+	font-size: 1em;
+	color: hsl(0, 0%, 100%);
+}
+
+.spacer{
+	height: 70px;
+	width: 100vw;
+}
+
+.row{
+	position:relative;
+	z-index: 1;
+	width: 100vw;
+	margin: 0pt;
+	text-align: center;
+}
+
+.columnOneFourth{
+	float: left;
+	text-align: center;
+	width: 25%;
+	height: 100vh;
+}
+.columnOneHalf{
+	float: left;
+	text-align: left;
+	width: 50%;
+	height: 100vh;
+}
+
+.columnTwoThirds{
+	float: left;
+	text-align: left;
+	width: 66%;
+	height: 100vh;
+}
+
+.columnOneThird{
+	float: left;
+	text-align: center;
+	width: 33%;
+	height: 100vh;
+}
+
+.columnOneThird h3{
+	margin: 0;
+}
+
+.input-group{
+	width: 100%;
+	background: hsl(0, 0%, 100%);
+}
+
+.btn{
+	display: inline;
+	background: -webkit-linear-gradient(top, hsl(100, 90%, 60%), hsl(100, 90%, 40%));
+	box-shadow: none;
+	font-weight: bold;
+	cursor: pointer;
+	transition-duration: .5s;
+	transition-property: background-color,box-shadow;
+	height:30px;
+	width: 60px;
+	z-index: 1;
+	padding: 0;
+	outline: none;
+	margin: 0;
+	border: 0;
+	border-bottom-left-radius:0;
+	border-top-left-radius: 0;  
+}
+
+.textWell{
+	width: 75%;
+	height: 30px;
+	margin: 0;
+	/*border: 0;*/
+	padding: 0;
+}
+
+.tweet{
+	width: 100%;
+	background: -webkit-linear-gradient(top, hsl(100, 90%, 90%), hsl(100, 90%, 70%));
+	padding-left: 0;
+	padding-bottom: 5px;
+}
+
+.messages{
+	list-style-type: none;
+	padding-left: 0;
+}
+
+.users{
+	list-style-type: none;
+	padding-left: 0;
+}

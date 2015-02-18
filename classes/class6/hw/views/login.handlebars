@@ -1,0 +1,30 @@
+<div class="header">
+	<div class="columnOneFourth Top">
+		<ul class="navBar">
+			{{#if login}}
+			<li><a href="/profile">Profile</a></li>
+			<li><button id="logout" class="btn" type="button">Logout</button></li> 
+			{{else}}
+			<li><a clss="loginLink" href="/">Home</a></li>
+			{{/if}}
+		</ul> 
+	</div>
+	<div class="Top columnOneHalf">
+		<h1 id="topHeader">Tweeter</h1>	
+	</div>
+	<div class="columnOneFourth Top" id="user">
+		<h3>{{login}}</h3>
+	</div>
+</div>
+<div class="spacer"></div>
+<div class="row">
+	<div class="oneColumn">
+		<h1>Login</h1>
+		<form id="login" action="loginUser" method="POST">
+			<input type="text" name="username" class="textWell" placeholder="Username"> 
+			<input type="submit" id="loginBtn" class="btn" value="Login"> 
+		</form>
+		<a href="/auth/facebook">Login with Facebook</a> 
+	</div>
+</div>
+<script type="text/javascript" src="javascripts/login.js"></script>

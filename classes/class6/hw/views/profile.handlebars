@@ -1,0 +1,39 @@
+<div class="header">
+	<div class="columnOneFourth Top">
+		<ul class="navBar">
+			{{#if login}}
+			<li><a href="/">Home</a></li>
+			{{/if}}
+		</ul> 
+	</div>
+	<div class="Top columnOneHalf">
+		<h1 id="topHeader">Tweeter</h1>	
+	</div>
+	<div class="columnOneFourth Top" id="user">
+		<h3>{{login}}</h3>
+	</div>
+</div>
+<div class="spacer"></div>
+<div class="row">
+	<div class="oneColumn">
+		<h1>Profile</h1>
+		<div class="input-group">
+			<input type="text" id="twitMessage" class="textWell" placeholder="How are you feeling..."> 
+			<span class="input-group-btn">
+				<button id="postTwit" class="btn" type="button"> > </button>
+			</span>
+		</div>
+		<ul>
+			<div id="result"></div>
+		{{#each twit}}
+			<div id="{{this.timeMade}}">
+				<li>{{this.text}}</li>
+				<span>
+				<button class="deletePost" id="{{this.timeMade}}" type="button"> x </button>
+				</span>
+			</div>
+		{{/each}}
+		</ul>
+	</div>
+</div>
+<script typr="text/javascript" src="javascripts/profile.js"></script>

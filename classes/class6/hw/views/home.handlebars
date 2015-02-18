@@ -1,0 +1,52 @@
+<div class="container">
+	<div class="header">
+		<div class="columnOneFourth Top">
+			<ul class="navBar">
+				{{#if login}}
+				<li><a href="/profile">Profile</a></li>
+				<li><button id="logout" class="btn" type="button">Logout</button></li> 
+				{{else}}
+				<li><a clss="loginLink" href="/login">Login</a></li>
+				{{/if}}
+			</ul> 
+		</div>
+		<div class="Top columnOneHalf">
+			<h1 id="topHeader">Tweeter</h1>	
+		</div>
+		<div class="columnOneFourth Top" id="user">
+			<h3>{{login}}</h3>
+		</div>
+	</div>
+	<div class="spacer">
+	</div>
+	<div class="row">
+		<div class="columnTwoThirds">
+			<div class="input-group">
+				<span class="input-group">
+				<input type="text" id="twitMessage" class="textWell" placeholder="How are you feeling..."> 
+				<button id="postTwit" class="btn" type="button"> > </button>
+				</span>
+			</div>
+			<ul class="messages">
+				<div id="result"></div>
+			{{#each twit}}
+			<div class="tweet">
+				<li>
+				<div id='text'> {{this.text}}</div>
+				<div id='author'>{{this.author}}</div>
+				</li>
+			</div>
+			{{/each}}
+			</ul>
+		</div>
+		<div class="columnOneThird">
+			<h3> Users </h3>
+			<ul class="users">
+			{{#each user}}
+				<li>{{this.username}}</li>
+			{{/each}}
+			</ul>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="javascripts/newTwit.js"></script>

@@ -1,0 +1,22 @@
+<h1>Ingredient List</h1>
+<form id="addForm" action="newIngredient" method= "POST">
+	Name: <input type="text" name="name"/><br/>
+	Price: <input type="text" name="price"/><br/>
+	<input type ="submit" value="Submit">
+</form>
+<ul>
+{{#each ingredients}}
+<div id ="{{this._id}}">
+<form id="ajax-form1" action="outOfStock" method= "POST">
+	<input type="text" name="id" value = "{{this._id}}" readonly/><br/>
+  	<input type="text" name="name" value="{{this.name}}"/><br/>
+  	<input type="text" name="price" value="{{this.price}}"/><br/>
+  	<input id ='edit' type ="submit" value="Edit" formaction = "edit">
+	<input id='outOfStock' type ="submit" value="Out of Stock" formaction = "outOfStock">
+</form>
+</div>
+{{/each}}
+<div id="result"></div>
+<script type="text/javascript" src="javascripts/main.js"></script>
+<script type="text/javascript" src="javascripts/edit.js"></script>
+</ul>
