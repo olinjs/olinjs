@@ -37,13 +37,6 @@ routes.homeRender = function(req,res){
 };
 
 function emptyObjTest(obj){
-	// for (var prop in obj){
-	// 	if(obj.hasOwnProperty(prop)){
-	// 		return false;
-	// 	}
-	// }
-	// return true;
-
 	return Object.keys(obj).length === 0;
 }
 

@@ -90,19 +90,56 @@
 	width: 33%;
 	height: 100vh;
 }
+
 .columnOneThird h3{
 	margin: 0;
+}
 
+.input-group{
+	width: 100%;
+	background: hsl(0, 0%, 100%);
 }
 
 .btn{
-
+	display: inline;
+	background: -webkit-linear-gradient(top, hsl(100, 90%, 60%), hsl(100, 90%, 40%));
+	box-shadow: none;
+	font-weight: bold;
+	cursor: pointer;
+	transition-duration: .5s;
+	transition-property: background-color,box-shadow;
+	height:30px;
+	width: 60px;
+	z-index: 1;
+	padding: 0;
+	outline: none;
+	margin: 0;
+	border: 0;
+	border-bottom-left-radius:0;
+	border-top-left-radius: 0;  
 }
 
 .textWell{
-
+	width: 75%;
+	height: 30px;
+	margin: 0;
+	/*border: 0;*/
+	padding: 0;
 }
 
-ul{
+.tweet{
+	width: 100%;
+	background: -webkit-linear-gradient(top, hsl(100, 90%, 90%), hsl(100, 90%, 70%));
+	padding-left: 0;
+	padding-bottom: 5px;
+}
+
+.messages{
 	list-style-type: none;
+	padding-left: 0;
+}
+
+.users{
+	list-style-type: none;
+	padding-left: 0;
 }

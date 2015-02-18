@@ -1,4 +1,3 @@
-var config = require('./oauth.js');
 var mongoose = require('mongoose');
 var path = require('path');
 var express = require('express');
@@ -20,6 +19,9 @@ app.set('view engine', 'handlebars');
 
 var mongoURI = process.env.MONGOURI || "mongodb://localhost/test";
 var PORT = process.env.PORT || 3000;
+var CLIENTID= process.env.CLIENTID || require('./oauth.js').facebook.clientID;
+var CLIENTSECRET = process.env.CLIENTSECRET || require('./oauth.js').facebook.clientSecret;
+var CALLBACKURL = process.env.CALLBACKURL || require('./oauth.js').facebook.callbackURL;
 mongoose.connect(mongoURI);
 
 // serialize and deserialize
@@ -32,9 +34,9 @@ done(null, obj);
 
 // config
 passport.use(new FacebookStrategy({
- clientID: config.facebook.clientID,
- clientSecret: config.facebook.clientSecret,
- callbackURL: config.facebook.callbackURL
+ clientID: CLIENTID,
+ clientSecret: CLIENTSECRET,
+ callbackURL: CALLBACKURL
 },
 function(accessToken, refreshToken, profile, done) {
  process.nextTick(function () {
