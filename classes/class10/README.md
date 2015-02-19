@@ -5,12 +5,16 @@ So far we have seen how to organize an increasingly complex system of components
 We will now take a side step to discuss another organizational system in which instead of having lot of structure on the server, we have that structure on the client. 
 
 ##Basic Idea
-In the traditional system, with every click there is a sending of html along with all the necessary assets. 
-You have seen how this can work with templating by rendering html on the server and then sending it across. 
+In our traditional system, with most clicks you make a call to your server for an html page.
+You have seen how this can work with templating by rendering html on the server and then sending it across to the client as just html. 
 The image below shows this traditional system: 
 ![serverOrganizedSystem](images/traditionalWebCommunication.png)
 
 But what if instead of having to load an entire HTML document, you simply send only the necessary pieces of data and then change the html using Javascript code. 
+You have tried doing this before, most notably in the burger ordering homework. 
+You probably noticed how messey that got for even a simple application. 
+You also know about APIs and how you can retrive structured data and show it on your page. 
+Now consider a different structure in which almost all of your server is simply an API that sends data to a single page that changes appropriately. 
 In this structure the server would serve only a few different assets and include an API that can be used to request the necessary data.
 In that case the communications would look like this: 
 ![ClientOrganizedSystem](images/clientsideWebCommunication.png)
@@ -21,33 +25,53 @@ Another benefit of this application structure is that the API component can be u
 
 You may wonder why this is not how it has always been done. The simple answer to this is that it is only recently that Javascript, browsers, and computers have gotten good enough to reliably utilize these client-side frameworks. If you were going to do anything interesting, you had to do it on the server. In addition, this method may be more labor intesive for certain projects. You will get to explore some of these strengths and weaknesses in the next lab assignment when you tackle one of these frameworks yourself. 
 
-##MVC on the client
-
 ##Your First Client Templating:
 [Handlebars  in-class templating]
 
-You can probably imagine that organizing a very complex application with dozens of pages and hundreds of models can get really complicated and messy really fast. Luckily, there are really fantastic publically available and free frameworks you can utilize to organize your application. We will explore these next. 
+You can probably imagine that organizing a very complex application with dozens of pages and models can get really complicated and messy really fast. 
+Luckily, there are really fantastic publically available and free frameworks you can utilize to organize your application. 
+We will explore these next. 
+
+##MVC on the client
+We talked last class about MVC. 
+Hopefully you all have an appreciation for the nice structure and seperation of concerns it affords you. 
+When we restructure our application for the client side, we now move that organizational structure to the client side as well. 
+The direct implementation will differ based on the specific framework, but in general you will organize your views as templates that you load in only once when the first page loads. 
+The models are organized javascript objects with some additional functionallity such as easy updating to and from the server.
+The controller is also on the client where it handles rendering the templates using the appropriate model data.
 
 ##Popular Frameworks:
-It turns out that there are a TON of different javascript client-side frameworks to choose from for any project. These frameworks have various strengths and weaknesses. The source code for all of these frameworks are available on github (and yes, you can fork them). A chart of their popularity (as measured by number of stars is show below)
+It turns out that there are a TON of different javascript client-side frameworks to choose from for any project. 
+These frameworks have various strengths and weaknesses. 
+The source code for all of these frameworks are available on github (and yes, you can fork them). 
+One (potentially not very accurate) measure of popularity is github stars. (Keep in mind that no one really unstars repos, so take these measurements )
 
-![FrameworkPopularity](frameworkPopularity.png)
-[Find out about framework popularity]
-[Angular: 35,118]
-[Backbone: 20,709]
-[Ember: 12,683]
-[Flight: 5,865]
-[Knockout: 6,034]
-[React: 15,670]
-[Riot: 5,110]
+Framework | Github Stars
+--- |:---:|
+Angular | 35,118
+Backbone | 20,709
+React | 15,670
+Ember | 12,683
+Flight | 5,865
+Knockout | 6,034
+Riot | 5,110
 
 Every framework have different features and organizational structures. Best way to understand these differences is to visit the webpage of the framework and just try to implement some very basic system in the framework. 
 
 ###Backbone
+Backbone is one of the earlier client side frameworks that hit the scene. 
+It doesn't actually have a seperate controller and just puts the controller logic in the view (bad form). 
+It has models that you can specify data elements of and easily connect it to your server. 
 
 ###Ember
+Definitely one of (if not the) most complicated and uniquely organized frameworks.
+In addition to views, models, and controllers it has many other systems and subsystems that allow interesting functionallity. 
+Quote from the top of their web page: "A framework for creating **ambitious** web applications"
 
 ###Angular
+Angular is developed by Google and has as its chief aim to make html what it would be if it was created today.
+It has several interesting qualities such as html directives.
+A primary focus of angular is to build for testability and it has functionallity to help enable exactly that. 
 
 ##Approaches to learning a framework 
 As you almost certainly are aware, for any material (such as a framework) there are dozens of ways to learn a framework. A big part of the upcoming lab is learning a framework and presenting on what you found effective in learning that framework. There are a couple of approaches you can take to learning any new framework or library and we will be going over a few of them here.
@@ -59,9 +83,9 @@ Any framework or library will always have documentation that you can read throug
 For lots of popular frameworks, there are often lots of people who have created excellent walkthroughts of the framework. They (often) do a good job of taking the listener through a logical explanation of the framework, building on top of content previously explained, and showing how you can build an actual application with the framework. These can, however, take some time to go through, cost money, and depending on your skill/ familiarity they can feel too fast or slow. 
 
 ###Sample Apps
-There are applications that are written specifically as example applications to show how to put an application together with actual functionallity 
+There are applications that are written specifically as example applications to show how to put an application together with actual functionallity. These can be found often from the framework publishers themselves, but also from people who just want to share. One excellent page that has a sample app for many frameworks is: http://todomvc.com/
 
-If the framework is popular enough, it likely also has hundreds of actual applications that have been written in the framework and are publically available. All these can be sources of learning from experts who likely are very familiar with the framework. They can, however, be very hard to dig through and are by no means necessarily well done or structured so you shouldn't take them as the only or best way to use the framework. 
+Additionally, if the framework is popular enough, it likely also has hundreds of actual applications that have been written in the framework and are publically available. All these can be sources of learning from experts who likely are very familiar with the framework. They can, however, be very hard to dig through and are by no means necessarily well done or structured so you shouldn't take them as the only or best way to use the framework. 
 
 
 
