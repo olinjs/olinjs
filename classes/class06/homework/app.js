@@ -31,6 +31,7 @@ app.use(session({
 app.get('/', index.home);
 app.get('/login', index.login)
 app.post('/', index.test)
+app.post('/create', index.create)
 
 mongoose.connect(mongoURI);
 

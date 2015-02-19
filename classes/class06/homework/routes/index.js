@@ -7,7 +7,7 @@ var routes = {};
 
 routes.test = function(req, res) {
   var user = req.session.user;
-  res.render('home', {'body': 'DID IT WORK?'});
+  res.render('home', {'body': 'test'});
 }
 
 routes.home = function(req, res) {
@@ -45,7 +45,34 @@ routes.create = function(req, res) {
 routes.twote = function(req, res) {
   var user = req.session.user;
   if (!user)
-    return res.redirect('/login');
+    return res.redirect('/login?redir=true');
+
+  var twote = new Twote({
+    creator: user.id,
+    content: new Date(),
+    time: req.body.twottext
+  });
+
+  twote.save(function(err) {
+    User.findById(user.id, function(err, user) {
+      twote.layout = false;
+      twote.creator = user.name;
+      res.render('/twote', twote);
+    });
+  });
+}
+
+routes.listTwotes = function(req, res) {
+  var user = req.session.user;
+  if (!user)
+    return res.redirect('/login?redir=true');
+  if (req.params.user) {
+    User.findOne({name: req.params.user}, function(err, user) {
+      twotes(user, res);
+    });
+  }
+  else
+    twotes(user, res);
 }
 
 module.exports = routes;
