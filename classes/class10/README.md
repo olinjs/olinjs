@@ -26,7 +26,7 @@ Another benefit of this application structure is that the API component can be u
 You may wonder why this is not how it has always been done. The simple answer to this is that it is only recently that Javascript, browsers, and computers have gotten good enough to reliably utilize these client-side frameworks. If you were going to do anything interesting, you had to do it on the server. In addition, this method may be more labor intesive for certain projects. You will get to explore some of these strengths and weaknesses in the next lab assignment when you tackle one of these frameworks yourself. 
 
 ##Your First Client Templating:
-[Handlebars  in-class templating]
+So you are all very familiar with server side templating using handlebars. 
 
 You can probably imagine that organizing a very complex application with dozens of pages and models can get really complicated and messy really fast. 
 Luckily, there are really fantastic publically available and free frameworks you can utilize to organize your application. 
