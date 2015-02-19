@@ -27,6 +27,8 @@ You may wonder why this is not how it has always been done. The simple answer to
 
 ##Your First Client Templating:
 So you are all very familiar with server side templating using handlebars. 
+In the class10 folder there is an in_class folder containing the cat app that you are all familiar with. 
+We are going to uncomment code to transform just one of the routes into an api endpoint and then use handlebars on the client side to render the content. 
 
 You can probably imagine that organizing a very complex application with dozens of pages and models can get really complicated and messy really fast. 
 Luckily, there are really fantastic publically available and free frameworks you can utilize to organize your application. 
@@ -50,8 +52,8 @@ Framework | Github Stars
 --- |:---:|
 Angular | 35,118
 Backbone | 20,709
-React | 15,670
 Ember | 12,683
+React | 15,670
 Flight | 5,865
 Knockout | 6,034
 Riot | 5,110
@@ -72,6 +74,10 @@ Quote from the top of their web page: "A framework for creating **ambitious** we
 Angular is developed by Google and has as its chief aim to make html what it would be if it was created today.
 It has several interesting qualities such as html directives.
 A primary focus of angular is to build for testability and it has functionallity to help enable exactly that. 
+
+###React
+Developed by Facebook and focuses on the view part of MVC.
+"React uses a virtual DOM diff implementation for ultra-high performance."
 
 ##Approaches to learning a framework 
 As you almost certainly are aware, for any material (such as a framework) there are dozens of ways to learn a framework. A big part of the upcoming lab is learning a framework and presenting on what you found effective in learning that framework. There are a couple of approaches you can take to learning any new framework or library and we will be going over a few of them here.
