@@ -50,6 +50,9 @@ div#twotes {
   width: 500px;
   margin-left: 15px;
 }
+p#twot-login {
+  text-align: center;
+}
 h2#twot-login {
   text-align: center;
   margin: 200px 0px 0px 0px;

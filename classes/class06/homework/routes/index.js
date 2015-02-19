@@ -13,7 +13,7 @@ routes.test = function(req, res) {
 routes.home = function(req, res) {
   var user = req.session.user;
   if (!user)
-    return res.redirect('/login');
+    return res.redirect('/login?redir=true');
   else
     return res.render('home', {'body': 'NOPE'});
 }
