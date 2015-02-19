@@ -36,7 +36,11 @@ cats.new = function(req, res) {
   });
 };
 
-cats.list = function(req, res) {
+cats.list = function(req, res){
+  res.sendFile(path.resolve(__dirname + "/../public/index.html"));
+}
+
+cats.listJson = function(req, res) {
   var colorFilter;
   var message;
   if (req.params.color) {
