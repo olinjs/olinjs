@@ -5,9 +5,9 @@ var User = require('./../models/userModel.js');
 
 var routes = {};
 
-routes.test = function(req, res) {
+routes.success = function(req, res) {
   var user = req.session.user;
-  res.render('home', {'body': 'test'});
+  res.render('home', {'body': 'success'});
 }
 
 routes.home = function(req, res) {
@@ -15,7 +15,7 @@ routes.home = function(req, res) {
   if (!user)
     return res.redirect('/login?redir=true');
   else
-    return res.render('home', {'body': 'NOPE'});
+    return res.render('home', {'body': 'home'});
 }
 
 routes.login = function(req, res) {
@@ -55,7 +55,6 @@ routes.twote = function(req, res) {
 
   twote.save(function(err) {
     User.findById(user.id, function(err, user) {
-      twote.layout = false;
       twote.creator = user.name;
       res.render('/twote', twote);
     });
@@ -73,6 +72,10 @@ routes.listTwotes = function(req, res) {
   }
   else
     twotes(user, res);
+}
+
+routes.removeTwote = function(req, res) {
+
 }
 
 module.exports = routes;
