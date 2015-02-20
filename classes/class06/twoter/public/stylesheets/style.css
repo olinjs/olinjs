@@ -1,0 +1,91 @@
+body {
+	background-color: #abebc1;
+	font-family: 'Dosis', sans-serif;
+}
+input[type='submit']{
+	font-family: 'Dosis', sans-serif;
+	border-style: none;
+	background-color: #20344f;
+	color:#eeeeee;
+	opacity: .75;
+	
+}
+
+
+input[type='submit']:hover{
+	opacity: 1;
+}
+
+#twoteColumn {
+	background-color: #32c79f;
+	padding:10px;
+	float:left;
+	margin:0;
+	width:50%;
+	padding:10px;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.twote {
+	background-color: #a2ff7d;
+	margin:7px;
+	padding-left: 8px;
+	border-radius: 5px;
+	box-shadow: 10px 10px 5px #888888;
+}
+
+.twote h3{
+	text-align: left;
+}
+.twote p{
+	text-align: left;
+	font-style: italic;
+	font-weight: .5em;
+	width: 95%;
+	word-wrap: break-word;
+}
+.twote input{
+	float:right;
+}
+
+#addTwote input{
+	margin-left: 7px;
+}
+
+#addTwote textarea{
+	width:95%;
+	height: 60px;
+	margin-bottom: 5px;
+	margin-left: 7px;
+
+}
+
+
+#userColumn{
+	background-color: #a2ff7d;
+	float:left;
+	margin:0;
+	width:35%;
+	padding:10px;
+    border: 2px solid;
+    border-radius: 5px;
+    cursor:pointer;
+}
+
+.user{
+	margin: 4px;
+	padding:1px;
+	padding-left:3px;
+}
+#userColumn a{
+	padding-left:7px;
+}
+
+
+.user:hover{
+	background-color: #666666;
+}
+.selected{
+	background-color: #666666;
+}

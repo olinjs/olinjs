@@ -1,0 +1,45 @@
+<h1> Twoter </h1>
+<div id="twoteColumn" >
+<div id = "twotes">
+	{{#each twoteList}}
+		<form class = "twote user-{{this.userid}}" action="Blanks" method="Post">
+			{{#if this.mine}}
+		    	<input type="text" name="id" value="{{this._id}}" style='display: none;'/>
+		    	<input type = "submit" value="Delete"/>
+		    {{else}}{{/if}}
+		    <h3>{{this.username}}</h3>
+		    <p>{{this.text}}</p>
+
+		    
+	    </form>
+	{{/each}}
+</div>
+
+{{#if logedin}}
+	<form id = "addTwote" action="Blanks" method="Post">
+	<textarea name="text"></textarea>
+	<input type="text" name="username" value="{{username}}" style='display: none;'/>
+	<input type="text" name="userid" value="{{userid}}" style='display: none;'/>
+	<br>
+	<input type="submit" value="Twote it!">
+	</form>
+{{else}}
+{{/if}}
+</div>
+
+<div id="userColumn" >
+<div id = "users">
+	{{#each userList}}
+		<div class = "user" userid="{{this._id}}">
+		    {{this.username}}
+	    </div>
+	{{/each}}
+</div>
+{{#if logedin}}
+	<a href="/logout">Logout</a>
+{{else}}
+	<a href="/">Login</a>
+{{/if}}
+</div>
+
+<script type='text/javascript' src='javascripts/twoter.js'></script>
