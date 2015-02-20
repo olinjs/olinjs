@@ -4,6 +4,7 @@ module.exports.login = function(req,res){
 	res.render('newLogin');
 }
 module.exports.clear = function(req,res){
+	//Allows us to wipe the database of users and twotes
 	models.Users.remove({}).exec(function(err){
 			if(err){res.status(500).send("Failed to add to list.")}
 		});
@@ -17,8 +18,7 @@ module.exports.clear = function(req,res){
 }
 
 module.exports.home = function(req,res){
-	console.log('hello')
-	console.log(req.user)
+	//Grabs all data neccessary for home page
 	var items = {}
 
 	function dbAndRender(){
@@ -38,7 +38,6 @@ module.exports.home = function(req,res){
 				models.FacebookUsers.find({}).exec(function(err,data){
 					if(err){res.status(500).send("Failed to access list.")}
 					items['userList'] = items['userList'].concat(data);
-					console.log(items)
 					res.render('home',items);
 				});
 			});
@@ -52,6 +51,7 @@ module.exports.home = function(req,res){
 		dbAndRender();
 		
 	}else{
+		//From HW6 not logged in option
 		items['logedin'] = false;
 		dbAndRender();
 	}
@@ -62,6 +62,7 @@ module.exports.home = function(req,res){
 };
 
 module.exports.addTwote = function(req,res){
+	//Adds twote to DB, sends back twote so that _id can be used on client
 	var data = {username:req.body.username,
 				text:req.body.text,
 				userid:req.body.userid};
@@ -73,6 +74,7 @@ module.exports.addTwote = function(req,res){
 };
 
 module.exports.deleteTwote = function(req,res){
+	//Deletes twotes in DB
 	models.Twotes
 	.findByIdAndRemove(req.body.id)
 	.exec(function(err,data){

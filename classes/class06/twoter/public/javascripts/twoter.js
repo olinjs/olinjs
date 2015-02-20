@@ -1,4 +1,5 @@
 function getFormObj(formId) {
+	//Gets form data as object for client use
     var formObj = {};
     var inputs = $(formId).serializeArray();
     $.each(inputs, function (i, input) {
@@ -8,6 +9,7 @@ function getFormObj(formId) {
 }
 function registerAll(){
 	$('.twote').submit(function(event){
+		//Allows deleting of twote
 		event.preventDefault();
 		$(this).detach();
 		formSerial = $(this).serialize();
@@ -17,6 +19,7 @@ function registerAll(){
 		});
 	});
 	$('.user').click(function(event){
+		//Fades unselected users' twotes
 		if($(this).hasClass("selected")){
 			$('.twote').css('opacity','1');
 			$(this).toggleClass("selected");
@@ -32,7 +35,7 @@ function registerAll(){
 registerAll();
 
 $('#addTwote').submit(function(event){
-	//Submission of new ingredient
+	//Adds twote both on page and in database
 	event.preventDefault();
 	formSerial = $('#addTwote').serialize();
 	$.post("/twoter/add",formSerial).done(function(data,status){

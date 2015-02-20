@@ -11,6 +11,7 @@ passport.serializeUser(function(user, done) {
  done(null, user._id);
 });
 passport.deserializeUser(function(id, done) {
+ //Checks for user in Users and FacebookUsers
  models.Users.findById(id, function(err, user){
      console.log(user)
      if(err) {done(err, null);}

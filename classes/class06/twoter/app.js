@@ -41,4 +41,5 @@ app.get('/auth/facebook',auth.faceauth,function(req,res){console.log('success')}
 app.get('/auth/facebook/callback',auth.faceauth,auth.postauth);
 app.get('/logout', auth.logout);
 
-app.listen(3000);
+var PORT = process.env.PORT || 3000;
+app.listen(PORT);
