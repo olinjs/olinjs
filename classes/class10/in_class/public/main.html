@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Homework 4 Solution</title>
+	</head>
+	<body>
+		<script id="cats-template" type="text/x-handlebars-template">
+		<h1>{{message}}</h1>
+		<ul>
+		  {{#each cats}}
+		  <li>{{name}}:
+		    <ul>
+		      <li>age: {{age}}</li>
+		      <li>color(s): {{#each colors}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}</li>
+		    </ul>
+		  </li>
+		  {{/each}}
+		</ul>
+		</script>
+
+		<div id="content">
+			Loading content, Please wait
+		</div>
+	</body>
+
+	<!-- DO NOT MODIFY SCRIPT ORDER -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script type='text/javascript' src='javascript/handlebars-v3.0.0.js'></script>
+	<script type='text/javascript' src='javascript/main.js'></script>
+</html>
