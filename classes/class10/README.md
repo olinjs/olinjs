@@ -76,7 +76,7 @@ A primary focus of angular is to build for testability and it has functionality 
 
 ###React
 Developed by Facebook and focuses on the view part of MVC.
-Mission statement is to allow users to large applications with data that changes over time.
+Mission statement is to allow users to create large applications with data that changes over time.
 Allows its views to update as the data changes. 
 
 ##Approaches to learning a framework 
