@@ -24,8 +24,7 @@ You must construct a wikipedia-like clone using your chosen framework. You shoul
 
 
 If you want to make the wiki have a special topic area (like harry potter or some game) you are encouraged to do so. 
-Brownie points will be awarded for awesome looking websites whose themes match the topic area, though you should have all the functionality done before making it pretty.
-
+Brownie points will be awarded for awesome looking websites whose themes match the topic area, though having all the functionallity should come before making it pretty.
 
 ##Framework Presentation
 You and your partner will get together with the other groups who are doing the same framework and create a 8-10 minute presentation about the framework. 

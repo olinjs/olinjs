@@ -5,17 +5,17 @@
 	</head>
 	<body>
 		<script id="cats-template" type="text/x-handlebars-template">
-			<h1>{{message}}</h1>
-			<ul>
-			  {{#each cats}}
-			  <li>{{name}}:
-			    <ul>
-			      <li>age: {{age}}</li>
-			      <li>color(s): {{#each colors}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}</li>
-			    </ul>
-			  </li>
-			  {{/each}}
-			</ul>
+		<h1>{{message}}</h1>
+		<ul>
+		  {{#each cats}}
+		  <li>{{name}}:
+		    <ul>
+		      <li>age: {{age}}</li>
+		      <li>color(s): {{#each colors}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}</li>
+		    </ul>
+		  </li>
+		  {{/each}}
+		</ul>
 		</script>
 
 		<div id="content">
