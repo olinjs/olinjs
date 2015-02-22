@@ -1,11 +1,22 @@
 var express = require('express');
 var path = require('path');
 var exphbs = require('express-handlebars');
+var passport = require('passport');
 
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 
 var app = express();
+
+app.configure(function() {
+  app.use(express.static(__dirname + '/../../public'));
+  app.use(express.cookieParser());
+  app.use(express.bodyParser());
+  app.use(express.session({ secret: 'keyboard cat' }));
+  app.use(passport.initialize());
+  app.use(passport.session());
+  app.use(app.router);
+});
 
 app.use(logger('dev'));
 
