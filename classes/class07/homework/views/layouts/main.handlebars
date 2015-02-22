@@ -1,8 +1,40 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="images/portal.png">
+    <link rel="stylesheet" type="text/css" href="stylesheets/styles.css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,400italic' rel='stylesheet' type='text/css'>
+    <title>Twoter</title>
+  </head>
   <body>
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '1545308172411663',
+        xfbml      : true,
+        version    : 'v2.2'
+      });
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+  </script>
+
+    <div id="nav">
+      <h1>Twoter</h1>
+      <a href="/">Home</a>
+      <a href="/compose">Compose</a>
+      <a href="/profile">Profile</a>
+    </div>
     {{{body}}}
   </body>
+  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="/javascripts/main.js"></script>
 </html>

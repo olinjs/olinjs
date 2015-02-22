@@ -1,0 +1,110 @@
+body {
+  margin: 0;
+  background-image: url(../images/outline.png);
+}
+h1 {
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  font-weight: 900;
+  font-size: 250%;
+  color: #ECF0F1;
+}
+h2 {
+  text-align: left;
+  font-weight: 800;
+  font-size: 150%;
+  margin: 15px 15px 15px;
+  font-family: 'Roboto', sans-serif;
+  color: #3498DB;
+}
+p {
+  font-size: 150%;
+  margin: 15px 0;
+  color: #ECF0F1;
+}
+a {
+  text-decoration: none;
+  color: #ECF0F1;
+}
+div#nav {
+  font-family: 'Roboto', sans-serif;
+  color: #ECF0F1;
+  text-align: center;
+  font-size: 150%;
+  padding: 10px 0;
+  background-color: #3498DB;
+}
+div#nav h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 200%;
+  margin: 15px 0;
+}
+div#nav a {
+  margin: 15px 15px 0;
+}
+div#create {
+  width: 250px;
+  margin-left: 15px;
+}
+div#twotes {
+  width: 500px;
+  margin-left: 15px;
+}
+div#fb-login {
+  text-align: center;
+  margin-top: 15px;
+}
+div#status {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 150%;
+  margin: 15px 0;
+  color: #ECF0F1;
+}
+p#twot-login {
+  text-align: center;
+}
+h2#twot-login {
+  text-align: center;
+  margin: 200px 0px 0px 0px;
+}
+.twot-form {
+  text-align: center;
+  margin: 15px 0;
+  font-family: 'Roboto', sans-serif;
+  color: #ECF0F1;
+  padding: 10px;
+}
+.twot-input {
+  font-size: 18px;
+  font-style: italic;
+  text-align: center;
+  width: 20%;
+  height: 40px;
+  outline: none;
+  border-radius: 3px;
+  border-color: transparent;
+}
+.twot-input:focus {
+  background-color: #BABDBE;
+}
+.twot-input:hover {
+  background-color: #BABDBE;
+}
+.twot-submit {
+  font-size: 16px;
+  font-style: italic;
+  text-align: center;
+  width: 5%;
+  height: 40px;
+  outline: none;
+  margin: 15px 0;
+  border-radius: 3px;
+  border-color: transparent;
+}
+.twot-submit:focus {
+  background-color: #BABDBE;
+}
+.twot-submit:hover {
+  background-color: #BABDBE;
+}

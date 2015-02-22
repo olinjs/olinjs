@@ -30,9 +30,10 @@ app.use(session({
   saveUninitialized: true
 }));
 
-app.get('/', function(req, res) {
-  res.render('home');
-});
+app.get('/', index.home);
+app.get('/login', index.login);
+app.get('/logout', index.logout);
+app.post('/', index.success);
 
 mongoose.connect(mongoURI);
 
