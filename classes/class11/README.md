@@ -151,5 +151,37 @@ Instead, we will prefer to use `crypto.randomBytes()` from node's standard `cryp
 There is a lot that we don't yet know about cryptography, but we do know for certain that `Math.random()` is not good enough.
 
 ##SSL/TLS/HTTPS
+At this point, you might be asking yourself, "how do we get the plaintext password/other sensitive data to the server without any spies on the network finding out?"
+The answer to that is encryption and HTTPS!
+HTTPS, or HTTP Secure as it's less commonly known, is a method for sending encrypted information over HTTP, where the only plain information is source and destination IP/Port pairs, as well as the length of the information being sent (though this can easily be obfuscated).
+
+The standard protocol for encrypting information to be sent over HTTP is known as TLS, formerly SSL.
+You'll probably still hear it referred to as SSL, and some sites still use it (though they really shouldn't), but the preferred protocol is whatever the latest version of TLS is.
+
+TLS works by setting up a certificate, or cert, on the server which is a small file that a server can use to verify its authenticity to a client [(read more about how certs work here)](https://www.globalsign.com/en/ssl-information-center/what-is-an-ssl-certificate/).
+When a client makes an HTTPS request of a server, the sever must first send over its cert so that the client can decide whether or not it wants to trust the server.
+If the client approves, the server then sends over a public encryption key that the client can use to encrypt the data it wants to send over.
+Once the connection is established and the key exchanged, sensitive information can (we assume) be sent securely and privately over the internet.
+
+Note that when you set up an application on heroku, by default it will not use HTTPS, and you need to manually  set up [SSL on Heroku](https://devcenter.heroku.com/articles/ssl-endpoint).
+
+If you think this all sounds awesome and you want to learn more, check out [this awesome readable overview of how HTTP/TLS works](http://security.stackexchange.com/questions/20803/how-does-ssl-tls-work).
+
+###Wireshark and Firesheep
+Back in the wild west days of the internet, before the majority of websites knew to use HTTPS when transferring sensitive data between users and their servers, collecting login credentials was like shooting fish in a barrel for an attacker.
+With tools like [Firesheep](http://en.wikipedia.org/wiki/Firesheep) and [Wireshark](https://www.wireshark.org/), an attacker can sit on a public network and sniff all of the traffic being sent on it.
+Want a ton of Myspace passwords being sent over HTTP?
+Go find a Starbucks, sniff all the packets on their wifi, set a filter for 'Myspace', and wait for someone on the network to sign in.
+It was that easy!
+
+Now that we all know better, so that's not really an issue.
+There are probably some websites out there that don't use HTTPS for login pages or other pages containing private user data, and you should just avoid them altogether.
+Most browsers will display a green padlock next to a URL if it's secured with TLS or SSL.
 
 ###Heartbleed
+You might have heard about a very dangerous vulnerability called Heartbleed that was discovered in 2014, and that it had something to do with SSL.
+The actual vulnerability was in OpenSSL, a *very* popular SSL library, and not the protocol itself (though other vulnerabilities have been found for SSL generally).
+The Heartbleed bug in OpenSSL exploited the lack of a bounds check on a particular variable, which would allow an attacker to read arbitrary data stored in memory on a server and have it sent back through the SSL process.
+You can see how this is less than desirable.
+A patch was quickly put out, but there are still plenty of websites which still haven't updated.
+If you're worried a service might be vulnerable to Hearbleed, just make sure it's not using versions 1.0.1 through 1.0.1f of OpenSSL.
