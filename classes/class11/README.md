@@ -1,7 +1,7 @@
 #Class 11 - Application Security
 Hello and welcome to possibly the most important lesson you will have in this class.
-All of the applications you make and all of the websites that you put out into the world will be vulnerable to some sort of attack, and it's important for you to know what's those attacks are, and how you can mitigate them.
-Before we get started, I'll take a moment to acknowledge one of the authoritative sources for all matters web security, [OWASP](https://www.owasp.org/index.php/Main_Page).
+All of the applications you make and all of the websites that you put out into the world will be vulnerable to some sort of attack, and it's important for you to know what those attacks are, and how you can mitigate against them.
+Before we get started, I'll take a moment to acknowledge one of the authoritative sources for all matters web security, [OWASP](https://www.owasp.org/index.php/Main_Page), the Open Web Application Security Project.
 They've got in-depth explanations and mitigations for most of the known security vulnerabilities, including a handy [top 10 list](https://www.owasp.org/index.php/OWASP_Top_Ten_Cheat_Sheet).
 
 ##Common Vulnerabilities
@@ -28,11 +28,11 @@ If you've ever worked with a SQL database before you might be able to relate to 
 ![Little Bobby Tables](http://imgs.xkcd.com/comics/exploits_of_a_mom.png)
 
 SQL databases are queried with evaluated strings, which, if we're to learn anything from the previous paragraph, can lead to some less than desirable outcomes.
-All it takes for someone to delete or poison your dataset is someone like Little Bobby Tables' mother with a vendetta for against bad application developers.
+All it takes for someone to delete or poison your dataset is someone like Little Bobby Tables' mother with a vendetta against bad application developers.
 
 Now, you might say to yourself "why, we're not using SQL databases, so we must be immune injection attacks. Ha ha ha. Ha ha. Ha."
 That's right, laugh it up.
-Keep laughing right up until you realize that MongoDB is queried with a structured JavaScript API that lends itself to [it's own kind of injection](http://blog.websecurify.com/2014/08/hacking-nodejs-and-mongodb.html), as well as [arbitrary code execution](https://media.blackhat.com/bh-us-11/Sullivan/BH_US_11_Sullivan_Server_Side_WP.pdf) not just against your database, but potentially in your application as well!
+Keep laughing right up until you realize that MongoDB is queried with a structured JavaScript API that lends itself to [its own kind of injection](http://blog.websecurify.com/2014/08/hacking-nodejs-and-mongodb.html), as well as [arbitrary code execution](https://media.blackhat.com/bh-us-11/Sullivan/BH_US_11_Sullivan_Server_Side_WP.pdf) not just against your database, but potentially in your application as well! Many database abstraction layers (like Mongoose) inherently escape inputs to guard against inject attacks. These help to make development easier, but you should still code defensively against user inputs.
 
 ###Avoid Script Injection With Input Sanitization
 The easiest way to prevent a script injection from happening in your application is to validate all inputs and catch any potential attacks.
@@ -61,7 +61,7 @@ if (app.get('env') == 'development') {
       res.status(err.status || 500);
       res.render('error', {
           message: err.message,
-          error: err
+          error: err // the stacktrace
       });
   });
 }
@@ -72,7 +72,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,
-    error: {}
+    error: {} // the lack of a stacktrace
   });
 });
 ```
@@ -104,7 +104,7 @@ Now the only way to submit data or trigger an action on the server through an ex
 
 ###Samy the Myspace Worm
 One of the greatest (and mostly harmless) examples of both XSS and CSRF in action in recent memory is that of Samy the Myspace worm.
-In 2005, a man by the name of Samy Kamkar found an XSS vulnerability in Myspace that would allow him to inject javascript into his profile to trigger a CSRF vulnerability by anyone who visited it.
+In 2005, a man by the name of Samy Kamkar found an XSS vulnerability in Myspace that would allow him to inject JavaScript into his profile to trigger a CSRF vulnerability by anyone who visited it.
 The CSRF request would send Samy a friend request as the viewer, as well as append the text "Samy is my hero" to the end of their profile.
 Not only that, but it would in turn exploit the same XSS vulnerability, only this time injecting the code into the viewer's profile.
 The effect is that within 24 hours, Samy had over a million friend requests and the FBI knocking at his door.
@@ -135,10 +135,10 @@ A one-time pad is a piece of random data added to a piece of information before 
 A pepper is a a random string of data concatenated to every piece of information, and a salt is a different random string of data, which is uniquely generated for each piece of data that gets encrypted.
 So in a system using a salt and a pepper, we need to store the system-wide pepper, and keep track of which salt is used to encrypt which piece of information.
 We won't at all get into the math behind the one-time pad, or how it adds cryptographic strength, but just trust us on this one.
-It's one of those things you're better of just having.
+It's one of those things you're better off just having.
 
 To take this all one step further, you can make your encryption more secure by repeating your salting and hashing any number of times (think 100 to 100,000).
-The point of the encryption - or hashing - step, is that it is one way in that it's not terribly slow to encrypt, but without a key it exponentially slower to decrypt.
+The point of the encryption - or hashing - step, is that it is one way in that it's not terribly slow to encrypt, but without a key it is exponentially slower to decrypt.
 By repeating the process over and over, you're (kind of but not really) guaranteeing that no (modern) computer running any (publicly) known algorithm will crack your data before the heat death of the universe.
 Doesn't that sound handy?
 
@@ -159,7 +159,7 @@ The standard protocol for encrypting information to be sent over HTTP is known a
 You'll probably still hear it referred to as SSL, and some sites still use it (though they really shouldn't), but the preferred protocol is whatever the latest version of TLS is.
 
 TLS works by setting up a certificate, or cert, on the server which is a small file that a server can use to verify its authenticity to a client [(read more about how certs work here)](https://www.globalsign.com/en/ssl-information-center/what-is-an-ssl-certificate/).
-When a client makes an HTTPS request of a server, the sever must first send over its cert so that the client can decide whether or not it wants to trust the server.
+When a client makes an HTTPS request of a server, the server must first send over its cert so that the client can decide whether or not it wants to trust the server.
 If the client approves, the server then sends over a public encryption key that the client can use to encrypt the data it wants to send over.
 Once the connection is established and the key exchanged, sensitive information can (we assume) be sent securely and privately over the internet.
 
