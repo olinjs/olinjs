@@ -7,7 +7,7 @@ Olin.js is a project oriented approach to learning modern web application develo
 Along the way, students will learn the basic layout of the web, how to deploy and maintain large applications, important development strategies, skills, and technologies, and how to design and manage complex, multi-developer software projects. Students will spend the last six weeks of the course putting their knowledge and skills to the test by designing and developing their own web applications.
 
 ###Learn Web Development
-If you stumbled across this repository and feel like learning some web development please follow along with us.
+If you stumbled across this repository and feel like learning some web development, please follow along with us!
 This repository contains all of the lesson material and assignments to get you going.
 Feel free to submit a Github issue if you find any problems in the course and we'll do our best to fix it up.
 
