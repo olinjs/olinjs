@@ -22,8 +22,10 @@ Here's a list of ideas to get you started - feel free to come up with others.
 ##Creating a Mashup
 We _don't_ want you to copy every feature of both existing apps! Instead, pick out one or two key features of each. For instance, if you chose Dropbox and Youtube, you might build something like [DropTube](http://drop-tube.herokuapp.com/ "Josh's mashup from spring 2013").
 
+##Specifications
 Your mashup should have:
 - Recognizable features from two existing apps
+- OAuth user authentication
 - Nice styling and a reasonable user interface
 - Documentation for each major component (minimum of a few sentences at the top of every file)
 
