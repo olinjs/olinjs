@@ -20,7 +20,7 @@ Here's a list of ideas to get you started - feel free to come up with others.
 - Youtube
 
 ##Creating a Mashup
-We _don't_ want you to copy every feature of both existing apps! Instead, pick out one or two key features of each. For instance, if you chose Dropbox and Youtube, you might build something like [DropTube](http://drop-tube.herokuapp.com/ "Josh's mashup from spring 2013").
+We _don't_ want you to copy every feature of both existing apps! Instead, pick out one or two key features of each. For instance, if you chose Dropbox and Youtube, you might build something like [DropTube](http://drop-tube.herokuapp.com/ "Josh's mashup from spring 2013") made by our very own Josh Langowitz.
 
 ##Specifications
 Your mashup should have:
