@@ -37,3 +37,6 @@ Rather the presentation should contain the following pieces:
 - Is there a specific type of project that the framework would work well or not work well for?
 - How is the documentation of the framework? Was it easy to learn and find answers to questions? Is there an active community around the framework? Is it still growing and being developed or is it more stable and stagnant?
 - Is there anything else you believe the class should know about the framework?
+
+## Submission
+You know the drill: http://goo.gl/forms/4GLqax6U9M
