@@ -37,8 +37,10 @@ cats.new = function(req, res) {
 };
 
 cats.list = function(req, res){
-  // res.sendFile(path.resolve(__dirname + "/../public/index.html"));
+  res.sendFile(path.resolve(__dirname + "/../public/main.html"));
+}
 
+cats.listJson = function(req, res) {
   var colorFilter;
   var message;
   if (req.params.color) {
@@ -54,37 +56,13 @@ cats.list = function(req, res){
     if (err) {
       res.status(500).send("Something broke!");
     } else {
-      res.render("cats", {
+      res.json({
         message: message,
         cats: cats
-      });
+      })
     }
   })
-}
-
-// cats.listJson = function(req, res) {
-//   var colorFilter;
-//   var message;
-//   if (req.params.color) {
-//     colorFilter = req.params.color.toLowerCase();
-//     message = "Cats by age with color " + req.params.color+ ":";
-//   } else {
-//     colorFilter = /^.*/;
-//     message = "Cats by age:";
-//   }
-//   Cat.find({colors: colorFilter})
-//     .sort({age: -1})
-//     .exec(function(err, cats) {
-//     if (err) {
-//       res.status(500).send("Something broke!");
-//     } else {
-//       res.json({
-//         message: message,
-//         cats: cats
-//       })
-//     }
-//   })
-// };
+};
 
 cats.delete = function(req, res) {
   Cat.findOneAndRemove({}, {sort: {age: -1}}, function(err, cat) {
