@@ -28,11 +28,9 @@ Feel free to submit a Github issue if you find any problems in the course and we
 * [Class 13 - Framework Reprise (Lab 2)](./classes/class13)
 * [Class 14 - Project Planning](./classes/class14)
 * [Class 15 - Agile Project Management](./classes/class15)
-* [Class 16 - Project Kickoff](./classes/class16)
 * [Lab 1](./lab1)
 * [Lab 2](./lab2)
 * [Final Project](./finalproject)
-
 
 
 ##Learning Objectives
