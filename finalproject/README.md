@@ -17,3 +17,26 @@ Week 4 | Friday 4/17 | Sprint Planning | Deep Dive 6
 Week 5 | Friday 4/24 | Project Work | Deep Dive 7
 Week 6 | Tuesday 4/28 | Project Work | Last Class Period
 Week 7 | Final Block - TBA | Final Presentations | 
+
+###Deliverables
+* Design Review 1
+* Design Review 2
+* Final Presentation
+* Deployed application
+* Git repository
+
+####Grading
+Category | Percent
+---|---
+Features | 28%
+Code Cleanliness | 8%
+Documentation | 4%
+Individual grade | 14%
+Design Review 1 | 23%
+Design Review 2 | 23%
+
+
+###Project Ideation
+* [Ideas Spreadsheet](https://docs.google.com/spreadsheets/d/1sFPp57rOST07Wdbl9h21EGbMfdh7fP-0ddcfVbGaP_o/edit#gid=0)
+* [Team Survey](http://goo.gl/forms/ogKvlz8adX)
+* [Project Proposal](http://goo.gl/forms/MD82I2bGmh)
