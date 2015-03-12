@@ -30,3 +30,6 @@ Your mashup should have:
 - Documentation for each major component (minimum of a few sentences at the top of every file)
 
 We know that this isn't a particularly specific list of specifications - we're intentionally giving you room to be creative.
+
+##Submission
+[Submission Survey](http://goo.gl/forms/dvkON2ahGi)
