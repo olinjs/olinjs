@@ -28,12 +28,12 @@ Week 7 | Final Block - TBA | Final Presentations |
 ####Grading
 Category | Percent
 ---|---
-Features | 28%
-Code Cleanliness | 8%
-Documentation | 4%
-Individual grade | 14%
-Design Review 1 | 23%
-Design Review 2 | 23%
+Features | 30%
+Code Cleanliness | 10%
+Documentation | 5%
+Individual grade | 15%
+Design Review 1 | 20%
+Design Review 2 | 20%
 
 
 ###Project Ideation
