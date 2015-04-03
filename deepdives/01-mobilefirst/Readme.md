@@ -110,3 +110,14 @@ The web inspector is a suite of powerful, user-friendly developer tools. The con
 The [Mozilla media query guide](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries), like all Mozilla web guides, is great. I encourage everyone to read it for detail on media queries.
 
 A media query essentially allows different CSS to act based on certain qualities of the viewer's screen, like width, height, or device type. See and play with the [example code](./example/) to get a better idea, or read the guide above.
+
+##Bootstrap
+In their own words, "Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web." 
+It is important, however, to keep in mind this does not mean that is always the best option. Bootstrap has a ton of functionallity that are based on both css and javascript. 
+The documentation is excellent, filled with examples, and should be the your first goto when working with bootstrap. 
+If you plan on using bootstrap it is definitely worth just scrolling through the entire docs to see what options you have. 
+Most of implementing bootstrap involves simply applying specific classes and names to your html elements and lettting bootstrap do the rest. 
+
+In terms of mobile first development the primary functionallity from bootstrap comes from their automatically responsive grid system, the documentation and examples of which can be found [here](http://getbootstrap.com/css/#grid)
+This grid system allows you to, without media queries, have your website look great on a computer and then automatically change the layout when accessed on a mobile device. 
+I could go on, but looking at the documentation is really a better use of your time than reading this. 
