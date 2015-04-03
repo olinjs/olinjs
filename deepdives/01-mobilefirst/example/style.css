@@ -20,13 +20,13 @@ header {
 }
 
 .bar {
-  background-color: orange;
-  
   padding: 8px;
   -webkit-flex: 1 0;
 }
 
 .bar.left {
+  background-color: orange;
+  
   -webkit-order: 1;
 }
 
@@ -39,6 +39,8 @@ article {
 }
 
 .bar.right {
+  background-color: yellow;
+  
   -webkit-order: 3;
 }
 
@@ -48,4 +50,14 @@ footer {
   padding: 8px;
   -webkit-flex: 1 100%;
   -webkit-order: 4;
+}
+
+/* Small screens */
+@media (max-width: 550px) {
+  article {
+    -webkit-flex: 1 100%;
+    -webkit-order: 1;
+  }
+  .bar.left { -webkit-order: 2; }
+  .bar.right { -webkit-order: 3; }
 }
