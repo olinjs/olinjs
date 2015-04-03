@@ -52,7 +52,7 @@ footer {
   -webkit-order: 4;
 }
 
-/* Small screens */
+/* Style differences for screens thinner than 550px */
 @media (max-width: 550px) {
   article {
     -webkit-flex: 1 100%;
