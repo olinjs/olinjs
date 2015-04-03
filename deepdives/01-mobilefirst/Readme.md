@@ -2,7 +2,7 @@
 
 CSS3 provides powerful tools for making mobile-friendly website. The trick is that if you want to make a responsive website, you need to start with small screens in mind (or face unnecessary headaches).
 
-Check out the code in the example directory and reference it as we go through this deep dive. All the sections will reference it.
+Check out the code in the [example directory](./example/) and reference it as we go through this deep dive. All the sections will reference it.
 
 ## Flexbox
 
@@ -95,8 +95,18 @@ When you're doing layout, a rule like this can be useful:
 
 `*` is a wildcard, so this rule gives every element a dashed black border.
 
+### The web inspector
+
+![Chrome inspector](inspector.png)
+
+The web inspector is a suite of powerful, user-friendly developer tools. The constant companion of the modern web developer. The easiest way to pull it up is by right clicking any element on a webpage and selecting "Inspect Element" (or using the browser keyboard shortcut). A couple of tips:
+
+- The Chrome web inspector can simulate mobile screens and interactions (and even adverse web conditions!). Activate this mode by clicking the button that looks like a phone in the upper-left corner (visible above).
+- Right-click on any element and click "Inspect Element" to see (and edit!) the CSS styling it.
+  - You can use this feature to poke around any website, especially one whose style or layout inspires you.
+
 ## Media queries
 
 The [Mozilla media query guide](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries), like all Mozilla web guides, is great. I encourage everyone to read it for detail on media queries.
 
-A media query essentially allows different CSS to act based on certain qualities of the viewer's screen, like width, height, or device type.
+A media query essentially allows different CSS to act based on certain qualities of the viewer's screen, like width, height, or device type. See and play with the [example code](./example/) to get a better idea, or read the guide above.
