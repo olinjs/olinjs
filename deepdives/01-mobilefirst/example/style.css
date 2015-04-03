@@ -1,0 +1,51 @@
+* {
+  margin: 0px;
+}
+
+html, body {
+  font-family: Helvetica, sans-serif;
+}
+
+#container {
+  display: -webkit-flex;
+  -webkit-flex-flow: row wrap;
+}
+
+header {
+  background-color: seagreen;
+  
+  padding: 8px;
+  -webkit-flex: 1 100%;
+  -webkit-order: 0;
+}
+
+.bar {
+  background-color: orange;
+  
+  padding: 8px;
+  -webkit-flex: 1 0;
+}
+
+.bar.right {
+  -webkit-order: 1;
+}
+
+article {
+  padding: 8px;
+  background-color: dodgerblue;
+
+  -webkit-order: 2;
+  -webkit-flex: 2 0;
+}
+
+.bar.left {
+  -webkit-order: 3;
+}
+
+footer {
+  background-color: magenta;
+  
+  padding: 8px;
+  -webkit-flex: 1 100%;
+  -webkit-order: 4;
+}
