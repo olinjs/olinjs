@@ -2,7 +2,7 @@
 
 This document is largely going to be a retelling of the Express [documentation for middleware](http://expressjs.com/guide/using-middleware.html), so feel free to read through that page first and then come back here for a more in-depth explanation.
 
-## What is middlewware?
+## What is middleware?
 One common pitfall node beginners often run into when learning Express through modifying boilerplate code is a fundamental lack of understanding of what middleware is (and it totally didn't help that older version of Express had most of it built-in).
 There's lots of talk of it in tutorials, but across the board they almost always neglect to explain what it is, assuming the reader already knows.
 Thankfully, the Express documentation has a plain explanation that's easy to understand:

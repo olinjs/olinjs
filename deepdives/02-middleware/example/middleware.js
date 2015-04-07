@@ -2,8 +2,9 @@
   Example Authentication Middleware.
   This is meant to serve as a simple example of how
   some middleware can be structured.
-  By no means should this middleware ever be used
-  in any self-respecting application.
+  If you're looking for something similar to use in
+  your application, I recommend you check out Passport:
+  http://passportjs.org/
 */
 
 function LocalStrategy(options, verify){
