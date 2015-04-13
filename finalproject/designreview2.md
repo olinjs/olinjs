@@ -2,12 +2,17 @@
 
 You will have **8 minutes** to present the following information:
 
-- What progress have you made so far?
+- **Progress: 15 pts**
+  - What progress have you made so far?
   - Proof-of-concepts/MVP demo!
-- What are some problems you have run into? Are they still blocking you?
-- What are you looking for feedback on?
-- Are you progressing as scheduled? Have you had to make any modifications to previous plans?
-- What are your next steps?
+- **Problems: 5 pts**
+  - What are some problems you have run into?
+  - Are they still blocking you?
+  - What are you looking for feedback on?
+- **Schedule and next steps: 4 pts**
+  - Are you progressing as scheduled?
+  - Have you had to make any modifications to previous plans?
+  - What are your next steps?
 
 There will be a few minutes at the end for questions and to collect feedback from the class and teaching team.
 
