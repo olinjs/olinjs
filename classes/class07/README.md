@@ -1,151 +1,127 @@
-#Class 7: APIs and Debugging Strategies
-##APIs: Your *real* on-ramp to the information superhighway
+#Class 8 - Unit Testing and Task Running
 
-![Take it to the moon, take it to the stars.](./images/tothemoon.jpg)
+##What is Unit Testing?
 
-*Get in loser, we're going to programmatically acquire JSON data.*
+Quoth [Wikipedia](http://en.wikipedia.org/wiki/Unit_testing), "unit testing is a software testing method by which individual units of source code, sets of one or more computer program modules together with associated control data, usage procedures, and operating procedures, are tested to determine whether they are fit for use." Really what that means is that each piece of functionality gets a test to see if it works in isolation from all other pieces of functionality.
 
-So we've spent some time making our own web services that deliver static and dynamic page content, and we've done it all with the semantics of REST (GET, POST, PUT, DELETE). Today we see how we can use REST APIs to deliver content other than webpages (data!), and how we can access existing APIs set up by some of our favorite websites. Let's get started.
+Most of you have probably have heard the words "unit testing" before and probably have some association with lots of print statements to see if things are equal, and really it just takes a lot of time and isn't that important. Not so. 
 
-##What's an API?
-Generally the acronym API (Application Programming Interface) is used to describe the way in which one piece of software exposes some of its functionality for another piece of software to use. When we talk about APIs in this class we're going to be specifically referring to web APIs, which most commonly expose their functionality through a specific URL or set of URLs. The APIs we'll be working with will allow you to programmatically (read: without a browser) GET and POST data from 3rd party web services.
+##Why Unit Test?
 
-##Some Examples
-There are a lot of APIs out there that give you access to more types of data than you'll ever know what to do with. You can check out a long but by no means exhaustive list [here](http://www.programmableweb.com/category/all/apis?data_format=21190). That's a lot of data sitting there for the taking!
+Obviously unit testing helps catch bugs and make sure your code works, but it also provides other benefits in terms of overall code quality. Having a good test suite for a project increases maintainability as it becomes harder to introduce new bugs in new versions without breaking tests. Additionally, high quality code tends to be very well encapsulated, and well encapsulated code tends to be easier to test. That said, when you sit down to test something and realize that the test is going to be complicated to write, consider first refactoring the code you are testing so you end up with several tests that are all easier to write, and better code in general as a result. 
 
-###Twitter
-Search for tweets and users, post statuses, read entire timelines (all tweets from a user's following list), and more. Useful for gathering large amounts of data for natural language processing, creating a better interface for twitter, analytics platforms, or tweeting bots! **Examples:** [Tweetbot Twitter client](http://tapbots.com/software/tweetbot/), [Tospy Analytics](http://topsy.com/analytics), [Pixelsorter Bot](https://twitter.com/pixelsorter)
+##Test Driven Development (TDD)
 
->**URL Endpoint:** https://api.twitter.com/1.1
+A common development workflow is to write a bunch of code and then test that code. TDD turns that workflow on its head, calling instead for each piece of functionality to already have tests for it before implementing it. This approach has several benefits, most notably that tests get written for everything during the process of development, not as an afterthought. Additionally, writing tests before functionality effectively specifies interfaces for the code you have not written yet, so be the time you need to implement functionality, you already have a very clear specification for what that code should look like. This ties developers to functionality requirements better than just letting them write whatever, so you end up with less code that you do not need. TDD does have the disadvantage of requiring frequent refactoring, as implementing one feature at a time focusing on passing tests probably won't lead to very well organized code. That said, there are many more pros and cons of TDD outside the scope of this class. We will not require you to use TDD practices, but we recommend trying them out at some point. If you want to read more on TDD, [Wikipedia](http://en.wikipedia.org/wiki/Test-driven_development) is a good place to start.
 
->**Data Format**: JSON
+##Unit Testing Fundamentals
 
->**Account Creation:** Automatic key assignment
+There are several terms used in association with testing that are useful to understand:
 
->**Auth Scheme:** OAuth 1.0a
+**Test Suite**: A test suite consists of all the actual tests for your functionality. This is where the bulk of the work for somebody writing tests goes.
 
->**Documentation:** https://dev.twitter.com/rest/public
+**Test Harness/Framework**: A testing framework is the high level code that defines how to write and run tests. Essentially this is what moves testing from 'run a bunch of code and look on the command line to see if it outputted the right thing' to something that does all of that comparison work for you, sorts through what's right and what's wrong, and tells you 'these all passed but this one failed and here's why'. You can write these yourself, but there are so many good ones to choose from. We will be using [Mocha](http://mochajs.org/), because it's fairly common and does both node and browser testing, but if you want to take a look at other frameworks, Wikipedia has a fairly comprehensive [list](http://en.wikipedia.org/wiki/List_of_unit_testing_frameworks#JavaScript)
 
-###Last.fm
-Get information on music artist, albums, and individual tracks. Get listening trend data, even venue and event info. You can also use this API to record users' track listens (called scrobbling) to Last.fm. **Examples:** [Tastebuds Music-based Dating](http://tastebuds.fm/), [Last.fm Extra Stats](http://www.last.fm/user/C26000/journal/2006/07/30/383m_last.fm_extra_stats), [Spotibot Playlist Generator](http://www.spotibot.com/)
+**Test Runner**: A test runner runs your tests for you so you don't have to yourself. You tell it where your tests are and you get to run them all with just one command. We will use [Karma](http://karma-runner.github.io/0.12/index.html) for client-side tests. Karma's main benifit is that for testing client-side code, it deals with running your code in various browser environments so you can test for cross-browser compatability. For server-side code, mocha's built in runner is good enough. In the end, we will run the comman line interface of our tests through npm, but we will get to that a little later. 
 
->**URL Endpoint:** http://ws.audioscrobbler.com/2.0/
+**Asserion Library**: Everybody likes to write their tests differently, so people made assertion libraries. An assertion library simply defines the interface for doing comparison tests. Mocha supports tons of these, and [Chai](http://chaijs.com/) is fairly popular and versatile and can be installed through npm, so we will use it. 
 
->**Data Format**: XML/JSON if requested
+**Continous Integration (CI)**: We aren't going to deal with CI today, but it may come up during project time. CI goes one step past a test runner and runs your tests for you automatically whenever relevant code changes. Check out [Travis CI](http://docs.travis-ci.com/) if you are interested. 
 
->**Account Creation:** Apply for key
+**Code Coverage**: Pretty straightforward, code coverage tells you how much of your code actually gets run when your test suite runs, so you know if you need to write more tests. It's extraordinarily easy to set up and quite useful. We will be using [Istanbul](https://gotwarlost.github.io/istanbul/) and [Istanbul with Karma](http://karma-runner.github.io/0.8/config/coverage.html). High percentages of code coverage are good, but sometimes it's not worth the time it takes to squeeze out coverage on that last 5% or so of hard to test code.
 
->**Auth Scheme:** Proprietary
+The client-server divide causes serious problems for javascript testers. A problem that we do not have because we are working in nodejs is that most servers aren't even written in javascript. Additionally, server-client communications rely on network connectivity, and we really don't want our tests to care about whether the network is working. The same applies to any database interactions the server might execute. How then, do we test code that relies on sending out a request and receiving a response? Consider, for example, testing one of your client-side ajax requests and the callback it executes. For that test, you don't really care what the server is doing as long as it responds correctly, and you will be testing the server code separately anyway, so ideally you would fake the ajax call and just go straight to having the correct response without ever talking to the server at all. Turns out, you can do that, using [Sinon.js](http://sinonjs.org/), which provides several useful mocks of things like Ajax and XHR requests, and even the passage of time. The general idea is that any request-response interface can be faked, and Sinon provides a library to do that.
 
->**Documentation:** http://www.last.fm/api
+As you can see, there are tons of options for what to use for your javascript testing environment. We'll be going onwards with our recommendations, but they are just that, and any time you start a new project, it's a good idea to survey your testing options to see what will best fit your project.
 
-###Dropbox
-Access all your files stored online! Put them up, take them down, share them with others, read metadata and revision history. The possibilities really are endless on this one. **Examples:** [Filepicker upload plugin](https://www.filepicker.io/), [Gimmebar Browse Plugin](https://gimmebar.com/), [Droptunes Music Streaming](http://droptun.es/)
+##Getting Started with Mocha and Chai for Server-Side Testing
 
->**URL Endpoint:** https://api.dropbox.com/1
+That was a lot of high-level explanation of what we are trying to do, why, and what tools we have for it, so now it's time to get into setting up our testing environment, starting with server-side tests, which are generally simpler. There's a very basic app set up in the `in_class` subdirectory, so let's go in there and check it out. From that directory, run `npm install` to get all your dependencies, then start by seeing what the app actually does, with `node app.js`. As you can see, it's very, very basic, and it just tells you hello, but it is a working express app. Checking out the directory structure shows us that we have a new folder called tests, and in that a folder called client and a folder called server. That structure allows us to keep tests separate from source code and server tests separate from client tests. Inside the server tests you will see `test.js`, a file with everything commented out right now. Before we start writing tests, let's make sure that mocha is working in the first place. When we installed mocha, it gave us a binary file that will run our tests with the location of our tests as a command line argument. We can run our server tests with `./node_modules/mocha/bin/mocha tests/server`, which should give output like `0 passing (2ms)`, which makes sense because we don't have any tests written.
 
->**Data Format**: JSON & Various File Formats
+Time to write some tests then. In `test.js`, uncomment up through line 5, so you have:
+```node
+// Setup our assertion library
+var expect = require('chai').expect;
 
->**Account Creation:** Automatic key assignment
-
->**Auth Scheme:** OAuth 1.0
-
->**Documentation:** https://www.dropbox.com/developers
-
-###Netflix
-This one should not be on the list of APIs. Sadly, they closed their public API last November. Let's all take a moment to boo Netflix. Booooooooo.
-
-##Accessing Public APIs with OAuth
-You might have noticed that some of the above APIs are listed as having an OAuth auth scheme, but you probably have no idea what that means. Sometimes, a 3rd party application might want access to private user data, but you can't reasonably expect web service providers to give that information out freely - we need a way for service providers' users to authorize 3d party applications to access their data. OAuth lets us do just that. **Note:** We're going to assume that throughout this class you will only be consuming APIs which require OAuth and not creating them.
-
-###A brief overview of OAuth
-OAuth plays two roles in accessing data - **authentication** and **authorization**. 
-
-Authentication is handled by assigning two unique values to each application when they are registered with the service. These values are known as a **key** and a **secret**. The key serves as a public identifier for the application, and the secret is used to reversibly encrypt information about an OAuth API request. If the service provider is able to correctly decrypt the data sent along with the request using the secret it has assigned to the application, it considers this verification that the requester is who it says it is. This method of authentication is known as signing.
-
-Authorization occurs after your application has been authenticated by the service, and requires that you redirect the user to their OAuth authorization page. There, the service can authenticate the user using their own auth flow, and ask their permission to give you access to their data. If the users says yes, they are redirected back to you, and you get a special access token that allows you to request data specific to that user.
-
-![Facebook authorization window](./images/facebook.png)
-*Example authorization page for Facebook.*
-
-You'll find that some services like Facebook have different levels of permissions, each of which will give you an access token which only allows access to data within each permission tier.
-
-The full exchange of requests involved in OAuth can be seen in the graphic below. You can read more about OAuth on the [official website](http://oauth.net/), but I recommend this easy-to-follow, yet [comprehensive overview](http://www.cubrid.org/blog/dev-platform/dancing-with-oauth-understanding-how-authorization-works/).
-
-![OAuth auth flow.](./images/oauth.png)
-*Image via oauth.net*
-
-###OAuth Exercise
-We have an small example application using OAuth in the `word_cloud` folder in this class that will use Twitter's API to generate a word cloud. This example will show you how to build an OAuth request from scratch. While we hope you won't have to do that out in the real world unless absolutely necessary, we thought it might be nice to show you one so you can appreciate all of the heavy lifting some of the OAuth libraries take care of for you.
-
-##Designing APIs with REST-ful Semantics
-Up until now, we've only had experience using URL routes that we created ourselves, all used for interacting with web pages. In this lesson, we've started exposing you to APIs other people have designed specifically for you to use. What about when *you* want to create an API for *other people* to use? We won't go into detail about picking what kind of data or functionality to expose, as that will vary based on your application, but what we will cover is _how_ to expose that data and functionality in a way that is easy for others to understand and use.
-
-###GET and PUT
-When designing a REST API, it's best to think of GET and PUT routes as reciprocal methods. When you ask to PUT a resource at a specific route, you should get that same resource back when you GET it. Of course, this really only applies to those routes in which we match some identifier for a resource (like `/cats/bycolor/:color` in homework 3). As an example, suppose we have a messaging website that has a unique id for every message created. We can see any specific message through our API by GET-ing `/messages/:id`. Similarly we could update a message by PUT-ing the updated information to `/messages/:id`.
-
-###POST
-One thing a lot of people struggle with is knowing when to use POST vs. PUT. If you think of the example above, however, it should be pretty obvious to you. If PUT is used for putting a resource at a route, a POST request is used for any route where you might want do something that modifies the database or server in some way, but not in a way that is reciprocal with a GET request. For example, you could provide a single route for creating messages `/messages/new`, which will take care of making a message that could then be GET-ed and PUT-ed by its assigned id. You can't really think of any reasonable reciprocal for `/messages/new`, can you? It wouldn't make sense to return the last message created, so we would just have the one method available on routes like that.
-
-###DELETE
-Probably the most self-explanatory method available to us. DELETE requests should only be used when we want to remove the resource at the URL we send the request to. Say we accidentally sent a _really_ embarrassing message to one of our professors. With a DELETE request we can make sure that `/messages/:embarrassing_message_id` returns a 404 by getting rid of the message altogether. Crisis averted!
-
-###Naming Routes
-To get started designing an API, you're going to need to come up with some routes that describe the content or functionality we are going to provide. One strategy we will try to stick to throughout the course is using **semantic routes**. This means that you should read the route, along with the method you'll use to request it, and from that alone have a good idea of what the result will be. What would you expect the following requests to do?
-
+var index = require('../../routes/index');
 ```
-POST /blog/new
-```
-```
-POST /login
-```
-```
-GET /teacher/evan.simpson
-```
-```
-DELETE /cats/age/15
-```
-
-Let's look at what's going on here. We'll start by examining the first part of the path, which we call the **collection**. Yes, this encompasses the same concept of collection as in MongoDB, but it is just a (convenient) coincidence we call them both that. Some collection routes we've used in the past include `/cats`, and `/ingredients`, and they describe the type of resource we are trying to access or manipulate. The next part of our paths will generally specify the action or resource, like `/cats/new` or `/ingredients/:name`. We can add specificity by extending a route as in `/cats/bycolor/:color`. Now of course, since we've been showing you the right way to create routes since the beginning, it's likely none of this is news to you, so let's look at some examples of bad, non-semantic URLs so you can appreciate the good ones. As always, Wikipedia has some great examples:
-
-Non-semantic URL | Semantic URL
----------------- | --------------
-`http://example.com/index.php?page=name` | `http://example.com/name`
-`http://example.com/index.php?page=consulting/marketing` | `http://example.com/consulting/marketing`
-`http://example.com/products?category=2&pid=25` | `http://example.com/products/2/25`
-`http://example.com/cgi-bin/feed.cgi?feed=news&frm=rss` | `http://example.com/news.rss`
-`http://example.com/services/index.jsp?category=legal&id=patents` | `http://example.com/services/legal/patents`
-`http://example.com/kb/index.php?cat=8&id=41` | `http://example.com/kb/8/41`
-`http://example.com/index.php?mod=profiles&id=193` | `http://example.com/profiles/193`
-*Source: http://en.wikipedia.org/wiki/Semantic_URL*
-
-Now if we combine everything we've learned about REST methods, semantic paths, and Wikipedia being a great resource for explaining things graphically, we get something like the following table.
-
-Resource | GET | PUT | POST | DELETE
----------|-----|-----|------|-------
-**Collection URI**, such as http://example.com/resources/ | List the URIs and perhaps other details of the collection's members. | Replace the entire collection with another collection. | Create a new entry in the collection. The new entry's URI is assigned automatically and is usually returned by the operation. | Delete the entire collection.
-**Element URI**, such as http://example.com/resources/item17 | Retrieve a representation of the addressed member of the collection, expressed in an appropriate Internet media type. | Replace the addressed member of the collection, or if it doesn't exist, create it. | Not generally used. Treat the addressed member as a collection in its own right and create a new entry in it. | Delete the addressed member of the collection.
-
-*Source: http://en.wikipedia.org/wiki/Representational_state_transfer*
-
-###Versioning with Accept headers
-One thing you almost always see API providers doing in a way that is not semantic is specifying the version of the API to be used for the request by prefixing it to the resource route. Can you guess why this isn't semantic? That's right - the route is supposed to describe the resource, and our API version does not (or should not) do that. Thankfully, we know better than that, so where else can we put it? In the HTTP headers! Specifically the `Accept` header. The API version value would look something like `application/vnd.myapp.v1`, added to whatever values need to be sent in the `Accept` header. Then in our application, we can check it easily with the `accepts` package (install via npm):
-```js
-var accepts = require('accepts');
-
-app.use('/api*', function(req, res, next) {
-  var accept = accepts(req);
-  if (accept.types('application/vnd.myapp.v1')) {
-    next();
-  } else {
-    return res.json(400, {
-      message: "Incorrect API version"
-    });
-  }
+The first line loads the [Chai](http://chaijs.com/) assertion library and assigns it's 'expect' test syntax to the variable `expect`, which we will use to write tests. The second line just loads our index route, because we will want to test that. If we run our tests again, we should still see nothing passing, but no errors. Now uncomment up to line 17, as well as line 22, leaving you with:
+```node
+describe("A test suite", function() {
+	// Synchronous
+	it('should use expect syntax', function() { 
+		expect(true).to.be.true; 
+	});
 });
 ```
+Now running the tests should tell us that 1 test is passing! Let's take a look at what we just did. First off, we call the `describe` function, which creates our test suite. It takes a string, which serves as the name of the test suite, as well as a function with no arguments that runs the tests in the suite. Next we call `it`, which sets up a test for some piece of functionality, taking first the name of that test, and then a function, in this case with no arguments. Inside that function we finally make an assertion using `expect`, which we loaded from chai earlier. `expect` takes some value and returns an object with a bunch of useful comparison methods that will compare to the object we passed in. In this case `expect(true).to.be.true` is a very sematic assertion compared to the more traditional `assert(true === true)`. An additional benefit of this syntax is the ability to provide more useful messages about what failed when a test does not pass. It's worth noting that the `to` and `be` methods actually do nothing except look like english. The `not` method, however, inverts the expect clause. `true` is what actually does a comparison. All you really need to know is that it checks what comes before it to see if it is truthy, and if so it passes the test and otherwise it fails, and mocha takes care of the details of reporting that out. Every assertion you write will start with a call to `expect`, have some chaining methods (or maybe none), and some comparison method at the end. Chai's assertion methods are documented [here](http://chaijs.com/api/bdd/).
 
-###Can I set up my own OAuth server?
-So you want to use OAuth to authenticate and authorize your API users, huh? Unfortunately that's _just_ outside the scope of this class, but know that if you do get to that point someday, there are some great packages available (on npm) that can help you get a basic setup running fairly quickly.
+This is all great for synchronous testing, but how do we deal with asynchronicity? We need some way to tell mocha to wait for our callbacks to run and assertions in them to fire before it finishes testing. We can do that in our call to `it` when setting up our tests. The second argument to `it` is a function, and that function can have 0 or 1 arguments. In the 0 argument case, it does synchronous tests like above. In the 1 argument case, however, your `it` function receives as an argument another function, idiomatically called `done`. Now, mocha will wait until `done` is called before it proceeds with more testing, allowing you to call `done` after running assertions in a callback to run async tests. Uncomment lines 15-21 and you can see this in action. Running our tests now shows 2 passing, one of which takes about a second, showing that our async test is working. Async tests aren't that complicated to do in mocha, but they are a little dangerous. If `done` never gets called for some reason (like an error in your callback), mocha will not know to stop waiting for it, and your tests would hang. To prevent hanging, mocha has a default timeout of 2 seconds on async tests, after which they will fail, which we can see if we change the `1000` in line 20 to `3000`. You can change this timeout manually by setting `this.timeout` to a value in ms inside of your describe function. 
 
-_If this readme hasn't been enough for you and you want more REST, feel free to check out [this cool guide](http://www.infoq.com/articles/rest-introduction) on your own time._
+Now let's uncomment the entire file and run our tests, which should leave us with 3 tests passing within 2 test suites. This is a quick, proof-of-concept test on our index route. If you look in the route, you will notice we exported index with the method `home`, which is our actual route, and the attribute `ten`, for the purposes of this test. We check to see that `index.ten` is actually 10, as set in the route, and it is. As a quick aside on the naming of tests, you'll notice that test names should sound like a sentence when you prepend the test suite name. Our tests then read as "A test suite should pass", "A test suite should work asynchronously", and "index should have an attribute ten equal to 10". This leads to a general structure of unit tests with one test suite per module and one test per method within a module, sometimes with more than one assertion to test that method in the case where you want to try multiple inputs. Generally you would also match file structure, with one test suite per file and a directory structure mirroring your source code, although we did not do that here for brevity (theoretically the index tests should live in `tests/server/routes/index.js`).
+
+Those are the basics of mocha and chai, so now you can write server-side tests!
+
+##Client-Side Testing with Karma
+
+Client-side tests are a lot more complicated, since we need to run things in browsers, but thankfully, karma deals with most of that for us once we set up some configuration stuff. We also will not be going into much detail for client-side testing for now, beyond just setting it up and running trivial tests, since dealing with DOM manipulation gets complicated when you are used to rendering templates server-side and don't actually have a server to talk to. That said, don't worry if you are a little confused with this stuff.
+
+In terms of actually syntax of tests, everything should be identical since we are using mocha and chai still with karma. If you take a look at `tests/client/test.js`, you can see that we have the same tests as before (except for our server side route). We don't need to load chai this time, since karma will do that for us.
+
+What's different with karma is its configuration file, which you can find at `karma.conf.js`. Take a look inside- most of this is boilerplate, but we will highlight a few important things that you will want to know about. The most important attribute for our config object is `files`, which tells karma where are tests are and also where any client-side source files live. Note that you can include remote URLs here if you are using a CDN for something like JQuery.
+```
+files: [
+  'https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js',
+  'public/javascripts/*.js',
+  'tests/client/*.js',
+],
+```
+tells karma to grab JQuery, anything in `public/javascripts` with a `.js` extention, and anything in `tests/client` or its subdirectories with a `.js` extension.
+
+`browsers` is also of note, as that tells karma which browser environments to run the tests in. `PhantomJS` is what we call a headless browser, essentially meaning it has all the browsery features like a DOM and being able to run javascript, but it doesn't have a GUI so it's good for running command line tests. Chrome is also supported by default, and other browsers have plugins.
+
+All the other options you can pretty much keep as-is, but if you want to read about them, check the [docs](http://karma-runner.github.io/0.8/config/configuration-file.html). 
+
+We can run our test suite with `./node_modules/karma/bin/karma start karma.conf.js`, similar to how we ran our mocha suite earlier. In addition to reporting the test results, since we set up the `coverage` reporter in our conf file, we also now have a `coverage` folder which contains code coverage data as html files. You can take a look at them, but they aren't very exciting since there's not actually any code in our `javascripts` directory to cover, but they take little effort to set up and when you are testing real code they are nice to have. 
+
+##Running Tasks with `npm`
+
+We can configure `npm` to do quite a bit more than just manage packages. In your `package.json`, you can specify scripts that `npm` can then run.
+
+###### package.json
+```
+{
+  ...
+  "main": "index.js",
+  "scripts": {
+  	"hello": "echo hi"
+  }
+  ...
+}
+```
+
+Run scripts with `npm run scriptname`
+
+```bash
+$ npm run hello
+hi
+```
+
+Below is the `scripts` section from the in-class exercise `package.json` showing how we can use `npm` to run our unit tests. As you can see, you can even run `npm` tasks with `npm`!
+The `cover-mocha` script also shows how to generate server-side code coverage using Istanbul. It's just an extra simple command, and you can pretty much copy it to any new project. `test` is also a special npm keyword, so you can omit `run` and just run `npm test` to run all our tests. Try that now and take a look at Istanbul's coverage output for the server-side!
+
+###### package.json
+```
+{
+  ...
+  "main": "index.js",
+  "scripts": {
+    "karma": "./node_modules/karma/bin/karma start karma.conf.js",
+    "mocha": "./node_modules/mocha/bin/mocha tests/server",
+    "cover-mocha": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha tests/server -- -R spec",
+    "test": "npm run karma && npm run cover-mocha",
+    "start": "nodemon app.js"
+  }
+  ...
+}
+```

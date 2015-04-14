@@ -1,59 +1,28 @@
-# Homework 6 (we skipped 5)
+#Homework 7
 
-## Assignment
+##Passport and "Sign in using __"
+One of the great features of OAuth is that it allows us to use another service to authenticate users of our service. This means we can piggy back on someone else to handle the hard parts of signing in to a service. The library `Passport` makes this really easy, if not a bit complicated.
 
-You're going to make Twitter! Not quite. But we're going to get closer than you think.
+###Assignment
+Read a little bit [about Passport](https://github.com/jaredhanson/passport/blob/master/README.md#passport), and then [this tutorial](http://mherman.org/blog/2013/11/10/social-authentication-with-passport-dot-js) they've linked in the documentation. You should aim to understand how to integrate Passport into an Express application to handle user sign in. Don't get hung up on the term 'Strategy,' it's just Passport's way of saying 'method of authentication.'
 
-We're going to be a little more open-ended here, describing functionality and user experience rather than specific http endpoints.
+This week we're going to be using Twoter as a base for your homework and ask you to do the following things:
 
-### Requirements
+1.  Allow users to sign in to your service using Facebook
+2.  Use Passport's LocalStrategy to sign users in with a username and password.
+3.  **DO NOT PUSH YOUR OAUTH KEYS TO GITHUB**
+4.  Only display Twotes on `/` if the user has been authenticated
+5.  Try to keep all of you Passport logic out of `app.js` like we've been doing with all of our other routes. How might you go about this?
+6.  Don't push to Heroku until we've had a chance to evaluate the functionality of Homework 6 separately. We will notify you when you can deploy.
+6.  **DO NOT PUSH YOUR OAUTH KEYS TO GITHUB**
 
-A "twote" is a small piece of text written by a user. You can call it whatever you want, but probably not "tweet" for copyright reasons...
 
-- The main page displays:
-	- A list of all twotes, with the most recent at the top
-		- Each twote displays text and the author
-	- A form to post a twote (**Disabled or not visible if user is not logged in**)
-		- Including a display of the logged-in user
-	- A list of all users
-		- Clicking on a user highlights that user's twotes
-	- A logout button
+*Note: Please do all work on a separate branch from Homework 6. Yes, you can push a branch onto Heroku, just make sure you push it onto Heroku's master.*
 
-- The login page has:
-	- A form to log in
-		- There is zero authentication! Just enter a username to log in as that user — the user will be created if it doesn't exist. This is clearly not secure, but it'll let us play around with user/session management before we dive into the world of authentication and security starting next class.
+####Getting set up with FB OAuth
+In order to use Passport with Facebook, you'll need an application ID and secret key. You can get these by signing up as a developer on [Facebook's developer website](https://developers.facebook.com/) and creating a new application (under 'My Apps'). The only setting you will need to change for this application is to set 'Site URL' to `http://localhost:3000` so Facebook knows where to redirect OAuth requests. Note that when you deploy to Heroku, you will need to change this to your apps `herokuapp.com` address.
 
-- A logged in user can:
-	- Post a twote (the twote will appear at the top of the list without a page refresh)
-	- Delete their twotes (a user can only delete their own twotes and only when logged in)
-	- Logout (with the logout button)
+When we start working on projects, you might want to have a live version of your site deployed while you continue to work on it locally. In order to do this, you might consider having two Facebook applications: `my-app` and `my-app-dev`. Then you can set up your local application to use `my-app-dev`, and your deployed site to use `my-app`.
 
-- All actions happen without a page refresh! (Except for redirecting to/from the Login page)
-
-You're also going to make your clone look something like this:
-
-![Example](example.png)
-
-Using CSS! Some big things you should emulate:
-
-- The 2-column display of twotes and users
-- Each twote appears on its own line
-- Add styling to the form! Default forms are ugly
-- Nice fonts (see [Google fonts](https://www.google.com/fonts))
-- Try to follow principles from the reading
-
-### Reading
-
-Erik Kennedy (actually Olin '10) wrote a great article on UI design targeted at engineers.
-
-#### Read [part 1](https://medium.com/@erikdkennedy/7-rules-for-creating-gorgeous-ui-part-1-559d4e805cda) and [part 2](https://medium.com/@erikdkennedy/7-rules-for-creating-gorgeous-ui-part-2-430de537ba96).
-
-It's a great read with lots of tips based on lessons learned by the author after hours of practice and analysis. The Medium staff themselves call it "useful"! Read it and keep it as a reference as you design your website. Your sites should look better than the example. Have fun with it!
-
-#### Recommended Reading
-
-Erik also links to another article on [deliberate practice](http://calnewport.com/blog/2010/01/06/the-grandmaster-in-the-corner-office-what-the-study-of-chess-experts-teaches-us-about-building-a-remarkable-life/) as applied to technical fields. Why not read it, too?
-
-### Submission
-
-Deploy your application to Heroku and fill out the [homework submission survey](http://goo.gl/forms/YtLR2oGdFv).
+###Submission
+After you've received the 'ok' to push your application to Heroku, fill out the [homework submission survey](http://goo.gl/forms/FeqpKu3ifj).

@@ -1,478 +1,151 @@
-# Class6 - CSS, Development Style and Grace
+#Class 7: APIs and Debugging Strategies
+##APIs: Your *real* on-ramp to the information superhighway
 
-Today we're going to cover some big ideas that span front-end and back-end development (and life!), and also round out our front-end knowledge by learning about CSS.
+![Take it to the moon, take it to the stars.](./images/tothemoon.jpg)
 
-## Separation of Concerns
+*Get in loser, we're going to programmatically acquire JSON data.*
 
-### Client-side technologies
+So we've spent some time making our own web services that deliver static and dynamic page content, and we've done it all with the semantics of REST (GET, POST, PUT, DELETE). Today we see how we can use REST APIs to deliver content other than webpages (data!), and how we can access existing APIs set up by some of our favorite websites. Let's get started.
 
-- **HTML** specifies the _structure_ and _content_ of a webpage.
-- **CSS** specifies the _presentation_ or _appearance_ of elements on a webpage.
-- **JavaScript** (in the front-end) lets the developer create _interactive_ elements.
-It's how the client communicates with the server and the user.
+##What's an API?
+Generally the acronym API (Application Programming Interface) is used to describe the way in which one piece of software exposes some of its functionality for another piece of software to use. When we talk about APIs in this class we're going to be specifically referring to web APIs, which most commonly expose their functionality through a specific URL or set of URLs. The APIs we'll be working with will allow you to programmatically (read: without a browser) GET and POST data from 3rd party web services.
 
-Before CSS, HTML was also used to control the appearance of webpages.
-This is why websites from the '90s look terrible.
+##Some Examples
+There are a lot of APIs out there that give you access to more types of data than you'll ever know what to do with. You can check out a long but by no means exhaustive list [here](http://www.programmableweb.com/category/all/apis?data_format=21190). That's a lot of data sitting there for the taking!
 
-These three technologies embody the principle of _separation of concerns_ — they are each completely responsible for a single aspect of a complex web app.
+###Twitter
+Search for tweets and users, post statuses, read entire timelines (all tweets from a user's following list), and more. Useful for gathering large amounts of data for natural language processing, creating a better interface for twitter, analytics platforms, or tweeting bots! **Examples:** [Tweetbot Twitter client](http://tapbots.com/software/tweetbot/), [Tospy Analytics](http://topsy.com/analytics), [Pixelsorter Bot](https://twitter.com/pixelsorter)
 
-## App file structure/hierarchy
+>**URL Endpoint:** https://api.twitter.com/1.1
 
-Most of you have been using a folder structure like the one below.
-Let's just briefly formalize it:
+>**Data Format**: JSON
 
-- **/models** - contains ORM (object-relational mapping) models (mongoose `Schemas`) for our database (MongoDB)
-- **/views** - view templates
-- **/public** - all static content
-	- **/images**
-	- **/stylesheets**
-	- **/javascripts**
-- **/routes** - all express routes, separated by app module/area
-- **/tests** - for unit-tests
-- **/node_modules** - created by `npm`
+>**Account Creation:** Automatic key assignment
 
-There's room for variation in the organization of your static content (you may see an **assets** folder containing **images** and other folders if you have many different types of assets) but the other folders are fairly standard, and good for a variety of reasons.
+>**Auth Scheme:** OAuth 1.0a
 
-## jQuery and `this`
+>**Documentation:** https://dev.twitter.com/rest/public
 
-A brief word on jQuery and the JavaScript variable `this`:
+###Last.fm
+Get information on music artist, albums, and individual tracks. Get listening trend data, even venue and event info. You can also use this API to record users' track listens (called scrobbling) to Last.fm. **Examples:** [Tastebuds Music-based Dating](http://tastebuds.fm/), [Last.fm Extra Stats](http://www.last.fm/user/C26000/journal/2006/07/30/383m_last.fm_extra_stats), [Spotibot Playlist Generator](http://www.spotibot.com/)
 
-Every JavaScript function is implicitly passed an argument called `this`.
-The variable `this` is a way of passing a function call a context.
+>**URL Endpoint:** http://ws.audioscrobbler.com/2.0/
 
-One great application of this is accessing the element that fired a jQuery event.
-Here's a common case: I want to bind a `click` event to all elements with a class `my-class`, but I want to perform an action specific to the specific element that is clicked. If I bind the event like this:
+>**Data Format**: XML/JSON if requested
 
-```node
-$('.my-class').click(clickHandler);
+>**Account Creation:** Apply for key
+
+>**Auth Scheme:** Proprietary
+
+>**Documentation:** http://www.last.fm/api
+
+###Dropbox
+Access all your files stored online! Put them up, take them down, share them with others, read metadata and revision history. The possibilities really are endless on this one. **Examples:** [Filepicker upload plugin](https://www.filepicker.io/), [Gimmebar Browse Plugin](https://gimmebar.com/), [Droptunes Music Streaming](http://droptun.es/)
+
+>**URL Endpoint:** https://api.dropbox.com/1
+
+>**Data Format**: JSON & Various File Formats
+
+>**Account Creation:** Automatic key assignment
+
+>**Auth Scheme:** OAuth 1.0
+
+>**Documentation:** https://www.dropbox.com/developers
+
+###Netflix
+This one should not be on the list of APIs. Sadly, they closed their public API last November. Let's all take a moment to boo Netflix. Booooooooo.
+
+##Accessing Public APIs with OAuth
+You might have noticed that some of the above APIs are listed as having an OAuth auth scheme, but you probably have no idea what that means. Sometimes, a 3rd party application might want access to private user data, but you can't reasonably expect web service providers to give that information out freely - we need a way for service providers' users to authorize 3d party applications to access their data. OAuth lets us do just that. **Note:** We're going to assume that throughout this class you will only be consuming APIs which require OAuth and not creating them.
+
+###A brief overview of OAuth
+OAuth plays two roles in accessing data - **authentication** and **authorization**. 
+
+Authentication is handled by assigning two unique values to each application when they are registered with the service. These values are known as a **key** and a **secret**. The key serves as a public identifier for the application, and the secret is used to reversibly encrypt information about an OAuth API request. If the service provider is able to correctly decrypt the data sent along with the request using the secret it has assigned to the application, it considers this verification that the requester is who it says it is. This method of authentication is known as signing.
+
+Authorization occurs after your application has been authenticated by the service, and requires that you redirect the user to their OAuth authorization page. There, the service can authenticate the user using their own auth flow, and ask their permission to give you access to their data. If the users says yes, they are redirected back to you, and you get a special access token that allows you to request data specific to that user.
+
+![Facebook authorization window](./images/facebook.png)
+*Example authorization page for Facebook.*
+
+You'll find that some services like Facebook have different levels of permissions, each of which will give you an access token which only allows access to data within each permission tier.
+
+The full exchange of requests involved in OAuth can be seen in the graphic below. You can read more about OAuth on the [official website](http://oauth.net/), but I recommend this easy-to-follow, yet [comprehensive overview](http://www.cubrid.org/blog/dev-platform/dancing-with-oauth-understanding-how-authorization-works/).
+
+![OAuth auth flow.](./images/oauth.png)
+*Image via oauth.net*
+
+###OAuth Exercise
+We have an small example application using OAuth in the `word_cloud` folder in this class that will use Twitter's API to generate a word cloud. This example will show you how to build an OAuth request from scratch. While we hope you won't have to do that out in the real world unless absolutely necessary, we thought it might be nice to show you one so you can appreciate all of the heavy lifting some of the OAuth libraries take care of for you.
+
+##Designing APIs with REST-ful Semantics
+Up until now, we've only had experience using URL routes that we created ourselves, all used for interacting with web pages. In this lesson, we've started exposing you to APIs other people have designed specifically for you to use. What about when *you* want to create an API for *other people* to use? We won't go into detail about picking what kind of data or functionality to expose, as that will vary based on your application, but what we will cover is _how_ to expose that data and functionality in a way that is easy for others to understand and use.
+
+###GET and PUT
+When designing a REST API, it's best to think of GET and PUT routes as reciprocal methods. When you ask to PUT a resource at a specific route, you should get that same resource back when you GET it. Of course, this really only applies to those routes in which we match some identifier for a resource (like `/cats/bycolor/:color` in homework 3). As an example, suppose we have a messaging website that has a unique id for every message created. We can see any specific message through our API by GET-ing `/messages/:id`. Similarly we could update a message by PUT-ing the updated information to `/messages/:id`.
+
+###POST
+One thing a lot of people struggle with is knowing when to use POST vs. PUT. If you think of the example above, however, it should be pretty obvious to you. If PUT is used for putting a resource at a route, a POST request is used for any route where you might want do something that modifies the database or server in some way, but not in a way that is reciprocal with a GET request. For example, you could provide a single route for creating messages `/messages/new`, which will take care of making a message that could then be GET-ed and PUT-ed by its assigned id. You can't really think of any reasonable reciprocal for `/messages/new`, can you? It wouldn't make sense to return the last message created, so we would just have the one method available on routes like that.
+
+###DELETE
+Probably the most self-explanatory method available to us. DELETE requests should only be used when we want to remove the resource at the URL we send the request to. Say we accidentally sent a _really_ embarrassing message to one of our professors. With a DELETE request we can make sure that `/messages/:embarrassing_message_id` returns a 404 by getting rid of the message altogether. Crisis averted!
+
+###Naming Routes
+To get started designing an API, you're going to need to come up with some routes that describe the content or functionality we are going to provide. One strategy we will try to stick to throughout the course is using **semantic routes**. This means that you should read the route, along with the method you'll use to request it, and from that alone have a good idea of what the result will be. What would you expect the following requests to do?
+
+```
+POST /blog/new
+```
+```
+POST /login
+```
+```
+GET /teacher/evan.simpson
+```
+```
+DELETE /cats/age/15
 ```
 
-Then simply doing this in my click handler:
+Let's look at what's going on here. We'll start by examining the first part of the path, which we call the **collection**. Yes, this encompasses the same concept of collection as in MongoDB, but it is just a (convenient) coincidence we call them both that. Some collection routes we've used in the past include `/cats`, and `/ingredients`, and they describe the type of resource we are trying to access or manipulate. The next part of our paths will generally specify the action or resource, like `/cats/new` or `/ingredients/:name`. We can add specificity by extending a route as in `/cats/bycolor/:color`. Now of course, since we've been showing you the right way to create routes since the beginning, it's likely none of this is news to you, so let's look at some examples of bad, non-semantic URLs so you can appreciate the good ones. As always, Wikipedia has some great examples:
 
-```node
-function clickHandler() {
-	var $clicked = $('.my-class');
-	// do things with $clicked
-}
-```
+Non-semantic URL | Semantic URL
+---------------- | --------------
+`http://example.com/index.php?page=name` | `http://example.com/name`
+`http://example.com/index.php?page=consulting/marketing` | `http://example.com/consulting/marketing`
+`http://example.com/products?category=2&pid=25` | `http://example.com/products/2/25`
+`http://example.com/cgi-bin/feed.cgi?feed=news&frm=rss` | `http://example.com/news.rss`
+`http://example.com/services/index.jsp?category=legal&id=patents` | `http://example.com/services/legal/patents`
+`http://example.com/kb/index.php?cat=8&id=41` | `http://example.com/kb/8/41`
+`http://example.com/index.php?mod=profiles&id=193` | `http://example.com/profiles/193`
+*Source: http://en.wikipedia.org/wiki/Semantic_URL*
 
-Won't do. The selection `$('.my-class')` will always return an array containing every single element in the entire document with the class `my-class`. However, jQuery solves this problem elegantly:
+Now if we combine everything we've learned about REST methods, semantic paths, and Wikipedia being a great resource for explaining things graphically, we get something like the following table.
 
-### Every jQuery event handler is passed the element that fired the event as `this`.
+Resource | GET | PUT | POST | DELETE
+---------|-----|-----|------|-------
+**Collection URI**, such as http://example.com/resources/ | List the URIs and perhaps other details of the collection's members. | Replace the entire collection with another collection. | Create a new entry in the collection. The new entry's URI is assigned automatically and is usually returned by the operation. | Delete the entire collection.
+**Element URI**, such as http://example.com/resources/item17 | Retrieve a representation of the addressed member of the collection, expressed in an appropriate Internet media type. | Replace the addressed member of the collection, or if it doesn't exist, create it. | Not generally used. Treat the addressed member as a collection in its own right and create a new entry in it. | Delete the addressed member of the collection.
 
-In the example above, `clickHandler` is our event handler. When an element with `my-class` is clicked, jQuery handles the event by calling `clickHandler` and passing the clicked element to the function as `this`. So we can do this:
+*Source: http://en.wikipedia.org/wiki/Representational_state_transfer*
 
-```node
-function clickHandler() {
-	var $clicked = $(this); // wrap it in a jQuery selector
-	// do things with $clicked
-}
-```
+###Versioning with Accept headers
+One thing you almost always see API providers doing in a way that is not semantic is specifying the version of the API to be used for the request by prefixing it to the resource route. Can you guess why this isn't semantic? That's right - the route is supposed to describe the resource, and our API version does not (or should not) do that. Thankfully, we know better than that, so where else can we put it? In the HTTP headers! Specifically the `Accept` header. The API version value would look something like `application/vnd.myapp.v1`, added to whatever values need to be sent in the `Accept` header. Then in our application, we can check it easily with the `accepts` package (install via npm):
+```js
+var accepts = require('accepts');
 
-This is how we operate on the element that was clicked.
-
-## CSS
-
-Open up [Codepen](http://codepen.io/pen/), we're going to learn CSS!
-
-CSS (cascading style sheets) is the language that makes the web pretty.
-It lets us describe the **look and formatting** of HTML elements.
-In this way, it *separates the concern* of the style of the page from all other aspects of a web app.
-In the early days of the web, HTML was also responsible for this, but all HTML formatting and style directives are now deprecated in favor of CSS.
-
-Every HTML element can be styled by CSS.
-Elements can be styled by tag name, class, id, and more.
-Below is an example of basic CSS syntax:
-
-```css
-selector {
-	property: value;
-	property: value;
-	...
-}
-```
-
-Properties can be named in any order, but in the case of directly conflicting properties, the last one defined will apply.
-Many property names are fairly self-explanatory, but the [full property table](http://www.w3.org/TR/CSS21/propidx.html) may serve as a useful reference.
-Or Google.
-
-### Units
-
-Many properties values are lengths, which can be specified in many different ways in CSS.
-The units below are the most common.
-
-| Unit	| Description |
-|----|----|
-| `px` | Usually a single pixel on the client's screen (a line of width `1px` is guaranteed to be "sharp and visible")
-| `em` | Relative to the font-size of the element (`0.5em` is half of the current font-size)
-| `rem` | Relative to the font-size of the `<html>` or "root" element (`0.5em` is half of the root font-size)
-| `%` | Percent of the parent element along the relevant dimension (horizontally or vertically)
-| `vh` | (New in CSS3) 1/100th of the viewport height
-| `vw` | (New in CSS3) 1/100th of the viewport width
-
-CSS also supports the absolute units `cm`, `mm`, `in`, `pt`, and `pc`, but these are better suited for print than the screen.
-
-### Selectors and Specificity
-
-The most common selector is a `tagname`, a `class` (preceded by `.`), or an `id` (preceded by `#`), though there are many other ways to select elements to style.
-
-Styles of elements _cascade_ (apply) to their child elements.
-In cases where multiple conflicting styles are applied to an element, _the more specific style prevails_.
-
-So with this document:
-
-```css
-<div class="styled">Content</div>
-```
-
-and this style:
-
-```css
-div {
-	color white;
-	background-color: red;
-}
-
-.styled {
-	background-color: blue;
-}
-```
-
-The single `div` in the document will have a blue background color because the selector `.styled` is more specific than `div`.
-Paste the above into [Codepen](http://codepen.io/pen/) to test it out.
-
-### Colors
-
-A quick aside on colors, which can be specified in CSS in multiple ways.
-
-| Method | Description |
-|----|----
-| `#RRGGBB` | Red, green, and blue are each specified by a two-digit hex number, `00` to `FF`. White is `#FFFFFF` and black is `#000000`.
-| `#RGB` | Same as above but with half the precision.
-| `name` | Certain colors (like red, blue, yellow, etc.) can be specified simply by name. They're mostly hideous but black and white are fine.
-| `rgb(r,g,b)` | Red, green, and blue are specified on a 0-255 scale.
-| `rgba(r,g,b,a)` | Same as above, but alpha (opacity) is specified on a 0-1 scale.
-
-Here's a neat [clock](http://whatcolourisit.scn9a.org) that displays the color specified by the hex code corresponding to the current time.
-
-### Box Model
-
-All HTML elements can be modeled as boxes.
-CSS allows us to modify that box to affect the display of content.
-Below is the styling for a box and its corresponding box model.
-The properties under `/* metrics */` determine the size of the box and the spacing of its contents.
-
-```css
-.styled {
-	background-color: blue;
-	color: white;
-	text-align: center;
-	
-	/* metrics */
-	margin: 8px;
-	border: 2px dotted black;
-	padding: 8px;
-	width: 100px;
-}
-```
-
-![ Box model ]( box.png )
-
-In the image above, the solid border around the yellow box defines the outer edge of the element.
-The `margin` is space between the box and its surroundings.
-The `border` is space between the outer edge and the `padding`, which defines the space between the inner edge of the border and the content of the element.
-
-As the image above shows, the `width` property sets the width of the *content*, not the width of the entire element.
-This means that `padding` and `border` add to the apparent dimensions of the box.
-We can add the below property to change that:
-
-```css
-box-sizing: border-box;
-```
-
-With this property set, the `width` and `height` properties set the dimensions of the box, and those dimensions are not affected by `padding` or `border`.
-
-Try playing with these properties in Codepen to see the effect of `box-sizing: border-box`.
-
-### The Web Inspector
-
-You can also use the web inspector in your browser to see _and edit_ the CSS of any page you visit! Just right click on an element and select "Inspect Element", then click the "Styles" tab in the inspector.
-
-## Cookies
-
-A cookie is a key-value store that lives on the client and can be read and modified by a website.
-In express, cookies are stored in `req.cookies`.
-
-To make a quick cookie-printing server, add this code to `app.js` in a new folder:
-
-```node
-var express = require('express');
-var path = require('path');
-
-var logger = require('morgan');
-var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
-
-var app = express();
-
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-
-app.get('/', function(req, res) {
-	console.dir(req.cookies);
-
-	res.send('hello');
+app.use('/api*', function(req, res, next) {
+  var accept = accepts(req);
+  if (accept.types('application/vnd.myapp.v1')) {
+    next();
+  } else {
+    return res.json(400, {
+      message: "Incorrect API version"
+    });
+  }
 });
-
-app.listen(3000);
 ```
 
-The app has a single route, `/`, that prints the cookies to the server console.
-Install the dependencies:
+###Can I set up my own OAuth server?
+So you want to use OAuth to authenticate and authorize your API users, huh? Unfortunately that's _just_ outside the scope of this class, but know that if you do get to that point someday, there are some great packages available (on npm) that can help you get a basic setup running fairly quickly.
 
-```bash
-npm install express morgan body-parser cookie-parser
-```
-
-Run the server and visit the page (you will probably have to refresh because on your first visit you don't have any cookies) to see your cookies:
-
-```bash
-{ 'connect.sid': 's:oJzNzHd1WX-xlEBtpFoy7VoP4UzoqTQ8.VjMIMfdIZqI0oLGy1zh5JwWPbdost5USN9jFYeL9ITY' }
-```
-
-As you can see, a cookie is a key-value store that our cookier parser has converted to JSON.
-This is probably a unique ID that we can use to associate a cookie with other data stored on the client.
-
-## Sessions
-
-One of the most common ways to use cookies is to keep track of "sessions".
-A session stores data specific to a given client that can only be accessed by that client (based on the client's cookie identity).
-
-Now add this line to your `require` list:
-
-```node
-var session = require('express-session');
-```
-
-And this line at the end of your `app.use` list:
-
-```node
-app.use(session({
-	secret: 'secret',
-	resave: false,
-	saveUninitialized: true
-}));
-```
-
-Install `express-session` with `npm`, and add this line of code to the route below `console.dir(req.cookies)`:
-
-```node
-console.dir(req.session);
-```
-
-The session object stores a reference to the client's cookie.
-The `express-session` middleware retrieves the session data from memory (often stored in a database in a real web app) based on the cookie ID. Visit your page and check the output to see your cookies and session:
-
-```bash
-{ 'connect.sid': 's:oJzNzHd1WX-xlEBtpFoy7VoP4UzoqTQ8.VjMIMfdIZqI0oLGy1zh5JwWPbdost5USN9jFYeL9ITY' }
-{ cookie:
-	 { path: '/',
-		 _expires: null,
-		 originalMaxAge: null,
-		 httpOnly: true } }
-```
-
-The key `_expires` is a deprecated property that specifies the time at which the cookie should expire.
-Cookies usually have a maximum age set – if the max age is `null`, the cookie will last for the life of the browser session, which is perfect for our needs.
-
-The session object is stored locally on the server, so we can modify it directly. Add this code to your route before `res.send('hello')`:
-
-```node
-var message;
-if (req.session.counter) {
-	req.session.counter++;
-	message = "Hello again! Thanks for visiting " + req.session.counter + " times";
-} else {
-	message = "Hello, thanks for visiting this site!";
-	req.session.counter = 1;
-}
-```
-
-This code checks for the `counter` property and adds it if it doesn't exist.
-Next time that user accesses the page, `req.session.counter` is incremented.
-Here's the result after refreshing the page a few times:
-
-```node
-{ cookie:
-	 { path: '/',
-		 _expires: null,
-		 originalMaxAge: null,
-		 httpOnly: true },
-	counter: 4 }
-```
-
-Basically, sessions allow websites to keep track of user-specific data for as long as a user keeps their cookies (or until the cookies become invalid, either from expiring or server refresh).
-
-## Error Handling
-
-By now you've probably seen a lot of errors in your console.
-Handling errors well is key to writing robust Node apps.
-
-### Operational vs. Programmer
-
-**Operational errors** are problems that the user can experience while running your program that are not caused by errors with your program's code.
-The user's system could be out of memory, or the user could supply invalid input.
-
-**Programmer errors** are bugs in the program code that can be resolved by fixing the code.
-
-Even correct programs cannot avoid all operation errors, so they must handle them correctly.
-It's up to the programmer both to avoid programmer errors (by writing good code and debugging effectively — we'll cover this later), and to _handle_ operational errors as gracefully as possible.
-
-### Asynchronous Error Handling
-
-The standard method signature for a Node callback is this:
-
-```node
-function(err, result) {
-	...
-}
-```
-
-If there was no error, `err` is `null` and `result` is not.
-Otherwise, `err` is _not_ `null` and result is.
-This is about the simplest way to handle errors:
-
-```node
-function(err, result) {
-	if (err)
-		return console.error(err);
-	...
-}
-```
-
-We can do much more sophisticated things, from attempting to recover from the error to simply informing the user of the error (`console.error` prints to the server console, so the client is never informed).
-
-Most of our functions are asynchronous (callbacks), so this is a very common way to handle errors in Node.
-We may cover other ways to handle errors in future classes or deep dives.
-
-### Response Status
-
-As we touched on in class 1, there are [many HTTP status codes](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes).
-Express makes it easy to set the status of a response.
-You can simply chain a call to `status` in your response, like this:
-
-```node
-res.status(404).render('error_404', { data })
-...
-res.status(500).json({ error: 'message' })
-```
-
-Whenever possible, you should set the appropriate response status in this way.
-
-#### Joyent has great documentation on error handling in Node [here](https://www.joyent.com/developers/node/design/errors).
-
-## Debugging
-
-Learning how to debug is one of the most important things you can get out of learning to program.
-It's a skill you'll use everywhere, every day.
-You already do.
-
-### Know your entire system
-
-Effectively debugging a system means debugging it in context.
-Your Node webserver runs from your UNIX terminal running on a distribution of Linux, on a computer connected to the internet through a wireless router or ethernet connection.
-To debug effectively, you have to acknowledge that any part of your system could break and cause problems.
-
-### Read error messages and stack traces
-
-Error messages are not bad.
-They exist to help you! Without them, you would have no indication of where to start when something went wrong — your app would just crash.
-
-So you should always read them.
-Focus on the parts of the error message that you understand.
-
-#### _Google error messages!_
-
-#### Stack Traces
-
-When an error means that the app can no longer function consistently, it should be "thrown". A thrown error produces an exception, and an uncaught exception will crash the app. Whenever your server crashes from an exception, you get a stack trace. The stack trace is kind of like a snapshot of the memory the program was using when and where it crashed — it shows the tree of functions containing the function that caused the crash. If the error was a simple syntactical one, Node might point it right out for you:
-
-```bash
-/Users/Enigmoid/Git/olinjs/classes/class06/sessions/app.js:26
-		req.session.counter++;
-		^^^
-SyntaxError: Unexpected identifier
-    at Module._compile (module.js:439:25)
-    at Object.Module._extensions..js (module.js:474:10)
-    at Module.load (module.js:356:32)
-    at Function.Module._load (module.js:312:12)
-    at Function.Module.runMain (module.js:497:10)
-    at startup (node.js:119:16)
-    at node.js:929:3
-```
-
-In this case, we should clearly inspect around line 26 of `app.js`.
-I say around because it's common for the offending line to come _before_ the identified line, but rarely after.
-Syntax errors are usually caught when modules are "compiled" by Node for external use.
-
-Here's another stack trace from a slightly sneakier error:
-
-```bash
-TypeError: Cannot set property 'count' of undefined
-    at /Users/Enigmoid/Git/olinjs/classes/class06/sessions/app.js:25:26
-    at Layer.handle [as handle_request] (/Users/Enigmoid/Git/olinjs/classes/class06/sessions/node_modules/express/lib/router/layer.js:82:5)
-    at next (/Users/Enigmoid/Git/olinjs/classes/class06/sessions/node_modules/express/lib/router/route.js:110:13)
-    at Route.dispatch (/Users/Enigmoid/Git/olinjs/classes/class06/sessions/node_modules/express/lib/router/route.js:91:3)
-    at Layer.handle [as handle_request] (/Users/Enigmoid/Git/olinjs/classes/class06/sessions/node_modules/express/lib/router/layer.js:82:5)
-    at /Users/Enigmoid/Git/olinjs/classes/class06/sessions/node_modules/express/lib/router/index.js:267:22
-    at Function.proto.process_params (/Users/Enigmoid/Git/olinjs/classes/class06/sessions/node_modules/express/lib/router/index.js:321:12)
-    at next (/Users/Enigmoid/Git/olinjs/classes/class06/sessions/node_modules/express/lib/router/index.js:261:10)
-    at Object.<anonymous> (/Users/Enigmoid/Git/olinjs/classes/class06/sessions/node_modules/express-session/index.js:421:7)
-    at Object.immediate._onImmediate (timers.js:372:16)
-```
-
-At some point, you'll probably encounter an error message which mentions `undefined`, like `undefined is not a [function|object]`.
-The broken code (which should be your code) is usually at the top of the stack trace — here we can see that it is still in `app.js`, this time on line 25. The offending line tried to set a property of an undefined property on the `req.cookies` object.
-
-Stack traces are useful to find what line of code caused the app to crash. Depending on the error, this line could be all the information you need, or could be relatively useless. But the computer is always following a set of unbreakable rules, so no information should be completely discounted when bugging.
-
-### Remember that someone else has done this before
-
-Someone else has already found your error and asked about it on the internet — this is why Googling your error messages is so helpful.
-You'll often find an answered StackOverflow question.
-This is the best place to start — error messages are designed to be helpful, but they only contain so much information on their own.
-
-### Know your tools
-
-#### The Server Console
-
-Calls by your Node server to `console.log`, error messages, exceptions, and stack traces go to the server console.
-When you deploy to Heroku, you can access your server console output with `heroku logs`.
-
-#### The Browser Console
-
-When you write and debug front-end JavaScript, all `console.log` calls, error messages, exceptions, and stack traces go to the console in your browser, accessible through the web inspector.
-
-It's easy to go very far down a debugging path only to realize that it was the wrong path.
-One of the most difficult things about debugging is deciding where to start.
-
-### Know that you have full control
-
-The computer doesn't know what you mean, just what you say.
-Programming is an exercise of boiling down your understanding of a problem to something a machine can understand.
-The computer does exactly what you tell it to do, 100% of the time.
-
-_All the time._
-
-This means that no matter what, something you did is always responsible for the behavior of your program.
-In one sense, every error is your fault.
-But more importantly, _you always have complete control_.
-If you can break your program, you can make it run.
-
-_Starting with something that works_ and _making incremental changes_ are the two best ways to maintain an understanding of how the code you write controls the behavior of your program.
-
-**Git** is a fantastic enabler in this endeavor!
-
-#### Finish the [homework](./homework.md) for next class.
+_If this readme hasn't been enough for you and you want more REST, feel free to check out [this cool guide](http://www.infoq.com/articles/rest-introduction) on your own time._
