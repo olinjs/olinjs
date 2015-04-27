@@ -82,4 +82,6 @@ One of the main principles of agile is that software developers should and must 
 One such tool is the burndown chart, which shows the current work done next to a straight line that indicates where they should idealy be to stay on track. 
 ![burndown chart](http://joel.inpointform.net/wp-content/uploads/2010/11/burndown132.png)
 
+Another potentially interesting indicator (if you track story points) is the velocity chart. This chart shows the last several sprints, how many stories the team had commited to, and how many they had completed. Idealy, the bars should match and if they don't, the team can discuss what is going wrong. 
+
 

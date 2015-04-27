@@ -43,6 +43,22 @@ Run commands, and read through your client-side `console.logs` in this window.
 As a bonus, if you click the "console icon" ![console icon](images/consoleicon.png) in the upper-right corner,
 the console will pop up below whatever other tab you want to reference.
 
+###Javascript Code in Console
+With the developer console, you can actually interface and inject your own javascript into a webpage. If you open up the console (as described in last bullet point above) you can type in your own commands and have them execute. Try typing in:
+```
+alert('hi there')
+```
+
+Not only that, you can also see their javascript files and even have access to any variables. Where you find those is under the sources tab in the console. Follow along and pull up their files as shown in the screenshot: 
+
+![Cookie Clicker](images/cookie1.png)
+
+If you investigate (or just guess) you will notice a variable called "Game" and if you start to type that into the console it will even suggest an autocomplete for it. You can look at its functions and realize that there is a variable called cookiePs, which you might guess corresponds to cookies per second. You can set cookiesPs to any value and see what happens:
+
+![Cookie Clicker hacked](images/cookie2.png)
+
+The takeaway from all this is that the client is NOT secure. A smart user can take your app apart on the client and do anything he wants with it. All security needs to be implemented on the server side so that it cannot be meddled with. 
+
 ## HTML Reprise
 We've seen some HTML before but let's go through a more formal overview of it.
 [HTML](http://en.wikipedia.org/wiki/HTML) is a markup language that uses tagged elements
@@ -496,3 +512,6 @@ Putting all of this together allows us to communicate with the server without
 sending GET requests from the URL bar and without reloading the page. We can then
 dynamically change the contents of the DOM without changing the entire page.
 That is just a taste of the power of client-side JavaScript and AJAX.
+
+##Additional and Alternative learning Resources
+A free Google-sponsered course on the devtools: https://www.codeschool.com/courses/discover-devtools
