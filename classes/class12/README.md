@@ -8,7 +8,7 @@ to allow them to *scale* to meet demand, and to make sure they are always access
 
 ##Deployment
 
-So far, you’ve been deploying your homeworks on Heroku.
+So far, you’ve been deploying your apps on Heroku.
 Heroku is far from the only deployment solution, though.
 It’s great for small projects (like the ones we’ve been doing) because it’s free, but if your app starts getting a lot of traffic, Heroku may no longer be the best choice.
 
