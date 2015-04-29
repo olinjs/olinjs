@@ -10,14 +10,14 @@ After this class, you should:
 * [Class 0 - Getting Ready for the Course](../class0/README.md)
 
 ##Welcome to Olin.js!
-We are excited to have you in this class and look forward to a great semester of learning Node.js together. To start off, here is your teaching team:
+We are excited to have you following along with these lessons and hope that this proves to be a useful resource for learning application development with Node.js. This course was designed and taught by:
 
 - Ben Kahle
 - Evan Dorsky
 - Evan Simpson
 - Thomas Nattestad
 
-Helping us this semester with Ninja duties are:
+With help from the course assistant:
 - Joshe Langowitz
 - Sarah Walters
 
@@ -31,7 +31,7 @@ The underlying backbone of what we call the internet is the **Internet Protocol*
 
 With a connection established, the devices can start sending arbitrary data to each other. In order to ensure that all of the data is transmitted correctly and in order, we use the **Transmission Control Protocol**, or **TCP**. TCP on the sender's side takes care of organizing data into packets, numbering them, and sending them out over IP. On the receiver's side, as packets come in, they are put in order and checked for any missing data. If there's a packet missing, the receiver will ask the sender to send another copy until it has all of the packets.
 
-Together TCP/IP is known as the Internet Protocol Suite. There are many other protocols that you can use to communicate over the internet, but this suite is the backbone of most connections, and as we'll see, HTTP. That's about all you'll need to know about TCP/IP for this class, so let's pay close attention to this next section which will be much more relevant throughout the semester.
+Together TCP/IP is known as the Internet Protocol Suite. There are many other protocols that you can use to communicate over the internet, but this suite is the backbone of most connections, and as we'll see, HTTP. That's about all you'll need to know about TCP/IP for this class, so let's pay close attention to this next section which will be much more relevant throughout the course.
 
 ###HTTP
 The **HyperText Transfer Protocol** (**HTTP**) is the popular protocol used for exchanging resources - like web pages, images, and even raw data - over the web. Yes, it's yet another protocol and it lays out the format of data to be sent out over TCP. HTTP is designed for a **client-server** architecture, in which a client makes a **request** to a server, to which the server sends a **response** (yes, these are technical terms, that's why they're **bolded**). Requests and responses have a simple plaintext format that is divided into a **header** section, and a **body** section.
@@ -145,8 +145,8 @@ Acording to the official website,
 
 What this really means is that it is JavaScript running on the server, accepting incoming requests and handling them. The thing that makes Node.js so awesome is that it is entirely **non-blocking**. To understand exactly what this means, realize that with other server frameworks, when a request comes in, the server has to process that request and send the response before it can accept the next incoming request. Node is structured in such a way that when a request comes in, it can immediately continue listening for other requests.
 
-##Homework for next class:
-The homework for next class will be to go through introductory tutorials on JavaScript and Node.
+##Assignments for next class:
+Before moving on to the next lesson, go through the following introductory tutorials on JavaScript and Node.
 
 ####JavaScript Tutorial
 
@@ -168,9 +168,3 @@ The Node tutorial process is similar.
 $ sudo npm install learnyounode -g
 $ learnyounode
 ```
-
-###Turning in Homework
-
-####[Homework completion survey](https://docs.google.com/forms/d/1VBVzpTce0jf731CFUQV46HAhVKffCtNuVFKL8Ba-yjs/viewform?usp=send_form)
-
-When you've completed your homework, fill out the homework completion survey above.
