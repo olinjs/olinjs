@@ -1,7 +1,7 @@
 #Class 9 - Application Design and Diagramming
 
 As we begin to develop larger and more complex applications, we'll want to start being methodical about how we design and plan them. 
-Today we will talk about strategies for planning and documenting large applications to make developing and debugging as simple as possible.
+In this lesson we will talk about strategies for planning and documenting large applications to make developing and debugging as simple as possible.
 
 ##Planning
 
@@ -63,7 +63,7 @@ You might define routes and what you expect them to do, or font-end ui elements 
 
 
 ###TDD
-We learned a little bit about Test-Driven-Development last class, but we didn't go in to too much depth about using it for planning your application. 
+We learned a little bit about Test-Driven-Development last lesson, but we didn't go in to too much depth about using it for planning your application. 
 If you really take your TDD seriously, you can treat your tests as a high-level specification for the functionality of your application. 
 If you write all of your tests first, not only are you always validating your application, but you also have a fill-in-the-blank roadmap for development. 
 How convenient!
@@ -163,7 +163,7 @@ This folder would be a great place to put that script.
 So there we have it - some simple guidlines for keeping your application neat and orderly.
 
 ##Exercise
-Form groups of 4-5 people and select one of the following websites.
+Select one of the following websites.
 We're going to deconstruct these websites and design a simple specification for these sites as if we were going to implement them ourselves.
 Don't worry about trying to capture all of the functionality of these sites and instead focus on a few core features that you might reasonably be able to implement at this time.
 Expect to spend about 20-30 minutes on this exercise.
