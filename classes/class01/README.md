@@ -145,7 +145,7 @@ Acording to the official website,
 
 What this really means is that it is JavaScript running on the server, accepting incoming requests and handling them. The thing that makes Node.js so awesome is that it is entirely **non-blocking**. To understand exactly what this means, realize that with other server frameworks, when a request comes in, the server has to process that request and send the response before it can accept the next incoming request. Node is structured in such a way that when a request comes in, it can immediately continue listening for other requests.
 
-##Assignments for next class:
+##Exercises:
 Before moving on to the next lesson, go through the following introductory tutorials on JavaScript and Node.
 
 ####JavaScript Tutorial
