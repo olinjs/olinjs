@@ -3,8 +3,6 @@
 ##Intro
 Most of the apps you've built so far (Twoter, WikiMVC) have been clones of existing applications. This lab will be a bit different: you'll be combining key features of two existing apps into a "mashup" which does something new and exciting. 
 
-Like the last lab, you'll complete this lab in pairs, and you should collaborate in a new github repository separate from either partner's olinjs fork.
-
 ##Choosing Two Existing Apps
 Here's a list of ideas to get you started - feel free to come up with others.
 - Amazon
@@ -31,5 +29,3 @@ Your mashup should have:
 
 We know that this isn't a particularly specific list of specifications - we're intentionally giving you room to be creative.
 
-##Submission
-[Submission Survey](http://goo.gl/forms/dvkON2ahGi)
