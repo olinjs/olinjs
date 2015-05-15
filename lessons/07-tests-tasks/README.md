@@ -1,4 +1,4 @@
-#Class 8 - Unit Testing and Task Running
+#Lesson 7 - Unit Testing and Task Running
 
 ##What is Unit Testing?
 

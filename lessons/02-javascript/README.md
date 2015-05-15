@@ -1,4 +1,4 @@
-#Class2 - JavaScript
+#Lesson 2 - JavaScript
 
 ## JavaScript is Everywhere
 

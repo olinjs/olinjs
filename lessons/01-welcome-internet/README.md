@@ -1,4 +1,4 @@
-#Class 1
+#Lesson 1 - Welcome! The Internet and JavaScript
 
 ##Goals
 After this class, you should:
@@ -21,7 +21,7 @@ With help from the course assistants:
 - Josh Langowitz
 - Sarah Walters
 
-##Introduction to the Internet:
+##Introduction to the Internet
 ![Series of tubes](http://crackerdiet.net/pub/Tedstevenstubesomgwhat.jpg)
 
 This is obviously a comic misconception about the true nature of the internet, so let's dive deeper and have a look at the true nature of our old friend.
@@ -145,7 +145,7 @@ Acording to the official website,
 
 What this really means is that it is JavaScript running on the server, accepting incoming requests and handling them. The thing that makes Node.js so awesome is that it is entirely **non-blocking**. To understand exactly what this means, realize that with other server frameworks, when a request comes in, the server has to process that request and send the response before it can accept the next incoming request. Node is structured in such a way that when a request comes in, it can immediately continue listening for other requests.
 
-##Exercises:
+##Exercises
 Before moving on to the next lesson, go through the following introductory tutorials on JavaScript and Node.
 
 ####JavaScript Tutorial

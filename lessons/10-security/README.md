@@ -1,4 +1,4 @@
-#Class 11 - Application Security
+#Lesson 10 - Application Security
 Hello and welcome to possibly the most important lesson you will have in this course.
 All of the applications you make and all of the websites that you put out into the world will be vulnerable to some sort of attack, and it's important for you to know what those attacks are, and how you can mitigate against them.
 Before we get started, I'll take a moment to acknowledge one of the authoritative sources for all matters web security, [OWASP](https://www.owasp.org/index.php/Main_Page), the Open Web Application Security Project.

@@ -1,4 +1,4 @@
-# Class6 - CSS, Development Style and Grace
+# Lesson 5 - CSS, Development Style and Grace
 
 In this lesson we're going to cover some big ideas that span front-end and back-end development (and life!), and also round out our front-end knowledge by learning about CSS.
 

@@ -1,4 +1,4 @@
-#Class 3 - Express, Templating, and MongoDB
+#Lesson 3 - Express, Templating, and MongoDB
 
 ##Express
 Now that we've explored Node.js a little, we will abstract the details away with the [Express](http://expressjs.com/) development framework. Before, in the Node Beginner's Book, our code looked a lot like this:

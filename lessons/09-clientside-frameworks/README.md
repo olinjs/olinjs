@@ -1,4 +1,4 @@
-#Class 10 - Client-side Javascript Frameworks
+#Lesson 9 - Client-side Javascript Frameworks
 
 ##Intro
 So far we have seen how to organize an increasingly complex system of components on our node server. 

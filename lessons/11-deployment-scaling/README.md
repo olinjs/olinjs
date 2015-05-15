@@ -1,4 +1,4 @@
-#Class 12 - Deployment and Scaling
+#Lesson 11 - Deployment and Scaling
 
 Once your applications are ready you will need a way to share them with the world.
 There is more to consider than just running your app on a remote server with its own URL.

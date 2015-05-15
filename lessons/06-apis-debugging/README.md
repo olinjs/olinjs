@@ -1,4 +1,4 @@
-#Class 7: APIs and Debugging Strategies
+#Lesson 6 - APIs and Debugging Strategies
 ##APIs: Your *real* on-ramp to the information superhighway
 
 ![Take it to the moon, take it to the stars.](./images/tothemoon.jpg)

@@ -1,4 +1,4 @@
-# Class 4 - The Client
+# Lesson 4 - The Client, jQuery, and AJAX
 Web Applications handle much of their database communication and logic on the server,
 but the front-end is what the client actually sees and interacts with.
 Without a clean, intuitive, responsive, and enjoyable client-side,
