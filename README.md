@@ -17,24 +17,23 @@ Feel free to submit a Github issue if you find any problems in the course and we
 * [Class 2 - Intro to Javascript](./classes/class02)
 * [Class 3 - Express, Templating, and MongoDB](./classes/class03)
 * [Class 4 - The Client](./classes/class04)
-* [Class 5 - Flex Day](./classes/class05)
-* [Class 6 - Sessions, Users, Errors, CSS, and Debugging](./classes/class06)
-* [Class 7 - Application Integration](./classes/class07)
-* [Class 8 - Unit Testing and Task Running](./classes/class08)
-* [Class 9 - Architecture and Diagramming](./classes/class09)
-* [Class 10 - Application Frameworks (Lab 1)](./classes/class10)
-* [Class 11 - Security](./classes/class11)
-* [Class 12 - Deployment and Scaling](./classes/class12)
-* [Class 13 - Framework Reprise (Lab 2)](./classes/class13)
-* [Class 14 - Project Planning](./classes/class14)
-* [Class 15 - Agile Project Management](./classes/class15)
+* [Class 5 - Sessions, Users, Errors, CSS, and Debugging](./classes/class05)
+* [Class 6 - Application Integration](./classes/class06)
+* [Class 7 - Unit Testing and Task Running](./classes/class07)
+* [Class 8 - Architecture and Diagramming](./classes/class08)
+* [Class 9 - Application Frameworks (Lab 1)](./classes/class09)
+* [Class 10 - Security](./classes/class10)
+* [Class 11 - Deployment and Scaling](./classes/class11)
+* [Class 12 - Framework Reprise (Lab 2)](./classes/class12)
+* [Class 13 - Project Planning](./classes/class13)
+* [Class 14 - Agile Project Management](./classes/class14)
 * [Lab 1](./lab1)
 * [Lab 2](./lab2)
 * [Final Project](./finalproject)
 
 
 ##Learning Objectives
-1. Understand the modern internet and web applications 
+1. Understand the modern internet and web applications
 2. Become adept with JavaScript, Node, and database technologies
 3. Learn software design skills and strategies relevant to web infrastructure
 4. Work effectively as a member of a project team
