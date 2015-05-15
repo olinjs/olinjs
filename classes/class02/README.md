@@ -624,3 +624,6 @@ question: 'Am I an object?',
 ```
 
 The moral of the story is that JavaScript is remarkably robust, whether you like it or not. It will run happily where other languages would choke, so it often falls to you to write good code that will prevent weird things from happening. Leverage the flexibility of JavaScript to write elegant code — don't let it bite you.
+
+##Exercises:
+Check out [the homework readme](./exercises.md) for an exercise to do before the next lesson.

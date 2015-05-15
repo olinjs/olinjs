@@ -1,4 +1,4 @@
-# Homework 6 (we skipped 5)
+# Exercise 6
 
 ## Assignment
 
@@ -53,7 +53,3 @@ It's a great read with lots of tips based on lessons learned by the author after
 #### Recommended Reading
 
 Erik also links to another article on [deliberate practice](http://calnewport.com/blog/2010/01/06/the-grandmaster-in-the-corner-office-what-the-study-of-chess-experts-teaches-us-about-building-a-remarkable-life/) as applied to technical fields. Why not read it, too?
-
-### Submission
-
-Deploy your application to Heroku and fill out the [homework submission survey](http://goo.gl/forms/YtLR2oGdFv).

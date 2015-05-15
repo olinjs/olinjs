@@ -1,5 +1,5 @@
-# Homework 4
-In this homework we will start by exploring a new aspect of MongoDB
+# Exercise 4
+In this exercise we will start by exploring a new aspect of MongoDB
 and then we will start incorporating AJAX into a web app in order to make it
 more dynamic and easy to use.
 ## Reading
@@ -80,12 +80,12 @@ The Mongo documentation has further details about [when to embed vs reference](h
 
 ## Assignment
 
-Great news! We started shopping around your last two homeworks (hope you don't mind)
+Great news! We started shopping around your last two exercises (hope you don't mind)
 and although no one was interested in buying your cat tracking software,
 we did get an email from a local burger joint, looking for some help.
 Jessica's Burgers is looking to update their aging ordering system to the 21st century.
 So in an effort to ~~make us loads of cash~~ improve your coding skills,
-this homework will focus on making a web app which will help Jessica's customers
+this exercise will focus on making a web app which will help Jessica's customers
 get their delicious burgers even quicker (and more delicously).
 Your application will allow users to build orders for a single burger from a list of ingredients
 (which will need to be updated as new stock arrives).
@@ -113,7 +113,3 @@ In this case, do not remove the ingredient from the page, but make note through 
   * Shows a list of all pending orders.
   * A `completed` button beside each order that tells the server the order is complete.
   Clicking this should remove the order from the list of orders without refreshing the page.
-
-### Submission
-
-Deploy your application to Heroku and fill out the [homework submission survey](http://goo.gl/forms/Ibq7ELqBfS)

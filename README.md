@@ -40,16 +40,3 @@ Feel free to submit a Github issue if you find any problems in the course and we
 4. Work effectively as a member of a project team
 5. Balance scope and design decisions to complete a viable web application
 6. Communication and presentation of code and software projects
-
-##Course Structure
-* 3 weeks of introduction to course material with homework
-* 4 weeks of labs working with a partner on ~1.5 week long assignments; broader topics in class
-* 6 weeks of project work in  teams of 4; in-depth tutorials and work time in class
-
-##Grading
-* 20% Homeworks
-* 30% Labs
-* 50% Project (final plus design reviews)
-
-##Late Policy
-10% off per day. Extensions will be lenient if requested more than 36 hours in advance.

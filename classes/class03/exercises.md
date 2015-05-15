@@ -1,4 +1,4 @@
-# Homework 3
+# Exercise 3
 In this homework you will build your first Express application, create some dynamic Handlebars templates, and store and load information in a MongoDB database using Mongoose.
 ## Assignment
 Create an Express application that has the following routes:
@@ -15,12 +15,6 @@ Create an Express application that has the following routes:
 In this assignment we are doing something very bad. GET should be a [safe method](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Safe_methods) that is guaranteed to not modify or delete data. We should be using a DELETE or POST request when we intend to modify the server's data. Check out this [video](https://www.youtube.com/watch?v=cIliEo0zOwg) for an example of why this is important.
 
 We are using GET requests in this horrible way because without writing a front end, sending other types of requests becomes much more difficult. We'll get there soon though.
-## Submission
-Fill out [this survey](http://goo.gl/forms/pzXSFUl10f) to turn in this assignment.
-Also remember to read through the next [class](../class4) and come prepared with an understanding of:
-* What some of the differences are between client side javascript and the Node javascript you've been using
-* What HTML forms look like and what in what method their information is sent to the server
-
 
 ## Additional Information
 This homework will require deploying to Heroku. We talked about it briefly in class but now its time to set it up.

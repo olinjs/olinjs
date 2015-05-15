@@ -27,7 +27,7 @@ You may wonder why this is not how it has always been done. The simple answer to
 
 ##Your First Client Templating:
 So you are all very familiar with server side templating using handlebars. 
-In the class10 folder there is an in_class folder containing the cat app that you are all familiar with. 
+In the lesson10 folder there is an in_class folder containing the cat app that you are all familiar with. 
 We are going to uncomment code to transform just one of the routes into an API endpoint and then use handlebars on the client side to render the content. 
 
 You can probably imagine that organizing a very complex application with dozens of pages and models can get really complicated and messy really fast. 

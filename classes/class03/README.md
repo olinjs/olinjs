@@ -171,7 +171,7 @@ First off, we will be using [Handlebars](http://handlebarsjs.com/) as a templati
 * It supports pre-compiled templates and client side rendering. We won't get to these for a while, but they provide some great performance boosts and some awesome flexibility when it comes to designing and building dynamic front-ends.
 * Jade's whitespace dependency and style can be a bit too dense and harder to understand. Handlebars may be more "cluttered", but it can also be very nicely structured and layed out in an easy to read manner.
 
-At the end of the day, templating engines-like most things-come down to personal preference, and that's why we're forcing you to like Handlebars! (At least for the next couple weeks).
+At the end of the day, templating engines-like most things-come down to personal preference, and that's why we're forcing you to like Handlebars! (At least for the duration of this course).
 
 ### Making Express Render Handlebars
 
@@ -381,6 +381,4 @@ Using the exec function allows you to chain multiple query elements (like `find`
 This allows Mongoose to form one large Mongo query and be more performant than running additional queries in the callbacks of other queries.
 Check out the [getting started](http://mongoosejs.com/docs/index.html) guide on Mongoose to learn how to connect to your MongoDB database and the basics of saving and loading records.
 
-In the homework you will explore more about how to leverage MongoDB and Mongoose to store data persistently.
-
-For next class finish this [homework](./homework.md).
+In the [exercises](./exercises.md) you will explore more about how to leverage MongoDB and Mongoose to store data persistently.

@@ -1,6 +1,6 @@
 # Class6 - CSS, Development Style and Grace
 
-Today we're going to cover some big ideas that span front-end and back-end development (and life!), and also round out our front-end knowledge by learning about CSS.
+In this lesson we're going to cover some big ideas that span front-end and back-end development (and life!), and also round out our front-end knowledge by learning about CSS.
 
 ## Separation of Concerns
 
@@ -475,4 +475,4 @@ _Starting with something that works_ and _making incremental changes_ are the tw
 
 **Git** is a fantastic enabler in this endeavor!
 
-#### Finish the [homework](./homework.md) for next class.
+#### Work on the [exercises](./exercises.md) before the next lesson.
