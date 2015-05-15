@@ -1,4 +1,4 @@
-Olin.js - Spring 2015
+Olin.js
 ===
 
 ##Course Description
