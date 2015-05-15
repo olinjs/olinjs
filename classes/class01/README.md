@@ -17,8 +17,8 @@ We are excited to have you following along with these lessons and hope that this
 - Evan Simpson
 - Thomas Nattestad
 
-With help from the course assistant:
-- Joshe Langowitz
+With help from the course assistants:
+- Josh Langowitz
 - Sarah Walters
 
 ##Introduction to the Internet:
