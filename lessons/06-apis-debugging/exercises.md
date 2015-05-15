@@ -1,4 +1,4 @@
-#Exercise 7
+#Exercise 6
 
 ##Passport and "Sign in using __"
 One of the great features of OAuth is that it allows us to use another service to authenticate users of our service. This means we can piggy back on someone else to handle the hard parts of signing in to a service. The library `Passport` makes this really easy, if not a bit complicated.
