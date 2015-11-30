@@ -21,7 +21,7 @@ If you don't have git on your computer already, it can be installed with:
 sudo apt-get install git
 ```
 
-Lastly, ensure you are setup to use SSH to communicate with Github. SSH is a communication protocol that ensures secure transfer of information while preventing you from needing to enter your username and password to push. Follow [this guide]((https://help.github.com/articles/generating-ssh-keys/) if you need any help. 
+Lastly, ensure you are setup to use SSH to communicate with Github. SSH is a communication protocol that ensures secure transfer of information while preventing you from needing to enter your username and password to push. Follow [this guide](https://help.github.com/articles/generating-ssh-keys/) if you need any help. 
 
 ### 1. Forking
 
