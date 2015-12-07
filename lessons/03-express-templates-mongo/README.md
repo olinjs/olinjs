@@ -1,5 +1,24 @@
 #Lesson 3 - Express, Templating, and MongoDB
 
+##Preclass 
+Please do the following before coming to class:
+1. Read through this README
+2. Follow the instructions in this README to set up a new application and install Express and Handlebars. We do not expect you to create the application this README walks you through though. That would be a plus, but you only have to install the nessecary packages.
+3. Be ready to write down two things at the beginning of class to help us identify difficult concepts that deserve more attention
+    * Something in the reading you feel confident in and easily grasped
+    * Something in the reading you're confused about or want to know more about
+
+##In-class Exercises
+1. Follow along with the tutorial in the section below and create the webapp with a home page that shows classes at Olin. Show the teaching team your webapp in a browser.
+2. There is a lot of repetitive setup and repeated code, called boilerplate code, involved when you create a new webapp. Copy the webapp you've created and remove or add code to create a boilerplate webapp that you will copy and paste to start the rest of your assignments for this class. 
+3. For this last exercise, you will be replicating one of the most sophisticated and powerful webapps the internet has ever seen: https://isitchristmas.com/.There are a few requirements, of course.
+   -Your website should use Handlebars and change to tell the user YES or NO depending on whether it is Christmas.
+   -The website title and favicon (what displays at the top of a tab in chrome) should be appropriately Christmassy. Do some googling first if you need help with the favicon!
+   -You don’t need to worry about timezones for now. Assume that everyone using this website is in the same timezone as your server.  
+   -If you finish early, try your hand at these exercises:
+        -Make sure that the response you send your user is centered, no matter how they resize their browser.
+        -Send along some javascript so an animation of your choice occurs when you click on the page. For example, the text on the page could change to a random color when you click on it.  
+
 ##Express
 Now that we've explored Node.js a little, we will abstract the details away with the [Express](http://expressjs.com/) development framework. Before, in the Node Beginner's Book, our code looked a lot like this:
 ```javascript

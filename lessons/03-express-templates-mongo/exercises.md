@@ -1,6 +1,6 @@
 # Exercise 3
 In this homework you will build your first Express application, create some dynamic Handlebars templates, and store and load information in a MongoDB database using Mongoose.
-## Assignment
+## Assignment Part 1 (Class 3 Homework)
 Create an Express application that has the following routes:
 * GET `/cats/new` => Creates a new cat record. A cat should have a random age, a name, and a list of colors.
   * These should be generated upon creation, not hardcoded.
@@ -15,6 +15,15 @@ Create an Express application that has the following routes:
 In this assignment we are doing something very bad. GET should be a [safe method](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Safe_methods) that is guaranteed to not modify or delete data. We should be using a DELETE or POST request when we intend to modify the server's data. Check out this [video](https://www.youtube.com/watch?v=cIliEo0zOwg) for an example of why this is important.
 
 We are using GET requests in this horrible way because without writing a front end, sending other types of requests becomes much more difficult. We'll get there soon though.
+
+## Assignment Part 2 (Class 4 Homework)
+Add the following routes or modifications to the cat app:
+* GET `/cats/timeMachine/:age` => Age all cats in your database by age, where :age is a parameter, such as 3, or 4, specifying the years to add to each cat’s age as a positive integer. 
+  * The server should ignore improper queries like /cats/timeMachine/3.4 and send a error message to let the user know that something has failed. 
+* Change the GET `/cats/new` route => According to the complex social hierarchies that cats have, cats that are younger should have longer, more difficult to pronounce names. Change your GET /cats/new route so that cats who are younger will always have longer names than older cats. Meow.  
+* GET `/dogs` => When a user navigates to /dogs in their browser, a taunt should be displayed to the sucker who wants to look at dogs, and they should then be redirected to the /cats route.
+  * The taunt should be visibly displayed for a period of time before the user is redirected.
+  * This exercise requires you to send client side javascript that will do timing and redirection. Googling phrases like 'redirecting with javascript' and 'setTimeout javascript' will guide you in the right direction.
 
 ## Additional Information
 This homework will require deploying to Heroku. We talked about it briefly in class but now its time to set it up.
