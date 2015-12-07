@@ -2,7 +2,7 @@
 (We’re not expecting you to finish all of these activities! Pick the ones which are interesting and challenging to you, and feel free to work with the people around you.)
 
 ##Git and Github:
-* If you find a bug in the Olin.js repo at any point, please make a pull request to fix it!
+- If you find a bug in the Olin.js repo at any point, please make a pull request to fix it!
 - On the whiteboards, map out your “mental model” of git -- what do you know and how does it fit together?
 - Draw out how each of the commands you know works
 - Find a git command you don’t know about, read the documentation, and add it to your diagram
@@ -17,7 +17,7 @@
   - Challenge: find requests which aren’t GET
 
 ##Javascript:
-- Write some simple JavaScript functions in https://jsfiddle.net/ (remember: ctrl+shift+j opens the developer console -- that’s where your console.logs will print).If you need function ideas, try the first couple of these problems: https://projecteuler.net/archives
+- Write some simple JavaScript functions in https://jsfiddle.net/ (remember: ctrl+shift+j opens the developer console -- that’s where your console.logs will print). If you need function ideas, try the first couple of these problems: https://projecteuler.net/archives
 - If you like learning from textbooks, this one is pretty good: http://eloquentjavascript.net/
 - Practice debugging JavaScript (Please fork the jsfiddles before editing them!)
   - http://jsfiddle.net/swalters4925/j4pykdtz/2/
