@@ -3,7 +3,7 @@
 
 ![Take it to the moon, take it to the stars.](./images/tothemoon.jpg)
 
-*Get in loser, we're going to programmatically acquire JSON data.*
+*Get in loser, we're going to programmatically acquire ~~JSON~~ data.*
 
 So we've spent some time making our own web services that deliver static and dynamic page content, and we've done it all with the semantics of REST (GET, POST, PUT, DELETE). Today we see how we can use REST APIs to deliver content other than webpages (data!), and how we can access existing APIs set up by some of our favorite websites. Let's get started.
 
@@ -52,8 +52,18 @@ Access all your files stored online! Put them up, take them down, share them wit
 
 >**Documentation:** https://www.dropbox.com/developers
 
-###Netflix
-This one should not be on the list of APIs. Sadly, they closed their public API last November. Let's all take a moment to boo Netflix. Booooooooo.
+###US Gov
+A lot of government agencies have created APIs to access public data. You can see a list [here](git@github.com:olinjs/olinjs.git).
+
+###CURL
+When first accessing an API (especially one with poor documentation), you don't want to have to write a lot of code just to view the ouput of the request. YOu can use the command line tool CURL to quickly make GET and POST (also PUT if you really wanted to) requests. 
+
+Example GET request:
+```
+curl http://services.faa.gov/airport/status/SAN?format=application/json
+```
+
+You can actually use curl to test your own server's routes too. Just start your server in one terminal, and in a separate terminal window point curl at localhost:PORT/routeYouWantToTest. Later we will learn how to programatically test routes, but curl is nice if you want to see how the data looks to the client. 
 
 ##Accessing Public APIs with OAuth
 You might have noticed that some of the above APIs are listed as having an OAuth auth scheme, but you probably have no idea what that means. Sometimes, a 3rd party application might want access to private user data, but you can't reasonably expect web service providers to give that information out freely - we need a way for service providers' users to authorize 3d party applications to access their data. OAuth lets us do just that. **Note:** We're going to assume that throughout this course you will only be consuming APIs which require OAuth and not creating them.
