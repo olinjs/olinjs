@@ -1,5 +1,9 @@
 # Lesson 5 - CSS, Development Style and Grace
 
+- Intro to Less/Sass/CSS
+- Development Style - Error Handling
+
+
 In this lesson we're going to cover some big ideas that span front-end and back-end development (and life!), and also round out our front-end knowledge by learning about CSS.
 
 ## Separation of Concerns
@@ -194,126 +198,67 @@ With this property set, the `width` and `height` properties set the dimensions o
 
 Try playing with these properties in Codepen to see the effect of `box-sizing: border-box`.
 
+### Flexbox
+
+Flexbox is a new layout tool for CSS that allows you to easily define flexible layouts.  [This article](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) is a great resource and introduction.
+
 ### The Web Inspector
 
 You can also use the web inspector in your browser to see _and edit_ the CSS of any page you visit! Just right click on an element and select "Inspect Element", then click the "Styles" tab in the inspector.
 
-## Cookies
+### Nesting
 
-A cookie is a key-value store that lives on the client and can be read and modified by a website.
-In express, cookies are stored in `req.cookies`.
+Speaking of specificity, CSS also supports **nesting**, which allos you to change the appearance of elements based on their nesting properties in the HTML.  For example, in this situation:
 
-To make a quick cookie-printing server, add this code to `app.js` in a new folder:
-
-```node
-var express = require('express');
-var path = require('path');
-
-var logger = require('morgan');
-var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
-
-var app = express();
-
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-
-app.get('/', function(req, res) {
-	console.dir(req.cookies);
-
-	res.send('hello');
-});
-
-app.listen(3000);
+```css
+<a href="#">link</a>
+<p>This is a paragraph with a <a href="#">link</a></p>
 ```
 
-The app has a single route, `/`, that prints the cookies to the server console.
-Install the dependencies:
-
-```bash
-npm install express morgan body-parser cookie-parser
-```
-
-Run the server and visit the page (you will probably have to refresh because on your first visit you don't have any cookies) to see your cookies:
-
-```bash
-{ 'connect.sid': 's:oJzNzHd1WX-xlEBtpFoy7VoP4UzoqTQ8.VjMIMfdIZqI0oLGy1zh5JwWPbdost5USN9jFYeL9ITY' }
-```
-
-As you can see, a cookie is a key-value store that our cookier parser has converted to JSON.
-This is probably a unique ID that we can use to associate a cookie with other data stored on the client.
-
-## Sessions
-
-One of the most common ways to use cookies is to keep track of "sessions".
-A session stores data specific to a given client that can only be accessed by that client (based on the client's cookie identity).
-
-Now add this line to your `require` list:
-
-```node
-var session = require('express-session');
-```
-
-And this line at the end of your `app.use` list:
-
-```node
-app.use(session({
-	secret: 'secret',
-	resave: false,
-	saveUninitialized: true
-}));
-```
-
-Install `express-session` with `npm`, and add this line of code to the route below `console.dir(req.cookies)`:
-
-```node
-console.dir(req.session);
-```
-
-The session object stores a reference to the client's cookie.
-The `express-session` middleware retrieves the session data from memory (often stored in a database in a real web app) based on the cookie ID. Visit your page and check the output to see your cookies and session:
-
-```bash
-{ 'connect.sid': 's:oJzNzHd1WX-xlEBtpFoy7VoP4UzoqTQ8.VjMIMfdIZqI0oLGy1zh5JwWPbdost5USN9jFYeL9ITY' }
-{ cookie:
-	 { path: '/',
-		 _expires: null,
-		 originalMaxAge: null,
-		 httpOnly: true } }
-```
-
-The key `_expires` is a deprecated property that specifies the time at which the cookie should expire.
-Cookies usually have a maximum age set – if the max age is `null`, the cookie will last for the life of the browser session, which is perfect for our needs.
-
-The session object is stored locally on the server, so we can modify it directly. Add this code to your route before `res.send('hello')`:
-
-```node
-var message;
-if (req.session.counter) {
-	req.session.counter++;
-	message = "Hello again! Thanks for visiting " + req.session.counter + " times";
-} else {
-	message = "Hello, thanks for visiting this site!";
-	req.session.counter = 1;
+```css
+a {
+background-color: red
+}
+a:hover {
+background-color: green;
+p a { 
+background-color: green; 
+}
+p a:hover {
+background-color: red;
 }
 ```
 
-This code checks for the `counter` property and adds it if it doesn't exist.
-Next time that user accesses the page, `req.session.counter` is incremented.
-Here's the result after refreshing the page a few times:
+What this CSS does is specify that links have a red background that becomes green on hover.  However, the last two definitions override that with specify  - a link that is nested within a `p` element is the opposite - green, and red on hover.
 
-```node
-{ cookie:
-	 { path: '/',
-		 _expires: null,
-		 originalMaxAge: null,
-		 httpOnly: true },
-	counter: 4 }
+As you might imagine, this might get unwieldy after a while, in large stylesheets.  This is one example of a place where using a CSS pre-processer or extension language like Less or Sass comes in handy.
+
+## Less and Sass
+
+These are CSS pre-processor languages that allow you to use simpler and more manageable syntax that converts to CSS.  Before class, please [install Sass](http://sass-lang.com/install), and read about [Sass features](http://sass-lang.com/guide).  We'll cover some Sass usage in class.
+
+This class is going to focus just on Sass, because it's more widely used than Less, and the two have very similar features with slightly different syntax.  If you're interested in some comparisons between the two, the following articles are optional:
+- [Intro to Less + comparison to Sass](http://www.smashingmagazine.com/2011/09/an-introduction-to-less-and-comparison-to-sass/)
+- [Sass vs Less](https://css-tricks.com/sass-vs-less/)
+- [Another Sass vs Less](http://www.hongkiat.com/blog/sass-vs-less/)
+
+Once you've installed Sass, you can create .sass or .scss stylesheets according to their syntax (the difference is, SCSS uses {} and semicolons, Sass relies on indentation).  Then, you can create your CSS stylesheets:
 ```
+$ sass input.scss output.css
+```
+Based on whatever the input file is named, and what type it is.
 
-Basically, sessions allow websites to keep track of user-specific data for as long as a user keeps their cookies (or until the cookies become invalid, either from expiring or server refresh).
+## Stylesheets
+
+Writing comprehensive CSS is a lot of work to make your webpage look nice.  That's why there are resources for easy use of boilerplate CSS to make your webpages clean and not 90s-esque.  Some of the most popular are [Bootstrap](http://getbootstrap.com/) or its simpler, lightweight friend [Skeleton](http://getskeleton.com/).
+
+## Design
+
+Erik Kennedy (actually Olin '10) wrote a great article on UI design targeted at engineers.
+
+#### Read [part 1](https://medium.com/@erikdkennedy/7-rules-for-creating-gorgeous-ui-part-1-559d4e805cda#.j6zm0nv7s) and [part 2](https://medium.com/@erikdkennedy/7-rules-for-creating-gorgeous-ui-part-2-430de537ba96#.qeaf9bhlb).
+
+It's a great read with lots of tips based on lessons learned by the author after hours of practice and analysis. The Medium staff themselves call it "useful"! Read it and keep it as a reference as you design your website. Your sites should look better than the example. Have fun with it!
 
 ## Error Handling
 
