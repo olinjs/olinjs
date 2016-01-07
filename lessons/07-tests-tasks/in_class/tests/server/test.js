@@ -1,4 +1,3 @@
-
 // // Setup our assertion library
 // var expect = require('chai').expect;
 
@@ -7,13 +6,13 @@
 
 // // Sample tests
 // describe("A test suite", function() {
-// 	// Syncronous
-// 	it('should use expect syntax', function() { 
-// 		expect(true).to.be.true; 
+// 	// Synchronous
+// 	it('should use expect syntax', function() {
+// 		expect(false).not.to.be.true;
 // 	});
 
 // 	// Async
-// 	it('should work asyncronously', function(done) {
+// 	it('should work asynchronously', function(done) {
 // 		setTimeout(function() {
 // 			expect(true).to.be.true;
 // 			done();
