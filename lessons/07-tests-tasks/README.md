@@ -135,7 +135,7 @@ $ npm run hello
 hi
 ```
 
-Here's the `scripts` section from the `package.json` in the `in_class` directory -- we're using `npm` to run our unit tests. As you can see, you can even run `npm` tasks with `npm`!
+Here's the `scripts` section from the `package.json` in the `preclass` directory -- we're using `npm` to run our unit tests. As you can see, you can even run `npm` tasks with `npm`!
 The `cover-mocha` script also shows how to generate server-side code coverage using Istanbul. It's just another simple command, and you can pretty much copy it to any new project. `test` is also a special npm keyword, so you can omit `run` -- typing `npm test` is the same as typing `npm run test`. Try that now and take a look at Istanbul's coverage output for the server-side!
 
 ###### package.json
