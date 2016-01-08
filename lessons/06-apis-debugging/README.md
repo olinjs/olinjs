@@ -3,7 +3,6 @@
 Please read the following Readme and some of the following links on [Oauth](http://www.cubrid.org/blog/dev-platform/dancing-with-oauth-understanding-how-authorization-works/) and [REST](http://www.infoq.com/articles/rest-introduction)
 
 ##APIs: Your *real* on-ramp to the information superhighway
-*Author: Evan Simpson 2015*
 
 ![Take it to the moon, take it to the stars.](./images/tothemoon.jpg)
 
@@ -57,10 +56,10 @@ Access all your files stored online! Put them up, take them down, share them wit
 >**Documentation:** https://www.dropbox.com/developers
 
 ###US Gov
-A lot of government agencies have created APIs to access public data. You can see a list [here](git@github.com:olinjs/olinjs.git).
+A lot of government agencies have created APIs to access public data. You can see a list [here](https://www.data.gov/).
 
 ###CURL
-When first accessing an API (especially one with poor documentation), you don't want to have to write a lot of code just to view the ouput of the request. You can use the command line tool CURL to quickly make requests. 
+When first accessing an API (especially one with poor documentation), you don't want to have to write a lot of code just to view the output of the request. You can use the command line tool CURL to quickly make requests. 
 
 Example GET request:
 ```
