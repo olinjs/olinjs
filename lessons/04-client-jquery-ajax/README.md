@@ -483,7 +483,7 @@ $form.submit(function(event) {
 });
 ```
 
-Let's work through this file one step at a time:
+Let's work through this file one step at a time, and if any of this is confusing, please ask about it!!:
 * First we store the jQuery selector for the 3rd form so we don't need to keep searching for it.
 * We define an `onSuccess` function. This function takes `data` and `status` as parameters, which `$.get()` supplies.
   It then uses the `data` returned from the server to create a new `<img>` tag and add it to the page.
@@ -496,7 +496,7 @@ This means that if that form raises a "submit" event then the callback function 
   In this case, this is what stops the browser from sending the request and loading a new page.
   * Using some jQuery DOM searching we get the values of the "name" text input and the "mood" radio button.
   * We then initiate an AJAX request using the GET method with `$.get()`. jQuery similarly has a `$.post()` function for POST.
-  We pass the two parameters into the GET request which are internally packaged into the same query string we've seen before.
+  We pass the two parameters into the GET request which are internally packaged into the same query string we've seen before. Since you're doing a GET request with `getCat` as the first parameter, it's calling the function `getCatGET` in your routes\getCat.js file, because in `app.js` we specified in our API that when we get a GET request for getCat (`app.get("/getCat", getCat.getCatGET);`) we call the function getCatGET. 
   * Finally, we specify what should happen if the request is successful or if it returns with an error.
   The `$.get()` function returns a jQuery XHR object ('jqXHR') which implements a Promise interface.
   Promises are a structure that allow management of lots of callbacks in a simple, easier to read manner.
