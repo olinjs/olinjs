@@ -20,7 +20,7 @@ Tests are generally classified according to how much code they target. The less 
 
 A common philosophy (check out [this blog post from Google](http://googletesting.blogspot.com/2015/04/just-say-no-to-more-end-to-end-tests.html)) suggests a "testing pyramid": a large base of unit tests, some integration tests, and fewer end-to-end tests. The goal of the "testing pyramid" is to catch a bug with the smallest test possible. For example, an end-to-end test might fail if a function it depends on isn't returning the right value, but it won't give you much information about where the failure is; a unit test for the function will point you towards the failure right away.
 
-That said, a lot of people have a lot of strong (and contradicting) opinions about testing -- don't be surprised if you encounter different practices in different contexts.
+That said, a lot of people have a lot of strong (and contradictory) opinions about testing -- don't be surprised if you encounter different practices in different contexts.
 
 ##Test Driven Development (TDD)
 
@@ -34,7 +34,7 @@ There are several terms used in association with testing that are useful to unde
 
 **Test Suite**: A test suite consists of all the actual tests for your functionality. This is where the bulk of the work for somebody writing tests goes.
 
-**Test Harness/Framework**: A testing framework is the high level code that defines how to write and run tests. You might be used to print-statement testing -- something along the lines of 'run a bunch of code and look at the console output to check whether the print statements look correct'. A test framework automates all that work for you and reports 'these tests all passed but this one failed and here's why'. You can write a test framework yourself, but there are already quite a few good ones you can use off the shelf. We will be using [Mocha](http://mochajs.org/), because it's fairly common and does both node and browser testing. If you want to take a look at other frameworks, Wikipedia has a fairly comprehensive [list](http://en.wikipedia.org/wiki/List_of_unit_testing_frameworks#JavaScript)
+**Test Harness/Framework**: A testing framework is the high level code that defines how to write and run tests. You might be used to print-statement testing -- something along the lines of 'run a bunch of code and look at the console output to check whether the print statements look correct'. A test framework automates all that work for you and reports 'these tests all passed but this one failed and here's why'. You can write a test framework yourself, but there are already quite a few good ones you can use off the shelf. We will be using [Mocha](http://mochajs.org/), because it's fairly common and does both node and browser testing. If you want to take a look at other frameworks, Wikipedia has a fairly comprehensive [list](http://en.wikipedia.org/wiki/List_of_unit_testing_frameworks#JavaScript).
 
 **Test Runner**: A test runner runs your tests for you so you don't have to yourself. You tell it where your tests are and you get to run them all with just one command. We will use [Karma](http://karma-runner.github.io/0.12/index.html) for client-side tests. A main benefit of Karma is that it's able to run your app in different browser environments so you can test for cross-browser compatibility. For server-side code, Mocha's built-in runner is good enough. In the end, we will run the command line interface of our tests through npm, but we will get to that a little later.
 
@@ -60,7 +60,7 @@ We're writing server tests to start with, so open up `test/server/testSpec.js` -
 
 Time to write some tests, then. In `testSpec.js`, uncomment up through line 5, so you have:
 ```node
-// Setup our assertion library
+// Set up our assertion library
 var expect = require('chai').expect;
 
 var index = require('../../routes/index');

@@ -20,10 +20,11 @@
     "supertest": "^1.1.0"
   },
   "scripts": {
-    "start": "node app.js",
+    "jshint": "jshint --exclude-path ./.gitignore . || true",
     "mocha": "./node_modules/mocha/bin/mocha tests/server --recursive || true",
-    "jshint": "jshint --exclude ./node_modules . || true",
-    "test": "npm run mocha"
+    "cover-mocha": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha tests/server -- --recursive -R spec || true",
+    "test": "npm run cover-mocha",
+    "start": "node app.js"
   },
   "license": "ISC"
 }

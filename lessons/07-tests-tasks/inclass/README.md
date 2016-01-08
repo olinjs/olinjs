@@ -10,4 +10,4 @@ Before running the app,
 
 ## Running tasks
 - To run the test suite, `npm test`
-- To run jshint, `npm run jshint`
+- To run jshint, `npm run jshint` (if there's no console output, jshint passed)
