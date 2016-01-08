@@ -26,7 +26,7 @@ var data = {
     "Crimson"
   ],
   "names":
-  [ 
+  [
     "Sassy",
     "Misty",
     "Missy",
@@ -108,5 +108,6 @@ var data = {
     "Pepper",
     "Blackie"
   ]
-}
+};
+
 module.exports = data;

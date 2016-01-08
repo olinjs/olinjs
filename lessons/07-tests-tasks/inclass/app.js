@@ -30,7 +30,13 @@ app.get("/cats/bycolor/:color", cats.list);
 app.get("/cats/delete/old", cats.delete);
 
 mongoose.connect(mongoURI);
+mongoose.connection.on('error', function() {
+  console.log('MongoDB Connection Error. Please make sure that MongoDB is running.');
+  process.exit(1);
+});
 
 app.listen(PORT, function() {
   console.log("Application running on port:", PORT);
 });
+
+module.exports = app;

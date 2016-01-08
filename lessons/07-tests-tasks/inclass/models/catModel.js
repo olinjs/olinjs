@@ -1,9 +1,9 @@
-var mongoose = require("mongoose");
+var mongoose = require('mongoose');
 
-var catSchema = mongoose.Schema({
+var catSchema = new mongoose.Schema({
   name: String,
   colors: [String],
   age: Number
 });
 
-module.exports = mongoose.model("Cat", catSchema);
+module.exports = mongoose.model('Cat', catSchema);

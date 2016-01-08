@@ -22,8 +22,6 @@ A common philosophy (check out [this blog post from Google](http://googletesting
 
 That said, a lot of people have a lot of strong (and contradicting) opinions about testing -- don't be surprised if you encounter different practices in different contexts.
 
-We'll focus on unit tests for now, but feel free to explore other types of testing on your own!
-
 ##Test Driven Development (TDD)
 
 A common development workflow is to write a bunch of code and then test that code. TDD turns that workflow on its head, calling instead for the tests to be written before a piece of functionality is implemented. This approach has several benefits, most notably that tests get written for everything during the process of development, not as an afterthought. Additionally, writing tests before functionality effectively specifies interfaces for the code you have not written yet, so by the time you need to implement functionality, you already have a very clear understanding of how the code needs to behave. TDD certainly has its disadvantages -- for instance, implementing one feature at a time focusing on passing tests probably won't lead to well organized code. We will not require that you use TDD, but it's common enough that we think it's worth trying out. If you want to read more, [Wikipedia](http://en.wikipedia.org/wiki/Test-driven_development) is a good place to start.
@@ -58,9 +56,9 @@ There's a very basic app set up in the `preclass` subdirectory, so let's go in t
 
 Check out the directory structure -- there's a new directory called `tests`, which will allow us to keep tests separate from source code. Inside the `tests` directory there are two subdirectories called `client` and `server`, allowing us to separate server tests from client tests.
 
-We're writing server tests to start with, so open up `test/server/test.js` -- everything's commented out right now. Before we start writing tests, make sure that Mocha is working in the first place. When you ran `npm install`, the `package.json` specified that npm should install Mocha as a development dependency. Now, there's a binary file (`node_modules/mocha/bin/mocha`) that will run tests at the location you specify with a command line argument. Try running your server tests with `./node_modules/mocha/bin/mocha tests/server`, and you should see output like `0 passing (2ms)`, which makes sense because all of the tests are commented out.
+We're writing server tests to start with, so open up `test/server/testSpec.js` -- everything's commented out right now. Before we start writing tests, make sure that Mocha is working in the first place. When you ran `npm install`, the `package.json` specified that npm should install Mocha as a development dependency. Now, there's a binary file (`node_modules/mocha/bin/mocha`) that will run tests at the location you specify with a command line argument. Try running your server tests with `./node_modules/mocha/bin/mocha tests/server`, and you should see output like `0 passing (2ms)`, which makes sense because all of the tests are commented out.
 
-Time to write some tests, then. In `test.js`, uncomment up through line 5, so you have:
+Time to write some tests, then. In `testSpec.js`, uncomment up through line 5, so you have:
 ```node
 // Setup our assertion library
 var expect = require('chai').expect;
@@ -84,7 +82,7 @@ This is all great for synchronous testing, but how do we deal with asynchronicit
 
 Now uncomment the entire file and run the tests again, which should leave us with 3 tests passing within 2 test suites. This is a quick, proof-of-concept test on our index route. If you look at `routes/index`, you will notice we exported index with the method `home`, which is our actual route, and the attribute `ten`, for the purposes of this test. We check to see that `index.ten` is actually 10, as set in the route, and it is.
 
-A quick aside on conventions: you'll notice that test names should sound like a sentence when you prepend the test suite name. Our tests then read as "A test suite should pass", "A test suite should work asynchronously", and "index should have an attribute ten equal to 10". In general, each module will have one test suite (`describe`), and each method within a module will have one test (`it`). There might be multiple assertions within each `it` -- you might want to try the function with multiple inputs. Generally you should also match file structure, with one test suite per file and a directory structure mirroring your source code, although we did not do that here for brevity (theoretically the index tests should live in `tests/server/routes/index.js`).
+A quick aside on conventions: you'll notice that test names should sound like a sentence when you prepend the test suite name. Our tests then read as "A test suite should pass", "A test suite should work asynchronously", and "index should have an attribute ten equal to 10". In general, each module will have one test suite (`describe`), and each method within a module will have one test (`it`). There might be multiple assertions within each `it` -- you might want to try the function with multiple inputs. Generally you should also match file structure, with one test suite per file and a directory structure mirroring your source code, although we did not do that here for brevity (theoretically the index tests should live in `tests/server/routes/indexSpec.js`).
 
 Those are the basics of Mocha and Chai, so now you can write server-side tests!
 
@@ -92,7 +90,7 @@ Those are the basics of Mocha and Chai, so now you can write server-side tests!
 
 Client-side tests are a lot more complicated, since we need to run things in browsers... but thankfully, we can configure Karma to deal with most of that for us. We also won't go into much detail for client-side testing for now, beyond just setting it up and running trivial tests, since dealing with DOM manipulation gets complicated when you are used to rendering templates server-side and don't actually have a server to talk to. So, don't worry if this is a little confusing.
 
-The test syntax will look exactly the same, though -- we're still using Mocha and Chai. If you take a look at `tests/client/test.js`, you can see that we have some of the same tests as before. We don't need to require(`chai`) or the file we're testing this time -- we'll configure Karma to do that for us.
+The test syntax will look exactly the same, though -- we're still using Mocha and Chai. If you take a look at `tests/client/testSpec.js`, you can see that we have some of the same tests as before. We don't need to require(`chai`) or the file we're testing this time -- we'll configure Karma to do that for us.
 
 What's different with Karma is its configuration file, `karma.conf.js`. Take a look inside- most of this is boilerplate, but we'll highlight a few important things you'll want to know about. The most important attribute for our config object is `files`, which tells Karma where our tests are and where any client-side source files live. Note that you can include remote URLs here if you are using a CDN for something like JQuery.
 ```
