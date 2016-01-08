@@ -1,7 +1,7 @@
 #Lesson 9 - Client-side Javascript Frameworks
 
 ##A Tie Breaker
-Comparing React and Angular is a very interesting topic. Both frameworks have pros and cons and examining those arguments in detail yields a tie breaker. 
+Comparing React and Angular is a very interesting discussion. Both frameworks have pros and cons and examining those arguments in detail yields a tie breaker. 
 
 ##History
 Angular has been around for a while. Since 2009, Angular has been assigning custom attributes, known as directives, to the HTML elements of the DOM to provide them with appropriate functionality. React is quite young. Born and sustained through Facebook in 2013, React has presented itself to the world as a performance-minded view renderer capable of rendering large amounts of data. Let's take a look at how those frameworks are different and, at the same time, so similar. 
@@ -51,12 +51,15 @@ Angular provides an interesting mechanism one can use to filter the bound inform
 ##Hello Angular 2.0
 Now that we saw how two-way data binding works on a simple html document, let's dive deeper into how we can create an app hosted locally and using Node and Angular. Let's check out the folder in Lesson 9 under the name "in_class_hello" that examines the use of directives and controllers in the context of Angular, by creating a simple app that moves between two pages with one click.  
 
+##ToDo App 
+Now that we have an idea of how those frontend frameworks work, let's get into pairs and think about how we would go about creating a more complicated ToDoList App. How would you go about structuring your application? The teaching team will wonder around and answer any questions you may have.
+
 ##Readings
 Check out the following short excerpts online, comparing and analyzing the two frameworks:
 - [A Closer Look into React by Pete Hunt](https://www.quora.com/profile/Pete-Hunt/Posts/Facebooks-React-vs-AngularJS-A-Closer-Look)
 - [Why Build React?](http://facebook.github.io/react/blog/2013/06/05/why-react.html)
 
 ##Homework
-Please create a Wikipedia-like app using one of the frontend frameworks discussed above, React or Angular. Feel free to draw inspiration from the following projects, as listed below:
+Please create a Wikipedia-like app using one of the frontend frameworks discussed above, prefferably React or Angular. Feel free to draw inspiration from the following projects, as listed below:
 - [A Wikipedia clone for Computer Languages](https://github.com/flymperopoulos/WikiAwesome) 
 - [Basketball Wikipedia](https://github.com/RyanEggert/olinjs-lab1)
