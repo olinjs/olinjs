@@ -1,6 +1,11 @@
+### Preclass Reading and Exercises *for this class (class 05), TODO- put in class 04 homework*
+- Read the [Class 5 README](https://github.com/olinjs/olinjs/blob/master/lessons/04-client-jquery-ajax/README.md).
+- Read about the [basics of jQuery](http://jqfundamentals.com/chapter/jquery-basics).
+- Do this as a quick exercise and send in a link to your completed pen. (Fork before editing!): http://codepen.io/ndhanushkodi/pen/EPmgLQ
 
 
-## Assignment
+### Before Class 6 (Friday 2/5/16)
+#### Assignment
 
 Great news! We started shopping around your last two exercises (hope you don't mind)
 and although no one was interested in buying your cat tracking software,
@@ -28,6 +33,7 @@ In this case, do not remove the ingredient from the page, but make note through 
   * There should be a [checklist](http://www.w3schools.com/tags/att_input_type.asp) of all ingredients and their price.
   * Out-of-stock ingredients should have a disabled checkbox (`<input type="checkbox" disabled>`)
   * There should be a Submit button that will send the server the new order without refreshing the page.
+  * You may want to refer to the Mongo reading on [Referencing vs. Embedding](https://github.com/olinjs/olinjs/blob/master/lessons/03-express-templates-mongo/README.md) as you think about how you will store your data. 
   You should give your customer a nice congratulatory message for completing their order
   (maybe a free cat picture since you're so good at that?!)
   * A running counter of total cost: Should update whenever a new ingredient is added or removed.
@@ -35,3 +41,7 @@ In this case, do not remove the ingredient from the page, but make note through 
   * Shows a list of all pending orders.
   * A `completed` button beside each order that tells the server the order is complete.
   Clicking this should remove the order from the list of orders without refreshing the page.
+
+  #### Preclass Reading and Exercise
+- Read the [Class 6 README](https://github.com/olinjs/olinjs/blob/master/lessons/05-css-development-grace/README.md).
+- PUT PRECLASS EXCERCISE FOR CLASS 6 (CSS & DEVELOPMENT STYLE) HERE
