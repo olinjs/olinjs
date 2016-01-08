@@ -1,7 +1,6 @@
-### Preclass Reading and Exercises *for this class (class 05), TODO- put in class 04 homework*
-- Read the [Class 5 README](https://github.com/olinjs/olinjs/blob/master/lessons/04-client-jquery-ajax/README.md).
-- Read about the [basics of jQuery](http://jqfundamentals.com/chapter/jquery-basics).
-- Do this as a quick exercise and send in a link to your completed pen. (Fork before editing!): http://codepen.io/ndhanushkodi/pen/EPmgLQ
+### Preclass Reading and Exercises **for this class (class 05), TODO- put in class 04 homework**
+- Read the [Class 5 README](https://github.com/olinjs/olinjs/blob/master/lessons/04-client-jquery-ajax/README.md). There's parts to follow along, so please do so. Push your app with the 3 forms to your fork of the olinjs repo and send us a link to the folder on github. It is pretty long, so at least work through to getting 2 forms working, and work through the rest of the README in class.  
+- Read about the [basics of jQuery](http://jqfundamentals.com/chapter/jquery-basics). 
 
 
 ### Before Class 6 (Friday 2/5/16)
