@@ -16,10 +16,10 @@ The file `debugging.css` is a good start to a CSS file, but it could definitely 
 Make a webpage for a blogging website using HTML and CSS/Sass.  It should have:
 - A navbar at the top of the page
 - A sidebar
-- Blog posts
+- Blog posts (placeholders)
 
 The sidebar:
-- Think about what a sidebar should contain.  Links to blog entries?  About the author?
+- Think about what a sidebar should contain.  Links to blog entries?  About the author?  Should it scroll with the posts or stay fixed at the top of the page?
 
 The blog posts:
 - Assume every blog post has a banner picture, title, date, and content

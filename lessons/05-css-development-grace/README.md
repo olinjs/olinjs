@@ -1,8 +1,4 @@
-# Lesson 5 - CSS, Development Style and Grace
-
-- Intro to Less/Sass/CSS
-- Development Style - Error Handling
-
+# Lesson 6 - CSS, Development Style and Grace
 
 In this lesson we're going to cover some big ideas that span front-end and back-end development (and life!), and also round out our front-end knowledge by learning about CSS.
 
@@ -212,7 +208,7 @@ Speaking of specificity, CSS also supports **nesting**, which allos you to chang
 
 ```css
 <a href="#">link</a>
-<p>This is a paragraph with a <a href="#">link</a></p>
+<p>This is a paragraph with <a href="#">link</a></p>
 ```
 
 ```css
@@ -221,6 +217,7 @@ background-color: red
 }
 a:hover {
 background-color: green;
+}
 p a { 
 background-color: green; 
 }
@@ -419,5 +416,3 @@ If you can break your program, you can make it run.
 _Starting with something that works_ and _making incremental changes_ are the two best ways to maintain an understanding of how the code you write controls the behavior of your program.
 
 **Git** is a fantastic enabler in this endeavor!
-
-#### Work on the [exercises](./exercises.md) before the next lesson.
