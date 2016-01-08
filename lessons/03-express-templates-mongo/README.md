@@ -382,3 +382,80 @@ This allows Mongoose to form one large Mongo query and be more performant than r
 Check out the [getting started](http://mongoosejs.com/docs/index.html) guide on Mongoose to learn how to connect to your MongoDB database and the basics of saving and loading records.
 
 In the [exercises](./exercises.md) you will explore more about how to leverage MongoDB and Mongoose to store data persistently.
+
+
+
+### Mongo Embedding vs Referencing
+Let's say for example that you owned a series of bookstores each with a location,
+a manager, and tons of books. Each book has an author and a price.
+So our data structure so far looks like:
+```
+bookstore
+  location
+  manager
+  book
+    author
+    price
+```
+Keep in mind that a lot of books will be repeated across bookstores.
+How would we convert this to a Mongo datastore?
+Perhaps the obvious solution would be to just throw it all into an object that looks like the above.
+This is called **embedding** and is one of two ways that Mongo allows us to store objects within other objects.
+
+**Embedding** is when you store a Mongo document inside of another Mongo document.
+This is the default way to do things in Mongo, and is the most obvious.
+Instead of creating two collections for your bookstore,
+you'll just have one bookstore collection that has a list of every book inside of the bookstore.
+```
+bookstore
+  location
+  manager
+  book
+    author
+    price
+```
+
+This will lead you to repeat books across bookstores (but who cares because space is cheap).
+However, it will also mean that if you want to change the price of a book across all bookstores you have to go through each bookstore,
+search for the book, then change the attribute of the book.
+This isn't too bad if the book changes price very rarely, or if there are only a few stores which stock the book.
+However, think back to the Amazon.com example.
+If the price of the book changes every hour, and 1000 bookstores stock the book,
+you now have to update 1000 objects every hour.
+This becomes an even bigger problem when you're a product like Twitter and your
+"bookstores" are users and books are people those users follow. Let's say you want
+to update information about the book "Lady Gaga", which is stocked by 33 million "bookstores".
+This would be nearly impossible with embedded data, but is a cinch with references.
+
+The other method of putting objects within other objects is called **referencing**.
+
+**Referencing** is when you reference a Mongo document (usually by _id)
+inside of another document.
+We could split up the `bookstore` into two separate Mongo collections,
+a `store` and a `book`.
+Then our collections will look like:
+```
+store
+  location
+  manager
+  items
+```
+```
+book
+  author
+  price
+```
+This decouples stores with what they carry.
+We now have 1 book object that can be referenced from multiple stores.
+This is useful when you are lacking in space (because you don't repeat books).
+It is also useful when the object being shared changes often.
+Imagine that this bookstore based the price of their books on the Amazon.com price of the book (which fluctuates constantly).
+Now every time the price of the book changes you have to make only one change to one object,
+and the next time a store looks up the book it will see the updated price.
+
+
+
+In the end which way you use (reference or embedding) depends what your data access patterns will be like.
+You'll likely be using embeds 80% of the time, but references also have their place, so know how to do both.
+
+The Mongo documentation has further details about [when to embed vs reference](http://docs.mongodb.org/manual/core/data-model-design/).
