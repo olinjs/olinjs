@@ -20,7 +20,43 @@ In essence, JSX is a preprocessor step that adds XML syntax to JavaScript. One c
 ##Which one to use?
 Both frameworks can be complementary to each other. If you are choosing to build a web application, it is important that you leverage new tooling, which can increase the quality of your brand interactions and decrease development time by leveraging existing libraries or frameworks. If your application has a lot of large data operations and dynamic content, **React** is an excellent addition to the stack. The downside to using both frameworks is that it can increase complexity within the application.
 
+##Hello Angular 1.0
+In it's simplest form, one can use the code provided below to asynchronously update and place the content from the textbox to complete the period next to "Hello".
+```html
+<!DOCTYPE html>
+<html ng-app>
+<head>
+    <title>Hello World, AngularJS</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+</head>
+<body>
+    
+    Write some text in textbox:
+    <input type="text" ng-model="sometext" />
+ 
+    <h1 ng-show="sometext">Hello {{ sometext }}</h1>
+     
+</body>
+</html>
+```
+The first thing we notice is the use of an attribute **ng-app** with the html tag. This attribute, known as a directive, signals Angular to be active in this portion of the page. Another important thing to note is the use of the **ng-model** directive. **ng-model** binds the state of the textbox with the model value, i.e. "sometext". As a result, whenever the textbox value changes, Angular authomatically changes the model "sometext" to the respective value. This is what is known as Two-way Data Binding. Moreover, **{{sometext}}** tells Angular to bind the value of the model "sometext" in its place. Finally, the **ng-show** directive conditionally shows an element, depending on the value of the relative boolean expression. It's default state is False, and one could also use **ng-hide**, which does exactly the opposite of **ng-show**.
+
+Angular provides an interesting mechanism one can use to filter the bound information prior to presentation. One could also substitute the h1 tag above with the following, where "sometext" represents the expression and "uppercase" or "lowercase" the targetted filter.  
+
+```html
+<h1>Uppercase: {{ sometext | uppercase }}</h1>
+<h1>Lowercase: {{ sometext | lowercase }}</h1>
+```
+
+##Hello Angular 2.0
+Now that we saw how two-way data binding works on a simple html document, let's dive deeper into how we can create an app hosted locally and using Node and Angular. Let's check out the folder in Lesson 9 under the name "in_class_hello" that examines the use of directives and controllers in the context of Angular, by creating a simple app that moves between two pages with one click.  
+
 ##Readings
 Check out the following short excerpts online, comparing and analyzing the two frameworks:
 - [A Closer Look into React by Pete Hunt](https://www.quora.com/profile/Pete-Hunt/Posts/Facebooks-React-vs-AngularJS-A-Closer-Look)
 - [Why Build React?](http://facebook.github.io/react/blog/2013/06/05/why-react.html)
+
+##Homework
+Please create a Wikipedia-like app using one of the frontend frameworks discussed above, React or Angular. Feel free to draw inspiration from the following projects, as listed below:
+- [A Wikipedia clone for Computer Languages](https://github.com/flymperopoulos/WikiAwesome) 
+- [Basketball Wikipedia](https://github.com/RyanEggert/olinjs-lab1)
