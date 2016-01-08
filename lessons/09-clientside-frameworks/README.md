@@ -42,7 +42,7 @@ The direct implementation will differ based on the specific framework, but in ge
 The **models** are organized javascript objects with some additional functionality, such as a link to an API endpoint that can be used to retrieve and update data. 
 The **controller** is also on the client where it handles rendering the templates using the appropriate model data.
 
-##Popular Frameworks:
+##Popular Frameworks
 It turns out that there are a TON of different javascript client-side frameworks to choose from for any project. 
 These frameworks have various strengths and weaknesses. In this class we are going to explore AngularJS and ReactJS, however, you are more than welcome to explore other templates on your own.
 The source code for all of these frameworks are available on github (and yes, you can fork them). 
@@ -64,10 +64,16 @@ Angular is developed by Google and has as its chief aim to make html what it wou
 It has several interesting qualities such as html directives.
 A primary focus of angular is to build for testability and it has functionality to help enable exactly that. 
 
+####Highlight - Two-way data binding
+Angular uses has event listeners attached to data changes in an application; whether it is by the user or by the database, Angular knows to update all relational content. Two-way data binding also reduces the amount of code needed to develop sleek interaction and content transitions.
+
 ###React
 Developed by Facebook and focuses on the view part of MVC.
 Mission statement is to allow users to create large applications with data that changes over time.
 Allows its views to update as the data changes. 
+
+####Highlight - Virtual DOM
+React works by creating a virtual DOM in pure JavaScript that acts as an intermediate representation of the DOM. This way, React is able to create a diff of your active DOM and your virtual DOM to decide which elements to change.
 
 ##Approaches to learning a framework 
 As you almost certainly are aware, for any material (such as a framework) there are dozens of ways to learn a framework. A big part of the upcoming lab is learning a framework and presenting on what you found effective in learning that framework. There are a couple of approaches you can take to learning any new framework or library and we will be going over a few of them here.
