@@ -17,5 +17,6 @@ We've built a testing framework for the cat app with a few example tests (the ap
   - Challenge: Read about continuous integration and work through this [Travis CI tutorial](https://github.com/dwyl/learn-travis).
 - We've been using npm to run our tasks for the sake of simplicity (we're already familiar with the package.json file), but there are other task runners out there. [Check out this article](https://ponyfoo.com/articles/choose-grunt-gulp-or-npm) which compares npm to Grunt and Gulp (two other common task runners).
   - Challenge: make a copy of the `inclass` directory and replace npm with a different task runner (e.g. grunt or gulp). What's different? Easier? Harder?
+- Many editors support code quality plugins! Try adding a linter (jshint is an option, as are eslint and jslint) to your editor of choice.
 
 If you're done, start the homework!

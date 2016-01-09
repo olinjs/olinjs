@@ -10,13 +10,13 @@ Most of you have probably have heard of software testing before -- you might be 
 
 Obviously testing helps catch bugs and make sure your code works, but it also provides other benefits in terms of overall code quality. Having a good test suite for a project increases maintainability as it becomes harder to introduce new bugs in new versions without breaking tests. Additionally, high quality code tends to be very well encapsulated, and well encapsulated code tends to be easier to test. That said, when you sit down to test something and realize that the test is going to be complicated to write, consider first refactoring the code you are testing so you end up with several tests that are all easier to write, and better code in general as a result.
 
-##Other Types of Tests
+##Types of Tests
 
 Tests are generally classified according to how much code they target. The less code a test targets, the easier it is to diagnose what's going wrong when the test fails and the easier the test will probably be to maintain.
 
 - **Unit tests** target small, isolated pieces of code -- for instance, functions. A unit test might check that a function with a return statement returns the correct value, or that a function which modifies a list does so correctly.
 - **Integration tests** combine isolated units of code to ensure they work together correctly. An integration test might save a record to a database, then read it back and check that it's unchanged.
-- **End-to-end tests** (also know as **system tests**) for a web app simulate user interactions with the app and check that it's working as it should. An end-to-end test might fill out a login form, click "Sign In", and verify that the URL has changed to indicate that the user is signed in.
+- **End-to-end tests** (also known as **system tests**) for a web app simulate user interactions with the app and check that it's working as it should. An end-to-end test might fill out a login form, click "Sign In", and verify that the URL has changed to indicate that the user is signed in.
 
 A common philosophy (check out [this blog post from Google](http://googletesting.blogspot.com/2015/04/just-say-no-to-more-end-to-end-tests.html)) suggests a "testing pyramid": a large base of unit tests, some integration tests, and fewer end-to-end tests. The goal of the "testing pyramid" is to catch a bug with the smallest test possible. For example, an end-to-end test might fail if a function it depends on isn't returning the right value, but it won't give you much information about where the failure is; a unit test for the function will point you towards the failure right away.
 
