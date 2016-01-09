@@ -20,9 +20,9 @@
     "supertest": "^1.1.0"
   },
   "scripts": {
-    "jshint": "jshint --exclude-path ./.gitignore . || true",
-    "mocha": "./node_modules/mocha/bin/mocha tests/server --recursive || true",
-    "cover-mocha": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha tests/server -- --recursive -R spec || true",
+    "jshint": "jshint --exclude-path ./.gitignore . || exit 0",
+    "mocha": "./node_modules/mocha/bin/mocha tests/server --recursive || exit 0",
+    "cover-mocha": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha tests/server -- --recursive -R spec || exit 0",
     "test": "npm run cover-mocha",
     "start": "node app.js"
   },
