@@ -6,7 +6,6 @@ For this homework, you will need to add at least one feature that integrates wit
 **Challenging** Visualize your cat collection using D3 or your favorite data visualization library.
 
 ### Before Class 5 (jQuery)
-Read up on the basics of jQuery with one of the following two articles: http://jqfundamentals.com/chapter/jquery-basics or
-https://learn.jquery.com/about-jquery/how-jquery-works/
+Read the [Class 5 README](https://github.com/olinjs/olinjs/blob/master/lessons/04-client-jquery-ajax/README.md). There's parts to follow along, so please do so. Push your app with the 3 forms to your fork of the olinjs repo and send us a link to the folder on github. It is pretty long, so start early. If you really need to, at least get to where you have 2 forms working, and work through the rest of the README in class if you need to.
 
-More from Nitya goes here.
+ Read about the [basics of jQuery](http://jqfundamentals.com/chapter/jquery-basics). 

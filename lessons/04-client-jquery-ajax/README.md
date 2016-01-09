@@ -4,6 +4,7 @@ Node has the ability to store some information as variables. But all of the vari
 If you restart the server (or the server crashes) the data will be wiped away.
 If you are storing information from users or information based on user input, we need a more permanent solution.
 That's where persistent storage comes in.
+
 A file, like `data.txt`, is a form of persistent storage.
 It can be written to, read from, and maintains information regardless of whether your server is running or has long since stopped.
 But files aren't useful for much more than storing log information because of their organization and slow hard disk read/write speeds.
@@ -22,7 +23,7 @@ sudo apt-get update;
 sudo apt-get install -y mongodb-org
 ```
 
-If you have a mac, you can consult these [instructions](https://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/)
+If you have a mac, you can consult these [instructions](https://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/).
 
 Once installed, start the database by running:
 ```sh
