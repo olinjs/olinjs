@@ -9,5 +9,5 @@ code, involved when you create a new webapp. Copy the files of the webapp you've
   - The website title and favicon (what displays at the top of a tab in chrome) should be appropriately Christmassy. Do some googling first if you need help with the favicon!
   - You don’t need to worry about timezones for now. Assume that everyone using this website is in the same timezone as your server.  
   - If you finish early, try your hand at these exercises:
-    -Make sure that the response you send your user is centered, no matter how they resize their browser.
-    -Send along some javascript so an animation of your choice occurs when you click on the page. For example, the text on the page could change to a random color when you click on it.  
+    - Make sure that the response you send your user is centered, no matter how they resize their browser.
+    - Send along some javascript so an animation of your choice occurs when you click on the page. For example, the text on the page could change to a random color when you click on it.  
