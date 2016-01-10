@@ -12,18 +12,18 @@ var FakeDatabase = module.exports = {
     data: [],
 
     add: function(obj) {
+        //adds item to end of array holding data
         FakeDatabase.data.push(obj);
     },
 
     getAll: function() {
-        //returns copy of array of all objects in the database
+        //returns copy of array of all items in the database
         return FakeDatabase.data.slice();
     },
 
-    removeLast: function() {
-        //removes the last element added to the database and returns it.
-        //returns undefined if database is empty
-        return data.pop();
+    remove: function(index) {
+        //removes item located at index in array and returns it
+        return data.splice(index,1);
     }
 }
 ```
@@ -64,7 +64,7 @@ router.get('/new', function(req, res, next) {
 module.exports = router;
 ```
 
-Carefully reading the code above should be enough to get you started. Note that handlebars templating is not used in the example above, but you are required to use handlebars templating for your assignment. So you should be using *res.render*, not *res.send*!
+Carefully reading the code above should be enough to get you started. Note that handlebars templating is not used in the example above, but you are required to use handlebars templating for your assignment. So you should be using *res.render*, not *res.send*! And though it isn't nessecary to, you can modify the fakeDatabase.js code if you wish.
 
 ## Assignment 
 Create an Express application that has the following routes:
@@ -82,8 +82,8 @@ In this assignment we are doing something very bad. GET should be a [safe method
 We are using GET requests in this horrible way because without writing a front end, sending other types of requests becomes much more difficult. We'll get there soon though.
 
 ## Some Parting Words
-In order to complete this assignment, you're also going to have to filter out
-how to filter data. We didn't cover this in class, but it's not much of a stretch to Google.
+In order to complete this assignment, you're going to have to figure out
+how to filter and sort data. We didn't cover this in class, but it's not much of a stretch to Google.
 
 We encourage you to look at documentation and search for code/answers to problems that you run into. Attribute from where you copy, not just for honesty but because you'll probably run into the same issue again someday. This way, it'll be way easier to go back to where you found that answer.
 
