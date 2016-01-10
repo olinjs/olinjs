@@ -1,5 +1,5 @@
 # Exercise 3
-    In this homework you will begin building your first Express application, and create dynamic Handlebars templates.
+In this homework you will begin building your first Express application, and create dynamic Handlebars templates.
 
 ## Reading
 This assignment asks you to create, access, and modify data on your server when certain routes in your web app are visited. To do this and have your data be truly persistent, you'll need tools like MongoDB and Mongoose. We haven't gotten there yet, so for this assignment we're providing you with some code that will act somewhat like a database.
@@ -32,7 +32,7 @@ This fake database is actually just an object that contains an array and some fu
 
 To use the fake database, you can simply require the fakeDatabase file at the top of your own modules. Here is an example of an index.js file containing routes for a simple web app. This web app allows users to create and access Lizard records.
 
-```
+```javascript
 var express = require('express');
 var router = express.Router();
 var db = require('../fakeDatabase');
@@ -64,7 +64,7 @@ router.get('/new', function(req, res, next) {
 module.exports = router;
 ```
 
-Carefully reading the code above should be enough to get you started.
+Carefully reading the code above should be enough to get you started. Note that handlebars templating is not used in the example above, but you are required to use handlebars templating for your assignment. So you should be using *res.render*, not *res.send*!
 
 ## Assignment 
 Create an Express application that has the following routes:
