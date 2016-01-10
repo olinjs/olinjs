@@ -8,7 +8,7 @@ Read the [Airbnb Javascript Style Guide](https://github.com/airbnb/javascript). 
 
 ## Assignment
 
-Read the first three sections of the [Lesson 3 Readme](https://github.com/olinjs/olinjs/tree/master/lessons/03-express-templates-mongo).  You will be learning about Express, a development framework that is often used together with Node. Follow along with the exercises in the Readme to create a "hello world" express application. Make sure that you can access your application in a web browser and be ready to show it to the teaching team next class. Note that you only need to do exercises in sections up to and including *Organizing an Express Application** in order to create your "hello world" application.
+Read the first three sections of the [Lesson 3 Readme](https://github.com/olinjs/olinjs/tree/master/lessons/03-express-templates-mongo).  You will be learning about Express, a development framework that is often used together with Node. Follow along with the exercises in the Readme to create a "hello world" express application. Make sure that you can access your application in a web browser and be ready to show it to the teaching team next class. Note that you only need to do exercises in sections up to and including *Organizing an Express Application* in order to create your "hello world" application.
 
 Prepare two things you will write down at the beginning of next class in order to help us identify difficult concepts that deserve more attention:
  * Something in the assignment you felt confident about and easily grasped
