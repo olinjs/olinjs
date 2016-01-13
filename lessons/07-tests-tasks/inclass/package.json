@@ -1,0 +1,30 @@
+{
+  "name": "CatDB",
+  "version": "1.0.0",
+  "description": "Olin.js class3 homework solution.",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "cookie-parser": "^1.4.0",
+    "express": "^4.13.3",
+    "express-handlebars": "^1.1.0",
+    "mongoose": "^4.3.4",
+    "morgan": "^1.6.1"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "istanbul": "^0.4.1",
+    "karma": "^0.13.19",
+    "karma-mocha": "^0.2.1",
+    "mocha": "^2.3.4",
+    "supertest": "^1.1.0"
+  },
+  "scripts": {
+    "jshint": "jshint --exclude-path ./.gitignore . || exit 0",
+    "mocha": "./node_modules/mocha/bin/mocha tests/server --recursive || exit 0",
+    "cover-mocha": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha tests/server -- --recursive -R spec || exit 0",
+    "test": "npm run cover-mocha",
+    "start": "node app.js"
+  },
+  "license": "ISC"
+}
