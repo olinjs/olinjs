@@ -17,8 +17,8 @@ We have not discussed creating/deploying apps for production yet, but it is impo
 
 **Warning** The default server-side session storage, MemoryStore, is purposely not designed for a production environment. It will leak memory under most conditions, does not scale past a single process, and is meant for debugging and developing.
 
-Lets try using a couple different session stores with our app. Pick two from the compatible list and integrate them into your app. 
-
-**NOTE**: The choice of store will determine the difficulty of this exercise.  
-
+Lets try using a different session store with our app. Since we have Mongo DB set up already, integrate one of these two stores into your app.
+[1](https://www.npmjs.com/package/connect-mongodb-session)
+[2](https://www.npmjs.com/package/connect-mongo) 
+  
 If you have finished all of the above, start working on the homework for next time. 

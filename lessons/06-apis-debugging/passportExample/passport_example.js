@@ -13,9 +13,8 @@ passport.use(new FacebookStrategy({
     callbackURL: auth.FACEBOOK_CALLBACK_URL
   },
   function(accessToken, refreshToken, profile, done) {
-    //probably want to have a user schema do User.find if none create
-    console.log(profile.name)
-    // if (!profile) { return done(err); }
+    //This is not what you want to do here. 
+    //Here you should search the connected DB if the user exists and load that in, or add it to db.
     done(null, profile);
   }
 ));
@@ -30,12 +29,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.serializeUser(function(user, done) {
-  // console.log(user);
   done(null, user);
 });
 
 passport.deserializeUser(function(user, done) {
-  // console.log(user);
   done(null, user);
 });
 
