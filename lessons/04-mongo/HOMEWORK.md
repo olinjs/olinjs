@@ -78,8 +78,6 @@ Imagine that this bookstore based the price of their books on the Amazon.com pri
 Now every time the price of the book changes you have to make only one change to one object,
 and the next time a store looks up the book it will see the updated price.
 
-
-
 In the end which way you use (reference or embedding) depends what your data access patterns will be like.
 You'll likely be using embeds 80% of the time, but references also have their place, so know how to do both.
 
