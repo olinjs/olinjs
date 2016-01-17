@@ -14,6 +14,8 @@ MongoDB is a NoSQL database, which means that instead of tabular data, it stores
 We're going to use it for these reasons, but also because it is very easy to integrate with Node and doesn't require learning too much about data storage.
 Alternatives, for example the ubiquitous MySQL and PostgreSQL, are also very common database solutions, but tend to take a bit more time to get set up in a Node environment and require you to learn a query language (SQL) to access your data.
 You will likely see them in any internships or jobs doing web-dev, but MongoDB more than suits our purposes and will teach you the basics of data storage without taking a couple weeks of class time to get comfortable with.
+
+##Mongo
 So, let's get Mongo running and see what we can do with it:
 
 ```sh
@@ -128,4 +130,32 @@ User.find({name: 'bob'})
 Find all users with the name 'bob', sort them in descending order based on their grade, and then print them to the console.
 Using the exec function allows you to chain multiple query elements (like `find` and `sort`) together before providing a callback.
 This allows Mongoose to form one large Mongo query and be more performant than running additional queries in the callbacks of other queries.
+
+## Connecting to a Mongoose Database
 Check out the [getting started](http://mongoosejs.com/docs/index.html) guide on Mongoose to learn how to connect to your MongoDB database.
+
+It's a little vague where you should put everything as you start integrating databases into your applications, so we have a few sugustions.
+
+Put the code to establish your connection from mongoose to your mongo database in your main application file. It should look like this.
+
+```javascript
+mongoose.connect(process.env.MONGOURI || 'mongodb://localhost/robots');
+```
+
+You will also want somewhere to store the mongoose schemas that you are creating, so make sure your folder structure has a models folder that can contain files that look something like this.
+
+```javascript
+//This type of file is usually found in app/models/robotModel.js
+var mongoose = require('mongoose');
+
+// Create a Schema
+var robotSchema = mongoose.Schema({
+  name: String,
+	abilities: [String],
+  isEvil: Boolean
+});
+
+module.exports = mongoose.model("robot", robotSchema);
+```
+
+Finally, when you want to use this model in your routes, make sure you **require** your `robotModel.js` schema file.
