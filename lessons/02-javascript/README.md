@@ -378,7 +378,7 @@ $ node closures.js
 
 The function `mult` declared inside `multSum` has access to the variables `x` and `y`, because they are in the scope in which `mult` was declared. Here, `mult` is a closure — it encompasses not just the function itself, but also the scope in which it was declared (the outer scope), and the global scope, of course (all functions have access to the global scope).
 
-Closures are often seen in practice as callbacks, explained next. The Mozilla Developer Network offers [a more in-depth explanation of closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures.
+Closures are often seen in practice as callbacks, explained next. The Mozilla Developer Network offers [a more in-depth explanation of closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures).
 
 ## Callbacks
 
