@@ -5,9 +5,8 @@ After this class you should:
 - Understand how JavaScript relates to languages you already know
 - See the quirks of JavaScript
 - Understand the basics of JavaScript on a deeper level
-## JavaScript is Everywhere
 
-### Atwood's Law
+### Atwood's Law: JavaScript is Everywhere
 
 >Any application that can be written in JavaScript, will eventually be written in JavaScript.
 
