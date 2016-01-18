@@ -15,7 +15,7 @@ Feel free to submit a Github issue if you find any problems in the course and we
 * [Lesson 0 - Getting Ready for the Course](./lessons/00-getting-ready)
 * [Lesson 1 - Course Introduction and The Internet](./lessons/01-welcome-internet)
 * [Lesson 2 - Intro to Javascript](./lessons/02-javascript)
-* [Lesson 3 - Express, Templating, and MongoDB](./lessons/03-express-templates-mongo)
+* [Lesson 3 - Express, Templating, and MongoDB](./lessons/03-express-templates)
 * [Lesson 4 - The Client](./lessons/04-client-jquery-ajax)
 * [Lesson 5 - Sessions, Users, Errors, CSS, and Debugging](./lessons/05-css-development-grace)
 * [Lesson 6 - Application Integration](./lessons/06-apis-debugging)
