@@ -1,5 +1,10 @@
 #Lesson 2 - JavaScript
 
+##Goals
+After this class you should:
+- Understand how JavaScript relates to languages you already know
+- See the quirks of JavaScript
+- Understand the basics of JavaScript on a deeper level
 ## JavaScript is Everywhere
 
 ### Atwood's Law
@@ -150,6 +155,20 @@ for (var key in object) {
 	var value = object[key]
 	...
 }
+```
+
+Note that the order of iteration is not guaranteed with this syntax. If you use libraries which modify the prototype (more on this later) of base types, you may encounter strange behaviors where you iterate over functions in addition to the elements of the object you expect. These behaviors can be avoided using following syntax:
+
+```node
+array.forEach(function(element) {
+	console.log(element);
+	...
+};
+
+Object.keys(object).forEach(function(key) {
+	var value = object[key];
+	...
+};
 ```
 
 #### While loop
@@ -331,10 +350,10 @@ $ node functions.js
 This is totally legal. It might help to break down the expression we just printed:
 
 ```node
-func1()(); // first, func1 is called
+func1()(); // first, func1 is called and we will immediately call the returned function
 func2(); // it returns func2
 (function() { return 2; })(); // func2 holds an anonymous function
-2 // the anonymous function is called and returns 2
+2 // the anonymous function (stored in func2, the output of func1) is called and returns 2
 ```
 
 ## Closures
@@ -406,7 +425,6 @@ function globalSuccessHandler(data) {
 $.get('www.some.url', globalSuccessHandler);
 ```
 
-### Closures
 ## Objects
 
 Objects in JavaScript are simple key-value stores, which you may know from Python as **dictionaries**.
@@ -624,6 +642,3 @@ question: 'Am I an object?',
 ```
 
 The moral of the story is that JavaScript is remarkably robust, whether you like it or not. It will run happily where other languages would choke, so it often falls to you to write good code that will prevent weird things from happening. Leverage the flexibility of JavaScript to write elegant code — don't let it bite you.
-
-##Exercises:
-Check out [the homework readme](./exercises.md) for an exercise to do before the next lesson.
