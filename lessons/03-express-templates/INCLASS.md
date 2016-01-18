@@ -1,4 +1,4 @@
-##In-class Exercises
+# Lesson 3 In-Class Exercises
 1. Follow along with the tutorial in the [readme](https://github.com/olinjs/olinjs/blob/master/lessons/03-express-templates) to create a web app that uses Express and Handlebars to display a list of classes at Olin that you're currently taking and the professors who teach them. Your finished product should display something like the paragraph below in a browser:
    
     - Aaron teaches POE

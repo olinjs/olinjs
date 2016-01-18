@@ -1,7 +1,7 @@
-# Exercise 3
+### Before Class 4 (Friday 1/29/16)
 In this homework you will begin building your first Express application, and create dynamic Handlebars templates.
 
-## Reading
+#### Reading
 This assignment asks you to create, access, and modify data on your server when certain routes in your web app are visited. To do this and have your data be truly persistent, you'll need tools like MongoDB and Mongoose. We haven't gotten there yet, so for this assignment we're providing you with some code that will act somewhat like a database.
 
 Create a file named 'fakeDatabase.js' in the top level directory of your express application and paste in the following code:
@@ -66,7 +66,7 @@ module.exports = router;
 
 Carefully reading the code above should be enough to get you started. Note that handlebars templating is not used in the example above, but you are required to use handlebars templating for your assignment. So you should be using *res.render*, not *res.send*! And though it isn't nessecary to, you can modify the fakeDatabase.js code if you wish.
 
-## Assignment 
+#### Assignment 
 Create an Express application that has the following routes:
 * GET `/cats/new` => Creates a new cat record. A cat should have a random age, a name, and a list of colors.
   * These should be generated upon creation, not hardcoded.
@@ -81,11 +81,18 @@ In this assignment we are doing something very bad. GET should be a [safe method
 
 We are using GET requests in this horrible way because without writing a front end, sending other types of requests becomes much more difficult. We'll get there soon though.
 
-## Some Parting Words
+#### Some Parting Words
 In order to complete this assignment, you're going to have to figure out
 how to filter and sort data. We didn't cover this in class, but it's not much of a stretch to Google.
 
 We encourage you to look at documentation and search for code/answers to problems that you run into. Attribute from where you copy, not just for honesty but because you'll probably run into the same issue again someday. This way, it'll be way easier to go back to where you found that answer.
 
-Are you running into errors that the first page of Google results doesn't solve? Email out to the mailing list. Chances are, we've already had this error before.
+Are you running into errors that the first page of Google results doesn't solve? Email out to the mailing list or post on Slack -- chances are, someone's encountered your error before.
+
 As always, ask for help in Slack or come to office hours if you are running into trouble or need some guidance with this assignment.
+
+#### Preclass Reading and Exercise
+- Read the [Class 4 README](https://github.com/olinjs/olinjs/tree/master/lessons/04-client-jquery-ajax)
+- Send an email to [olinjs16@gmail.com](olinjs16@gmail.com) with the subject line "Preclass 4" telling us about...
+    - Something in the reading you felt confident about and easily grasped
+    - Something in the reading you're confused about or want to know more about
