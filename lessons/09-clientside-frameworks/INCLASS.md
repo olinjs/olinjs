@@ -18,7 +18,8 @@ Let's start with data binding. In Angular, one can only bind to scope. This esse
 In essence, JSX is a preprocessor step that adds XML syntax to JavaScript. One can definitely use React without JSX but JSX makes React a lot more elegant. JSX tags have a tag name, attributes and nested children. In addition to the above, XML has the benefit of balanced opening and closing tags. This helps make large trees easier to read than function calls or object literals. For more information on JSX, visit [here](https://facebook.github.io/react/docs/jsx-in-depth.html).
 
 ##Which one to use?
-Both frameworks can be complementary to each other. If you are choosing to build a web application, it is important that you leverage new tooling, which can increase the quality of your brand interactions and decrease development time by leveraging existing libraries or frameworks. If your application has a lot of large data operations and dynamic content, **React** is an excellent addition to the stack. The downside to using both frameworks is that it can increase complexity within the application.
+It is important to note that React can't stand as a framework on its own and *can* be wrapped in Angular. As afore-mentioned, there are both pros and cons in the use of either framework. An interesting read comparing Angular and React can be further found [here](https://medium.freecodecamp.com/angular-2-versus-react-there-will-be-blood-66595faafd51).
+
 
 ##Hello Angular 1.0
 In it's simplest form, one can use the code provided below to asynchronously update and place the content from the textbox to complete the period next to "Hello".
@@ -41,7 +42,7 @@ In it's simplest form, one can use the code provided below to asynchronously upd
 ```
 The first thing we notice is the use of an attribute **ng-app** with the html tag. This attribute, known as a directive, signals Angular to be active in this portion of the page. Another important thing to note is the use of the **ng-model** directive. **ng-model** binds the state of the textbox with the model value, i.e. "sometext". As a result, whenever the textbox value changes, Angular authomatically changes the model "sometext" to the respective value. This is what is known as Two-way Data Binding. Moreover, **{{sometext}}** tells Angular to bind the value of the model "sometext" in its place. Finally, the **ng-show** directive conditionally shows an element, depending on the value of the relative boolean expression. It's default state is False, and one could also use **ng-hide**, which does exactly the opposite of **ng-show**.
 
-Angular provides an interesting mechanism one can use to filter the bound information prior to presentation. One could also substitute the h1 tag above with the following, where "sometext" represents the expression and "uppercase" or "lowercase" the targetted filter.  
+Angular 2.0 specifically, provides an interesting mechanism one can use to filter the bound information prior to presentation. One could also substitute the h1 tag above with the following, where "sometext" represents the expression and "uppercase" or "lowercase" the targetted filter.  
 
 ```html
 <h1>Uppercase: {{ sometext | uppercase }}</h1>
@@ -60,6 +61,6 @@ Check out the following short excerpts online, comparing and analyzing the two f
 - [Why Build React?](http://facebook.github.io/react/blog/2013/06/05/why-react.html)
 
 ##Homework
-Please create a Wikipedia-like app using one of the frontend frameworks discussed above, prefferably React or Angular. Feel free to draw inspiration from the following projects, as listed below:
+Please create a Wikipedia-like app using one of the frontend frameworks discussed above, preferably React or Angular. Feel free to draw inspiration from the following projects, as listed below:
 - [A Wikipedia clone for Computer Languages](https://github.com/flymperopoulos/WikiAwesome) 
 - [Basketball Wikipedia](https://github.com/RyanEggert/olinjs-lab1)

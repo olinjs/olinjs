@@ -2,7 +2,7 @@
 
 ##Introduction
 So far we have seen how to organize an increasingly complex system of components on our node server. 
-We will now take a side step to discuss another organizational system in which instead of having lot of structure on the **server**, we have that structure on the **client**. 
+We will now take a side step to discuss another organizational system in which instead of having lot of structure on the **server**, we have that structure on the **client**, providing a structure (a "framework") for organizing and manipulating the user interface.
 
 ##Current Idea
 In our traditional system, with most clicks you make a call to your server for an html page.
@@ -73,7 +73,7 @@ Mission statement is to allow users to create large applications with data that 
 Allows its views to update as the data changes. 
 
 ####Highlight - Virtual DOM
-React works by creating a virtual DOM in pure JavaScript that acts as an intermediate representation of the DOM. This way, React is able to create a diff of your active DOM and your virtual DOM to decide which elements to change.
+React works by creating a virtual DOM in pure JavaScript that acts as an intermediate representation of the DOM. This way, React is able to create a diff of your active DOM and your virtual DOM to decide which elements to change, thereby providing great rendering performance.
 
 ##Approaches to learning a framework 
 As you almost certainly are aware, for any material (such as a framework) there are dozens of ways to learn a framework. A big part of the upcoming lab is learning a framework and presenting on what you found effective in learning that framework. There are a couple of approaches you can take to learning any new framework or library and we will be going over a few of them here.
