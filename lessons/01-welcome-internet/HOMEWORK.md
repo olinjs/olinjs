@@ -23,6 +23,9 @@ $ sudo npm install learnyounode -g
 $ learnyounode
 ```
 
+######Submission
+
+When you're finished, fill out [the Homework 1 submission survey](http://goo.gl/forms/DUlkgbvHBb).
 
 #### Preclass Reading and Exercise
 - Read the [Class 2 README](https://github.com/olinjs/olinjs/blob/master/lessons/02-javascript).
