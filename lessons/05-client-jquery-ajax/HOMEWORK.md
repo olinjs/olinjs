@@ -1,7 +1,3 @@
-### Preclass Reading and Exercises **for this class (class 05), TODO- put in class 04 homework**
-- Read the [Class 5 README](https://github.com/olinjs/olinjs/blob/master/lessons/04-client-jquery-ajax/README.md). There's parts to follow along, so please do so. Push your app with the 3 forms to your fork of the olinjs repo and send us a link to the folder on github. It is pretty long, so start early. If you really need to, at least get to where you have 2 forms working, and work through the rest of the README in class if you need to.  
-- Read about the [basics of jQuery](http://jqfundamentals.com/chapter/jquery-basics). 
-
 
 ### Before Class 6 (Friday 2/5/16)
 #### Assignment
@@ -42,5 +38,5 @@ In this case, do not remove the ingredient from the page, but make note through 
   Clicking this should remove the order from the list of orders without refreshing the page.
 
   #### Preclass Reading and Exercise
-- Read the [Class 6 README](https://github.com/olinjs/olinjs/blob/master/lessons/05-css-development-grace/README.md).
-- PUT PRECLASS EXCERCISE FOR CLASS 6 (CSS & DEVELOPMENT STYLE) HERE
+- Read the [Class 6 README](https://github.com/olinjs/olinjs/blob/master/lessons/06-css-development-grace/README.md) before class 6 on Friday 2/5/16.
+
