@@ -6,6 +6,9 @@ If you need help installing Ubuntu check out this [guide](https://gist.github.co
 If you'd rather use a virtual machine, a different distribution of Linux, or a Mac, you're welcome to -- just be aware that the teaching team is most prepared to support Ubuntu dual boots.
 
 ##Node
+We recommend installing node using [NVM](https://github.com/creationix/nvm) (Node Version Manager). NVM is easy to use and will provide easy version management for node. Follow the NVM readme to insteall NVM with curl or wget, then install node with `nvm install node`.
+
+If you want to install Node through apt-get (Linux only), follow these steps:
 We will install node from a package repository which will give us automatic updates:
 * `curl -sL https://deb.nodesource.com/setup | sudo bash -` (install curl with `sudo apt-get install curl` if needed)
 * `sudo apt-get install -y nodejs`
