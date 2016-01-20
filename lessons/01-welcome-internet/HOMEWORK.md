@@ -23,7 +23,10 @@ $ sudo npm install learnyounode -g
 $ learnyounode
 ```
 
+######Submission
+
+When you're finished, fill out [the Homework 1 submission survey](http://goo.gl/forms/DUlkgbvHBb).
 
 #### Preclass Reading and Exercise
-- Read the [Class 2 README](https://github.com/olinjs/olinjs/blob/master/lessons/02-javascript/README.md).
-- Exercise TBD?
+- Read the [Class 2 README](https://github.com/olinjs/olinjs/blob/master/lessons/02-javascript).
+- Send an email to [olinjs16@gmail.com](olinjs16@gmail.com) with the subject line "Preclass 2" and a couple sentences about a javascripting or learnyounode level you found particularly interesting or challenging. If you didn't find any of the levels interesting or challenging, search around for a JavaScript concept you think is interesting, learn a bit about it, and email us about what you learned.
