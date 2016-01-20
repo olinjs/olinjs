@@ -1,10 +1,18 @@
-# Exercise 4
-In this exercise we will start by exploring a new aspect of MongoDB
-and then we will start incorporating AJAX into a web app in order to make it
-more dynamic and easy to use.
-## Reading
-### Mongo Embedding vs Referencing
-Let's say for example that you owned a series of bookstores each with a location,
+### Before Class 5 (Tuesday 2/2/16)
+#### Assignment
+For the homework, you will be integrating mongoDB into your Cat App from last class using mongoose. Now you can store the cats you create forever, and create new features that allow you to sort those cats in various ways.
+
+For this homework, you will need to add at least one feature that integrates with your database and uses an advanced query. For example, you could only show cats in a certain age range, or display cats by date created.
+
+In case you missed the in-class:
+We're defining an advanced query as something that builds on basic queries by using query operators such as **and** and **or**. You can find a full list of query operators [here](https://docs.mongodb.org/manual/reference/operator/query/#query-selectors). You can also see examples of what that looks like in mongoose syntax at the main queries [doc page](http://mongoosejs.com/docs/queries.html) and in the [page](https://docs.mongodb.org/manual/tutorial/query-documents/) dedicated to building specific queries.
+
+**Challenging:** Explore a more advanced concept of mongo/mongoose, embedding vs. referencing inside your cat application.
+
+Other possible ideas would be integrating your cat app with a SQL database like mySQL or integrating with a remote database hosted on mongolab.
+
+#### Mongo Embedding vs Referencing
+Let's say that you owned a series of bookstores each with a location,
 a manager, and tons of books. Each book has an author and a price.
 So our data structure so far looks like:
 ```
@@ -71,45 +79,12 @@ Imagine that this bookstore based the price of their books on the Amazon.com pri
 Now every time the price of the book changes you have to make only one change to one object,
 and the next time a store looks up the book it will see the updated price.
 
-
-
 In the end which way you use (reference or embedding) depends what your data access patterns will be like.
 You'll likely be using embeds 80% of the time, but references also have their place, so know how to do both.
 
 The Mongo documentation has further details about [when to embed vs reference](http://docs.mongodb.org/manual/core/data-model-design/).
 
-## Assignment
+#### PreClass Reading and Exercise
+Read the [Class 5 README](https://github.com/olinjs/olinjs/blob/master/lessons/05-client-jquery-ajax/README.md). There's parts to follow along, so please do so. Push your app with the 3 forms to your fork of the olin.js repo and send us a link to the folder on github. It is pretty long, so start early. If you really need to, at least get to where you have 2 forms working, and work through the rest of the README in class if you need to.
 
-Great news! We started shopping around your last two exercises (hope you don't mind)
-and although no one was interested in buying your cat tracking software,
-we did get an email from a local burger joint, looking for some help.
-Jessica's Burgers is looking to update their aging ordering system to the 21st century.
-So in an effort to ~~make us loads of cash~~ improve your coding skills,
-this exercise will focus on making a web app which will help Jessica's customers
-get their delicious burgers even quicker (and more delicously).
-Your application will allow users to build orders for a single burger from a list of ingredients
-(which will need to be updated as new stock arrives).
-Then it will allow Jessica's chefs to see all the pending orders, fill them, and alert customers that their burger is ready.
-
-Your application will need the following http endpoints:
-* `/ingredients` =>
-  * Shows a list of current ingredients (Name and Price) with Out-of-Stock and edit button.
-  * An `Add` button should allow the user to specify the name and price of a new ingredient which should appear on the page without requiring a refresh.
-  * Out-of-Stock button will tell the server to label the ingredient as disabled.
-  The ingredient should be removed from the current page without refreshing.
- (Optional: make it toggleable to "add" more of the ingredient.
-In this case, do not remove the ingredient from the page, but make note through words or style that it is unavailable.)
-  * Edit button allows the user to submit a new name or price for the ingredient
-  which the server will update. The edits should change the ingredient list without refreshing.
-* `/order` =>
-  * Shows a form which allows customers to create a new burger.
-  * There should be a [checklist](http://www.w3schools.com/tags/att_input_type.asp) of all ingredients and their price.
-  * Out-of-stock ingredients should have a disabled checkbox (`<input type="checkbox" disabled>`)
-  * There should be a Submit button that will send the server the new order without refreshing the page.
-  You should give your customer a nice congratulatory message for completing their order
-  (maybe a free cat picture since you're so good at that?!)
-  * A running counter of total cost: Should update whenever a new ingredient is added or removed.
-* `/kitchen` =>
-  * Shows a list of all pending orders.
-  * A `completed` button beside each order that tells the server the order is complete.
-  Clicking this should remove the order from the list of orders without refreshing the page.
+ Read about the [basics of jQuery](http://jqfundamentals.com/chapter/jquery-basics).
