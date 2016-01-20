@@ -134,12 +134,12 @@ This allows Mongoose to form one large Mongo query and be more performant than r
 ## Connecting to a Mongoose Database
 Check out the [getting started](http://mongoosejs.com/docs/index.html) guide on Mongoose to learn how to connect to your MongoDB database.
 
-It's a little vague where you should put everything as you start integrating databases into your applications, so we have a few sugustions.
+It's a little vague where you should put everything as you start integrating databases into your applications, so we have a few suggestions.
 
 Put the code to establish your connection from mongoose to your mongo database in your main application file. It should look like this.
 
 ```javascript
-mongoose.connect(process.env.MONGOURI || 'mongodb://localhost/robots');
+mongoose.connect('mongodb://localhost/robots');
 ```
 
 You will also want somewhere to store the mongoose schemas that you are creating, so make sure your folder structure has a models folder that can contain files that look something like this.
@@ -151,7 +151,7 @@ var mongoose = require('mongoose');
 // Create a Schema
 var robotSchema = mongoose.Schema({
   name: String,
-	abilities: [String],
+  abilities: [String],
   isEvil: Boolean
 });
 
@@ -159,3 +159,11 @@ module.exports = mongoose.model("robot", robotSchema);
 ```
 
 Finally, when you want to use this model in your routes, make sure you **require** your `robotModel.js` schema file.
+
+```javascript
+var Robot = require('../models/robotModel.js');
+
+Robot.find({}, function(err, robots){
+  console.log(robots);
+});
+```
