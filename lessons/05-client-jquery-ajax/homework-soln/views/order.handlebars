@@ -1,0 +1,21 @@
+<h2>Order</h2>
+
+<form id="order" action="placeOrder" method="POST">
+	<p>Name <input type="text" name="customer"></input></p>
+	{{#each ingredients}}
+			<p class="ingredient">
+				<input type="checkbox" 
+					   class="orderOpt"
+					   id={{this._id}}
+					   name={{this.name}} 
+					   value={{this.price}}
+					   {{#unless this.inStock}}
+							disabled
+					   {{/unless}}>
+					   		{{this.name}} - ${{this.price}}<br>
+				</input>
+			</p>
+	{{/each}}
+	<p>Price: $<span id="price">4.00</span></p>
+	<input type="submit" value="Place Order">
+</form>
