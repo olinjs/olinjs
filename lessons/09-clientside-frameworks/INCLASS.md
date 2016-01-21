@@ -59,8 +59,3 @@ Now that we have an idea of how those frontend frameworks work, let's get into p
 Check out the following short excerpts online, comparing and analyzing the two frameworks:
 - [A Closer Look into React by Pete Hunt](https://www.quora.com/profile/Pete-Hunt/Posts/Facebooks-React-vs-AngularJS-A-Closer-Look)
 - [Why Build React?](http://facebook.github.io/react/blog/2013/06/05/why-react.html)
-
-##Homework
-Please create a Wikipedia-like app using one of the frontend frameworks discussed above, preferably React or Angular. Feel free to draw inspiration from the following projects, as listed below:
-- [A Wikipedia clone for Computer Languages](https://github.com/flymperopoulos/WikiAwesome) 
-- [Basketball Wikipedia](https://github.com/RyanEggert/olinjs-lab1)

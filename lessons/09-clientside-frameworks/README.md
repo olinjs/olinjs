@@ -92,10 +92,3 @@ For lots of popular frameworks, there are often lots of people who have created 
 There are applications that are written specifically as example applications to show how to put an application together with actual functionality. These can be found often from the framework publishers themselves, but also from people who just want to share. One excellent page that has a sample app for many frameworks is: http://todomvc.com/
 
 Additionally, if the framework is popular enough, it likely also has hundreds of actual applications that have been written in the framework and are publically available. All these can be sources of learning from experts who likely are very familiar with the framework. They can, however, be very hard to dig through and are by no means necessarily well done or structured so you shouldn't take them as the only or best way to use the framework. 
-
-###Reading
-For next class, please spend some time examining the fundamentals of Angular and React and come up with questions about the two frameworks, their use-cases, characteristics etc. To achieve that, please follow links, such as the ones below:
-- [Intro to Angular](https://docs.angularjs.org/guide/introduction)
-- [Angular Concepts](https://docs.angularjs.org/guide/concepts)
-- [Intro to React](https://facebook.github.io/react/docs/displaying-data.htm)
-- [Thinking in React](https://facebook.github.io/react/docs/thinking-in-react.html)
