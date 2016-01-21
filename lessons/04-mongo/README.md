@@ -1,4 +1,4 @@
-# Class 4 - MongoDB and Mongoose
+# Lesson 4 - MongoDB and Mongoose
 
 Node has the ability to store some information as variables. But all of the variables are stored in the process memory.
 If you restart the server (or the server crashes) the data will be wiped away.
