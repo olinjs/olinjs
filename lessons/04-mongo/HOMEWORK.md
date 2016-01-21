@@ -1,4 +1,4 @@
-### Before Class 5 (Tuesday 2/2/16)
+t s### Before Class 5 (Tuesday 2/2/16)
 #### Assignment
 For the homework, you will be integrating mongoDB into your Cat App from last class using mongoose. Now you can store the cats you create forever, and create new features that allow you to sort those cats in various ways.
 
@@ -84,7 +84,11 @@ You'll likely be using embeds 80% of the time, but references also have their pl
 
 The Mongo documentation has further details about [when to embed vs reference](http://docs.mongodb.org/manual/core/data-model-design/).
 
-#### PreClass Reading and Exercise
-Read the [Class 5 README](https://github.com/olinjs/olinjs/blob/master/lessons/05-client-jquery-ajax/README.md). There's parts to follow along, so please do so. Push your app with the 3 forms to your fork of the olin.js repo and send us a link to the folder on github. It is pretty long, so start early. If you really need to, at least get to where you have 2 forms working, and work through the rest of the README in class if you need to.
+#### Preclass Reading and Exercise
+Read the [Class 5 README](https://github.com/olinjs/olinjs/tree/master/lessons/05-client-jquery-ajax). Follow along as you read the "HTML Forms" section.
 
- Read about the [basics of jQuery](http://jqfundamentals.com/chapter/jquery-basics).
+To complete the preclass, push the app you create during the "HTML Forms" section" to your fork of the Olin.js repo. Then, send an email to [olinjs16@gmail.com](olinjs16@gmail.com) with the subject line "Preclass 5" and a link to the GitHub folder containing your forms app. 
+
+(The preclass is long -- if you can't get through all of it, at least get two forms working, then finish up the third in class).
+
+If you're looking for an additional jQuery resource, this one is pretty good: [Basics of jQuery](http://jqfundamentals.com/chapter/jquery-basics).
