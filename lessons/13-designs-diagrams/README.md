@@ -1,4 +1,4 @@
-#Lesson 8 - Application Design and Diagramming
+#Lesson 13 - Application Design and Diagramming
 
 As we begin to develop larger and more complex applications, we'll want to start being methodical about how we design and plan them. 
 In this lesson we will talk about strategies for planning and documenting large applications to make developing and debugging as simple as possible.

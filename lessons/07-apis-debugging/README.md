@@ -1,4 +1,4 @@
-#Lesson 6 - APIs and Debugging Strategies
+#Lesson 7 - APIs and Debugging Strategies
 ##Preclass 
 Please read the following Readme and some of the following links on [Oauth](http://www.cubrid.org/blog/dev-platform/dancing-with-oauth-understanding-how-authorization-works/) and [REST](http://www.infoq.com/articles/rest-introduction)
 
