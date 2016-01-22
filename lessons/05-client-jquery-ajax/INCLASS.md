@@ -21,8 +21,9 @@ Or the other option would be to download the jQuery library itself, which would 
 ```html
 <script src="jquery-1.12.0.min.js"></script>). 
 ```
-	-Add a button that users can click to find out whether it is christmas or not without refreshing (print to chrome developer console). 
-	-Have the page itself update to reflect the answer.
+
+-After adding jQuery, add a button that users can click to find out whether it is christmas or not without refreshing (print to chrome developer console). 
+-Have the page itself update to reflect the answer.
 
 -Return to your cat app homework and add the jQuery library to it. 
 	-Rather than having several pages for each of the types of requests, have just one cats display page, with 3 buttons: Display, Add, GetBy <insert favorite color here>, and Delete. 
