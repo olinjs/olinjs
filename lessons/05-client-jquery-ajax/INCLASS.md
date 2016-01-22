@@ -23,6 +23,7 @@ Or the other option would be to download the jQuery library itself, which would 
 ```
 
 -After adding jQuery, add a button that users can click to find out whether it is christmas or not without refreshing (print to chrome developer console). 
+
 -Have the page itself update to reflect the answer.
 
 -Return to your cat app homework and add the jQuery library to it. 
