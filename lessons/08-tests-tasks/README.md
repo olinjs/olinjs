@@ -1,4 +1,4 @@
-#Lesson 7 - Testing and Task Running
+#Lesson 8 - Testing and Task Running
 
 ##What is Testing?
 

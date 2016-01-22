@@ -13,7 +13,7 @@
   - using branching/merging
 
 ##Internet:
-- Pick a website, open the “Sources” tab of the developer console, and identify what some of the requests are doing (this won’t be easy for all of the requests -- don’t worry if it’s not obvious what some of them do)
+- Pick a website, open the "Network" tab of the developer console, and identify what some of the requests are doing (this won’t be easy for all of the requests -- don’t worry if it’s not obvious what some of them do)
   - Challenge: find requests which aren’t GET
 
 ##Javascript:

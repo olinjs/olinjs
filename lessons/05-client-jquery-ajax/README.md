@@ -1,4 +1,4 @@
-# Lesson 4 - The Client, jQuery, and AJAX
+# Lesson 5 - The Client, jQuery, and AJAX
 Web Applications handle much of their database communication and logic on the server,
 but the front-end is what the client actually sees and interacts with.
 Without a clean, intuitive, responsive, and enjoyable client-side,
@@ -64,7 +64,7 @@ We've seen some HTML before but let's go through a more formal overview of it.
 [HTML](http://en.wikipedia.org/wiki/HTML) is a markup language that uses tagged elements
 to describe the structure of a webpage.
 Elements are specified with start and end tags which enclose their content,
-including children elements (`<div><p>Hi again</p></div>`).
+including children elements (`<div><p>Hi again</p></div>`). The p element is a child of the div element. 
 Some elements cannot have content or children and do not have an end tag.
 Instead their start tag ends with a slash (`<br/>`)
 While HTML can include presentation specifications,
@@ -112,12 +112,9 @@ but the styling and layout or your pages should all be controlled by CSS.
 Check out this [site](http://www.htmldog.com/guides/css/intermediate/layout/)
 or Google "HTML layout tips" to read more about formatting techniques.
 
-### JSFiddle
-Check out [JSFiddle](http://jsfiddle.net/vsw1vLz6/).
-It is a super useful tool that allows you to test small snippets of HTML, CSS, and JavaScript and see the output.
-You can also share and do some other cool stuff with it.
+### Experimenting?
+You've seen [JSFiddle](http://jsfiddle.net/vsw1vLz6/) and [CodePen](http://codepen.io/) in action, remember that you can use them to test out, share, and see the output of snippets of HTML, CSS, and JavaScript. 
 
-[CodePen](http://codepen.io/) is a similar site which also highlights a lot of cool code examples.
 
 ## HTML Forms
 In the last homework, we passed information to the server through the URL.
@@ -132,13 +129,12 @@ GET /cats/delete/old
 Now we're going to look at a better way to do this using HTML forms.
 
 To start we'll need a basic Express app again.
-You can start a new app or modify your homework, but we'd recommend starting from last class's app.
-From the class4 folder, use this command to copy last class's app over:
+You can start a new app or modify your homework, but we'd recommend starting from the expressintro app from class 03.
+In your terminal, cd into your your /lessons/05-client-jquery-ajax/ folder, use this command to copy last class's app over:
 ```
-cp -r ../class3/::expressintro:: ./::formsApp::
+cp -r $PATH-TO-OLINJS-FOLDER/lessons/03-express-templates-mongo/expressintro ./::formsApp::
 ```
-Replace `::expressintro::` with whatever you named your application directory and `::formsApp::`
-with whatever you want to name this week's.
+Replace `::formsApp::` with whatever you want to name your forms app.
 
 Replace the contents of `home.handlebars` with:
 ```html
@@ -269,10 +265,11 @@ a GET request is your best bet.
 However, if you're making a login form, with private or personal information like passwords,
 you're going to want to go with POST so that the password is not exposed in the URL or stored
 in the server logs or your browser's history.
+To make the third form work, we need to learn about AJAX requests and client side JavaScript.  
 
 ## AJAX and XHR Requests
 
-You probably noticed something about how the forms act.
+You probably noticed something about how the two first forms act.
 When you submit them, you are taken to an entirely new page.
 You might even get a little white flash of a blank screen before the image loads.
 
@@ -283,14 +280,14 @@ You dont even need to hit submit. If you change your search then stop typing,
 after a second or so the search results will show up.
 This is accomplished through a method called Asynchronous Javascript and XML (AJAX) requests.
 
-AJAX is a method of using client-side JavaScript to send XML HTTP Requests (XHR Requests)
+AJAX is a method of using *client-side* JavaScript to send XML HTTP Requests (XHR Requests)
 to a server in the background, without interfering with the display and behavior of the current page.
 This is the technology that Google and the majority of modern websites use to make their pages
 seem quicker and more responsive.
 Using AJAX allows websites to communicate with their servers (or external servers)
 without making entire new page requests.
 This also allows them to modify individual sections of HTML instead of replacing the whole page.
-In order to use AJAX we need to run some JavaScript on our website.
+In order to use AJAX we need to run some client side JavaScript on our website.
 
 ## Client JavaScript and jQuery
 
@@ -306,7 +303,7 @@ After a user gets your template, though, they can't do much until they submit a 
 With client-side JS, we can make your website much more useful and powerful.
 
 **One important caveat:**
-client-side code knows nothing about your server.
+Client-side code knows nothing about your server.
 For all it cares you could be running Python, Ruby, ALGOL or on a Commodore 64.
 So when you write JavaScript in Node.js, you can't run the same functions in your web browser.
 We'll explain later how to make them communicate with each other.
@@ -320,7 +317,7 @@ Create a new file `main.js` in the `public/javascripts` directory, and paste in 
 ```javascript
 console.log("hello world");
 ```
-Then add this `<script>` tag to your `main.handlebars` layout file between the closing `</body>` and closing `</html>` tags like so:
+Then add this `<script>` tag to your `main.handlebars` layout file (in the views/layouts folder) between the closing `</body>` and closing `</html>` tags like so:
 ```html
 </body>
 <script type="text/javascript" src="javascripts/main.js"></script>
@@ -486,7 +483,7 @@ $form.submit(function(event) {
 });
 ```
 
-Let's work through this file one step at a time:
+Let's work through this file one step at a time, and if any of this is confusing, please ask about it!!:
 * First we store the jQuery selector for the 3rd form so we don't need to keep searching for it.
 * We define an `onSuccess` function. This function takes `data` and `status` as parameters, which `$.get()` supplies.
   It then uses the `data` returned from the server to create a new `<img>` tag and add it to the page.
@@ -499,7 +496,7 @@ This means that if that form raises a "submit" event then the callback function 
   In this case, this is what stops the browser from sending the request and loading a new page.
   * Using some jQuery DOM searching we get the values of the "name" text input and the "mood" radio button.
   * We then initiate an AJAX request using the GET method with `$.get()`. jQuery similarly has a `$.post()` function for POST.
-  We pass the two parameters into the GET request which are internally packaged into the same query string we've seen before.
+  We pass the two parameters into the GET request which are internally packaged into the same query string we've seen before. Since you're doing a GET request with `getCat` as the first parameter, it's calling the function `getCatGET` in your routes\getCat.js file, because in `app.js` we specified in our API that when we get a GET request for getCat (`app.get("/getCat", getCat.getCatGET);`) we call the function getCatGET. 
   * Finally, we specify what should happen if the request is successful or if it returns with an error.
   The `$.get()` function returns a jQuery XHR object ('jqXHR') which implements a Promise interface.
   Promises are a structure that allow management of lots of callbacks in a simple, easier to read manner.
