@@ -232,16 +232,16 @@ As you might imagine, this might get unwieldy after a while, in large stylesheet
 
 ## Less and Sass
 
-These are CSS pre-processor languages that allow you to use simpler and more manageable syntax that converts to CSS.  Before class, please [install Sass](http://sass-lang.com/install), and read about [Sass features](http://sass-lang.com/guide).  We'll cover some Sass usage in class.
+These are CSS pre-processor languages that allow you to use simpler and more manageable syntax that converts to CSS.  Before class, please install Sass.  If you have Ruby installed, you can follow the [default installation guide](http://sass-lang.com/install).  To bypass the Ruby requirement, you can instead [install node-sass](https://github.com/sass/node-sass).  Also, please read about [Sass features](http://sass-lang.com/guide).  We'll cover some Sass usage in class.
 
 This class is going to focus just on Sass, because it's more widely used than Less, and the two have very similar features with slightly different syntax.  If you're interested in some comparisons between the two, the following articles are optional:
 - [Intro to Less + comparison to Sass](http://www.smashingmagazine.com/2011/09/an-introduction-to-less-and-comparison-to-sass/)
 - [Sass vs Less](https://css-tricks.com/sass-vs-less/)
 - [Another Sass vs Less](http://www.hongkiat.com/blog/sass-vs-less/)
 
-Once you've installed Sass, you can create .sass or .scss stylesheets according to their syntax (the difference is, SCSS uses {} and semicolons, Sass relies on indentation).  Then, you can create your CSS stylesheets:
+Once you've installed Sass, you can create .sass or .scss stylesheets according to their syntax (the difference is, SCSS uses {} and semicolons, Sass relies on indentation).  For consistency and simplicity, this will use SCSS format.  Then, you can create your CSS stylesheets:
 ```
-$ sass input.scss output.css
+$ node-sass input.scss output.css
 ```
 Based on whatever the input file is named, and what type it is.
 
@@ -416,3 +416,37 @@ If you can break your program, you can make it run.
 _Starting with something that works_ and _making incremental changes_ are the two best ways to maintain an understanding of how the code you write controls the behavior of your program.
 
 **Git** is a fantastic enabler in this endeavor!
+
+## Modularity
+
+A simple way to keep your code modular and use namespaces to prevent overwriting variable names is through this structure:
+
+```node
+var yourNamespace = {
+
+    foo: function() {
+    },
+
+    bar: function() {
+    }
+};
+...
+
+yourNamespace.foo();
+```
+
+Read [this article on a similar design called the module pattern](https://toddmotto.com/mastering-the-module-pattern/)
+
+Additionally, you can modularize your code by looking at [naming conventions like BEM](https://css-tricks.com/bem-101/), which is a generally accepted way to keep your CSS classes readable and easily usable.
+
+Another nice way to organize code is to use helper libraries like [**lodash**](https://lodash.com/) or [**underscore**](http://underscorejs.org/).  [This article does a comparison of the two](http://benmccormick.org/2014/11/12/underscore-vs-lodash/) and ends up recommending lodash.  The two have very similar functionalities and syntax.
+
+Install lodash through:
+```bash
+$ {sudo -H} npm i -g npm
+$ npm i --save lodash
+```
+
+and then use it in Node: ```var _ = require('lodash');```
+
+Read through the [lodash docs](https://lodash.com/docs) (or check out their [searchable interfacte](http://devdocs.io/lodash-array/)) to get an idea of some of the useful helper functions

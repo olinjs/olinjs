@@ -41,3 +41,7 @@ Using CSS! Some big things you should emulate:
 - Add styling to the form! Default forms are ugly
 - Nice fonts (see [Google fonts](https://www.google.com/fonts))
 - Try to follow principles from the reading
+
+## Preclass Reading
+
+Read the [Class 7 ReadMe](../07-apis-debuggsing) before next class
