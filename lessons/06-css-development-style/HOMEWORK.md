@@ -1,4 +1,4 @@
-# Exercise 5
+# Before Next Class
 
 ## Assignment
 
@@ -42,14 +42,6 @@ Using CSS! Some big things you should emulate:
 - Nice fonts (see [Google fonts](https://www.google.com/fonts))
 - Try to follow principles from the reading
 
-### Reading
+## Preclass Reading
 
-Erik Kennedy (actually Olin '10) wrote a great article on UI design targeted at engineers.
-
-#### Read [part 1](https://medium.com/@erikdkennedy/7-rules-for-creating-gorgeous-ui-part-1-559d4e805cda) and [part 2](https://medium.com/@erikdkennedy/7-rules-for-creating-gorgeous-ui-part-2-430de537ba96).
-
-It's a great read with lots of tips based on lessons learned by the author after hours of practice and analysis. The Medium staff themselves call it "useful"! Read it and keep it as a reference as you design your website. Your sites should look better than the example. Have fun with it!
-
-#### Recommended Reading
-
-Erik also links to another article on [deliberate practice](http://calnewport.com/blog/2010/01/06/the-grandmaster-in-the-corner-office-what-the-study-of-chess-experts-teaches-us-about-building-a-remarkable-life/) as applied to technical fields. Why not read it, too?
+Read the [Class 7 ReadMe](../07-apis-debuggsing) before next class
