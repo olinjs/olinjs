@@ -18,7 +18,7 @@ Feel free to submit a Github issue if you find any problems in the course and we
 * [Lesson 3 - Express and Templating](./lessons/03-express-templates)
 * [Lesson 4 - MongoDB](./lessons/04-mongo)
 * [Lesson 5 - The Client](./lessons/05-client-jquery-ajax)
-* [Lesson 6 - Sessions, Users, Errors, CSS, and Debugging](./lessons/05-css-development-grace)
+* [Lesson 6 - Sessions, Users, Errors, CSS, and Debugging](./lessons/06-css-development-style)
 * [Lesson 7 - Application Integration](./lessons/07-apis-debugging)
 * [Lesson 8 - Unit Testing and Task Running](./lessons/08-tests-tasks)
 * [Lesson 9 - Application Frameworks (Lab 1)](./lessons/09-clientside-frameworks)

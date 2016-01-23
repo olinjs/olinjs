@@ -38,5 +38,5 @@ In this case, do not remove the ingredient from the page, but make note through 
   Clicking this should remove the order from the list of orders without refreshing the page.
 
   #### Preclass Reading and Exercise
-- Read the [Class 6 README](https://github.com/olinjs/olinjs/blob/master/lessons/06-css-development-grace/README.md) before class 6 on Friday 2/5/16.
+- Read the [Class 6 README](https://github.com/olinjs/olinjs/tree/master/lessons/06-css-development-style) before class 6 on Friday 2/5/16.
 

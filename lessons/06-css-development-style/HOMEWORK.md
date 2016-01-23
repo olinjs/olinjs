@@ -44,4 +44,4 @@ Using CSS! Some big things you should emulate:
 
 ## Preclass Reading
 
-Read the [Class 7 ReadMe](../07-apis-debuggsing) before next class
+Read the [Class 7 ReadMe](https://github.com/olinjs/olinjs/tree/master/lessons/07-apis-debugging) before next class
