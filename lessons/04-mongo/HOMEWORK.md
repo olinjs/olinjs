@@ -1,4 +1,4 @@
-t s### Before Class 5 (Tuesday 2/2/16)
+### Before Class 5 (Tuesday 2/2/16)
 #### Assignment
 For the homework, you will be integrating mongoDB into your Cat App from last class using mongoose. Now you can store the cats you create forever, and create new features that allow you to sort those cats in various ways.
 
