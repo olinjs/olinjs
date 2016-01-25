@@ -81,7 +81,7 @@ In this assignment we are doing something very bad. GET should be a [safe method
 
 We are using GET requests in this horrible way because without writing a front end, sending other types of requests becomes much more difficult. We'll get there soon though.
 
-#### Some Parting Words
+###### Some Parting Words
 In order to complete this assignment, you're going to have to figure out
 how to filter and sort data. We didn't cover this in class, but it's not much of a stretch to Google.
 
@@ -89,7 +89,10 @@ We encourage you to look at documentation and search for code/answers to problem
 
 Are you running into errors that the first page of Google results doesn't solve? Email out to the mailing list or post on Slack -- chances are, someone's encountered your error before.
 
-As always, ask for help in Slack or come to office hours if you are running into trouble or need some guidance with this assignment.
+As always, ask for help in Slack or come to office hours if this feels like an overwhelming amout of work, if you are running into trouble, or if you need some guidance with this assignment.
+
+###### Submission
+When you're finished, fill out [the Homework 3 submission survey](http://goo.gl/forms/4bDNdoH3M8).
 
 #### Preclass Reading and Exercise
 - Read the [Class 4 README](https://github.com/olinjs/olinjs/tree/master/lessons/04-client-jquery-ajax)
