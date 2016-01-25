@@ -92,6 +92,8 @@ Are you running into errors that the first page of Google results doesn't solve?
 As always, ask for help in Slack or come to office hours if this feels like an overwhelming amout of work, if you are running into trouble, or if you need some guidance with this assignment.
 
 ###### Submission
+Note: Because this is the first homework where you've really written code, we're going to try a feedback experiment -- in the homework submission survey, we'll ask you for a code excerpt you feel really confident about and a code excerpt you're not sure about or think could be improved. We'll target our feedback towards those two excerpts. We're hoping that looking at less code will allow us give you higher-quality, more detailed comments. Let us know what you think of the experiment -- we want to give you feedback which is helpful for you!
+
 When you're finished, fill out [the Homework 3 submission survey](http://goo.gl/forms/4bDNdoH3M8).
 
 #### Preclass Reading and Exercise
