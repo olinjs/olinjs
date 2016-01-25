@@ -97,7 +97,7 @@ Note: Because this is the first homework where you've really written code, we're
 When you're finished, fill out [the Homework 3 submission survey](http://goo.gl/forms/4bDNdoH3M8).
 
 #### Preclass Reading and Exercise
-- Read the [Class 4 README](https://github.com/olinjs/olinjs/tree/master/lessons/04-client-jquery-ajax)
+- Read the [Class 4 README](https://github.com/olinjs/olinjs/tree/master/lessons/04-mongo)
 - Send an email to [olinjs16@gmail.com](olinjs16@gmail.com) with the subject line "Preclass 4" telling us about...
     - Something in the reading you felt confident about and easily grasped
     - Something in the reading you're confused about or want to know more about
