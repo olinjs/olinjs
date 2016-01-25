@@ -1,6 +1,8 @@
 #Lesson 4 In-Class Exercises
 Today we will be playing around with mongoDB by writing mongoose queries, before moving on to working with mongoose in your cat app.
 
+If you find useful resources online while you're working on these exercises, please post them in the #olinjs slack channel!
+
 ##Queries in Mongoose
 In mongoose, you create a schema to define the structure of your mongo collection. For this exercise, you will be working with a schema that has various robot features.
 
@@ -27,3 +29,6 @@ Once you are comfortable with using mongoose in the scaffold application and bui
 In groups, discuss the models you will use to store data for your cat app. It can be helpful to diagram your models on the board.
 
 After you have decided on your model and created a schema, hook the cat creation route in your cat app up to mongoose. Once you have this working, try connecting your cat app to a partner's cat app database.
+
+## Feedback
+We'd love your feedback on today's class -- fill out [this survey](http://goo.gl/forms/zPG39cpc81) if you'd like!
