@@ -81,7 +81,7 @@ In this assignment we are doing something very bad. GET should be a [safe method
 
 We are using GET requests in this horrible way because without writing a front end, sending other types of requests becomes much more difficult. We'll get there soon though.
 
-#### Some Parting Words
+###### Some Parting Words
 In order to complete this assignment, you're going to have to figure out
 how to filter and sort data. We didn't cover this in class, but it's not much of a stretch to Google.
 
@@ -89,10 +89,15 @@ We encourage you to look at documentation and search for code/answers to problem
 
 Are you running into errors that the first page of Google results doesn't solve? Email out to the mailing list or post on Slack -- chances are, someone's encountered your error before.
 
-As always, ask for help in Slack or come to office hours if you are running into trouble or need some guidance with this assignment.
+As always, ask for help in Slack or come to office hours if this feels like an overwhelming amout of work, if you are running into trouble, or if you need some guidance with this assignment.
+
+###### Submission
+Note: Because this is the first homework where you've really written code, we're going to try a feedback experiment -- in the homework submission survey, we'll ask you for a code excerpt you feel really confident about and a code excerpt you're not sure about or think could be improved. We'll target our feedback towards those two excerpts. We're hoping that looking at less code will allow us give you higher-quality, more detailed comments. Let us know what you think of the experiment -- we want to give you feedback which is helpful for you!
+
+When you're finished, fill out [the Homework 3 submission survey](http://goo.gl/forms/4bDNdoH3M8).
 
 #### Preclass Reading and Exercise
-- Read the [Class 4 README](https://github.com/olinjs/olinjs/tree/master/lessons/04-client-jquery-ajax)
+- Read the [Class 4 README](https://github.com/olinjs/olinjs/tree/master/lessons/04-mongo)
 - Send an email to [olinjs16@gmail.com](olinjs16@gmail.com) with the subject line "Preclass 4" telling us about...
     - Something in the reading you felt confident about and easily grasped
     - Something in the reading you're confused about or want to know more about
