@@ -5,6 +5,10 @@
     <title>Express Intro</title>
 </head>
 <body>
-    {{{body}}}
+    <ul>
+   {{#each classes}}
+     <li>{{this.teacher}} teach(es) {{this.name}}.</li>
+   {{/each}}
+   </ul>
 </body>
 </html>
