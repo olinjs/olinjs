@@ -23,7 +23,7 @@ var FakeDatabase = module.exports = {
 
     remove: function(index) {
         //removes item located at index in array and returns it
-        return data.splice(index,1);
+        return FakeDatabase.data.splice(index,1);
     }
 }
 ```
