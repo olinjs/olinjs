@@ -7,7 +7,7 @@ For this homework, you will need to add at least one feature that integrates wit
 In case you missed the in-class:
 We're defining an advanced query as something that builds on basic queries by using query operators such as **and** and **or**. You can find a full list of query operators [here](https://docs.mongodb.org/manual/reference/operator/query/#query-selectors). You can also see examples of what that looks like in mongoose syntax at the main queries [doc page](http://mongoosejs.com/docs/queries.html) and in the [page](https://docs.mongodb.org/manual/tutorial/query-documents/) dedicated to building specific queries.
 
-**Challenging:** Explore a more advanced concept of mongo/mongoose, embedding vs. referencing inside your cat application.
+**Challenging:** Explore a more advanced concept of mongo/mongoose like embedding vs. referencing inside your cat application.
 
 Other possible ideas would be integrating your cat app with a SQL database like mySQL or integrating with a remote database hosted on mongolab.
 
