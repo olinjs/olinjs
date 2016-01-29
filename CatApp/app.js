@@ -25,9 +25,4 @@ app.get('/cats', routes.getAllCats);
 app.get('/cats/bycolor/:color', routes.getCatColor);
 app.get('/cats/delete/old', routes.deleteCat);
 
-
-// app.use('/', routes);
-
-
-
 app.listen(3000);

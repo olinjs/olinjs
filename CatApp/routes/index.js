@@ -1,12 +1,3 @@
-// var home = function(req, res){
-// res.render("home", {"classes": [
-//      {name:"Olin.js", teacher:"Me"},
-//      {name:"other class 1", teacher:"A baboon"},
-//      {name:"other class 2", teacher:"A sentient rock"}]
-//    });
-// };
-
-// module.exports.home = home;
 var router = {};
 
 var express = require('express');
@@ -45,7 +36,6 @@ function sortCats(cats){
 	}
 	// a must be equal to b
 	return 0;
-	// http://localhost:3000/cats/new
 	});
 	return cats;
 }
@@ -78,27 +68,17 @@ function sortCatsbyColor(paramColor, cats){
 }
 
 
-// function getCatInfo(cat){
-// 	catInfo = [', name: ', cat.name, ', color: ', cat.color[0], ' and ', cat.color[1], ', age: ', cat.age]
-// 	return catInfo.join('')
-// }
-
 //get all lizard names
 router.getAllCats = function(req, res, next){
 	var cats = db.getAll();
 	cats = sortCats(cats);
 	console.log(cats)
-  // cats.forEach(function(cat){
-  //   msg += (getCatInfo(cat) + '\n')
-  // })
 	var message = "All the cats are: "
 	res.render("allCats", {message: message, cats: cats});
-	// res.render("allCats", {cats: cats});
 }
 
 
 // create new lizard named Bob
-
 
 router.getNewCat = function(req, res, next) {
 	var cat = getCat();
