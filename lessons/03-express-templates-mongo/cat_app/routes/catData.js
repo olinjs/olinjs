@@ -11,6 +11,8 @@ var data = {
 	'Brown',
 	'White',
 	'Striped Orange',
+	'Blue',
+	'Purple',
 	'Striped Black and Gray'],
 
 	'catNames': [
@@ -21,7 +23,12 @@ var data = {
 	'Phoebe',
 	'Ross',
 	'Emily',
-	'Carol']
+	'Carol',
+	'Janice',
+	'Gunther',
+	'Ben',
+	'Susan',
+	'Estelle']
 };
 
 module.exports = data; 

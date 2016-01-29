@@ -24,9 +24,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', index.home);
-app.get('/cats', cats.catList)
-app.get('/cats/new', cats.newCat)
-// app.get('/cats/delete/old', cats.deleteCat)
+app.get('/cats', cats.catList);
+app.get('/cats/new', cats.newCat);
+app.get('/cats/bycolor/Pink', cats.sortColorPink);
+app.get('/cats/bycolor/Orange', cats.sortColorOrange);
+app.get('/cats/bycolor/StripedGray', cats.sortColorStripedGray);
+app.get('/cats/delete/old', cats.deleteCat)
 
 var PORT = process.env.PORT || 3000;
 app.listen(PORT, function() {

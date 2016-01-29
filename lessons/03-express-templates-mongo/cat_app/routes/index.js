@@ -1,18 +1,18 @@
-// var express = require('express');
-// var router = express.Router();
+//Filippos helped me here - what a guy
+var express = require('express');
+var router = express.Router();
 
 // /* GET home page. */
-// router.get('/', function(req, res, next) {
-//   res.render('index', { message: "OlinJS rocks!" });
-// });
-
-// module.exports = router;
-
-
-module.exports.home = function(req, res){
-	res.render('home', {'link': [
+router.get('/', function(req, res, next) {
+  	res.render('home', {'link': [
 		'/cats',
-		'/cats/new'
+		'/cats/new',
+		'/cats/delete/old',
+		'/cats/bycolor/Pink',
+		'/cats/bycolor/Orange',
+		'/cats/bycolor/StripedGray'
 		]
 	})
-};
+});
+
+module.exports.home = router;
