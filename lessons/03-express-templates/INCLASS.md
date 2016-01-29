@@ -1,4 +1,7 @@
 # Lesson 3 In-Class Exercises
+
+If you find useful resources online while you're working on these exercises, please post them in the #olinjs slack channel!
+
 1. Follow along with the tutorial in the [readme](https://github.com/olinjs/olinjs/blob/master/lessons/03-express-templates) to create a web app that uses Express and Handlebars to display a list of classes at Olin that you're currently taking and the professors who teach them. Your finished product should display something like the paragraph below in a browser:
    
     - Aaron teaches POE
@@ -40,3 +43,6 @@
   - If you finish early, try your hand at these exercises:
     - Make sure that the response you send your user is centered, no matter how they resize their browser.
     - Send along some javascript so an animation of your choice occurs when you click on the page. For example, the text on the page could change to a random color when you click on it.  
+
+## Feedback
+We'd love your feedback on today's class -- fill out [this survey](http://goo.gl/forms/zPG39cpc81) if you'd like!

@@ -1,4 +1,4 @@
-#Lesson 3 - Express, Templating, and MongoDB
+#Lesson 3 - Express and Templating
 
 ##Express
 Now that we've explored Node.js a little, we will abstract the details away with the [Express](http://expressjs.com/) development framework. Before, in the Node Beginner's Book, our code looked a lot like this:
@@ -17,8 +17,8 @@ Now let's see what the same app would look like using Express. To start we'll se
 After you exit the init setup, run `npm install express --save`. If you check your `package.json` again, you'll see the following was added:
 ```javascript
 "dependencies": {
-    "express": "^4.10.6"
-  },
+  "express": "^4.10.6"
+},
 ```
 The `--save` argument will add the module to your list of dependencies and is generally a good thing to use whenever adding a new module. If you just forked a cloned project that has its dependencies listed you can simply run `npm install` to install the required dependencies (at the right versions) for that project.
 
@@ -53,16 +53,16 @@ app.get('/olin', function(req, res){
 ```
 
 ###Routing
-Routing is the process of serving up different pages for different URLs. When you go to www.mycoolsite.com/ your computer goes out on the internet and asks mycoolsite's server for a page. Mycoolsite's server then sees that request and sends back information to your computer in the form of html. This HTML is then rendered in your browser.
+Routing is the process of serving up different pages for different URLs. When you go to www.mycoolsite.com/, your computer goes out on the internet and asks mycoolsite's server for a page. Mycoolsite's server then sees that request and sends back information to your computer in the form of html. This HTML is then rendered in your browser.
 
-If you go to www.mycoolsite.com/ mycoolsite's servers obviously can't send you the same data it sent www.mycoolsite.com/olin. So mycoolsite's servers needs to differentiate `/` from `/olin`. This process is known as routing.
+If you go to www.mycoolsite.com/, mycoolsite's servers obviously can't send you the same data they sent www.mycoolsite.com/olin. So mycoolsite's servers needs to differentiate `/` from `/olin`. This process is known as routing.
 
 In the Node Beginner Book, we did routing through something like
 ```javascript
 var pathname = url.parse(request.url).pathname;
 route(handle, pathname, response, request);
 ```
-Instead of writing the code to handle the route ourselves, Express does it for us with these statements:
+With Express, we don't need to write the code to handle the route ourselves; Express does it for us with these statements:
 ```javascript
 app.get('/', function (req, res){
   res.send('hello world');
