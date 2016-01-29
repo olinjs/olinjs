@@ -1,33 +1,33 @@
 #Lesson 9 - Client-side Javascript Frameworks
 
-##Intro
+##Introduction
 So far we have seen how to organize an increasingly complex system of components on our node server. 
-We will now take a side step to discuss another organizational system in which instead of having lot of structure on the server, we have that structure on the client. 
+We will now take a side step to discuss another organizational system in which instead of having lot of structure on the **server**, we have that structure on the **client**, providing a structure (a "framework") for organizing and manipulating the user interface.
 
-##Basic Idea
+##Current Idea
 In our traditional system, with most clicks you make a call to your server for an html page.
 You have seen how this can work with templating by rendering html on the server and then sending it across to the client as just html. 
 The image below shows this traditional system: 
-![serverOrganizedSystem](images/traditionalWebCommunication.png)
+![serverOrganizedSystem](images/traditionalWebCommunicationNew.png)
 
-But what if instead of having to load an entire HTML document every time, you simply send only the necessary pieces of data and then change the html using Javascript code. 
+But what if instead of having to load an entire HTML document every time, you simply send **only the necessary** pieces of data and then change the html using Javascript code?
 You have tried doing this before, most notably in the burger ordering homework. 
 You probably noticed how messy that got for even a simple application. 
 You also know about APIs and how you can retrieve structured data and show it on your page. 
-Now consider a different structure in which almost your entire server is simply an API that sends data to a single page that changes appropriately. 
+Now consider a different structure in which almost your *entire server is simply an API* that sends data to a single page that changes appropriately. 
 In this structure the server would serve only a few different assets and include an API that can be used to request the necessary data.
 In that case the communications would look like this: 
-![ClientOrganizedSystem](images/clientsideWebCommunication.png)
+![ClientOrganizedSystem](images/clientsideWebCommunicationNew.png)
 
 This clearly has the benefit of almost certainly lowering the amount of data that is transferred between the server and the client, which also lowers the loading time when clicking on links. 
 Another benefit of this application structure is that the API component can be used for many other purposes, such as mobile applications or even to other developers who want to expand on your websites functionality, as diagrammed below:
-![UsesOfClientSide](images/apiDrivenDevelopment.png)
+![UsesOfClientSide](images/apiDrivenDevelopmentNew.png)
 
 You may wonder why this is not how it has always been done. The simple answer to this is that it is only recently that Javascript, browsers, and computers have gotten good enough to reliably utilize these client-side frameworks. If you were going to do anything interesting, you had to do it on the server. In addition, this method may be more labor intensive for certain projects and can be a tricky adjustment to make. You will get to explore some of these strengths and weaknesses in the next lab assignment when you tackle one of these frameworks yourself. 
 
-##Your First Client Templating:
+##Your First Client Templating
 So you are all very familiar with server side templating using handlebars. 
-In the lesson10 folder there is an in_class folder containing the cat app that you are all familiar with. 
+In the Lesson 9 folder there is an in_class folder containing the cat app that you are all familiar with. 
 We are going to uncomment code to transform just one of the routes into an API endpoint and then use handlebars on the client side to render the content. 
 
 You can probably imagine that organizing a very complex application with dozens of pages and models can get really complicated and messy really fast. 
@@ -35,16 +35,16 @@ Luckily, there are really fantastic publically available and free frameworks you
 We will explore these in a bit. 
 
 ##MVC on the client
-We talked last class about MVC. 
+We talked last class about MVC and how **awesome** it is. 
 Hopefully you all have an appreciation for the nice structure and separation of concerns it affords you. 
-When we restructure our application for the client side, we now move that organizational structure to the client side as well. 
-The direct implementation will differ based on the specific framework, but in general you will organize your views as templates that you load in only once when the first page loads. 
-The models are organized javascript objects with some additional functionality such as a link to an API endpoint that can be used to retrieve and update data. 
-The controller is also on the client where it handles rendering the templates using the appropriate model data.
+When we restructure our application for the client side, we now move that organizational structure to the client side, as well. 
+The direct implementation will differ based on the specific framework, but in general you will organize your **views** as templates that you load in only once when the first page loads. 
+The **models** are organized javascript objects with some additional functionality, such as a link to an API endpoint that can be used to retrieve and update data. 
+The **controller** is also on the client where it handles rendering the templates using the appropriate model data.
 
-##Popular Frameworks:
+##Popular Frameworks
 It turns out that there are a TON of different javascript client-side frameworks to choose from for any project. 
-These frameworks have various strengths and weaknesses. 
+These frameworks have various strengths and weaknesses. In this class we are going to explore AngularJS and ReactJS, however, you are more than welcome to explore other templates on your own.
 The source code for all of these frameworks are available on github (and yes, you can fork them). 
 
 Framework | Github | Homepage
@@ -57,27 +57,23 @@ Flight | https://github.com/flightjs/flight | https://flightjs.github.io/
 Knockout | https://github.com/knockout/knockout | http://knockoutjs.com/
 Riot | https://github.com/muut/riotjs | https://muut.com/riotjs/
 
-Every framework have different features and organizational structures. Best way to understand these differences is to visit the webpage of the framework and just try to implement some very basic system in the framework. 
-
-###Backbone
-Backbone is one of the earlier client side frameworks that hit the scene. 
-It doesn't actually have a separate controller and just puts the controller logic in the view (bad form). 
-It has models that you can specify data elements of and easily connect it to your server. 
-
-###Ember
-Definitely one of (if not the) most complicated and uniquely organized frameworks.
-In addition to views, models, and controllers it has many other systems and subsystems that allow interesting functionality. 
-Quote from the top of their web page: "A framework for creating **ambitious** web applications"
+Every framework has different features and organizational structures. Best way to understand these differences is to visit the webpage of the framework and just try to implement some very basic system in the framework. Let's look into more detail as to what Angular and React entail.
 
 ###Angular
 Angular is developed by Google and has as its chief aim to make html what it would be if it was created today.
 It has several interesting qualities such as html directives.
 A primary focus of angular is to build for testability and it has functionality to help enable exactly that. 
 
+####Highlight - Two-way data binding
+Angular uses has event listeners attached to data changes in an application; whether it is by the user or by the database, Angular knows to update all relational content. Two-way data binding also reduces the amount of code needed to develop sleek interaction and content transitions.
+
 ###React
 Developed by Facebook and focuses on the view part of MVC.
 Mission statement is to allow users to create large applications with data that changes over time.
 Allows its views to update as the data changes. 
+
+####Highlight - Virtual DOM
+React works by creating a virtual DOM in pure JavaScript that acts as an intermediate representation of the DOM. This way, React is able to create a diff of your active DOM and your virtual DOM to decide which elements to change, thereby providing great rendering performance.
 
 ##Approaches to learning a framework 
 As you almost certainly are aware, for any material (such as a framework) there are dozens of ways to learn a framework. A big part of the upcoming lab is learning a framework and presenting on what you found effective in learning that framework. There are a couple of approaches you can take to learning any new framework or library and we will be going over a few of them here.
