@@ -32,6 +32,10 @@ cats.newCat = function(req, res) {
 cats.catList = function(req, res) {
 	var listFull = db.getAll();
 	var listFinal = [];
+	listFull.sort(function(a, b) {
+    	return parseFloat(a.age) - parseFloat(b.age);	
+	});
+
 	for(var i = 0; i < listFull.length; i++){
 		listFinal.push([listFull[i].name, ' ' + listFull[i].age, ' ' + listFull[i].color]);
 	}
