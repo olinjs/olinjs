@@ -96,3 +96,4 @@ As always, ask for help in Slack or come to office hours if you are running into
 - Send an email to [olinjs16@gmail.com](olinjs16@gmail.com) with the subject line "Preclass 4" telling us about...
     - Something in the reading you felt confident about and easily grasped
     - Something in the reading you're confused about or want to know more about
+}
