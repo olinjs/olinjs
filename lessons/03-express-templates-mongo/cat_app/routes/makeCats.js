@@ -138,14 +138,6 @@ cats.deleteCat = function(req, res) {
 							//resets everytime an older cat is added
 		} 
 	}
-	//var deadcat = oldCats[oldCats.length -1];
-
-	// for(var cat = 0; cat < allCats.length; cat++){
-	// 	if(allCats[cat].name === deadcat.name && allCats[cat].age === deadcat.age && 
-	// 		allCats[cat].color === deadcat.color){
-	// 			db.remove(cat);
-	// 	}
-	// }
 
 	var deadCatObj = allCats[deadcat];
 
@@ -155,13 +147,4 @@ cats.deleteCat = function(req, res) {
 	};
 };
 
-// //delete oldest cat
-// router.get('/cats/delete/old', function(req, res, next){
-//   var cats = db.getAll();
-//   var msg = "Cat names are: ";
-//   cats.forEach(function(liz){
-//     msg = msg + liz.name + ",";
-//   })
-//   res.render(msg);
-// });
 module.exports = cats;
