@@ -14,7 +14,7 @@ var robotSchema = mongoose.Schema({
 });
 ```
 
-Follow along at the end of the Readme to connect a copy of your boilerplate app to mongoose. With your group, write out a few queries to select certain robots, and pass them to render in a handle bars file. You can now use mongo/mongoose to persist data for any application.
+Follow along at the end of the Readme to connect a copy of your boilerplate app to mongoose. Try write out a few queries to select certain robots, and pass them to render in a handle bars file. You can now use mongo/mongoose to persist data for any application.
 
 ##Advanced Queries
 Now that you've got the basics of mongoose working, organize into groups and have each member research an advanced mongoose query to present to the group. You can implement this if you want, or move on to working on the cat app (where you will eventually need to implement an advanced query for this weeks homework).
