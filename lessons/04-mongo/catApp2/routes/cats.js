@@ -65,4 +65,22 @@ router.post('/killoldest', function(req, res) {
 	// }
 });
 
+router.post('/age-between', function(req, res) {
+	var max_age = req.body.max;
+	var min_age = req.body.min;
+	if (max_age != undefined && min_age != undefined) {
+		Cat.find({age: {$gt: min_age, $lt: max_age}}).sort({age: -1}).exec(function(err, cats) {
+			if (err) {
+				console.log(err);
+			} else {
+				if (cats.length > 0) {
+					res.json(cats);
+				} else {
+					res.json({error: "No cats found for that age range"});
+				}
+			}
+		});
+	}
+});
+
 module.exports = router;

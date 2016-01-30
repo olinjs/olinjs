@@ -1,6 +1,7 @@
 <a href="#add_div" id="addcat_button" class="various">Add Cat</a>
 <a href="#disp_div" id="dispcats_button" onclick="fetchCats()" class="various">Show Cats</a>
 <a href="#disp_bycolor_div" id="dispcats_bycolor_button" class="various">Show Cats by Color</a>
+<a href="#disp_agerange_div" id="dispcats_agerange_button" class="various">Show Cats in Age Range</a>
 <a href="#kill_div" id="killcat_button" class="various">Delete Cat</a>
 
 <div style="display: none">
@@ -20,6 +21,15 @@
 		<input type="text" id="cat_color_filter" placeholder="Enter color of cat you wish to search for">
 		<button type="button" onclick="fetchCats(document.getElementById('cat_color_filter').value)">Fetch</button>
 		<div id="filtered_results"></div>
+	</div>
+</div>
+
+<div style="display: none">
+	<div id="disp_agerange_div">
+		<input type="text" id="cat_minage" placeholder="Minimum Age">
+		<input type="text" id="cat_maxage" placeholder="Maximum Age">
+		<button type="button" onclick="fetchCats_AgeRange(document.getElementById('cat_minage').value, document.getElementById('cat_maxage').value)">Fetch</button>
+		<div id="agerange_disp_div"></div>
 	</div>
 </div>
 

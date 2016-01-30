@@ -47,6 +47,36 @@ function sortCatsByAge(a, b) {
 	}
 }
 
+function fetchCats_AgeRange(min, max) {
+	console.log(Number(min) - 1);
+	$.ajax({
+		type: "POST",
+		url: "./cats/age-between",
+		contentType: "application/json",
+		data: JSON.stringify({"min": Number(min)-1, "max": Number(max)+1}), //Include the min and max numbers so that doing min=0, max=10 shows all cats as expected
+		success: function(res, status) {
+			var catlist = '<ul>';
+			$.each(res, function(index, cat) {
+				catlist += ''.concat(
+					'<li>',
+					cat.name,
+					'</li><ul><li>Age: ',
+					cat.age,
+					'</li><li>Colors: ',
+					cat.colors.toString(),
+					'</li></ul>'
+				);
+			});
+			catlist += '</ul>';
+			$('#agerange_disp_div').html(catlist);
+		},
+		error: function(err) {
+			console.log(err);
+            alert("Fetch failed, check console for error");
+		}
+	});
+}
+
 function fetchCats(color) {
 	$.ajax({
 		type: "GET",
