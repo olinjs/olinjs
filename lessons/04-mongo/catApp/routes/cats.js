@@ -48,7 +48,6 @@ var byNameAndColor = function(req, res) {
 	var cats = Cat.find({colors: req.params.color, name:req.params.name}).sort('age').exec( function(err, cats) {
 		res.render("cats", {"cats": cats});
 	})
-
 }
 
 var byNameOrColor = function(req, res) {
