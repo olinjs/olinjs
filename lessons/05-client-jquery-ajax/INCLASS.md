@@ -5,6 +5,9 @@ Because this readme was long and you needed to follow along, take some time to f
 
 Pick the ones which are interesting and challenging to you, and feel free to work with the people around you. **If you feel done or comfortable with these, move on to the [homework](https://github.com/olinjs/olinjs/blob/master/lessons/05-client-jquery-ajax/HOMEWORK.md), since it's fairly lengthy.**
 
+##Folder Structure
+Last class we discussed folder structure, so as a refresher, draw out the folder structure for a typical app on the board in small groups, indicating what belongs in each folder. 
+
 ##jQuery and AJAX
 - Practice jQuery exercises. Fork before editing!
 	- Selectors and CSS: http://codepen.io/ndhanushkodi/pen/EPmgLQ
