@@ -11,8 +11,7 @@ Last class we discussed folder structure, so as a refresher, draw out the folder
 ##jQuery and AJAX
 - Practice jQuery exercises. Fork before editing!
 	- Selectors and CSS: http://codepen.io/ndhanushkodi/pen/EPmgLQ
-	- Testing a selection for a property: http://codepen.io/ndhanushkodi/pen/WQVONb
-	- Disable a button after 1 click: http://codepen.io/ndhanushkodi/pen/OyKgPe
+	- Testing selections for a property: http://codepen.io/ndhanushkodi/pen/WQVONb
 
 Remember that jQuery allows you to make AJAX requests, which may return some data (if you do a GET request for instance), and now you can dynamically update the page reflecting this new data if desired using jQuery. A great way to practice is to go back to old apps like isItChristmas or your cat app and keep the same functionality, except WITHOUT page refreshes to see updates in the data!
 
