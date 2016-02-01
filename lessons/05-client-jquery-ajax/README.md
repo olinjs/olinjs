@@ -39,7 +39,7 @@ This can be useful for debugging your server's responses or other API's.
 * Sources: The holy grail of JavaScript debugging tools. Set breakpoints, step through code,
 all the fun stuff that an IDE would give you. We'll get back to this when we go over debugging in more depth.
 * Console: A full JavaScript console that operates in the current scope of the Javascript on the page (including inside breakpoints).
-Run commands, and read through your client-side `console.logs` in this window.
+Run commands, and read through your client-side `console.logs` in this window. **Server-side javascript `console.log` statements will log in your terminal. When you have `console.log` statements in client-side javascript (which we'll discuss more below), they will show up in your developer console.** 
 As a bonus, if you click the "console icon" ![console icon](images/consoleicon.png) in the upper-right corner,
 the console will pop up below whatever other tab you want to reference.
 
