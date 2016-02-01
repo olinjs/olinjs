@@ -25,12 +25,19 @@ Or the other option would be to download the jQuery library itself, which would 
 -After adding jQuery, in your isItChristmas app, add a button that users can click to find out whether it is christmas or not without refreshing (print to chrome developer console). Have the page itself update to reflect the answer.
 
 -Return to your cat app homework and add the jQuery library to it. 
-	-Rather than having several pages for each of the types of requests, have just one cats display page, with 3 buttons: Display, Add, GetBy <insert favorite color here>, and Delete. 
-	-Each of these buttons will be linked to one ajax request that returns some data update from your API routes. 
-	-Do as many or as few of these buttons as you want for practice, or just move on to the homework. 
-	-When the Add button is clicked, a cat is added, display it on the page without a page refresh (GET /cats/new)
+
+-Rather than having several pages for each of the types of requests, have just one display page for the list of cats, with 4 buttons: Display, Add, GetBy <insert favorite color here> (with some textbox to enter the color), and Delete. 
+
+-Each of these buttons will be linked to one AJAX request that returns some data update from your API routes. 
+
+-Do as many or as few of these buttons as you want for practice, or just move on to the homework. 
+
+	-When the Add button is clicked, a cat is added, display the one cat on the page without a page refresh (GET /cats/new)
+
 	-When the Display button is clicked, show the sorted list of cats by age, without page refresh (GET /cats) 
-	-When the Delete button is clicked, a cat is deleted, display it on the page without a page refresh (GET /cats/delete/old). You can also try to change this to a DELETE request!
+
+	-When the Delete button is clicked, a cat is deleted, display the newly updated list of cats (after the deletion) on the page without a page refresh (GET /cats/delete/old). You can also try to change this to a DELETE request!
+
 	-When the GetBy <insert favorite color here> button is clicked, display the list of cats that have that color without a page refresh (GET /cats/bycolor/:color)
 
 
