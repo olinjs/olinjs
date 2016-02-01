@@ -12,6 +12,7 @@ Last class we discussed folder structure, so as a refresher, draw out the folder
 - Practice jQuery exercises. Fork before editing!
 	- Selectors and CSS: http://codepen.io/ndhanushkodi/pen/EPmgLQ
 	- Testing selections for a property: http://codepen.io/ndhanushkodi/pen/WQVONb
+	- Write one on your own to make a button that gets disabled once you click it, and display some message at the bottom of the page, like 'button disabled'.
 
 Remember that jQuery allows you to make AJAX requests, which may return some data (if you do a GET request for instance), and now you can dynamically update the page reflecting this new data if desired using jQuery. A great way to practice is to go back to old apps like isItChristmas or your cat app and keep the same functionality, except WITHOUT page refreshes to see updates in the data!
 
