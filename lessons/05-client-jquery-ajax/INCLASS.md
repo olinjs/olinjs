@@ -33,11 +33,8 @@ Or the other option would be to download the jQuery library itself, which would 
 -Do as many or as few of these buttons as you want for practice, or just move on to the homework. 
 
 	-When the Add button is clicked, a cat is added, display the one cat on the page without a page refresh (GET /cats/new)
-
 	-When the Display button is clicked, show the sorted list of cats by age, without page refresh (GET /cats) 
-
 	-When the Delete button is clicked, a cat is deleted, display the newly updated list of cats (after the deletion) on the page without a page refresh (GET /cats/delete/old). You can also try to change this to a DELETE request!
-
 	-When the GetBy <insert favorite color here> button is clicked, display the list of cats that have that color without a page refresh (GET /cats/bycolor/:color)
 
 
