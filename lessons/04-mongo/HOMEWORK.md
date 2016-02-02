@@ -7,9 +7,11 @@ For this homework, you will need to add at least one feature that integrates wit
 In case you missed the in-class:
 We're defining an advanced query as something that builds on basic queries by using query operators such as **and** and **or**. You can find a full list of query operators [here](https://docs.mongodb.org/manual/reference/operator/query/#query-selectors). You can also see examples of what that looks like in mongoose syntax at the main queries [doc page](http://mongoosejs.com/docs/queries.html) and in the [page](https://docs.mongodb.org/manual/tutorial/query-documents/) dedicated to building specific queries.
 
-**Challenging:** Explore a more advanced concept of mongo/mongoose, embedding vs. referencing inside your cat application.
+**Challenging:** Explore a more advanced concept of mongo/mongoose like embedding vs. referencing inside your cat application.
 
 Other possible ideas would be integrating your cat app with a SQL database like mySQL or integrating with a remote database hosted on mongolab.
+
+When you're finished, fill out [the Homework 4 submission survey](http://goo.gl/forms/ahznoQ3XeW).
 
 #### Mongo Embedding vs Referencing
 Let's say that you owned a series of bookstores each with a location,
@@ -85,7 +87,7 @@ You'll likely be using embeds 80% of the time, but references also have their pl
 The Mongo documentation has further details about [when to embed vs reference](http://docs.mongodb.org/manual/core/data-model-design/).
 
 #### Preclass Reading and Exercise
-Read the [Class 5 README](https://github.com/olinjs/olinjs/tree/master/lessons/05-client-jquery-ajax). Follow along as you read the "HTML Forms" section.
+Read the [Class 5 README](https://github.com/olinjs/olinjs/tree/master/lessons/05-client-jquery-ajax). Follow along and build the app starting at the "HTML Forms" section to the end.
 
 To complete the preclass, push the app you create during the "HTML Forms" section" to your fork of the Olin.js repo. Then, send an email to [olinjs16@gmail.com](olinjs16@gmail.com) with the subject line "Preclass 5" and a link to the GitHub folder containing your forms app. 
 
