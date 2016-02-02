@@ -1,5 +1,7 @@
-var $form = $("#Add");
-console.log($form);
+
+var $insertform = $("#new-ajax-form");
+var $addform = $("#Add");
+console.log($addform);
 
 var onSuccess = function(data, status) {
   console.log('Test')
@@ -11,12 +13,12 @@ var onSuccess = function(data, status) {
     var text = 
     "<li>Ingredient " + data[0] + " costs "+ data[1] + "!</li>" + 
     "<form id=\"{{this.name}}-ajax-form\" action=\"\" method=\"\">" + 
-    "Edit: <input type=\"text\" name=\"ingredient\"/>" +
+    "Edit: <input type=\"text\" name=\"name\"/>" +
             "<input type=\"number\" name=\"price\"/> <br/>"+
           "<input type=\"submit\" value=\"Submit\">" +
           "</form>"
 
-    $("#addresult").html(text);
+    $("#newresult").html(text);
 };
 
 var onError = function(data, status) {
@@ -24,12 +26,12 @@ var onError = function(data, status) {
   console.log("error", data);
 };
 
-$form.submit(function(event) {
+$addform.submit(function(event) {
   console.log('hello');
   //jquery here, parse request
 
-  var ingrname = $form.find("[name=\"ingredient\"]").val();
-  var ingrprice = $form.find("[name=\"price\"]").val();
+  var ingrname = $addform.find("[name=\"name\"]").val();
+  var ingrprice = $addform.find("[name=\"price\"]").val();
 
   console.log([ingrname, ingrprice]);
 
