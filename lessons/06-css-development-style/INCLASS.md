@@ -35,3 +35,6 @@ Think about the design principles we talked about.  Think about using nice fonts
 Write a program that removes duplicate elements from a set
 
 ### Modularize some previous non-modular code you've written
+
+##Feedback
+When you're done, fill out this [feedback form](https://docs.google.com/forms/d/1sItfsMqIa5N5eGBpkfCJIMnVK2XsYbo52xOyHLQEPYI/viewform?usp=send_form) and get started with the homework!
