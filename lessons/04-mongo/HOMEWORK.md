@@ -11,6 +11,8 @@ We're defining an advanced query as something that builds on basic queries by us
 
 Other possible ideas would be integrating your cat app with a SQL database like mySQL or integrating with a remote database hosted on mongolab.
 
+When you're finished, fill out [the Homework 4 submission survey](http://goo.gl/forms/ahznoQ3XeW).
+
 #### Mongo Embedding vs Referencing
 Let's say that you owned a series of bookstores each with a location,
 a manager, and tons of books. Each book has an author and a price.
