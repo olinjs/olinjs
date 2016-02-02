@@ -98,22 +98,16 @@ router.getNewCat = function(req, res, next) {
 	o.save(function(err) {
 	res.render("allCats", {message: message, cats: cats});
 	});
-	// res.render("eachCat", cat);
 }
 
 
 
 router.getCatColor = function(req, res){
 	var color = req.params.color;
-	var color = color.slice(1, color.length);
-	// console.log(color);
-
+	// var color = color.slice(1, color.length);
 	catModel.find({}, function(err, data) {
 		// separate in stock & out of stock
 		var cats = data
-		// data.forEach(function(d) {
-		// 	var list = d.inStock ? inData : outData;
-		// 	list.push(d);
 		cats = sortCatsbyColor(color, cats);
 		var message = "Find cats: ";
 		res.render("allCats", {message: message, cats: cats});
@@ -127,13 +121,17 @@ router.deleteCat = function(req, res){
 	catModel.find({}, function(err, data) {
 		var cats = data
 		var cat = findOldestCat(cats);
-		catModel.findOneAndRemove({'name':cat.name}, {'color':cat.color},
-		{'age':cat.age}, function(err, data) {
-		res.end();
+		catId = cat._id;
+		console.log(cat)
+		catModel.findOneAndRemove({"_id": catId}, function(err, data) {
+		var message = "After deleting: ";
+		catModel.find({}, function(err, data) {
+			var cats = data
+			res.render("allCats", {message: message, cats: cats});
 		});
-	}
-	var message = "delete cat: ";
-	res.render("allCats", {message: message, cats: cat});
+
+		});
+	});
 }
 
 router.home = function(req, res){
