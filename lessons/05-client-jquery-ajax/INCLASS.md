@@ -10,11 +10,12 @@ Last class we discussed folder structure, so as a refresher, draw out the folder
 
 ##jQuery and AJAX
 - Practice jQuery JSFiddles. Fork before editing!
-	- Selectors and CSS: https://jsfiddle.net/swalters4925/zf52yaa0/2/
-	- Testing selections for a property: https://jsfiddle.net/swalters4925/ejgenk5c/2/
-	- Disable a button after 1 click and display a "button disabled" message in the DOM: https://jsfiddle.net/swalters4925/a8r13c0u/3/
+	- [Selectors and CSS](https://jsfiddle.net/swalters4925/zf52yaa0/3/)
+	- [Selectors and click handlers](https://jsfiddle.net/swalters4925/ejgenk5c/2/)
+	- [Disable a button after 1 click and display a "button disabled" message in the DOM](https://jsfiddle.net/swalters4925/a8r13c0u/3/)
+		+ Challenge: disable the button after 3 clicks instead of after 1
 
-- Is It Christmas Refactor
+- isItChristmas Refactor
 	- Remember that jQuery allows you to make AJAX requests, which may return some data (if you do a GET request for instance), and now you can dynamically update the page reflecting this new data if desired using jQuery. A great way to practice is to go back to old apps like isItChristmas or your cat app and refactor them so they update WITHOUT page refreshes!
 
 	- Return to your version of isItChristmas.com and add the jQuery library. (Libraries are often included from a CDN. For example, Google hosts a CDN for jQuery, and you can reference it with the following script tag:
