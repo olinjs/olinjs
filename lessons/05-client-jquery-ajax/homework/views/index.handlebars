@@ -1,0 +1,16 @@
+<a href="#ingredients_div" id="show_ingredients_link" class="various">Ingredients</a></br>
+<a href="#order_div" id="order_link" class="various">Make Order</a></br>
+<a href="#kitchen_div" id="kitchen_link" class="various">Kitchen</a></br>
+
+<div style="display: none">
+	<div id="ingredients_div">
+		<button type="button" onclick="createIngredient()">Create Ingredient</button>
+		</br>
+		<div id="add_ingredient_menu" style="display: none">
+			<input type="text" placeholder="Ingredient Name" id="ingredient_name">
+			<input type="text" placeholder="Ingredient Price" id="ingredient_price"></br>
+			<button type="button" onclick="addIngredient(document.getElementById('ingredient_name').value, document.getElementById('ingredient_price').value)">Add</button>
+		</div>
+		<div id="ingredients_list"></div>
+	</div>
+</div>
