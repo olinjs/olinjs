@@ -256,7 +256,7 @@ routes.getCatPOST = function(req, res) {
 module.exports = routes;
 ```
 
-Go ahead and grab the two images from the `classApp/public/images` directory and copy them into yours.
+Go ahead and grab the two images from the `formsAppWalkthrough/public/images` directory and copy them into yours.
 Now if you fill out either of the first two forms, you will get the appropriate cat.
 
 As we've discussed before, your uses of different request methods can vary,
