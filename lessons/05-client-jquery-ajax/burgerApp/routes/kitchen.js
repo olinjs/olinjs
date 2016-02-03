@@ -1,0 +1,2 @@
+// Shows a list of all pending orders.
+// A completed button beside each order that tells the server the order is complete. Clicking this should remove the order from the list of orders without refreshing the page.
