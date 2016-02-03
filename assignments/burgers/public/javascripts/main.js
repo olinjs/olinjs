@@ -1,9 +1,8 @@
 
-var $insertform = $("#new-ajax-form");
 var $addform = $("#Add");
 console.log($addform);
 
-var onSuccess = function(data, status) {
+var onAddSuccess = function(data, status) {
   console.log('Test')
   console.log(data[0]);
   console.log(data[1]);
@@ -36,10 +35,10 @@ $addform.submit(function(event) {
   console.log([ingrname, ingrprice]);
 
   event.preventDefault();
-  $.get("addIngredient", {
+  $.get("addIngredient", {  //!!!!!
     name: ingrname,
     price: ingrprice,
   }) 
-    .done(onSuccess)
+    .done(onAddSuccess)
     .error(onError);
 });

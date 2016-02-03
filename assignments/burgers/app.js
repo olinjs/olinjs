@@ -21,7 +21,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 mongoose.connect('mongodb://localhost/ingredients');
 
 app.get('/ingredients', index);
-app.get('/addIngredient', index);
+app.get('/addIngredient', index); //!!!!
+app.get('/editIngredient', index);
 
 // app.get('/', index.home);
 // app.get('/fun', index.fun);

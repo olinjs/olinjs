@@ -8,22 +8,18 @@
 <h2>Ingredients</h2>
 
 {{#each allingredients}}
+<div id="{{this.name}}-editresult">
  <li>Ingredient {{this.name}} costs {{this.price}}!</li>
-    <form id="{{this.name}}-ajax-form" action="" method="">
+    <form id="{{this.name}}-ajax-form" action="editIngredient" method="GET">
       Edit: <input type="text" name="name"/> 
             <input type="number" name="price" /> <br/>
       <input type="submit" value="Submit">
     </form>
-    <div id="editresult">
-    </div>
+</div>
 {{/each}}
 
- <li>Ingredient {{this.name}} costs {{this.price}}!</li>
-    <form id="new-ajax-form" action="addIngredient" method="GET">
-      Edit: <input type="text" name="name"/> 
-            <input type="number" name="price" /> <br/>
-      <input type="submit" value="Submit">
-    </form>
+<form id="new-ajax-form" action="addIngredient" method="GET">
+</form>
 <div id="newresult">
 </div>
 
@@ -35,6 +31,3 @@
         <input type="number" name="price" /> <br/>
     <input type="submit" value="Submit">
 </form>
-<div id="addresult">
-<!--      <li>Ingredient {{this.name}} costs {{this.price}}!</li> -->
-</div>
