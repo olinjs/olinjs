@@ -41,4 +41,6 @@ When you're finished, fill out the [Homework 5 Submission Survey] (https://docs.
 
 #### Preclass Reading and Exercise
 - Read the [Class 6 README](https://github.com/olinjs/olinjs/tree/master/lessons/06-css-development-style) before class 6 on Friday 2/5/16.
-
+- Send an email to [olinjs16@gmail.com](olinjs16@gmail.com) with the subject line "Preclass 6" telling us about...
+    - Something in the reading you felt confident about and easily grasped
+    - Something in the reading you're confused about or want to know more about
