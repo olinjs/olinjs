@@ -3,7 +3,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var express = require('express');
-var index = require('./routes/index');
+var ingredientsRoute = require('./routes/ingredients');
 var app = express();
 var mongoose = require('mongoose');
 
@@ -26,12 +26,12 @@ db.once('open', function() {
   console.log("we're connected!")
 });
 
-app.get('/ingredients', index.ingredients);
+app.get('/ingredients', ingredientsRoute.ingredients);
 
-app.post('/addIngredient', index.addIngredient);
-app.post('/outIngredient', index.outOfStockIngredient);
-app.post('/reStockIngredient', index.reStockIngredient);
-app.post('/updateIngredient', index.updateIngredient);
+app.post('/addIngredient', ingredientsRoute.addIngredient);
+app.post('/outIngredient', ingredientsRoute.outOfStockIngredient);
+app.post('/reStockIngredient', ingredientsRoute.reStockIngredient);
+app.post('/updateIngredient', ingredientsRoute.updateIngredient);
 
 
 app.listen(3000);

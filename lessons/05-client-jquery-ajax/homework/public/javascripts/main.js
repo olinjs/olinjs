@@ -49,6 +49,7 @@ var onSuccessOut = function(data, status) {
 	$newIngredForm.find('span').html(data.name + ' - $' + Number(data.price)); 
 	$newIngredForm.appendTo('#out');
 	$newIngredForm.submit(eventHandlers.outIngred);
+	$newIngredForm.find('.edit').click(eventHandlers.editIngred);
 };
 
 var onSuccessIn = function(data, status) {
@@ -60,6 +61,7 @@ var onSuccessIn = function(data, status) {
 	$newIngredForm.find('span').html(data.name + ' - $' + Number(data.price)); 
 	$newIngredForm.appendTo('#in');
 	$newIngredForm.submit(eventHandlers.inIngred);
+	$newIngredForm.find('.edit').click(eventHandlers.editIngred);
 };
 
 
