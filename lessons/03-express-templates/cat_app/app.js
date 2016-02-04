@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
 
 var index = require('./routes/index');
+// I might just call this cats.js instead of makeCats.js because it does more than make cats
 var cats = require('./routes/makeCats');
 
 var app = express();
@@ -26,6 +27,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', index.home);
 app.get('/cats', cats.catList);
 app.get('/cats/new', cats.newCat);
+// Probably better to make a general route and callback ie:
+// app.get('/cats/bycolor/:color', cats.sortColor);
+// sorry the ninja gave you bad advice :P
 app.get('/cats/bycolor/Pink', cats.sortColorPink);
 app.get('/cats/bycolor/Orange', cats.sortColorOrange);
 app.get('/cats/bycolor/StripedGray', cats.sortColorStripedGray);
