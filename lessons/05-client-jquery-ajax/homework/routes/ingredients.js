@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 // var db = require('../fakeDatabase.js');
-var Ingredient = require('../public/models/ingredientModel.js');
+// var Ingredient = require('../public/models/ingredientModel.js');
+var Ingredient = require('../public/models/models.js').ingredientsModel;
 
 //Create new ingredient or update existing one
 router.post('/new', function(req, res) {
@@ -14,15 +15,13 @@ router.post('/new', function(req, res) {
 		}
 		newIngredient.save(function(err) {
 			if (err) {
-				console.log("Problem adding new cat", err);
+				console.log("Problem adding new order", err);
 			}
 		});
 		getIngredientsQuery().exec(function(err, ingredients) {
 			res.json(ingredients);
 		});
 	});
-
-	
 });
 
 //Return list of all ingredient objects

@@ -5,7 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
-var ingredients = require('./routes/ingredients');
+var ingredientHandler = require('./routes/ingredients');
+var orderHandler = require('./routes/orders');
 var routes = require('./routes/index');
 
 var app = express();
@@ -23,7 +24,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', routes.index);
-app.use('/ingredients', ingredients);
+app.use('/ingredients', ingredientHandler);
+app.use('/orders', orderHandler)
 
 var PORT = process.env.PORT || 3000;
 app.listen(PORT, function() {
