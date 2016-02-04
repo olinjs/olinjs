@@ -1,0 +1,9 @@
+<h3>Orders</h3>
+<div id="orders">
+	{{#each orders}}
+		<form class="outOfStock" id={{this._id}} method="POST">
+			<span>{{this.name}} - ${{this.total}}</span>
+			<input type="submit" class="submit" value="Complete">
+		</form>
+	{{/each}}
+</div>

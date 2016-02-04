@@ -4,6 +4,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var express = require('express');
 var ingredientsRoute = require('./routes/ingredients');
+var ordersRoute = require('./routes/orders');
 var app = express();
 var mongoose = require('mongoose');
 
@@ -32,6 +33,10 @@ app.post('/addIngredient', ingredientsRoute.addIngredient);
 app.post('/outIngredient', ingredientsRoute.outOfStockIngredient);
 app.post('/reStockIngredient', ingredientsRoute.reStockIngredient);
 app.post('/updateIngredient', ingredientsRoute.updateIngredient);
+app.post('/reStockIngredient', ingredientsRoute.reStockIngredient);
+
+app.get('/order', ordersRoute.newOrder);
+app.get('/kitchen', ordersRoute.orders);
 
 
 app.listen(3000);

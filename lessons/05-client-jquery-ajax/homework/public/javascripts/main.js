@@ -3,6 +3,9 @@ var $inIngred = $(".inStock");
 var $outIngred = $(".outOfStock");
 var $editIngr = $('input.edit').unbind();
 
+var $order = $('form#order');
+var $ingredCheck = $('input.ingredient');
+
 var onSuccess = function(data, status) {
 	console.log(status)
 	console.log(data)
@@ -140,15 +143,31 @@ var eventHandlers = {
 		})
 		.done(onSuccessUpdate)
 		.error(onError);
+	},
+	ingredCheck: function(event) {
+
+		var total = Number($('#total').html());
+		console.log(total);
+
+		if ($(this).is(":checked")) {
+			console.log($(this).attr('price'))
+			total += Number($(this).attr('price'));
+		} else {
+			total -= Number($(this).attr('price'));
+		}
+
+		console.log(total);
+		$('#total').html(String(total));
 	}
 }
 
 var loadEventHandlers = function(){
-
 	$addIngred.submit(eventHandlers.addIngred);
 	$inIngred.submit(eventHandlers.inIngred);
 	$outIngred.submit(eventHandlers.outIngred);
 	$editIngr.click(eventHandlers.editIngred);
+
+	$ingredCheck.click(eventHandlers.ingredCheck);
 }
 
 //Code to run on load
