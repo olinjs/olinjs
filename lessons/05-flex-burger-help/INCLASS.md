@@ -37,3 +37,4 @@ You will eventually need a way to add initial information to your database for r
 - Check out this [WebSockets chat walkthrough](http://socket.io/get-started/chat/)
 - Try this [LearnYouNode-style WebGL tutorial](https://github.com/stackgl/shader-school). WebGL is a JavaScript API for rendering interactive computer graphics.
 - Learn about string pattern matching with this [LearnYouNode-style regex tutorial](https://github.com/substack/regex-adventure).
+- Check out [jQuery UI](http://jqueryui.com/) and look at some of their interactive UI elements.  Try to implement some of the samples in your burger app
