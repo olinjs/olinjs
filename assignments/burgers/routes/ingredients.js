@@ -6,14 +6,16 @@ var Ingredient = require('../models/ingredientModel.js');
 
 
 router.get('/ingredients', function(req, res, next){
-    Ingredient.find({}, function(err, ingredients) {
-    // var msg = "Ingredient names are: ";
 
-    // ingredients.forEach(function(ingredient){
-    //   msg = msg + ingredient.name + ",";
-    // })
 
-    // console.log(msg);
+  Ingredient.find({inStock: false}, function(err, ingredients) {
+    console.log('Out of stock ingredients: ')
+    ingredients.forEach(function(ingredient) {
+      console.log(ingredient.name + " ");
+    })
+  })
+
+  Ingredient.find({inStock: true}, function(err, ingredients) {
     res.render("ingredients", {allingredients: ingredients});
   })
 
@@ -71,10 +73,15 @@ router.get('/removeIngredient', function(req, res, next) {
 
   console.log('removed ' + id);
 
-  Ingredient.findByIdAndRemove(id, function (err,ingr) {
-    if(err) console.log('Could not remove from database');
-    //ingr.remove(id).exec();
-  });
+  // Ingredient.findByIdAndRemove(id, function (err,ingr) {
+  //   if(err) console.log('Could not remove from database');
+  // });
+
+  Ingredient.findById(id, function(err, ingr) {
+    if(err) console.log('Could not edit item');
+    ingr.update({inStock: false}).exec();
+    //console.log('set instock to false');
+  })
 
 
   res.send(id);
