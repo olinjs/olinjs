@@ -17,6 +17,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(favicon(path.join(__dirname,'public','images','burger.png')));
+
 var exphbs = require('express-handlebars');
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
