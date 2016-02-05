@@ -1,10 +1,12 @@
-var $addIngred = $("#newIngredient");
-var $inIngred = $(".inStock");
-var $outIngred = $(".outOfStock");
+var $addIngred = $("#newIngredient").unbind();
+var $inIngred = $(".inStock").unbind();
+var $outIngred = $(".outOfStock").unbind();
 var $editIngr = $('input.edit').unbind();
 
-var $order = $('form#order');
-var $ingredCheck = $('input.ingredient');
+var $order = $('#order');
+var $ingredCheck = $('input.ingredient').unbind();
+
+var $kitchenOrder = $('.order').unbind();
 
 var onSuccess = function(data, status) {
 	console.log(status)
@@ -14,11 +16,13 @@ var onSuccess = function(data, status) {
 var onSuccessNew = function(data, status) {
 	console.log(status)
 	console.log(data)
-	var $newIngredForm = $('form.inStock').first().clone();
-	$newIngredForm.attr('id', data._id);
-	$newIngredForm.find('span').html(data.name + ' - $' + Number(data.price)); 
+
+			
+	var $newIngredForm = $('<form class="inStock" id=' + data._id + ' method="POST"> <span>' + data.name + ' - $' + data.price + ' </span><input type="button" class="edit" value="Edit"> <input type="submit" class="submit" value="Out of Stock"></form>');
+	$newIngredForm.unbind();
 	$newIngredForm.appendTo('#in');
-	$newIngredForm.submit(eventHandlers.addIngred);
+	$newIngredForm.submit(eventHandlers.inIngred);
+	$newIngredForm.find('.edit').click(eventHandlers.editIngred);
 };
 
 var onSuccessUpdate = function(data, status) {
@@ -47,9 +51,8 @@ var onSuccessOut = function(data, status) {
 	console.log(status)
 	console.log(data)
 	$('#'+data._id).remove();
-	var $newIngredForm = $('form.outOfStock').first().clone();
-	$newIngredForm.attr('id', data._id);
-	$newIngredForm.find('span').html(data.name + ' - $' + Number(data.price)); 
+	var $newIngredForm = $('<form class="outOfStock" id=' + data._id + ' method="POST"> <span>' + data.name + ' - $' + data.price + ' </span><input type="button" class="edit" value="Edit"> <input type="submit" class="submit" value="Restock"></form>');
+
 	$newIngredForm.appendTo('#out');
 	$newIngredForm.submit(eventHandlers.outIngred);
 	$newIngredForm.find('.edit').click(eventHandlers.editIngred);
@@ -59,9 +62,8 @@ var onSuccessIn = function(data, status) {
 	console.log(status)
 	console.log(data)
 	$('#'+data._id).remove()
-	var $newIngredForm = $('form.inStock').first().clone();
-	$newIngredForm.attr('id', data._id);
-	$newIngredForm.find('span').html(data.name + ' - $' + Number(data.price)); 
+	var $newIngredForm = $('<form class="inStock" id=' + data._id + ' method="POST"> <span>' + data.name + ' - $' + data.price + ' </span><input type="button" class="edit" value="Edit"> <input type="submit" class="submit" value="Out of Stock"></form>');
+
 	$newIngredForm.appendTo('#in');
 	$newIngredForm.submit(eventHandlers.inIngred);
 	$newIngredForm.find('.edit').click(eventHandlers.editIngred);
@@ -149,15 +151,49 @@ var eventHandlers = {
 		var total = Number($('#total').html());
 		console.log(total);
 
-		if ($(this).is(":checked")) {
-			console.log($(this).attr('price'))
-			total += Number($(this).attr('price'));
+		if ($(event.target).is(":checked")) {
+			total += Number($(event.target).attr('price'));
 		} else {
-			total -= Number($(this).attr('price'));
+			total -= Number($(event.target).attr('price'));
 		}
 
 		console.log(total);
 		$('#total').html(String(total));
+	},
+	submitOrder: function(event) {
+		event.preventDefault();
+		console.log(event);
+
+		var name = $order.find("#name").val();
+		var total = Number($('#total').html());
+		$order.find("#name").val("");
+		$('#total').html("0.00");
+
+		var ingredients = $(event.target).find(".ingredient:checked").map(function() {
+			this.checked = false;
+			return this.id;
+		});
+
+		console.log(ingredients);
+		console.log(ingredients.toArray());
+
+		$.post("submitOrder", {
+			name: name,
+			total: total,
+			ingredients: ingredients.toArray()
+		})
+		.done(onSuccess)
+		.error(onError);
+	},
+	completeOrder: function(event) {
+		event.preventDefault();
+
+		$.post("completeOrder", {
+			id: $(event.target).attr('id')
+		})
+		.done(onSuccess)
+		.error(onError);
+		$(event.target).remove()
 	}
 }
 
@@ -168,6 +204,9 @@ var loadEventHandlers = function(){
 	$editIngr.click(eventHandlers.editIngred);
 
 	$ingredCheck.click(eventHandlers.ingredCheck);
+	$order.submit(eventHandlers.submitOrder);
+
+	$kitchenOrder.submit(eventHandlers.completeOrder)
 }
 
 //Code to run on load

@@ -1,7 +1,7 @@
 <h3>Order</h3>
 
 <form id="order" method="POST">
-	<p>Name <input type="text" name="customer"></input></p>
+	<p>Name <input type="text" id="name" name="customer"></input></p>
 	{{#each ingredients}}
 			<p class="ingredient">
 				<input type="checkbox" class="ingredient" id={{this._id}} name={{this.name}}  price={{this.price}} {{#unless this.inStock}} disabled {{/unless}}>

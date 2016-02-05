@@ -38,5 +38,8 @@ app.post('/reStockIngredient', ingredientsRoute.reStockIngredient);
 app.get('/order', ordersRoute.newOrder);
 app.get('/kitchen', ordersRoute.orders);
 
+app.post('/submitOrder', ordersRoute.submitOrder);
+app.post('/completeOrder', ordersRoute.completeOrder);
+
 
 app.listen(3000);
