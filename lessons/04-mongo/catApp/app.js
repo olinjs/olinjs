@@ -22,7 +22,7 @@ var exphbs = require('express-handlebars');
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-app.use(favicon(path.join(__dirname,'public','images','favicon.png')));
+app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));

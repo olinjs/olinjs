@@ -13,6 +13,10 @@ var onSuccess = function(data, status) {
 	console.log(data)
 };
 
+var onSuccessOrder = function(data, status) {
+	alert("You submitted a terrible Order!")
+};
+
 var onSuccessNew = function(data, status) {
 	console.log(status)
 	console.log(data)
@@ -182,7 +186,7 @@ var eventHandlers = {
 			total: total,
 			ingredients: ingredients.toArray()
 		})
-		.done(onSuccess)
+		.done(onSuccessOrder)
 		.error(onError);
 	},
 	completeOrder: function(event) {

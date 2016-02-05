@@ -7,6 +7,7 @@ var ingredientsRoute = require('./routes/ingredients');
 var ordersRoute = require('./routes/orders');
 var app = express();
 var mongoose = require('mongoose');
+var favicon = require('serve-favicon');
 
 mongoose.connect('mongodb://localhost/burgerStuff');
 
@@ -42,4 +43,6 @@ app.post('/submitOrder', ordersRoute.submitOrder);
 app.post('/completeOrder', ordersRoute.completeOrder);
 
 
-app.listen(3000);
+app.listen(3000, function(err) {
+	if (err) console.log(err)
+});
