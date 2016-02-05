@@ -6,7 +6,7 @@
 - AJAX readings
     + a couple of them -- choose your own adventure
 - Adding HTML to a page using jQuery
-    + JSfiddle
+    + Here's a practice [JSfiddle](https://jsfiddle.net/swalters4925/e8gzd6h9/1/). AS always, please fork before editing!
 - Populating a database
 - Show your group a problem you're trying to solve or a problem you think you solved in a particularly clever way. Get their feedback -- what did they do to solve the same problem? Do they understand things you don't, or vice versa? Do you have different mental models for the same thing?
 
