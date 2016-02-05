@@ -1,0 +1,30 @@
+<a href="#ingredients_div" id="show_ingredients_link" class="various" onclick="fetchIngredients('ingredients_list', genIngredientsList)">Ingredients</a></br>
+<a href="#order_div" id="order_link" class="various" onclick="fetchIngredients('ingredients_list_order', genOrderingList)">Make Order</a></br>
+<a href="#kitchen_div" id="kitchen_link" class="various" onclick="fetchOrders('orders_list', genOrdersList)">Kitchen</a></br>
+
+<div style="display: none">
+	<div id="ingredients_div">
+		<button type="button" onclick="createIngredient()">Create Ingredient</button>
+		</br>
+		<div id="add_ingredient_menu" style="display: none">
+			<input type="text" placeholder="Ingredient Name" id="ingredient_name">
+			<input type="text" placeholder="Ingredient Price" id="ingredient_price"></br>
+			<button type="button" onclick="addIngredient(document.getElementById('ingredient_name').value, document.getElementById('ingredient_price').value)">Add</button>
+		</div>
+		<div id="ingredients_list"></div>
+	</div>
+</div>
+
+<div style="display: none">
+	<div id="order_div">
+		<h1>Create Your Order</h1>
+		<div id="ingredients_list_order">Loading...</div>
+		<button type="button" onclick="makeOrder()">Pay</button>
+	</div>
+</div>
+
+<div style="display: none">
+	<div id="kitchen_div">
+		<div id="orders_list">Loading...</div>
+	</div>
+</div>
