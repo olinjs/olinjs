@@ -62,4 +62,24 @@ router.get('/editIngredient', function(req, res, next) {
 
 });
 
+router.get('/removeIngredient', function(req, res, next) {
+  //console.log(req);
+  console.log("Query " + req.query.id);
+  //console.log(req.body);
+  var id = req.query.id;
+  id = id.substring(0, id.length-8); //removes "-ajax-form" from id
+
+  console.log('removed ' + id);
+
+  Ingredient.findByIdAndRemove(id, function (err,ingr) {
+    if(err) console.log('Could not remove from database');
+    //ingr.remove(id).exec();
+  });
+
+
+  res.send(id);
+
+});
+
+
 module.exports = router;

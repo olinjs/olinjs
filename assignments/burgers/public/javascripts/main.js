@@ -12,20 +12,22 @@ var onAddSuccess = function(data, status) {
   // $("#result").html(text);
 
     var text = 
+    "<div id=\"" + data[2] + "-ingredientform\">" + 
     "<div id=\"" + data[2] + "-editresult\">" + 
     "<li>Ingredient " + data[0] + " costs "+ data[1] + "!</li>" + 
-    // "<form id=\"{{this._id}}-ajax-form\" action=\"editIngre\" method=\"\">" + 
-    // "Edit: <input type=\"text\" name=\"name\"/>" +
-    //         "<input type=\"number\" name=\"price\"/> <br/>"+
-    //       "<input type=\"submit\" value=\"Submit\">" +
-    //       "</form>"
+    "<form id=\"" + data[2] + "-ajax-form\" class=\"editForm\" action=\"editIngredient\" method=\"GET\">" + 
+    "Edit: <input type=\"text\" name=\"name\"/>" +
+            "<input type=\"number\" name=\"price\"/> <br/>"+
+          "<input type=\"submit\" value=\"Submit\">" +
+          "</form>"+
+        "</div>"+
 
-  "<form id=\"" + data[2] + "-ajax-form\" class=\"editForm\" action=\"editIngredient\" method=\"GET\">" + 
-  "Edit: <input type=\"text\" name=\"name\"/>" +
-          "<input type=\"number\" name=\"price\"/> <br/>"+
-        "<input type=\"submit\" value=\"Submit\">" +
-        "</form>"+
-      "</div>"
+    "<div id=\"" + data[2] + "-remove\">" + 
+      "<form id = \"" + data[2] + "-instock\" class=\"inStockForm\" action=\"removeIngredient\" method=\"GET\">" + 
+          "Out Of Stock: <input type=\"submit\" value=\"Out of Stock\">"+
+      "</form>"+
+    "</div>" + 
+    "</div>"
 
     //$("#newresult").html(text);
     $("#Alldaforms").append(text);
@@ -71,7 +73,7 @@ var onEditSuccess = function(data, status) {
       "Edit: <input type=\"text\" name=\"name\"/> " + 
             "<input type=\"number\" name=\"price\" /> <br/>" +
       "<input type=\"submit\" value=\"Submit\">" +
-    "</form>"
+    "</form>" 
 
   console.log(text);
 
@@ -79,8 +81,6 @@ var onEditSuccess = function(data, status) {
   console.log("#"+data[2]+"-editresult");
 
 };
-
-
 
 //how to find which form????
 var $editform = $("#Alldaforms");
@@ -104,6 +104,32 @@ $editform.on("submit", ".editForm", function(event) {
     id: ingrid,
   }) 
   .done(onEditSuccess)
+  .error(onError);
+
+});
+
+var onRemoveSuccess = function(data, status) {
+  console.log('Test');
+  console.log(data);
+
+  var text = ""
+  $("#"+data+"-ingredientform").html(text);
+
+};
+
+$editform.on("submit", ".inStockForm", function(event) {
+  console.log('Removing');
+  var $thisform = $(event.target).closest('form');
+
+  var ingrid = $thisform.attr('id');
+
+  console.log(ingrid);
+
+  event.preventDefault();
+  $.get("removeIngredient", {
+    id: ingrid
+  })
+  .done(onRemoveSuccess)
   .error(onError);
 
 });

@@ -23,6 +23,7 @@ mongoose.connect('mongodb://localhost/ingredients');
 app.get('/ingredients', index);
 app.get('/addIngredient', index); //!!!!
 app.get('/editIngredient', index);
+app.get('/removeIngredient', index);
 
 // app.get('/', index.home);
 // app.get('/fun', index.fun);

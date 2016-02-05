@@ -10,13 +10,21 @@
 <div id="Alldaforms">
 {{#each allingredients}}
 <!-- <div id="{{this.name}}-editresult"> -->
-<div id="{{this._id}}-editresult">
- <li>Ingredient {{this.name}} costs {{this.price}}!</li>
-    <form id="{{this._id}}-ajax-form" class="editForm" action="editIngredient" method="GET">
-      Edit: <input type="text" name="name"/> 
-            <input type="number" name="price" /> <br/>
-      <input type="submit" value="Submit">
-    </form>
+
+<div id="{{this.id}}-ingredientform">
+    <div id="{{this._id}}-editresult">
+     <li>Ingredient {{this.name}} costs {{this.price}}!</li>
+        <form id="{{this._id}}-ajax-form" class="editForm" action="editIngredient" method="GET">
+          Edit: <input type="text" name="name"/> 
+                <input type="number" name="price" /> <br/>
+          <input type="submit" value="Submit">
+        </form>
+    </div>
+    <div id="{{this._id}}-remove">
+        <form id = "{{this._id}}-instock" class="inStockForm" action="removeIngredient" method="GET">
+            Out Of Stock: <input type="submit" value="Out of Stock">
+        </form>
+    </div>
 </div>
 
 {{/each}}
