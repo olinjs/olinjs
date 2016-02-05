@@ -29,7 +29,7 @@ res.render(‘ingredients’, {ingredients : [
 Now you can play around with your fake data on the front end of your app until you are ready to move forward to working with a database. 
 
 #### Create An Add Route
-You will eventually need a way to add initial information to your database for real. This will usually look a lot like the "new cat" route from your cat app. For the purpose of populating your database, you can make an array of random ingredient names and a random number generator and have your app save a randomly generated ingredient every time you go to your "new ingredient" route. Alternatively, you can hook a simple client-side "add ingredient" form up to the "new ingredient" route on the server. Hint: this would look a lot like the POST route from the class five readme, but with the added the functionality of saving the data you receive in `req.body` to your database.
+You will eventually need a way to add initial information to your database for real. This will usually look a lot like the "new cat" route from your cat app. For the purpose of populating your database, you can make an array of random ingredient names and a random number generator and have your app save a randomly generated ingredient every time you go to your "new ingredient" route. Alternatively, you can hook a simple client-side "add ingredient" form up to the "new ingredient" route on the server. Hint: this would look a lot like the POST route from the class five readme, but with the added functionality of saving the data you receive in `req.body` to your database.
 
 
 ## If you're already done with the homework:
