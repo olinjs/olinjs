@@ -21,6 +21,8 @@ function addCat() {
 		"age": Math.floor((Math.random() * 10) + 1),
 		"color": [possible_colors[Math.floor(Math.random()*possible_colors.length)], possible_colors[Math.floor(Math.random()*possible_colors.length)]]
 	};
+
+	// Nice use of ajax here. 
 	$.ajax({
 		type: "POST",
 		contentType: "application/json",
@@ -31,6 +33,7 @@ function addCat() {
 			$('#add_notifications').html("Random cat generated, check console for details");
 		},
 		error: function(err) {
+			// You can make an ErrorHandler method that logs error message and type instead of repeating code.
             console.log(err);
             alert("Add failed, check console for error");
         }

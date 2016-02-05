@@ -2,6 +2,12 @@ var express = require('express');
 var router = express.Router();
 var db = require('../fakeDatabase.js');
 
+// Handle Errors with helper func
+// function errorHandler(err, req, res, next) {
+//   res.status(500);
+//   res.render('error', { error: err });
+// }
+
 router.post('/new', function(req, res) {
 	db.add(req.body);
 	res.json(req.body);
