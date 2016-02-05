@@ -7,21 +7,32 @@
  -->
 <h2>Ingredients</h2>
 
+<div id="Alldaforms">
 {{#each allingredients}}
-<div id="{{this.name}}-editresult">
+<!-- <div id="{{this.name}}-editresult"> -->
+<div id="{{this._id}}-editresult">
  <li>Ingredient {{this.name}} costs {{this.price}}!</li>
-    <form id="{{this.name}}-ajax-form" action="editIngredient" method="GET">
+    <form id="{{this._id}}-ajax-form" class="editForm" action="editIngredient" method="GET">
       Edit: <input type="text" name="name"/> 
             <input type="number" name="price" /> <br/>
       <input type="submit" value="Submit">
     </form>
 </div>
+
 {{/each}}
 
-<form id="new-ajax-form" action="addIngredient" method="GET">
-</form>
+</div>
+
+
+<!-- <form id="new-ajax-form" action="addIngredient" method="GET">
+</form> -->
 <div id="newresult">
 </div>
+<!-- <div id="{{this._id}}-remove">
+    <form id = "{{this._id}}-instock" class="inStockForm" action="removeIngredient" method="GET">
+        Out Of Stock: <input type="submit" value="Out of Stock">
+    </form>
+</div> -->
 
 
 <br></br>
@@ -31,3 +42,14 @@
         <input type="number" name="price" /> <br/>
     <input type="submit" value="Submit">
 </form>
+
+
+
+<!-- <div id="56b3dc6786fdfcde11c20eb6-editresult">
+    <li>Ingredient canoe costs 60!</li>
+    <form id="56b3dc6786fdfcde11c20eb6-ajax-form" class="editForm" action="editIngredient" method="GET">
+        Edit: <input type="text" name="name"> 
+        <input type="number" name="price"> <br>
+        <input type="submit" value="Submit">
+    </form>
+</div> -->
