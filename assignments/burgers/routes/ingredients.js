@@ -8,12 +8,12 @@ var Ingredient = require('../models/ingredientModel.js');
 router.get('/ingredients', function(req, res, next){
 
 
-  Ingredient.find({inStock: false}, function(err, ingredients) {
-    console.log('Out of stock ingredients: ')
-    ingredients.forEach(function(ingredient) {
-      console.log(ingredient.name + " ");
-    })
-  })
+  // Ingredient.find({inStock: false}, function(err, ingredients) {
+  //   console.log('Out of stock ingredients: ')
+  //   ingredients.forEach(function(ingredient) {
+  //     console.log(ingredient.name + " ");
+  //   })
+  // })
 
   Ingredient.find({inStock: true}, function(err, ingredients) {
     res.render("ingredients", {allingredients: ingredients});
@@ -44,19 +44,19 @@ router.get('/editIngredient', function(req, res, next) {
   var newname = req.query.name;
   var newprice = req.query.price;
   var id = req.query.id;
-  console.log(newname, newprice, id);
+  //console.log(newname, newprice, id);
   id = id.substring(0, id.length-10); //removes "-ajax-form" from id
 
-  console.log(newname, newprice, id);
+  //console.log(newname, newprice, id);
 
   Ingredient.findById(id, function (err, ingr) {
     if(err) console.log('Could not edit');
-    console.log(ingr);
+    //console.log(ingr);
     ingr.update({ name: newname, price: newprice }).exec();
   });
 
-  console.log(req.query);
-  console.log([newname, newprice]);
+  //console.log(req.query);
+  //console.log([newname, newprice]);
 
   res.send([newname, newprice, id]);
 
@@ -66,12 +66,12 @@ router.get('/editIngredient', function(req, res, next) {
 
 router.get('/removeIngredient', function(req, res, next) {
   //console.log(req);
-  console.log("Query " + req.query.id);
+  //console.log("Query " + req.query.id);
   //console.log(req.body);
   var id = req.query.id;
   id = id.substring(0, id.length-8); //removes "-ajax-form" from id
 
-  console.log('removed ' + id);
+  //console.log('removed ' + id);
 
   // Ingredient.findByIdAndRemove(id, function (err,ingr) {
   //   if(err) console.log('Could not remove from database');

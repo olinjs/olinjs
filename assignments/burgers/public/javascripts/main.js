@@ -4,26 +4,24 @@ console.log($addform);
 
 
 var onAddSuccess = function(data, status) {
-  console.log('Test')
-  console.log(data[0]);
-  console.log(data[1]);
-  console.log(data[2]);
-  // var text = "<h1>" + data + "</h1>";
-  // $("#result").html(text);
+  //console.log('Test')
+  var ingrname = data[0];
+  var ingrprice = data[1];
+  var ingrid = data[2];
 
     var text = 
-    "<div id=\"" + data[2] + "-ingredientform\">" + 
-    "<div id=\"" + data[2] + "-editresult\">" + 
-    "<li>Ingredient " + data[0] + " costs "+ data[1] + "!</li>" + 
-    "<form id=\"" + data[2] + "-ajax-form\" class=\"editForm\" action=\"editIngredient\" method=\"GET\">" + 
+    "<div id=\"" + ingrid + "-ingredientform\">" + 
+    "<div id=\"" + ingrid + "-editresult\">" + 
+    "<li>Ingredient " + ingrname + " costs "+ ingrprice + "!</li>" + 
+    "<form id=\"" + ingrid + "-ajax-form\" class=\"editForm\" action=\"editIngredient\" method=\"GET\">" + 
     "Edit: <input type=\"text\" name=\"name\"/>" +
             "<input type=\"number\" name=\"price\"/> <br/>"+
           "<input type=\"submit\" value=\"Submit\">" +
           "</form>"+
         "</div>"+
 
-    "<div id=\"" + data[2] + "-remove\">" + 
-      "<form id = \"" + data[2] + "-instock\" class=\"inStockForm\" action=\"removeIngredient\" method=\"GET\">" + 
+    "<div id=\"" + ingrid + "-remove\">" + 
+      "<form id = \"" + ingrid + "-instock\" class=\"inStockForm\" action=\"removeIngredient\" method=\"GET\">" + 
           "Out Of Stock: <input type=\"submit\" value=\"Out of Stock\">"+
       "</form>"+
     "</div>" + 
@@ -40,13 +38,13 @@ var onError = function(data, status) {
 };
 
 $addform.submit(function(event) {
-  console.log('hello');
+  //console.log('hello');
   //jquery here, parse request
 
   var ingrname = $addform.find("[name=\"name\"]").val();
   var ingrprice = $addform.find("[name=\"price\"]").val();
 
-  console.log([ingrname, ingrprice]);
+  //console.log([ingrname, ingrprice]);
 
   event.preventDefault();
   $.get("addIngredient", {  //!!!!!
@@ -60,26 +58,27 @@ $addform.submit(function(event) {
 
 
 var onEditSuccess = function(data, status) {
-  console.log('Test')
+  //console.log('Test')
 
-  console.log(data[0]);
-  console.log(data[1]);
-  console.log(data[2]);
+  var ingrname = data[0];
+  var ingrprice = data[1];
+  var ingrid = data[2];
+
   // var text = "<h1>" + data + "</h1>";
   // $("#result").html(text);
 
     var text = 
-  "<li>Ingredient " + data[0] + " costs "+ data[1] + "!</li>" + 
-    "<form id=\"" + data[2] + "-ajax-form\" class=\"editForm\" action=\"editIngredient\" method=\"GET\">" + 
+  "<li>Ingredient " + ingrname + " costs "+ ingrprice + "!</li>" + 
+    "<form id=\"" + ingrid + "-ajax-form\" class=\"editForm\" action=\"editIngredient\" method=\"GET\">" + 
       "Edit: <input type=\"text\" name=\"name\"/> " + 
             "<input type=\"number\" name=\"price\" /> <br/>" +
       "<input type=\"submit\" value=\"Submit\">" +
     "</form>" 
 
-  console.log(text);
+  //console.log(text);
 
-  $("#"+data[2]+"-editresult").html(text);
-  console.log("#"+data[2]+"-editresult");
+  $("#"+ingrid+"-editresult").html(text);
+  //console.log("#"+ingrid+"-editresult");
 
 };
 
@@ -88,7 +87,7 @@ var $editform = $("#Alldaforms");
 //console.log($editform);
 
 $editform.on("submit", ".editForm", function(event) {
-  console.log('editing');
+  //console.log('editing');
 
   var $thisform = $(event.target).closest('form');
 
@@ -96,7 +95,7 @@ $editform.on("submit", ".editForm", function(event) {
   var ingrprice = $thisform.find("[name=\"price\"]").val();
   var ingrid = $thisform.attr('id');
 
-  console.log([ingrname, ingrprice, ingrid]);
+  //console.log([ingrname, ingrprice, ingrid]);
 
   event.preventDefault();
   $.get("editIngredient", {  //!!!!!
@@ -110,8 +109,8 @@ $editform.on("submit", ".editForm", function(event) {
 });
 
 var onRemoveSuccess = function(data, status) {
-  console.log('Test');
-  console.log(data);
+  //console.log('Test');
+  //console.log(data);
 
   var text = ""
   $("#"+data+"-ingredientform").html(text);
@@ -119,12 +118,12 @@ var onRemoveSuccess = function(data, status) {
 };
 
 $editform.on("submit", ".inStockForm", function(event) {
-  console.log('Removing');
+  //console.log('Removing');
   var $thisform = $(event.target).closest('form');
 
   var ingrid = $thisform.attr('id');
 
-  console.log(ingrid);
+  //console.log(ingrid);
 
   event.preventDefault();
   $.get("removeIngredient", {
@@ -138,22 +137,22 @@ $editform.on("submit", ".inStockForm", function(event) {
 var $neworder = $("#NewOrder");
 
 var onOrderSuccess = function(data, status) {
-  console.log('Testing');
-  console.log(data[0]);
-  console.log(data[1]);
-  console.log(data[2])
+  //console.log('Testing');
+  ordername = data[0];
+  components = data[1];
+  orderid = data[2];
   //console.log();
 
   var text = "Thanks for submitting! Your order is as follows: <br></br>"+
-  "Order Name: " + data[0] + "<br></br>" + 
-  "Order Components: " + data[1] + "<br></br>" + 
-  "Order ID: " + data[2] 
+  "Order Name: " + ordername + "<br></br>" + 
+  "Order Components: " + components + "<br></br>" + 
+  "Order ID: " + orderid
   $("#submitted").html(text);
 }
 
 
 $neworder.submit(function(event) {
-  console.log('submitting');
+  //console.log('submitting');
 
   var ordername = $neworder.find("[name=\"name\"]").val();
 
@@ -173,8 +172,8 @@ $neworder.submit(function(event) {
 })
 
 var onItemAddSuccess = function(data, status) {
-  console.log("Cost count")
-  console.log(data)
+  //console.log("Cost count")
+  //console.log(data)
 
   var text = "Current order cost: " + data;
   $("#costcount").html(text);
@@ -182,13 +181,13 @@ var onItemAddSuccess = function(data, status) {
 
 
 $(".checkbox").change(function(event) {
-  console.log("Adding item to order")
+  //console.log("Adding item to order")
 
   var selected = [];
   $('#checkboxes input:checked').each(function() {
       selected.push($(this).attr('id'));
   });
-  console.log(selected);
+  //console.log(selected);
 
   event.preventDefault();
   $.get("addItemToOrder", {
@@ -202,8 +201,8 @@ $(".checkbox").change(function(event) {
 var $completeform = $("#AllOrders");
 
 var onOrderCompleteSuccess = function(data, status) {
-  console.log('Test');
-  console.log(data);
+  //console.log('Test');
+  //console.log(data);
 
   var text = ""
   $("#"+data+"-order").html(text);
@@ -211,12 +210,12 @@ var onOrderCompleteSuccess = function(data, status) {
 };
 
 $completeform.on("submit", ".completeForm", function(event) {
-  console.log('Removing');
+  //console.log('Removing');
   var $thisform = $(event.target).closest('form');
 
   var orderid = $thisform.attr('id');
 
-  console.log(orderid);
+  //console.log(orderid);
 
   event.preventDefault();
   $.get("orderComplete", {

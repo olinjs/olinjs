@@ -14,7 +14,7 @@ router.get('/kitchen', function(req, res, next) {
 router.get('/orderComplete', function(req, res, next) {
   orderid = req.query.id;
   orderid = orderid.substring(0, orderid.length-10); //removes "-completed" from id
-  console.log('Order complete! ' + orderid);
+  //console.log('Order complete! ' + orderid);
 
   Order.findById(orderid, function(err, order) {
     if(err) console.log('Could not complete order');

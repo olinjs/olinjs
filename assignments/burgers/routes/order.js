@@ -6,7 +6,7 @@ var Ingredient = require('../models/ingredientModel.js');
 var Order = require('../models/orderModel.js');
 
 router.get('/order', function(req, res, next){
-  console.log('Order page');
+  //console.log('Order page');
 
   // Order.find({}, function(err, orders) {
   //   res.render("order", {allorders: orders});
@@ -54,11 +54,11 @@ router.get('/createOrder', function(req, res, next) { //!!!
     var newname = req.query.name;
 
     var orderingrs = req.query.ingredients;
-    console.log("Ingredients " + orderingrs);
+    //console.log("Ingredients " + orderingrs);
 
     var neworder = new Order({name: newname, ingredients: orderingrs});
     var id = neworder._id;
-    console.log("Order Ingredients " + neworder.ingredients);
+    //console.log("Order Ingredients " + neworder.ingredients);
 
     neworder.save(function(err) {
       if(err) console.log('Could not save');
@@ -67,7 +67,7 @@ router.get('/createOrder', function(req, res, next) { //!!!
 
     //there must be a better way
     function callback() {
-      console.log("Ingredient Name Array " + ingrnames);
+      //console.log("Ingredient Name Array " + ingrnames);
       res.send([newname, ingrnames, id]);
     } 
 
@@ -76,7 +76,7 @@ router.get('/createOrder', function(req, res, next) { //!!!
     var itemsProcessed = 0;
     orderingrs.forEach(function(ingrid) {
       Ingredient.findById(ingrid, function(err, ingr) {
-        console.log(ingr.name);
+        //console.log(ingr.name);
         ingrnames.push(ingr.name);
         itemsProcessed++;
         if(itemsProcessed === orderingrs.length) callback();
@@ -87,11 +87,11 @@ router.get('/createOrder', function(req, res, next) { //!!!
 
 router.get('/addItemToOrder', function(req, res, next) {
   var orderingrs = req.query.ingredients;
-  console.log(orderingrs);
+  //console.log(orderingrs);
 
     //there must be a better way
   function callback() {
-    console.log("Ingredient Cost " + ingrcost);
+    //console.log("Ingredient Cost " + ingrcost);
     res.send([ingrcost]);
   } 
 
@@ -100,7 +100,7 @@ router.get('/addItemToOrder', function(req, res, next) {
   var itemsProcessed = 0;
   orderingrs.forEach(function(ingrid) {
     Ingredient.findById(ingrid, function(err, ingr) {
-      console.log(ingr.price);
+      //console.log(ingr.price);
       ingrcost += ingr.price;
       itemsProcessed++;
       if(itemsProcessed === orderingrs.length) callback();
