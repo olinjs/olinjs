@@ -27,6 +27,7 @@ var onAddSuccess = function(data, status) {
           "Out Of Stock: <input type=\"submit\" value=\"Out of Stock\">"+
       "</form>"+
     "</div>" + 
+        "<br></br>" + 
     "</div>"
 
     //$("#newresult").html(text);
@@ -130,6 +131,98 @@ $editform.on("submit", ".inStockForm", function(event) {
     id: ingrid
   })
   .done(onRemoveSuccess)
+  .error(onError);
+
+});
+
+var $neworder = $("#NewOrder");
+
+var onOrderSuccess = function(data, status) {
+  console.log('Testing');
+  console.log(data[0]);
+  console.log(data[1]);
+  console.log(data[2])
+  //console.log();
+
+  var text = "Thanks for submitting! Your order is as follows: <br></br>"+
+  "Order Name: " + data[0] + "<br></br>" + 
+  "Order Components: " + data[1] + "<br></br>" + 
+  "Order ID: " + data[2] 
+  $("#submitted").html(text);
+}
+
+
+$neworder.submit(function(event) {
+  console.log('submitting');
+
+  var ordername = $neworder.find("[name=\"name\"]").val();
+
+  var selected = [];
+  $('#checkboxes input:checked').each(function() {
+      selected.push($(this).attr('id'));
+  });
+
+  event.preventDefault();
+  $.get("createOrder", {
+    name: ordername,
+    ingredients: selected
+  })
+  .done(onOrderSuccess)
+  .error(onError);
+
+})
+
+var onItemAddSuccess = function(data, status) {
+  console.log("Cost count")
+  console.log(data)
+
+  var text = "Current order cost: " + data;
+  $("#costcount").html(text);
+}
+
+
+$(".checkbox").change(function(event) {
+  console.log("Adding item to order")
+
+  var selected = [];
+  $('#checkboxes input:checked').each(function() {
+      selected.push($(this).attr('id'));
+  });
+  console.log(selected);
+
+  event.preventDefault();
+  $.get("addItemToOrder", {
+    ingredients: selected
+  })
+  .done(onItemAddSuccess)
+  .error(onError)
+})
+
+
+var $completeform = $("#AllOrders");
+
+var onOrderCompleteSuccess = function(data, status) {
+  console.log('Test');
+  console.log(data);
+
+  var text = ""
+  $("#"+data+"-order").html(text);
+
+};
+
+$completeform.on("submit", ".completeForm", function(event) {
+  console.log('Removing');
+  var $thisform = $(event.target).closest('form');
+
+  var orderid = $thisform.attr('id');
+
+  console.log(orderid);
+
+  event.preventDefault();
+  $.get("orderComplete", {
+    id: orderid
+  })
+  .done(onOrderCompleteSuccess)
   .error(onError);
 
 });

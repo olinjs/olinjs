@@ -1,6 +1,7 @@
 var express = require('express');
 var ingredients = require('./routes/ingredients');
 var order = require('./routes/order');
+var kitchen = require('./routes/kitchen');
 var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -21,12 +22,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 mongoose.connect('mongodb://localhost/ingredients');
 
+
 app.get('/ingredients', ingredients);
 app.get('/addIngredient', ingredients); //!!!!
 app.get('/editIngredient', ingredients);
 app.get('/removeIngredient', ingredients);
 
-//app.get('/order', order);
+app.get('/order', order);
+app.get('/createOrder', order);
+app.get('/addItemToOrder', order);
+
+app.get('/kitchen', kitchen);
+app.get('/orderComplete', kitchen);
 
 // app.get('/', index.home);
 // app.get('/fun', index.fun);

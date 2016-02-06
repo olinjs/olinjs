@@ -1,0 +1,32 @@
+<h2>Place an Order</h2>
+
+<!-- {{#each allingredients}}
+   <li>Ingredient {{this.name}} is in stock? {{this.inStock}}!</li>
+{{/each}}
+
+<br></br> -->
+
+
+
+<div id = "costcount">
+</div>
+
+<br></br>
+
+<form id="NewOrder" action="createOrder" method="GET">
+    Order Name: <input type="text" name="name"/> <br></br>
+    Ingredients: <br></br>
+    <div id = "checkboxes">
+      {{#each instockingr}}
+        <input id = "{{this.id}}" type="checkbox" class="checkbox" value="{{this.name}}"> {{this.name}}: {{this.inStock}}<br></br>
+      {{/each}}
+      {{#each outofstockingr}}
+        <input id = "{{this.id}}" type="checkbox" value="{{this.name}}" disabled> {{this.name}}: {{this.inStock}}<br></br>
+      {{/each}}
+    </div>
+    <input type="submit" value="Submit">
+</form>
+
+<br></br>
+<div id = "submitted">
+</div>
