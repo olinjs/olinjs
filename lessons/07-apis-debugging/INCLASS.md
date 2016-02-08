@@ -1,4 +1,4 @@
-#Class 6
+#Class 7
 ##Facebook Design Activity
 You are designing Facebook's Page API. Come up with a set of routes to "Publish and send content as a Page. Manage Facebook Pages from your app." (Facebook's Page API documentation). When done, read and compare [Facebook's API](https://developers.facebook.com/docs/pages) documentation to your mock API, and have a discussion in your group about what is different and what is the same.
 

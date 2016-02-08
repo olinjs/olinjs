@@ -1,4 +1,4 @@
-#Lesson 7 - APIs and Debugging Strategies
+#Lesson 7 - API Design and Sessions
 ##Preclass 
 Please read the following Readme and some of the following links on [Oauth](http://www.cubrid.org/blog/dev-platform/dancing-with-oauth-understanding-how-authorization-works/) and [REST](http://www.infoq.com/articles/rest-introduction)
 
@@ -160,3 +160,40 @@ app.use('/api*', function(req, res, next) {
 
 ###Can I set up my own OAuth server?
 So you want to use OAuth to authenticate and authorize your API users, huh? Unfortunately that's _just_ outside the scope of this class, but know that if you do get to that point someday, there are some great packages available (on npm) that can help you get a basic setup running fairly quickly.
+
+###Sessions and Cookies
+Now that we under stand how APIs are designed and authentication works, let's talk about a common use of external services, and that is logging in users. Currently, a large number of apps and web services allow other services to log you into their app. This is the infamous "Log in with ________" buttons on these apps login screens. When a user is logged into an app, a session is either restarted or created if it is a user's first time using the app. Sessions are just stores of information about the current user, generally done by associating a cookie with a user. Cookie's are a small amount of information sent back and forth between the server and the browser. Their are two types of cookies, but for all our purposes we will stick to session cookies, which are deleted from the browser when the page is closed (the other type are persistent, and actually our cookies will generally just contain the session id as we will use the server to hold most of the user's data). 
+
+With our express apps, there is a nice module for managing user sessions. To install this module into your app type: 
+```
+npm install --save express-session
+```
+now all we have to do to use this module is use it. 
+```javascript
+var app = express();
+
+app.use(session({ secret: 'superS3CRE7',
+  cookie:{},
+  resave: false,
+  saveUninitialized: false }));
+```
+Aaaand we are done with adding basic sessions to our app. Real easy right? Okay, so this is just initializing the session, so of course it is simple, but before we move on lets explain the options object. The secret attribute is used to sign the session ID cookie, basically make it difficult for people to access the data in the session. The cookie attribute allows you to describe the session ID cookie, which will default to:
+```
+{ path: '/', httpOnly: true, secure: false, maxAge: null }
+```
+The path cookie option describes where the cookie is created. HttpOnly determines if you can access the cookie from the client. Secure determines whether HTTP in addition to HTTPs is able create sessions. Maxage determines when the cookie is destroyed. Back to the session attributes, resave determines if a session will be saved to the database even if it was not updated. While saveUninitialized determines if a session will be saved if nothing is added. 
+
+Now that that is done. Let us describe some specific things we can do with sessions. One useful thing is to track visits to a page, and we can do that with something like this: 
+```javascript
+app.get('/', function(req, res, next){
+	var sess = req.session;
+	if (sess.views) {
+		sess.views++;
+	} else {
+		sess.views = 1;
+	}
+	next();
+});
+```
+This block of code checks the current session to see if the user has visited the page and increments or creates the views variable. Then passes control to the next handler. You can also set sesssions to expire, forcing the user to login again, which you often see on sensative sites like banking apps. This will be part of the inclass work so I won't write up an example here. However, if you have any more questions about sessions and cookies, you can read more about [express-session](https://www.npmjs.com/package/express-session) and follow a tutorial [here](http://expressjs-book.com/index.html%3Fp=128.html).
+
