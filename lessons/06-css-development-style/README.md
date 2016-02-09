@@ -435,7 +435,7 @@ var yourNamespace = {
 yourNamespace.foo();
 ```
 
-Read [this article on a similar design called the module pattern](https://toddmotto.com/mastering-the-module-pattern/)
+Read [this article on a similar design called the module pattern](https://toddmotto.com/mastering-the-module-pattern)
 
 Additionally, you can modularize your code by looking at [naming conventions like BEM](https://css-tricks.com/bem-101/), which is a generally accepted way to keep your CSS classes readable and easily usable.
 
