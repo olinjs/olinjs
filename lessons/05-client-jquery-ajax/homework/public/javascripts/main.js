@@ -18,10 +18,6 @@ var onSuccessOrder = function(data, status) {
 };
 
 var onSuccessNew = function(data, status) {
-	console.log(status)
-	console.log(data)
-
-			
 	var $newIngredForm = $('<form class="inStock" id=' + data._id + ' method="POST"> <span>' + data.name + ' - $' + data.price + ' </span><input type="button" class="edit" value="Edit"> <input type="submit" class="submit" value="Out of Stock"></form>');
 	$newIngredForm.unbind();
 	$newIngredForm.appendTo('#in');
@@ -30,8 +26,6 @@ var onSuccessNew = function(data, status) {
 };
 
 var onSuccessUpdate = function(data, status) {
-	console.log(status)
-	console.log(data)
 	var $updateIngredForm = $('#'+data._id);
 	var stockText = 'Out of Stock'
 	if (!data.inStock) {
@@ -52,8 +46,6 @@ var onSuccessUpdate = function(data, status) {
 };
 
 var onSuccessOut = function(data, status) {
-	console.log(status)
-	console.log(data)
 	$('#'+data._id).remove();
 	var $newIngredForm = $('<form class="outOfStock" id=' + data._id + ' method="POST"> <span>' + data.name + ' - $' + data.price + ' </span><input type="button" class="edit" value="Edit"> <input type="submit" class="submit" value="Restock"></form>');
 
@@ -63,8 +55,6 @@ var onSuccessOut = function(data, status) {
 };
 
 var onSuccessIn = function(data, status) {
-	console.log(status)
-	console.log(data)
 	$('#'+data._id).remove()
 	var $newIngredForm = $('<form class="inStock" id=' + data._id + ' method="POST"> <span>' + data.name + ' - $' + data.price + ' </span><input type="button" class="edit" value="Edit"> <input type="submit" class="submit" value="Out of Stock"></form>');
 
@@ -97,7 +87,6 @@ var eventHandlers = {
 	inIngred: function(event) {
 		event.preventDefault();
 		var id = this.id;
-		console.log(id);
 
 		$.post("outIngredient", {
 			id: id
@@ -108,7 +97,6 @@ var eventHandlers = {
 	outIngred: function(event) {
 		event.preventDefault();
 		var id = this.id;
-		console.log(id);
 
 		$.post("reStockIngredient", {
 			id: id
@@ -117,13 +105,9 @@ var eventHandlers = {
 		.error(onError);
 	},
 	editIngred: function(event){
-		console.log('edit');
-		console.log(this);
 		var id = this.closest('form').id;
-		console.log(id);
 		var $currentForm = this.closest('form');
 		$currentForm.empty
-		console.log($currentForm)
 		var children = $currentForm.children
 		var spanTextSplit = $('#' + id).children(' span').get(0).innerText.split("-");
 		children[0].remove();
@@ -135,12 +119,8 @@ var eventHandlers = {
 	},
 	updateIngred: function(event) {
 		event.preventDefault();
-		console.log(event);
 		var name = $(this).find("#name").val();
 		var price = $(this).find("#price").val();
-		// this.find("#name").val("");
-		// this.find("#price").val("");
-		console.log($(this).attr('id'));
 
 		$.post("updateIngredient", {
 			id: $(this).attr('id'),
@@ -153,7 +133,6 @@ var eventHandlers = {
 	ingredCheck: function(event) {
 
 		var total = Number($('#total').html());
-		console.log(total);
 
 		if ($(event.target).is(":checked")) {
 			total += Number($(event.target).attr('price'));
@@ -161,12 +140,10 @@ var eventHandlers = {
 			total -= Number($(event.target).attr('price'));
 		}
 
-		console.log(total);
 		$('#total').html(String(total));
 	},
 	submitOrder: function(event) {
 		event.preventDefault();
-		console.log(event);
 
 		var name = $order.find("#name").val();
 		var total = Number($('#total').html());
@@ -177,9 +154,6 @@ var eventHandlers = {
 			this.checked = false;
 			return this.id;
 		});
-
-		console.log(ingredients);
-		console.log(ingredients.toArray());
 
 		$.post("submitOrder", {
 			name: name,
