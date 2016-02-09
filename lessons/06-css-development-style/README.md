@@ -449,4 +449,4 @@ $ npm i --save lodash
 
 and then use it in Node: ```var _ = require('lodash');```
 
-Read through the [lodash docs](https://lodash.com/docs) (or check out their [searchable interfacte](http://devdocs.io/lodash-array/)) to get an idea of some of the useful helper functions
+Read through the [lodash docs](https://lodash.com/docs) (or check out their [searchable interface](http://devdocs.io/lodash-array/)) to get an idea of some of the useful helper functions
