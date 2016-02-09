@@ -132,7 +132,7 @@ To start we'll need a basic Express app again.
 You can start a new app or modify your homework, but we'd recommend starting from the expressintro app from class 03.
 In your terminal, cd into your your /lessons/05-client-jquery-ajax/ folder, use this command to copy last class's app over:
 ```
-cp -r $PATH-TO-OLINJS-FOLDER/lessons/03-express-templates-mongo/expressintro ./::formsApp::
+cp -r $PATH-TO-OLINJS-FOLDER/lessons/03-express-templates/expressintro ./::yourAppName::
 ```
 Replace `::formsApp::` with whatever you want to name your forms app.
 
@@ -256,7 +256,7 @@ routes.getCatPOST = function(req, res) {
 module.exports = routes;
 ```
 
-Go ahead and grab the two images from the `classApp/public/images` directory and copy them into yours.
+Go ahead and grab the two images from the `formsAppWalkthrough/public/images` directory and copy them into yours.
 Now if you fill out either of the first two forms, you will get the appropriate cat.
 
 As we've discussed before, your uses of different request methods can vary,
