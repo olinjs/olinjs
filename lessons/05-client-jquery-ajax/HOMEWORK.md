@@ -37,6 +37,10 @@ In this case, do not remove the ingredient from the page, but make note through 
   * A `completed` button beside each order that tells the server the order is complete.
   Clicking this should remove the order from the list of orders without refreshing the page.
 
-  #### Preclass Reading and Exercise
-- Read the [Class 6 README](https://github.com/olinjs/olinjs/tree/master/lessons/06-css-development-style) before class 6 on Friday 2/5/16.
+When you're finished, fill out the [Homework 5 Submission Survey] (https://docs.google.com/forms/d/1MsGf_gNkHJBjBEzQoaUXvmpc3Nljk838FeBXlJ5hH9c/viewform?usp=send_form). 
 
+#### Preclass Reading and Exercise
+- Read the [Class 6 README](https://github.com/olinjs/olinjs/tree/master/lessons/06-css-development-style) before class 6 on Friday 2/5/16.
+- Send an email to [olinjs16@gmail.com](olinjs16@gmail.com) with the subject line "Preclass 6" telling us about...
+    - Something in the reading you felt confident about and easily grasped
+    - Something in the reading you're confused about or want to know more about

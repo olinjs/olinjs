@@ -204,7 +204,7 @@ You can also use the web inspector in your browser to see _and edit_ the CSS of 
 
 ### Nesting
 
-Speaking of specificity, CSS also supports **nesting**, which allos you to change the appearance of elements based on their nesting properties in the HTML.  For example, in this situation:
+Speaking of specificity, CSS also supports **nesting**, which allows you to change the appearance of elements based on their nesting properties in the HTML.  For example, in this situation:
 
 ```css
 <a href="#">link</a>
@@ -435,7 +435,7 @@ var yourNamespace = {
 yourNamespace.foo();
 ```
 
-Read [this article on a similar design called the module pattern](https://toddmotto.com/mastering-the-module-pattern/)
+Read [this article on a similar design called the module pattern](https://toddmotto.com/mastering-the-module-pattern)
 
 Additionally, you can modularize your code by looking at [naming conventions like BEM](https://css-tricks.com/bem-101/), which is a generally accepted way to keep your CSS classes readable and easily usable.
 
@@ -449,4 +449,4 @@ $ npm i --save lodash
 
 and then use it in Node: ```var _ = require('lodash');```
 
-Read through the [lodash docs](https://lodash.com/docs) (or check out their [searchable interfacte](http://devdocs.io/lodash-array/)) to get an idea of some of the useful helper functions
+Read through the [lodash docs](https://lodash.com/docs) (or check out their [searchable interface](http://devdocs.io/lodash-array/)) to get an idea of some of the useful helper functions

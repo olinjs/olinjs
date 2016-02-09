@@ -39,7 +39,7 @@ This can be useful for debugging your server's responses or other API's.
 * Sources: The holy grail of JavaScript debugging tools. Set breakpoints, step through code,
 all the fun stuff that an IDE would give you. We'll get back to this when we go over debugging in more depth.
 * Console: A full JavaScript console that operates in the current scope of the Javascript on the page (including inside breakpoints).
-Run commands, and read through your client-side `console.logs` in this window.
+Run commands, and read through your client-side `console.logs` in this window. **Server-side javascript `console.log` statements will log in your terminal. When you have `console.log` statements in client-side javascript (which we'll discuss more below), they will show up in your developer console.** 
 As a bonus, if you click the "console icon" ![console icon](images/consoleicon.png) in the upper-right corner,
 the console will pop up below whatever other tab you want to reference.
 
@@ -132,7 +132,7 @@ To start we'll need a basic Express app again.
 You can start a new app or modify your homework, but we'd recommend starting from the expressintro app from class 03.
 In your terminal, cd into your your /lessons/05-client-jquery-ajax/ folder, use this command to copy last class's app over:
 ```
-cp -r $PATH-TO-OLINJS-FOLDER/lessons/03-express-templates-mongo/expressintro ./::formsApp::
+cp -r $PATH-TO-OLINJS-FOLDER/lessons/03-express-templates/expressintro ./::yourAppName::
 ```
 Replace `::formsApp::` with whatever you want to name your forms app.
 
@@ -256,7 +256,7 @@ routes.getCatPOST = function(req, res) {
 module.exports = routes;
 ```
 
-Go ahead and grab the two images from the `classApp/public/images` directory and copy them into yours.
+Go ahead and grab the two images from the `formsAppWalkthrough/public/images` directory and copy them into yours.
 Now if you fill out either of the first two forms, you will get the appropriate cat.
 
 As we've discussed before, your uses of different request methods can vary,
@@ -265,34 +265,13 @@ a GET request is your best bet.
 However, if you're making a login form, with private or personal information like passwords,
 you're going to want to go with POST so that the password is not exposed in the URL or stored
 in the server logs or your browser's history.
-To make the third form work, we need to learn about AJAX requests and client side JavaScript.  
 
-## AJAX and XHR Requests
-
-You probably noticed something about how the two first forms act.
-When you submit them, you are taken to an entirely new page.
-You might even get a little white flash of a blank screen before the image loads.
-
-Now check out Google:
-When you search for something the top search bar and Google Plus account information
-are there the entire time as the bottom, results part of the page reloads.
-You dont even need to hit submit. If you change your search then stop typing,
-after a second or so the search results will show up.
-This is accomplished through a method called Asynchronous Javascript and XML (AJAX) requests.
-
-AJAX is a method of using *client-side* JavaScript to send XML HTTP Requests (XHR Requests)
-to a server in the background, without interfering with the display and behavior of the current page.
-This is the technology that Google and the majority of modern websites use to make their pages
-seem quicker and more responsive.
-Using AJAX allows websites to communicate with their servers (or external servers)
-without making entire new page requests.
-This also allows them to modify individual sections of HTML instead of replacing the whole page.
-In order to use AJAX we need to run some client side JavaScript on our website.
+To make the third form work, we need to learn about client side JavaScript and AJAX requests. **First, we'll play around with client-side JS to see how it works, then learn about what AJAX requests are, and finally, we'll make that third form work, and display the right cat images WITHOUT A PAGE REFRESH. We'll need to use client-side JavaScript to make our AJAX requests work, so let's get into that first.**   
 
 ## Client JavaScript and jQuery
 
 JavaScript is a language. Node (server-side) is a "platform".
-Your browser (client-side) is also a "platform" that runs JavaScript,
+Your browser (client-side) is also a "platform" that runs client-side JavaScript,
 with a lot of different capabilities.
 
 **What is client-side JS good for?**
@@ -313,7 +292,7 @@ You can include JavaScript directly in an HTML document using `<script>` tags,
 but writing any significant code within an HTML document would be silly.
 Instead we will reference a separate `.js` file in our HTML, similar to how we include CSS.
 
-Create a new file `main.js` in the `public/javascripts` directory, and paste in the following:
+Create a new file `main.js` in the `public/javascripts` directory of your forms app, and paste in the following:
 ```javascript
 console.log("hello world");
 ```
@@ -404,6 +383,28 @@ For instance, `"h1"` gets all `<h1>` elements,
 `".left-column"` gets all elements with the class "left-column".
 You'll learn more about these when we get to CSS,
 but for now just recognize how much much easier it is to manipulate DOM elements when you can search for them using jQuery.
+
+## AJAX and XHR Requests
+You probably noticed something about how the two first forms act.
+When you submit them, you are taken to an entirely new page.
+You might even get a little white flash of a blank screen before the image loads.
+
+Now check out Google:
+When you search for something the top search bar and Google Plus account information
+are there the entire time as the bottom, results part of the page reloads.
+You dont even need to hit submit. If you change your search then stop typing,
+after a second or so the search results will show up.
+This is accomplished through a method called Asynchronous Javascript and XML (AJAX) requests.
+
+AJAX is a method of using *client-side* JavaScript to send XML HTTP Requests (XHR Requests)
+to a server in the background, without interfering with the display and behavior of the current page.
+This is the technology that Google and the majority of modern websites use to make their pages
+seem quicker and more responsive.
+Using AJAX allows websites to communicate with their servers (or external servers)
+without making entire new page requests.
+This also allows them to modify individual sections of HTML instead of replacing the whole page.
+Now let's use our new client-side JavaScript skills to make AJAX requests and do things without a page refresh!!
+
 
 ### AJAX with jQuery
 
