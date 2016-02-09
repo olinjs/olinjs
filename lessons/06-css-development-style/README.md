@@ -204,7 +204,7 @@ You can also use the web inspector in your browser to see _and edit_ the CSS of 
 
 ### Nesting
 
-Speaking of specificity, CSS also supports **nesting**, which allos you to change the appearance of elements based on their nesting properties in the HTML.  For example, in this situation:
+Speaking of specificity, CSS also supports **nesting**, which allows you to change the appearance of elements based on their nesting properties in the HTML.  For example, in this situation:
 
 ```css
 <a href="#">link</a>
