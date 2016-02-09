@@ -13,10 +13,10 @@ var onSuccess = function(data, status) {
   // console.log(data["_id"]);
   $newLi.attr("id", data["_id"]);
 
-  $newLi.find(".delete").attr("onclick", "deleteFunction('"+data["_id"]+"')");
-  $newLi.find(".update").attr("onclick", "updateFunction('"+data["_id"]+"')");
-  $newLi.find(".outofstock").attr("onclick", "outofStockFunction('"+data["_id"]+"')");
-  $newLi.find(".instock").attr("onclick", "inStockFunction('"+data["_id"]+"')");
+  ($newLi.find(".delete")).find("input:button").attr("onclick", "deleteFunction('"+data["_id"]+"')");
+  ($newLi.find(".update")).find("input:button").attr("onclick", "updateFunction('"+data["_id"]+"')");
+  ($newLi.find(".outofstock")).find("input:button").attr("onclick", "outofStockFunction('"+data["_id"]+"')");
+  ($newLi.find(".instock")).find("input:button").attr("onclick", "inStockFunction('"+data["_id"]+"')");
 
   $updateForm = $newLi.find(".update");
   $updateForm.attr("class", data["_id"]);
@@ -139,7 +139,7 @@ $.post("outofStockIngredients", formData)
 
 var outofStockSuccess = function(data, status) {
   console.log("outofStockSuccess");
-  console.log(data.status); 
+  // console.log(data.status); 
   // $( "#" + data).remove(); 
 };
 

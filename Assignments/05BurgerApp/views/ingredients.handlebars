@@ -7,10 +7,10 @@
 </form>
 
 
-<ul id="template">
+<ul id="template" hidden>
   <li> name: <span class="name">{{this.name}}</span> price: <span class="price"> {{this.price}}</span>
   
-  <form  class ="update" action="updateIngredients" method="POST">
+  <form  class =" update" action="updateIngredients" method="POST">
     New name: <input type="text" id = "name"/><br/>
     New price: <input type="text" id = "price"/><br/>
     <input type="button" value="Update" onclick="updateFunction('{{this._id}}');">
@@ -24,7 +24,7 @@
     <input type="button" value="Out of stock" onclick="outofStockFunction('{{this._id}}');">
   </form>
 
-  <form class = "intstock" action="int stock" method="POST">
+  <form class = "instock" action="in stock" method="POST">
     <input type="button" value="In stock" onclick="inStockFunction('{{this._id}}');">
   </form>
 

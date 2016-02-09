@@ -5,9 +5,14 @@
 <table id="ingredients">
   {{#each ingredients}} 
   <tr id="{{this._id}}" class="inStock">
+  {{#if this.outofstock}}
+    <td><strike><span class="name">{{this.name}}</span>: $<span class="price">{{this.price}}</span></strike></td>
+    <input type="checkbox" disabled>
+  {{else}}
     <td><span class="name">{{this.name}}</span>: $<span class="price">{{this.price}}</span></td>
     <td><span class="checkbox"><input type="checkbox" onclick="updateOrder('{{this._id}}');"></span></td>
-  </tr>
+  {{/if}}
+   </tr>
   {{/each}}
 </table>
 
