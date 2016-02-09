@@ -25,6 +25,9 @@ app.get("/", index.home);
 app.get("/getCat", getCat.getCatGET);
 app.post("/getCat", getCat.getCatPOST);
 
+
+
+
 app.listen(PORT, function() {
   console.log("App running on port:", PORT);
 });
