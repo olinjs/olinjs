@@ -5,9 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
-
+var mongoose = require('mongoose');
 var routes = require('./routes/index');
 var twotes = require('./routes/twotes');
+var users = require('./routes/users');
 var app = express();
 
 // view engine setup
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', routes);
 app.use('/twotes', twotes);
+app.use('/users', users);
 
 var PORT = process.env.PORT || 3000;
 app.listen(PORT, function() {

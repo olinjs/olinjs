@@ -1,15 +1,18 @@
 <h1>Twoter</h1>
-<button type="button" id="auth_button">Login</button>
+<button type="button" onclick="login()" id="login">Login</button>
+<button type="button" onclick="logout()" id="logout">Logout</button>
+<div class="main_wrapper">
 <div id="twotes">
-	<h2>Twotes</h2>
-	<div>
-	<input type="text" id="new_twote">
+	<div id="make_twote">
+	<h2 style="margin-bottom: 5px">Twote!</h2>
+	<textarea rows="4" cols="50" id="new_twote"></textarea>
 	</div>
-	<table class="twotes_list" style="width: 100%" id="twoteslist">
+	<table class="twotes_list" id="twoteslist">
 	</table>
 </div>
 <div id="users">
 	<h2>Users</h2>
-	<table class="user_list" tyle="width: 100%" id="userlist">
+	<table class="user_list" id="userlist">
 	</table>
+</div>
 </div>
