@@ -9,8 +9,15 @@ Now we are going to practice managing sessions. Create a simple app that does th
 * Redirects to / after login and displays "Hello [name]."
 * OPTIONAL: display login time and/or number of times user has viewed page in addition to "Hello [name]."
 
+If you'd like to see how we implemented a simple session app, check out [this example](https://github.com/olinjs/olinjs/tree/master/lessons/07-apis-debugging/sessionExample).
+
 ##Aging Cookies
 Discuss with your group the difference between a cookie and a session, and when are cookies and sessions created and destroyed. Play around with your app; how can you remove the session/cookie so the user has to login again?
+
+##Passport Example
+Check out the [Passport example](https://github.com/olinjs/olinjs/tree/master/lessons/07-apis-debugging/passportExample) -- pull it and follow the instructions in the readme in that folder to get it running.
+
+Read through the code -- what makes sense to you? What's confusing? How will you add Passport to Twoter?
 
 ##OPTIONAL: Production
 We have not discussed creating/deploying apps for production yet, but it is important to highlight the following point. If you read the documentation of Express-session you saw something like: 
