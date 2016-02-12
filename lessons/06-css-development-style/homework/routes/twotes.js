@@ -18,6 +18,7 @@ router.post('/new', function(req, res) {
 			console.log("Problem adding new twote", err);
 		}
 	});
+	res.json(JSON.stringify({"status": "OK" }));
 });
 
 //Form a query that gets all twotes in the database

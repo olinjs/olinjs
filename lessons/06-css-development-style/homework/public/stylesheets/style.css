@@ -54,6 +54,7 @@ tr.user {
 	display: block;
 	margin-bottom: 5px;
 	margin-right: 8px;
+	cursor: pointer;
 }
 
 td.user {

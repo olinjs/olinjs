@@ -23,6 +23,7 @@ router.post('/new', function(req, res) {
 			});
 		}
 	});
+	res.json(JSON.stringify({"status": "OK" }));
 });
 
 //Form a query that gets all users in the database

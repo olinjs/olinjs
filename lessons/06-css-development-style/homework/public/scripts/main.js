@@ -1,3 +1,7 @@
+// This is terrible
+// Controls which user's twotes to highlight
+var a_terrible_var = '';
+
 // Submit new twote
 function makeTwote() {
 	var text = $('#new_twote').val();
@@ -70,7 +74,9 @@ function genTwotesList(twotes) {
 	var list = '';
 	$.each(twotes, function(index, twote) {
 		list += ''.concat(
-			'<tr class="twote"><td class="twote">',
+			'<tr class="twote" style="background-color: ',
+			(twote.author == a_terrible_var) ? "#E6F2FF" : "#E6E6E6",
+			'"><td class="twote">',
 			'<div class="twote_text">',
 			twote.text,
 			'</div><div class="twote_author">- ',
@@ -87,7 +93,9 @@ function genUsersList(users) {
 	var list = '';
 	$.each(users, function(index, user) {
 		list += ''.concat(
-			'<tr class="user"><td class="user">',
+			'<tr class="user" onclick="highlightUserTwotes(\'',
+			user.name,
+			'\')""><td class="user">',
 			'<div class="user">',
 			user.name,
 			'</div>',
@@ -95,6 +103,10 @@ function genUsersList(users) {
 		);
 	});
 	return list;
+}
+
+function highlightUserTwotes(name) {
+	a_terrible_var = name;
 }
 
 // Put a cooky on our user that says their username
