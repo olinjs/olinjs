@@ -44,18 +44,34 @@ router.get('/auth', function(req, res, next) {
 })
 
 
+// router.get('/home', function(req, res, next){
+//   Twote.find({}).sort({datetime: -1}).exec(function(err, twotes) {
+//     if(typeof req.session.user==='undefined') {//| req.session.user == null | req.session.user == "") {
+//       console.log('No one should be logged in ' + req.session.user)
+//       res.render("homeLoggedOut", {alltwotes:twotes})
+//     } else {
+//       var currentuser = req.session.user.name
+//       console.log(currentuser + ' logged in!')
+//       res.render("home", {username: currentuser, alltwotes: twotes})
+//     }
+//   })
+// })
+
 router.get('/home', function(req, res, next){
   Twote.find({}).sort({datetime: -1}).exec(function(err, twotes) {
-    if(typeof req.session.user==='undefined') {//| req.session.user == null | req.session.user == "") {
-      console.log('No one should be logged in ' + req.session.user)
-      res.render("homeLoggedOut", {alltwotes:twotes})
-    } else {
-      var currentuser = req.session.user.name
-      console.log(currentuser + ' logged in!')
-      res.render("home", {username: currentuser, alltwotes: twotes})
-    }
+    User.find({}).sort({name: -1}).exec(function(err, users) {
+      if(typeof req.session.user==='undefined') {//| req.session.user == null | req.session.user == "") {
+        console.log('No one should be logged in ' + req.session.user)
+        res.render("homeLoggedOut", {alltwotes:twotes, allusers: users})
+      } else {
+        var currentuser = req.session.user.name
+        console.log(currentuser + ' logged in!')
+        res.render("home", {username: currentuser, alltwotes: twotes, allusers: users})
+      }
+    })
   })
 })
+
 
 
 
