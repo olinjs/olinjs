@@ -1,6 +1,12 @@
+
 <div id='userLoggedIn' username='{{username}}'>
 User logged in: {{username}}
 </div>
+
+<br></br>
+<form id = 'logOutButton' action='logOut' method='GET'>
+    <input type='submit' value='Log Out'>
+</form>
 
 
 <br></br>
@@ -10,14 +16,15 @@ User logged in: {{username}}
     <input type='submit' value='Submit'>
 </form>
 
+
 <br></br>
 
 <div id='allTwotes'>
     {{#each alltwotes}}
         <div id='{{this.id}}-twote'>
             <li>User {{this.user}} said {{this.text}}</li>
-            <div id = '{{this.user}}-twote-delete' username ='{{this.user}}'>
-                <input type='submit' value='Delete'>
+            <div id = '{{this.user}}-twote-delete' class='deleteButton' username ='{{this.user}}'>
+<!--                 <input type='submit' value='Delete'> -->
             </div>
         </div>
     {{/each}}

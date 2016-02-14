@@ -10,9 +10,8 @@ router.get('/login', function(req, res, next) {
 }) 
 
 
-
-router.post('/auth', function(req, res, next) {
-  var username = req.body.name; //query
+router.get('/auth', function(req, res, next) {
+  var username = req.query.name; //query
   console.log('Username '+ username)
 
   User.find({name: username}, function(err, user) {
@@ -26,43 +25,35 @@ router.post('/auth', function(req, res, next) {
         if(err) console.log('Could not save');
         console.log('New user created ' + newuser.name);
         req.session.user = newuser;
-        res.redirect('/home');
+        res.send(newuser.name)
+        //res.redirect('/home');
       })
 
 
     } else {
       console.log('User already exists! ');
       req.session.user = user[0]
-      res.redirect('/home');
+      res.send(username)
+      //res.redirect('/home');
       //res.redirect('/');
     }
 
   })
 
+
 })
 
 
-// router.get('/home', function(req, res, next){
-//   var currentuser = req.session.user.name;
-//   console.log('User session ' + req.session.user.name)
-//   console.log('User twotes ' + req.session.user.twotes)
-
-//   console.log('Twotes displayed here!');
-//   Twote.find({}, function(err, twotes) {
-//     console.log('Attempting to render');
-//     res.render("home", {username: currentuser, alltwotes: twotes});
-//   })
-// })
-
 router.get('/home', function(req, res, next){
-  var currentuser = req.session.user.name;
-  console.log('User session ' + req.session.user.name)
-  console.log('User twotes ' + req.session.user.twotes)
-
-  console.log('Twotes displayed here!');
   Twote.find({}).sort({datetime: -1}).exec(function(err, twotes) {
-    console.log('Attempting to render');
-    res.render("home", {username: currentuser, alltwotes: twotes});
+    if(typeof req.session.user==='undefined') {//| req.session.user == null | req.session.user == "") {
+      console.log('No one should be logged in ' + req.session.user)
+      res.render("homeLoggedOut", {alltwotes:twotes})
+    } else {
+      var currentuser = req.session.user.name
+      console.log(currentuser + ' logged in!')
+      res.render("home", {username: currentuser, alltwotes: twotes})
+    }
   })
 })
 
@@ -88,6 +79,18 @@ router.post('/newTwote', function(req, res, next) {
 
   res.send(newtwote);
 
+})
+
+router.post('/deleteTwote', function(req, res, next) {
+  
+})
+
+router.get('/logOut', function(req, res, next) {
+  var loggedOutUser = req.session.user.name;
+  console.log('Logging out ' + loggedOutUser)
+  delete req.session.user;
+  res.send(loggedOutUser);
+  //res.redirect('/home')
 })
 
 

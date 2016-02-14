@@ -24,9 +24,11 @@ mongoose.connect('mongodb://localhost/twotes');
 
 app.get('/home', index);
 app.get('/login', index);
-app.post('/auth', index);
+app.get('/auth', index);
+app.get('/logOut', index);
 
 app.post('/newTwote', index);
+app.post('deleteTwote', index)
 
 
 app.listen(3000);

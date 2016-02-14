@@ -4,6 +4,8 @@ console.log($loginform);
 
 var onLoginSuccess = function(data, status) {
   //console.log('User logged in: ' + data.username)
+  console.log('On Login Success...')
+  console.log(data)
   window.location.href = '/home'
   //currentuser = data.username;
 }
@@ -18,7 +20,7 @@ $loginform.submit(function(event) {
   var username = $loginform.find("[name=\"username\"]").val();
 
   event.preventDefault()
-  $.post("auth", {  
+  $.get("auth", {  
     name: username,
   }) 
     .done(onLoginSuccess)
@@ -45,8 +47,16 @@ var currentuser = $("#userLoggedIn").attr('username')
 console.log('Current user logged in: ' + currentuser);
 
 var removeDeleteButtons = function(usrname) {
-  console.log("Removing delete button!")
-  $("#" + usrname + "-twote-delete").remove();
+  if(usrname) {
+    console.log("Removing delete button!")
+    var selectbuttons = $("[username=" + usrname + "].deleteButton")//$("#" + usrname + "-twote-delete");
+    console.log('Select thingy ' + selectbuttons)
+
+    //select.remove();
+    var deletebuttons = "<input type='submit' value='Delete'>"
+    selectbuttons.append(deletebuttons);
+  }
+
 }
 
 removeDeleteButtons(currentuser);
@@ -56,7 +66,7 @@ console.log($newtwoteform);
 
 $newtwoteform.submit(function(event) {
   var twotetext = $newtwoteform.find("[name=\"twotetext\"]").val();
-home
+//home
   console.log(twotetext);
 
   event.preventDefault()
@@ -66,3 +76,17 @@ home
   .done(onNewTwoteSuccess)
   .error(onError)
 });
+
+var $logoutform = $("#logOutButton")
+console.log($logoutform)
+
+var onLogoutSuccess = function(data, status) {
+  //console.log('Logged out ' + data)
+  window.location.href = '/home'
+}
+
+$logoutform.submit(function(event) {
+  console.log('Log out button pressed!')
+  event.preventDefault()
+  $.get("logOut", {}).done(onLogoutSuccess).error(onError)
+})
