@@ -1,4 +1,4 @@
-#Lesson 7 - APIs and Debugging Strategies
+#Lesson 7 - API Design and Sessions
 ##Preclass 
 Please read the following Readme and some of the following links on [Oauth](http://www.cubrid.org/blog/dev-platform/dancing-with-oauth-understanding-how-authorization-works/) and [REST](http://www.infoq.com/articles/rest-introduction)
 
@@ -68,28 +68,6 @@ curl http://services.faa.gov/airport/status/SAN?format=application/json
 
 You can actually use curl to test your own server's routes too. Just start your server in one terminal, and in a separate terminal window, point curl at localhost:PORT/routeYouWantToTest. Later we will learn how to programatically test routes, but curl is nice if you want to see how the data looks to the client. 
 
-##Accessing Public APIs with OAuth
-You might have noticed that some of the above APIs are listed as having an OAuth auth scheme, but you probably have no idea what that means. Sometimes, a 3rd party application might want access to private user data, but you can't reasonably expect web service providers to give that information out freely - we need a way for service providers' users to authorize 3d party applications to access their data. OAuth lets us do just that. **Note:** We're going to assume that throughout this course you will only be consuming APIs which require OAuth and not creating them.
-
-###A brief overview of OAuth
-OAuth plays two roles in accessing data - **authentication** and **authorization**. 
-
-Authentication is handled by assigning two unique values to each application when they are registered with the service. These values are known as a **key** and a **secret**. The key serves as a public identifier for the application, and the secret is used to reversibly encrypt information about an OAuth API request. If the service provider is able to correctly decrypt the data sent along with the request using the secret it has assigned to the application, it considers this verification that the requester is who it says it is. This method of authentication is known as signing.
-
-Authorization occurs after your application has been authenticated by the service, and requires that you redirect the user to their OAuth authorization page. There, the service can authenticate the user using their own auth flow, and ask their permission to give you access to their data. If the users says yes, they are redirected back to you, and you get a special access token that allows you to request data specific to that user.
-
-![Facebook authorization window](./images/facebook.png)
-*Example authorization page for Facebook.*
-
-You'll find that some services like Facebook have different levels of permissions, each of which will give you an access token which only allows access to data within each permission tier.
-
-The full exchange of requests involved in OAuth can be seen in the graphic below. You can read more about OAuth on the [official website](http://oauth.net/), but I recommend this easy-to-follow, yet [comprehensive overview](http://www.cubrid.org/blog/dev-platform/dancing-with-oauth-understanding-how-authorization-works/), which is the same as the preclass link.
-
-![OAuth auth flow.](./images/oauth.png)
-*Image via oauth.net*
-
-###OAuth Exercise
-We have an small example application using OAuth in the `word_cloud` folder in this lesson folder that will use Twitter's API to generate a word cloud. This example will show you how to build an OAuth request from scratch. While we hope you won't have to do that out in the real world unless absolutely necessary, we thought it might be nice to show you one so you can appreciate all of the heavy lifting some of the OAuth libraries take care of for you.
 
 ##Designing APIs with REST-ful Semantics
 Up until now, we've only had experience using URL routes that we created ourselves, all used for interacting with web pages. In this lesson, we've started exposing you to APIs other people have designed specifically for you to use. What about when *you* want to create an API for *other people* to use? We won't go into detail about picking what kind of data or functionality to expose, as that will vary based on your application, but what we will cover is _how_ to expose that data and functionality in a way that is easy for others to understand and use.
@@ -158,5 +136,84 @@ app.use('/api*', function(req, res, next) {
 });
 ```
 
+##Accessing Public APIs with OAuth
+You might have noticed that some of the above APIs are listed as having an OAuth auth scheme, but you probably have no idea what that means. Sometimes, a 3rd party application might want access to private user data, but you can't reasonably expect web service providers to give that information out freely - we need a way for service providers' users to authorize 3d party applications to access their data. OAuth lets us do just that. **Note:** We're going to assume that throughout this course you will only be consuming APIs which require OAuth and not creating them.
+
+###A brief overview of OAuth
+OAuth plays two roles in accessing data - **authentication** and **authorization**. 
+
+Authentication is handled by assigning two unique values to each application when they are registered with the service. These values are known as a **key** and a **secret**. The key serves as a public identifier for the application, and the secret is used to reversibly encrypt information about an OAuth API request. If the service provider is able to correctly decrypt the data sent along with the request using the secret it has assigned to the application, it considers this verification that the requester is who it says it is. This method of authentication is known as signing.
+
+Authorization occurs after your application has been authenticated by the service, and requires that you redirect the user to their OAuth authorization page. There, the service can authenticate the user using their own auth flow, and ask their permission to give you access to their data. If the users says yes, they are redirected back to you, and you get a special access token that allows you to request data specific to that user.
+
+![Facebook authorization window](./images/facebook.png)
+*Example authorization page for Facebook.*
+
+You'll find that some services like Facebook have different levels of permissions, each of which will give you an access token which only allows access to data within each permission tier.
+
+The full exchange of requests involved in OAuth can be seen in the graphic below. You can read more about OAuth on the [official website](http://oauth.net/), but I recommend this easy-to-follow, yet [comprehensive overview](http://www.cubrid.org/blog/dev-platform/dancing-with-oauth-understanding-how-authorization-works/), which is the same as the preclass link.
+
+![OAuth auth flow.](./images/oauth.png)
+*Image via oauth.net*
+
+###Signing In with OAuth
+You can also use OAuth to handle user login. You've probably seen websites with "Log in with Google" or "Log in with Facebook" buttons -- those buttons access the Google or Facebook API to sign you in with your Google or Facebook credentials, then save your user information to session just like you would manually. We'll use an NPM package called Passport to handle OAuth-type user login. 
+
+#### Sessions and Cookies
+Before we talk about using Passport for user authentication, we need to talk a bit about sessions and cookies.
+
+Apps usually handle authentication by saving your information to a session, which is a store of information about the current user. The session will be restarted if it already exists or created if it's your first time using the app. A session usually works by associating a cookie with a user; a cookie is a small amount of information which is sent back and forth between the server and the browser. There are two types of cookies, but for all our purposes we will stick to session cookies, which are deleted from the browser when the page is closed (the other type is a persistent cookie, which isn't deleted from the browser when the page is closed). Usually our cookies will just contain the session id, because we will use the server to hold most of the user's data.
+
+There's an npm module called `express-session` which is great for managing user sessions. To install this module into your app type: 
+```
+npm install --save express-session
+```
+...and then `app.use` the module as middleware:
+```javascript
+var app = express();
+
+app.use(session({ 
+  secret: 'superS3CRE7',
+  resave: false,
+  saveUninitialized: false ,
+  cookie: {}
+}));
+```
+Aaaand we are done with adding basic sessions to our app. Not too complicated! Let's go through the options object you pass into the session function. The first attribute, `secret`, is used to sign the session ID cookie (basically to make it difficult for people to access the data in the session). `resave` determines whether an existing session will be saved to the database even if it was not updated during a request. Similarly, `saveUninitialized` determines whether a new session will be saved to the database even if it was not updated during a request. `false` is a good default option for both.
+
+The `cookie` attribute allows you to describe the session ID cookie. If you don't define it, it will default to:
+```
+{ path: '/', httpOnly: true, secure: false, maxAge: null }
+```
+Within `cookie`: the `path` attribute describes where the cookie is created. `httpOnly` determines whether you can access the cookie from the client. `secure` determines whether HTTP in addition to HTTPs is able create sessions. `maxage` determines when the cookie is destroyed.
+
+Let's talk about some specific uses for sessions.
+
+You could track visits to a page like this:
+```javascript
+app.get('/', function(req, res, next){
+    var sess = req.session;
+    if (sess.views) {
+        sess.views++;
+    } else {
+        sess.views = 1;
+    }
+    next();
+}, function(req, res next) {
+    res.send('Views: ' + sess.views);
+});
+```
+This block of code checks the current session to see if the user has visited the page and increments the views attribute on the session if it exists, or creates it otherwise. The `next()` at the end passes control to the next handler... in this case, the function which `res.send`s the number of views.
+
+You can also set sessions to expire, forcing the user to login again, which you often see on sensative sites like banking apps. This will be part of the inclass work so I won't write up an example here. However, if you have any more questions about sessions and cookies, you can read more about [express-session](https://www.npmjs.com/package/express-session) and follow a tutorial [here](http://expressjs-book.com/index.html%3Fp=128.html).
+
+#### Using Passport
+Passport lets you ask your users to log in via Google or Facebook, then manages the relevant sessions for you. That's it! All of the OAuth craziness is abstracted away.
+
+###OAuth By Hand
+We have an small example application using OAuth in the `word_cloud` folder in this lesson folder that will use Twitter's API to generate a word cloud. This example will show you how to build an OAuth request from scratch. While we hope you won't have to do that out in the real world unless absolutely necessary, we thought it might be nice to show you one so you can appreciate all of the heavy lifting some of the OAuth libraries take care of for you.
+
 ###Can I set up my own OAuth server?
 So you want to use OAuth to authenticate and authorize your API users, huh? Unfortunately that's _just_ outside the scope of this class, but know that if you do get to that point someday, there are some great packages available (on npm) that can help you get a basic setup running fairly quickly.
+
+
