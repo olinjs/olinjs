@@ -28,7 +28,7 @@ app.get('/auth', index);
 app.get('/logOut', index);
 
 app.post('/newTwote', index);
-app.post('deleteTwote', index)
+app.post('/deleteTwote', index)
 
 
 app.listen(3000);

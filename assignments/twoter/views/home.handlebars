@@ -23,9 +23,9 @@ User logged in: {{username}}
     {{#each alltwotes}}
         <div id='{{this.id}}-twote'>
             <li>User {{this.user}} said {{this.text}}</li>
-            <div id = '{{this.user}}-twote-delete' class='deleteButton' username ='{{this.user}}'>
-<!--                 <input type='submit' value='Delete'> -->
-            </div>
+            <form id = '{{this.id}}-delete-twote' class='deleteButton' username ='{{this.user}}'>
+
+            </form>
         </div>
     {{/each}}
 </div>

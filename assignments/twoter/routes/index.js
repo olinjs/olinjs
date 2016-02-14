@@ -82,7 +82,15 @@ router.post('/newTwote', function(req, res, next) {
 })
 
 router.post('/deleteTwote', function(req, res, next) {
-  
+  twoteid = req.body.id
+  twoteid = twoteid.substring(0, twoteid.length-13)
+  Twote.findByIdAndRemove(twoteid, function(err, twote) {
+    console.log('Deleting twote ' + twote._id)
+    res.send(twote._id)
+  })
+
+
+
 })
 
 router.get('/logOut', function(req, res, next) {

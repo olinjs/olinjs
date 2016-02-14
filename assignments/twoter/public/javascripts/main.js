@@ -53,7 +53,11 @@ var removeDeleteButtons = function(usrname) {
     console.log('Select thingy ' + selectbuttons)
 
     //select.remove();
-    var deletebuttons = "<input type='submit' value='Delete'>"
+    //var deletebuttons = "<input type='submit' value='Delete'>"
+
+    var deletebuttons = //"<form id = '{{this.id}}-delete-twote' class='delete' action='deleteTwote' method='POST'>" + 
+                        "<input type='submit' value='Delete'>" //+ 
+                        //"</form>"
     selectbuttons.append(deletebuttons);
   }
 
@@ -89,4 +93,29 @@ $logoutform.submit(function(event) {
   console.log('Log out button pressed!')
   event.preventDefault()
   $.get("logOut", {}).done(onLogoutSuccess).error(onError)
+})
+
+//do stuff to delete twotes here
+//added html to identify twote delete removeDeleteButtons
+//added simple printout for /deleteTwote
+
+var onDeleteSuccess = function(data, status) {
+  var text = ""
+  $("#" + data + "-twote").html(text)
+}
+
+var $deleteform = $(".deleteButton")
+console.log($deleteform)
+
+$deleteform.submit(function(event) {
+  var $thisform = $(event.target).closest('form')
+  var twoteid = $thisform.attr('id')
+  console.log(twoteid)
+
+  event.preventDefault()
+  $.post('deleteTwote',{
+    id: twoteid
+  })
+  .done(onDeleteSuccess)
+  .error(onError)
 })
