@@ -1,7 +1,7 @@
 <h2>Welcome to Twoter</h2>
 <br></br>
 <form id = 'logInButton' action='login' method='GET'>
-    <input type='submit' value='Log In'>
+    <input type='submit' class='login' value='Log In'>
 </form>
 
 
@@ -10,7 +10,17 @@
 <div id='allTwotes'>
     {{#each alltwotes}}
         <div id='{{this.id}}-twote'>
-            <li>User {{this.user}} said {{this.text}}</li>
+            <li>{{this.user}} said: "{{this.text}}"</li>
         </div>
     {{/each}}
 </div>
+
+<div id='allUsers'>
+    <h3>User List</h3>
+    {{#each allusers}}
+    <div id='user-{{this.name}}' class='user'>
+        <p>User {{this.name}}</p>
+    </div>
+    {{/each}}
+</div>
+

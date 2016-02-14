@@ -34,8 +34,8 @@ var onNewTwoteSuccess = function(data, status) {
   console.log('Date: ' + data.datetime)
 
   var text = "<div id='" + data._id + "-twote'>" + 
-            "<li>User " + data.user + " said " + data.text + "</li>" + 
-            "<input type='submit' value='Delete'>"
+            "<li>" + data.user + " said: \"" + data.text + "\"</li>" + 
+            "<input type='submit' value='Delete' class='delete'>"
             "</div>"
 
   // $("#allTwotes").append(text);
@@ -56,7 +56,7 @@ var removeDeleteButtons = function(usrname) {
     //var deletebuttons = "<input type='submit' value='Delete'>"
 
     var deletebuttons = //"<form id = '{{this.id}}-delete-twote' class='delete' action='deleteTwote' method='POST'>" + 
-                        "<input type='submit' value='Delete'>" //+ 
+                        "<input type='submit' value='Delete' class='delete'>" //+ 
                         //"</form>"
     selectbuttons.append(deletebuttons);
   }
@@ -101,7 +101,8 @@ $logoutform.submit(function(event) {
 
 var onDeleteSuccess = function(data, status) {
   var text = ""
-  $("#" + data + "-twote").html(text)
+  //$("#" + data + "-twote").html(text)
+  $("#" + data + "-twote").remove()
 }
 
 var $deleteform = $(".deleteButton")

@@ -1,11 +1,13 @@
+<h2>Welcome to Twoter</h2>
+<br></br>
 
 <div id='userLoggedIn' username='{{username}}'>
-User logged in: {{username}}
+    User logged in: {{username}}
 </div>
 
 <br></br>
 <form id = 'logOutButton' action='logOut' method='GET'>
-    <input type='submit' value='Log Out'>
+    <input type='submit' class='logout' value='Log Out'>
 </form>
 
 
@@ -22,8 +24,8 @@ User logged in: {{username}}
 <div id='allTwotes'>
     {{#each alltwotes}}
         <div id='{{this.id}}-twote'>
-            <li>User {{this.user}} said {{this.text}}</li>
-            <form id = '{{this.id}}-delete-twote' class='deleteButton' username ='{{this.user}}'>
+            <li>{{this.user}} said: "{{this.text}}"</li>
+            <form id = '{{this.id}}-delete' class='deleteButton' username ='{{this.user}}'>
 
             </form>
         </div>
@@ -33,8 +35,10 @@ User logged in: {{username}}
 <br></br>
 
 <div id='allUsers'>
-    User List
+    <h3>User List</h3>
     {{#each allusers}}
+    <div id='user-{{this.name}}' class='user'>
         <p>User {{this.name}}</p>
+    </div>
     {{/each}}
 </div>

@@ -93,13 +93,17 @@ router.post('/newTwote', function(req, res, next) {
     console.log('Adding twote for user ' + newtwote.user)
   })
 
+  Twote.find({user: newtwote.user}).exec(function(err, twotes) {
+    console.log('User ' + newtwote.user + ' has the following twotes: ' + twotes)
+  })
+
   res.send(newtwote);
 
 })
 
 router.post('/deleteTwote', function(req, res, next) {
   twoteid = req.body.id
-  twoteid = twoteid.substring(0, twoteid.length-13)
+  twoteid = twoteid.substring(0, twoteid.length-7)
   Twote.findByIdAndRemove(twoteid, function(err, twote) {
     console.log('Deleting twote ' + twote._id)
     res.send(twote._id)
