@@ -21,5 +21,12 @@ In order to use Passport with Facebook, you'll need an application ID and secret
 
 When we start working on projects, you might want to have a live version of your site deployed while you continue to work on it locally. In order to do this, you might consider having two Facebook applications: `my-app` and `my-app-dev`. Then you can set up your local application to use `my-app-dev`, and your deployed site to use `my-app`.
 
+
+#### Submitting
+When you're done with your app, fill out the [Twoter homework survey](http://goo.gl/forms/u5MDLduyFz). The survey is your submission for homeworks 6 and 7.
+
 #### Preclass Reading and Exercise
-- Read the [Class 8 README](https://github.com/olinjs/olinjs/blob/master/lessons/08-tests-tasks).
+- Read the [Class 8 README](https://github.com/olinjs/olinjs/blob/master/lessons/08-tests-tasks) before next class.
+- Send an email to [olinjs16@gmail.com](olinjs16@gmail.com) with the subject line "Preclass 8" telling us about...
+    - Something in the reading you felt confident about and easily grasped
+    - Something in the reading you're confused about or want to know more about
