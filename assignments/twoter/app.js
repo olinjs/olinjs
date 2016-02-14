@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
 var mongoose = require('mongoose');
+var session = require('express-session')
 
 var app = express();
 
@@ -17,11 +18,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({secret: '123456789ASD'}));
 
 mongoose.connect('mongodb://localhost/twotes');
 
-app.get('/', index);
+app.get('/home', index);
 app.get('/login', index);
 app.post('/auth', index);
+
+app.post('/newTwote', index);
+
 
 app.listen(3000);
