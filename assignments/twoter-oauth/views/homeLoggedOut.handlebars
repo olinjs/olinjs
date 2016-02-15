@@ -1,0 +1,26 @@
+<h2>Welcome to Twoter</h2>
+
+<form id = 'logInButton' action='login' method='GET'>
+    <input type='submit' class='login' value='Log In'>
+</form>
+
+
+<br></br>
+
+<div id='allTwotes'>
+    {{#each alltwotes}}
+        <div id='{{this.id}}-{{this.user}}-twote' twoteuser = '{{this.user}}'>
+            {{this.username}} said: "{{this.text}}"
+        </div>
+    {{/each}}
+</div>
+
+<div id='allUsers'>
+    <h3>User List</h3>
+    {{#each allusers}}
+    <div id='user-{{this.name}}' class='user'>
+        User {{this.name}}
+    </div>
+    {{/each}}
+</div>
+
