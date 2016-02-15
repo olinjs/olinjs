@@ -1,5 +1,4 @@
 <h2>Welcome to Twoter</h2>
-<br></br>
 
 <div id='userLoggedIn' username='{{username}}'>
     User logged in: {{username}}
@@ -24,9 +23,8 @@
 <div id='allTwotes'>
     {{#each alltwotes}}
         <div id='{{this.id}}-twote'>
-            <li>{{this.user}} said: "{{this.text}}"</li>
+            {{this.user}} said: "{{this.text}}"
             <form id = '{{this.id}}-delete' class='deleteButton' username ='{{this.user}}'>
-
             </form>
         </div>
     {{/each}}
@@ -38,7 +36,7 @@
     <h3>User List</h3>
     {{#each allusers}}
     <div id='user-{{this.name}}' class='user'>
-        <p>User {{this.name}}</p>
+        User {{this.name}}
     </div>
     {{/each}}
 </div>

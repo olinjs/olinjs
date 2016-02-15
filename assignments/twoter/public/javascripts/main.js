@@ -34,8 +34,9 @@ var onNewTwoteSuccess = function(data, status) {
   console.log('Date: ' + data.datetime)
 
   var text = "<div id='" + data._id + "-twote'>" + 
-            "<li>" + data.user + " said: \"" + data.text + "\"</li>" + 
-            "<input type='submit' value='Delete' class='delete'>"
+            data.user + " said: \"" + data.text + "\"" + 
+            "<form id='" + data._id + "-delete' class='deleteButton' username=" + data.user + ">" + 
+            "<input type='submit' value='Delete' class='delete'></form>" + 
             "</div>"
 
   // $("#allTwotes").append(text);
@@ -55,7 +56,8 @@ var removeDeleteButtons = function(usrname) {
     //select.remove();
     //var deletebuttons = "<input type='submit' value='Delete'>"
 
-    var deletebuttons = //"<form id = '{{this.id}}-delete-twote' class='delete' action='deleteTwote' method='POST'>" + 
+    var deletebuttons = 
+    //"<form id = '{{this.id}}-delete-twote' class='delete' action='deleteTwote' method='POST'>" + 
                         "<input type='submit' value='Delete' class='delete'>" //+ 
                         //"</form>"
     selectbuttons.append(deletebuttons);
@@ -105,10 +107,10 @@ var onDeleteSuccess = function(data, status) {
   $("#" + data + "-twote").remove()
 }
 
-var $deleteform = $(".deleteButton")
+var $deleteform = $("#allTwotes")
 console.log($deleteform)
 
-$deleteform.submit(function(event) {
+$deleteform.on("click", ".deleteButton", function(event) {
   var $thisform = $(event.target).closest('form')
   var twoteid = $thisform.attr('id')
   console.log(twoteid)

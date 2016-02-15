@@ -24,7 +24,7 @@ p {
     top: 10px;
 }
 
-h2 {
+h2, h3 {
     display: inline-block;
     color: #000000;
     font-family: Arial !important;
@@ -55,7 +55,7 @@ div [id$=-twote], #new {
     float:right;
     width:20%;
     overflow:hidden;
-    margin: 10px;
+    margin: 0px;
     position: absolute;
     right: 10px;
     top: 150px;
@@ -78,6 +78,7 @@ a new post, but will display after refresh*/
     border: 2px solid black;
     margin: 10px;
     background-color: #cccccc;
+    float:right;
     /*float: right;*/
 }
 
