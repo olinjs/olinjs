@@ -22,6 +22,9 @@ app.use(session({secret: '123456789ASD'}));
 
 mongoose.connect('mongodb://localhost/twotes');
 
+app.get('/', function(req, res) {
+    res.redirect('/home')
+})
 app.get('/home', index);
 app.get('/login', index);
 app.get('/auth', index);

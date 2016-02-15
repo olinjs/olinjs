@@ -25,7 +25,7 @@ router.get('/auth', function(req, res, next) {
         if(err) console.log('Could not save');
         console.log('New user created ' + newuser.name);
         req.session.user = newuser;
-        res.send(newuser.name)
+        res.send([newuser.name, newuser._id])
         //res.redirect('/home');
       })
 
@@ -33,7 +33,7 @@ router.get('/auth', function(req, res, next) {
     } else {
       console.log('User already exists! ');
       req.session.user = user[0]
-      res.send(username)
+      res.send([username, user[0]._id])
       //res.redirect('/home');
       //res.redirect('/');
     }
@@ -65,8 +65,9 @@ router.get('/home', function(req, res, next){
         res.render("homeLoggedOut", {alltwotes:twotes, allusers: users})
       } else {
         var currentuser = req.session.user.name
+        var currentuserid = req.session.user._id
         console.log(currentuser + ' logged in!')
-        res.render("home", {username: currentuser, alltwotes: twotes, allusers: users})
+        res.render("home", {username: currentuser, userid: currentuserid, alltwotes: twotes, allusers: users})
       }
     })
   })
@@ -77,6 +78,7 @@ router.get('/home', function(req, res, next){
 
 router.post('/newTwote', function(req, res, next) {
   var currentuser = req.session.user.name;
+  var currentuserid = req.session.user._id;
   var twotetext = req.body.text;
   var now = new Date();
 
@@ -84,7 +86,12 @@ router.post('/newTwote', function(req, res, next) {
   console.log('New twote text: ' + twotetext)
   console.log('Adding twote for user ' + currentuser)
 
-  var newtwote = new Twote({user: currentuser, datetime: now, text: twotetext})
+  var newtwote = new Twote({
+    user: currentuserid, 
+    username: currentuser, 
+    datetime: now, 
+    text: twotetext
+  })
 
   newtwote.save(function(err) {
     if(err) console.log('Could not save');
@@ -94,7 +101,7 @@ router.post('/newTwote', function(req, res, next) {
   })
 
   Twote.find({user: newtwote.user}).exec(function(err, twotes) {
-    console.log('User ' + newtwote.user + ' has the following twotes: ' + twotes)
+    console.log('User ' + newtwote.username + ' has the following twotes: ' + twotes)
   })
 
   res.send(newtwote);
@@ -106,7 +113,7 @@ router.post('/deleteTwote', function(req, res, next) {
   twoteid = twoteid.substring(0, twoteid.length-7)
   Twote.findByIdAndRemove(twoteid, function(err, twote) {
     console.log('Deleting twote ' + twote._id)
-    res.send([twote._id, twote.user])
+    res.send([twote._id, twote.user, twote.username])
   })
 
 

@@ -5,7 +5,7 @@ console.log($loginform);
 var onLoginSuccess = function(data, status) {
   //console.log('User logged in: ' + data.username)
   console.log('On Login Success...')
-  console.log(data)
+  console.log(data[0], data[1])
   window.location.href = '/home'
   //currentuser = data.username;
 }
@@ -29,14 +29,14 @@ $loginform.submit(function(event) {
 
 var onNewTwoteSuccess = function(data, status) {
   console.log('New twote successfully added!')
-  console.log('User: ' + data.user)
+  console.log('User: ' + data.username)
   console.log('Text: ' + data.text)
   console.log('Date: ' + data.datetime)
 
   var text = 
             "<div id='" + data._id +"-" + data.user + "-twote' " +"twoteuser='" + data.user +  "'>" + 
-            data.user + " said: \"" + data.text + "\"" + 
-            "<form id='" + data._id + "-delete' class='deleteButton' username='" + data.user + "'>" + 
+            data.username + " said: \"" + data.text + "\"" + 
+            "<form id='" + data._id + "-delete' class='deleteButton' user='" + data.user + "'>" + 
             "<input type='submit' value='Delete' class='delete'></form>" + 
             "</div>"
 
@@ -45,13 +45,13 @@ var onNewTwoteSuccess = function(data, status) {
 
 }
 
-var currentuser = $("#userLoggedIn").attr('username')
-console.log('Current user logged in: ' + currentuser);
+var currentuserid = $("#userLoggedIn").attr('user')
+console.log('Current user logged in: ' + currentuserid);
 
-var removeDeleteButtons = function(usrname) {
-  if(usrname) {
+var removeDeleteButtons = function(usrid) {
+  if(usrid) {
     console.log("Removing delete button!")
-    var selectbuttons = $("[username=" + usrname + "].deleteButton")//$("#" + usrname + "-twote-delete");
+    var selectbuttons = $("[user=" + usrid + "].deleteButton")//$("#" + usrname + "-twote-delete");
     console.log('Select thingy ' + selectbuttons)
 
     //select.remove();
@@ -66,7 +66,7 @@ var removeDeleteButtons = function(usrname) {
 
 }
 
-removeDeleteButtons(currentuser);
+removeDeleteButtons(currentuserid);
 
 var $newtwoteform = $("#new");
 console.log($newtwoteform);
@@ -105,6 +105,7 @@ $logoutform.submit(function(event) {
 var onDeleteSuccess = function(data, status) {
   var twoteid = data[0];
   var twoteuser = data[1];
+  console.log('Twoteid, twoteuser ' + twoteid + " " + twoteuser)
   var text = ""
   //$("#" + data + "-twote").html(text)
   $("#" + twoteid + "-" + twoteuser + "-twote").remove()
@@ -130,26 +131,6 @@ $alltwoteform.on("click", ".deleteButton", function(event) {
 
 //HIGHLIGHTING ON CLICK
 var $allusers = $("#allUsers")
-// $allusers.on("click", ".user", function(event) {
-//   //console.log('You clicked on a user!')
-
-//   //make sure nothing is highlighted before we start!
-//   $allusertwotes.removeClass('highlighted')
-//   $thisdiv.removeClass('highlighted')
-
-//   var $thisdiv = $(event.target).closest('div')
-//   //console.log($thisdiv)
-//   var user = $thisdiv.attr('id')
-//   user = user.substring(5,user.length)
-//   console.log(user)
-
-//   var $allusertwotes = $("[twoteuser="+user +"]")
-//   console.log($allusertwotes)
-
-//   $allusertwotes.addClass('highlighted')
-//   $thisdiv.addClass('highlighted') //highlight listed user too!
-
-// })
 
 
 $allusers.on("click", ".user", function(event) {

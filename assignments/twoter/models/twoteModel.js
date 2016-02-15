@@ -3,7 +3,8 @@ var mongoose = require('mongoose');
 
 
 var twoteSchema = mongoose.Schema({
-  user: String,
+  user: {type: mongoose.Schema.Types.ObjectId, ref: 'user'},
+  username: String,
   datetime: Date, 
   text: String,
   //inStock: Boolean,
