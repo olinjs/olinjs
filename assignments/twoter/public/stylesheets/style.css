@@ -15,6 +15,10 @@ p {
     border: 2px solid black;
     margin: 10px;
     background-color: #ffffff;
+
+    font-family: "Times New Roman", Times, serif;
+    color: #000000;
+    font-size: 16px;
 }
 #userLoggedIn {
     float: right;
@@ -24,26 +28,31 @@ p {
     top: 10px;
 }
 
-h2, h3 {
+h2, h3{
     display: inline-block;
     color: #000000;
     font-family: Arial !important;
+    font-size: 24px;
+}
+h3 {
+    font-size:18px;
 }
 
 body {
     background-color: #ffffff;
 }
-html *
+html
 {
     font-family: "Times New Roman", Times, serif;
     color: #000000;
+    font-size: 18px;
 }
 
 div [id$=-twote], #new {
     /*width: 800px;*/
     border-radius: 10px;
     padding: 25px;
-    border: 10px; /*solid navy;*/
+   /* border: 10px; *//*solid navy;*/
     margin: 5px;
     background-color: #cccccc;
     
@@ -51,12 +60,17 @@ div [id$=-twote], #new {
     width:75%;
     overflow:hidden;
 }
+#new {
+    text-align: left;
+    background-color: #c6c6ec;
+}
+
 #allUsers{
     float:right;
     width:20%;
     overflow:hidden;
     margin: 0px;
-    position: absolute;
+    position: fixed;
     right: 10px;
     top: 150px;
 }
@@ -77,9 +91,41 @@ a new post, but will display after refresh*/
     padding: 5px;
     border: 2px solid black;
     margin: 10px;
-    background-color: #cccccc;
+/*    background-color: #cccccc;*/
     float:right;
     /*float: right;*/
+    font-family: "Times New Roman", Times, serif;
+    font-size: 16px;
+}
+.highlighted {
+    border-radius: 10px;
+    border: 5px solid #252574;
+    margin: 5px;
 }
 
+/*log in and submit-twote buttons*/
+.submitlogin, .submitnew{
+    border-radius: 5px;
+    border-style: solid;
+    padding: 5px;
+    border: 2px solid black;
+    margin: 10px;
+    background-color: #cccccc;
 
+    font-family: "Times New Roman", Times, serif;
+    color: #000000;
+    font-size: 16px;
+}
+.submitlogin{
+    background-color: #ffffff;
+}
+.submitnew{
+    background-color: #c6c6ec;
+}
+
+.textinput{
+    width: 60%;
+    margin: 20px;
+/*    padding: 20px;*/
+
+}

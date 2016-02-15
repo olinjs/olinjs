@@ -33,9 +33,10 @@ var onNewTwoteSuccess = function(data, status) {
   console.log('Text: ' + data.text)
   console.log('Date: ' + data.datetime)
 
-  var text = "<div id='" + data._id + "-twote'>" + 
+  var text = 
+            "<div id='" + data._id +"-" + data.user + "-twote' " +"twoteuser='" + data.user +  "'>" + 
             data.user + " said: \"" + data.text + "\"" + 
-            "<form id='" + data._id + "-delete' class='deleteButton' username=" + data.user + ">" + 
+            "<form id='" + data._id + "-delete' class='deleteButton' username='" + data.user + "'>" + 
             "<input type='submit' value='Delete' class='delete'></form>" + 
             "</div>"
 
@@ -102,15 +103,19 @@ $logoutform.submit(function(event) {
 //added simple printout for /deleteTwote
 
 var onDeleteSuccess = function(data, status) {
+  var twoteid = data[0];
+  var twoteuser = data[1];
   var text = ""
   //$("#" + data + "-twote").html(text)
-  $("#" + data + "-twote").remove()
+  $("#" + twoteid + "-" + twoteuser + "-twote").remove()
 }
 
-var $deleteform = $("#allTwotes")
-console.log($deleteform)
 
-$deleteform.on("click", ".deleteButton", function(event) {
+//DELETING TWOTES
+var $alltwoteform = $("#allTwotes")
+console.log($alltwoteform)
+
+$alltwoteform.on("click", ".deleteButton", function(event) {
   var $thisform = $(event.target).closest('form')
   var twoteid = $thisform.attr('id')
   console.log(twoteid)
@@ -121,4 +126,58 @@ $deleteform.on("click", ".deleteButton", function(event) {
   })
   .done(onDeleteSuccess)
   .error(onError)
+})
+
+//HIGHLIGHTING ON CLICK
+var $allusers = $("#allUsers")
+// $allusers.on("click", ".user", function(event) {
+//   //console.log('You clicked on a user!')
+
+//   //make sure nothing is highlighted before we start!
+//   $allusertwotes.removeClass('highlighted')
+//   $thisdiv.removeClass('highlighted')
+
+//   var $thisdiv = $(event.target).closest('div')
+//   //console.log($thisdiv)
+//   var user = $thisdiv.attr('id')
+//   user = user.substring(5,user.length)
+//   console.log(user)
+
+//   var $allusertwotes = $("[twoteuser="+user +"]")
+//   console.log($allusertwotes)
+
+//   $allusertwotes.addClass('highlighted')
+//   $thisdiv.addClass('highlighted') //highlight listed user too!
+
+// })
+
+
+$allusers.on("click", ".user", function(event) {
+
+  var $thisdiv = $(event.target).closest('div')
+  if($thisdiv.hasClass('highlighted')) {
+    var $highlighted = $('.highlighted')
+    //make sure nothing is highlighted before we start!
+    $highlighted.removeClass('highlighted')
+  } else {
+    //console.log('You clicked on a user!')
+    var $highlighted = $('.highlighted')
+    //make sure nothing is highlighted before we start!
+    $highlighted.removeClass('highlighted')
+
+
+    //console.log($thisdiv)
+    var user = $thisdiv.attr('id')
+    user = user.substring(5,user.length)
+    console.log(user)
+
+    var $allusertwotes = $("[twoteuser="+user +"]")
+    console.log($allusertwotes)
+
+    $allusertwotes.addClass('highlighted')
+    $thisdiv.addClass('highlighted') //highlight listed user too!
+  }
+
+
+
 })

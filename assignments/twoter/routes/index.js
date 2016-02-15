@@ -106,7 +106,7 @@ router.post('/deleteTwote', function(req, res, next) {
   twoteid = twoteid.substring(0, twoteid.length-7)
   Twote.findByIdAndRemove(twoteid, function(err, twote) {
     console.log('Deleting twote ' + twote._id)
-    res.send(twote._id)
+    res.send([twote._id, twote.user])
   })
 
 
