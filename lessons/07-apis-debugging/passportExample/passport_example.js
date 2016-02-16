@@ -51,8 +51,8 @@ app.get('/user', ensureAuthenticated, function(req, res) {
   res.send(req.user);
 })
 
-app.listen(3000);
-console.log('Listening on Port 3000');
+app.listen(3001);
+console.log('Listening on Port 3001');
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
