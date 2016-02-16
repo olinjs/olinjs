@@ -1,0 +1,78 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+div#make_twote {
+	margin-bottom: 15px;
+}
+
+textarea#new_twote {
+	width: 90%;
+	height: 60px;
+}
+
+table.twotes_list {
+	width: 100%;
+	table-layout: fixed;	
+	box-shadow: 0 0 3pt 2pt #b3d9ff;
+	background-color: #99ccff;
+}
+
+div#twotes {
+	float: left;
+	width: 40%;
+	overflow: hidden;
+	margin-left: 5%;
+	padding: 10px;
+}
+
+tr.twote {
+	border-radius: 5px;
+	position: relative;
+	height: 60px;
+	background-color: #E6E6E6;
+	box-shadow: 5px 5px 20px #0073e6;
+	display: block;
+	margin-bottom: 15px;
+	margin-right: 8px;
+}
+
+td.twote {
+	padding: 5px;
+	vertical-align: top;
+}
+
+tr.user {
+	position: relative;
+	background-color: #E6E6E6;
+	box-shadow: 5px 5px 20px #888888;
+	display: block;
+	margin-bottom: 5px;
+	margin-right: 8px;
+	cursor: pointer;
+}
+
+td.user {
+	padding: 5px;
+	vertical-align: top;
+}
+
+div.twote_text {
+	word-break: break-all;
+}
+
+div.twote_author {
+	position: absolute;
+	right: 5px;
+	bottom: 5px;
+}
+
+div#users {
+	overflow: hidden;
+	margin-right: 5%;
+}
