@@ -28,14 +28,14 @@ function getCat(){
 
 function sortCats(cats){
 	cats.sort(function (a, b) {
-	if (a.age > b.age) {
-	return 1;
-	}
-	if (a.value < b.value) {
-	return -1;
-	}
-	// a must be equal to b
-	return 0;
+		if (a.age > b.age) {
+			return 1;
+		}
+		if (a.value < b.value) { // what is the value of a cat??
+			return -1;
+		}
+		// a must be equal to b
+		return 0;
 	});
 	return cats;
 }
@@ -68,46 +68,50 @@ function sortCatsbyColor(paramColor, cats){
 }
 
 
-//get all lizard names
+//get all cat names
 router.getAllCats = function(req, res, next){
 	var cats = db.getAll();
 	cats = sortCats(cats);
 	console.log(cats)
 	var message = "All the cats are: "
 	res.render("allCats", {message: message, cats: cats});
-}
+};
+/* When you declare functions as methods on objects (like this) or with "var", convention is
+ * to end with a semicolon. When you use function (like your sortCatsByColor), you don't need
+ * a semicolon.
+ */
 
 
-// create new lizard named Bob
-
+// create new cat -- make sure you keep your documentation up to date with your code
 router.getNewCat = function(req, res, next) {
 	var cat = getCat();
 	db.add(cat);
 	var message = "new cat: "
-	console.log(cat)
 	cats = [cat];
 	res.render("allCats", {message: message, cats: cats});
-	// res.render("eachCat", cat);
-}
+	// and make sure you clear out your comments, console.logs
+};
 
 router.getCatColor = function(req, res){
 	var color = req.params.color;
-	var color = color.slice(1, color.length);
-	console.log(color);
+	color = color.slice(1, color.length); // only need "var" the first time the variable is defined
+	/* We had a conversation about this -- I think you were visiting cats/byColor/:orange
+	 * instead of cats/byColor/orange, so you're needing to slice off the colon.
+	 * If you just visit cats/byColor/orange, you won't need the line above
+	 */
 	var cats = db.getAll();
 	cats = sortCatsbyColor(color, cats);
-	var message = "Find cats: ";
-	res.render("allCats", {message: message, cats: cats});
-}
+	res.render("allCats", {message: "Find cats: ", cats: cats});
+	// you could put the message inline, too, like this ^ -- avoids an unnecessary
+	// variable assignment.
+};
 
 router.deleteCat = function(req, res){
 	var cats = db.getAll();
 	var index = findOldestCat(cats);
 	var cat = db.remove(index);
-	console.log(cat)
-	var message = "delete cat: "
-	res.render("allCats", {message: message, cats: cat})
-}
+	res.render("allCats", {message: "delete cat: ", cats: cat})
+};
 
 router.home = function(req, res){
 	res.render("home");
