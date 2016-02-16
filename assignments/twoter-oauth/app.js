@@ -11,6 +11,7 @@ var session = require('express-session')
 var passport = require('passport');
 var config = require('./oauth.js');
 var FacebookStrategy = require('passport-facebook').Strategy;
+var LocalStrategy = require('passport-local').Strategy;
 
 var User = require('./models/userModel.js');
 var fbAuth = require('./authentication.js');
@@ -44,6 +45,38 @@ passport.deserializeUser(function(id, done) {
     });
 });
 
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    User.findOne({name: username}, function(err, user) {
+      if(err) {
+      }
+      if (!err && user !== null) {
+        if(!user.verifyPassword(password, user)) {
+          console.log('Fail. Try again, nub.')
+          done(null, false);
+        } else {
+          done(null, user);
+        }
+      } else {
+        user = new User({
+          name: username,
+          password: password,
+          twotes: []
+        });
+        user.save(function(err) {
+          if(err) {
+            console.log(err);  // handle errors!
+          } else {
+            console.log("saving user ...");
+            done(null, user);
+          }
+        });
+      }
+    });
+  }
+));
+
+
 app.get('/', function(req, res) {
     res.redirect('/home')
 })
@@ -54,11 +87,26 @@ app.get('/login', index, function(req, res) {
 });
 
 app.get('/auth', index);
-// app.get('/logOut', index);
-
 app.post('/newTwote', index);
 app.post('/deleteTwote', index)
 
+app.get('/auth/facebook',
+  passport.authenticate('facebook'),
+  function(req, res){});
+app.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/' }),
+  function(req, res) {
+    res.redirect('/account');
+  });
+
+app.get('/auth/local',
+  passport.authenticate('local', {
+    failureRedirect: '/'
+  }),
+  function(req, res){
+    res.redirect('/account')
+  }
+);
 
 app.get('/account', ensureAuthenticated, function(req, res){
   User.findById(req.session.passport.user, function(err, dbuser) {
@@ -75,28 +123,14 @@ app.get('/account', ensureAuthenticated, function(req, res){
           if(err) console.log('Could not save');
           console.log('New user created ' + newuser.name);
           res.redirect('/');
-          //res.send(newuser.name)
-          //res.redirect('/home');
         })
       } else {
         console.log('User already exists! ');
         res.redirect('/')
-        //res.send(username)
-        //res.redirect('/home');
-        //res.redirect('/');
       }
     }
   });
 });
-
-app.get('/auth/facebook',
-  passport.authenticate('facebook'),
-  function(req, res){});
-app.get('/auth/facebook/callback',
-  passport.authenticate('facebook', { failureRedirect: '/' }),
-  function(req, res) {
-    res.redirect('/account');
-  });
 
 app.get('/logout', function(req, res){
   console.log('User logged out the right way')
@@ -105,12 +139,15 @@ app.get('/logout', function(req, res){
   res.redirect('/');
 });
 
-
 // test authentication
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
-  res.redirect('/auth/facebook');
+  res.redirect('/home');
 }
+
+
+app.get('/loginlocal', index)
+
 
 
 app.listen(3000);

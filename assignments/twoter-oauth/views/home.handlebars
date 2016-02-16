@@ -2,7 +2,6 @@
 
 <div id='userLoggedIn' user='{{userid}}'>
     User logged in: {{username}}
-    User ID logged in: {{userid}}
 </div>
 
 <br></br>
@@ -37,7 +36,7 @@
     <h3>User List</h3>
     {{#each allusers}}
     <div id='user-{{this._id}}' class='user'>
-        User {{this.name}}, {{this._id}}
+        User {{this.name}}
     </div>
     {{/each}}
 </div>

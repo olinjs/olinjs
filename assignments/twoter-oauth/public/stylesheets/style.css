@@ -1,11 +1,11 @@
 
-/*#logInButton, #logOutButton{*/
-.login, .logout{
+
+#logInForms {
     float: right;
     display: inline;
     position: absolute;
     right: 10px;
-    top: 30px;
+    top: 10px;
 
     border-radius: 5px;
     border-style: solid;
@@ -16,7 +16,7 @@
 
     font-family: "Times New Roman", Times, serif;
     color: #000000;
-    font-size: 16px;
+    font-size: 16px; 
 }
 #userLoggedIn {
     float: right;
@@ -55,7 +55,7 @@ div [id$=-twote], #new {
     background-color: #cccccc;
     
     float:left;
-    width:75%;
+    width:65%;
     overflow:hidden;
 }
 #new {
@@ -65,12 +65,12 @@ div [id$=-twote], #new {
 
 #allUsers{
     float:right;
-    width:20%;
+    width:30%;
     overflow:hidden;
     margin: 0px;
     position: fixed;
     right: 10px;
-    top: 150px;
+    top: 250px;
 }
 .user {
     border-radius: 10px;
@@ -102,23 +102,35 @@ a new post, but will display after refresh*/
 }
 
 /*log in and submit-twote buttons*/
-.submitlogin, .submitnew{
+.loginlocal, .loginfb, .submitnew, .logout{
     border-radius: 5px;
     border-style: solid;
     padding: 5px;
     border: 2px solid black;
     margin: 10px;
     background-color: #cccccc;
+    float: right;
 
     font-family: "Times New Roman", Times, serif;
     color: #000000;
     font-size: 16px;
 }
-.submitlogin{
+.loginlocal, .loginfb, .logout{
     background-color: #ffffff;
+}
+.loginfb {
+    float: right;
+    position: absolute;
+    right: 10px;
+    top: 150px;
 }
 .submitnew{
     background-color: #c6c6ec;
+}
+.logout {
+    position: absolute;
+    right: 10px;
+    top: 30px;
 }
 
 .textinput{
@@ -126,4 +138,7 @@ a new post, but will display after refresh*/
     margin: 20px;
 /*    padding: 20px;*/
 
+}
+span {
+    display: block;
 }

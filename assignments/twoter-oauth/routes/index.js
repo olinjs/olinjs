@@ -66,8 +66,12 @@ router.post('/deleteTwote', function(req, res, next) {
     res.send([twote._id, twote.user, twote.username])
   })
 
+})
 
-
+router.get('/loginlocal', function(req, res, next) {
+  console.log('Logging in locally!')
+  var currentuser = req.user.name;
+  res.redirect('/home')
 })
 
 
