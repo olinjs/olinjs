@@ -19,4 +19,7 @@ We've built a testing framework for the cat app with a few example tests (the ap
   - Challenge: make a copy of the `inclass` directory and replace npm with a different task runner (e.g. grunt or gulp). What's different? Easier? Harder?
 - Many editors support code quality plugins! Try adding a linter (jshint is an option, as are eslint and jslint) to your editor of choice.
 
+## Feedback
+We'd love your feedback on today's class -- fill out [this survey](http://goo.gl/forms/uZPfjZCGFf) if you'd like.
+
 If you're done, start the homework!
