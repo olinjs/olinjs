@@ -42,6 +42,8 @@ Using CSS! Some big things you should emulate:
 - Nice fonts (see [Google fonts](https://www.google.com/fonts))
 - Try to follow principles from the reading
 
+When you're done with this homework and the next ([Homework 7](https://github.com/olinjs/olinjs/blob/master/lessons/07-apis-debugging/HOMEWORK.md)), fill out the [Twoter homework survey](http://goo.gl/forms/u5MDLduyFz). The survey is your submission for Twoter with OAuth.
+
 ## Preclass Reading
 
-Read the [Class 7 ReadMe](https://github.com/olinjs/olinjs/tree/master/lessons/07-apis-debugging) before next class
+Read the [Class 7 README](https://github.com/olinjs/olinjs/tree/master/lessons/07-apis-debugging) before next class

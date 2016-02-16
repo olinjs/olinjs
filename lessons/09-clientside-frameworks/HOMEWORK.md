@@ -1,8 +1,15 @@
 ### Before Class 10
 #### Assignment
-Please create a Wikipedia-like app using one of the frontend frameworks discussed above, preferably React or Angular. Feel free to draw inspiration from the following projects, as listed below:
-- [A Wikipedia clone for Computer Languages](https://github.com/flymperopoulos/WikiAwesome) 
-- [Basketball Wikipedia](https://github.com/RyanEggert/olinjs-lab1)
-
-#### Preclass Reading and Exercise
-TBD, if any
+Create a ToDo List App using a fronted framework, as for example shown [here](http://todomvc.com/examples/angularjs/#/), using Angular. Think about what routes your API needs to include for this application to function. Your app should be able to:
+- **Add** an item to the list
+- **Edit** an item in the list
+- **Save** an edit that took place in an item in the list
+- **Remove** item from the list
+- Keep a running count of the items to be completed
+- Be able to separate/filter the items on the list:
+	- All
+	- Active
+	- Completed
+- Mark item as complete and append to "Completed" list
+- Optional:
+	- Undo edits

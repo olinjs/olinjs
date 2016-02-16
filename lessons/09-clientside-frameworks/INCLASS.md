@@ -53,7 +53,7 @@ Angular 2.0 specifically, provides an interesting mechanism one can use to filte
 Now that we saw how two-way data binding works on a simple html document, let's dive deeper into how we can create an app hosted locally and using Node and Angular. Let's check out the folder in Lesson 9 under the name "in_class_hello" that examines the use of directives and controllers in the context of Angular, by creating a simple app that moves between two pages with one click.  
 
 ##ToDo App 
-Now that we have an idea of how those frontend frameworks work, let's get into pairs and think about how we would go about creating a more complicated ToDoList App. How would you go about structuring your application? The teaching team will wonder around and answer any questions you may have.
+Now that we have an idea of how those frontend frameworks work, let's get into pairs and think about how we would go about creating a more complicated ToDoList App. How would you go about structuring your application's API? The teaching team will wonder around and answer any questions you may have. Feel free to use a board and brainstorm about the app. The application look something like [this](http://todomvc.com/), using one of the frontend frameworks afore-mentioned. Your homework will involve you working on the development of such an application.
 
 ##Readings
 Check out the following short excerpts online, comparing and analyzing the two frameworks:
