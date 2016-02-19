@@ -11,8 +11,8 @@ router.get('/kitchen', function(req, res, next) {
 
 });
 
-router.get('/orderComplete', function(req, res, next) {
-  orderid = req.query.id;
+router.post('/orderComplete', function(req, res, next) {
+  orderid = req.body.id;
   orderid = orderid.substring(0, orderid.length-10); //removes "-completed" from id
   //console.log('Order complete! ' + orderid);
 

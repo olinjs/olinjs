@@ -16,27 +16,22 @@ describe("The app", function() {
       });
   });
 
-  // describe("The app", function() {
-  // it('should return 200 OK on GET /addIngredient', function(done) {
-  //   request(app)
-  //     .get('/addIngredient')
-  //     .expect(200)
-  //     .end(function(err, res) {
-  //       // Supertest lets us end tests this way...
-  //       // (useful if we want to check a couple more things with chai)
-  //       if (err) {
-  //         return done(err);
-  //       }
-  //       done();
-  //     });
-  // });
+  it('should return 200 OK on POST /addIngredient', function(done) {
+    request(app)
+      .post('/addIngredient')
+      .expect(200)
+      .end(function(err, res) {
+        // Supertest lets us end tests this way...
+        // (useful if we want to check a couple more things with chai)
+        if (err) {
+          return done(err);
+        }
+        done();
+      });
+  });
 
-  // it('should respond with the correct html on GET /', function(done) {
-  //   request(app)
-  //     .get('/')
-  //     .expect('Content-Type', 'text/html; charset=utf-8')
-  //     .expect('Content-Length', '515', done); // ...or this way, inline!
-  // });
+  //editIngredient doesn't seem to work, nor does removeIngredient...
+  //seems you can make an empty ingredient, but you can't edit or remove.
 
   it('should return 200 OK on GET /order', function(done) {
     request(app)
@@ -44,11 +39,25 @@ describe("The app", function() {
       .expect(200, done);
   });
 
+  //addItemToOrder doesn't work
+  //createOrder doesn't work
+
+
   it('should return 200 OK on GET /kitchen', function(done) {
     request(app)
       .get('/kitchen')
       .expect(200, done);
   });
+
+
+  //orderComplete doesn't work!
+  //majority of AJAX stuff works, but doesn't pass tests -- why?
+
+  //   it('should return 200 OK on POST /orderComplete', function(done) {
+  //   request(app)
+  //     .post('/orderComplete')
+  //     .expect(200, done);
+  // });
 
 
   // What other routes can you test?

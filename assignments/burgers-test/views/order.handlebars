@@ -18,10 +18,10 @@
     Ingredients: <br></br>
     <div id = "checkboxes">
       {{#each instockingr}}
-        <input id = "{{this.id}}" type="checkbox" class="checkbox" value="{{this.name}}"> {{this.name}}: {{this.inStock}}<br></br>
+        <input id = "{{this.id}}" name='{{this.name}}' type="checkbox" class="checkbox" value="{{this.name}}"> {{this.name}}: {{this.inStock}}<br></br>
       {{/each}}
       {{#each outofstockingr}}
-        <input id = "{{this.id}}" type="checkbox" value="{{this.name}}" disabled> {{this.name}}: {{this.inStock}}<br></br>
+        <input id = "{{this.id}}" name='{{this.name}}' type="checkbox" value="{{this.name}}" disabled> {{this.name}}: {{this.inStock}}<br></br>
       {{/each}}
     </div>
     <input type="submit" value="Submit">

@@ -14,14 +14,14 @@
 <div id="{{this.id}}-ingredientform">
     <div id="{{this._id}}-editresult">
      <li>Ingredient {{this.name}} costs {{this.price}}!</li>
-        <form id="{{this._id}}-ajax-form" class="editForm" action="editIngredient" method="GET">
+        <form id="{{this._id}}-ajax-form" class="editForm" action="editIngredient" method="POST">
           Edit: <input type="text" name="name"/> 
                 <input type="number" name="price" /> <br/>
           <input type="submit" value="Submit">
         </form>
     </div>
     <div id="{{this._id}}-remove">
-        <form id = "{{this._id}}-instock" class="inStockForm" action="removeIngredient" method="GET">
+        <form id = "{{this._id}}-instock" class="inStockForm" action="removeIngredient" method="POST">
             Out Of Stock: <input type="submit" value="Out of Stock">
         </form>
     </div>
@@ -36,12 +36,12 @@
 </div>
 
 
-<!-- <form id="new-ajax-form" action="addIngredient" method="GET">
+<!-- <form id="new-ajax-form" action="addIngredient" method="POST">
 </form> -->
 <div id="newresult">
 </div>
 <!-- <div id="{{this._id}}-remove">
-    <form id = "{{this._id}}-instock" class="inStockForm" action="removeIngredient" method="GET">
+    <form id = "{{this._id}}-instock" class="inStockForm" action="removeIngredient" method="POST">
         Out Of Stock: <input type="submit" value="Out of Stock">
     </form>
 </div> -->
@@ -50,7 +50,7 @@
 <br></br>
 <br></br>
 
-<form id="Add" action="addIngredient" method="GET">
+<form id="Add" action="addIngredient" method="POST">
     Add: <input type="text" name="name"/> 
         <input type="number" name="price" /> <br/>
     <input type="submit" value="Submit">

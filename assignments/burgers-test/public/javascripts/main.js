@@ -13,7 +13,7 @@ var onAddSuccess = function(data, status) {
     "<div id=\"" + ingrid + "-ingredientform\">" + 
     "<div id=\"" + ingrid + "-editresult\">" + 
     "<li>Ingredient " + ingrname + " costs "+ ingrprice + "!</li>" + 
-    "<form id=\"" + ingrid + "-ajax-form\" class=\"editForm\" action=\"editIngredient\" method=\"GET\">" + 
+    "<form id=\"" + ingrid + "-ajax-form\" class=\"editForm\" action=\"editIngredient\" method=\"POST\">" + 
     "Edit: <input type=\"text\" name=\"name\"/>" +
             "<input type=\"number\" name=\"price\"/> <br/>"+
           "<input type=\"submit\" value=\"Submit\">" +
@@ -21,12 +21,12 @@ var onAddSuccess = function(data, status) {
         "</div>"+
 
     "<div id=\"" + ingrid + "-remove\">" + 
-      "<form id = \"" + ingrid + "-instock\" class=\"inStockForm\" action=\"removeIngredient\" method=\"GET\">" + 
+      "<form id = \"" + ingrid + "-instock\" class=\"inStockForm\" action=\"removeIngredient\" method=\"POST\">" + 
           "Out Of Stock: <input type=\"submit\" value=\"Out of Stock\">"+
       "</form>"+
     "</div>" + 
         "<br></br>" + 
-    "</div>"
+    "</div>";
 
     //$("#newresult").html(text);
     $("#Alldaforms").append(text);
@@ -47,7 +47,7 @@ $addform.submit(function(event) {
   //console.log([ingrname, ingrprice]);
 
   event.preventDefault();
-  $.get("addIngredient", {  //!!!!!
+  $.post("addIngredient", {  //!!!!!
     name: ingrname,
     price: ingrprice,
   }) 
@@ -69,11 +69,11 @@ var onEditSuccess = function(data, status) {
 
     var text = 
   "<li>Ingredient " + ingrname + " costs "+ ingrprice + "!</li>" + 
-    "<form id=\"" + ingrid + "-ajax-form\" class=\"editForm\" action=\"editIngredient\" method=\"GET\">" + 
+    "<form id=\"" + ingrid + "-ajax-form\" class=\"editForm\" action=\"editIngredient\" method=\"POST\">" + 
       "Edit: <input type=\"text\" name=\"name\"/> " + 
             "<input type=\"number\" name=\"price\" /> <br/>" +
       "<input type=\"submit\" value=\"Submit\">" +
-    "</form>" 
+    "</form>";
 
   //console.log(text);
 
@@ -98,11 +98,11 @@ $editform.on("submit", ".editForm", function(event) {
   //console.log([ingrname, ingrprice, ingrid]);
 
   event.preventDefault();
-  $.get("editIngredient", {  //!!!!!
+  $.post("editIngredient", {  //!!!!!
     name: ingrname,
     price: ingrprice,
     id: ingrid,
-  }) 
+  })
   .done(onEditSuccess)
   .error(onError);
 
@@ -126,7 +126,7 @@ $editform.on("submit", ".inStockForm", function(event) {
   //console.log(ingrid);
 
   event.preventDefault();
-  $.get("removeIngredient", {
+  $.post("removeIngredient", {
     id: ingrid
   })
   .done(onRemoveSuccess)
@@ -194,7 +194,7 @@ $(".checkbox").change(function(event) {
     ingredients: selected
   })
   .done(onItemAddSuccess)
-  .error(onError)
+  .error(onError);
 })
 
 
@@ -218,7 +218,7 @@ $completeform.on("submit", ".completeForm", function(event) {
   //console.log(orderid);
 
   event.preventDefault();
-  $.get("orderComplete", {
+  $.post("orderComplete", {
     id: orderid
   })
   .done(onOrderCompleteSuccess)

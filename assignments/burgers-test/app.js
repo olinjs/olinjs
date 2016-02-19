@@ -25,9 +25,9 @@ mongoose.connect('mongodb://localhost/ingredients');
 
 
 app.get('/ingredients', ingredients);
-app.get('/addIngredient', ingredients); //!!!!
-app.get('/editIngredient', ingredients);
-app.get('/removeIngredient', ingredients);
+app.post('/addIngredient', ingredients);
+app.post('/editIngredient', ingredients);
+app.post('/removeIngredient', ingredients);
 
 app.get('/order', order);
 app.get('/createOrder', order);

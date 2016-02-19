@@ -21,9 +21,9 @@ router.get('/ingredients', function(req, res, next){
 
 });
 
-router.get('/addIngredient', function(req, res, next) { //!!!
-    var newname = req.query.name;
-    var newprice = req.query.price;
+router.post('/addIngredient', function(req, res, next) { //!!!
+    var newname = req.body.name;
+    var newprice = req.body.price;
     //console.log([newname, newprice]);
 
     var newingr = new Ingredient({name: newname, price: newprice});
@@ -39,11 +39,11 @@ router.get('/addIngredient', function(req, res, next) { //!!!
 
 });
 
-router.get('/editIngredient', function(req, res, next) {
+router.post('/editIngredient', function(req, res, next) {
   //if null, substitute original name/price?
-  var newname = req.query.name;
-  var newprice = req.query.price;
-  var id = req.query.id;
+  var newname = req.body.name;
+  var newprice = req.body.price;
+  var id = req.body.id;
   //console.log(newname, newprice, id);
   id = id.substring(0, id.length-10); //removes "-ajax-form" from id
 
@@ -64,11 +64,11 @@ router.get('/editIngredient', function(req, res, next) {
 
 });
 
-router.get('/removeIngredient', function(req, res, next) {
+router.post('/removeIngredient', function(req, res, next) {
   //console.log(req);
   //console.log("Query " + req.query.id);
   //console.log(req.body);
-  var id = req.query.id;
+  var id = req.body.id;
   id = id.substring(0, id.length-8); //removes "-ajax-form" from id
 
   //console.log('removed ' + id);
