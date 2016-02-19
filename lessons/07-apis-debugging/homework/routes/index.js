@@ -11,12 +11,10 @@ var homeGET = function(req, res) {
 	async.series([
 		function(callback) {
 			if (req.user) {
-				console.log("logged In as: " + req.user.displayName)
-				User.findOne({"facebookId": req.user.id}, function(err, user) {
+				User.findById(req.user._id, function(err, user) {
 					callback(null,user);
 				}) 
 			} else {
-				console.log("No User")
 				callback(null,null);
 			}
 		},
@@ -39,13 +37,9 @@ var homeGET = function(req, res) {
 			twotes = twotes.map(function(twote) {
 				twote = twote.toObject();
 				twote.currentUser = (String(twote.user._id) === String(userId));
-				//console.log(userId)
-				// console.log(twote.user._id)
-				// console.log(twote)
 				return twote;
 			})
 
-			console.log(user)
 			res.render("homeView", {"currentUserName": userName, "currentUserId": userId,"twotes": twotes, "users": users});
 
 		}
@@ -54,7 +48,6 @@ var homeGET = function(req, res) {
 }
 
 var newTwotePOST = function(req, res) {
-	console.log(req.body)
 	var newTwote = Twote({"text": req.body.text ,"user": req.body.user})
 	newTwote.save(function (err, newTwote) {
 				if (err) return console.error(err)
@@ -67,7 +60,6 @@ var newTwotePOST = function(req, res) {
 		user.twotes.push(newTwote._id)
 		user.save(function (err, user) {
 			if (err) return console.error(err)
-			console.log(user.twotes)
 		});
 	})
 }
@@ -75,7 +67,6 @@ var newTwotePOST = function(req, res) {
 
 
 var deleteTwotePOST = function(req, res) {
-	console.log(req.body)
 
 	Twote.findById(req.body.twoteId, function(err, twote) {
 		twote.remove();
@@ -84,30 +75,11 @@ var deleteTwotePOST = function(req, res) {
 }
 
 var loginGET = function(req, res) {
-	res.render("loginView", {});
-}
-
-var loginUserPOST = function(req, res) {
-	console.log(req.body.name)
-	User.findOne({"name": req.body.name}, function(err, user) {
-		if (user == null) {
-			console.log('new user')
-			var newUser = User({"name": req.body.name})
-			newUser.save(function (err, newUser) {
-				if (err) return console.error(err)
-			});
-			res.send(newUser)
-		} else {
-			console.log('existing user')
-			res.send(user)
-		}
-	});
-
+	res.render("loginView", {error: req.flash('error')});
 }
 
 
 module.exports.home = homeGET;
 module.exports.login = loginGET;
-module.exports.loginUser = loginUserPOST;
 module.exports.newTwote = newTwotePOST
 module.exports.deleteTwote = deleteTwotePOST

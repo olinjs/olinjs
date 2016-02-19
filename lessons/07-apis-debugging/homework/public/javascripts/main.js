@@ -12,7 +12,7 @@ var onError = function(data, status) {
 var onSuccessNewTwote = function(data, status) {
 	console.log("status", status);
 	console.log("error", data);
-	var $newTwote = $('<form class="twote" id=' + data._id + ' userid=' + data.user._id + ' method="POST"><fieldset><legend class="scheduler-border">'+data.user.name+'</legend><span>'+data.text+'</span><br> <input type="submit" class="btn btn-xs btn-danger delete" value="Delete"></fieldset></form>');
+	var $newTwote = $('<form class="twote" id=' + data._id + ' userid=' + data.user._id + ' method="POST"><fieldset><legend class="scheduler-border">'+data.user.displayName+'</legend><span>'+data.text+'</span><br> <input type="submit" class="btn btn-xs btn-danger delete" value="Delete"></fieldset></form>');
 	$newTwote.appendTo('#twotes');
 	$newTwote.unbind();
 	$newTwote.submit(deleteTwote);
@@ -30,23 +30,6 @@ var onSuccessHighlightTwotes = function(data, status) {
 	console.log("error", data);
 	$('#' + data._id).remove();
 };
-
-var onSuccessLogin = function(data, status) {
-	console.log("status", status);
-	console.log("error", data);
-	console.log(data.name);
-	window.location.href = '/home/' + data._id;
-};
-
-var login = function(event) {
-	event.preventDefault();
-
-	$.post("loginUser", {
-		name: $('#name').val()
-	})
-	.done(onSuccessLogin)
-	.error(onError);
-}
 
 var newTwote = function(event) {
 	event.preventDefault();
@@ -87,7 +70,6 @@ var userHighlight = function(event) {
 	});
 }
 
-$login.submit(login)
 $newTwote.submit(newTwote)
 $twote.submit(deleteTwote)
 $user.submit(userHighlight)

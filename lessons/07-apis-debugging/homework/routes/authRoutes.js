@@ -1,4 +1,5 @@
 var express = require('express');
+var passport = require('passport');
 var router = express.Router();
 
 module.exports = router;
@@ -12,7 +13,7 @@ var userGET = function(req, res) {
 	res.send(req.user);
 }
 
-function ensureAuthenticated(req, res, next) {
+var ensureAuthenticated = function(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
     res.send(401);
 }

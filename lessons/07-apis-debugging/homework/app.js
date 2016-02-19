@@ -9,9 +9,10 @@ var mongoose = require('mongoose');
 var favicon = require('serve-favicon');
 var session = require('express-session');
 var passport = require('passport');
+var flash    = require('connect-flash');
 
 var auth = require('./config/auth');
-var passportConfig = require('./config/passportConfig');
+require('./config/passportConfig')(passport);
 
 var app = express();
 
@@ -34,8 +35,7 @@ app.use(session({ secret: 'this is not a secret ;)',
 
 app.use(passport.initialize());
 app.use(passport.session());
-
-passportConfig(passport)
+app.use(flash());
 
 var exphbs = require('express-handlebars');
 
@@ -56,17 +56,32 @@ app.post('/newTwote', indexRoute.newTwote);
 app.post('/deleteTwote', indexRoute.deleteTwote);
 
 app.get('/login',indexRoute.login);
-app.post('/loginUser',indexRoute.loginUser);
 
-app.get('/auth/logout', authRoute.logout);
-app.get('/auth/facebook', passport.authenticate('facebook'));
+app.post('/signup', passport.authenticate('local-signup', {
+    successRedirect : '/', // redirect to the secure profile section
+    failureRedirect : '/login', // redirect back to the signup page if there is an error
+    failureFlash : true // allow flash messages
+}));
+
+app.post('/login', passport.authenticate('local-login', {
+    successRedirect : '/', // redirect to the secure profile section
+    failureRedirect : '/login', // redirect back to the signup page if there is an error
+    failureFlash : true // allow flash messages
+}));
+
+app.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email'}));
 app.get('/auth/facebook/callback',
   passport.authenticate('facebook', { successRedirect: '/',
                                       failureRedirect: '/' })
 );
 
 app.get('/auth/user', authRoute.ensureAuthenticated, authRoute.user)
+app.get('/auth/logout', authRoute.logout);
 
-app.listen(3000, function(err) {
+var PORT = process.env.PORT || 3000;
+app.listen(PORT, function(err) {
 	if (err) console.log(err)
 });
+
+
+module.exports = app;
