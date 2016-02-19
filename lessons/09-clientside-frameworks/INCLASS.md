@@ -32,7 +32,7 @@ Here are some links to start you out:
 - [JSX](https://facebook.github.io/react/docs/jsx-in-depth.html)
 
 ##Hello Angular
-Here's just about the simplest Angular app you can write. The words you type in the textbox will show up after "Hello" in the <h1> tag.
+Here's just about the simplest Angular app you can write. The words you type in the textbox will show up after "Hello" in the `<h1>` tag.
 ```html
 <!DOCTYPE html>
 <html ng-app>
