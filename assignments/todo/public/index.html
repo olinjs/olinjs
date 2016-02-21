@@ -33,16 +33,23 @@
         <div class="jumbotron text-center">
             <h1>This is Sam's to-do list! <span class="label label-info">{{ todos.length }}</span></h1>
         </div>
+<!-- 
+        how to make filter? -->
+        <button type="submit" class="btn btn-primary btn-lg" ng-click="myFilter=null">All</button>
+        <button type="submit" class="btn btn-primary btn-lg" ng-click="myFilter={isCompleted:'false'}">Active</button>
+        <button type="submit" class="btn btn-primary btn-lg" ng-click="myFilter={isCompleted:'true'}">Completed</button>
 
         <!-- TODO LIST -->
         <div id="todo-list" class="row">
             <div class="col-sm-4 col-sm-offset-4">
 
                 <!-- LOOP OVER THE TODOS IN $scope.todos -->
-                <div class="checkbox item" ng-repeat="todo in todos" ng-class="{strike: todo.isCompleted}" >
-                    <label>
-                        <input type="checkbox" ng-model="completed" ng-disabled="todo.isCompleted" ng-checked="todo.isCompleted" ng-click="completeTodo(todo._id, $index)"> {{ todo.text }}
-                    </label>
+                <div class="checkbox item" ng-repeat="todo in todos | filter: myFilter"  >
+                    <div ng-class="{strike: todo.isCompleted}">
+                        <label>
+                            <input type="checkbox" ng-model="completed" ng-disabled="todo.isCompleted" ng-checked="todo.isCompleted" ng-click="completeTodo(todo._id, $index)" > {{ todo.text }}
+                        </label>
+                    </div>
 
                     <form>
                         <div class="form-group">
@@ -53,11 +60,12 @@
 
                         <!-- createToDo() WILL CREATE NEW TODOS -->
                         <button type="submit" class="btn btn-primary btn-lg" ng-click="editTodo(todo._id, $index)">Edit</button>
+                        <button type="submit" class="btn btn-primary btn-lg" ng-click="deleteTodo(todo._id)">Delete</button>
                     </form>
 
                     <form> 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-lg" ng-click="deleteTodo(todo._id)">Delete</button>
+<!--                             <button type="submit" class="btn btn-primary btn-lg" ng-click="deleteTodo(todo._id)">Delete</button> -->
                         </div>
                     </form>
                 </div>
