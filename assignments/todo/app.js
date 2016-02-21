@@ -23,10 +23,10 @@ app.use(methodOverride());
 
 app.get('/api/todos', index);
 app.post('/api/todos', index);
+
 app.delete('/api/todos/:todo_id', index);
-
-
 app.put('/api/todos/:todo_id', index);
+app.post('/api/todos/:todo_id', index);
 
 app.get('*', index);
 

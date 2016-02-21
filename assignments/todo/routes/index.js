@@ -60,6 +60,29 @@ router.put('/api/todos/:todo_id', function(req, res) {
 
 });
 
+
+//complete a todo
+router.post('/api/todos/:todo_id', function(req, res) {
+
+  // console.log(req)
+  Todo.update({
+    //_id: mongojs.ObjectId(req.body._id)
+    _id: req.params.todo_id
+  }, {
+    isCompleted: true
+  }, {}, function(err, todo) {
+    console.log('Todo completed!');
+    if (err) {res.send(err);}
+
+      // get and return all the todos after you edit
+  Todo.find(function(err, todos) {
+    if (err) {res.send(err); return;} 
+    res.json(todos);
+    });
+  });
+
+});
+
 // delete a todo
 router.delete('/api/todos/:todo_id', function(req, res) {
   Todo.remove({

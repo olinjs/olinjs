@@ -42,6 +42,20 @@ function mainController($scope, $http) {
             })
     }
 
+    $scope.completeTodo = function(id, index) {
+        $http.post('/api/todos/' + id)
+            .success(function(data) {
+                // $scope.editData[index] = '';
+                $scope.todos = data;
+                console.log(data)
+            })
+            .error(function(data) {
+                // $scope.editData[index] = '';
+                console.log('Error: ' + data)
+            })
+    }
+
+
     // delete a todo after checking it
     $scope.deleteTodo = function(id) {
         $http.delete('/api/todos/' + id)
