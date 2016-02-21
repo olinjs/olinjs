@@ -1,3 +1,7 @@
+//Note: I found the following very helpful, and based my app on the code found here:
+//https://scotch.io/tutorials/creating-a-single-page-todo-app-with-node-and-angular
+
+
 
 var express  = require('express');
 var index = require('./routes/index.js');                               // create our app w/ express
