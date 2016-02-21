@@ -28,3 +28,6 @@ function getTwotesQuery() {
 		}
 	});
 }
+
+module.exports = router;
+
