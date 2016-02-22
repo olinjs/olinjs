@@ -1,10 +1,11 @@
 require('./../../../app'); // to connect to the database
 var expect = require('chai').expect;
-var Cat = require('./../../../models/catModel');
+var Models = require('./../../../models/models');
+var Twote = Models.Twote;
 
-describe('Cat Model', function() {
-  it('should create a new cat', function(done) {
-    var cat = new Cat({
+describe('Twote Model', function() {
+  it('should create a new twote', function(done) {
+    var twote = new Twote({
       name: 'Fluffy',
       colors: ['orange', 'white'],
       age: 11
