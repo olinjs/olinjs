@@ -20,16 +20,16 @@ While webgl gives us the ability to create cool 3D graphics, it is not a 3D libr
 
 ![I know the arrow on the left is upside down. Blame John C. Hart at University of Illinois.](./images/rendering_pipeline.png)
 
-Its job is to take a buffer containing the model's coordinates transfer and convert it to colored pixels on the screen. As you can see there are a lot of steps to this, and most of them are directly controlled by code we write. Lets go through the steps quickly:
-1. The modeling transform converts the coordinate system of our model into world coordinates.
-2. The viewing transform converts the coordinate system of the world to camera coordinates.
-3. The perspective transform applies a distortion that gives the image depth.
+Its job is to take a buffer containing the model's coordinates transfer and convert it to colored pixels on the screen. As you can see there are a lot of steps to this, and most of them are directly controlled by code we write. Lets go through the steps quickly:  
+1. The modeling transform converts the coordinate system of our model into world coordinates.  
+2. The viewing transform converts the coordinate system of the world to camera coordinates.  
+3. The perspective transform applies a distortion that gives the image depth.  
 
-   The next steps are handled for us by the graphics card, so we do not have to worry about how the clipped perspective coordinates are transfered into fragments.
+   The next steps are handled for us by the graphics hardware, so we do not have to worry about how the clipped perspective coordinates are transfered into fragments.
 
 4. Fragments are shaded or given a color vector.
 
-The rest of the pipeline is also handled by the graphics card so we do not need to worry generally about how fragments' colors are interpolated. 
+The rest of the pipeline is also handled by the graphics hardware so we do not need to worry generally about how fragments' colors are interpolated. 
 
 Based on this pipeline, you can sort of see that we are dealing with two types of information: Coordinates (vertices) and Fragments. You will soon see that we will need to write individual blocks of code or shaders to handle them. 
 
@@ -56,7 +56,7 @@ void main() {
 }
 ```
 
-Secondly, as you probably guessed from above, sort of like matlab matrix manipulation is built into the language. However, unlike matlab, the largest a dimension can be is 4, which is large enough for all graphics purposes (If you are confused why 4 and not 3 see Appendix A's section on homogenous coordinates). This means functions like `dot()` will take the dot product of two vectors, `normalize()` will make a vector have a length of 1, and the standard `* + / -` operators linear algebra operations. Matrix creatation tends to be a little tricky as it is done in column major order which means 
+Secondly, as you probably could guess from above, sort of like matlab, matrix manipulation is built into the language. However, unlike matlab, the largest a dimension can be is 4, which is large enough for all graphics purposes (If you are confused why 4 and not 3 see Appendix A's section on homogenous coordinates). This means functions like `dot()` will take the dot product of two vectors, `normalize()` will make a vector have a length of 1, and the standard `* + / -` operators do linear algebra operations. Matrix creatation tends to be a little tricky as it is done in column major order which means 
 ```
 mat3 M = mat3(1, 0, 0,
 			  1, 0, 0,
@@ -69,12 +69,12 @@ actually creates a matrix with this form
  0, 0, 0]
 ```
 
-Thirdly, it has additional key words to describe data passed to and from the shader. These are:
+Finally, it has additional key words to describe data passed to and from the shader. These are:
 * `attribute` - Links vertex data from Javascript to shader.
 * `uniform` - Links data that does not change across a primative from Javascript to shader. 
 * `varying`  - Links data between Vertex and Fragment shader. 
 
-If you want more info on GLSL in a quick to digest form, [this](https://www.khronos.org/files/webgl/webgl-reference-card-1_0.pdf) reference card is good for consultation. 
+And that is pretty much all you need to know to write your shaders. But, if you want more info on GLSL in a quick to digest form, [this](https://www.khronos.org/files/webgl/webgl-reference-card-1_0.pdf) reference card is good for consultation. 
 
 ###Vertex Shader
 If you look back at the graphics pipeline above, you see that jobs 1, 2, and 3 are done on coordinates or vertices, so naturally the code that does these tasks is called the vertex shader. 
@@ -94,7 +94,7 @@ void main() {
   gl_Position = projection*view*model*vec4(position,1);;
 }
 ```
-And that's it. However, if we want to render things with lighting and color we generally will need to add some additional calculations to our vertex shader. If we want to impliment the Blinn-Phong lighting model, a relative good-looking photo realisic lighting model, we would add the following to our vertex shader: 
+And that's it. However, if we want to render things with lighting and color we generally will need to add some additional calculations to our vertex shader. If we want to impliment the Blinn-Phong lighting model, a relative good-looking photo realisic lighting model, we would replace `void main()` with the following to our vertex shader: 
 ```
 uniform mat4 inverseModel;
 uniform mat4 inverseView;
@@ -121,7 +121,7 @@ The `.x .xy` allow for selecting vector components without using array numeric s
 The varying vecs will be passed to the fragment shader, which will then use them to compute the actual blinn-phong lighting. 
 
 ###Fragment Shader
-Looking back to the pipeline again, number 4 is left to the fragment shader. This means the fragment shader is responsible for computing the lighting or coloring of the fragment. An extremely basic shader just assigns a constant color vector to the `gl_FragColor`.
+Looking back to the pipeline again, number 4 is all that is left for the fragment shader to complete. This means the fragment shader is responsible for computing the lighting or coloring of the fragment. An extremely basic shader just assigns a constant color vector to the `gl_FragColor` which is used by the graphics hardware to determine the color of the pixels on the screen.
 ```
 precision mediump float;
 
@@ -135,6 +135,7 @@ INSERT IMAGE
 
 However, if we were to complete our blinn-phong model from before our shader would look something like this:
 ```
+precision mediump float;
 
 uniform mat4 model;
 uniform mat4 view;
@@ -168,7 +169,7 @@ Much more complicated, but this is the result.
 
 INSERT IMAGE.
 
-And there you have it a much better looking object. If you want to understand the physics and math behind lighting see Appendix B. If you would like a more in-depth tutorial on shading, [this](https://github.com/stackgl/shader-school) tutorial from nodeschool is really good. 
+And there you have it, a much better looking object. If you want to understand the physics and math behind lighting see Appendix B. If you would like a more in-depth tutorial on shading, [this](https://github.com/stackgl/shader-school) tutorial from nodeschool is really good. 
 
 NOTE: functions written in the shader are not designed to run for a long time. Shaders are good for doing a small set of things repeatedly for a huge number of times. This means that looping is also strictly controlled, so be aware of that. 
 
@@ -180,6 +181,8 @@ attach
 link
 used
 
+##And Now the Model Part
+
 #Appendix A: Mathematical Concepts
 
 ##Transformations 
@@ -187,4 +190,22 @@ used
 ##Homogenous Coordinates
 
 ##Transformations in Homogenous Coordinate Systems
+
+#Appendix B: Lighting and Shading
+
+##Color and Images
+something about how the physics of seeing works
+
+###Rendering Equation
+At a particular position and direction, the outgoing light (Lo) is the sum of the emitted light (Le) and the reflected light. The reflected light being the sum of the incoming light (Li) from all directions, multiplied by the surface reflection and incoming angle. 
+##Ray Tracing
+Hah lol. 
+
+##Common Shading Algorithms
+
+##Flat Shading
+
+##Gouraud Shading
+
+##Phong Shading
 
