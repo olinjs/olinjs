@@ -10,7 +10,7 @@ Sign up for a free Heroku account and work through the following two tutorials t
 - [Adding a Remote MongoLab Database](https://devcenter.heroku.com/articles/mongolab)
 
 ##Read More about Deployment & Scaling
-If you'd like, check out the [Class 10 README](https://github.com/olinjs/olinjs/10-deployment-scaling/README.md) for an introduction to development and scaling techniques/concepts like load balancing, continuous integration, and distributed resources.
+If you'd like, check out the [Class 10 README](https://github.com/olinjs/olinjs/blob/master/lessons/10-deployment-scaling/README.md) for an introduction to development and scaling techniques/concepts like load balancing, continuous integration, and distributed resources.
 
 ##Catch Up & Synthesize
 - Keep working on anything which is still in progress (we're here to help) 
