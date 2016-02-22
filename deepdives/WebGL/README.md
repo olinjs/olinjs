@@ -2,6 +2,7 @@
 
 To see some cool examples of what you can do with WebGl look [here](https://www.chromeexperiments.com/webgl) or [here](http://madebyevan.com/webgl-water/) to see my favorite.
 
+Note that this is a vanilla javascript lesson, as in I will not use jquery to select elements or make requests. 
 
 ##Canvas and Setting Context
 Before we do anything, lets talk about how to make graphics in the broswer. There are two common ways of doing so. Probably the most common is the `<svg>` tag, which when manipulated using D3 can create some powerful interfaces, but we will not talk about that in this lesson. The other method is through the `<canvas>` tag, which allows for you to programmatically create graphics through javascript. This is done by setting a context for the canvas like so:
@@ -90,7 +91,7 @@ uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
 
-void main() {
+void main(void) {
   gl_Position = projection*view*model*vec4(position,1);;
 }
 ```
@@ -106,7 +107,7 @@ varying vec3 lightDirection;
 varying vec3 viewNormal;
 varying vec3 eyeDirection;
 
-void main() {
+void main(void) {
   vec4 viewPos = view*model*vec4(position, 1);
   vec4 surfPos = projection*viewPos;
   gl_Position = surfPos;
@@ -125,7 +126,7 @@ Looking back to the pipeline again, number 4 is all that is left for the fragmen
 ```
 precision mediump float;
 
-void main() {
+void main(void) {
 	gl_FragColor = vec4(1, 1, 1, 1);
 }
 ```
@@ -157,7 +158,7 @@ varying vec3 lightDirection;
 varying vec3 viewNormal;
 varying vec3 eyeDirection;
 
-void main() {
+void main(void) {
 	float lambert = max(dot(viewNormal, lightDirection),0.0);
 	float phong = pow(max(dot(reflect(lightDirection, viewNormal), eyeDirection), 0.0), shininess);
 
@@ -174,18 +175,103 @@ And there you have it, a much better looking object. If you want to understand t
 NOTE: functions written in the shader are not designed to run for a long time. Shaders are good for doing a small set of things repeatedly for a huge number of times. This means that looping is also strictly controlled, so be aware of that. 
 
 ##WebGl...Finally 
+Now that we know how to write shaders, which handle most of the graphics pipeline, how do we incorporate them into our app? This turns out to be much more difficult that just writing shaders. 
 
-load
-compile
-attach
-link
-used
+The first step to incorporating our shaders is to get the shader source code as a string to the client. There are two ways of doing this: make a request, read from DOM. I am going to assume you understand how to do the first method, and instead talk about the second one. 
+
+To load a shader from the DOM, we can use a script tag to house our shader code. This looks like this:
+```html
+<script id="shader-vs" type="x-shader/x-vertex">
+	attribute vec4 aVertexColor;
+	attribute vec3 aVertexPosition;
+	uniform mat4 MVMatrix;
+    uniform mat4 PMatrix;
+
+	varying vec4 vColor;
+
+	void main(void) {
+	    gl_Position = PMatrix*MVMatrix*vec4(aVertexPosition, 1.0);
+	    vColor = vec4(aVertexColor,1.0);
+	}
+</script>
+	  
+<script id="shader-fs" type="x-shader/x-fragment">
+	precision mediump float;
+	varying vec4 vColor;
+	void main(void) {
+	    gl_FragColor = vColor;
+	}
+</script>
+```
+We can then select each shader using its id. However, this just gives use the element, so we need some way of selecting the text between a script tag. This is easily done using `elem.innerHTML` if we have nothing else in our script tag. However, you may also use `elem.firstChild.textContent`. So our javascript so far looks something like this:
+```javascript
+function loadShaderFromDOM(gl, id) {
+	var shaderScript = document.getElementById(id);
+
+	if (!shaderScript) {
+		return null;
+	}
+
+	var child = shaderScript.firstChild;
+	if (child.nodeType != 3) {
+		return null;
+	}
+
+	var shaderSource = child.textContent;
+	var shader;
+
+	if (shaderScript.type == "x-shader/x-fragment") {
+		shader = gl.createShader(gl.FRAGMENT_SHADER);
+	} else if (shaderScript.type == "x-shader/x-vertex") {
+		shader = gl.createShader(gl.VERTEX_SHADER);
+	} else {
+		return null;
+	}
+
+	gl.shaderSource(shader, shaderSource);
+	gl.compileShader(shader);
+
+	if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+		alert(gl.getShaderInfoLog(shader));
+		return null;
+	} 
+	return shader;
+
+}
+
+``` 
+Good thing this is reuseable, as we will need something like this on every webgl app we make. The keys to creating the shader are the lines `target = gl.createShader(ENUM)`, `gl.shaderSource(target, sourceString)`, and `gl.compileShader(target)`. If you need a refresher, `gl` is the context of the canvas element from the very first section of the lesson. The method of the context `createShader` creates a shader object from an enum (read: a c data-type that is just an expressive name for a specific numeric value). The new shader object is passed into the method `shaderSource` followed by a string representing the shader. The shader object with its new shader source is then compiled usign the method `compileShader`. Errors with this method unfortunately are not easily accessed which is why the methods `getShaderParameter` and `getShaderInfoLog` are used above. 
+
+So now that we have a compiled shader object, we still need to attach it our app so it can be used. This is done through the creation of a "program"; shaders are attached to this "program". Theoretically we could have multiple programs with different shaders attached to them if we wanted to render some objects differently from others, and the code to accomplish that would be similar. So, lets make a function that creates a program and attaches our shaders.
+```javascript
+function createProgram(gl, vs, fs) {
+	if (!gl || !vs || !fs) {
+		return null;
+	}
+
+	var prog = gl.createProgram();
+	gl.attachShader(prog, vs);
+	gl.attachShader(prog, fs);
+	gl.linkProgram(prog);
+
+	if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+		alert("failed to setup shaders");
+		return null;
+	}
+	retrun prog;
+}
+```
+Cool. So now we have a program linked with our shaders attached. All we have left to do is call `gl.useProgram(programObj)` and we are all set to start specifying the values of the uniforms and attributes in our shaders. 
+
+##Actually Drawing Something
+
 
 ##And Now the Model Part
 
 #Appendix A: Mathematical Concepts
 
 ##Transformations 
+There are four major transformations that are common in graphics: translation, rotation, reflection, and scaling. 
 
 ##Homogenous Coordinates
 
