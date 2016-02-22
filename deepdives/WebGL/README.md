@@ -21,12 +21,11 @@ While webgl gives us the ability to create cool 3D graphics, it is not a 3D libr
 
 ![I know the arrow on the left is upside down. Blame John C. Hart at University of Illinois.](./images/rendering_pipeline.png)
 
-Its job is to take a buffer containing the model's coordinates transfer and convert it to colored pixels on the screen. As you can see there are a lot of steps to this, and most of them are directly controlled by code we write. Lets go through the steps quickly:  
+Its job is to take a buffer containing the model's coordinates and convert it to colored pixels on the screen. As you can see there are a lot of steps to this, and most of them are directly controlled by code we write. Lets go through the steps quickly:  
 1. The modeling transform converts the coordinate system of our model into world coordinates.  
 2. The viewing transform converts the coordinate system of the world to camera coordinates.  
 3. The perspective transform applies a distortion that gives the image depth.  
-
-   The next steps are handled for us by the graphics hardware, so we do not have to worry about how the clipped perspective coordinates are transfered into fragments.
+   The next steps are handled for us by the graphics hardware, so we do not have to worry about how the clipped perspective coordinates are transfered into fragments.  
 
 4. Fragments are shaded or given a color vector.
 
@@ -38,7 +37,7 @@ Based on this pipeline, you can sort of see that we are dealing with two types o
 As was previewed above, shaders are where the majority of the graphics pipeline is controlled. Shaders are written in a language called the OpenGL Shading Language(GLSL), which has a c-like syntax similar to javascript. However, has a few different parts.
 
 ###GLSL
-First, like C it is staticly typed, meaning you have to specify the variable type when you declare a variable and functions must be specified either as void or the data type they return; all lines must terminate in a semicolon; void main is the entry point into the shader; arrays are 1d and static; and structures can be created to house members. However, some data types that exist in C do not exist in GLSL, and different key words are used to express the precision of a variable. An example of some syntactly correct but dull GLSL looks like this:
+First, like C it is staticly typed, meaning you have to specify the variable type when you declare a variable and functions must be specified either as void or the data type they return; all lines must terminate in a semicolon; void main is the entry point into the shader; arrays are static; and structures can be created to house members. However, some data types that exist in C do not exist in GLSL, and different key words are used to express the precision of a variable. An example of some syntactly correct but dull GLSL looks like this:
 ```
 precision mediump float;
 
@@ -191,7 +190,7 @@ To load a shader from the DOM, we can use a script tag to house our shader code.
 
 	void main(void) {
 	    gl_Position = PMatrix*MVMatrix*vec4(aVertexPosition, 1.0);
-	    vColor = vec4(aVertexColor,1.0);
+	    vColor = aVertexColor;
 	}
 </script>
 	  
@@ -203,7 +202,7 @@ To load a shader from the DOM, we can use a script tag to house our shader code.
 	}
 </script>
 ```
-We can then select each shader using its id. However, this just gives use the element, so we need some way of selecting the text between a script tag. This is easily done using `elem.innerHTML` if we have nothing else in our script tag. However, you may also use `elem.firstChild.textContent`. So our javascript so far looks something like this:
+We can then select each shader using its id. However, this just gives use the element, so we need some way of selecting the text between a script tag. This is easily done using `elem.innerHTML` if we have nothing else in our script tag. However, you may also use `elem.firstChild.textContent` or just `elem.text`. So our javascript so far looks something like this:
 ```javascript
 function loadShaderFromDOM(gl, id) {
 	var shaderScript = document.getElementById(id);
@@ -240,9 +239,9 @@ function loadShaderFromDOM(gl, id) {
 }
 
 ``` 
-Good thing this is reuseable, as we will need something like this on every webgl app we make. The keys to creating the shader are the lines `target = gl.createShader(ENUM)`, `gl.shaderSource(target, sourceString)`, and `gl.compileShader(target)`. If you need a refresher, `gl` is the context of the canvas element from the very first section of the lesson. The method of the context `createShader` creates a shader object from an enum (read: a c data-type that is just an expressive name for a specific numeric value). The new shader object is passed into the method `shaderSource` followed by a string representing the shader. The shader object with its new shader source is then compiled usign the method `compileShader`. Errors with this method unfortunately are not easily accessed which is why the methods `getShaderParameter` and `getShaderInfoLog` are used above. 
+Good thing this is reuseable, as we will need something like this on every webgl app we make. The keys to creating the shader are the lines `target = gl.createShader(ENUM)`, `gl.shaderSource(target, sourceString)`, and `gl.compileShader(target)`. If you need a refresher, `gl` is the context of the canvas element from the very first section of the lesson. The method of the context `createShader` creates a shader object from an enum (read: a c data-type that is just an expressive name for a specific numeric value), which have the form `gl.SOMETHING_IN_CAPS`. The new shader object is passed into the method `shaderSource` followed by a string representing the shader. The shader object with its new shader source is then compiled usign the method `compileShader`. Errors with this method unfortunately are not easily accessed which is why the methods `getShaderParameter` and `getShaderInfoLog` are used above. 
 
-So now that we have a compiled shader object, we still need to attach it our app so it can be used. This is done through the creation of a "program"; shaders are attached to this "program". Theoretically we could have multiple programs with different shaders attached to them if we wanted to render some objects differently from others, and the code to accomplish that would be similar. So, lets make a function that creates a program and attaches our shaders.
+So now that we have a compiled shader object, we still need to attach it our app so it can be used. This is done through the creation of a "program"; shaders are attached to this "program," which is then used by the app. Theoretically we could have multiple programs with different shaders attached to them if we wanted to render some objects differently from others, and the code to accomplish that would be similar. So, lets make a function that creates a program and attaches our shaders.
 ```javascript
 function createProgram(gl, vs, fs) {
 	if (!gl || !vs || !fs) {
@@ -258,12 +257,81 @@ function createProgram(gl, vs, fs) {
 		alert("failed to setup shaders");
 		return null;
 	}
-	retrun prog;
+	return prog;
 }
 ```
 Cool. So now we have a program linked with our shaders attached. All we have left to do is call `gl.useProgram(programObj)` and we are all set to start specifying the values of the uniforms and attributes in our shaders. 
 
 ##Actually Drawing Something
+Finally, we have most of the webgl overhead out of the way, so we can now actually work on putting objects on the screen. Well, after we tell gl where the attributes and uniforms live plus where the buffers that fill them with information go. 
+
+So lets make a javascript function to do this. From our shader program, we need to set up the following:
+* attribute vec4 aVertexColor;
+* attribute vec3 aVertexPosition;
+* uniform mat4 MVMatrix;
+* uniform mat4 PMatrix;
+
+Given a program with the name `programObj` our code looks like this:
+```javascript
+var programObj = createProgram(gl, vShader, fShader);
+
+var vPositionAttrLoc = gl.getAttribLocation(programObj, "aVertexPoistion");
+var vColorAttrLoc = gl.getAttribLocation(programObj, "aVertexColor");
+
+var mvMatrixUniLoc = gl.getUniformLocation(programObj, "MVMatrix");
+var pMatrixUniLoc = gl.getUniformLocation(programObj, "PMatrix");
+
+gl.useProgram(programObj);
+```
+These attribute and uniform locations will be used to tell gl what to send to the shaders. But first, we need to set up the structures to hold the data. For the attributes, gl uses a buffer (read: typed array) to house data. Whereas for the uniforms, gl is less strict. So for our program, we need to create and specify what buffers belong to each attribute. 
+```javascript
+var vPositionBuffer = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, vPositionBuffer);
+gl.enableVertexAttribArray(vPositionAttrLoc);
+gl.vertexAttribPointer(vPositionAttrLoc, 3, gl.FLOAT, false, 0, 0);
+
+var vColorBuffer = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, vColorBuffer);  
+gl.enableVertexAttribArray(vColorAttrLoc);
+gl.vertexAttribPointer(vColorAttrLoc, 4, gl.FLOAT, false, 0, 0);
+```
+Let's walk through these lines, as they are important. The method `createBuffer` creates a gl buffer object and assigns it to a varriable. Binding the buffer tells gl the next commands will be done on this buffer. In this case, we are attaching the attribute to the buffer, so we need to enable the attribute by passing in its location, then describe how gl will move through the attached buffer. To describe how gl moves through the attached buffer, we use the method `vertexAttribPointer` which has the form ```
+gl.vertexAttribPointer(
+    location,
+    numComponents,
+    typeOfData,
+    normalizeFlag,
+    strideToNextPieceOfData,
+    offsetIntoBuffer);
+```
+Because our position attribute was a `vec3`, we set the second input to 3; we are dealing with floats so type of data is `gl.FLOAT`; there is no normalization, and we are not reusing this buffer for multiple attributes, so the last arguments are `false, 0, 0`.   
+
+So now our attributes have buffers attached to them. All we need to do now is fill them with data, set up our uniforms and call draw and stuff should appear on the screen. 
+```javascript
+gl.bindBuffer(gl.ARRAY_BUFFER, vPositionBuffer);
+gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+									0.0, 1.0, 0.0,
+									1.0, -1.0, 0.0,
+									-1.0, -1.0, 0.0]), 
+								gl.STATIC_DRAW);
+
+gl.bindBuffer(gl.ARRAY_BUFFER, vColorBuffer);
+gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+									1.0, 0.0, 0.0, 1.0,
+									0.0, 1.0, 0.0, 1.0,
+									0.0, 0.0, 1.0, 1.0]),
+								gl.STATIC_DRAW);
+
+var mvMat = mat4.create();
+var pMat = mat4.create();
+
+gl.uniformMatrix4fv(mvMatrixUniLoc, false, mvMat);
+gl.uniformMatrix4fv(pMatrixUniLoc, false, pMat);
+
+gl.drawArrays(gl.TRIANGLES, 0, 3);
+``` 
+Now we should see a Triagle take up most of the canvas with different color vertices interpolated across the triangle. The `bufferData` method fills the last bound buffer with data. We have to use a javascript typed array which is why `new Float32Array(arr)`js is used. We needed to rebind the buffers to fill them as the last bound buffer was the color buffer, and I wanted to put the position code before the color. The `mat4.create()` uses a library included in this lesson called gl-matrix to create an 4x4 identity matrix. The library allows for matrix manipulation in javascript, so is very useful.
+Finally we set our uniforms and call draw. There are many different functions to set uniforms. The one we used sets a 4x4 matrix of floats from an array, and in general the name of the method reflects the data it creates. The `drawArrays` method tells gl how it should draw the values in the buffer, where to start in the buffer, and how many times it should move pointer.  
 
 
 ##And Now the Model Part
@@ -295,3 +363,4 @@ Hah lol.
 
 ##Phong Shading
 
+#Appendix C: Drawing in GL
