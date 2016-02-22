@@ -16,6 +16,8 @@ var app = express();
 var passport = require('passport');
 var config = require('./oauth.js');
 var FacebookStrategy = require('passport-facebook').Strategy;
+var mongoURI = process.env.MONGOURI || "mongodb://localhost/test";
+
 passport.serializeUser(function(user, done) {
   done(null, user);
 });
