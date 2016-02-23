@@ -13,3 +13,5 @@ Create a ToDo List App using a fronted framework, as for example shown [here](ht
 - Mark item as complete and append to "Completed" list
 - Optional:
 	- Undo edits
+
+Fill out this [homework survey](https://docs.google.com/forms/d/1wivfR38EiZdwD3Gv5vZ3pWPSrSWORJil7a9P1xzTP-g/viewform?usp=send_form). 
