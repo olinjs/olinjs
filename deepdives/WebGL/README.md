@@ -295,7 +295,9 @@ gl.bindBuffer(gl.ARRAY_BUFFER, vColorBuffer);
 gl.enableVertexAttribArray(vColorAttrLoc);
 gl.vertexAttribPointer(vColorAttrLoc, 4, gl.FLOAT, false, 0, 0);
 ```
-Let's walk through these lines, as they are important. The method `createBuffer` creates a gl buffer object and assigns it to a varriable. Binding the buffer tells gl the next commands will be done on this buffer. In this case, we are attaching the attribute to the buffer, so we need to enable the attribute by passing in its location, then describe how gl will move through the attached buffer. To describe how gl moves through the attached buffer, we use the method `vertexAttribPointer` which has the form ```
+Let's walk through these lines, as they are important. The method `createBuffer` creates a gl buffer object and assigns it to a varriable. Binding the buffer tells gl the next commands will be done on this buffer. In this case, we are attaching the attribute to the buffer, so we need to enable the attribute by passing in its location, then describe how gl will move through the attached buffer. To describe how gl moves through the attached buffer, we use the method `vertexAttribPointer` which has the form 
+
+```
 gl.vertexAttribPointer(
     location,
     numComponents,
@@ -330,7 +332,7 @@ gl.uniformMatrix4fv(pMatrixUniLoc, false, pMat);
 
 gl.drawArrays(gl.TRIANGLES, 0, 3);
 ``` 
-Now we should see a Triagle take up most of the canvas with different color vertices interpolated across the triangle. The `bufferData` method fills the last bound buffer with data. We have to use a javascript typed array which is why `new Float32Array(arr)`js is used. We needed to rebind the buffers to fill them as the last bound buffer was the color buffer, and I wanted to put the position code before the color. The `mat4.create()` uses a library included in this lesson called gl-matrix to create an 4x4 identity matrix. The library allows for matrix manipulation in javascript, so is very useful.
+Now we should see a triangle take up most of the canvas with different color vertices interpolated across the triangle. The `bufferData` method fills the last bound buffer with data. We have to use a javascript typed array which is why `new Float32Array(arr)`js is used. We needed to rebind the buffers to fill them as the last bound buffer was the color buffer, and I wanted to put the position code before the color. The `mat4.create()` uses a library included in this lesson called gl-matrix to create an 4x4 identity matrix. The library allows for matrix manipulation in javascript, so is very useful.
 Finally we set our uniforms and call draw. There are many different functions to set uniforms. The one we used sets a 4x4 matrix of floats from an array, and in general the name of the method reflects the data it creates. The `drawArrays` method tells gl how it should draw the values in the buffer, where to start in the buffer, and how many times it should move pointer.  
 
 
