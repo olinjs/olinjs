@@ -86,8 +86,8 @@ router.get('/createOrder', function(req, res, next) { //!!!
 });
 
 /*interesting decision to do this on the back end. 
-It is better to only make a POST request with the full 
-order that you build out on the client.
+It might have been better to have the ingredients 
+prices in the client already instead.
 */
 router.get('/addItemToOrder', function(req, res, next) {
   var orderingrs = req.query.ingredients;
