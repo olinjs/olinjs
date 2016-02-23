@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 mongoose.connect('mongodb://localhost/ingredients');
 
-
+//hmmm... probably shouldn't have all the routes be get req.
 app.get('/ingredients', ingredients);
 app.get('/addIngredient', ingredients); //!!!!
 app.get('/editIngredient', ingredients);

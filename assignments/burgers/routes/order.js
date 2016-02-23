@@ -85,6 +85,10 @@ router.get('/createOrder', function(req, res, next) { //!!!
 
 });
 
+/*interesting decision to do this on the back end. 
+It is better to only make a POST request with the full 
+order that you build out on the client.
+*/
 router.get('/addItemToOrder', function(req, res, next) {
   var orderingrs = req.query.ingredients;
   //console.log(orderingrs);
@@ -98,6 +102,7 @@ router.get('/addItemToOrder', function(req, res, next) {
   //oh god why
   var ingrcost = 0;
   var itemsProcessed = 0;
+  //by the way this ends up breaking if you check and uncheck an ingredient. 
   orderingrs.forEach(function(ingrid) {
     Ingredient.findById(ingrid, function(err, ingr) {
       //console.log(ingr.price);

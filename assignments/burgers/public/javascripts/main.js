@@ -47,6 +47,8 @@ $addform.submit(function(event) {
   //console.log([ingrname, ingrprice]);
 
   event.preventDefault();
+
+  //Probably should do a $.post here instead
   $.get("addIngredient", {  //!!!!!
     name: ingrname,
     price: ingrprice,
