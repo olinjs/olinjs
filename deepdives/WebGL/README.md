@@ -275,7 +275,7 @@ Given a program with the name `programObj` our code looks like this:
 ```javascript
 var programObj = createProgram(gl, vShader, fShader);
 
-var vPositionAttrLoc = gl.getAttribLocation(programObj, "aVertexPoistion");
+var vPositionAttrLoc = gl.getAttribLocation(programObj, "aVertexPosition");
 var vColorAttrLoc = gl.getAttribLocation(programObj, "aVertexColor");
 
 var mvMatrixUniLoc = gl.getUniformLocation(programObj, "MVMatrix");
