@@ -29,8 +29,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', index);
 app.get('/getlink', wiki.getlink);
-app.get('/addlink', wiki.addlink);
-app.get('/editlink', wiki.editlink);
+app.post('/addlink', wiki.addlink);
+app.post('/editlink', wiki.editlink);
 
 var PORT = process.env.PORT || 3000;
 app.listen(PORT, function() {
