@@ -3,7 +3,6 @@ var path = require("path");
 var index = require("./routes/index");
 var todo = require("./routes/todo");
 var bodyParser = require('body-parser');
-var exphbs = require('express-handlebars');
 var mongoose = require('mongoose');
 var index = require('./routes/index');
 var wiki = require('./routes/wiki');
