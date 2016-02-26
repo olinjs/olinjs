@@ -1,62 +1,121 @@
-// Submit new twote
-function makeTwote() {
-	var text = $('#new_twote').val();
-	var author = "placeholder"; // Todo, fetch from cookies!
-	var curr_time = $.now(); // Current time in millis
-	var twote_data = {"text": text, "author": author, "time": curr_time};
-	$.ajax({
-		type: "POST",
-		contentType: "application/json",
-		url: "./twotes/new",
-		data: JSON.stringify(twote_data),
-		error: function(err) {
-			console.log(err);
-		}
-	});
-}
+// Main clientside javascript file
+// Contains main angular controller which handles all rendering and requests
 
-// This is a really bad way to do this, instead you should send the timestamp of your most recent twote and only get the new ones
-// But who cares lets just finish this
-function updateTwotesList() {
-	$.ajax({
-		type: "GET",
-		url: "./twotes",
-		success: function(twotes, status) {
-			$('#twoteslist').html(genTwotesList(twotes));
-		},
-		error: function(err) {
-			console.log(err);
-		},
-		complete: function(data) {
-			setTimeout(updateTwotesList, 3000); // Repeat every 3 seconds
-		}
-	});
-}
+var app = angular.module('wikiApp', ['ngRoute']);
 
-// Generate html to populate the twotes table
-function genTwotesList(twotes) {
-	var list = '';
-	$.each(twotes, function(index, twote) {
-		list.concat(
-			'<tr><td>',
-			'<div class="twote_text">',
-			twote.text,
-			'</div><div class="twote_author">- ',
-			twote.author,
-			'</div>',
-			'</td></tr>'
-		);
-	});
-}
+function fetchPages() {}; // Function stub
 
-$(document).ready(function() {
-	updateTwotesList(); // Kick off our endless loop of ajax calls (;_;)
+app.config(function($routeProvider, $locationProvider){
+
+  $routeProvider
+
+	.when("/",
+	{
+		templateUrl : '../views/wrapper.html',
+    	controller: "mainController"
+    })
+
+    $locationProvider.html5Mode(true);
 });
 
-// Make twote request when user is typing in text box and presses 'enter'
-// "Newlines are absolutely haram" -Joey, founder of Twoter Inc.
-$(document).keypress(function(e) {
-    if(e.which == 13 && $('#new_twote').is(":focus")) {
-        makeTwote();
-    }
+app.controller('mainController', function($scope, $http, $location){
+	$scope.pages = [];
+	// Fill out function stubs
+	fetchPages = function() {
+		console.log("Fetching pages");
+		$http.get('./pages').then(function success(res) {
+			$scope.pages = res.data.reverse();
+		}, function error(err) {
+			console.log(err);
+		});
+	};
+
+	// Show the page creation controls in the content div
+	$scope.dispMakePageMenu = function(default_title, default_content) {
+
+		// Automatically populate the title field if we are editing a page
+		if (default_title.length) {
+			$scope.newpage_title = default_title;
+		} else {
+			$scope.newpage_title = '';
+		}
+
+		// Automatically populate the content field if we are editing a page
+		if (default_content.length) {
+			$scope.newpage_content = default_content;
+		} else {
+			$scope.newpage_content = '';
+		}
+
+		// Inject the content div with a wrapper div that includes the actual controls html file
+		$scope.pagecontent = $sce.trustAsHtml("<div ng-include=\"'../views/pageCreationControls.html'\"></div>");
+	}
+
+	// Request the server to create a new page
+	$scope.addPage = function(title, content, author) { 
+		// Inject page controls into page content
+		var true_content = "<div ng-include=\"'../views/pageControls.html'\"></div>" + content;
+		data = {"title": title, "content": true_content, "author": author, "timestamp": new Date().getTime()};
+		console.log(data);
+		$http.post('./pages/new', JSON.stringify(data)).then(function success(res) {
+			fetchPages(); // Refresh todo list
+			resetContent(); // Reset menu to show blank page
+		}, function error(err) {
+			console.log(err);
+		});
+	};
+
+	// Show controls to edit currently viewed page
+	$scope.showPageEditControls = function() {
+		// Show page creationg controls but pass current page title and content to autofill fields with
+		dispMakePageMenu(default_title, default_content);
+	}
+
+	// Request the server to delete a page
+	$scope.deletePage = function(id) {
+		console.log(id);
+		$http.delete('./pages/byid/' + id + '/delete').then(function success(res) {
+			fetchPages();
+			resetContent(); // Reset menu to show blank page
+		}, function error(err) {
+			console.log(err);
+		});
+	};
+
+	// Request the content of a page from the server
+	$scope.fetchPageContent = function(id) {
+		console.log("Fetching page " + id);
+		$http.get('./pages/byid/' + id).then(function success(res) {
+			console.log(res);
+			// Set app var to keep track of what page we are on
+			$scope.currentpageid = id;
+			// Inject sanitized html
+			// $scope.pagecontent = $sce.trustAsHtml(res.data.content);
+		}, function error(err) {
+			console.log(err);
+		});
+	}
+
+	// Reset the content div to show nothing
+	$scope.resetContent = function() {
+		$scope.pagecontent = "";
+	}
+
+	// Initial fetch
+	fetchTodos();
 });
+
+// app.directive('ngEnterKeyPressed', function() {
+//     return function(scope, element, attrs) {
+//         element.bind("keydown keypress", function(event) {
+//             var keyCode = event.which || event.keyCode;
+
+//             // If enter key is pressed
+//             if (keyCode === 13) {
+//         		addTodo($(element).val());
+//         		$(element).val('');
+//                 event.preventDefault();
+//             }
+//         });
+//     };
+// });
