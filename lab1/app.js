@@ -1,6 +1,5 @@
 var express = require('express');
 var path = require('path');
-var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -19,8 +18,7 @@ app.set("view engine", "handlebars");
 mongoose.connect('mongodb://localhost/pagebase');
 
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -29,8 +27,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', index);
 app.get('/getlink', wiki.getlink);
+app.get('/gettitle', wiki.gettitle);
 app.post('/addlink', wiki.addlink);
 app.post('/editlink', wiki.editlink);
+
 
 var PORT = process.env.PORT || 3000;
 app.listen(PORT, function() {

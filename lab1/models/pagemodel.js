@@ -7,6 +7,7 @@ var pageSchema = mongoose.Schema({
 	content: String,
 	author: String,
 	timestamp: String,
+	id: String
 });
 
 module.exports = mongoose.model("page", pageSchema);
