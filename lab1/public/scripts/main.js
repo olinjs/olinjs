@@ -1,3 +1,6 @@
+// Main clientside javascript file
+// Contains main angular controller which handles all rendering and requests
+
 var app = angular.module('wikiApp', ['ngRoute']);
 
 function fetchPages() {}; // Function stub
@@ -68,20 +71,10 @@ app.controller('mainController', function($scope, $http, $location){
 		dispMakePageMenu(default_title, default_content);
 	}
 
-	// Request the server to edit a page
-	// $scope.editPage = function(id) {
-	// 	$http.post('./pages/byid/' + id + '/edit', JSON.stringify(data)).then(function success(res) {
-	// 		fetchPages(); // Refresh todo list
-	// 		resetContent(); // Reset menu to show blank page
-	// 	}, function error(err) {
-	// 		console.log(err);
-	// 	});
-	// }
-
 	// Request the server to delete a page
 	$scope.deletePage = function(id) {
 		console.log(id);
-		$http.delete('./pages/delete/' + id).then(function success(res) {
+		$http.delete('./pages/byid/' + id + '/delete').then(function success(res) {
 			fetchPages();
 			resetContent(); // Reset menu to show blank page
 		}, function error(err) {
