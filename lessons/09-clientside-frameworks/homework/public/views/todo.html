@@ -1,0 +1,18 @@
+<h1>Todo</h1>
+<textarea ng-enter-key-pressed='addTodo()' type="text" placeholder="What is there to do?"></textarea>
+</br>
+<button ng-click='setFilter("")' type="button">All</button>
+<button ng-click='setFilter("In Progress")' type="button">In Progress</button>
+<button ng-click='setFilter("Completed")' type="button">Completed</button>
+</br>
+<table>
+<tr ng-repeat="todo in todos | filter:filter">
+<td>
+<input style="-webkit-transform: scale(1.8);" type="checkbox" ng-click='toggleStatus(todo._id)' ng-checked='todo.status=="Completed"'>
+</td>
+<td>
+{{todo.text}}
+<button type="button" ng-click='deleteTodo(todo._id)'>X</button>
+</td>
+</tr>
+</table>
