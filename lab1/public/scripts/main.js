@@ -1,7 +1,6 @@
-var app = angular.module('todoApp', ['ngRoute']);
+var app = angular.module('wikiApp', ['ngRoute']);
 
-function addTodo(){}; // Function stub to be populated by app.controller callback
-function fetchTodos() {}; // Function stub
+function fetchPages() {}; // Function stub
 
 app.config(function($routeProvider, $locationProvider){
 
@@ -9,7 +8,7 @@ app.config(function($routeProvider, $locationProvider){
 
 	.when("/",
 	{
-		templateUrl : '../views/todo.html',
+		templateUrl : '../views/wrapper.html',
     	controller: "mainController"
     })
 
@@ -17,60 +16,113 @@ app.config(function($routeProvider, $locationProvider){
 });
 
 app.controller('mainController', function($scope, $http, $location){
-	$scope.todos = [];
+	$scope.pages = [];
 	// Fill out function stubs
-	fetchTodos = function() {
-		console.log("Fecthing todos");
-		$http.get('./todo').then(function success(res) {
-			$scope.todos = res.data.reverse();
+	fetchPages = function() {
+		console.log("Fetching pages");
+		$http.get('./pages').then(function success(res) {
+			$scope.pages = res.data.reverse();
 		}, function error(err) {
 			console.log(err);
 		});
 	};
-	addTodo = function(text) { 
-		data = {"text": text, "status": "in progress"};
+
+	// Show the page creation controls in the content div
+	$scope.dispMakePageMenu = function(default_title, default_content) {
+
+		// Automatically populate the title field if we are editing a page
+		if (default_title.length) {
+			$scope.newpage_title = default_title;
+		} else {
+			$scope.newpage_title = '';
+		}
+
+		// Automatically populate the content field if we are editing a page
+		if (default_content.length) {
+			$scope.newpage_content = default_content;
+		} else {
+			$scope.newpage_content = '';
+		}
+
+		// Inject the content div with a wrapper div that includes the actual controls html file
+		$scope.pagecontent = $sce.trustAsHtml("<div ng-include=\"'../views/pageCreationControls.html'\"></div>");
+	}
+
+	// Request the server to create a new page
+	$scope.addPage = function(title, content, author) { 
+		// Inject page controls into page content
+		var true_content = "<div ng-include=\"'../views/pageControls.html'\"></div>" + content;
+		data = {"title": title, "content": true_content, "author": author, "timestamp": new Date().getTime()};
 		console.log(data);
-		$http.post('./todo/new', JSON.stringify(data)).then(function success(res) {
-			fetchTodos(); // Refresh todo list
+		$http.post('./pages/new', JSON.stringify(data)).then(function success(res) {
+			fetchPages(); // Refresh todo list
+			resetContent(); // Reset menu to show blank page
 		}, function error(err) {
 			console.log(err);
 		});
 	};
-	$scope.deleteTodo = function(id) {
+
+	// Show controls to edit currently viewed page
+	$scope.showPageEditControls = function() {
+		// Show page creationg controls but pass current page title and content to autofill fields with
+		dispMakePageMenu(default_title, default_content);
+	}
+
+	// Request the server to edit a page
+	// $scope.editPage = function(id) {
+	// 	$http.post('./pages/byid/' + id + '/edit', JSON.stringify(data)).then(function success(res) {
+	// 		fetchPages(); // Refresh todo list
+	// 		resetContent(); // Reset menu to show blank page
+	// 	}, function error(err) {
+	// 		console.log(err);
+	// 	});
+	// }
+
+	// Request the server to delete a page
+	$scope.deletePage = function(id) {
 		console.log(id);
-		$http.delete('./todo/delete/' + id).then(function success(res) {
-			fetchTodos();
+		$http.delete('./pages/delete/' + id).then(function success(res) {
+			fetchPages();
+			resetContent(); // Reset menu to show blank page
 		}, function error(err) {
 			console.log(err);
 		});
 	};
-	$scope.toggleStatus = function(id) {
-		var data = {};
-		$http.post('./todo/' + id + '/status/toggle', JSON.stringify(data)).then(function success(res) {
-			fetchTodos();
+
+	// Request the content of a page from the server
+	$scope.fetchPageContent = function(id) {
+		console.log("Fetching page " + id);
+		$http.get('./pages/byid/' + id).then(function success(res) {
+			console.log(res);
+			// Set app var to keep track of what page we are on
+			$scope.currentpageid = id;
+			// Inject sanitized html
+			// $scope.pagecontent = $sce.trustAsHtml(res.data.content);
 		}, function error(err) {
 			console.log(err);
 		});
-	};
-	$scope.setFilter = function(filter) {
-		$scope.filter = filter;
+	}
+
+	// Reset the content div to show nothing
+	$scope.resetContent = function() {
+		$scope.pagecontent = "";
 	}
 
 	// Initial fetch
 	fetchTodos();
 });
 
-app.directive('ngEnterKeyPressed', function() {
-    return function(scope, element, attrs) {
-        element.bind("keydown keypress", function(event) {
-            var keyCode = event.which || event.keyCode;
+// app.directive('ngEnterKeyPressed', function() {
+//     return function(scope, element, attrs) {
+//         element.bind("keydown keypress", function(event) {
+//             var keyCode = event.which || event.keyCode;
 
-            // If enter key is pressed
-            if (keyCode === 13) {
-        		addTodo($(element).val());
-        		$(element).val('');
-                event.preventDefault();
-            }
-        });
-    };
-});
+//             // If enter key is pressed
+//             if (keyCode === 13) {
+//         		addTodo($(element).val());
+//         		$(element).val('');
+//                 event.preventDefault();
+//             }
+//         });
+//     };
+// });

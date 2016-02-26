@@ -1,5 +1,23 @@
-<h1>Todo</h1>
-<textarea ng-enter-key-pressed='addTodo()' type="text" placeholder="What is there to do?"></textarea>
+<!--Wrapper content (navbar, title, content div)-->
+
+<h1>Wiki</h1>
+<textarea ng-model="filter" type="text" placeholder="Search"></textarea>
+<div id="wrapper">
+
+<div id="navbar">
+<table>
+<tr ng-repeat="page in pages | filter:filter">
+	<td><a ng-click='fetchPageContent({{page.id}}' href="#{{page.title}}">{{page.title}}</a></td>
+</tr>
+</table>
+</br>
+<button ng-click='dispMakePageMenu()' type="button">+</button>
+</div>
+<div id="content">{{pagecontent}}</div>
+</div>
+
+
+<!--
 </br>
 <button ng-click='setFilter("")' type="button">All</button>
 <button ng-click='setFilter("In Progress")' type="button">In Progress</button>
@@ -16,3 +34,4 @@
 </td>
 </tr>
 </table>
+-->
