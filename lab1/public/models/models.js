@@ -2,8 +2,9 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/TwoterDatabase');
 
 //Schema
-var twoteSchema = mongoose.Schema({
+var pageSchema = mongoose.Schema({
   author: String,
+  editor: String,
   text: String,
   time: Number
 });

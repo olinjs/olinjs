@@ -1,62 +1,76 @@
-// Submit new twote
-function makeTwote() {
-	var text = $('#new_twote').val();
-	var author = "placeholder"; // Todo, fetch from cookies!
-	var curr_time = $.now(); // Current time in millis
-	var twote_data = {"text": text, "author": author, "time": curr_time};
-	$.ajax({
-		type: "POST",
-		contentType: "application/json",
-		url: "./twotes/new",
-		data: JSON.stringify(twote_data),
-		error: function(err) {
-			console.log(err);
-		}
-	});
-}
+var app = angular.module('todoApp', ['ngRoute']);
 
-// This is a really bad way to do this, instead you should send the timestamp of your most recent twote and only get the new ones
-// But who cares lets just finish this
-function updateTwotesList() {
-	$.ajax({
-		type: "GET",
-		url: "./twotes",
-		success: function(twotes, status) {
-			$('#twoteslist').html(genTwotesList(twotes));
-		},
-		error: function(err) {
-			console.log(err);
-		},
-		complete: function(data) {
-			setTimeout(updateTwotesList, 3000); // Repeat every 3 seconds
-		}
-	});
-}
+function addTodo(){}; // Function stub to be populated by app.controller callback
+function fetchTodos() {}; // Function stub
 
-// Generate html to populate the twotes table
-function genTwotesList(twotes) {
-	var list = '';
-	$.each(twotes, function(index, twote) {
-		list.concat(
-			'<tr><td>',
-			'<div class="twote_text">',
-			twote.text,
-			'</div><div class="twote_author">- ',
-			twote.author,
-			'</div>',
-			'</td></tr>'
-		);
-	});
-}
+app.config(function($routeProvider, $locationProvider){
 
-$(document).ready(function() {
-	updateTwotesList(); // Kick off our endless loop of ajax calls (;_;)
+  $routeProvider
+
+	.when("/",
+	{
+		templateUrl : '../views/todo.html',
+    	controller: "mainController"
+    })
+
+    $locationProvider.html5Mode(true);
 });
 
-// Make twote request when user is typing in text box and presses 'enter'
-// "Newlines are absolutely haram" -Joey, founder of Twoter Inc.
-$(document).keypress(function(e) {
-    if(e.which == 13 && $('#new_twote').is(":focus")) {
-        makeTwote();
-    }
+app.controller('mainController', function($scope, $http, $location){
+	$scope.todos = [];
+	// Fill out function stubs
+	fetchTodos = function() {
+		console.log("Fecthing todos");
+		$http.get('./todo').then(function success(res) {
+			$scope.todos = res.data.reverse();
+		}, function error(err) {
+			console.log(err);
+		});
+	};
+	addTodo = function(text) { 
+		data = {"text": text, "status": "in progress"};
+		console.log(data);
+		$http.post('./todo/new', JSON.stringify(data)).then(function success(res) {
+			fetchTodos(); // Refresh todo list
+		}, function error(err) {
+			console.log(err);
+		});
+	};
+	$scope.deleteTodo = function(id) {
+		console.log(id);
+		$http.delete('./todo/delete/' + id).then(function success(res) {
+			fetchTodos();
+		}, function error(err) {
+			console.log(err);
+		});
+	};
+	$scope.toggleStatus = function(id) {
+		var data = {};
+		$http.post('./todo/' + id + '/status/toggle', JSON.stringify(data)).then(function success(res) {
+			fetchTodos();
+		}, function error(err) {
+			console.log(err);
+		});
+	};
+	$scope.setFilter = function(filter) {
+		$scope.filter = filter;
+	}
+
+	// Initial fetch
+	fetchTodos();
+});
+
+app.directive('ngEnterKeyPressed', function() {
+    return function(scope, element, attrs) {
+        element.bind("keydown keypress", function(event) {
+            var keyCode = event.which || event.keyCode;
+
+            // If enter key is pressed
+            if (keyCode === 13) {
+        		addTodo($(element).val());
+        		$(element).val('');
+                event.preventDefault();
+            }
+        });
+    };
 });
