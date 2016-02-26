@@ -6,13 +6,18 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
 var mongoose = require('mongoose');
-var routes = require('./routes/index');
-var twotes = require('./routes/twotes');
+var index = require('./routes/index');
+var wiki = require('./routes/wiki');
 var app = express();
 
 // view engine setup
 app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
+
+
+//database setup
+mongoose.connect('mongodb://localhost/pagebase');
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -22,8 +27,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', routes);
-app.use('/twotes', twotes);
+app.get('/', index);
+app.get('/getlink', wiki.getlink);
+app.get('/addlink', wiki.addlink);
+app.get('/editlink', wiki.editlink);
 
 var PORT = process.env.PORT || 3000;
 app.listen(PORT, function() {
