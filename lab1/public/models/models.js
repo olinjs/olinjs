@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/TwoterDatabase');
+mongoose.connect('mongodb://localhost/WikiDatabase');
 
 //Schema
 var pageSchema = mongoose.Schema({
@@ -9,11 +9,6 @@ var pageSchema = mongoose.Schema({
   time: Number
 });
 
-var userSchema = mongoose.Schema({
-  name: String
-});
-
 module.exports = {
-	twoteModel: mongoose.model("twote", twoteSchema),
-	userModel: mongoose.model("user", userSchema)
+	pageModel: mongoose.model("page", pageSchema)
 } 
