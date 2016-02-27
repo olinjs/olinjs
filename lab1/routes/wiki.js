@@ -17,7 +17,7 @@ wiki.getpages = function(req, res){
 			console.log("Problem fetching pages", err);
 		}
 	});
-	return pagelist;
+	res.json(pagelist);
 };
 
 
@@ -35,6 +35,7 @@ wiki.addpage = function(req, res){
 			}
 		});
 	});
+	res.json("New Page Added");
 };
 
 
@@ -44,7 +45,7 @@ wiki.getcontent = function(req, res){
 
 	var pageid = req.params.id;
 	pagedb.findById(pageid, function (err, page) {
-		return page.content;
+		res.json(page.content);
 	});
 
 };
@@ -54,6 +55,7 @@ wiki.deletepage = function(req, res){
 	
 	var pageid = req.params.id;
 	pagedb.find({ id:pageid }).remove().exec();
+	res.json("Page Deleted");
 };
 
 module.exports = wiki;
