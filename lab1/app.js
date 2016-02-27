@@ -25,10 +25,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', index);
-app.get('/getlink', wiki.getlink);
-app.get('/gettitle', wiki.gettitle);
-app.post('/addlink', wiki.addlink);
-app.post('/editlink', wiki.editlink);
+app.get('/pages', wiki.getpages);
+app.get('/pages/byid/:id', wiki.getcontent);
+app.post('/pages/new', wiki.addpage);
+app.get('/pages/byid/:id/delete', wiki.deletepage);
 
 
 

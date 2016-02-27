@@ -3,11 +3,10 @@ var mongoose = require('mongoose');
 
 // Create a Schema
 var pageSchema = mongoose.Schema({
-	topic: String,
+	title: String,
 	content: String,
 	author: String,
 	timestamp: String,
-	id: String
 });
 
 module.exports = mongoose.model("page", pageSchema);

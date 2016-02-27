@@ -7,50 +7,52 @@ var wiki = {};
 var pagedb = require('../models/pagemodel.js');
 
 // get all the pages created
-wiki.getlink = function(req, res){
-	return pagedb.find({}, function(err) {
+wiki.getpages = function(req, res){
+	var pagelist = [];
+	pagedb.find({}, function(err, page) {
+		var title = req.body.title;
+		var id = req.body._id;
+		var p = "{"+ title + "," + id + "}";
+		pagelist.push(p);
 		if (err) {
 			console.log("Problem fetching pages", err);
 		}
 	});
-
+	return pagelist;
 };
 
 
-wiki.addlink = function(req, res){
+wiki.addpage = function(req, res){
 	var new_page = new pagedb(req.body);
-	new_page.save(function(err) {
+	pagedb.find({_id:req.body._id},function(err, page)
+		if (page.length > 0){
+			new_page.title = req.body.title;
+			new_page.content = req.body.content;
+			new_page.author = req.body.author;
+		}
+		new_page.save(function(err) {
 		if (err) {
 			console.log("Problem adding new pages", err);
-		}
-	});
-
-};
-
-
-wiki.editlink = function(req, res){
-	pagedb.findById(req.body.id,function(err, page){
-		if(err) throw err;
-		page.content = req.body.content;
-		page.title = req.body.title;
-		page.author = req.body.author;
-
-		page.save(function(err){
-			if (err){
-				console.log("Problem editing pages")
 			}
-		})
-	})
+		});
+	)
 };
 
 
-wiki.gettitile = function(req, res){
-	var pages = pagedb.find({}, function(err) {
-		if (err) {
-			console.log("Problem fetching page title", err);
-		}
+
+
+wiki.getcontent = function(req, res){
+
+	var pageid = req.params.id;
+	pagedb.findById(pageid, function (err, page) {
+		return page.content;
 	});
 
-
 };
 
+
+wiki.deletepage = function(req, res){
+	
+	var pageid = req.params.id;
+	pagedb.find({ id:pageid }).remove().exec();
+};
