@@ -101,8 +101,6 @@ app.controller('mainController', function($scope, $http, $location){
 		$scope.pagecontent = "";
 	}
 
-	// Initial fetch
-	fetchTodos();
 });
 
 // app.directive('ngEnterKeyPressed', function() {
