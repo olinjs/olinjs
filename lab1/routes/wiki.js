@@ -55,3 +55,5 @@ wiki.deletepage = function(req, res){
 	var pageid = req.params.id;
 	pagedb.find({ id:pageid }).remove().exec();
 };
+
+module.exports = wiki;

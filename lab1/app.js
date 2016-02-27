@@ -24,7 +24,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get('/', index);
+app.get('/', index.home);
 app.get('/pages', wiki.getpages);
 app.get('/pages/byid/:id', wiki.getcontent);
 app.post('/pages/new', wiki.addpage);

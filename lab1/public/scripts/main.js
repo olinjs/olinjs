@@ -58,7 +58,7 @@ app.controller('mainController', function($scope, $http, $location){
 		data = {"title": title, "content": true_content, "author": author, "timestamp": new Date().getTime()};
 		console.log(data);
 		$http.post('./pages/new', JSON.stringify(data)).then(function success(res) {
-			fetchPages(); // Refresh todo list
+			fetchPages(); // Refresh page list
 			resetContent(); // Reset menu to show blank page
 		}, function error(err) {
 			console.log(err);
