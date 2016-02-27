@@ -11,7 +11,7 @@ wiki.getpages = function(req, res){
 	var pagelist = [];
 	pagedb.find({}, function(err, page) {
 		var title = req.body.title;
-		var id = req.body._id;
+		var id = req.params.id;
 		var p = "{"+ title + "," + id + "}";
 		pagelist.push(p);
 		if (err) {
@@ -24,7 +24,7 @@ wiki.getpages = function(req, res){
 
 wiki.addpage = function(req, res){
 	var new_page = new pagedb(req.body);
-	pagedb.find({_id:req.body._id},function(err, page)
+	pagedb.find({_id:req.params.id},function(err, page)
 		if (page.length > 0){
 			new_page.title = req.body.title;
 			new_page.content = req.body.content;
