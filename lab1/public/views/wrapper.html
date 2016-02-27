@@ -7,15 +7,28 @@
 <div id="navbar">
 <table>
 <tr ng-repeat="page in pages | filter:filter">
-	<td><a ng-click='fetchPageContent({{page.id}}' href="#{{page.title}}">{{page.title}}</a></td>
+	<td><a ng-click="fetchPageContent('{{page.id}}')" href="#{{page.title}}">{{page.title}}</a></td>
 </tr>
 </table>
 </br>
-<button ng-click='dispMakePageMenu()' type="button">+</button>
+<button ng-click="pagecontent='makePageControls'" type="button">+</button>
 </div>
-<div id="content">{{pagecontent}}</div>
+<ng-include src="pagecontent"></ng-include>
 </div>
 
+<script type="text/ng-template" id="makePageControls">
+	<h2>Manage Page</h2>
+	<textarea ng-model="newpage_title" type="text" placeholder="Page title"></textarea>
+	<textarea ng-model="newpage_content" type="text" placeholder="Page content (raw html)"></textarea>
+	</br>
+	<button type="button" ng-click="addPage('{{newpage_title}}', '{{newpage_content}}', 'default_author')">Submit</button>
+	<button type="button" ng-click="contentReset()">Cancel</button>
+</script>
+
+<script type="text/ng-template" id="pageControls">
+	<button type="button" ng-click="editPage('{{currentpageid}}'">Edit</button>
+	<button type="button" ng-click="deletePage('{{currentpageid}}'">Remove</button>
+</script>
 
 <!--
 </br>

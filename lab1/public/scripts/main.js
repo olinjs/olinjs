@@ -18,7 +18,7 @@ app.config(function($routeProvider, $locationProvider){
     $locationProvider.html5Mode(true);
 });
 
-app.controller('mainController', function($scope, $http, $location){
+app.controller('mainController', function($scope, $sce, $http, $location){
 	$scope.pages = [];
 	// Fill out function stubs
 	fetchPages = function() {
@@ -31,25 +31,25 @@ app.controller('mainController', function($scope, $http, $location){
 	};
 
 	// Show the page creation controls in the content div
-	$scope.dispMakePageMenu = function(default_title, default_content) {
+	// $scope.dispMakePageMenu = function(default_title, default_content) {
 
-		// Automatically populate the title field if we are editing a page
-		if (default_title.length) {
-			$scope.newpage_title = default_title;
-		} else {
-			$scope.newpage_title = '';
-		}
+	// 	// Automatically populate the title field if we are editing a page
+	// 	if (default_title != undefined && default_title.length) {
+	// 		$scope.newpage_title = default_title;
+	// 	} else {
+	// 		$scope.newpage_title = '';
+	// 	}
 
-		// Automatically populate the content field if we are editing a page
-		if (default_content.length) {
-			$scope.newpage_content = default_content;
-		} else {
-			$scope.newpage_content = '';
-		}
+	// 	// Automatically populate the content field if we are editing a page
+	// 	if (default_content != undefined && default_content.length) {
+	// 		$scope.newpage_content = default_content;
+	// 	} else {
+	// 		$scope.newpage_content = '';
+	// 	}
 
-		// Inject the content div with a wrapper div that includes the actual controls html file
-		$scope.pagecontent = $sce.trustAsHtml("<div ng-include=\"'../views/pageCreationControls.html'\"></div>");
-	}
+	// 	// Inject the content div with a wrapper div that includes the actual controls html file
+	// 	$scope.pagecontent = $sce.trustAsHtml("<div class=\"ng-scope\" ng-include src=\"'views/pageCreationControls.html'\"></div>");
+	// }
 
 	// Request the server to create a new page
 	$scope.addPage = function(title, content, author) { 
@@ -102,7 +102,7 @@ app.controller('mainController', function($scope, $http, $location){
 	}
 
 	// Initial fetch
-	fetchTodos();
+	fetchPages();
 });
 
 // app.directive('ngEnterKeyPressed', function() {
