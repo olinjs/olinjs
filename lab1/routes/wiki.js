@@ -1,4 +1,3 @@
-
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
@@ -24,18 +23,18 @@ wiki.getpages = function(req, res){
 
 wiki.addpage = function(req, res){
 	var new_page = new pagedb(req.body);
-	pagedb.find({_id:req.params.id},function(err, page)
+	pagedb.find({_id:req.params.id},function(err, page) {
 		if (page.length > 0){
 			new_page.title = req.body.title;
 			new_page.content = req.body.content;
 			new_page.author = req.body.author;
 		}
 		new_page.save(function(err) {
-		if (err) {
-			console.log("Problem adding new pages", err);
+			if (err) {
+				console.log("Problem adding new pages", err);
 			}
 		});
-	)
+	});
 };
 
 
