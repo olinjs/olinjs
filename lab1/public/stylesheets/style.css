@@ -10,18 +10,15 @@ a {
 }
 
 div.header {
-	height: 100%;
-	padding-left: 5px;
-	padding-top: 18.76px;
-	padding-bottom: 18.76px;
+	max-height: 5vh;
 	background: #d9d9d9;
 	box-shadow: 0px 2px 3px #888888;
 	position: relative;
+	padding-bottom: 2vh;
 }
 
 div.header h1 {
-	margin-top: 0px;
-	margin-bottom: 0px;
+	margin: 0px;
 }
 
 #wrapper {
@@ -30,13 +27,15 @@ div.header h1 {
 }
 
 div.navbar {
-	width: 10%;
-	height: 85vh;
+	padding-left: 5px;
+	padding-top: 5px;
+	width: 10vw;
+	height: 94vh;
 	display: inline-block;
 	vertical-align: top;
     background: #e0e0e0;
     box-shadow: 2px 0px 3px #888888;
-    padding: 20px;
+    z-index: 10;
 }
 
 div.navbar a {
@@ -44,20 +43,27 @@ div.navbar a {
 }
 
 div.pagecontent {
-	padding: 5px;
-	width: 87%;
-	height: 80%;
+	margin-left: .01vw;
+	margin-top: .1vh;
+	width: 88.73vw;
+	height: 94.5vh;
 	display: inline-block;
 	vertical-align: top;
 	overflow-y: auto;
 	background-color: #eeeeee;
+	z-index: 1;
 }
 
 div.pagecontent #dynamic-content {
 	overflow-y: auto;
 	overflow-x: hidden;
-	height: 85vh;
 	font: 16px arial, sans-serif;
+	padding-left: 10px;
+}
+
+div#pageManagementControls {
+	padding-left: 10px;
+	padding-top: 5px;
 }
 
 div#pageManagementControls #title {
