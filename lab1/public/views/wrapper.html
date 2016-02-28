@@ -7,10 +7,10 @@
 </div>
 <div class="navbar" id="navbar">
 <div class="textinput_wrapper">
-<input ng-model="filter" type="text" placeholder="Search"></input>
+<input ng-model="filter.title" type="text" placeholder="Search"></input>
 </div>
 <table>
-<tr ng-repeat="page in pages | filter:filter">
+<tr ng-repeat="page in pages | filter:filter:strict">
 	<td><a ng-click="fetchPageContent(page._id)" href="">{{page.title}}</a></td>
 </tr>
 </table>
