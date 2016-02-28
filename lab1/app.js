@@ -18,7 +18,7 @@ app.get('/', index.home);
 app.get('/pages', wiki.getpages);
 app.get('/pages/byid/:id', wiki.getcontent);
 app.post('/pages/new', wiki.addpage);
-app.get('/pages/byid/:id/delete', wiki.deletepage);
+app.delete('/pages/byid/:id/delete', wiki.deletepage);
 
 
 

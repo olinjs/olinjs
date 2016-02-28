@@ -3,8 +3,9 @@
 
 var app = angular.module('wikiApp', ['ngRoute']);
 
-function fetchPages() {}; // Function stub
+function fetchPages() {}; // Function stubs
 function resetContent() {};
+function resetControls() {};
 
 app.config(function($routeProvider, $locationProvider){
 
@@ -24,34 +25,12 @@ app.controller('mainController', function($scope, $sce, $http, $location){
 	$scope.$sce = $sce;
 	// Fill out function stubs
 	fetchPages = function() {
-		console.log("Fetching pages");
 		$http.get('./pages').then(function success(res) {
 			$scope.pages = res.data.reverse();
 		}, function error(err) {
 			console.log(err);
 		});
 	};
-
-	// Show the page creation controls in the content div
-	// $scope.dispMakePageMenu = function(default_title, default_content) {
-
-	// 	// Automatically populate the title field if we are editing a page
-	// 	if (default_title != undefined && default_title.length) {
-	// 		$scope.newpage_title = default_title;
-	// 	} else {
-	// 		$scope.newpage_title = '';
-	// 	}
-
-	// 	// Automatically populate the content field if we are editing a page
-	// 	if (default_content != undefined && default_content.length) {
-	// 		$scope.newpage_content = default_content;
-	// 	} else {
-	// 		$scope.newpage_content = '';
-	// 	}
-
-	// 	// Inject the content div with a wrapper div that includes the actual controls html file
-	// 	$scope.pagecontent = $sce.trustAsHtml("<div class=\"ng-scope\" ng-include src=\"'views/pageCreationControls.html'\"></div>");
-	// }
 
 	// Request the server to create a new page
 	$scope.addPage = function(author) { 
@@ -61,33 +40,21 @@ app.controller('mainController', function($scope, $sce, $http, $location){
 
 		// Inject page controls into page content
 		data = {"title": $scope.newpageTitle, "content": $scope.newpageContent, "author": author, "timestamp": new Date().getTime()};
-
-		console.log(data);
 		$http.post('./pages/new', JSON.stringify(data)).then(function success(res) {
-			console.log(res);
 			fetchPages(); // Refresh page list
 			resetContent(); // Reset menu to show blank page
+			resetControls(); // Reset the controls to show blank page
 		}, function error(err) {
 			console.log(err);
 		});
 	};
 
-	// Show controls to edit currently viewed page
-	$scope.showPageEditControls = function() {
-		// Show page creationg controls but pass current page title and content to autofill fields with
-		dispMakePageMenu(default_title, default_content);
-	}
-
-	$scope.hideControls = function() {
-		$scope.controls='';
-	}
-
 	// Request the server to delete a page
 	$scope.deletePage = function(id) {
-		console.log(id);
 		$http.delete('./pages/byid/' + id + '/delete').then(function success(res) {
 			fetchPages();
 			resetContent(); // Reset menu to show blank page
+			resetControls();
 		}, function error(err) {
 			console.log(err);
 		});
@@ -95,13 +62,18 @@ app.controller('mainController', function($scope, $sce, $http, $location){
 
 	// Request the content of a page from the server
 	$scope.fetchPageContent = function(id) {
-		console.log("Fetching page " + id);
 		$http.get('./pages/byid/' + id).then(function success(res) {
-			// Set app var to keep track of what page we are on
-			$scope.currentpageid = id;
+			// Capture content from response
+			var content = res.data.content;
+
 			// Inject sanitized html
-			console.log("Displaying ", res.data.substr(1, res.data.length - 2));
-			$scope.pagecontent = $sce.trustAsHtml(res.data.substr(1, res.data.length - 2));
+			$scope.pagecontent = $sce.trustAsHtml(content);
+
+			// Set app vars to keep track of what page we are on
+			$scope.current_page_content = content;
+			$scope.current_page_title = res.data.title;
+			$scope.current_page_id = id;
+			// Display page controls (edit/remove)
 			$scope.controls = 'pageControls';
 		}, function error(err) {
 			console.log(err);
@@ -113,21 +85,11 @@ app.controller('mainController', function($scope, $sce, $http, $location){
 		$scope.pagecontent = "";
 	}
 
+	// MAKE THE CONTROLS DISAPPEAR
+	resetControls = function() {
+		$scope.controls = "";
+	}
+
 	// Initial fetch
 	fetchPages();
 });
-
-// app.directive('ngEnterKeyPressed', function() {
-//     return function(scope, element, attrs) {
-//         element.bind("keydown keypress", function(event) {
-//             var keyCode = event.which || event.keyCode;
-
-//             // If enter key is pressed
-//             if (keyCode === 13) {
-//         		addTodo($(element).val());
-//         		$(element).val('');
-//                 event.preventDefault();
-//             }
-//         });
-//     };
-// });

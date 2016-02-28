@@ -27,18 +27,28 @@ wiki.addpage = function(req, res){
 	console.log("Adding Page");
 	var new_page = new pagedb(req.body);
 	console.log(new_page);
-	pagedb.find({_id:req.params.id},function(err, pages) {
+	pagedb.find({title:req.body.title},function(err, pages) {
 		console.log(pages);
 		if (pages.length > 0){
-			console.log("Found existing entry");
-			pages[0].title = new_page.title;
-			pages[0].content = new_page.content;
-			pages[0].author = new_page.author;
-			pages[0].timestamp = new_page.timestamp;
-			res.json("New Page Added");
+
+			// Edit existing entry
+			var existing_page = pages[0];
+			existing_page.title = new_page.title;
+			existing_page.content = new_page.content;
+			existing_page.author = new_page.author;
+			existing_page.timestamp = new_page.timestamp;
+
+			existing_page.save( function(err) {
+				if (err) {
+					console.log("Problem adding new pages", err);
+				} else {
+					console.log("Edited successfully");
+					res.json("New Page Added");
+				}
+			});
 		} else {
-			console.log("Saving new entry");
-			console.log(new_page);
+
+			// Add new entry
 			new_page.save(function(err) {
 				if (err) {
 					console.log("Problem adding new pages", err);
@@ -60,7 +70,7 @@ wiki.getcontent = function(req, res){
 		if (err) {
 			console.log("Problem finding page content", err);
 		} else {
-			res.json(page.content);
+			res.json({"title": page.title, "content": page.content});
 		}
 	});
 
@@ -68,9 +78,8 @@ wiki.getcontent = function(req, res){
 
 
 wiki.deletepage = function(req, res){
-	
 	var pageid = req.params.id;
-	pagedb.find({ id:pageid }).remove().exec();
+	pagedb.find({_id:pageid }).remove().exec();
 	res.json("Page Deleted");
 };
 

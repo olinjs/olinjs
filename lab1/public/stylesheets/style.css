@@ -35,6 +35,7 @@ div.pagecontent #dynamic-content {
 	overflow-y: auto;
 	overflow-x: hidden;
 	height: 85vh;
+	font: 16px arial, sans-serif;
 }
 
 div#pageManagementControls #title {

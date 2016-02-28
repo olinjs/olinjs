@@ -32,14 +32,18 @@
 	</div>
 	</br>
 	<button type="button" ng-click="addPage('default_author')">Submit</button>
-	<button type="button" ng-click="hideControls(); $parent.newpageTitle=''; $parent.newpageContent=''">Cancel</button>
+	<button type="button" ng-click="$parent.controls=''; $parent.newpageTitle=''; $parent.newpageContent=''">Cancel</button>
 	</div>
 </script>
 
 <script type="text/ng-template" id="pageControls">
 	<div id="pageControls">
-	<button type="button" ng-click="deletePage('currentpageid')">Remove</button>
-	<button type="button" ng-click="editPage('currentpageid')">Edit</button>
+	<button type="button" ng-click="deletePage($parent.current_page_id)">Remove</button>
+	<button type="button" ng-click="$parent.pagecontent=''; 
+									$parent.controls='makePageControls'; 
+									$parent.newpageTitle=$parent.current_page_title; 
+									$parent.newpageContent=$parent.current_page_content
+								">Edit</button>
 	</div>
 </script>
 
