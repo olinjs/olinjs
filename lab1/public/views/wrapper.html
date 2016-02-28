@@ -1,11 +1,14 @@
 <!--Wrapper content (navbar, title, content div)-->
-
+<div class="header">
 <h1>Wiki</h1>
+</div>
 
 <div id="wrapper">
 
 <div class="navbar" id="navbar">
-<textarea ng-model="filter" type="text" placeholder="Search"></textarea>
+<div class="textinput_wrapper">
+<input ng-model="filter" type="text" placeholder="Search"></input>
+</div>
 <table>
 <tr ng-repeat="page in pages | filter:filter">
 	<td><a ng-click="fetchPageContent(page._id)" href="">{{page.title}}</a></td>
@@ -25,7 +28,7 @@
 	<div id="pageManagementControls">
 	<h2 id="title">Manage Page</h2>
 	<div class="textinput_wrapper">
-	<input id="title_input" ng-model="$parent.newpageTitle" type="text" placeholder="Page title"></textarea>
+	<input id="title_input" ng-model="$parent.newpageTitle" type="text" placeholder="Page title"></input>
 	</div></br>
 	<div class="textinput_wrapper">
 	<textarea rows=2 id="content_input" ng-model="$parent.newpageContent" type="text" placeholder="Page content (raw html)"></textarea>

@@ -1,11 +1,27 @@
 body {
-  padding: 5px;
+  padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   margin: 0px;
 }
 
 a {
   color: #00B7FF;
+
+}
+
+div.header {
+	height: 100%;
+	padding-left: 5px;
+	padding-top: 18.76px;
+	padding-bottom: 18.76px;
+	background: #d9d9d9;
+	box-shadow: 0px 2px 3px #888888;
+	position: relative;
+}
+
+div.header h1 {
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 
 #wrapper {
@@ -18,17 +34,23 @@ div.navbar {
 	height: 85vh;
 	display: inline-block;
 	vertical-align: top;
-	border-radius: 5px;
-    background: #004d00;
+    background: #e0e0e0;
+    box-shadow: 2px 0px 3px #888888;
     padding: 20px;
 }
 
+div.navbar a {
+	text-decoration: none;
+}
+
 div.pagecontent {
-	width: 50%;
+	padding: 5px;
+	width: 87%;
 	height: 80%;
 	display: inline-block;
 	vertical-align: top;
 	overflow-y: auto;
+	background-color: #eeeeee;
 }
 
 div.pagecontent #dynamic-content {
@@ -48,6 +70,7 @@ div#pageManagementControls #title_input {
 	height: 25px;
 	width: 100%;
 	font: 16px arial, sans-serif;
+	background: transparent;
 }
 
 div#pageManagementControls #title_input:focus {
@@ -59,6 +82,7 @@ div#pageManagementControls #content_input {
 	height: 50vh;
 	width: 100%;
 	font: 16px arial, sans-serif;
+	background: transparent;
 	resize: none;
 }
 
@@ -66,13 +90,33 @@ div#pageManagementControls #content_input:focus {
     outline-width: 0;
 }
 
-.textinput_wrapper {
-	border-radius: 5px;
+div#pageManagementControls .textinput_wrapper {
 	outline: solid;
+	outline-color: #d9d9d9;
+	outline-width: 2px;
 	padding-left: 10px;
 	padding-right: 10px;
 	padding-top: 2px;
 	padding-bottom: 2px;
+}
+
+div.navbar .textinput_wrapper {
+	padding-left: 4px;
+	padding-right: 10px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+div.navbar input {
+	border: none;
+	height: 25px;
+	width: 100%;
+	font: 14px arial, sans-serif;
+	resize: none;
+}
+
+div.navbar input:focus {
+    outline-width: 0;
 }
 
 div#pageControls {
