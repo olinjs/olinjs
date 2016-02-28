@@ -1,33 +1,46 @@
 <!--Wrapper content (navbar, title, content div)-->
 
 <h1>Wiki</h1>
-<textarea ng-model="filter" type="text" placeholder="Search"></textarea>
+
 <div id="wrapper">
 
-<div id="navbar">
+<div class="navbar" id="navbar">
+<textarea ng-model="filter" type="text" placeholder="Search"></textarea>
 <table>
 <tr ng-repeat="page in pages | filter:filter">
-	<td><a ng-click="fetchPageContent('{{page.id}}')" href="#{{page.title}}">{{page.title}}</a></td>
+	<td><a ng-click="fetchPageContent(page._id)" href="">{{page.title}}</a></td>
 </tr>
 </table>
 </br>
-<button ng-click="pagecontent='makePageControls'" type="button">+</button>
+<button ng-click="controls='makePageControls'; pagecontent=''" type="button">+</button>
 </div>
-<ng-include src="pagecontent"></ng-include>
+
+<div class="pagecontent">
+<ng-include src="controls"></ng-include>
+<div id="dynamic-content" ng-bind-html="pagecontent"></div>
+</div>
 </div>
 
 <script type="text/ng-template" id="makePageControls">
-	<h2>Manage Page</h2>
-	<textarea ng-model="newpage_title" type="text" placeholder="Page title"></textarea>
-	<textarea ng-model="newpage_content" type="text" placeholder="Page content (raw html)"></textarea>
+	<div id="pageManagementControls">
+	<h2 id="title">Manage Page</h2>
+	<div class="textinput_wrapper">
+	<input id="title_input" ng-model="$parent.newpageTitle" type="text" placeholder="Page title"></textarea>
+	</div></br>
+	<div class="textinput_wrapper">
+	<textarea rows=2 id="content_input" ng-model="$parent.newpageContent" type="text" placeholder="Page content (raw html)"></textarea>
+	</div>
 	</br>
-	<button type="button" ng-click="addPage('{{newpage_title}}', '{{newpage_content}}', 'default_author')">Submit</button>
-	<button type="button" ng-click="contentReset()">Cancel</button>
+	<button type="button" ng-click="addPage('default_author')">Submit</button>
+	<button type="button" ng-click="hideControls(); $parent.newpageTitle=''; $parent.newpageContent=''">Cancel</button>
+	</div>
 </script>
 
 <script type="text/ng-template" id="pageControls">
-	<button type="button" ng-click="editPage('{{currentpageid}}'">Edit</button>
-	<button type="button" ng-click="deletePage('{{currentpageid}}'">Remove</button>
+	<div id="pageControls">
+	<button type="button" ng-click="deletePage('currentpageid')">Remove</button>
+	<button type="button" ng-click="editPage('currentpageid')">Edit</button>
+	</div>
 </script>
 
 <!--

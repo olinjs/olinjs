@@ -4,9 +4,9 @@ mongoose.connect('mongodb://localhost/WikiDatabase');
 //Schema
 var pageSchema = mongoose.Schema({
   author: String,
-  editor: String,
-  text: String,
-  time: Number
+  title: String,
+  content: String,
+  timestamp: Number
 });
 
 module.exports = {

@@ -1,8 +1,85 @@
 body {
-  padding: 50px;
+  padding: 5px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0px;
 }
 
 a {
   color: #00B7FF;
+}
+
+#wrapper {
+	width: 100%;
+	height: 100%;
+}
+
+div.navbar {
+	width: 10%;
+	height: 85vh;
+	display: inline-block;
+	vertical-align: top;
+	border-radius: 5px;
+    background: #004d00;
+    padding: 20px;
+}
+
+div.pagecontent {
+	width: 50%;
+	height: 80%;
+	display: inline-block;
+	vertical-align: top;
+	overflow-y: auto;
+}
+
+div.pagecontent #dynamic-content {
+	overflow-y: auto;
+	overflow-x: hidden;
+	height: 85vh;
+}
+
+div#pageManagementControls #title {
+	margin-top: 0px;
+	margin-bottom: 5px;
+}
+
+div#pageManagementControls #title_input {
+	border: none;
+	height: 25px;
+	width: 100%;
+	font: 16px arial, sans-serif;
+}
+
+div#pageManagementControls #title_input:focus {
+    outline-width: 0;
+}
+
+div#pageManagementControls #content_input {
+	border: none;
+	height: 50vh;
+	width: 100%;
+	font: 16px arial, sans-serif;
+	resize: none;
+}
+
+div#pageManagementControls #content_input:focus {
+    outline-width: 0;
+}
+
+.textinput_wrapper {
+	border-radius: 5px;
+	outline: solid;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+div#pageControls {
+	width: 100%;
+	height: 25px;
+}
+
+div#pageControls button {
+	float: right;
+	margin-left: 10px;
 }

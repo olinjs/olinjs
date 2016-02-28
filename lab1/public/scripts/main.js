@@ -4,6 +4,7 @@
 var app = angular.module('wikiApp', ['ngRoute']);
 
 function fetchPages() {}; // Function stub
+function resetContent() {};
 
 app.config(function($routeProvider, $locationProvider){
 
@@ -20,6 +21,7 @@ app.config(function($routeProvider, $locationProvider){
 
 app.controller('mainController', function($scope, $sce, $http, $location){
 	$scope.pages = [];
+	$scope.$sce = $sce;
 	// Fill out function stubs
 	fetchPages = function() {
 		console.log("Fetching pages");
@@ -52,12 +54,17 @@ app.controller('mainController', function($scope, $sce, $http, $location){
 	// }
 
 	// Request the server to create a new page
-	$scope.addPage = function(title, content, author) { 
+	$scope.addPage = function(author) { 
+		if ($scope.newpageTitle == undefined || $scope.newpageContent == undefined) {
+			return;
+		}
+
 		// Inject page controls into page content
-		var true_content = "<div ng-include=\"'../views/pageControls.html'\"></div>" + content;
-		data = {"title": title, "content": true_content, "author": author, "timestamp": new Date().getTime()};
+		data = {"title": $scope.newpageTitle, "content": $scope.newpageContent, "author": author, "timestamp": new Date().getTime()};
+
 		console.log(data);
 		$http.post('./pages/new', JSON.stringify(data)).then(function success(res) {
+			console.log(res);
 			fetchPages(); // Refresh page list
 			resetContent(); // Reset menu to show blank page
 		}, function error(err) {
@@ -69,6 +76,10 @@ app.controller('mainController', function($scope, $sce, $http, $location){
 	$scope.showPageEditControls = function() {
 		// Show page creationg controls but pass current page title and content to autofill fields with
 		dispMakePageMenu(default_title, default_content);
+	}
+
+	$scope.hideControls = function() {
+		$scope.controls='';
 	}
 
 	// Request the server to delete a page
@@ -86,18 +97,19 @@ app.controller('mainController', function($scope, $sce, $http, $location){
 	$scope.fetchPageContent = function(id) {
 		console.log("Fetching page " + id);
 		$http.get('./pages/byid/' + id).then(function success(res) {
-			console.log(res);
 			// Set app var to keep track of what page we are on
 			$scope.currentpageid = id;
 			// Inject sanitized html
-			// $scope.pagecontent = $sce.trustAsHtml(res.data.content);
+			console.log("Displaying ", res.data.substr(1, res.data.length - 2));
+			$scope.pagecontent = $sce.trustAsHtml(res.data.substr(1, res.data.length - 2));
+			$scope.controls = 'pageControls';
 		}, function error(err) {
 			console.log(err);
 		});
 	}
 
 	// Reset the content div to show nothing
-	$scope.resetContent = function() {
+	resetContent = function() {
 		$scope.pagecontent = "";
 	}
 
