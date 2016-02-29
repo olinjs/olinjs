@@ -342,7 +342,9 @@ Finally we set our uniforms and call draw. There are many different functions to
 ##Transformations 
 If we want to draw a model on the screen, we apply to the model a series of transformations. We take the points that make up the model, translate and scale them to place them in the world; we then apply a rotation to turn the camera towards the model, and finally we project the model into the viewing plane to display it on the screen. This example highlights the five major transformations that are common in graphics: rotation, reflection, scaling, projection, and translation. These are some of the set of transformations known as affline transformations, and we respresent them in the form y = Mx+b where y is the reslutant point, M is a matrix representing a linear transformation, x is the intial point, and b is a vector. The difference between a linear transformation and an affline transformation is that a linear transformation must preserve the zero point while an affline transformation does not.  
 
-Linear tranformations can be represented by a square matrix of the size of the space. For example in two space, we can represent a rotation about the origin with the matrix ![rotation](./images/rotation.gif)
+Linear tranformations can be represented by a square matrix of the size of the space. For example in two space, we can represent a rotation about the origin with the matrix 
+
+![rotation](./images/rotation.gif)
 ##Homogenous Coordinates
 
 ##Transformations in Homogenous Coordinate Systems
