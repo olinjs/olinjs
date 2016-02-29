@@ -235,7 +235,6 @@ function loadShaderFromDOM(gl, id) {
 		return null;
 	} 
 	return shader;
-
 }
 
 ``` 
@@ -332,8 +331,8 @@ gl.uniformMatrix4fv(pMatrixUniLoc, false, pMat);
 
 gl.drawArrays(gl.TRIANGLES, 0, 3);
 ``` 
-Now we should see a triangle take up most of the canvas with different color vertices interpolated across the triangle. The `bufferData` method fills the last bound buffer with data. We have to use a javascript typed array which is why `new Float32Array(arr)`js is used. We needed to rebind the buffers to fill them as the last bound buffer was the color buffer, and I wanted to put the position code before the color. The `mat4.create()` uses a library included in this lesson called gl-matrix to create an 4x4 identity matrix. The library allows for matrix manipulation in javascript, so is very useful.
-Finally we set our uniforms and call draw. There are many different functions to set uniforms. The one we used sets a 4x4 matrix of floats from an array, and in general the name of the method reflects the data it creates. The `drawArrays` method tells gl how it should draw the values in the buffer, where to start in the buffer, and how many times it should move pointer.  
+Now we should see a triangle take up most of the canvas with different color vertices interpolated across the triangle. The `bufferData` method fills the last bound buffer with data. We have to use a javascript typed array which is why `new Float32Array(arr)` is used. We needed to rebind the buffers to fill them as the last bound buffer was the color buffer, and I wanted to put the position code before the color. The `mat4.create()` uses a library included in this lesson called gl-matrix to create an 4x4 identity matrix. The library allows for matrix manipulation in javascript, so is very useful.
+Finally we set our uniforms and call draw. There are many different functions to set uniforms. The one we used sets a 4x4 matrix of floats from an array, and in general the name of the method reflects the data it creates. The `drawArrays` method tells gl how it should draw the values in the buffer, where to start in the buffer, and how many times it should move the pointer.  
 
 
 ##And Now the Model Part
@@ -341,7 +340,9 @@ Finally we set our uniforms and call draw. There are many different functions to
 #Appendix A: Mathematical Concepts
 
 ##Transformations 
-There are four major transformations that are common in graphics: translation, rotation, reflection, and scaling. 
+If we want to draw a model on the screen, we apply to the model a series of transformations. We take the points that make up the model, translate and scale them to place them in the world; we then apply a rotation to turn the camera towards the model, and finally we project the model into the viewing plane to display it on the screen. This example highlights the five major transformations that are common in graphics: rotation, reflection, scaling, projection, and translation. These are some of the set of transformations known as affline transformations, and we respresent them in the form $y = Mx+b$ where $y$ is the reslutant point, $M$ is a matrix representing a linear transformation, $x$ is the intial point, and $b$ is a vector. The difference between a linear transformation and an affline transformation is that a linear transformation must preserve the zero point while an affline transformation does not.  
+
+Linear tranformations can be represented by a square matrix of the size of the space. For example in two space, we can represent a rotation about the origin with the matrix $$M = \left[ \begin{array}{cc} cos(\theta) & -sin(\theta) \\ sin(\theta) & cos(\theta) \right]$$
 
 ##Homogenous Coordinates
 
