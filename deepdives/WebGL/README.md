@@ -116,7 +116,7 @@ void main(void) {
   viewNormal = normalize((vec4(normal, 0.0) * inverseModel * inverseView).xyz);
 }
 ```
-The `.x .xy` allow for selecting vector components without using array numeric syntax. This makes more sense as it is more representative of what the vector represents. {r, g, b, a}, {s, t, p, q}, compliment {x,y,z,w} but are generally used to select color vectors and texture vectors respectively.
+The `.x .xy` allow for selecting and rearanging of vector components without using array numeric syntax. This makes more sense as it is more representative of what the vector represents. {r, g, b, a}, {s, t, p, q}, compliment {x,y,z,w} but are generally used to select color vectors and texture vectors respectively. This is known as swizzling. 
 
 The varying vecs will be passed to the fragment shader, which will then use them to compute the actual blinn-phong lighting. 
 
@@ -340,14 +340,31 @@ Finally we set our uniforms and call draw. There are many different functions to
 #Appendix A: Mathematical Concepts
 
 ##Transformations 
-If we want to draw a model on the screen, we apply to the model a series of transformations. We take the points that make up the model, translate and scale them to place them in the world; we then apply a rotation to turn the camera towards the model, and finally we project the model into the viewing plane to display it on the screen. This example highlights the five major transformations that are common in graphics: rotation, reflection, scaling, projection, and translation. These are some of the set of transformations known as affline transformations, and we respresent them in the form y = Mx+b where y is the reslutant point, M is a matrix representing a linear transformation, x is the intial point, and b is a vector. The difference between a linear transformation and an affline transformation is that a linear transformation must preserve the zero point while an affline transformation does not.  
+If we want to draw a model on the screen, we apply to the model a series of transformations. We take the points that make up the model, translate and scale them to place them in the world; we then apply a rotation to turn the camera towards the model, and finally we project the model into the viewing plane to display it on the screen. This example highlights the five major transformations that are common in graphics: rotation, reflection, scaling, projection, and translation. These are some of the set of transformations known as affline transformations, and we respresent them in the form y = Mx+b where y is the reslutant point, M is a matrix representing a linear transformation, x is the intial point, and b is a vector. The difference between a linear transformation and an affline transformation is that a linear transformation must preserve the zero point while an affline transformation does not. 
 
-Linear tranformations can be represented by a square matrix of the size of the space. For example in two space, we can represent a rotation about the origin with the matrix 
+Linear tranformations can be represented by a square matrix of the size of the space. For example, if we choose to describe a point with a 2x1 vector, we can represent a rotation about the origin with the matrix: 
 
 ![rotation](./images/rotation.gif)
+
+We can compose multiple linear transformations by multiplying the matrices representing the transform together. For example if we have a rotation matrix R and a sacling matrix S we can rotate then scale a point x with the equation y = SRx. However, because of our choice to represent a point as a 2x1 vector, we cannot represent a translation with a matrix, and so we cannot compose multiple transformations together using just matrix multiplication if translation is one of those transformations.
+
 ##Homogenous Coordinates
+The solution to being unable to compose translation by matrix multiplication can be solved by using homogenous coordinates to represent points and vectors. Homogenous coordinates are simply the addition of another dimension to the space. For example, our two dimensional point (x,y) would be represented by a three dimensional point (x,y,1). This third dimension should not be thought of as a z coordinate but rather a weight that is zero to denote a vector and 1 to denote a point. This applies to higher dimensions also. 3d homogenous coordinates have four dimensions, which is why glsl uses {x, y, z, w} as a notation for component swizzling.  
 
 ##Transformations in Homogenous Coordinate Systems
+We should then rewrite the example rotation matrix to work with our new coordinates. This would look like:
+
+![rotation2](./images/rotation2.gif)
+
+And in fact any linear transformation in the previous coordinate system can be converted to homogenous coordinates by padding the original matrix representing the transform as in the example above. However, we can now represent translation as matrix multiplication. 
+
+![translation](./images/translation.gif)
+
+This implies that any affline translation in our previous coordinate system is now a linear transform in our homogenous coordinate system. We can also see that the two transformation examples above do not affect the weight coordinate, which is true for most transformations. We can actually take advantage of the weight coordinate when we to a projection. For example, if we want to squish our world onto a viewing plane centered at the origin and z coordinate of 1, we want to divide the x coordinate and y coordinate by the z coordinate. We can then use the following transformation matrix to accomplish this. 
+
+![projection](./images/projection.gif)
+
+All this transformation actually does is set the value of the weight coordinate equal to the value of the z coordinate, but when a point has a weight greater than one, it indicates to the hardware that it is further away from the projection plane. The hardware will then run a "homogenous divide" after the vertex shader runs. This divides the x, y, and z coordinates of each point by each point's weight coordinate, accomplishing the example projection.  
 
 #Appendix B: Lighting and Shading
 
