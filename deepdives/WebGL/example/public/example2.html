@@ -1,0 +1,44 @@
+<html>
+	<head>
+		<meta charset="utf-8"></meta>
+		<title>WebGl Example</title>
+	</head>
+	<script id="shader-vs" type="x-shader/x-vertex">
+	precision mediump float;
+
+	attribute vec3 position;
+	attribute vec3 normal;
+
+	uniform mat4 model;
+	uniform mat4 view;
+	uniform mat4 projection;
+
+	varying vec3 color;
+	void main() {
+	  vec4 viewPosition = view*model*vec4(position, 1);
+	  vec4 surfPosition = projection*viewPosition;
+	  gl_Position = surfPosition;
+	  color = vec3(0,0,1);
+	}
+
+	</script>
+	  
+	<script id="shader-fs" type="x-shader/x-fragment">
+	precision mediump float;
+
+	uniform mat4 model;
+	uniform mat4 view;
+	uniform mat4 projection;
+
+	varying vec3 color;
+
+	void main(void) {
+    	gl_FragColor = vec4(color,1);
+	 }
+	</script>
+	<script type="text/javascript" src="/javascripts/gl-matrix-min.js"></script>
+	<script type="text/javascript" src="/javascripts/example2.js"></script>
+	<body>
+		<canvas id="view" width="800" height="800"></canvas>	
+	</body>
+</html>
