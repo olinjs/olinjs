@@ -131,7 +131,7 @@ void main(void) {
 ```
 Here is what that looks like.
 
-INSERT IMAGE
+![teapot](./images/teapot.png)
 
 However, if we were to complete our blinn-phong model from before our shader would look something like this:
 ```
@@ -167,7 +167,7 @@ void main(void) {
 ```
 Much more complicated, but this is the result.
 
-INSERT IMAGE.
+![phong](./images/phong.png)
 
 And there you have it, a much better looking object. If you want to understand the physics and math behind lighting see Appendix B. If you would like a more in-depth tutorial on shading, [this](https://github.com/stackgl/shader-school) tutorial from nodeschool is really good. 
 
