@@ -169,7 +169,7 @@ Much more complicated, but this is the result.
 
 ![phong](./images/phong.png)
 
-And there you have it, a much better looking object. If you want to understand the physics and math behind lighting see Appendix B. If you would like a more in-depth tutorial on shading, [this](https://github.com/stackgl/shader-school) tutorial from nodeschool is really good. 
+And there you have it, a much better looking object. If you would like a more in-depth tutorial on shading, [this](https://github.com/stackgl/shader-school) tutorial from nodeschool is really good. 
 
 NOTE: functions written in the shader are not designed to run for a long time. Shaders are good for doing a small set of things repeatedly for a huge number of times. This means that looping is also strictly controlled, so be aware of that. 
 
@@ -332,10 +332,7 @@ gl.uniformMatrix4fv(pMatrixUniLoc, false, pMat);
 gl.drawArrays(gl.TRIANGLES, 0, 3);
 ``` 
 Now we should see a triangle take up most of the canvas with different color vertices interpolated across the triangle. The `bufferData` method fills the last bound buffer with data. We have to use a javascript typed array which is why `new Float32Array(arr)` is used. We needed to rebind the buffers to fill them as the last bound buffer was the color buffer, and I wanted to put the position code before the color. The `mat4.create()` uses a library included in this lesson called gl-matrix to create an 4x4 identity matrix. The library allows for matrix manipulation in javascript, so is very useful.
-Finally we set our uniforms and call draw. There are many different functions to set uniforms. The one we used sets a 4x4 matrix of floats from an array, and in general the name of the method reflects the data it creates. The `drawArrays` method tells gl how it should draw the values in the buffer, where to start in the buffer, and how many times it should move the pointer.  
-
-
-##And Now the Model Part
+Finally we set our uniforms and call draw. There are many different functions to set uniforms. The one we used sets a 4x4 matrix of floats from an array, and in general the name of the method reflects the data it creates. The `drawArrays` method tells gl how it should draw the values in the buffer, where to start in the buffer, and how many times it should move the pointer. Gl can draw the values in the buffer in a few different ways. Most of the time `gl.TRIANGLES` will be what you want. However, if you want to learn more about different drawing see Appendix B. 
 
 #Appendix A: Mathematical Concepts
 
@@ -366,22 +363,6 @@ This implies that any affline translation in our previous coordinate system is n
 
 All this transformation actually does is set the value of the weight coordinate equal to the value of the z coordinate, but when a point has a weight greater than one, it indicates to the hardware that it is further away from the projection plane. The hardware will then run a "homogenous divide" after the vertex shader runs. This divides the x, y, and z coordinates of each point by each point's weight coordinate, accomplishing the example projection.  
 
-#Appendix B: Lighting and Shading
+#Appendix B: Drawing in GL
 
-##Color and Images
-something about how the physics of seeing works
-
-###Rendering Equation
-At a particular position and direction, the outgoing light (Lo) is the sum of the emitted light (Le) and the reflected light. The reflected light being the sum of the incoming light (Li) from all directions, multiplied by the surface reflection and incoming angle. 
-##Ray Tracing
-Hah lol. 
-
-##Common Shading Algorithms
-
-##Flat Shading
-
-##Gouraud Shading
-
-##Phong Shading
-
-#Appendix C: Drawing in GL
+There are 7 different drawing modes in GL: POINTS, LINE_STRIP, LINE_LOOP, LINES, TRIANGLE_STRIP, TRIANGLE_FAN, TRIANGLES. In the examples, TRIANGLES is always used. The TRIANGLES mode will take every three vertices in the buffer (or the number of components specified multiplied by 3 floats) and pass those to the respective attribute. Thus, when using TRIANGLES, we need to specify every vertex belonging to the triangle. POINTS behaves similarly except that POINTS draws every vertex on the screen instead of three vertices. LINE_STRIP draws a line between the current vertex and the next vertex in the buffer, and LINE_LOOP does the same but will connect the last vertex with the first vertex in the buffer. TRIANLE_STRIP works similarly to LINE_STRIP in that every additional vertex is drawn in a trangle with the previous two vertices. Finally, TRIANGLE_FAN starts with the first vertex, and from then on draws a triangle between this vertex, the current vertex and the previous vertex. So given a buffer with `[-.2, .6, -.6, .6, -.6, 1., .6, 1.]` we would get two triangle with the vertices (-.2, .6), (-.6, .6), (-.6, 1.) and another with the vertices (-.2, .6), (-.6, 1.), (.6, 1.). 
