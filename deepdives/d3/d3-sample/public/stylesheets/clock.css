@@ -1,0 +1,14 @@
+#clock-container {
+  width: 960px;
+  margin: auto;
+}
+
+#clock-container .arc-text {
+  font: 16px sans-serif;
+  fill: #444;
+  stroke: none;
+}
+
+#clock-container .arc-center {
+  fill: none;
+}

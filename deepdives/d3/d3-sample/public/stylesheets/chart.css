@@ -1,0 +1,38 @@
+#chart-container svg {
+  display: block;
+  margin: 10% auto;
+}
+
+#chart-container h1 {
+  text-align: center;
+}
+
+#chart-container .bar {
+  fill: #6496c8;
+}
+
+#chart-container .bar:hover {
+  fill: #346392;
+}
+
+#chart-container .axis {
+  font: 10px sans-serif;
+  fill: none;
+  stroke: #444;
+}
+
+#chart-container .axis path,
+#chart-container .axis line {
+  fill: none;
+  stroke: #444;
+  shape-rendering: crispEdges;
+}
+
+#chart-container .x.axis path {
+  display: none;
+}
+
+#chart-container text {
+  fill: #444;
+  stroke: none;
+}

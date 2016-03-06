@@ -1,0 +1,38 @@
+#index-container {
+  margin-top: 10%;
+  text-align: center;
+}
+
+#index-container button {
+  display: inline-block;
+  margin: 0 10px 0 0;
+  padding: 15px 45px;
+  font-size: 30px;
+  line-height: 1.8;
+  appearance: none;
+  box-shadow: none;
+  border-radius: 2px;
+  color: #fff;
+  background-color: #6496c8;
+  text-shadow: -1px 1px #417cb8;
+  border: none;
+  cursor: pointer;
+}
+
+#index-container button:focus {
+  outline: none
+}
+
+#index-container button:hover {
+  background-color: #346392;
+  text-shadow: -1px 1px #27496d;
+}
+
+#index-container button:active {
+  background-color: #27496d;
+  text-shadow: -1px 1px #193047;
+}
+
+#index-container a.btn {
+  display: inline-block;
+}
