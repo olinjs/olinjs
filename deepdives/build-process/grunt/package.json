@@ -1,0 +1,23 @@
+{
+  "name": "grunt-deps",
+  "version": "1.0.0",
+  "description": "",
+  "main": "none",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-browserify": "^4.0.0",
+    "grunt-cli": "^0.1.13",
+    "grunt-concat-css": "^0.3.1",
+    "grunt-contrib-cssmin": "^1.0.0",
+    "grunt-contrib-watch": "^0.6.1"
+  },
+  "dependencies": {
+    "babel-preset-es2015": "^6.6.0",
+    "grunt-babel": "^6.0.0"
+  }
+}
