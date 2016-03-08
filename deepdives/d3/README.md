@@ -5,7 +5,8 @@ The [d3 website](https://d3js.org/) gives a good high-level explanation of the l
 If you like textbooks, here's O'Reilly's [Interactive Data Visualization for the Web](http://chimera.labs.oreilly.com/books/1230000000345/index.html), free online.
 
 If you like tutorials, here are some good ones:
-- [Mike Bostock's official tutorials](https://github.com/mbostock/d3/wiki/). Mike Bostock is the creator of d3.js.
+- [The tutorials included in the O'Reilly's textbook](http://alignedleft.com/tutorials/d3)
+- [Mike Bostock's official tutorials](https://github.com/mbostock/d3/wiki/) (Mike Bostock is the creator of d3.js)
 - [A repo for an introductory class on journalistic d3](https://github.com/arnicas/interactive-vis-course/)
 - [A talk-through introduction to d3](https://square.github.io/intro-to-d3/)
 
