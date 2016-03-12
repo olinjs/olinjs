@@ -7,6 +7,7 @@ var User = require('../models/userModel.js');
 // load the auth variables
 var auth = require('./auth');
 
+//You can add this as a static to the model, probably a better place for this
 var createUserIfNotExists = function(facebookId, name) {
 	console.log("createUserIfNotExists: " + name)
 	User.findOne({"facebookId": facebookId}, function(err, user) {
@@ -25,6 +26,7 @@ var createUserIfNotExists = function(facebookId, name) {
 
 }
 
+// I do something very similar
 module.exports = function(passport) {
 
     // used to serialize the user for the session
@@ -50,6 +52,7 @@ module.exports = function(passport) {
         // asynchronous
         process.nextTick(function() {
 
+            //What happened to create if found?
             // find the user in the database based on their facebook id
             User.findOne({ 'facebook.id' : profile.id }, function(err, user) {
 

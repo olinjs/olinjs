@@ -9,6 +9,7 @@ var onError = function(data, status) {
 	console.log("error", data);
 };
 
+// I would use the template, copy, modify, append pattern. Check the inclass in flex 5 to see an example
 var onSuccessNewTwote = function(data, status) {
 	console.log("status", status);
 	console.log("error", data);

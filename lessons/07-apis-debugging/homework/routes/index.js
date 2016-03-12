@@ -6,8 +6,10 @@ var router = express.Router();
 
 module.exports = router;
 
+//4 spaces is standard for js tabs
 var homeGET = function(req, res) {
 	console.log(req.user)
+        //cool use of async, look into promise chains they are pretty cool
 	async.series([
 		function(callback) {
 			if (req.user) {
