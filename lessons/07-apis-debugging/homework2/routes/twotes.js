@@ -7,10 +7,10 @@ var Twote = require('../public/models/models.js').twoteModel;
 router.get('/', function(req, res) {
 	getTwotesQuery().exec(function(err, twotes) {
 		if (req.isAuthenticated()) {
-			// console.log("YOU ARE AUTHENTICATED");
 			res.json(twotes);
 		} else {
-			// console.log("YOU ARE NOT AUTHENTICATED");
+			// Should you be able to see twotes even if you aren't
+			// authenticated? (see but not post)
 			res.json({});
 		}
 	});
@@ -21,10 +21,13 @@ router.post('/new', function(req, res) {
 	var new_twote = new Twote(req.body);
 	new_twote.save(function(err) {
 		if (err) {
-			console.log("Problem adding new twote", err);
+			// Better to do this:
+			res.status(500).json(err);
 		}
+		// Better to do this inside the save callback -- that way you don't
+		// send an OK message if there's an error while saving
+		res.json(JSON.stringify({"status": "OK" }));
 	});
-	res.json(JSON.stringify({"status": "OK" }));
 });
 
 //Form a query that gets all twotes in the database
@@ -35,5 +38,22 @@ function getTwotesQuery() {
 		}
 	});
 }
+
+// I'm not able to add twotes to your db (see comment on pull request),
+// so I wrote this route to add dummy tweets to test your UI
+router.get('/populate', function(req, res) {
+	var first_twote = new Twote({
+	  author: "somebody",
+	  text: "something",
+	  time: 3
+	});
+	first_twote.save(function(err, twote) {
+		if (err) {
+			res.status(500).json(err);
+		} else {
+			res.json(twote);
+		}
+	});
+});
 
 module.exports = router;

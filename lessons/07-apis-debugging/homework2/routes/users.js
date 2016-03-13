@@ -26,6 +26,21 @@ router.post('/new', function(req, res) {
 	res.json(JSON.stringify({"status": "OK" }));
 });
 
+// I'm not able to add twotes to your db (see comment on pull request),
+// so I wrote this route to add dummy tweets to test your UI
+router.get('/populate', function(req, res) {
+	var first_user = new User({
+	  name: "somebody"
+	});
+	first_user.save(function(err, user) {
+		if (err) {
+			res.status(500).json(err);
+		} else {
+			res.json(user);
+		}
+	});
+});
+
 //Form a query that gets all users in the database
 function getUsersQuery() {
 	return User.find({}, function(err) {

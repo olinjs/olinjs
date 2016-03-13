@@ -23,6 +23,7 @@ function makeTwote() {
 
 // Add user
 function addUser(username) {
+	console.log(username);
 	var user_data = {"name": username};
 	$.ajax({
 		type: "POST",
@@ -113,6 +114,7 @@ function highlightUserTwotes(name) {
 
 // Put a cooky on our user that says their username
 function login() {
+	console.log(login);
 	var username = prompt("What is ur username?");
 	if (username.length) {
 		document.cookie="username=" + username + "; expires=" + $.now() + 217321621;
@@ -134,6 +136,7 @@ function logout() {
 
 $(document).ready(function() {
 	var cookie = document.cookie;
+	console.dir(document.cookie);
 	var user = cookie.substring(cookie.indexOf('=')+1);
 	if (user.length) {
 		$('#make_twote').css("display", "block");

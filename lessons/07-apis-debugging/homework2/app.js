@@ -16,12 +16,17 @@ var app = express();
 var passport = require('passport');
 var config = require('./oauth.js');
 var FacebookStrategy = require('passport-facebook').Strategy;
+
+// Here's a good StackOverflow post which explains serializeUser and deserializeUser:
+// http://stackoverflow.com/a/19283692
 passport.serializeUser(function(user, done) {
   done(null, user);
 });
 passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
+
+// Passport setup -- provide the library with your Facebook auth credentials
 passport.use(new FacebookStrategy({
   clientID: config.facebook.clientID,
   clientSecret: config.facebook.clientSecret,
@@ -34,12 +39,13 @@ passport.use(new FacebookStrategy({
   }
 ));
 
-// view engine setup
+// view engine setup -- lets you use Handlebars for templating when you res.render(...)
 app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+// middleware -- all of your requests pass through this stack in order before they get to your routing
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -53,6 +59,10 @@ app.use(session({
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
+
+// You mentioned in the submission survey that you weren't sure about some of the setup --
+// it looks good to me! Commented to explain what things are doing, if that's helpful
+// to you
 
 app.get('/', routes);
 
@@ -72,10 +82,15 @@ app.listen(PORT, function() {
 });
 
 // test authentication
+// do you ever use this function?
+// usually you'd do something like:
+// app.get('/someRoute', ensureAuthenticated, function(req, res) {
+//    (stuff you need to be authenticated to see)
+// })
 function ensureAuthenticated(req, res, next) {
-	if (req.isAuthenticated()) { 
+	if (req.isAuthenticated()) {
 		console.log("You are authenticated");
-		return next(); 
+		return next();
 	}
 	console.log("You are not authenticated");
 	res.redirect('/');
