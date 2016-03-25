@@ -59,11 +59,13 @@ gulp.task('uglify', ['browserify'], function() {
 });
 
 
+//Watch
 gulp.task('watch', function() {
     gulp.watch('client/**/*.js', ['browserify']);
     gulp.watch('client/**/*.less', ['styles']);
 });
 
-// Tasks
+// One off build task
 gulp.task('build', ['uglify', 'minify']);
+// Default build then watch task
 gulp.task('default', ['build', 'watch']);

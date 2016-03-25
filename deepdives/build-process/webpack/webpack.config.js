@@ -9,9 +9,10 @@ module.exports = {
     entry: [ "main.js", "babel-polyfill"],
     output: {
         //Output bundle to ./public/javascripts/bundle.js
-        filename: "./public/javascripts/bundle.js",
-        //Set the path for public files to be public
-        publicPath: path.resolve(__dirname, "public")
+        path: path.resolve(__dirname, "./public/javascripts"),
+        filename: "bundle.js",
+        //The location on the public path of your bundle file
+        publicPath: "/javascripts"
     },
 
     module: {
