@@ -6,11 +6,11 @@ Two-way network communication - Sockets
 # Definition 
 A socket is one endpoint of a two-way communication link between two programs running on the network. A socket is bound to a port number so that the TCP/HTTP layer can identify the application that data is destined to be sent to. 
 
-We have learned so far that a server runs on a machine at a specific port. It is also true that a server has a socket mounted on it that is bound to a specific port number. The server waits, listening to the socket for a client to make a connection request. Schematically, we can vizualize this as shown below. 
+We have learned so far that a server runs on a machine at a specific port. A port is an address for a particular program or process on a server. A socket is a wrapper for a port: it provides a programming interface which lets programs use the port for communication Schematically, we can vizualize this as shown below. 
 
 ![Socket Communication Diagram ](./images/socket1.png)
 
-Let's look what this figure above is telling us in more detail. The "client" knows the hostname of the machine on which the server is running and the port on which the server is listening to - in our case, localhost:3000. In order to make a connection request, the client needs to identify itself to the server, therefore, it binds to a local port number that it will use during this connection. On the server-side now, if everything worked fine, the server accepts the connection request and it gets a new socket bound to the same local port. It needs a **new** socket so that it continues to listen to the original socket connection requests, while serving the requests from the already-connected client.
+Let's look what this figure above is telling us in more detail. The "client" knows the hostname of the machine on which the server is running and the port on which the server is listening to - in our case, localhost:3000. In order to make a connection request, the client needs to identify itself to the server, therefore, it binds to a local port number that it will use during this connection. On the server-side now, if everything worked fine, the server accepts the connection request and it gets a new socket bound to the same local port. It needs a **new** socket so that it continues to listen to any existing socket connection requests, while serving the requests from the already-connected client.
 
 
 # Socket.IO
@@ -178,6 +178,6 @@ socket.on('chat message', function(msg){
 });
 ```
 
-Aaaand your app should now be done. If you open localhost:300 in two different tabs you will see that you may send messages and asynchronously both parties view the updated list of messages that take place between them. Please make sure that you look under the folder `example` in this repository that contains the code alluded to in this README.
+Aaaand your app should now be done. If you open localhost:3000 in two different tabs you will see that you may send messages and asynchronously both parties view the updated list of messages that take place between them. Please make sure that you look under the folder `example` in this repository that contains the code alluded to in this README.
 
 There are many resources out there for one to further explore the area of sockets. This README mainly serves as a sample tutorial of what you can do with socket-io, by extracting a lot of content from their website and other resources online. If you want to make interactive playlist applications or interfaces that multiple people at the same time can access and edit (simple collaborative Paint app or google doc equivalent), sockets is for you! :)
