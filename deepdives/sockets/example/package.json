@@ -1,0 +1,10 @@
+{
+  "name": "Socket Deep Dive - OlinJS Spring 2016",
+  "version": "0.0.1",
+  "description": "Chat App",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.10.2",
+    "socket.io": "^1.4.5"
+  }
+}
