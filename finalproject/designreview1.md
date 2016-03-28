@@ -1,7 +1,8 @@
 # Design Review 1
+## Friday, April 1
 
 ### Format
-We’ll give you 10 min at the beginning of class to prepare, then the reviews will start at 3:30 in AC328 and three other classrooms in the AC. You’ll present to 1-2 other teams and 1-2 teaching team members, and you’ll have 15 minutes to do whatever will be most helpful for you moving forward -- get feedback or advice, do a codesign, do a code review... up to you. The flexibility we’re giving you means that we trust you to use the time productively.
+Reviews will start at 3:30 in AC328 and three other classrooms in the AC, and you’ll present to 1-2 other teams and 1-2 teaching team members. The presentation can last up to 15 minutes, and you can use it to do whatever will be most helpful for you moving forward -- get feedback or advice, do a codesign, do a code review... up to you. The flexibility we’re giving you means that we trust you to use the time productively.
 
 ### Goals
 Here’s what we hope the design review will do for the class:
@@ -10,7 +11,7 @@ Here’s what we hope the design review will do for the class:
 - Encourage you to spend time up front thinking about longer-term architecture decisions
 
 ### Content
-We’d like you to start out by explaining your idea so the other people in the room (another team or two and 1-2 teachers/ninjas) have context for what you’re doing.
+We’d like you to start out by explaining your idea and providing us with an informative progress update so the other people in the room (another team or two and 1-2 teachers/ninjas) have context for what you’ve done so far and what you're planning to do in the future.
 
 Beyond that, you’re free to use the time however you think is best.
 
@@ -26,7 +27,7 @@ If you’re looking for ideas, we think it might be helpful to present on projec
 - Team development practices
 
 ### Our Expectations
-Each design review is 20% of your final project grade -- we’re looking for:
+Each design review is 15% of your final project grade -- we’re looking for:
 - Evidence that you’ve put meaningful thought into how to use the design review time to help you with your project.
 - Evidence that you’ve done significant work so far
 	- By design review 1 (4/1), we think the work will probably include the basic structure of your app, a detailed design, some initial progress on the hard parts of the app, a plan for the work you’re going to do in the future
