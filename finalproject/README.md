@@ -29,12 +29,12 @@ Week 7 | Final Block - TBD | Final Presentations |
 ####Grading
 Category | Percent
 ---|---
-Features | 30%
+Features | 40%
 Code Cleanliness | 10%
 Documentation | 5%
 Individual grade | 15%
-Design Review 1 | 20%
-Design Review 2 | 20%
+Design Review 1 | 15%
+Design Review 2 | 15%
 
 
 ###Project Ideation
