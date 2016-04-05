@@ -1,0 +1,17 @@
+body {
+  background: #ddd;
+  margin: 0;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: #444;
+}
+
+#credit {
+  position: absolute;
+  font: 10px sans-serif;
+  right: 10px;
+  bottom: 10px;
+}
+
+#credit a {
+  color: inherit;
+}
