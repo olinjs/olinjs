@@ -1,26 +1,18 @@
 # Design Review 2
+## Friday, April 15
 
-### This will take place in class on Friday, April 15
+### Format
+Reviews will start at 3:30 in AC328 and three other classrooms in the AC, and you’ll present to 1-2 other teams and 1-2 teaching team members. The presentation can last up to 15 minutes, and you can use it to do whatever will be most helpful for you moving forward -- get feedback or advice, do a codesign, do a code review... up to you. The flexibility we’re giving you means that we trust you to use the time productively.
 
-Details will be posted here by soon
+### Goals
+Here’s what we hope the design review will do for the class:
+- Facilitate inter-team communication -- if another team is doing something similar to what you’re doing, we want you to have the opportunity to help and learn from each other.
+- Act as a check-in so you have incentive to get moving on your project right away
+- Encourage you to spend time up front thinking about longer-term architecture decisions
 
-<!-- You will have **8 minutes** to present the following information:
+### Content
+We’d like to see a demo of your MVP (deployed if at all possible!) and we’d like you to describe what goals you have for the remainder of the project and how you’re planning to achieve them.
 
-- **Progress: 15 pts**
-  - What progress have you made so far?
-  - Proof-of-concepts/MVP demo!
-- **Problems: 4 pts**
-  - What are some problems you have run into?
-  - Are they still blocking you?
-  - What are you looking for feedback on?
-- **Schedule and next steps: 3 pts**
-  - Are you progressing as scheduled?
-  - Have you had to make any modifications to previous plans?
-  - What are your next steps?
+If you don’t have an MVP yet, let us know where you are and how you’re planning to proceed.
 
-There will be a few minutes at the end for questions and to collect feedback from the class and teaching team.
-
-**Code Review: 2 pts** Before you present, submit an email to the teaching team with an email to your Git repo. Include the following:
-  - Point to some code that you are specifically proud of. (An awesome feature, a clean and organized routing table, a smart use of a design pattern, etc.)
-  - Point to some code that you are less sure of and would like specific feedback on.
- -->
+Beyond that, if you’d like to ask project-specific questions, if you’d like to showcase particular work you’ve done, or if there are any other ways you’d like to use the time -- feel free to do so!
