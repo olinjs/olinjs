@@ -13,7 +13,7 @@ Feel free to submit a Github issue if you find any problems in the course and we
 
 ##Course Contents
 * [Lesson 0 - Getting Ready for the Course](./lessons/00-getting-ready)
-* [Lesson 1 - Course Introduction and The Internet](./lessons/01-welcome-internet)
+* [Lesson 1 - Course Introduction and The Internet](./lessons/01-welcome-internet) >>
 * [Lesson 2 - Intro to Javascript](./lessons/02-javascript)
 * [Lesson 3 - Express and Templating](./lessons/03-express-templates)
 * [Lesson 4 - MongoDB](./lessons/04-mongo)
