@@ -150,25 +150,23 @@ node_modules
 
 Which will ignore the `node_modules` folder — standard for a Node repository.
 
-##Homework
+##Class Overview
 
-### What will homework look like?
-We'll spend the first five weeks of class on a series of topics which are central to web development, including JavaScript, Node and Express, databases, jQuery and Ajax, templating and CSS, APIs, clientside frameworks, and deployment and scaling.
+###What will class look like?
+We'll spend the first ~five weeks of class on a series of topics which are central to web development, including JavaScript, Node and Express, databases, jQuery and Ajax, templating and CSS, APIs, clientside frameworks, and deployment and scaling.
 
 For the three or four weeks after that, you'll work on labs in pairs, then you'll spend the rest of the semester on a team project.
 
-Here's how homework will work for the first five weeks:
+For this semester we are trying out a couple different techniques in class:
 
+* **Lectures** will never be more than 30 minutes long, and will provide an overview of the lesson for the day.
+* **Individual Readings** will be done in class at your own pace.  You are encouraged to 
+* **Read-shares** are a think-pair-share-inspired way to help us break down complex concepts. We'll assign small things for each student to research for ~5 minutes, then we'll go around the room and everyone will share what they learned (with the teaching team filling in the blanks).
+* **Homeworks** can be started in class, and will be small coding assignments. You're welcome to discuss the assignments in groups, but *we think it's important that you write your own code*!
+
+### Before Class 1 (Tuesday 1/17/16)
 #### Assignment
-After each class, you'll do an individual programming assignment related to the day's topic. You're welcome to discuss the assignments in groups, but *we think it's important that you write your own code*!
-
-#### Preclass Reading and Exercise
-After each class, you'll also do some reading to prepare for the next class. We've written README.md documents which introduce each topic. Instead of repeating all of the information in the README in a lecture, we want to enable you to start learning about the topic on your own! So, as part of the homework for each class, we'll always ask you to read the README for the *next* class, do the associated preclass exercise. The NINJAs will collect the preclass exercise at the beginning of class and give you a grade: either 1 (you made reasonable effort to understand the topic) or 0 (you didn't turn the exercise in, or you didn't make a reasonable effort). Although the preclass exercises don’t “count” much in your grade, we hope they'll help you get more out of class than you would if you skipped them!
-
-
-### Before Class 1 (Tuesday 1/19/16)
-#### Assignment
-- Follow the instructions in [SETUP.md](https://github.com/olinjs/olinjs/blob/master/lessons/00-getting-ready/SETUP.md) to set up your development environment.
+- Follow the instructions above to set up your development environment.
 
 #### Preclass Reading and Exercise
 - Read the [Class 1 README](https://github.com/olinjs/olinjs/blob/master/lessons/01-welcome-internet/README.md).
