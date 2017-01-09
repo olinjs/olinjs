@@ -6,15 +6,13 @@ If you need help installing Ubuntu check out this [guide](https://gist.github.co
 If you'd rather use a virtual machine, a different distribution of Linux, or a Mac, you're welcome to -- just be aware that the teaching team is most prepared to support Ubuntu dual boots.
 
 ##Node
-We recommend installing node using [NVM](https://github.com/creationix/nvm) (Node Version Manager). NVM is easy to use and will provide version management for node. Follow the NVM readme to install NVM with curl or wget, then install node with `nvm install node`.
+We recommend installing node using [NVM](https://github.com/creationix/nvm) (Node Version Manager). NVM is easy to use and will provide version management for node.
 
-
-If you want to install Node through apt-get (Linux only), follow these steps:
-* `curl -sL https://deb.nodesource.com/setup | sudo bash -` (install curl with `sudo apt-get install curl` if needed)
-* `sudo apt-get install -y nodejs`
-* `sudo apt-get install -y build-essential` (needed for some npm packages)
-* To test: `node --version` should return v0.10.35 or newer and `npm --version` should return 2.1.17 or newer
-* If your npm is below the above version run `sudo npm install -g npm`
+1. Install nvm via curl in your terminal:
+```
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+```
+2. Install node using NVM: `nvm install node`
 
 ##Github
 We recommend you follow along on the course with your own version of this git repo. The way this will work is that you will fork this git repo into your own account and then you will push your work to that repository when you finish it.
