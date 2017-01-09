@@ -58,6 +58,7 @@ This will be the rubric we will be using for your homework assignments:
 * 10 - Some of the required features were implemented.
 * 5 - An attempt was made to implement some of the of the desired features.
 * 0 - Very few or none of the desired features were implemented.
+
 ##### Bug free: 10 points
 * 10 - The app is bug free
 * 5 - Your app has one or two bugs, occasionally causing unexpected behavior
@@ -68,6 +69,7 @@ This will be the rubric we will be using for your homework assignments:
 * 10 - Follow good naming conventions, use triple equals, use indents and whitespace where appropriate, know when to use global or local variables, etc.
 * 5 - Some of the above practices were broken, but you mostly followed good practices.
 * 0 - Good coding practices were consistently broken.
+
 ##### Readability: 10 pts
 * 10 - Functions and variables are named well. Code is well commented where appropriate. Confusing lines are commented. Lines are not too long.
 * 5 - Code is occasionally confusing. Could use more comments. Some variables are poorly named.
