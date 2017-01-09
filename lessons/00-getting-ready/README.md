@@ -164,7 +164,7 @@ For this semester we are trying out a couple different techniques in class:
 * **Read-shares** are a think-pair-share-inspired way to help us break down complex concepts. We'll assign small things for each student to research for ~5 minutes, then we'll go around the room and everyone will share what they learned (with the teaching team filling in the blanks).
 * **Homeworks** can be started in class, and will be small coding assignments. You're welcome to discuss the assignments in groups, but *we think it's important that you write your own code*!
 
-### Before Class 1 (Tuesday 1/17/16)
+### Before Class 1 (Tuesday 1/17/17)
 #### Assignment
 - Follow the instructions above to set up your development environment.
 
