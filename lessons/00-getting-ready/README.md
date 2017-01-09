@@ -25,8 +25,7 @@ If you don't have git on your computer already, it can be installed with:
 sudo apt-get install git
 ```
 
-Lastly, follow [this guide](https://help.github.com/articles/generating-ssh-keys/) to
-set up SSH communication with Github. SSH is a communication protocol that ensures secure transfer of information but doesn't require you to enter your username and password every time you push.
+Lastly, follow [this guide](https://help.github.com/articles/generating-ssh-keys/) to set up SSH communication with Github. SSH is a communication protocol that ensures secure transfer of information but doesn't require you to enter your username and password every time you push.
 
 ###2. Forking
 
@@ -150,6 +149,8 @@ node_modules
 ```
 
 Which will ignore the `node_modules` folder — standard for a Node repository.
+
+##Homework
 
 ### What will homework look like?
 We'll spend the first five weeks of class on a series of topics which are central to web development, including JavaScript, Node and Express, databases, jQuery and Ajax, templating and CSS, APIs, clientside frameworks, and deployment and scaling.
