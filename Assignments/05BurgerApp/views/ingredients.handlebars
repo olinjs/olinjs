@@ -1,0 +1,67 @@
+<h1>Ingredients</h1>
+
+<form id ="add" action="addIngredients" method="POST">
+	name: <input type="text" id = "name"/><br/>
+	price: <input type="text" id = "price"/><br/>
+	<input type="submit" value="Add">
+</form>
+
+
+<ul id="template" hidden>
+  <li> name: <span class="name">{{this.name}}</span> price: <span class="price"> {{this.price}}</span>
+  
+  <form  class =" update" action="updateIngredients" method="POST">
+    New name: <input type="text" id = "name"/><br/>
+    New price: <input type="text" id = "price"/><br/>
+    <input type="button" value="Update" onclick="updateFunction('{{this._id}}');">
+  </form>
+
+  <form class = "delete" action="delete" method="POST">
+    <input type="button" value="Delete" onclick="deleteFunction('{{this._id}}');">
+  </form>
+
+  <form class = "outofstock" action="out of stock" method="POST">
+    <input type="button" value="Out of stock" onclick="outofStockFunction('{{this._id}}');">
+  </form>
+
+  <form class = "instock" action="in stock" method="POST">
+    <input type="button" value="In stock" onclick="inStockFunction('{{this._id}}');">
+  </form>
+
+  </li>
+</ul>
+
+
+<ul id="ingredients-list">
+{{#each ingredients}}
+  {{#if this.outofstock}}
+  <li id={{this._id}}> <strike> name: <span class="name">{{this.name}}</span> price: <span class="price"> {{this.price}}</span></strike>
+
+  {{else}}
+  <li id={{this._id}}> name: <span class="name">{{this.name}}</span> price: <span class="price"> {{this.price}}</span>
+  {{/if}}
+
+  <form  class ="{{this._id}}" action="updateIngredients" method="POST">
+    New name: <input type="text" id = "name"/><br/>
+    New price: <input type="text" id = "price"/><br/>
+    <input type="button" value="Update" onclick="updateFunction('{{this._id}}');">
+  </form>
+
+  <form  class = "delete" action="delete" method="POST">
+    <input type="button" value="Delete" onclick="deleteFunction('{{this._id}}');">
+  </form>
+
+
+  <form class = "outofstock" action="out of stock" method="POST">
+    <input type="button" value="Out of stock" onclick="outofStockFunction('{{this._id}}');">
+  </form>
+
+
+  <form class = "instock" action="int stock" method="POST">
+    <input type="button" value="In stock" onclick="inStockFunction('{{this._id}}');">
+  </form>
+
+  </li>
+
+{{/each}}
+</ul>

@@ -1,0 +1,14 @@
+<h1>Kitchen</h1>
+
+<h3>Orders</h3>
+
+<table id="orders">
+  {{#each orders}}
+  <tr id="{{this._id}}">
+    <td>{{this.name}}</td>
+    <td>${{this.price}}</td>
+    <td>{{#each this.ingredients}} {{this}} {{/each}}</td>
+    <td><input type="button" value="Complete" onclick="completeOrders('{{this._id}}');"></td>
+  </tr>
+  {{/each}}
+</table>
