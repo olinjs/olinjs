@@ -163,11 +163,6 @@ For this semester we are trying out a couple different techniques in class:
 * **Individual Readings** in the form of READMEs will be done in class at your own pace.  You are encouraged to ask the teaching team any questions and discuss things with your classmates! The homework assignment for the next class will be at the end of these READMEs.  You are welcome to skip around the reading however you like, or start your homework in class.
 * **Read-shares** are a think-pair-share-inspired way to help us break down complex concepts. We'll assign small things for each student to research for ~5 minutes, then we'll go around the room and everyone will share what they learned (with the teaching team filling in the blanks).
 
-### Before Class 1 (Tuesday 1/17/17)
-#### Assignment
-- Follow the instructions above to set up your development environment.
-
-#### Preclass Reading and Exercise
-- Read the [Class 1 README](https://github.com/olinjs/olinjs/blob/master/lessons/01-welcome-internet/README.md).
-- Complete at least the first 10 levels (up through move2) of [this Git tutorial](http://pcottle.github.io/learnGitBranching) (fun fact: last summer Indico required their developers to complete this tutorial before starting work.) Send an email to [olinjs16@gmail.com](olinjs16@gmail.com) with the subject line "Preclass 1" and a couple sentences about a level you found particularly interesting or challenging. (If you don't find any of the first ten levels particularly interesting or challenging, pick a more advanced level to email us about).
-
+## Before Class 1 (Tuesday 1/17/17)
+- Follow the instructions above to set up your development environment. If something is giving you problems we can help once class starts, but try to get as much done as you can before class.
+- Complete at least the first 10 levels (up through move2) of [this Git tutorial](http://pcottle.github.io/learnGitBranching). (Optional: If you want a better high-level understanding of git pushing and pulling, I recommend [this video](https://www.youtube.com/watch?v=8KCQe9Pm1kg). If you want a better code-level understanding, I also recommend [this video](https://www.youtube.com/watch?v=Y9XZQO1n_7c).)
