@@ -160,9 +160,8 @@ For the three or four weeks after that, you'll work on labs in pairs, then you'l
 For this semester we are trying out a couple different techniques in class:
 
 * **Lectures** will never be more than 30 minutes long, and will provide an overview of the lesson for the day.
-* **Individual Readings** will be done in class at your own pace.  You are encouraged to 
+* **Individual Readings** in the form of READMEs will be done in class at your own pace.  You are encouraged to ask the teaching team any questions and discuss things with your classmates! The homework assignment for the next class will be at the end of these READMEs.  You are welcome to skip around the reading however you like, or start your homework in class.
 * **Read-shares** are a think-pair-share-inspired way to help us break down complex concepts. We'll assign small things for each student to research for ~5 minutes, then we'll go around the room and everyone will share what they learned (with the teaching team filling in the blanks).
-* **Homeworks** can be started in class, and will be small coding assignments. You're welcome to discuss the assignments in groups, but *we think it's important that you write your own code*!
 
 ### Before Class 1 (Tuesday 1/17/17)
 #### Assignment
