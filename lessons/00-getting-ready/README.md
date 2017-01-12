@@ -6,15 +6,13 @@ If you need help installing Ubuntu check out this [guide](https://gist.github.co
 If you'd rather use a virtual machine, a different distribution of Linux, or a Mac, you're welcome to -- just be aware that the teaching team is most prepared to support Ubuntu dual boots.
 
 ##Node
-We recommend installing node using [NVM](https://github.com/creationix/nvm) (Node Version Manager). NVM is easy to use and will provide version management for node. Follow the NVM readme to install NVM with curl or wget, then install node with `nvm install node`.
+We recommend installing node using [NVM](https://github.com/creationix/nvm) (Node Version Manager). NVM is easy to use and will provide version management for node.
 
-
-If you want to install Node through apt-get (Linux only), follow these steps:
-* `curl -sL https://deb.nodesource.com/setup | sudo bash -` (install curl with `sudo apt-get install curl` if needed)
-* `sudo apt-get install -y nodejs`
-* `sudo apt-get install -y build-essential` (needed for some npm packages)
-* To test: `node --version` should return v0.10.35 or newer and `npm --version` should return 2.1.17 or newer
-* If your npm is below the above version run `sudo npm install -g npm`
+1. Install nvm via curl in your terminal:
+```
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+```
+2. Install node using NVM: `nvm install node`
 
 ##Github
 We recommend you follow along on the course with your own version of this git repo. The way this will work is that you will fork this git repo into your own account and then you will push your work to that repository when you finish it.
@@ -27,8 +25,7 @@ If you don't have git on your computer already, it can be installed with:
 sudo apt-get install git
 ```
 
-Lastly, follow [this guide](https://help.github.com/articles/generating-ssh-keys/) to
-set up SSH communication with Github. SSH is a communication protocol that ensures secure transfer of information but doesn't require you to enter your username and password every time you push.
+Lastly, follow [this guide](https://help.github.com/articles/generating-ssh-keys/) to set up SSH communication with Github. SSH is a communication protocol that ensures secure transfer of information but doesn't require you to enter your username and password every time you push.
 
 ###2. Forking
 
@@ -152,3 +149,21 @@ node_modules
 ```
 
 Which will ignore the `node_modules` folder — standard for a Node repository.
+
+##Class Overview
+
+###What will class look like?
+We'll spend the first ~five weeks of class on a series of topics which are central to web development, including JavaScript, Node and Express, databases, jQuery and Ajax, templating and CSS, APIs, clientside frameworks, and deployment and scaling.
+
+For the three or four weeks after that, you'll work on labs in pairs, then you'll spend the rest of the semester on a team project.
+
+For this semester we are trying out a couple different techniques in class:
+
+* **Lectures** will never be more than 30 minutes long, and will provide an overview of the lesson for the day.
+* **Individual Readings** in the form of READMEs will be done in class at your own pace.  You are encouraged to ask the teaching team any questions and discuss things with your classmates! The homework assignment for the next class will be at the end of these READMEs.  You are welcome to skip around the reading however you like, or start your homework in class.
+* **Read-shares** are a think-pair-share-inspired way to help us break down complex concepts. We'll assign small things for each student to research for ~5 minutes, then we'll go around the room and everyone will share what they learned (with the teaching team filling in the blanks).
+
+## Before Class 1 (Tuesday 1/17/17)
+- Follow the instructions above to set up your development environment. If something is giving you problems we can help once class starts, but try to get as much done as you can before class.
+- Complete at least the first 10 levels (up through move2) of [this Git tutorial](http://pcottle.github.io/learnGitBranching). (Optional: If you want a better high-level understanding of git pushing and pulling, I recommend [this video](https://www.youtube.com/watch?v=8KCQe9Pm1kg). If you want a better code-level understanding, I also recommend [this video](https://www.youtube.com/watch?v=Y9XZQO1n_7c).)
+- Fill out [this quick reading survey](https://goo.gl/forms/iVAkQRi2rSTJB4d23). You'll fill out these kinds of surveys after every lesson so we can get a better grasp of the class's understanding.
