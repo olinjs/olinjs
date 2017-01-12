@@ -166,4 +166,4 @@ For this semester we are trying out a couple different techniques in class:
 ## Before Class 1 (Tuesday 1/17/17)
 - Follow the instructions above to set up your development environment. If something is giving you problems we can help once class starts, but try to get as much done as you can before class.
 - Complete at least the first 10 levels (up through move2) of [this Git tutorial](http://pcottle.github.io/learnGitBranching). (Optional: If you want a better high-level understanding of git pushing and pulling, I recommend [this video](https://www.youtube.com/watch?v=8KCQe9Pm1kg). If you want a better code-level understanding, I also recommend [this video](https://www.youtube.com/watch?v=Y9XZQO1n_7c).)
-- Fill out [this quick reading survey](https://goo.gl/forms/iVAkQRi2rSTJB4d23). You'll fill out these kinds of surveys before every class so we can get a better grasp of the class's understanding.
+- Fill out [this quick reading survey](https://goo.gl/forms/iVAkQRi2rSTJB4d23). You'll fill out these kinds of surveys after every lesson so we can get a better grasp of the class's understanding.
