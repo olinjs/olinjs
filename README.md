@@ -37,3 +37,5 @@ Feel free to submit a Github issue if you find any problems in the course and we
 3. Find connections between current coursework with future professional applications
 4. Learn software industry-related processes with a focuses on things, such as working on a team and communication of code and software projects
 5. Balance scope and design decisions to complete a viable web application
+
+[Course Syllabus](./Syllabus.md)
