@@ -33,8 +33,9 @@ Feel free to submit a Github issue if you find any problems in the course and we
 
 ##Learning Objectives
 1. Understand the modern internet and web applications
-2. Become adept with JavaScript, Node, and database technologies
-3. Learn software design skills and strategies relevant to web infrastructure
-4. Work effectively as a member of a project team
+2. Learn software design skills and strategies, such as Javascript, Node and database technologies, that are relevant to web infrastructure
+3. Find connections between current coursework with future professional applications
+4. Learn software industry-related processes with a focuses on things, such as working on a team and communication of code and software projects
 5. Balance scope and design decisions to complete a viable web application
-6. Communication and presentation of code and software projects
+
+[Course Syllabus](./Syllabus.md)
