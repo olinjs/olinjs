@@ -8,7 +8,8 @@ Olin.js is a student-led and -developed project-oriented approach to learning mo
 Your teachers are Bill Wong and Cynthia Chen, with NINJAs Austin Greene, Brenna Manning and Zoher Ghadyali.
 
 ### Office Hours:
-TBD
+- Zoher + Austin: 7-9 Mon/Thu
+- Brenna: 7-9 Wed/Sun
 
 ### Course Learning Goals
 Students will improve their abilities to
