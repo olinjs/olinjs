@@ -132,3 +132,64 @@ Acording to the official website,
 >"Node.js® is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices."
 
 What this really means is that it is JavaScript running on the server, accepting incoming requests and handling them. The thing that makes Node.js so awesome is that it is entirely **non-blocking**. To understand exactly what this means, realize that with other server frameworks, when a request comes in, the server has to process that request and send the response before it can accept the next incoming request. Node is structured in such a way that when a request comes in, it can immediately continue listening for other requests.
+
+#Lesson 1 In-Class Exercises
+(We’re not expecting you to finish all of these activities! Pick the ones which are interesting and challenging to you, and feel free to work with the people around you.)
+
+##Git and Github:
+- If you find a bug in the Olin.js repo at any point, please make a pull request to fix it!
+- On the whiteboards, map out your “mental model” of git -- what do you know and how does it fit together?
+- Draw out how each of the commands you know works
+- Find a git command you don’t know about, read the documentation, and add it to your diagram
+- It’s common practice for a team of developers to have a standard git workflow -- come up with one as a group
+- Find git documentation you like & can refer to in the future
+- With a partner: cause & resolve a merge conflict
+  - using only a master branch between the two of you
+  - using branching/merging
+
+##Internet:
+- Pick a website, open the "Network" tab of the developer console, and identify what some of the requests are doing (this won’t be easy for all of the requests -- don’t worry if it’s not obvious what some of them do)
+  - Challenge: find requests which aren’t GET
+
+##Javascript:
+- Write some simple JavaScript functions in https://jsfiddle.net/ (remember: ctrl+shift+j opens the developer console -- that’s where your console.logs will print). If you need function ideas, try the first couple of these problems: https://projecteuler.net/archives
+- If you like learning from textbooks, this one is pretty good: http://eloquentjavascript.net/
+- Practice debugging JavaScript (Please fork the jsfiddles before editing them!)
+  - http://jsfiddle.net/swalters4925/j4pykdtz/2/
+  - http://jsfiddle.net/swalters4925/fwg230L0/2/
+  - http://jsfiddle.net/swalters4925/uvb5941h/1/
+  - http://jsfiddle.net/swalters4925/yzt3nka9/2/
+- Find some information about how JavaScript compares to and contrasts with a programming language you’re used to
+
+# Before Class 2 (Friday 1/20/16)
+## Assignment
+Go through the following introductory tutorials on JavaScript and Node.
+
+###JavaScript Tutorial
+
+For details about the JavaScript tutorial, check out its [GitHub repo](https://github.com/sethvincent/javascripting).
+
+To get to the tutorial, run these commands from your terminal:
+```sh
+$ sudo npm install -g javascripting
+$ javascripting
+```
+
+###Node Tutorial
+
+The Node tutorial process is similar.
+
+[GitHub repo](https://github.com/rvagg/learnyounode)
+
+```sh
+$ sudo npm install learnyounode -g
+$ learnyounode
+```
+
+###Submission
+
+When you're finished, fill out [the Homework 1 submission survey](http://goo.gl/forms/DUlkgbvHBb).
+
+## Preclass Reading and Exercise
+- Read the [Class 2 README](https://github.com/olinjs/olinjs/blob/master/lessons/02-javascript).
+- Send an email to [olinjs16@gmail.com](olinjs16@gmail.com) with the subject line "Preclass 2" and a couple sentences about a javascripting or learnyounode level you found particularly interesting or challenging. If you didn't find any of the levels interesting or challenging, search around for a JavaScript concept you think is interesting, learn a bit about it, and email us about what you learned.
