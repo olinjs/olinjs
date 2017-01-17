@@ -10,9 +10,9 @@ After this class, you should:
 We are excited to have you following along with these lessons and hope that this proves to be a useful resource for learning application development with Node.js.
 
 ##Introduction to the Internet
-![Series of tubes](http://crackerdiet.net/pub/Tedstevenstubesomgwhat.jpg)
+![Series of tubes](http://gajitz.com/wp-content/uploads/2010/01/internet-a-series-of-tubes.jpg)
 
-This is obviously a comic misconception about the true nature of the internet, so let's dive deeper and have a look at the true nature of our old friend.
+This is obviously a [comic](http://www.cc.com/video-clips/uo1ore/the-daily-show-with-jon-stewart-headlines---internet) [misconception](http://www.cc.com/video-clips/sokn5t/the-daily-show-with-jon-stewart-party-pooper) about the true nature of the internet, so let's dive deeper and have a look at the true nature of our old friend.
 
 ###TCP/IP
 The underlying backbone of what we call the internet is the **Internet Protocol**, also known as **IP**. Under IP, every device that connects to the network through a router or gateway is assigned an **IP address** by the router or gateway it connects to. When one device wants to connect to another over the internet, it simply needs to know its address and it can use that to request a connection on a specific **port** over IP. For all intents and purposes, think of a port as a numbered slot on a computer that can host multiple IP connections. Most devices have ports numbered 1-65535 with some sections reserved.
