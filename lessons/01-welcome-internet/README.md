@@ -192,14 +192,13 @@ Running `git stash apply` will apply the latest stash (`stash@{0}`).  If you wan
 
 A example of using stashing could be if you have a bug and you want to see if you just created the bug or if the bug is in your last commit, you can `git stash`, re-run your code and check if the bug still exists, and then `git stash apply` to get back to where you were before.
 
-#Lesson 1 In-Class Exercises
+#In-Class Exercises
 (We’re not expecting you to finish all of these activities! Pick the ones which are interesting and challenging to you, and feel free to work with the people around you.)
 
 ##Git and Github:
 - If you find a bug in the Olin.js repo at any point, please make a pull request to fix it!
-- On the whiteboards, map out your “mental model” of git -- what do you know and how does it fit together?
 - Draw out how each of the commands you know works
-- Find a git command you don’t know about, read the documentation, and add it to your diagram
+- Find a git command you don’t know about, read the documentation, and call over a teaching team member to explain it to
 - It’s common practice for a team of developers to have a standard git workflow -- come up with one as a group
 - Find git documentation you like & can refer to in the future
 - With a partner: cause & resolve a merge conflict
@@ -220,11 +219,10 @@ A example of using stashing could be if you have a bug and you want to see if yo
   - http://jsfiddle.net/swalters4925/yzt3nka9/2/
 - Find some information about how JavaScript compares to and contrasts with a programming language you’re used to
 
-# Before Class 2 (Friday 1/20/16)
-## Assignment
+# Before Class 2 (Friday 1/20/17)
 Go through the following introductory tutorials on JavaScript and Node.
 
-###JavaScript Tutorial
+##JavaScript Tutorial
 
 For details about the JavaScript tutorial, check out its [GitHub repo](https://github.com/sethvincent/javascripting).
 
@@ -234,21 +232,17 @@ $ sudo npm install -g javascripting
 $ javascripting
 ```
 
-###Node Tutorial
+##Node Tutorial
 
 The Node tutorial process is similar.
 
 [GitHub repo](https://github.com/rvagg/learnyounode)
 
 ```sh
-$ sudo npm install learnyounode -g
+$ sudo npm install -g learnyounode
 $ learnyounode
 ```
 
-###Submission
+##Submission
 
-When you're finished, fill out [the Homework 1 submission survey](http://goo.gl/forms/DUlkgbvHBb).
-
-## Preclass Reading and Exercise
-- Read the [Class 2 README](https://github.com/olinjs/olinjs/blob/master/lessons/02-javascript).
-- Send an email to [olinjs16@gmail.com](olinjs16@gmail.com) with the subject line "Preclass 2" and a couple sentences about a javascripting or learnyounode level you found particularly interesting or challenging. If you didn't find any of the levels interesting or challenging, search around for a JavaScript concept you think is interesting, learn a bit about it, and email us about what you learned.
+When you're finished, fill out [the Homework 1 submission survey]().
