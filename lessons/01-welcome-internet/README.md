@@ -245,4 +245,4 @@ $ learnyounode
 
 ##Submission
 
-When you're finished, fill out [the Homework 1 submission survey]().
+When you're finished, fill out [the Homework Submission Survey](https://goo.gl/forms/vgZjAWGNHS1x03We2).
