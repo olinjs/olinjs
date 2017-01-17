@@ -133,6 +133,65 @@ Acording to the official website,
 
 What this really means is that it is JavaScript running on the server, accepting incoming requests and handling them. The thing that makes Node.js so awesome is that it is entirely **non-blocking**. To understand exactly what this means, realize that with other server frameworks, when a request comes in, the server has to process that request and send the response before it can accept the next incoming request. Node is structured in such a way that when a request comes in, it can immediately continue listening for other requests.
 
+##Github
+(Depending on far along in the git tutorials you got, some of this might be review.)
+###Workspace, Local, and Remote
+The "remote" repository references what is on github.com.  The "local" repository references the repository on your local machine.  Your "workspace" references the changes on your local files that have not been committed to the local repository.
+
+The lifecycle of pushing a change to the remote repository is as follows:
+- You make some change to a file called "index.js"
+- You stage this file to be committed by running `git add index.js`
+- You commit these changes to your local repository by running `git commit -m "made some change"`
+- You push these changes to the remote repository by running `git push origin master`
+
+When you run a `git pull origin master`, you are pulling the changes from the remote repository to your local repository.
+
+When you push or pull, you specify `origin master` after your command.  Why is that?  "origin" is the name of your remote repository, and "master" is the name of the branch you want to push to.  When you are coding on your own branch, you will run something like `git push origin bills-branch` to push to your branch instead of to master.
+
+###Branching and Pull Requests and Conflicts
+When you are working with multiple people, the easiest way to use git is to have each person work on their own branch.  This minimizes merge conflicts and headaches.
+
+To create a new branch called "branchname", run `git checkout -b branchname`.  Note: when you actually make branches, name it something more descriptive than "new-branch" or "bills-branch".  It is a common practice to separate branches by features, and so naming your branch after its feature is commonly done.
+
+Switching between branches is called "checking out" and can be done by `git checkout branchname`.  This changes your workspace to what is on that branch.  To check what branch you are on, you can always run `git status`.
+
+Once on your new branch, you can `add` files and `commit` changes as normal.  However, when you push, you must specify to push to your branch with `git push origin branchname`.
+
+Once your feature is done on your branch, you will create a pull request on Github for your teammates to review.  This represents you "requesting" that your changes be merged into the master branch.  Pull requests create an environment where your teammates can look at your code and review it before it is incorporated into the main master branch.  [Click here](https://help.github.com/articles/creating-a-pull-request/#creating-the-pull-request) to learn how to create a pull request on Github.  Once your pull request is accepted by your teammates, you can merge it and your feature will appear on the master branch!
+
+If other people have committed things onto master since you branched off, you might encounter the merge conflicts.  These are way more scary than they sound.  If your branch has merge conflicts, one way to resolve them is to `pull` the new commits from master onto your branch.  To do this, make sure you are on your branch and run `git pull origin master`.  If there are conflicts you will get a message like this:
+```
+CONFLICT (content): Merge conflict in index.js
+```
+To fix this, open up index.js in your text editor and find a section that looks something like this:
+```javascript
+<<<<<<< HEAD
+var foo = 3;
+=======
+var foo = 4;
+>>>>>>> master
+```
+Is this example, your feature branch made a change that `foo` should be 3, but someone else has committed on master to change `foo` to be 4.  "HEAD" refers to your current local repository, which is pointed at your branch.  "master" refers to what is on the master branch.  You now need to decide which line is the one you want, and delete all the other lines and markers.  If you want to keep `foo` at 3, then delete all the other lines so that the above code segment is now just:
+```javascript
+var foo = 3;
+```
+This fixes this one conflict.  Now save the file and `git add` it.  Go through all the conflict files and fix them all.  After all these conflicts are fixed and the files added, you can run `git commit` and `git push origin branchname`.  Your branch should now have no merge conflicts and should be able to be merged in your pull request.
+
+Optional: This method uses `merge` (through `pull`) to fix conflicts. Another way to fix conflicts is to rebase.  Read [this stackoverflow](http://stackoverflow.com/a/14895578) if you want to know the difference between `merge` and `rebase`.
+
+###Stashing
+If you want to save all your current work in your workspace, you can stash it.  Running `git stash` saves all the changes you've made in your workspace and reverts your code back to what is saved in git from your last commit.  If you ever need to get those changes back, you can run `git stash apply`, which will take your latest stashed changes and put them back into your workspace.
+
+You can keep stashing multiple things and git will save all of them for you.  Run `git stash list` to see all your currently saved stashes:
+```
+stash@{0}: WIP on master: 049d078 added the index file
+stash@{1}: WIP on master: c264051 Revert "added file_size"
+stash@{2}: WIP on master: 21d80a5 added number to log
+```
+Running `git stash apply` will apply the latest stash (`stash@{0}`).  If you want to apply an older stash, you can run `git stash apply stash@{num}`, replacing `num` with the stash number in the list.
+
+A example of using stashing could be if you have a bug and you want to see if you just created the bug or if the bug is in your last commit, you can `git stash`, re-run your code and check if the bug still exists, and then `git stash apply` to get back to where you were before.
+
 #Lesson 1 In-Class Exercises
 (We’re not expecting you to finish all of these activities! Pick the ones which are interesting and challenging to you, and feel free to work with the people around you.)
 
