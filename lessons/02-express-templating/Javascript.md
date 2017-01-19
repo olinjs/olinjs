@@ -642,7 +642,7 @@ question: 'Am I an object?',
 
 The moral of the story is that JavaScript is remarkably robust, whether you like it or not. It will run happily where other languages would choke, so it often falls to you to write good code that will prevent weird things from happening. Leverage the flexibility of JavaScript to write elegant code — don't let it bite you.
 
-# Lesson 2 In-Class Exercises
+# Lesson 1.5 In-Class Exercises
 (As before, we’re not expecting you to finish all of these activities! Pick the ones which are interesting and challenging to you, and feel free to work with the people around you.)
 
 ## JavaScript Concepts:
@@ -658,7 +658,7 @@ The moral of the story is that JavaScript is remarkably robust, whether you like
 - Much of web development is learning to react to events. As a first foray into event handling, write a small jsfiddle [like this](https://jsfiddle.net/too7t5dd/) that creates a simple html element and responds to an event of your choice. A list of possible events is available [here](https://developer.mozilla.org/en-US/docs/Web/Events).
 
 ## Functional Programming:
-- Part of the power of JavaScript is that it is supports imperative (like C), object oriented (like C++ or Java), and functional (like Fortran or Lisp) programming paradigms. Its likely you've run into the first two through previous software classes, but if you are new to functional programming now is a great time to get an introduction
+- Part of the power of JavaScript is that it is supports imperative (like C), object oriented (like C++ or Java), and functional (like OCaml or Lisp) programming paradigms. Its likely you've run into the first two through previous software classes, but if you are new to functional programming now is a great time to get an introduction
 - Read one or more of the following (in increasing order of read time):
   - [A Practical Introduction To Functional Programming](https://medium.com/@riteshkeswani/a-practical-introduction-to-functional-programming-javascript-ba5bee2369c2#.z4n0g8oew)
   - [Introduction to Functional Javascript](https://medium.com/functional-javascript/introduction-to-functional-javascript-45a9dca6c64a#.nq16t3bdp)
