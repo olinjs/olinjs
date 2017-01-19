@@ -682,7 +682,7 @@ The moral of the story is that JavaScript is remarkably robust, whether you like
 Read the Node Beginner Book (in `Public/+Courses/Olinjs16/`) up to page 58 (the section marked **Handling file uploads** — the methods used there are old and no longer relevant). This resource ties together a lot of what we covered in class 1 by implementing a basic web server in Node. You'll learn how Node handles browser requests — and how Node is unique — while flexing your newly acquired JavaScript muscle. You should follow along by writing and running the code examples given.
 
 ##Style Guide
-Read the [Airbnb Javascript Style Guide](https://github.com/airbnb/javascript/tree/master/es5). Try to incorporate these styles into your work in this class.
+Read the [Airbnb Javascript Style Guide](https://github.com/airbnb/javascript/tree/es5-deprecated/es5). Try to incorporate these styles into your work in this class. While the current scripting language standard is ES6, we will be using ES5 styling for the majority of the course.
 
 ##More Reading
 This is a fun, well-written article on how naming conventions affect the way we think and code: [Execution in the Kingdom of Nouns](http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html).
