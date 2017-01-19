@@ -1,4 +1,4 @@
-#Lesson 2 - JavaScript
+#Lesson 1.5 - JavaScript
 
 ##Goals
 After this class you should:

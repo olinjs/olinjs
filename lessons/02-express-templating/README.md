@@ -1,4 +1,4 @@
-#Lesson 3 - Express and Templating
+#Lesson 2 - Express and Templating
 
 ##Express
 Now that we've explored Node.js a little, we will abstract the details away with the [Express](http://expressjs.com/) development framework. Before, in the Node Beginner's Book, our code looked a lot like this:
@@ -255,11 +255,11 @@ res.render("home", {"classes": [
 ```
 The second parameter that we are passing to the `render` function is the *context* for the template. That means that the word `classes` in the handlebars file is looking for an array named `classes` and it will create a new list item for *each* of the elements in the array. There's plenty more power in templates and we'll see them shortly.
 
-# Lesson 3 In-Class Exercises
+# Lesson 2 In-Class Exercises
 
 If you find useful resources online while you're working on these exercises, please post them in the #olinjs slack channel!
 
-1. Follow along with the tutorial in the [readme](https://github.com/olinjs/olinjs/blob/master/lessons/03-express-templates) to create a web app that uses Express and Handlebars to display a list of classes at Olin that you're currently taking and the professors who teach them. Your finished product should display something like the paragraph below in a browser:
+1. Follow along with the tutorial in this readme to create a web app that uses Express and Handlebars to display a list of classes at Olin that you're currently taking and the professors who teach them. Your finished product should display something like the paragraph below in a browser:
    
     - Aaron teaches POE
     - Allen teaches Signals and Systems
@@ -267,7 +267,7 @@ If you find useful resources online while you're working on these exercises, ple
    
    Build off of the hello world application you did for homework and make sure that
    you use Handlebars. You will have to extend and slightly change the code
-   provided in the lesson 3 readme to build this app. Instead of giving Handlebars a list of
+   provided in the lesson 2 readme to build this app. Instead of giving Handlebars a list of
    Strings, you'll want to hand off a list of Objects to Handlebars. These objects
    will contain Strings specifying the name of the class and the teacher, like so:
    
@@ -398,10 +398,4 @@ As always, ask for help in Slack or come to office hours if this feels like an o
 ###### Submission
 Note: Because this is the first homework where you've really written code, we're going to try a feedback experiment -- in the homework submission survey, we'll ask you for a code excerpt you feel really confident about and a code excerpt you're not sure about or think could be improved. We'll target our feedback towards those two excerpts. We're hoping that looking at less code will allow us give you higher-quality, more detailed comments. Let us know what you think of the experiment -- we want to give you feedback which is helpful for you!
 
-When you're finished, fill out [the Homework 3 submission survey](http://goo.gl/forms/4bDNdoH3M8).
-
-#### Preclass Reading and Exercise
-- Read the [Class 4 README](https://github.com/olinjs/olinjs/tree/master/lessons/04-mongo)
-- Send an email to [olinjs16@gmail.com](olinjs16@gmail.com) with the subject line "Preclass 4" telling us about...
-    - Something in the reading you felt confident about and easily grasped
-    - Something in the reading you're confused about or want to know more about
+When you're finished, fill out [the Homework 2 submission survey](https://goo.gl/forms/ZunpkPjtIgweJDQa2).
