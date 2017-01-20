@@ -306,7 +306,7 @@ If you find useful resources online while you're working on these exercises, ple
 #Before Class 3 (Friday 1/27/17)
 In this homework you will begin building your first Express application, and create dynamic Handlebars templates.
 
-##Reading
+##Before You Start
 This assignment asks you to create, access, and modify data on your server when certain routes in your web app are visited. To do this and have your data be truly persistent, you'll need tools like MongoDB and Mongoose. We haven't gotten there yet, so for this assignment we're providing you with some code that will act somewhat like a database.
 
 Create a file named 'fakeDatabase.js' in the top level directory of your express application and paste in the following code:
