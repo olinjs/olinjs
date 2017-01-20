@@ -174,6 +174,7 @@ This is Morgan logging the request. This will really come in handy while trying 
 Now go ahead and copy the image `cat.jpg` from the `expressintro/public/images` folder in this directory and place it in your new images folder. Then navigate to http://localhost:3000/images/cat.jpg. That is your static folder doing work!
 
 ## Templating
+###Handlebars Basics
 
 Now I imagine you may be asking yourself, *"This is a web-dev course, right? Where's the HTML?"* Well its coming, but doing it smart is not as simple as putting some `<p>` tags in a file and calling it a day. We will be using a technique called templating. Templating allows us to put some logic behind what is otherwise entirely a layout language. This will greatly reduce the overall quantity of HTML you write, thereby reducing errors, and making it much easier to make a change to an element that appears on many pages in your app. Most importantly however, it allows us to dynamically customize the contents of our HTML. Think about Facebook profiles. When you load your profile, you are looking at a static page of HTML. But Facebook's servers aren't full of files called `bill-wong-profile.html`, and `cynthia-chen-profile.html`; that wouldn't exactly scale very well. They have a single profile template into which they inject your personal profile information, render it as HTML and then send it to your browser. Let's learn the basics!
 
@@ -183,6 +184,16 @@ First off, we will be using [Handlebars](http://handlebarsjs.com/) as a templati
 * Jade's whitespace dependency and style can be a bit too dense and harder to understand. Handlebars may be more "cluttered", but it can also be very nicely structured and layed out in an easy to read manner.
 
 At the end of the day, templating engines-like most things-come down to personal preference, and that's why we're forcing you to like Handlebars! (At least for the duration of this course).
+
+Handlebars templates look mostly like html:
+```html
+<h1>Welcome to {{place}}!</h1>
+```
+In this file, which we'll name `welcome.handlebars`, we've provided a variable called "place" that can be customized.  In our routes (`index.js`), we can tell the handlebars template to render the html with a custom place:
+```javascript
+res.render("welcome", {place: "The Hotel California"});
+```
+This will return a page that says "Welcome to The Hotel California".  Now, whenever we want to welcome our user anywhere, we can use that same `welcome.handlebars` template with a custom place.
 
 ### Making Express Render Handlebars
 
