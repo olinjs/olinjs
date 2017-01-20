@@ -15,7 +15,7 @@ http.createServer(function(request, response) {
 Now let's see what the same app would look like using Express.
 
 ###package.json
-To start we'll set up a new application using `npm init`. This will ask you a series of questions that will populate your `package.json` file, you can use the defaults for all of them. The `package.json` file manages many things. If you publish your module on npm (like any of the modules which you `npm install` are published) this file will include the meta information about your module. We won't get into that much in this class, but that's why it seems like there are a lot of unnecessary fields. The main purpose we will use the `package.json` for is dependency management.
+To start we'll set up a new application using `npm init`. This will ask you a series of questions that will populate your `package.json` file, you can use the defaults for all of them. The `package.json` file manages many things. If you publish your module on npm (like any of the modules which you `npm install`) this file will include the meta information about your module. We won't be doing much of that in this class, but that's why it seems like there are a lot of unnecessary fields. The main purpose we will use the `package.json` for is dependency management.
 
 After you exit the init setup, run `npm install express --save`. If you check your `package.json` again, you'll see the following was added:
 ```javascript
@@ -25,7 +25,7 @@ After you exit the init setup, run `npm install express --save`. If you check yo
 ```
 The `--save` argument will add the module to your list of dependencies and is generally a good thing to use whenever adding a new module. If you just forked a cloned project that has its dependencies listed you can simply run `npm install` to install the required dependencies (at the right versions) for that project.
 
-Once installed, your modules live inside the `node_modules` directory.  These modules generally include a lot of large files, so it good practice to not commit your `node_modules` directory to git. For other people to run your app with the necessary modules, they would read and install the modules from your `package.json` using `npm install`.
+Once installed, your modules live inside the `node_modules` directory.  These modules generally include a lot of large files, so it's good practice to not commit your `node_modules` directory to git. For other people to run your app with the necessary modules, they would read and install the modules from your `package.json` using `npm install`.
 
 ###app.js
 Now that we're set up, create a file called `app.js` and and paste in the following:
