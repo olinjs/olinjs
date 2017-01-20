@@ -415,4 +415,4 @@ Are you running into errors that the first page of Google results doesn't solve?
 As always, ask for help in Slack or come to office hours if this feels like an overwhelming amout of work, if you are running into trouble, or if you need some guidance with this assignment.
 
 ##Submission
-Your app will be graded according to the [Homework Rubric](../../Syllabus.md#homework-rubric-50-points-total). When you're finished, fill out [the Homework 2 submission survey](https://goo.gl/forms/ZunpkPjtIgweJDQa2).
+Your app will be graded according to the [Homework Rubric](../../Syllabus.md#homework-rubric-50-points-total). When you're finished, fill out [the Homework 2 submission survey](https://goo.gl/forms/qeYlmnt2n0ioqj1t1).
