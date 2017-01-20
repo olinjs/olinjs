@@ -319,6 +319,7 @@ If you find useful resources online while you're working on these exercises, ple
     - Make sure that the response you send your user is centered, no matter how they resize their browser.
     - Send along some javascript so an animation of your choice occurs when you click on the page. For example, the text on the page could change to a random color when you click on it.  
 
+4. If you want more practice and understanding of Javascript, read through [Javascript.md](./Javascript.md).  There you'll find the Node Beginner Book, the Airbnb Javascript Style Guide, and more information on the syntax and theory of Javascript.
 
 #Before Class 3 (Friday 1/27/17)
 In this homework you will begin building your first Express application, and create dynamic Handlebars templates.
@@ -414,4 +415,4 @@ Are you running into errors that the first page of Google results doesn't solve?
 As always, ask for help in Slack or come to office hours if this feels like an overwhelming amout of work, if you are running into trouble, or if you need some guidance with this assignment.
 
 ##Submission
-When you're finished, fill out [the Homework 2 submission survey](https://goo.gl/forms/ZunpkPjtIgweJDQa2).
+Your app will be graded according to the [Homework Rubric](../../Syllabus.md#homework-rubric-50-points-total). When you're finished, fill out [the Homework 2 submission survey](https://goo.gl/forms/ZunpkPjtIgweJDQa2).
