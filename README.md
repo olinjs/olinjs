@@ -17,6 +17,7 @@ Feel free to submit a Github issue if you find any problems in the course and we
 * [Lesson 2 - Express and Templating](./lessons/02-express-templating)
 * [Lesson 3 - MongoDB](./lessons/03-mongo)
 * [Lesson 4 - The Client](./lessons/04-client-jquery-ajax)
+* [Lesson 5 - Burger App Help](./lessons/05-flex-burger-help)
 * [Lesson 6 - Sessions, Users, Errors, CSS, and Debugging](./lessons/06-css-development-style)
 * [Lesson 7 - Application Integration](./lessons/07-apis-debugging)
 * [Lesson 8 - Unit Testing and Task Running](./lessons/08-tests-tasks)
