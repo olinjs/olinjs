@@ -1,4 +1,4 @@
-# Lesson 4 - MongoDB and Mongoose
+# Lesson 3 - MongoDB and Mongoose
 
 Node has the ability to store some information as variables. But all of the variables are stored in the process memory.
 If you restart the server (or the server crashes) the data will be wiped away.
@@ -167,3 +167,134 @@ Robot.find({}, function(err, robots){
   console.log(robots);
 });
 ```
+
+# Lesson 3 In-Class Exercises
+
+Today we will be playing around with mongoDB by writing mongoose queries, before moving on to working with mongoose in your cat app.
+
+If you find useful resources online while you're working on these exercises, please post them in the #olinjs slack channel!
+
+##Queries in Mongoose
+In mongoose, you create a schema to define the structure of your mongo collection. For this exercise, you will be working with a schema that has various robot features.
+
+```javascript
+var robotSchema = mongoose.Schema({
+	name: String,
+	abilities: [String],
+  isEvil: Boolean
+});
+```
+
+Follow along at the end of the Readme to connect a copy of your boilerplate app to mongoose. Try writing out a few queries to select certain robots, and pass them to render in a handlebars file. You can now use mongo/mongoose to persist data for any application.
+
+##Advanced Queries
+Now that you've got the basics of mongoose working, organize into groups and have each member research an advanced mongoose query to present to the group. You can implement this if you want, or move on to working on the cat app (where you will eventually need to implement an advanced query for this weeks homework).
+
+We're defining an advanced query as something that builds on basic queries by using query operators such as **and** and **or**. You can find a full list of query operators [here](https://docs.mongodb.org/manual/reference/operator/query/#query-selectors). You can also see examples of what that looks like in mongoose syntax at the main queries [doc page](http://mongoosejs.com/docs/queries.html) and in the [page](https://docs.mongodb.org/manual/tutorial/query-documents/) dedicated to building specific queries.
+
+##Cat App
+Once you are comfortable with using mongoose in your boilerplate application and building different types of queries, start working on integrating a database into your cat app. Follow the [getting started guide](http://mongoosejs.com/docs/index.html) that mongoose provides to hook the in-class app up to your database.
+
+In groups, discuss the models you will use to store data for your cat app. It can be helpful to diagram your models on the board.
+
+After you have decided on your model and created a schema, hook the cat creation route in your cat app up to mongoose. Once you have this working, try connecting your cat app to a partner's cat app database.
+
+## Feedback
+We'd love your feedback on today's class -- fill out [this survey](http://goo.gl/forms/zPG39cpc81) if you'd like!
+
+#Before Class 4 (Tuesday 1/31/17)
+#### Assignment
+For the homework, you will be integrating mongoDB into your Cat App from last class using mongoose. Now you can store the cats you create forever, and create new features that allow you to sort those cats in various ways.
+
+For this homework, you will need to add at least one feature that integrates with your database and uses an advanced query. For example, you could only show cats in a certain age range, or display cats by date created.
+
+In case you missed the in-class:
+We're defining an advanced query as something that builds on basic queries by using query operators such as **and** and **or**. You can find a full list of query operators [here](https://docs.mongodb.org/manual/reference/operator/query/#query-selectors). You can also see examples of what that looks like in mongoose syntax at the main queries [doc page](http://mongoosejs.com/docs/queries.html) and in the [page](https://docs.mongodb.org/manual/tutorial/query-documents/) dedicated to building specific queries.
+
+**Challenging:** Explore a more advanced concept of mongo/mongoose like embedding vs. referencing inside your cat application.
+
+Other possible ideas would be integrating your cat app with a SQL database like mySQL or integrating with a remote database hosted on mongolab.
+
+When you're finished, fill out [the Homework 4 submission survey](http://goo.gl/forms/ahznoQ3XeW).
+
+#### Mongo Embedding vs Referencing
+Let's say that you owned a series of bookstores each with a location,
+a manager, and tons of books. Each book has an author and a price.
+So our data structure so far looks like:
+```
+bookstore
+  location
+  manager
+  book
+    author
+    price
+```
+Keep in mind that a lot of books will be repeated across bookstores.
+How would we convert this to a Mongo datastore?
+Perhaps the obvious solution would be to just throw it all into an object that looks like the above.
+This is called **embedding** and is one of two ways that Mongo allows us to store objects within other objects.
+
+**Embedding** is when you store a Mongo document inside of another Mongo document.
+This is the default way to do things in Mongo, and is the most obvious.
+Instead of creating two collections for your bookstore,
+you'll just have one bookstore collection that has a list of every book inside of the bookstore.
+```
+bookstore
+  location
+  manager
+  book
+    author
+    price
+```
+
+This will lead you to repeat books across bookstores (but who cares because space is cheap).
+However, it will also mean that if you want to change the price of a book across all bookstores you have to go through each bookstore,
+search for the book, then change the attribute of the book.
+This isn't too bad if the book changes price very rarely, or if there are only a few stores which stock the book.
+However, think back to the Amazon.com example.
+If the price of the book changes every hour, and 1000 bookstores stock the book,
+you now have to update 1000 objects every hour.
+This becomes an even bigger problem when you're a product like Twitter and your
+"bookstores" are users and books are people those users follow. Let's say you want
+to update information about the book "Lady Gaga", which is stocked by 33 million "bookstores".
+This would be nearly impossible with embedded data, but is a cinch with references.
+
+The other method of putting objects within other objects is called **referencing**.
+
+**Referencing** is when you reference a Mongo document (usually by _id)
+inside of another document.
+We could split up the `bookstore` into two separate Mongo collections,
+a `store` and a `book`.
+Then our collections will look like:
+```
+store
+  location
+  manager
+  items
+```
+```
+book
+  author
+  price
+```
+This decouples stores with what they carry.
+We now have 1 book object that can be referenced from multiple stores.
+This is useful when you are lacking in space (because you don't repeat books).
+It is also useful when the object being shared changes often.
+Imagine that this bookstore based the price of their books on the Amazon.com price of the book (which fluctuates constantly).
+Now every time the price of the book changes you have to make only one change to one object,
+and the next time a store looks up the book it will see the updated price.
+
+In the end which way you use (reference or embedding) depends what your data access patterns will be like.
+You'll likely be using embeds 80% of the time, but references also have their place, so know how to do both.
+
+The Mongo documentation has further details about [when to embed vs reference](http://docs.mongodb.org/manual/core/data-model-design/).
+
+#### Preclass Reading and Exercise
+Read the [Class 5 README](https://github.com/olinjs/olinjs/tree/master/lessons/05-client-jquery-ajax). Follow along and build the app starting at the "HTML Forms" section to the end.
+
+To complete the preclass, push the app you create during the "HTML Forms" section" to your fork of the Olin.js repo. Then, send an email to [olinjs16@gmail.com](olinjs16@gmail.com) with the subject line "Preclass 5" and a link to the GitHub folder containing your forms app.
+
+(The preclass is long -- if you can't get through all of it, at least get two forms working, then finish up the third in class).
+
+If you're looking for an additional jQuery resource, this one is pretty good: [Basics of jQuery](http://jqfundamentals.com/chapter/jquery-basics).
