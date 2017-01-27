@@ -1,4 +1,9 @@
-# Lesson 3 - MongoDB and Mongoose
+# Table of Contents
+1. [Lesson](#lesson)
+2. [In-Class Activities](#inclass)
+3. [Homework](#homework)
+
+# Lesson 3 - MongoDB and Mongoose <a name="lesson"></a>
 
 Node has the ability to store some information as variables. But all of the variables are stored in the process memory.
 If you restart the server (or the server crashes) the data will be wiped away.
@@ -167,7 +172,7 @@ Robot.find({}, function(err, robots){
 });
 ```
 
-# Lesson 3 In-Class Exercises
+# Lesson 3 In-Class Exercises <a name="inclass"></a>
 
 Today we will be playing around with mongoDB by writing mongoose queries, before moving on to working with mongoose in your cat app.
 
@@ -201,7 +206,7 @@ After you have decided on your model and created a schema, hook the cat creation
 ## Feedback
 We'd love your feedback on today's class -- fill out [this survey](https://docs.google.com/forms/d/e/1FAIpQLScnYqhtJAFYkq5FAJALVZtu0fFx658EZk3x3n2olL1_eZZlqg/viewform) if you'd like!
 
-#Before Class 4 (Tuesday 1/31/17)
+#Before Class 4 (Tuesday 1/31/17) <a name="homework"></a>
 #### Assignment
 For the homework, you will be integrating mongoDB into your Cat App from last class using mongoose. Now you can store the cats you create forever, and create new features that allow you to sort those cats in various ways.
 
