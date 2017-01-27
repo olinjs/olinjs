@@ -1,4 +1,10 @@
-# Lesson 4 - MongoDB and Mongoose
+# Table of Contents
+1. [Lesson](#lesson)
+2. [In-Class Activities](#inclass)
+3. [Homework](#homework)
+
+<a name="lesson"></a>
+# Lesson 3 - MongoDB and Mongoose
 
 Node has the ability to store some information as variables. But all of the variables are stored in the process memory.
 If you restart the server (or the server crashes) the data will be wiped away.
@@ -10,10 +16,7 @@ It can be written to, read from, and maintains information regardless of whether
 But files aren't useful for much more than storing log information because of their organization and slow hard disk read/write speeds.
 When we want to retrieve data from persistent storage quickly, we need a solution like a database!
 
-MongoDB is a NoSQL database, which means that instead of tabular data, it stores data in JSON-like documents, is relatively performant and offers useful features for production level systems.
-We're going to use it for these reasons, but also because it is very easy to integrate with Node and doesn't require learning too much about data storage.
-Alternatives, for example the ubiquitous MySQL and PostgreSQL, are also very common database solutions, but tend to take a bit more time to get set up in a Node environment and require you to learn a query language (SQL) to access your data.
-You will likely see them in any internships or jobs doing web-dev, but MongoDB more than suits our purposes and will teach you the basics of data storage without taking a couple weeks of class time to get comfortable with.
+MongoDB is a NoSQL database, which means that instead of tabular data, it stores data in JSON-like documents, and offers useful features for production level systems. We're going to use it for these reasons, but also because it is very easy to integrate with Node and doesn't require learning too much about data storage. Alternatives, for example the ubiquitous MySQL and PostgreSQL, are also very common database solutions, but tend to take a bit more time to get set up in a Node environment and require you to learn a query language (SQL) to access your data. You will likely see them in any internships or jobs doing web-dev, but MongoDB more than suits our purposes and will teach you the basics of data storage without taking a couple weeks of class time to get comfortable with.
 
 ##Mongo
 So, let's get Mongo running and see what we can do with it:
@@ -24,6 +27,8 @@ echo "deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen" | 
 sudo apt-get update;
 sudo apt-get install -y mongodb-org
 ```
+
+If you have Ubuntu 16.04 or higher, consult these [instructions and FAQ](https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-ubuntu-16-04) to install.
 
 If you have a mac, you can consult these [instructions](https://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/).
 
@@ -167,3 +172,127 @@ Robot.find({}, function(err, robots){
   console.log(robots);
 });
 ```
+
+<a name="inclass"></a>
+# Lesson 3 In-Class Exercises
+
+Today we will be playing around with mongoDB by writing mongoose queries, before moving on to working with mongoose in your cat app.
+
+If you find useful resources online while you're working on these exercises, please post them in the #olinjs slack channel!
+
+##Queries in Mongoose
+In mongoose, you create a schema to define the structure of your mongo collection. For this exercise, you will be working with a schema that has various robot features.
+
+```javascript
+var robotSchema = mongoose.Schema({
+	name: String,
+	abilities: [String],
+  isEvil: Boolean
+});
+```
+
+Follow along at the end of the Readme to connect a copy of your boilerplate app to mongoose. Try writing out a few queries to select certain robots, and pass them to render in a handlebars file. You can now use mongo/mongoose to persist data for any application.
+
+##Advanced Queries
+Now that you've got the basics of mongoose working, organize into groups and have each member research an advanced mongoose query to present to the group. You can implement this if you want, or move on to working on the cat app (where you will eventually need to implement an advanced query for this weeks homework).
+
+We're defining an advanced query as something that builds on basic queries by using query operators such as **and** and **or**. You can find a full list of query operators [here](https://docs.mongodb.org/manual/reference/operator/query/#query-selectors). You can also see examples of what that looks like in mongoose syntax at the main queries [doc page](http://mongoosejs.com/docs/queries.html) and in the [page](https://docs.mongodb.org/manual/tutorial/query-documents/) dedicated to building specific queries.
+
+##Cat App
+Once you are comfortable with using mongoose in your boilerplate application and building different types of queries, start working on integrating a database into your cat app. Follow the [getting started guide](http://mongoosejs.com/docs/index.html) that mongoose provides to hook the in-class app up to your database.
+
+In groups, discuss the models you will use to store data for your cat app. It can be helpful to diagram your models on the board.
+
+After you have decided on your model and created a schema, hook the cat creation route in your cat app up to mongoose. Once you have this working, try connecting your cat app to a partner's cat app database.
+
+## Feedback
+We'd love your feedback on today's class -- fill out [this survey](https://docs.google.com/forms/d/e/1FAIpQLScnYqhtJAFYkq5FAJALVZtu0fFx658EZk3x3n2olL1_eZZlqg/viewform) if you'd like!
+
+<a name="homework"></a>
+#Before Class 4 (Tuesday 1/31/17)
+#### Assignment
+For the homework, you will be integrating mongoDB into your Cat App from last class using mongoose. Now you can store the cats you create forever, and create new features that allow you to sort those cats in various ways.
+
+For this homework, you will need to add at least one feature that integrates with your database and uses an advanced query. For example, you could only show cats in a certain age range, or display cats by date created.
+
+In case you missed the in-class:
+We're defining an advanced query as something that builds on basic queries by using query operators such as **and** and **or**. You can find a full list of query operators [here](https://docs.mongodb.org/manual/reference/operator/query/#query-selectors). You can also see examples of what that looks like in mongoose syntax at the main queries [doc page](http://mongoosejs.com/docs/queries.html) and in the [page](https://docs.mongodb.org/manual/tutorial/query-documents/) dedicated to building specific queries.
+
+**Challenging:** Explore a more advanced concept of mongo/mongoose like embedding vs. referencing inside your cat application.
+
+Other possible ideas would be integrating your cat app with a SQL database like mySQL or integrating with a remote database hosted on mongolab. However, please at least read through the following information on embedding vs. referencing.
+
+#### Mongo Embedding vs Referencing
+Let's say that you owned a series of bookstores each with a location,
+a manager, and tons of books. Each book has an author and a price.
+So our data structure so far looks like:
+```
+bookstore
+  location
+  manager
+  book
+    author
+    price
+```
+Keep in mind that a lot of books will be repeated across bookstores.
+How would we convert this to a Mongo datastore?
+Perhaps the obvious solution would be to just throw it all into an object that looks like the above.
+This is called **embedding** and is one of two ways that Mongo allows us to store objects within other objects.
+
+**Embedding** is when you store a Mongo document inside of another Mongo document.
+This is the default way to do things in Mongo, and is the most obvious.
+Instead of creating two collections for your bookstore,
+you'll just have one bookstore collection that has a list of every book inside of the bookstore.
+```
+bookstore
+  location
+  manager
+  book
+    author
+    price
+```
+
+This will lead you to repeat books across bookstores (but who cares because space is cheap).
+However, it will also mean that if you want to change the price of a book across all bookstores you have to go through each bookstore,
+search for the book, then change the attribute of the book.
+This isn't too bad if the book changes price very rarely, or if there are only a few stores which stock the book.
+However, think back to the Amazon.com example.
+If the price of the book changes every hour, and 1000 bookstores stock the book,
+you now have to update 1000 objects every hour.
+This becomes an even bigger problem when you're a product like Twitter and your
+"bookstores" are users and books are people those users follow. Let's say you want
+to update information about the book "Lady Gaga", which is stocked by 33 million "bookstores".
+This would be nearly impossible with embedded data, but is a cinch with references.
+
+The other method of putting objects within other objects is called **referencing**.
+
+**Referencing** is when you reference a Mongo document (usually by _id)
+inside of another document.
+We could split up the `bookstore` into two separate Mongo collections,
+a `store` and a `book`.
+Then our collections will look like:
+```
+store
+  location
+  manager
+  items
+```
+```
+book
+  author
+  price
+```
+This decouples stores with what they carry.
+We now have 1 book object that can be referenced from multiple stores.
+This is useful when you are lacking in space (because you don't repeat books).
+It is also useful when the object being shared changes often.
+Imagine that this bookstore based the price of their books on the Amazon.com price of the book (which fluctuates constantly).
+Now every time the price of the book changes you have to make only one change to one object,
+and the next time a store looks up the book it will see the updated price.
+
+In the end which way you use (reference or embedding) depends what your data access patterns will be like.
+You'll likely be using embeds 80% of the time, but references also have their place, so know how to do both.
+
+The Mongo documentation has further details about [when to embed vs reference](http://docs.mongodb.org/manual/core/data-model-design/).
+
+When you're finished, fill out [the Homework 3 submission survey](https://docs.google.com/forms/d/e/1FAIpQLSdqXUJFMLalcKxrkWCiv17zcEshEfDO1Wullp-5BzzSjwbL5Q/viewform). Like the previous homework, your app will be graded according to the [Homework Rubric](../../Syllabus.md#homework-rubric-50-points-total).
