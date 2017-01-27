@@ -10,10 +10,7 @@ It can be written to, read from, and maintains information regardless of whether
 But files aren't useful for much more than storing log information because of their organization and slow hard disk read/write speeds.
 When we want to retrieve data from persistent storage quickly, we need a solution like a database!
 
-MongoDB is a NoSQL database, which means that instead of tabular data, it stores data in JSON-like documents, is relatively performant and offers useful features for production level systems.
-We're going to use it for these reasons, but also because it is very easy to integrate with Node and doesn't require learning too much about data storage.
-Alternatives, for example the ubiquitous MySQL and PostgreSQL, are also very common database solutions, but tend to take a bit more time to get set up in a Node environment and require you to learn a query language (SQL) to access your data.
-You will likely see them in any internships or jobs doing web-dev, but MongoDB more than suits our purposes and will teach you the basics of data storage without taking a couple weeks of class time to get comfortable with.
+MongoDB is a NoSQL database, which means that instead of tabular data, it stores data in JSON-like documents, and offers useful features for production level systems. We're going to use it for these reasons, but also because it is very easy to integrate with Node and doesn't require learning too much about data storage. Alternatives, for example the ubiquitous MySQL and PostgreSQL, are also very common database solutions, but tend to take a bit more time to get set up in a Node environment and require you to learn a query language (SQL) to access your data. You will likely see them in any internships or jobs doing web-dev, but MongoDB more than suits our purposes and will teach you the basics of data storage without taking a couple weeks of class time to get comfortable with.
 
 ##Mongo
 So, let's get Mongo running and see what we can do with it:
@@ -24,6 +21,8 @@ echo "deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen" | 
 sudo apt-get update;
 sudo apt-get install -y mongodb-org
 ```
+
+If you have Ubuntu 16.04 or higher, consult these [instructions and FAQ](https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-ubuntu-16-04) to install.
 
 If you have a mac, you can consult these [instructions](https://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/).
 
