@@ -212,9 +212,7 @@ We're defining an advanced query as something that builds on basic queries by us
 
 **Challenging:** Explore a more advanced concept of mongo/mongoose like embedding vs. referencing inside your cat application.
 
-Other possible ideas would be integrating your cat app with a SQL database like mySQL or integrating with a remote database hosted on mongolab.
-
-When you're finished, fill out [the Homework 3 submission survey](https://docs.google.com/forms/d/e/1FAIpQLSdqXUJFMLalcKxrkWCiv17zcEshEfDO1Wullp-5BzzSjwbL5Q/viewform). Like the previous homework, we'd like to see your code follow good
+Other possible ideas would be integrating your cat app with a SQL database like mySQL or integrating with a remote database hosted on mongolab. However, please at least read through the following information on embedding vs. referencing.
 
 #### Mongo Embedding vs Referencing
 Let's say that you owned a series of bookstores each with a location,
@@ -288,3 +286,5 @@ In the end which way you use (reference or embedding) depends what your data acc
 You'll likely be using embeds 80% of the time, but references also have their place, so know how to do both.
 
 The Mongo documentation has further details about [when to embed vs reference](http://docs.mongodb.org/manual/core/data-model-design/).
+
+When you're finished, fill out [the Homework 3 submission survey](https://docs.google.com/forms/d/e/1FAIpQLSdqXUJFMLalcKxrkWCiv17zcEshEfDO1Wullp-5BzzSjwbL5Q/viewform). Like the previous homework, your app will be graded according to the [Homework Rubric](../../Syllabus.md#homework-rubric-50-points-total).
