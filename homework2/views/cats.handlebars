@@ -1,0 +1,22 @@
+<table>
+  <tr>
+    <th>Cat Name</th>
+    <th>Cat Age</th>
+    <th>Cat Colors</th>
+  </tr>
+  {{#each classes}}
+    <tr>
+      <td> {{this.name}}</td>
+      <td> {{this.age}}</td>
+      <td> {{this.colors}}</td>
+    </tr>
+  {{/each}}
+</table>
+
+{{#if added}}
+<p>Welcome {{added.name}} who is {{added.age}} years old and has the colors: {{added.colors}}!</p>
+{{/if}}
+
+{{#if deleted}}
+  <p>{{deleted.name}} age {{deleted.age}} was murdered</p>
+{{/if}}
