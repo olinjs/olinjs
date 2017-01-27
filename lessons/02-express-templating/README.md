@@ -1,7 +1,7 @@
 #Lesson 2 - Express and Templating
 
 ##Express
-Now that we've explored Node.js a little, we will abstract the details away with the [Express](http://expressjs.com/) development framework. Before, in the Node Beginner's Book, our code looked a lot like this:
+Now that we've explored Node.js a little, we will abstract the details away with the [Express](http://expressjs.com/) development framework. Before, in learnyounode, our code looked a lot like this:
 ```javascript
 var http = require("http");
 
@@ -12,7 +12,10 @@ http.createServer(function(request, response) {
 }).listen(8888);
 ```
 
-Now let's see what the same app would look like using Express. To start we'll set up a new application using `npm init`. This will ask you a series of questions that will populate your `package.json` file, you can use the defaults for all of them. This file manages many things. If you publish your module on npm (like any of the modules which you `npm install` are published) this file will include the meta information about your module. We won't get into that much in this class, but that's why it seems like there are a lot of unnecessary fields. The main purpose we will use the `package.json` for is dependency management.
+Now let's see what the same app would look like using Express.
+
+###package.json
+To start we'll set up a new application using `npm init`. This will ask you a series of questions that will populate your `package.json` file, you can use the defaults for all of them. The `package.json` file manages many things. If you publish your module on npm (like any of the modules which you `npm install`) this file will include the meta information about your module. We won't be doing much of that in this class, but that's why it seems like there are a lot of unnecessary fields. The main purpose we will use the `package.json` for is dependency management.
 
 After you exit the init setup, run `npm install express --save`. If you check your `package.json` again, you'll see the following was added:
 ```javascript
@@ -22,6 +25,9 @@ After you exit the init setup, run `npm install express --save`. If you check yo
 ```
 The `--save` argument will add the module to your list of dependencies and is generally a good thing to use whenever adding a new module. If you just forked a cloned project that has its dependencies listed you can simply run `npm install` to install the required dependencies (at the right versions) for that project.
 
+Once installed, your modules live inside the `node_modules` directory.  These modules generally include a lot of large files, so it's good practice to not commit your `node_modules` directory to git. For other people to run your app with the necessary modules, they would read and install the modules from your `package.json` using `npm install`.
+
+###app.js
 Now that we're set up, create a file called `app.js` and and paste in the following:
 ```javascript
 var express = require('express');
@@ -39,7 +45,7 @@ hello world
 ```
 Awesome! You just ran your first application using Express!
 
-Express makes writing web servers in Node much easier. Here are some of the important differences between the examples you did in the book and Express:
+Express makes writing web servers in Node much easier. Here are some of the important differences between what you did in learnyounode and Express:
 * Routing: Instead of parsing the URL out of the request ourselves, we can have Express do that for us, and even assign a function to execute whenever a request asks for a specific path.
 * Sending a response: Express takes care of setting many obvious response headers for you. Express will also handle sending files like images, music, audio, or `.html` files from a folder easily.
 * Handling templates: Express can also be configured to populate HTML templates before sending them in a response. We'll cover this later.
@@ -57,10 +63,15 @@ Routing is the process of serving up different pages for different URLs. When yo
 
 If you go to www.mycoolsite.com/, mycoolsite's servers obviously can't send you the same data they sent www.mycoolsite.com/olin. So mycoolsite's servers needs to differentiate `/` from `/olin`. This process is known as routing.
 
-In the Node Beginner Book, we did routing through something like
+In learnyounode, we did routing through something like
 ```javascript
 var pathname = url.parse(request.url).pathname;
-route(handle, pathname, response, request);
+
+if (pathname === "/") {
+  // Send "hello world"
+} else if (pathname === "/olin") {
+  // Send "hello olin"
+}
 ```
 With Express, we don't need to write the code to handle the route ourselves; Express does it for us with these statements:
 ```javascript
@@ -163,8 +174,9 @@ This is Morgan logging the request. This will really come in handy while trying 
 Now go ahead and copy the image `cat.jpg` from the `expressintro/public/images` folder in this directory and place it in your new images folder. Then navigate to http://localhost:3000/images/cat.jpg. That is your static folder doing work!
 
 ## Templating
+###Handlebars Basics
 
-Now I imagine you may be asking yourself, *"This is a web-dev course, right? Where's the HTML?"* Well its coming, but doing it smart is not as simple as putting some `<p>` tags in a file and calling it a day. We will be using a technique called templating. Templating allows us to put some logic behind what is otherwise entirely a layout language. This will greatly reduce the overall quantity of HTML you write, thereby reducing errors, and making it much easier to make a change to an element that appears on many pages in your app. Most importantly however, it allows us to dynamically customize the contents of our HTML. Think about Facebook profiles. When you load your profile, you are looking at a static page of HTML. But Facebook's servers aren't full of files called `ben-kahle-profile.html`, and `evan-simpson-profile.html`; that wouldn't exactly scale very well. They have a single profile template into which they inject your personal profile information, render it as HTML and then send it to your browser. Let's learn the basics!
+Now I imagine you may be asking yourself, *"This is a web-dev course, right? Where's the HTML?"* Well its coming, but doing it smart is not as simple as putting some `<p>` tags in a file and calling it a day. We will be using a technique called templating. Templating allows us to put some logic behind what is otherwise entirely a layout language. This will greatly reduce the overall quantity of HTML you write, thereby reducing errors, and making it much easier to make a change to an element that appears on many pages in your app. Most importantly however, it allows us to dynamically customize the contents of our HTML. Think about Facebook profiles. When you load your profile, you are looking at a static page of HTML. But Facebook's servers aren't full of files called `bill-wong-profile.html`, and `cynthia-chen-profile.html`; that wouldn't exactly scale very well. They have a single profile template into which they inject your personal profile information, render it as HTML and then send it to your browser. Let's learn the basics!
 
 First off, we will be using [Handlebars](http://handlebarsjs.com/) as a templating engine. The default templating engine of Express is actually [Jade](http://jade-lang.com/). We're going to use Handlebars for a few reasons:
 * It more closely resembles the HTML result you will see on the client. Some people consider this a negative, but we like it and it can make debugging your views *much* easier. It also makes it easier while you are learning HTML.
@@ -172,6 +184,16 @@ First off, we will be using [Handlebars](http://handlebarsjs.com/) as a templati
 * Jade's whitespace dependency and style can be a bit too dense and harder to understand. Handlebars may be more "cluttered", but it can also be very nicely structured and layed out in an easy to read manner.
 
 At the end of the day, templating engines-like most things-come down to personal preference, and that's why we're forcing you to like Handlebars! (At least for the duration of this course).
+
+Handlebars templates look mostly like html:
+```html
+<h1>Welcome to {{place}}!</h1>
+```
+In this file, which we'll name `welcome.handlebars`, we've provided a variable called "place" that can be customized.  In our routes (`index.js`), we can tell the handlebars template to render the html with a custom place:
+```javascript
+res.render("welcome", {place: "The Hotel California"});
+```
+This will return a page that says "Welcome to The Hotel California".  Now, whenever we want to welcome our user anywhere, we can use that same `welcome.handlebars` template with a custom place.
 
 ### Making Express Render Handlebars
 
@@ -265,11 +287,7 @@ If you find useful resources online while you're working on these exercises, ple
     - Allen teaches Signals and Systems
     - Mark teaches Markanics
    
-   Build off of the hello world application you did for homework and make sure that
-   you use Handlebars. You will have to extend and slightly change the code
-   provided in the lesson 2 readme to build this app. Instead of giving Handlebars a list of
-   Strings, you'll want to hand off a list of Objects to Handlebars. These objects
-   will contain Strings specifying the name of the class and the teacher, like so:
+   Build off of the hello world application you did for homework and make sure that you use Handlebars. You will have to extend and slightly change the code provided in the lesson 2 readme to build this app. Instead of giving Handlebars a list of Strings, you'll want to hand off a list of Objects to Handlebars. These objects will contain Strings specifying the name of the class and the teacher, like so:
    
    ```javascript
        res.render("home", {"classes": [
@@ -301,11 +319,12 @@ If you find useful resources online while you're working on these exercises, ple
     - Make sure that the response you send your user is centered, no matter how they resize their browser.
     - Send along some javascript so an animation of your choice occurs when you click on the page. For example, the text on the page could change to a random color when you click on it.  
 
+4. If you want more practice and understanding of Javascript, read through [Javascript.md](./Javascript.md).  There you'll find the Node Beginner Book, the Airbnb Javascript Style Guide, and more information on the syntax and theory of Javascript.
 
 #Before Class 3 (Friday 1/27/17)
 In this homework you will begin building your first Express application, and create dynamic Handlebars templates.
 
-#### Reading
+##Before You Start
 This assignment asks you to create, access, and modify data on your server when certain routes in your web app are visited. To do this and have your data be truly persistent, you'll need tools like MongoDB and Mongoose. We haven't gotten there yet, so for this assignment we're providing you with some code that will act somewhat like a database.
 
 Create a file named 'fakeDatabase.js' in the top level directory of your express application and paste in the following code:
@@ -370,7 +389,7 @@ module.exports = router;
 
 Carefully reading the code above should be enough to get you started. Note that handlebars templating is not used in the example above, but you are required to use handlebars templating for your assignment. So you should be using *res.render*, not *res.send*! And though it isn't nessecary to, you can modify the fakeDatabase.js code if you wish.
 
-#### Assignment 
+##Assignment 
 Create an Express application that has the following routes:
 * GET `/cats/new` => Creates a new cat record. A cat should have a random age, a name, and a list of colors.
   * These should be generated upon creation, not hardcoded.
@@ -385,7 +404,7 @@ In this assignment we are doing something very bad. GET should be a [safe method
 
 We are using GET requests in this horrible way because without writing a front end, sending other types of requests becomes much more difficult. We'll get there soon though.
 
-###### Some Parting Words
+##Some Parting Words
 In order to complete this assignment, you're going to have to figure out
 how to filter and sort data. We didn't cover this in class, but it's not much of a stretch to Google.
 
@@ -395,7 +414,5 @@ Are you running into errors that the first page of Google results doesn't solve?
 
 As always, ask for help in Slack or come to office hours if this feels like an overwhelming amout of work, if you are running into trouble, or if you need some guidance with this assignment.
 
-###### Submission
-Note: Because this is the first homework where you've really written code, we're going to try a feedback experiment -- in the homework submission survey, we'll ask you for a code excerpt you feel really confident about and a code excerpt you're not sure about or think could be improved. We'll target our feedback towards those two excerpts. We're hoping that looking at less code will allow us give you higher-quality, more detailed comments. Let us know what you think of the experiment -- we want to give you feedback which is helpful for you!
-
-When you're finished, fill out [the Homework 2 submission survey](https://goo.gl/forms/ZunpkPjtIgweJDQa2).
+##Submission
+Your app will be graded according to the [Homework Rubric](../../Syllabus.md#homework-rubric-50-points-total). When you're finished, fill out [the Homework 2 submission survey](https://goo.gl/forms/qeYlmnt2n0ioqj1t1).
