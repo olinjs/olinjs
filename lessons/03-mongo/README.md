@@ -199,7 +199,7 @@ In groups, discuss the models you will use to store data for your cat app. It ca
 After you have decided on your model and created a schema, hook the cat creation route in your cat app up to mongoose. Once you have this working, try connecting your cat app to a partner's cat app database.
 
 ## Feedback
-We'd love your feedback on today's class -- fill out [this survey](http://goo.gl/forms/zPG39cpc81) if you'd like!
+We'd love your feedback on today's class -- fill out [this survey](https://docs.google.com/forms/d/e/1FAIpQLScnYqhtJAFYkq5FAJALVZtu0fFx658EZk3x3n2olL1_eZZlqg/viewform) if you'd like!
 
 #Before Class 4 (Tuesday 1/31/17)
 #### Assignment
@@ -214,7 +214,7 @@ We're defining an advanced query as something that builds on basic queries by us
 
 Other possible ideas would be integrating your cat app with a SQL database like mySQL or integrating with a remote database hosted on mongolab.
 
-When you're finished, fill out [the Homework 4 submission survey](http://goo.gl/forms/ahznoQ3XeW).
+When you're finished, fill out [the Homework 3 submission survey](https://docs.google.com/forms/d/e/1FAIpQLSdqXUJFMLalcKxrkWCiv17zcEshEfDO1Wullp-5BzzSjwbL5Q/viewform). Like the previous homework, we'd like to see your code follow good
 
 #### Mongo Embedding vs Referencing
 Let's say that you owned a series of bookstores each with a location,
@@ -288,12 +288,3 @@ In the end which way you use (reference or embedding) depends what your data acc
 You'll likely be using embeds 80% of the time, but references also have their place, so know how to do both.
 
 The Mongo documentation has further details about [when to embed vs reference](http://docs.mongodb.org/manual/core/data-model-design/).
-
-#### Preclass Reading and Exercise
-Read the [Class 5 README](https://github.com/olinjs/olinjs/tree/master/lessons/05-client-jquery-ajax). Follow along and build the app starting at the "HTML Forms" section to the end.
-
-To complete the preclass, push the app you create during the "HTML Forms" section" to your fork of the Olin.js repo. Then, send an email to [olinjs16@gmail.com](olinjs16@gmail.com) with the subject line "Preclass 5" and a link to the GitHub folder containing your forms app.
-
-(The preclass is long -- if you can't get through all of it, at least get two forms working, then finish up the third in class).
-
-If you're looking for an additional jQuery resource, this one is pretty good: [Basics of jQuery](http://jqfundamentals.com/chapter/jquery-basics).
