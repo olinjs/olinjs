@@ -1,4 +1,4 @@
-# Lesson 5 - The Client, jQuery, and AJAX
+# Lesson 4 - The Client, jQuery, and AJAX
 Web Applications handle much of their database communication and logic on the server, but the front-end is what the client actually sees and interacts with.
 Without a clean, intuitive, responsive, and enjoyable client-side,
 the best server application in the world wouldn't be much.
@@ -43,9 +43,9 @@ GET /cats/delete/old
 ```
 Now we're going to look at a better way to do this using HTML forms.
 
-To start we'll need a basic Express app again. You can start a new app or modify your homework, but we'd recommend starting from the expressintro app from class 03. In your terminal, cd into your your /lessons/05-client-jquery-ajax/ folder, use this command to copy last class's app over:
+To start we'll need a basic Express app again. You can start a new app or modify your homework, but we'd recommend starting from the expressintro app from class 02. In your terminal, cd into your your /lessons/04-client-jquery-ajax/ folder, use this command to copy last class's app over:
 ```
-cp -r $PATH-TO-OLINJS-FOLDER/lessons/03-express-templates/expressintro ./::yourAppName::
+cp -r $PATH-TO-OLINJS-FOLDER/lessons/02-express-templates/expressintro ./::yourAppName::
 ```
 Replace `::formsApp::` with whatever you want to name your forms app.
 
@@ -338,9 +338,9 @@ Putting all of this together allows us to communicate with the server without se
 ##Additional and Alternative learning Resources
 A free Google-sponsered course on the devtools: https://www.codeschool.com/courses/discover-devtools
 
-#Lesson 5 In-Class Exercises
+#Lesson 4 In-Class Exercises
 
-##Class 5 README
+##Class 4 README
 Take some time to finish up your forms app or ask any questions if you need to. Our solution to the walkthrough is [here](https://github.com/olinjs/olinjs/blob/master/lessons/04-client-jquery-ajax/formsAppWalkthrough). 
 
 As always, pick the exercises which are interesting and challenging to you, and feel free to work with the people around you. **If you feel done or comfortable with these exercises, move on to the homework -- it is fairly lengthy.**
@@ -408,7 +408,7 @@ In this case, do not remove the ingredient from the page, but make note through 
   * There should be a [checklist](http://www.w3schools.com/tags/att_input_type.asp) of all ingredients and their price.
   * Out-of-stock ingredients should have a disabled checkbox (`<input type="checkbox" disabled>`)
   * There should be a Submit button that will send the server the new order without refreshing the page.
-  * You may want to refer to the Mongo reading on [Referencing vs. Embedding](https://github.com/olinjs/olinjs/blob/master/lessons/03-express-templates-mongo/README.md) as you think about how you will store your data. 
+  * You may want to refer to the Mongo reading on [Referencing vs. Embedding](https://github.com/olinjs/olinjs/blob/master/lessons/02-express-templates-mongo/README.md) as you think about how you will store your data. 
   You should give your customer a nice congratulatory message for completing their order
   (maybe a free cat picture since you're so good at that?!)
   * A running counter of total cost: Should update whenever a new ingredient is added or removed.
