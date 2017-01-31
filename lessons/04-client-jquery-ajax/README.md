@@ -8,6 +8,8 @@ Today we are going to learn the basics of building and manipulating the client a
 * [HTML Forms](#html-forms)
 * [Client JavaScript and jQuery](#client-javascript-and-jquery)
 * [AJAX and XHR Requests](#ajax-and-xhr-requests)
+* [In-Class Activities](#inclass-04)
+* [Homework](#homework-04)
 
 ## HTML Reprise
 Jump down to the [next section](#html-forms) if you know HTML already!
@@ -35,7 +37,7 @@ Check out this [site](http://www.htmldog.com/guides/css/intermediate/layout/)
 or Google "HTML layout tips" to read more about formatting techniques.
 
 ### Experimenting?
-You've seen [JSFiddle](http://jsfiddle.net/vsw1vLz6/) and [CodePen](http://codepen.io/) in action, remember that you can use them to test out, share, and see the output of snippets of HTML, CSS, and JavaScript. 
+You've seen [JSFiddle](http://jsfiddle.net/vsw1vLz6/) and [CodePen](http://codepen.io/) in action, remember that you can use them to test out, share, and see the output of snippets of HTML, CSS, and JavaScript.
 
 
 ## HTML Forms
@@ -335,7 +337,7 @@ Let's work through this file one step at a time, and if any of this is confusing
 * We add an event handler for the "submit" event to the 3rd form. This means that if that form raises a "submit" event then the callback function will be run with the event object as a parameter.
   * The first thing we do in the callback is `event.preventDefault();`. This line stops the default action of the event from being triggered. In this case, this is what stops the browser from sending the request and loading a new page.
   * Using some jQuery DOM searching we get the values of the "name" text input and the "mood" radio button.
-  * We then initiate an AJAX request using the GET method with `$.get()`. jQuery similarly has a `$.post()` function for POST. We pass the two parameters into the GET request which are internally packaged into the same query string we've seen before. Since you're doing a GET request with `getCat` as the first parameter, it's calling the function `getCatGET` in your routes\getCat.js file, because in `app.js` we specified in our API that when we get a GET request for getCat (`app.get("/getCat", getCat.getCatGET);`) we call the function getCatGET. 
+  * We then initiate an AJAX request using the GET method with `$.get()`. jQuery similarly has a `$.post()` function for POST. We pass the two parameters into the GET request which are internally packaged into the same query string we've seen before. Since you're doing a GET request with `getCat` as the first parameter, it's calling the function `getCatGET` in your routes\getCat.js file, because in `app.js` we specified in our API that when we get a GET request for getCat (`app.get("/getCat", getCat.getCatGET);`) we call the function getCatGET.
   * Finally, we specify what should happen if the request is successful or if it returns with an error. The `$.get()` function returns a jQuery XHR object ('jqXHR') which implements a Promise interface. Promises are a structure that allow management of lots of callbacks in a simple, easier to read manner. We wont talk too much about promises for now, but the important part is to know that the `.done()` callback is called when the jqXHR object is completed successfully, the `.error()` callback is called when there is an error, and the `.always()` callback (which we did not include here) is called on completion whether successful or not.
 
 Putting all of this together allows us to communicate with the server without sending GET requests from the URL bar and without reloading the page. We can then dynamically change the contents of the DOM without changing the entire page. That is just a taste of the power of client-side JavaScript and AJAX.
@@ -343,8 +345,9 @@ Putting all of this together allows us to communicate with the server without se
 ##Additional and Alternative learning Resources
 A free Google-sponsered course on the devtools: https://www.codeschool.com/courses/discover-devtools
 
+<a name="inclass-04"></a>
 #Lesson 4 In-Class Exercises
-Follow along above to finish up your forms app and ask any questions if you need to. Our solution to the walkthrough is [here](./formsAppWalkthrough). 
+Follow along above to finish up your forms app and ask any questions if you need to. Our solution to the walkthrough is [here](./formsAppWalkthrough).
 
 As always, pick the exercises which are interesting and challenging to you, and feel free to work with the people around you. **If you feel done or comfortable with these exercises, move on to the homework -- it is fairly lengthy.**
 
@@ -358,39 +361,27 @@ Last class we discussed folder structure, so as a refresher, draw out the folder
   - [Disable a button after 1 click and display a "button disabled" message in the DOM](https://jsfiddle.net/swalters4925/a8r13c0u/3/)
     + Challenge: disable the button after 3 clicks instead of after 1
 
-- isItChristmas Refactor
-  - Remember that jQuery allows you to make AJAX requests, which may return some data (if you do a GET request for instance), and now you can dynamically update the page reflecting this new data if desired using jQuery. A great way to practice is to go back to old apps like isItChristmas or your cat app and refactor them so they update WITHOUT page refreshes!
-
-  - Return to your version of isItChristmas.com and add the jQuery library. (Libraries are often included from a CDN. For example, Google hosts a CDN for jQuery, and you can reference it with the following script tag:
-    ```html
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    ```
-    Or the other option would be to download the jQuery library itself (it's a single JavaScript file) and include it in a script tag. It's common to put libraries in a `lib` directory.
-    ```html
-    <script src="lib/jquery-1.12.0.min.js"></script>). 
-    ```
-
-  - Now, add a button to your isItChristmas app that users can click to update the "Yes/No" text without a refresh.
-
 - Cat App Refactor
-  - Return to your cat app homework and add the jQuery library to it. 
+  - Return to your cat app homework and add the jQuery library to it.
 
-  - Rather than having several pages for each of the types of requests, have just one display page for the list of cats, with links or buttons to Display All Cats, Add A Cat, Display Cats Which Are <insert favorite color here> (with some textbox to enter the color), and Delete A Cat. Each of these buttons will be linked to one AJAX request that returns some data update from your API routes. 
+  - Rather than having several pages for each of the types of requests, have just one display page for the list of cats, with links or buttons to Display All Cats, Add A Cat, Display Cats Which Are <insert favorite color here> (with some textbox to enter the color), and Delete A Cat. Each of these buttons will be linked to one AJAX request that returns some data update from your API routes.
     - When Add A Cat is clicked, a cat is added, display the one cat on the page without a page refresh (GET /cats/new)
-    - When Display All Cats is clicked, show the sorted list of cats by age, without page refresh (GET /cats) 
+    - When Display All Cats is clicked, show the sorted list of cats by age, without page refresh (GET /cats)
     - When Delete A Cat is clicked, display the newly updated list of cats (after the deletion) on the page without a page refresh (GET /cats/delete/old). You can also try to change your route from a GET to a DELETE request!
     - When the Display Cats Which Are <insert favorite color here> is clicked, display the list of cats that have that color without a page refresh (GET /cats/bycolor/:color)
 
-
+<a name="homework-04"></a>
 # Before Class 5 (Friday 2/3/17)
 
-Great news! We started shopping around your last two exercises (hope you don't mind) and although no one was interested in buying your cat tracking software, we did get an email from a local burger joint, looking for some help. Jessica's Burgers is looking to update their aging ordering system to the 21st century. So in an effort to ~~make us loads of cash~~ improve your coding skills, this exercise will focus on making a web app which will help Jessica's customers get their delicious burgers even quicker (and more delicously). Your application will allow users to build orders for a single burger from a list of ingredients (which will need to be updated as new stock arrives). Then it will allow Jessica's chefs to see all the pending orders, fill them, and alert customers that their burger is ready.
+Great news! We started shopping around your last two exercises (hope you don't mind) and although no one was interested in buying your cat tracking software, we did get an email from a local burger joint, looking for some help. Jessica's Burgers is looking to update their aging ordering system to the 21st century. So in an effort to ~~make us loads of cash~~ improve your coding skills, this exercise will focus on making a web app which will help Jessica's customers get their delicious burgers even quicker (and more deliciously). Your application will allow users to build orders for a single burger from a list of ingredients (which will need to be updated as new stock arrives). Then it will allow Jessica's chefs to see all the pending orders, fill them, and alert customers that their burger is ready.
 
-For Friday, your application will need the following http endpoints:
+For Friday, your application will need the following http endpoint:
 * `/ingredients` =>
   * Shows a list of current ingredients (Name and Price) with Out-of-Stock and edit button.
   * An `Add` button should allow the user to specify the name and price of a new ingredient which should appear on the page without requiring a refresh.
   * Out-of-Stock button will tell the server to label the ingredient as disabled. The ingredient should be removed from the current page without refreshing. (Optional: make it toggleable to "add" more of the ingredient. In this case, do not remove the ingredient from the page, but make note through words or style that it is unavailable.)
   * Edit button allows the user to submit a new name or price for the ingredient which the server will update. The edits should change the ingredient list without refreshing.
 
-When you're finished, fill out the [Homework 4 Submission Survey] (). 
+The next homework that you will be doing will build off of this homework. If you'd like to see the other endpoints that the application will need, look [here] (../05-flex-burger-help/README.md#L58).
+
+When you're finished, fill out the [Homework 4 Submission Survey] (https://docs.google.com/forms/d/e/1FAIpQLSd-ths9fq5m28ooRoiDwiYjRc6s48JBZDgCmFQqNEGUqOb6hw/viewform).
