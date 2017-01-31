@@ -1,0 +1,13 @@
+<h3>Orders</h3>
+<div id="orders">
+	{{#each orders}}
+		<form class="order" id={{_id}} method="POST">
+			<span>{{name}} - ${{total}} - </span>
+			{{#each ingredients}}
+				<span>{{name}}, </span>
+	        {{/each}}
+
+			<input type="submit" class="submit" value="Complete">
+		</form>
+	{{/each}}
+</div>

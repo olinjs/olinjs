@@ -1,0 +1,41 @@
+.centered-pills {
+    text-align: center
+}
+.centered-pills ul.nav-pills {
+    display: inline-block
+}
+.centered-pills li {
+    display: inline
+}
+.centered-pills a {
+    float: left
+}
+* html .centered-pills ul.nav-pills, *+html .centered-pills ul.nav-pills {
+    display: inline
+}
+
+.edit-in-place span {
+  cursor: pointer;
+}
+
+.edit-in-place input {
+  display: none;
+}
+
+.edit-in-place.active span {
+  display: none;
+}
+
+.edit-in-place.active input {
+  display: inline-block;
+}
+
+html { 
+  overflow-y:scroll;
+}
+body {
+  padding-top:50px;
+}
+#todo-list {
+  margin-bottom:30px; 
+}

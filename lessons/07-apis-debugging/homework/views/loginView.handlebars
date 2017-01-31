@@ -1,0 +1,53 @@
+<div class="container">
+<div class="header clearfix">
+<nav>
+  <ul class="nav nav-pills pull-right">
+    <li role="presentation"><a href="/">Home</a></li>
+    <li role="presentation" class="active"><a href="/login">Login</a></li>
+  </ul>
+</nav>
+<h3 class="text-muted">Twotter</h3>
+</div>
+
+{{#if error}}
+    <div class="alert alert-danger">{{error}}</div>
+{{/if}}
+
+<div class="row">
+	<div id=twotes class="col-md-6">
+	<div class="center-block">
+	<form action="/signup" id="signup" method="post">
+	        <div class="form-group">
+	            <label>Username</label>
+	            <input type="text" class="form-control" name="username">
+	        </div>
+	        <div class="form-group">
+	            <label>Password</label>
+	            <input type="password" class="form-control" name="password">
+	        </div>
+		<input type="submit" value="Signup">
+	</form>
+	</div>
+	</div>
+
+	<div class="col-md-6">
+		<form action="/login" id="login" method="post">
+	        <div class="form-group">
+	            <label>Username</label>
+	            <input type="text" class="form-control" name="username">
+	        </div>
+	        <div class="form-group">
+	            <label>Password</label>
+	            <input type="password" class="form-control" name="password">
+	        </div>
+			<input type="submit" value="Login">
+		</form>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-4 col-centered">
+	<br>
+	<a href="/auth/facebook">Signup/Login with Facebook</a>
+	</div>
+</div>
+</div>

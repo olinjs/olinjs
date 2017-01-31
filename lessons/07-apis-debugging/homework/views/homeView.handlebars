@@ -1,0 +1,49 @@
+<div class="container">
+<div class="header clearfix">
+<nav>
+  <ul class="nav nav-pills pull-right">
+    <li role="presentation" class="active"><a href="/">Home</a></li>
+    {{#if currentUserId}}
+    <li role="presentation"><a href="/auth/logout">Logout</a></li>
+    {{else}}
+    <li role="presentation"><a href="/login">Login</a></li>
+    {{/if}}
+  </ul>
+</nav>
+<h3 class="text-muted">Twotter</h3>
+</div>
+
+{{#if currentUserId}}
+      <div class="jumbotron">
+        <h3>New Twote</h3>
+		<form id="newTwote" data-currentUserId={{currentUserId}}>
+		  <textarea class="form-control" id="newTwoteText" rows="3"></textarea>
+		  <button type="submit" class="btn btn-primary">Post</button>
+		</form>
+		
+      </div>
+{{/if}}
+
+<div class="row">
+	<div id=twotes class="col-md-8">
+
+		{{#each twotes}}
+		<form class="twote" id={{this._id}} userid="{{this.user._id}}" method="POST">
+		<fieldset>
+			<legend class="scheduler-border">{{this.user.displayName}}</legend>
+			<span>{{this.text}}</span>
+			{{#if this.currentUser}} <br> <input type="submit" class="btn btn-xs btn-danger delete" value="Delete"> {{/if}}
+		</fieldset>
+		</form>
+		{{/each}}
+	</div>
+
+	<div class="col-md-4">
+		{{#each users}}
+		<form class="user" id={{this._id}} method="POST">
+			<button type="submit" class="btn btn-block">{{this.displayName}}</button>
+		</form>
+		{{/each}}
+	</div>
+</div>
+</div>
