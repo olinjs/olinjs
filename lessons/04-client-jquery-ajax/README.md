@@ -1,125 +1,47 @@
-# Lesson 5 - The Client, jQuery, and AJAX
-Web Applications handle much of their database communication and logic on the server,
-but the front-end is what the client actually sees and interacts with.
-Without a clean, intuitive, responsive, and enjoyable client-side,
-the best server application in the world wouldn't be much.
+# Lesson 4 - The Client, jQuery, and AJAX
+Web Applications handle much of their database communication and logic on the server, but the front-end is what the client actually sees and interacts with. Without a clean, intuitive, responsive, and enjoyable client-side, the best server application in the world wouldn't be much.
 
-Today we are going to learn the basics of building and manipulating the client
-and building communication routes between the client and server.
+Today we are going to learn the basics of building and manipulating the client and building communication routes between the client and server.
 
-## Development Console
-One of the most important and powerful tools in web development is the development console.
-All modern browsers have some sort of console available, but the Chrome console is what we will use.
-Its a great and common browser and very developer friendly.
-### Browsers
-As a quick aside, all browsers are different.
-They have gotten much closer in recent years (HTML5 browsers),
-but you will still run into some differences in how your sites look and function due to these differences.
-It's worth understanding the different browsers with which people may view your site you so can choose what to optimize:
-<img src="images/desktop_browser_share.png" width="400px"/>
-
-Some key trends to note include the rise of Chrome as well as the fall of IE and Firefox.
-Also worth noting is the rapid growth of mobile browsing (pink).
-We won't address [mobile web design](http://www.smashingmagazine.com/guidelines-for-mobile-web-development/) in this class,
-but it is definitely something to consider before launching a new site.
-
-Ok, back to the console.
-On any webpage, right-click, and select `Inspect Element`. You'll see something like this pop up in the bottom of the window:
-![devconsole](images/devconsole.png)
-The dev console contains a ton of features (seriously, there are more features than I've even heard of).
-We'll start with the basic tabs that you use most often:
-* Elements: This is a collapsable and editable view of the HTML on the current page.
-You can double-click to edit fields or [DOM](http://en.wikipedia.org/wiki/Document_Object_Model) nodes.
-On the right side is a panel showing the CSS styling applied to the element you are highlighting. Again, double-click to edit.
-A useful shortcut here is the magnifying glass in the top-left corner of the console.
-Click that and then click in the browser somewhere to jump to the HTML of that element.
-* Network: While you're in this tab, refresh the browser.
-The tab will list all the requests that the web page makes, including the size, timing, and specific response.
-This can be useful for debugging your server's responses or other API's.
-* Sources: The holy grail of JavaScript debugging tools. Set breakpoints, step through code,
-all the fun stuff that an IDE would give you. We'll get back to this when we go over debugging in more depth.
-* Console: A full JavaScript console that operates in the current scope of the Javascript on the page (including inside breakpoints).
-Run commands, and read through your client-side `console.logs` in this window. **Server-side javascript `console.log` statements will log in your terminal. When you have `console.log` statements in client-side javascript (which we'll discuss more below), they will show up in your developer console.** 
-As a bonus, if you click the "console icon" ![console icon](images/consoleicon.png) in the upper-right corner,
-the console will pop up below whatever other tab you want to reference.
-
-###Javascript Code in Console
-With the developer console, you can actually interface and inject your own javascript into a webpage. If you open up the console (as described in last bullet point above) you can type in your own commands and have them execute. Try typing in:
-```
-alert('hi there')
-```
-
-Not only that, you can also see their javascript files and even have access to any variables. Where you find those is under the sources tab in the console. Follow along and pull up their files as shown in the screenshot: 
-
-![Cookie Clicker](images/cookie1.png)
-
-If you investigate (or just guess) you will notice a variable called "Game" and if you start to type that into the console it will even suggest an autocomplete for it. You can look at its functions and realize that there is a variable called cookiePs, which you might guess corresponds to cookies per second. You can set cookiesPs to any value and see what happens:
-
-![Cookie Clicker hacked](images/cookie2.png)
-
-The takeaway from all this is that the client is NOT secure. A smart user can take your app apart on the client and do anything he wants with it. All security needs to be implemented on the server side so that it cannot be meddled with. 
+## README Table of Contents
+* [HTML Reprise](#html-reprise)
+* [HTML Forms](#html-forms)
+* [Client JavaScript and jQuery](#client-javascript-and-jquery)
+* [AJAX and XHR Requests](#ajax-and-xhr-requests)
+* [In-Class Activities](#inclass-04)
+* [Homework](#homework-04)
 
 ## HTML Reprise
+Jump down to the [next section](#html-forms) if you know HTML already!
+
 We've seen some HTML before but let's go through a more formal overview of it.
-[HTML](http://en.wikipedia.org/wiki/HTML) is a markup language that uses tagged elements
-to describe the structure of a webpage.
-Elements are specified with start and end tags which enclose their content,
-including children elements (`<div><p>Hi again</p></div>`). The p element is a child of the div element. 
-Some elements cannot have content or children and do not have an end tag.
-Instead their start tag ends with a slash (`<br/>`)
-While HTML can include presentation specifications,
-it is highly recommended to use HTML for structure and [Cascading Style Sheets](http://en.wikipedia.org/wiki/Cascading_Style_Sheets) (CSS)
-to define the look and layout of the page. There are *many* [HTML tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element),
-but you will mostly use a small number (click the link to see the official documentation for the tags):
+[HTML](http://en.wikipedia.org/wiki/HTML) is a markup language that uses tagged elements to describe the structure of a webpage. Elements are specified with start and end tags which enclose their content, including children elements (`<div><p>Hi again</p></div>`). The p element is a child of the div element. Some elements cannot have content or children and do not have an end tag. Instead their start tag ends with a slash (`<br/>`). While HTML can include presentation specifications, it is highly recommended to use HTML for structure and [Cascading Style Sheets](http://en.wikipedia.org/wiki/Cascading_Style_Sheets) (CSS) to define the look and layout of the page. There are *many* [HTML tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element), but you will mostly use a small number (click the link to see the official documentation for the tags):
+* [`<h1>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h1): Header text. Pretty common, there are six tags h1 - h6. Use these rather than a `<p>` with a css class `header-1` or something like that.
+* [`<p>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p): The paragraph element defines a block of text.
 * [`<a>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a):
-The Anchor element defines a hyperlink like those seen in blue throughout this document.
-* [`<article>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article):
-Articles are used to signify a self-contained composition within a page, ei. forum post, documentation entry, newspaper article, etc.
-* [`<body>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body):
-The body tag represents the content of an HTML document. There can be only one.
-* [`<canvas>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas):
-A frame in which you can draw graphics through JavaScript.
-This can be images and shapes or some [pretty crazy applications](http://davidwalsh.name/canvas-demos).
-* [`<div>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div):
-Arguably the most common element, the Division Element is a generic HTML container element.
-It doesn't inherently represent anything, but it can also be used (through CSS) to represent pretty much anything.
-Usually it is used to group elements or for style. Ideally it should not be used when a semantic element like `<article>` or [`<nav>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div)
-is appropriate, but this is not widely adhered to.
-* [`<form>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form):
-Defines a section of interactive controls and inputs that will submit information to a server.
-These will usually include a number of [`<input>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input)
-tags.
-* [`<h1>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h1):
-Header text. Pretty common, there are six tags h1 - h6. Use these rather than a `<p>` with a css class `header-1` or something like that.
-* [`<img>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img):
-Display an image with the image tag. `<img>` tags cannot have children and do not have an end tag (`<img source="./foo.jpg" />`).
+The Anchor element defines a hyperlink like those seen in blue throughout this document. `<a href="http://www.google.com">Go to Google!</a>`
+* [`<form>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form): Defines a section of interactive controls and inputs that will submit information to a server. These will usually include a number of [`<input>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) tags.
+* [`<div>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div): Arguably the most common element, the Division Element is a generic HTML container element. It doesn't inherently represent anything, but it can also be used (through CSS) to represent pretty much anything. Usually it is used to group elements or for style. Ideally it should not be used when a semantic element like `<article>` or [`<nav>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div) is appropriate, but this is not widely adhered to.
+* [`<img>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img): Display an image with the image tag. `<img>` tags cannot have children and do not have an end tag (`<img source="./foo.jpg" />`).
 * [`<ul>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul),
   [`<ol>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol), and
   [`<li>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li):
 Un-ordered list, ordered list, and list element tags are used for structuring list content in HTML.
-* [`<p>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p):
-The paragraph element defines a block of text.
-* [`<span>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span):
-The span element is like a div in that it is a generic container element.
-However, in contrast, spans are inline elements by default (they do not break the flow of elements on the page)
-and are often used to style text: `<p><span class="fancy-text">Some text</span></p>`.
-* [`<table>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table):
-Prior to the use of CSS, the table element, along with `<th>` (table header), `<tr>` (table row), and `<td>` (table data),
-were often used as a method for page layout. Please don't do this.
-They can still be used for the categorization of data,
-but the styling and layout or your pages should all be controlled by CSS.
+* [`<span>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span): The span element is like a div in that it is a generic container element. However, in contrast, spans are inline elements by default (they do not break the flow of elements on the page) and are often used to style text: `<p><span class="fancy-text">Some text</span></p>`.
+* [`<table>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table): Prior to the use of CSS, the table element, along with `<th>` (table header), `<tr>` (table row), and `<td>` (table data), were often used as a method for page layout. Please don't do this. They can still be used for the categorization of data, but the styling and layout or your pages should all be controlled by CSS.
+* [`<article>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article): Articles are used to signify a self-contained composition within a page, ei. forum post, documentation entry, newspaper article, etc.
+* [`<body>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body): The body tag represents the content of an HTML document. There can be only one.
+* [`<canvas>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas): A frame in which you can draw graphics through JavaScript. This can be images and shapes or some [pretty crazy applications](http://davidwalsh.name/canvas-demos).
 
 Check out this [site](http://www.htmldog.com/guides/css/intermediate/layout/)
 or Google "HTML layout tips" to read more about formatting techniques.
 
 ### Experimenting?
-You've seen [JSFiddle](http://jsfiddle.net/vsw1vLz6/) and [CodePen](http://codepen.io/) in action, remember that you can use them to test out, share, and see the output of snippets of HTML, CSS, and JavaScript. 
+You've seen [JSFiddle](http://jsfiddle.net/vsw1vLz6/) and [CodePen](http://codepen.io/) in action, remember that you can use them to test out, share, and see the output of snippets of HTML, CSS, and JavaScript.
 
 
 ## HTML Forms
-In the last homework, we passed information to the server through the URL.
-This required us to do everything as a GET request, which is BAD, and was pretty limiting.
-Of course it was also a pretty atrocious User Experience (UX).
+In the last homework, we passed information to the server through the URL. This required us to do everything as a GET request, which is BAD, and was pretty limiting. Of course it was also a pretty atrocious User Experience (UX).
 ```
 GET /cats/new
 GET /cats
@@ -128,11 +50,9 @@ GET /cats/delete/old
 ```
 Now we're going to look at a better way to do this using HTML forms.
 
-To start we'll need a basic Express app again.
-You can start a new app or modify your homework, but we'd recommend starting from the expressintro app from class 03.
-In your terminal, cd into your your /lessons/05-client-jquery-ajax/ folder, use this command to copy last class's app over:
+To start we'll need a basic Express app again. You can start a new app or modify your homework, but we'd recommend starting from the expressintro app from class 02. In your terminal, cd into your your /lessons/04-client-jquery-ajax/ folder, use this command to copy last class's app over:
 ```
-cp -r $PATH-TO-OLINJS-FOLDER/lessons/03-express-templates/expressintro ./::yourAppName::
+cp -r $PATH-TO-OLINJS-FOLDER/lessons/02-express-templates/expressintro ./::yourAppName::
 ```
 Replace `::formsApp::` with whatever you want to name your forms app.
 
@@ -166,18 +86,13 @@ Replace the contents of `home.handlebars` with:
 <div id="result">
 </div>
 ```
-This may seem like a very redundant page. That's because it is.
-We are creating 3 forms to walk through some of the differences in how we can communicate between the client and server.
-If you run the app and navigate to http://localhost:3000, you should see this:
+This may seem like a very redundant page. That's because it is. We are creating 3 forms to walk through some of the differences in how we can communicate between the client and server. If you run the app and navigate to http://localhost:3000, you should see this:
 ![Forms](images/formpage.png)
-If you fill out the first form and press submit you will get a 404 error and the
-URL will change to something like: http://localhost:3000/getCat?name=bob&mood=happy.
+If you fill out the first form and press submit you will get a 404 error and the URL will change to something like: http://localhost:3000/getCat?name=bob&mood=happy.
 
 If you fill out the second form you will get a 404 error and the url will change to: http://localhost:3000/getCat.
 
-We are submitting the form information to the server in two different ways, GET and POST,
-as specified by the `method` attribute of the opening `<form>` tag.
-The `action` attribute specifies the URL.
+We are submitting the form information to the server in two different ways, GET and POST, as specified by the `method` attribute of the opening `<form>` tag. The `action` attribute specifies the URL.
 
 Now let's hook up the routing to make these forms actually do something.
 
@@ -197,12 +112,9 @@ routes.getCatPOST = function(req, res) {
 
 module.exports = routes;
 ```
-All we are doing here is printing the form data to the console.
-The line `res.end(".")` sends a dot back to the client.
-If you forget to send a response for a route, the browser will keep waiting until the request times out.
+All we are doing here is printing the form data to the console. The line `res.end(".")` sends a dot back to the client. If you forget to send a response for a route, the browser will keep waiting until the request times out.
 
-You'll note that for the GET request, we look at the `req.query` object into which Express parses the URL query string.
-For the POST request we look at `req.body` where the `body-parser` middleware has parsed the POST parameters.
+You'll note that for the GET request, we look at the `req.query` object into which Express parses the URL query string. For the POST request we look at `req.body` where the `body-parser` middleware has parsed the POST parameters.
 
 Now that you've created functions which handle the get and post requests from your forms, you need to tell the app to use them. Open app.js and add the following line somewhere near the rest of your require statements:
 ```javascript
@@ -221,8 +133,7 @@ GET /getCat?name=bob&mood=happy 200 0.876 ms - -
 { name: 'alice', mood: 'grumpy' }
 POST /getCat 200 0.538 ms - -
 ```
-Both the POST and GET request parameters are stored in the same format.
-That's convenient as it will allow us to use both parameters in the same way.
+Both the POST and GET request parameters are stored in the same format. That's convenient as it will allow us to use both parameters in the same way.
 
 Replace the contents of `getCat.js` with:
 ```javascript
@@ -256,41 +167,23 @@ routes.getCatPOST = function(req, res) {
 module.exports = routes;
 ```
 
-Go ahead and grab the two images from the `formsAppWalkthrough/public/images` directory and copy them into yours.
-Now if you fill out either of the first two forms, you will get the appropriate cat.
+Go ahead and grab the two images from the `formsAppWalkthrough/public/images` directory and copy them into yours. Now if you fill out either of the first two forms, you will get the appropriate cat.
 
-As we've discussed before, your uses of different request methods can vary,
-but for a purpose like this, sending innocuous information as part of a non-modifying query,
-a GET request is your best bet.
-However, if you're making a login form, with private or personal information like passwords,
-you're going to want to go with POST so that the password is not exposed in the URL or stored
-in the server logs or your browser's history.
+As we've discussed before, your uses of different request methods can vary, but for a purpose like this, sending innocuous information as part of a non-modifying query, a GET request is your best bet. However, if you're making a login form, with private or personal information like passwords, you're going to want to go with POST so that the password is not exposed in the URL or stored in the server logs or your browser's history.
 
 To make the third form work, we need to learn about client side JavaScript and AJAX requests. **First, we'll play around with client-side JS to see how it works, then learn about what AJAX requests are, and finally, we'll make that third form work, and display the right cat images WITHOUT A PAGE REFRESH. We'll need to use client-side JavaScript to make our AJAX requests work, so let's get into that first.**   
 
 ## Client JavaScript and jQuery
 
-JavaScript is a language. Node (server-side) is a "platform".
-Your browser (client-side) is also a "platform" that runs client-side JavaScript,
-with a lot of different capabilities.
+JavaScript is a language. Node (server-side) is a "platform". Your browser (client-side) is also a "platform" that runs client-side JavaScript, with a lot of different capabilities.
 
 **What is client-side JS good for?**
-Before, we used JavaScript to serve websites.
-Now we'll use client-side JS to add interactivity to a page.
-You used Handlebars in the last lesson to make templates that display content, forms, etc.
-After a user gets your template, though, they can't do much until they submit a form or go to a new page.
-With client-side JS, we can make your website much more useful and powerful.
+Before, we used JavaScript to serve websites. Now we'll use client-side JS to add interactivity to a page. You used Handlebars in the last lesson to make templates that display content, forms, etc. After a user gets your template, though, they can't do much until they submit a form or go to a new page. With client-side JS, we can make your website much more useful and powerful.
 
 **One important caveat:**
-Client-side code knows nothing about your server.
-For all it cares you could be running Python, Ruby, ALGOL or on a Commodore 64.
-So when you write JavaScript in Node.js, you can't run the same functions in your web browser.
-We'll explain later how to make them communicate with each other.
+Client-side code knows nothing about your server. For all it cares you could be running Python, Ruby, ALGOL or on a Commodore 64. So when you write JavaScript in Node.js, you can't run the same functions in your web browser. We'll explain later how to make them communicate with each other.
 
-The first step to doing any sort of dynamic actions on your websites is running some JavaScript.
-You can include JavaScript directly in an HTML document using `<script>` tags,
-but writing any significant code within an HTML document would be silly.
-Instead we will reference a separate `.js` file in our HTML, similar to how we include CSS.
+The first step to doing any sort of dynamic actions on your websites is running some JavaScript. You can include JavaScript directly in an HTML document using `<script>` tags, but writing any significant code within an HTML document would be silly. Instead we will reference a separate `.js` file in our HTML, similar to how we include CSS.
 
 Create a new file `main.js` in the `public/javascripts` directory of your forms app, and paste in the following:
 ```javascript
@@ -302,21 +195,13 @@ Then add this `<script>` tag to your `main.handlebars` layout file (in the views
 <script type="text/javascript" src="javascripts/main.js"></script>
 </html>
 ```
-When HTML is parsed, it is rendered top-down.
-When a script tag is hit, its contents are run immediately.
-This means that if your JavaScript references part of the DOM
-it may not exist yet and your script will not run as expected.
-There are some ways to force your script to wait until the page is ready before running,
-but a simple way around this is to just add your `<script>` tag below the HTML body.
+When HTML is parsed, it is rendered top-down. When a script tag is hit, its contents are run immediately. This means that if your JavaScript references part of the DOM it may not exist yet and your script will not run as expected. There are some ways to force your script to wait until the page is ready before running, but a simple way around this is to just add your `<script>` tag below the HTML body.
 
 Now, when you refresh the page, open up the developer console and you should see:
 ```javascript
 hello world
 ```
-Being able to print to the console and do math and such is nice,
-but really we want to interact with the DOM.
-To do that we need to dig into the `document` object.
-In the dev console run:
+Being able to print to the console and do math and such is nice, but really we want to interact with the DOM. To do that we need to dig into the `document` object. In the dev console run:
 ```javascript
 > document.body.children[1].innerHTML
 "GET request"
@@ -330,26 +215,15 @@ document.body.children[1].innerHTML = "Nothing at all..."
 ```
 and the webpage will change accordingly.
 
-But that's pretty much the extent to which knowing the structure of the
-`document` object is particularly useful.
-The API of the DOM is a bit dense and not exactly user friendly.
-Feel free to read more about it [here](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model),
-but for now we are going to let other people do the hard stuff for us and make
-editing the DOM a lot easier on ourselves.
-This is where [jQuery](http://jquery.com/) comes in handy.
-jQuery is a fairly ubiquitous library that makes DOM manipulation, event handling, animation,
-and AJAX much easier.
+But that's pretty much the extent to which knowing the structure of the `document` object is particularly useful. The API of the DOM is a bit dense and not exactly user friendly. Feel free to read more about it [here](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model), but for now we are going to let other people do the hard stuff for us and make editing the DOM a lot easier on ourselves. This is where [jQuery](http://jquery.com/) comes in handy. jQuery is a fairly ubiquitous library that makes DOM manipulation, event handling, animation, and AJAX much easier.
 
 We will include jQuery in the client by adding the line:
 ```html
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 ```
-To the `<head>` section of `main.handlebars`.
-In the case of JavaScript dependencies, we include them early because they
-are not dependent on the contents of the `<body>` and it helps to keep them organized and easily findable.
+To the `<head>` section of `main.handlebars`. In the case of JavaScript dependencies, we include them early because they are not dependent on the contents of the `<body>` and it helps to keep them organized and easily findable.
 
-If you refresh the page, nothing will appear different, but you now have a powerful tool at your disposal, the `$`.
-You can access the jQuery object in two ways `jQuery()` or `$()`, but everyone uses the `$`.
+If you refresh the page, nothing will appear different, but you now have a powerful tool at your disposal, the `$`. You can access the jQuery object in two ways `jQuery()` or `$()`, but everyone uses the `$`.
 
 So now let's change the DOM again:
 ```javascript
@@ -370,46 +244,23 @@ $('body').append('<img src="http://i.minus.com/iFxelkyarGr5D.gif">');
 // And this:
 $('*').css('background-image', 'url(http://omfgdogs.com/omfgdogs.gif)');
 ```
-You can clear any changes you make with jQuery by refreshing to page
-as that will reload the original HTML without your changes.
+You can clear any changes you make with jQuery by refreshing to page as that will reload the original HTML without your changes.
 
-jQuery is a very useful library that will allow you to make some dynamic
-and engaging front-ends to your applications.
+jQuery is a very useful library that will allow you to make some dynamic and engaging front-ends to your applications.
 
-The `$("")` syntax is a jQuery [Selector](http://api.jquery.com/category/selectors/).
-Within the quotes you can place any CSS style selector to retrieve DOM elements.
-For instance, `"h1"` gets all `<h1>` elements,
-`"#ajax-form"` gets the element with the id "ajax-form", and
-`".left-column"` gets all elements with the class "left-column".
-You'll learn more about these when we get to CSS,
-but for now just recognize how much much easier it is to manipulate DOM elements when you can search for them using jQuery.
+The `$("")` syntax is a jQuery [Selector](http://api.jquery.com/category/selectors/). Within the quotes you can place any CSS style selector to retrieve DOM elements. For instance, `"h1"` gets all `<h1>` elements, `"#ajax-form"` gets the element with the id "ajax-form", and `".left-column"` gets all elements with the class "left-column". You'll learn more about these when we get to CSS, but for now just recognize how much much easier it is to manipulate DOM elements when you can search for them using jQuery.
 
 ## AJAX and XHR Requests
-You probably noticed something about how the two first forms act.
-When you submit them, you are taken to an entirely new page.
-You might even get a little white flash of a blank screen before the image loads.
+You probably noticed something about how the two first forms act. When you submit them, you are taken to an entirely new page. You might even get a little white flash of a blank screen before the image loads.
 
-Now check out Google:
-When you search for something the top search bar and Google Plus account information
-are there the entire time as the bottom, results part of the page reloads.
-You dont even need to hit submit. If you change your search then stop typing,
-after a second or so the search results will show up.
-This is accomplished through a method called Asynchronous Javascript and XML (AJAX) requests.
+Now check out Google: When you search for something the top search bar and Google Plus account information are there the entire time as the bottom, results part of the page reloads. You dont even need to hit submit. If you change your search then stop typing, after a second or so the search results will show up. This is accomplished through a method called Asynchronous Javascript and XML (AJAX) requests.
 
-AJAX is a method of using *client-side* JavaScript to send XML HTTP Requests (XHR Requests)
-to a server in the background, without interfering with the display and behavior of the current page.
-This is the technology that Google and the majority of modern websites use to make their pages
-seem quicker and more responsive.
-Using AJAX allows websites to communicate with their servers (or external servers)
-without making entire new page requests.
-This also allows them to modify individual sections of HTML instead of replacing the whole page.
-Now let's use our new client-side JavaScript skills to make AJAX requests and do things without a page refresh!!
+AJAX is a method of using *client-side* JavaScript to send XML HTTP Requests (XHR Requests) to a server in the background, without interfering with the display and behavior of the current page. This is the technology that Google and the majority of modern websites use to make their pages seem quicker and more responsive. Using AJAX allows websites to communicate with their servers (or external servers) without making entire new page requests. This also allows them to modify individual sections of HTML instead of replacing the whole page. Now let's use our new client-side JavaScript skills to make AJAX requests and do things without a page refresh!!
 
 
 ### AJAX with jQuery
 
-Now let's make the third form work. First off, we are going to modify the `getCatGET`
-function so that it responds differently when it receives an AJAX request.
+Now let's make the third form work. First off, we are going to modify the `getCatGET` function so that it responds differently when it receives an AJAX request.
 
 Replace the contents of `getCat.js` with this:
 ```javascript
@@ -446,14 +297,9 @@ routes.getCatPOST = function(req, res) {
 
 module.exports = routes;
 ```
-The first thing we did is modify `getCatImage` so that it can return either an absolute link,
-which Express needs in order to send the image file, or a relative link,
-which the browser needs in order to send a separate request for the image file.
-While we originally wrote the getCatImage function for one purpose,
-by refactoring it a bit we were able to reuse most of the same code for a second purpose.
+The first thing we did is modify `getCatImage` so that it can return either an absolute link, which Express needs in order to send the image file, or a relative link, which the browser needs in order to send a separate request for the image file. While we originally wrote the getCatImage function for one purpose, by refactoring it a bit we were able to reuse most of the same code for a second purpose.
 
-Secondly, we added a check in the `getCatGET` function to determine if the request
-was an XHR request and if so, to return the relative path to the image, instead of the full image file.
+Secondly, we added a check in the `getCatGET` function to determine if the request was an XHR request and if so, to return the relative path to the image, instead of the full image file.
 
 Now we need to write some code on the client in order to get the 3rd form to send the XHR request.
 
@@ -486,38 +332,22 @@ $form.submit(function(event) {
 
 Let's work through this file one step at a time, and if any of this is confusing, please ask about it!!:
 * First we store the jQuery selector for the 3rd form so we don't need to keep searching for it.
-* We define an `onSuccess` function. This function takes `data` and `status` as parameters, which `$.get()` supplies.
-  It then uses the `data` returned from the server to create a new `<img>` tag and add it to the page.
-and the sets the contents the `<div id=result>` element to that image.
+* We define an `onSuccess` function. This function takes `data` and `status` as parameters, which `$.get()` supplies. It then uses the `data` returned from the server to create a new `<img>` tag and add it to the page. It then sets the contents the `<div id=result>` element to that image.
 * We define an `onError` function, which prints the status and contents of the error.
-* We add an event handler for the "submit" event to the 3rd form.
-This means that if that form raises a "submit" event then the callback function will be run with the event object as a parameter.
-  * The first thing we do in the callback is `event.preventDefault();`.
-  This line stops the default action of the event from being triggered.
-  In this case, this is what stops the browser from sending the request and loading a new page.
+* We add an event handler for the "submit" event to the 3rd form. This means that if that form raises a "submit" event then the callback function will be run with the event object as a parameter.
+  * The first thing we do in the callback is `event.preventDefault();`. This line stops the default action of the event from being triggered. In this case, this is what stops the browser from sending the request and loading a new page.
   * Using some jQuery DOM searching we get the values of the "name" text input and the "mood" radio button.
-  * We then initiate an AJAX request using the GET method with `$.get()`. jQuery similarly has a `$.post()` function for POST.
-  We pass the two parameters into the GET request which are internally packaged into the same query string we've seen before. Since you're doing a GET request with `getCat` as the first parameter, it's calling the function `getCatGET` in your routes\getCat.js file, because in `app.js` we specified in our API that when we get a GET request for getCat (`app.get("/getCat", getCat.getCatGET);`) we call the function getCatGET. 
-  * Finally, we specify what should happen if the request is successful or if it returns with an error.
-  The `$.get()` function returns a jQuery XHR object ('jqXHR') which implements a Promise interface.
-  Promises are a structure that allow management of lots of callbacks in a simple, easier to read manner.
-  We wont talk too much about promises for now, but the important part is to know that the `.done()` callback is called
-  when the jqXHR object is completed successfully, the `.error()` callback is called
-  when there is an error, and the `.always()` callback (which we did not include here)
-  is called on completion whether successful or not.
+  * We then initiate an AJAX request using the GET method with `$.get()`. jQuery similarly has a `$.post()` function for POST. We pass the two parameters into the GET request which are internally packaged into the same query string we've seen before. Since you're doing a GET request with `getCat` as the first parameter, it's calling the function `getCatGET` in your routes\getCat.js file, because in `app.js` we specified in our API that when we get a GET request for getCat (`app.get("/getCat", getCat.getCatGET);`) we call the function getCatGET.
+  * Finally, we specify what should happen if the request is successful or if it returns with an error. The `$.get()` function returns a jQuery XHR object ('jqXHR') which implements a Promise interface. Promises are a structure that allow management of lots of callbacks in a simple, easier to read manner. We wont talk too much about promises for now, but the important part is to know that the `.done()` callback is called when the jqXHR object is completed successfully, the `.error()` callback is called when there is an error, and the `.always()` callback (which we did not include here) is called on completion whether successful or not.
 
-Putting all of this together allows us to communicate with the server without
-sending GET requests from the URL bar and without reloading the page. We can then
-dynamically change the contents of the DOM without changing the entire page.
-That is just a taste of the power of client-side JavaScript and AJAX.
+Putting all of this together allows us to communicate with the server without sending GET requests from the URL bar and without reloading the page. We can then dynamically change the contents of the DOM without changing the entire page. That is just a taste of the power of client-side JavaScript and AJAX.
 
 ##Additional and Alternative learning Resources
 A free Google-sponsered course on the devtools: https://www.codeschool.com/courses/discover-devtools
 
-#Lesson 5 In-Class Exercises
-
-##Class 5 README
-Take some time to finish up your forms app or ask any questions if you need to, and push your solution to your fork. Our solution to the walkthrough is [here](https://github.com/olinjs/olinjs/blob/master/lessons/04-client-jquery-ajax/formsAppWalkthrough). 
+<a name="inclass-04"></a>
+#Lesson 4 In-Class Exercises
+Follow along above to finish up your forms app and ask any questions if you need to. Our solution to the walkthrough is [here](./formsAppWalkthrough).
 
 As always, pick the exercises which are interesting and challenging to you, and feel free to work with the people around you. **If you feel done or comfortable with these exercises, move on to the homework -- it is fairly lengthy.**
 
@@ -531,75 +361,27 @@ Last class we discussed folder structure, so as a refresher, draw out the folder
   - [Disable a button after 1 click and display a "button disabled" message in the DOM](https://jsfiddle.net/swalters4925/a8r13c0u/3/)
     + Challenge: disable the button after 3 clicks instead of after 1
 
-- isItChristmas Refactor
-  - Remember that jQuery allows you to make AJAX requests, which may return some data (if you do a GET request for instance), and now you can dynamically update the page reflecting this new data if desired using jQuery. A great way to practice is to go back to old apps like isItChristmas or your cat app and refactor them so they update WITHOUT page refreshes!
-
-  - Return to your version of isItChristmas.com and add the jQuery library. (Libraries are often included from a CDN. For example, Google hosts a CDN for jQuery, and you can reference it with the following script tag:
-    ```html
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    ```
-    Or the other option would be to download the jQuery library itself (it's a single JavaScript file) and include it in a script tag. It's common to put libraries in a `lib` directory.
-    ```html
-    <script src="lib/jquery-1.12.0.min.js"></script>). 
-    ```
-
-  - Now, add a button to your isItChristmas app that users can click to update the "Yes/No" text without a refresh.
-
 - Cat App Refactor
-  - Return to your cat app homework and add the jQuery library to it. 
+  - Return to your cat app homework and add the jQuery library to it.
 
-  - Rather than having several pages for each of the types of requests, have just one display page for the list of cats, with links or buttons to Display All Cats, Add A Cat, Display Cats Which Are <insert favorite color here> (with some textbox to enter the color), and Delete A Cat. Each of these buttons will be linked to one AJAX request that returns some data update from your API routes. 
+  - Rather than having several pages for each of the types of requests, have just one display page for the list of cats, with links or buttons to Display All Cats, Add A Cat, Display Cats Which Are <insert favorite color here> (with some textbox to enter the color), and Delete A Cat. Each of these buttons will be linked to one AJAX request that returns some data update from your API routes.
     - When Add A Cat is clicked, a cat is added, display the one cat on the page without a page refresh (GET /cats/new)
-    - When Display All Cats is clicked, show the sorted list of cats by age, without page refresh (GET /cats) 
+    - When Display All Cats is clicked, show the sorted list of cats by age, without page refresh (GET /cats)
     - When Delete A Cat is clicked, display the newly updated list of cats (after the deletion) on the page without a page refresh (GET /cats/delete/old). You can also try to change your route from a GET to a DELETE request!
     - When the Display Cats Which Are <insert favorite color here> is clicked, display the list of cats that have that color without a page refresh (GET /cats/bycolor/:color)
 
-##Feedback
-When you're done, fill out this [feedback form](https://docs.google.com/forms/d/1sItfsMqIa5N5eGBpkfCJIMnVK2XsYbo52xOyHLQEPYI/viewform?usp=send_form) and get started with the homework!
+<a name="homework-04"></a>
+# Before Class 5 (Friday 2/3/17)
 
+Great news! We started shopping around your last two exercises (hope you don't mind) and although no one was interested in buying your cat tracking software, we did get an email from a local burger joint, looking for some help. Jessica's Burgers is looking to update their aging ordering system to the 21st century. So in an effort to ~~make us loads of cash~~ improve your coding skills, this exercise will focus on making a web app which will help Jessica's customers get their delicious burgers even quicker (and more deliciously). Your application will allow users to build orders for a single burger from a list of ingredients (which will need to be updated as new stock arrives). Then it will allow Jessica's chefs to see all the pending orders, fill them, and alert customers that their burger is ready.
 
-# Before Class 6 (Friday 2/5/16)
-#### Assignment
-
-Great news! We started shopping around your last two exercises (hope you don't mind)
-and although no one was interested in buying your cat tracking software,
-we did get an email from a local burger joint, looking for some help.
-Jessica's Burgers is looking to update their aging ordering system to the 21st century.
-So in an effort to ~~make us loads of cash~~ improve your coding skills,
-this exercise will focus on making a web app which will help Jessica's customers
-get their delicious burgers even quicker (and more delicously).
-Your application will allow users to build orders for a single burger from a list of ingredients
-(which will need to be updated as new stock arrives).
-Then it will allow Jessica's chefs to see all the pending orders, fill them, and alert customers that their burger is ready.
-
-Your application will need the following http endpoints:
+For Friday, your application will need the following http endpoint:
 * `/ingredients` =>
   * Shows a list of current ingredients (Name and Price) with Out-of-Stock and edit button.
   * An `Add` button should allow the user to specify the name and price of a new ingredient which should appear on the page without requiring a refresh.
-  * Out-of-Stock button will tell the server to label the ingredient as disabled.
-  The ingredient should be removed from the current page without refreshing.
- (Optional: make it toggleable to "add" more of the ingredient.
-In this case, do not remove the ingredient from the page, but make note through words or style that it is unavailable.)
-  * Edit button allows the user to submit a new name or price for the ingredient
-  which the server will update. The edits should change the ingredient list without refreshing.
-* `/order` =>
-  * Shows a form which allows customers to create a new burger.
-  * There should be a [checklist](http://www.w3schools.com/tags/att_input_type.asp) of all ingredients and their price.
-  * Out-of-stock ingredients should have a disabled checkbox (`<input type="checkbox" disabled>`)
-  * There should be a Submit button that will send the server the new order without refreshing the page.
-  * You may want to refer to the Mongo reading on [Referencing vs. Embedding](https://github.com/olinjs/olinjs/blob/master/lessons/03-express-templates-mongo/README.md) as you think about how you will store your data. 
-  You should give your customer a nice congratulatory message for completing their order
-  (maybe a free cat picture since you're so good at that?!)
-  * A running counter of total cost: Should update whenever a new ingredient is added or removed.
-* `/kitchen` =>
-  * Shows a list of all pending orders.
-  * A `completed` button beside each order that tells the server the order is complete.
-  Clicking this should remove the order from the list of orders without refreshing the page.
+  * Out-of-Stock button will tell the server to label the ingredient as disabled. The ingredient should be removed from the current page without refreshing. (Optional: make it toggleable to "add" more of the ingredient. In this case, do not remove the ingredient from the page, but make note through words or style that it is unavailable.)
+  * Edit button allows the user to submit a new name or price for the ingredient which the server will update. The edits should change the ingredient list without refreshing.
 
-When you're finished, fill out the [Homework 5 Submission Survey] (https://docs.google.com/forms/d/1MsGf_gNkHJBjBEzQoaUXvmpc3Nljk838FeBXlJ5hH9c/viewform?usp=send_form). 
+The next homework that you will be doing will build off of this homework. If you'd like to see the other endpoints that the application will need, look [here] (../05-flex-burger-help/README.md#L58).
 
-#### Preclass Reading and Exercise
-- Read the [Class 6 README](https://github.com/olinjs/olinjs/tree/master/lessons/06-css-development-style) before class 6 on Friday 2/5/16.
-- Send an email to [olinjs16@gmail.com](olinjs16@gmail.com) with the subject line "Preclass 6" telling us about...
-    - Something in the reading you felt confident about and easily grasped
-    - Something in the reading you're confused about or want to know more about
+When you're finished, fill out the [Homework 4 Submission Survey] (https://docs.google.com/forms/d/e/1FAIpQLSd-ths9fq5m28ooRoiDwiYjRc6s48JBZDgCmFQqNEGUqOb6hw/viewform).

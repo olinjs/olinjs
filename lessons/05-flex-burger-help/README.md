@@ -54,3 +54,16 @@ Show your group a problem you're trying to solve or a problem you think you solv
 - Try this [LearnYouNode-style WebGL tutorial](https://github.com/stackgl/shader-school). WebGL is a JavaScript API for rendering interactive computer graphics.
 - Learn about string pattern matching with this [LearnYouNode-style regex tutorial](https://github.com/substack/regex-adventure).
 - Check out [jQuery UI](http://jqueryui.com/) and look at some of their interactive UI elements.  Try to implement some of the samples in your burger app
+
+# Burger App Part 2 Due Next Tuesday (2/7/17)
+For Tuesday, complete your burger app by adding the following http endpoints:
+* `/order` =>
+  * Shows a form which allows customers to create a new burger.
+  * There should be a [checklist](http://www.w3schools.com/tags/att_input_type.asp) of all ingredients and their price.
+  * Out-of-stock ingredients should have a disabled checkbox (`<input type="checkbox" disabled>`)
+  * There should be a Submit button that will send the server the new order without refreshing the page.
+  * You may want to refer to the Mongo reading on [Referencing vs. Embedding](https://github.com/olinjs/olinjs/blob/master/lessons/02-express-templates-mongo/README.md) as you think about how you will store your data. You should give your customer a nice congratulatory message for completing their order (maybe a free cat picture since you're so good at that?!)
+  * A running counter of total cost: Should update whenever a new ingredient is added or removed.
+* `/kitchen` =>
+  * Shows a list of all pending orders.
+  * A `completed` button beside each order that tells the server the order is complete. Clicking this should remove the order from the list of orders without refreshing the page.
