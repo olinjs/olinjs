@@ -1,0 +1,138 @@
+body {
+  padding: 0px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0px;
+  background-color: #eeeeee;
+}
+
+a {
+  color: #00B7FF;
+
+}
+
+div.header {
+	max-height: 5vh;
+	background: #d9d9d9;
+	box-shadow: 0px 2px 3px #888888;
+	position: relative;
+	padding-bottom: 2vh;
+}
+
+div.header h1 {
+	margin: 0px;
+	padding-left: 5px;
+}
+
+#wrapper {
+	width: 100%;
+	height: 100%;
+}
+
+div.navbar {
+	padding-left: 5px;
+	padding-top: 5px;
+	width: 10vw;
+	height: 93vh;
+	display: inline-block;
+	vertical-align: top;
+    background: #e0e0e0;
+    box-shadow: 2px 0px 3px #888888;
+    z-index: 10;
+}
+
+div.navbar a {
+	text-decoration: none;
+}
+
+div.pagecontent {
+	margin-left: .01vw;
+	margin-top: .1vh;
+	width: 88vw;
+	height: 94.5vh;
+	display: inline-block;
+	vertical-align: top;
+	overflow-y: auto;
+	background-color: transparent;
+	z-index: 1;
+}
+
+div.pagecontent #dynamic-content {
+	overflow-y: auto;
+	overflow-x: hidden;
+	font: 16px arial, sans-serif;
+	padding-left: 10px;
+}
+
+div#pageManagementControls {
+	padding-left: 10px;
+	padding-top: 5px;
+}
+
+div#pageManagementControls #title {
+	margin-top: 0px;
+	margin-bottom: 5px;
+}
+
+div#pageManagementControls #title_input {
+	border: none;
+	height: 25px;
+	width: 100%;
+	font: 16px arial, sans-serif;
+	background: transparent;
+}
+
+div#pageManagementControls #title_input:focus {
+    outline-width: 0;
+}
+
+div#pageManagementControls #content_input {
+	border: none;
+	height: 50vh;
+	width: 100%;
+	font: 16px arial, sans-serif;
+	background: transparent;
+	resize: none;
+}
+
+div#pageManagementControls #content_input:focus {
+    outline-width: 0;
+}
+
+div#pageManagementControls .textinput_wrapper {
+	outline: solid;
+	outline-color: #d9d9d9;
+	outline-width: 2px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+div.navbar .textinput_wrapper {
+	padding-left: 4px;
+	padding-right: 10px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+div.navbar input {
+	border: none;
+	height: 25px;
+	width: 100%;
+	font: 14px arial, sans-serif;
+	resize: none;
+}
+
+div.navbar input:focus {
+    outline-width: 0;
+}
+
+div#pageControls {
+	width: 100%;
+	height: 25px;
+}
+
+div#pageControls button {
+	float: right;
+	margin-left: 10px;
+}

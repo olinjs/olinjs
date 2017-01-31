@@ -1,0 +1,70 @@
+<!--Wrapper content (navbar, title, content div)-->
+
+
+<div id="wrapper">
+<div class="header">
+<h1>Wiki</h1>
+</div>
+<div class="navbar" id="navbar">
+<div class="textinput_wrapper">
+<input ng-model="filter.title" type="text" placeholder="Search"></input>
+</div>
+<table>
+<tr ng-repeat="page in pages | filter:filter:strict">
+	<td><a ng-click="fetchPageContent(page._id)" href="">{{page.title}}</a></td>
+</tr>
+</table>
+</br>
+<button ng-click="controls='makePageControls'; pagecontent=''" type="button">+</button>
+</div>
+
+<div class="pagecontent">
+<ng-include src="controls"></ng-include>
+<div id="dynamic-content" ng-bind-html="pagecontent"></div>
+</div>
+</div>
+
+<script type="text/ng-template" id="makePageControls">
+	<div id="pageManagementControls">
+	<h2 id="title">Manage Page</h2>
+	<div class="textinput_wrapper">
+	<input id="title_input" ng-model="$parent.newpageTitle" type="text" placeholder="Page title"></input>
+	</div></br>
+	<div class="textinput_wrapper">
+	<textarea rows=2 id="content_input" ng-model="$parent.newpageContent" type="text" placeholder="Page content (raw html)"></textarea>
+	</div>
+	</br>
+	<button type="button" ng-click="addPage('default_author')">Submit</button>
+	<button type="button" ng-click="$parent.controls=''; $parent.newpageTitle=''; $parent.newpageContent=''">Cancel</button>
+	</div>
+</script>
+
+<script type="text/ng-template" id="pageControls">
+	<div id="pageControls">
+	<button type="button" ng-click="deletePage($parent.current_page_id)">Remove</button>
+	<button type="button" ng-click="$parent.pagecontent=''; 
+									$parent.controls='makePageControls'; 
+									$parent.newpageTitle=$parent.current_page_title; 
+									$parent.newpageContent=$parent.current_page_content
+								">Edit</button>
+	</div>
+</script>
+
+<!--
+</br>
+<button ng-click='setFilter("")' type="button">All</button>
+<button ng-click='setFilter("In Progress")' type="button">In Progress</button>
+<button ng-click='setFilter("Completed")' type="button">Completed</button>
+</br>
+<table>
+<tr ng-repeat="todo in todos | filter:filter">
+<td>
+<input style="-webkit-transform: scale(1.8);" type="checkbox" ng-click='toggleStatus(todo._id)' ng-checked='todo.status=="Completed"'>
+</td>
+<td>
+{{todo.text}}
+<button type="button" ng-click='deleteTodo(todo._id)'>X</button>
+</td>
+</tr>
+</table>
+-->

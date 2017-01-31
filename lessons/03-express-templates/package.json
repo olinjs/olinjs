@@ -1,0 +1,17 @@
+{
+  "name": "03-express-templates",
+  "version": "1.0.0",
+  "description": "##Express Now that we've explored Node.js a little, we will abstract the details away with the [Express](http://expressjs.com/) development framework. Before, in the Node Beginner's Book, our code looked a lot like this: ```javascript var http = require(\"http\");",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.4",
+    "express-handlebars": "^3.0.0",
+    "serve-favicon": "^2.3.0"
+  }
+}
