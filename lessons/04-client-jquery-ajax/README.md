@@ -215,7 +215,7 @@ app.post('/getCat', getCat.getCatPOST);
 ```
 
 If you now submit the first two forms again you can see how Express parses the data:
-```shell
+```
 { name: 'bob', mood: 'happy' }
 GET /getCat?name=bob&mood=happy 200 0.876 ms - -
 { name: 'alice', mood: 'grumpy' }
@@ -513,3 +513,93 @@ That is just a taste of the power of client-side JavaScript and AJAX.
 
 ##Additional and Alternative learning Resources
 A free Google-sponsered course on the devtools: https://www.codeschool.com/courses/discover-devtools
+
+#Lesson 5 In-Class Exercises
+
+##Class 5 README
+Take some time to finish up your forms app or ask any questions if you need to, and push your solution to your fork. Our solution to the walkthrough is [here](https://github.com/olinjs/olinjs/blob/master/lessons/04-client-jquery-ajax/formsAppWalkthrough). 
+
+As always, pick the exercises which are interesting and challenging to you, and feel free to work with the people around you. **If you feel done or comfortable with these exercises, move on to the homework -- it is fairly lengthy.**
+
+##Folder Structure
+Last class we discussed folder structure, so as a refresher, draw out the folder structure for a typical app on the board in small groups, indicating what belongs in each folder. Pay particular attention to which JavaScript files are clientside and which are serverside (we haven't done much clientside work yet).
+
+##jQuery and AJAX
+- Practice jQuery JSFiddles. Fork before editing!
+  - [Selectors and CSS](https://jsfiddle.net/swalters4925/zf52yaa0/3/)
+  - [Selectors and click handlers](https://jsfiddle.net/swalters4925/ejgenk5c/2/)
+  - [Disable a button after 1 click and display a "button disabled" message in the DOM](https://jsfiddle.net/swalters4925/a8r13c0u/3/)
+    + Challenge: disable the button after 3 clicks instead of after 1
+
+- isItChristmas Refactor
+  - Remember that jQuery allows you to make AJAX requests, which may return some data (if you do a GET request for instance), and now you can dynamically update the page reflecting this new data if desired using jQuery. A great way to practice is to go back to old apps like isItChristmas or your cat app and refactor them so they update WITHOUT page refreshes!
+
+  - Return to your version of isItChristmas.com and add the jQuery library. (Libraries are often included from a CDN. For example, Google hosts a CDN for jQuery, and you can reference it with the following script tag:
+    ```html
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    ```
+    Or the other option would be to download the jQuery library itself (it's a single JavaScript file) and include it in a script tag. It's common to put libraries in a `lib` directory.
+    ```html
+    <script src="lib/jquery-1.12.0.min.js"></script>). 
+    ```
+
+  - Now, add a button to your isItChristmas app that users can click to update the "Yes/No" text without a refresh.
+
+- Cat App Refactor
+  - Return to your cat app homework and add the jQuery library to it. 
+
+  - Rather than having several pages for each of the types of requests, have just one display page for the list of cats, with links or buttons to Display All Cats, Add A Cat, Display Cats Which Are <insert favorite color here> (with some textbox to enter the color), and Delete A Cat. Each of these buttons will be linked to one AJAX request that returns some data update from your API routes. 
+    - When Add A Cat is clicked, a cat is added, display the one cat on the page without a page refresh (GET /cats/new)
+    - When Display All Cats is clicked, show the sorted list of cats by age, without page refresh (GET /cats) 
+    - When Delete A Cat is clicked, display the newly updated list of cats (after the deletion) on the page without a page refresh (GET /cats/delete/old). You can also try to change your route from a GET to a DELETE request!
+    - When the Display Cats Which Are <insert favorite color here> is clicked, display the list of cats that have that color without a page refresh (GET /cats/bycolor/:color)
+
+##Feedback
+When you're done, fill out this [feedback form](https://docs.google.com/forms/d/1sItfsMqIa5N5eGBpkfCJIMnVK2XsYbo52xOyHLQEPYI/viewform?usp=send_form) and get started with the homework!
+
+
+# Before Class 6 (Friday 2/5/16)
+#### Assignment
+
+Great news! We started shopping around your last two exercises (hope you don't mind)
+and although no one was interested in buying your cat tracking software,
+we did get an email from a local burger joint, looking for some help.
+Jessica's Burgers is looking to update their aging ordering system to the 21st century.
+So in an effort to ~~make us loads of cash~~ improve your coding skills,
+this exercise will focus on making a web app which will help Jessica's customers
+get their delicious burgers even quicker (and more delicously).
+Your application will allow users to build orders for a single burger from a list of ingredients
+(which will need to be updated as new stock arrives).
+Then it will allow Jessica's chefs to see all the pending orders, fill them, and alert customers that their burger is ready.
+
+Your application will need the following http endpoints:
+* `/ingredients` =>
+  * Shows a list of current ingredients (Name and Price) with Out-of-Stock and edit button.
+  * An `Add` button should allow the user to specify the name and price of a new ingredient which should appear on the page without requiring a refresh.
+  * Out-of-Stock button will tell the server to label the ingredient as disabled.
+  The ingredient should be removed from the current page without refreshing.
+ (Optional: make it toggleable to "add" more of the ingredient.
+In this case, do not remove the ingredient from the page, but make note through words or style that it is unavailable.)
+  * Edit button allows the user to submit a new name or price for the ingredient
+  which the server will update. The edits should change the ingredient list without refreshing.
+* `/order` =>
+  * Shows a form which allows customers to create a new burger.
+  * There should be a [checklist](http://www.w3schools.com/tags/att_input_type.asp) of all ingredients and their price.
+  * Out-of-stock ingredients should have a disabled checkbox (`<input type="checkbox" disabled>`)
+  * There should be a Submit button that will send the server the new order without refreshing the page.
+  * You may want to refer to the Mongo reading on [Referencing vs. Embedding](https://github.com/olinjs/olinjs/blob/master/lessons/03-express-templates-mongo/README.md) as you think about how you will store your data. 
+  You should give your customer a nice congratulatory message for completing their order
+  (maybe a free cat picture since you're so good at that?!)
+  * A running counter of total cost: Should update whenever a new ingredient is added or removed.
+* `/kitchen` =>
+  * Shows a list of all pending orders.
+  * A `completed` button beside each order that tells the server the order is complete.
+  Clicking this should remove the order from the list of orders without refreshing the page.
+
+When you're finished, fill out the [Homework 5 Submission Survey] (https://docs.google.com/forms/d/1MsGf_gNkHJBjBEzQoaUXvmpc3Nljk838FeBXlJ5hH9c/viewform?usp=send_form). 
+
+#### Preclass Reading and Exercise
+- Read the [Class 6 README](https://github.com/olinjs/olinjs/tree/master/lessons/06-css-development-style) before class 6 on Friday 2/5/16.
+- Send an email to [olinjs16@gmail.com](olinjs16@gmail.com) with the subject line "Preclass 6" telling us about...
+    - Something in the reading you felt confident about and easily grasped
+    - Something in the reading you're confused about or want to know more about
