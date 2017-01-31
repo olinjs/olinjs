@@ -9,22 +9,22 @@ and building communication routes between the client and server.
 ## HTML Reprise
 We've seen some HTML before but let's go through a more formal overview of it.
 [HTML](http://en.wikipedia.org/wiki/HTML) is a markup language that uses tagged elements to describe the structure of a webpage. Elements are specified with start and end tags which enclose their content, including children elements (`<div><p>Hi again</p></div>`). The p element is a child of the div element. Some elements cannot have content or children and do not have an end tag. Instead their start tag ends with a slash (`<br/>`). While HTML can include presentation specifications, it is highly recommended to use HTML for structure and [Cascading Style Sheets](http://en.wikipedia.org/wiki/Cascading_Style_Sheets) (CSS) to define the look and layout of the page. There are *many* [HTML tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element), but you will mostly use a small number (click the link to see the official documentation for the tags):
+* [`<h1>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h1): Header text. Pretty common, there are six tags h1 - h6. Use these rather than a `<p>` with a css class `header-1` or something like that.
+* [`<p>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p): The paragraph element defines a block of text.
 * [`<a>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a):
-The Anchor element defines a hyperlink like those seen in blue throughout this document.
-* [`<article>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article): Articles are used to signify a self-contained composition within a page, ei. forum post, documentation entry, newspaper article, etc.
-* [`<body>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body): The body tag represents the content of an HTML document. There can be only one.
-* [`<canvas>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas): A frame in which you can draw graphics through JavaScript. This can be images and shapes or some [pretty crazy applications](http://davidwalsh.name/canvas-demos).
+The Anchor element defines a hyperlink like those seen in blue throughout this document. `<a href="http://www.google.com">Go to Google!</a>`
+* [`<form>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form): Defines a section of interactive controls and inputs that will submit information to a server. These will usually include a number of [`<input>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) tags.
 * [`<div>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div): Arguably the most common element, the Division Element is a generic HTML container element. It doesn't inherently represent anything, but it can also be used (through CSS) to represent pretty much anything. Usually it is used to group elements or for style. Ideally it should not be used when a semantic element like `<article>` or [`<nav>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div) is appropriate, but this is not widely adhered to.
-* [`<form>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form):
-Defines a section of interactive controls and inputs that will submit information to a server. These will usually include a number of [`<input>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) tags.
-* [`<h1>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h1): Header text. Pretty common, there are six tags h1 - h6. Use these rather than a `<p>` with a css class `header-1` or something like that. * [`<img>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img): Display an image with the image tag. `<img>` tags cannot have children and do not have an end tag (`<img source="./foo.jpg" />`).
+* [`<img>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img): Display an image with the image tag. `<img>` tags cannot have children and do not have an end tag (`<img source="./foo.jpg" />`).
 * [`<ul>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul),
   [`<ol>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol), and
   [`<li>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li):
 Un-ordered list, ordered list, and list element tags are used for structuring list content in HTML.
-* [`<p>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p): The paragraph element defines a block of text.
 * [`<span>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span): The span element is like a div in that it is a generic container element. However, in contrast, spans are inline elements by default (they do not break the flow of elements on the page) and are often used to style text: `<p><span class="fancy-text">Some text</span></p>`.
 * [`<table>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table): Prior to the use of CSS, the table element, along with `<th>` (table header), `<tr>` (table row), and `<td>` (table data), were often used as a method for page layout. Please don't do this. They can still be used for the categorization of data, but the styling and layout or your pages should all be controlled by CSS.
+* [`<article>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article): Articles are used to signify a self-contained composition within a page, ei. forum post, documentation entry, newspaper article, etc.
+* [`<body>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body): The body tag represents the content of an HTML document. There can be only one.
+* [`<canvas>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas): A frame in which you can draw graphics through JavaScript. This can be images and shapes or some [pretty crazy applications](http://davidwalsh.name/canvas-demos).
 
 Check out this [site](http://www.htmldog.com/guides/css/intermediate/layout/)
 or Google "HTML layout tips" to read more about formatting techniques.
