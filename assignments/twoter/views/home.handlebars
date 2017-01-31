@@ -1,0 +1,43 @@
+<h2>Welcome to Twoter</h2>
+
+<div id='userLoggedIn' user='{{userid}}'>
+    User logged in: {{username}}
+    User ID logged in: {{userid}}
+</div>
+
+<br></br>
+<form id = 'logOutButton' action='logOut' method='GET'>
+    <input type='submit' class='logout' value='Log Out'>
+</form>
+
+
+<br></br>
+<form id ='new' action='newTwote' method='POST'>
+    Create a new Twote!
+    <input type='text' class='textinput' name='twotetext'> 
+    <input type='submit' class='submitnew' value='Submit'>
+</form>
+
+
+<br></br>
+
+<div id='allTwotes'>
+    {{#each alltwotes}}
+        <div id='{{this.id}}-{{this.user}}-twote' twoteuser = '{{this.user}}'>
+            {{this.username}} said: "{{this.text}}"
+            <form id = '{{this.id}}-delete' class='deleteButton' user ='{{this.user}}'>
+            </form>
+        </div>
+    {{/each}}
+</div>
+
+<br></br>
+
+<div id='allUsers'>
+    <h3>User List</h3>
+    {{#each allusers}}
+    <div id='user-{{this._id}}' class='user'>
+        User {{this.name}}, {{this._id}}
+    </div>
+    {{/each}}
+</div>

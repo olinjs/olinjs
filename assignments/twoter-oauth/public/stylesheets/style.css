@@ -1,0 +1,144 @@
+
+
+#logInForms {
+    float: right;
+    display: inline;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+
+    border-radius: 5px;
+    border-style: solid;
+    padding: 5px;
+    border: 2px solid black;
+    margin: 10px;
+    background-color: #ffffff;
+
+    font-family: "Times New Roman", Times, serif;
+    color: #000000;
+    font-size: 16px; 
+}
+#userLoggedIn {
+    float: right;
+    display: inline;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+h2, h3{
+    display: inline-block;
+    color: #000000;
+    font-family: Arial !important;
+    font-size: 24px;
+}
+h3 {
+    font-size:18px;
+}
+
+body {
+    background-color: #ffffff;
+}
+html
+{
+    font-family: "Times New Roman", Times, serif;
+    color: #000000;
+    font-size: 18px;
+}
+
+div [id$=-twote], #new {
+    /*width: 800px;*/
+    border-radius: 10px;
+    padding: 25px;
+   /* border: 10px; *//*solid navy;*/
+    margin: 5px;
+    background-color: #cccccc;
+    
+    float:left;
+    width:65%;
+    overflow:hidden;
+}
+#new {
+    text-align: left;
+    background-color: #c6c6ec;
+}
+
+#allUsers{
+    float:right;
+    width:30%;
+    overflow:hidden;
+    margin: 0px;
+    position: fixed;
+    right: 10px;
+    top: 250px;
+}
+.user {
+    border-radius: 10px;
+    padding: 10px;
+    border: 10px; 
+    margin: 10px;
+    background-color: #cccccc;
+}
+
+/*delete button does not display properly when adding 
+a new post, but will display after refresh*/
+.delete {
+    /*width: 800px;*/
+    border-radius: 5px;
+    border-style: solid;
+    padding: 5px;
+    border: 2px solid black;
+    margin: 10px;
+/*    background-color: #cccccc;*/
+    float:right;
+    /*float: right;*/
+    font-family: "Times New Roman", Times, serif;
+    font-size: 16px;
+}
+.highlighted {
+    border-radius: 10px;
+    border: 5px solid #252574;
+    margin: 5px;
+}
+
+/*log in and submit-twote buttons*/
+.loginlocal, .loginfb, .submitnew, .logout{
+    border-radius: 5px;
+    border-style: solid;
+    padding: 5px;
+    border: 2px solid black;
+    margin: 10px;
+    background-color: #cccccc;
+    float: right;
+
+    font-family: "Times New Roman", Times, serif;
+    color: #000000;
+    font-size: 16px;
+}
+.loginlocal, .loginfb, .logout{
+    background-color: #ffffff;
+}
+.loginfb {
+    float: right;
+    position: absolute;
+    right: 10px;
+    top: 150px;
+}
+.submitnew{
+    background-color: #c6c6ec;
+}
+.logout {
+    position: absolute;
+    right: 10px;
+    top: 30px;
+}
+
+.textinput{
+    width: 60%;
+    margin: 20px;
+/*    padding: 20px;*/
+
+}
+span {
+    display: block;
+}

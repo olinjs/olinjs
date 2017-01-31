@@ -1,0 +1,24 @@
+<h2>Kitchen</h2>
+
+<!-- {{#each allorders}}
+   <li>Order {{this.name}} is completed? {{this.completed}}!</li>
+{{/each}} -->
+
+<div id="AllOrders">
+{{#each allorders}}
+<!-- <div id="{{this.name}}-editresult"> -->
+
+    <div id="{{this._id}}-order">
+        <li>Order {{this.name}} is completed? {{this.completed}}!</li>
+            <form id = "{{this._id}}-completed" class="completeForm" action="orderComplete" method="GET">
+                Is this order complete? <input type="submit" value="Complete">
+            </form>
+
+        <br></br>
+    </div>
+
+
+
+
+{{/each}}
+</div>

@@ -1,0 +1,40 @@
+<h2>Welcome to Twoter</h2>
+
+<div id='logInForms'>
+    <form id = 'logInLocal' action='/auth/local' method='GET'>
+        Sign in: 
+        <p>Username: <input type='text' name='username'> </p>
+        Password: <input type='password' name='password'>
+        <input type='submit' class='loginlocal' value='Login'>
+    </form>
+
+
+</div>
+
+
+
+    <form id = 'logInButton' action='login' method='GET'>
+        <input type='submit' class='loginfb' value='Facebook Login'>
+    </form>
+
+
+
+<br></br>
+
+<div id='allTwotes'>
+    {{#each alltwotes}}
+        <div id='{{this.id}}-{{this.user}}-twote' twoteuser = '{{this.user}}'>
+            {{this.username}} said: "{{this.text}}"
+        </div>
+    {{/each}}
+</div>
+
+<div id='allUsers'>
+    <h3>User List</h3>
+    {{#each allusers}}
+    <div id='user-{{this._id}}' class='user'>
+        User {{this.name}}
+    </div>
+    {{/each}}
+</div>
+

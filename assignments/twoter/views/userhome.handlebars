@@ -1,0 +1,17 @@
+
+<div id="allTwotes">
+    {{#each alltwotes}}
+        <div id="{{this.id}}-twote">
+            <li>User {{this.user}} said {{this.text}}</li>
+            <input type="submit" value="Edit">
+            <input type="submit" value="Delete">
+        </div>
+    {{/each}}
+</div>
+
+<br></br>
+<form id ="new" action="newTwote" method="POST">
+    Create a new Twote!
+    <input type="text" name="twotetext"> 
+    <input type="submit" value="Submit">
+</form>

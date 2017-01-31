@@ -31,3 +31,6 @@ pids
 # For Mac users without global gitignore
 # http://islegend.com/development/setting-global-gitignore-mac-windows/
 **/.DS_Store
+
+#Don't push your oauth keys to github!
+**/oauth.js
