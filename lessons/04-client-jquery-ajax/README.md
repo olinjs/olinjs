@@ -1,12 +1,17 @@
 # Lesson 4 - The Client, jQuery, and AJAX
-Web Applications handle much of their database communication and logic on the server, but the front-end is what the client actually sees and interacts with.
-Without a clean, intuitive, responsive, and enjoyable client-side,
-the best server application in the world wouldn't be much.
+Web Applications handle much of their database communication and logic on the server, but the front-end is what the client actually sees and interacts with. Without a clean, intuitive, responsive, and enjoyable client-side, the best server application in the world wouldn't be much.
 
-Today we are going to learn the basics of building and manipulating the client
-and building communication routes between the client and server.
+Today we are going to learn the basics of building and manipulating the client and building communication routes between the client and server.
+
+## README Table of Contents
+* [HTML Reprise](#html-reprise)
+* [HTML Forms](#html-forms)
+* [Client JavaScript and jQuery](#client-javascript-and-jquery)
+* [AJAX and XHR Requests](#ajax-and-xhr-requests)
 
 ## HTML Reprise
+Jump down to the [next section](#html-forms) if you know HTML already!
+
 We've seen some HTML before but let's go through a more formal overview of it.
 [HTML](http://en.wikipedia.org/wiki/HTML) is a markup language that uses tagged elements to describe the structure of a webpage. Elements are specified with start and end tags which enclose their content, including children elements (`<div><p>Hi again</p></div>`). The p element is a child of the div element. Some elements cannot have content or children and do not have an end tag. Instead their start tag ends with a slash (`<br/>`). While HTML can include presentation specifications, it is highly recommended to use HTML for structure and [Cascading Style Sheets](http://en.wikipedia.org/wiki/Cascading_Style_Sheets) (CSS) to define the look and layout of the page. There are *many* [HTML tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element), but you will mostly use a small number (click the link to see the official documentation for the tags):
 * [`<h1>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h1): Header text. Pretty common, there are six tags h1 - h6. Use these rather than a `<p>` with a css class `header-1` or something like that.
