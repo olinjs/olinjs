@@ -1,4 +1,12 @@
-# Burger Application Continuation:
+# The Client and Burger Application Continuation:
+
+## README Table of Contents
+* [In-Class Activities](#inclass-05)
+* [Additional Readings and Information](#help-05)
+* [Homework](#homework-05)
+
+<a name="inclass-05"></a>
+#Lesson 5 In-Class Exercises
 
 ### Whiteboarding
 - On the board, draw a diagram which represents how an AJAX request works. Make sure you represent the client, the server, get/post requests, responses, data which is passed from client to server and from server to client... and what else?
@@ -22,6 +30,9 @@
     - Attach a [**mouseover**](https://api.jquery.com/mouseover/) event to each of the tweets.
     - Select the [**first**](https://api.jquery.com/first/) tweet, change it so that so that it has 9001 likes and -10 retweets
     - [**clone**](https://api.jquery.com/clone/) the first tweet, change the image to be one of your choosing and add it back to the DOM [**before**](https://api.jquery.com/before/) the tweet you cloned
+
+<a name="help-05"></a>
+#Additional Readings and Information
 
 ###Pre-Populating Your Database
 Some of you have had questions about how to get data into your database as you work on developing your apps. There are two main methods we can suggest.
@@ -54,7 +65,10 @@ Show your group a problem you're trying to solve or a problem you think you solv
 - Learn about string pattern matching with this [LearnYouNode-style regex tutorial](https://github.com/substack/regex-adventure).
 - Check out [jQuery UI](http://jqueryui.com/) and look at some of their interactive UI elements.  Try to implement some of the samples in your burger app
 
-# Burger App Part 2 Due Next Tuesday (2/7/17)
+<a name="homework-05"></a>
+# Before Class 6 (Friday 2/7/17)
+
+## Burger App Part 2
 For Tuesday, complete your burger app by adding the following http endpoints:
 * `/order` =>
   * Shows a form which allows customers to create a new burger.
