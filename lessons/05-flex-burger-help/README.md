@@ -32,7 +32,8 @@
     - [**clone**](https://api.jquery.com/clone/) the first tweet, change the image to be one of your choosing and add it back to the DOM [**before**](https://api.jquery.com/before/) the tweet you cloned
 
 <a name="help-05"></a>
-#Additional Readings and Information
+#Additional Information
+We went over the confusions and questions that you all had that we hadn't really addressed, and wanted to provide answers and resources for all of you, regarding them and other useful information.
 
 ###Pre-Populating Your Database
 Some of you have had questions about how to get data into your database as you work on developing your apps. There are two main methods we can suggest.
@@ -55,6 +56,9 @@ Now you can play around with your fake data on the front end of your app until y
 
 #### Create An Add Route
 You will eventually need a way to add initial information to your database for real. This will usually look a lot like the "new cat" route from your cat app. For the purpose of populating your database, you can make an array of random ingredient names and a random number generator and have your app save a randomly generated ingredient every time you go to your "new ingredient" route. Alternatively, you can hook a simple client-side "add ingredient" form up to the "new ingredient" route on the server. Hint: this would look a lot like the POST route from the class five readme, but with the added functionality of saving the data you receive in `req.body` to your database.
+
+#### Mongoose Practical Uses and Comparison with Others
+
 
 ### Share your Problems
 Show your group a problem you're trying to solve or a problem you think you solved in a particularly clever way. Get their feedback -- what did they do to solve the same problem? Do they understand things you don't, or vice versa? Do you have different mental models for the same thing?
@@ -80,3 +84,7 @@ For Tuesday, complete your burger app by adding the following http endpoints:
 * `/kitchen` =>
   * Shows a list of all pending orders.
   * A `completed` button beside each order that tells the server the order is complete. Clicking this should remove the order from the list of orders without refreshing the page.
+
+If you want to challenge yourself, feel free to add additional functionalities to your burger application. Even though we haven't talked too much about CSS, if you're interested in beautifying your app, feel free to do so (bootstrap might be a good start if you aren't too familiar with styling).
+
+When you're finished, fill out the [Homework 5 Submission Survey] (https://docs.google.com/forms/d/e/1FAIpQLSfa_Ia5YbvwsdJ8qfe0-i3Fi-KFsgdbwiczYpR4fe7tvxCQsw/viewform).
