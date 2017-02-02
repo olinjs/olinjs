@@ -14,7 +14,7 @@
 
 ### Real Life Selector Practice
 - We are going to play around with the twitter homepage using jQuery
-- Work in a group and list out all of the commands that you come up with on the whiteboard, next to a description of what it did.
+- Work in your group and list out all of the commands that you come up with in this exercise on the whiteboard, next to a description or image of what it did.
 - First, open [twitter](https://twitter.com) in an incognito tab, you should see a grid of popular tweets. Now click on "view all" in the Moments section.
 - Now lets open up the console and have some fun
     - Use the elements pane of the console to explore how the page is set up. What are the classes you could use to [**select**](https://learn.jquery.com/using-jquery-core/selecting-elements/) all the tweets? A single tweet? The retweet count on a single tweet?
@@ -58,8 +58,10 @@ Now you can play around with your fake data on the front end of your app until y
 #### Create An Add Route
 You will eventually need a way to add initial information to your database for real. This will usually look a lot like the "new cat" route from your cat app. For the purpose of populating your database, you can make an array of random ingredient names and a random number generator and have your app save a randomly generated ingredient every time you go to your "new ingredient" route. Alternatively, you can hook a simple client-side "add ingredient" form up to the "new ingredient" route on the server. Hint: this would look a lot like the POST route from the class five readme, but with the added functionality of saving the data you receive in `req.body` to your database.
 
-#### Mongoose Practical Uses and Comparison with Others
+#### Why Mongoose and Comparison with Others
+There are tons of database management systems that each have their own pros and cons, depending on the types of queries, performance prioritization, models, workload and other factors that you need to take into account. [Here's](https://reflect.io/blog/analytics-101-choosing-the-right-database/) a blog article on different database types and what to consider when choosing the right database. If you're interested in exploring the world of databases, another really helpful tool to learn, compare and contrast different database systems is [db-engines](http://db-engines.com/en/systems).
 
+We are currently using Mongoose specifically, because it streamlines the application development process in the Node.js stack. This means that you can control the database all through your application using javascript, instead of needing to do work from the database or a separate data management system. MongoDB is a popular document stores that is schema-free and has a protocol that primarily uses JSON.
 
 ### Share your Problems
 Show your group a problem you're trying to solve or a problem you think you solved in a particularly clever way. Get their feedback -- what did they do to solve the same problem? Do they understand things you don't, or vice versa? Do you have different mental models for the same thing?
