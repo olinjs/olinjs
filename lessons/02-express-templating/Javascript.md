@@ -1,4 +1,4 @@
-#Lesson 2 - JavaScript
+#Lesson 1.5 - JavaScript
 
 ##Goals
 After this class you should:
@@ -641,3 +641,48 @@ question: 'Am I an object?',
 ```
 
 The moral of the story is that JavaScript is remarkably robust, whether you like it or not. It will run happily where other languages would choke, so it often falls to you to write good code that will prevent weird things from happening. Leverage the flexibility of JavaScript to write elegant code — don't let it bite you.
+
+# Lesson 1.5 In-Class Exercises
+(As before, we’re not expecting you to finish all of these activities! Pick the ones which are interesting and challenging to you, and feel free to work with the people around you.)
+
+## JavaScript Concepts:
+- Break into groups of ~4 members. Each member is in charge of finding out about a specific javascript concept and writing a small [jsfiddle](https://jsfiddle.net/) that demonstrates it.
+  - Come back together and give quick whiteboard talks within your group -- teach the rest of the group about your concept.
+  - Concepts:
+    - First-Class and Higher Order Functions
+    - Prototypes/Inheritance
+    - Bind, Apply, Call
+    - Closures
+
+## Event Listeners:
+- Much of web development is learning to react to events. As a first foray into event handling, write a small jsfiddle [like this](https://jsfiddle.net/too7t5dd/) that creates a simple html element and responds to an event of your choice. A list of possible events is available [here](https://developer.mozilla.org/en-US/docs/Web/Events).
+
+## Functional Programming:
+- Part of the power of JavaScript is that it is supports imperative (like C), object oriented (like C++ or Java), and functional (like OCaml or Lisp) programming paradigms. Its likely you've run into the first two through previous software classes, but if you are new to functional programming now is a great time to get an introduction
+- Read one or more of the following (in increasing order of read time):
+  - [A Practical Introduction To Functional Programming](https://medium.com/@riteshkeswani/a-practical-introduction-to-functional-programming-javascript-ba5bee2369c2#.z4n0g8oew)
+  - [Introduction to Functional Javascript](https://medium.com/functional-javascript/introduction-to-functional-javascript-45a9dca6c64a#.nq16t3bdp)
+  - [Eloquent Javascript 1st Ed Ch 6: Functional Programming](http://eloquentjavascript.net/1st_edition/chapter6.html)
+- Use what you learned (do some of the following):
+  - Discuss what you learned with a partner
+  - Come up with a simple task such as displaying the current time. Write two small jsfiddles to complete the task: one in an object-oriented fashion, the other in a functional one.
+  - Read through and understand the documentation for some of JavaScript's functional tools (for instance, `Array.prototype.map()` and `Array.prototype.reduce()`) and practice using them in jsfiddle.
+
+##Debugging Exercises
+- Try some or all of these exercises (Please fork the jsfiddles before editing them)
+  - [Exercise 1](https://jsfiddle.net/q0mj0arL/1/)
+  - [Exercise 2](https://jsfiddle.net/tr6Lvu2t/1/)
+  - [Exercise 3](https://jsfiddle.net/1mfruLeq/1/)
+- With a partner or small group...
+	- Write a similar simple debugging exercise
+	- Exchange them
+
+#Further Reading
+##Node Beginner Book
+Read the Node Beginner Book (in `Public/+Courses/Olinjs16/`) up to page 58 (the section marked **Handling file uploads** — the methods used there are old and no longer relevant). This resource ties together a lot of what we covered in class 1 by implementing a basic web server in Node. You'll learn how Node handles browser requests — and how Node is unique — while flexing your newly acquired JavaScript muscle. You should follow along by writing and running the code examples given.
+
+##Style Guide
+Read the [Airbnb Javascript Style Guide](https://github.com/airbnb/javascript/tree/es5-deprecated/es5). Try to incorporate these styles into your work in this class. While the current scripting language standard is ES6, we will be using ES5 styling for the majority of the course.
+
+##More Reading
+This is a fun, well-written article on how naming conventions affect the way we think and code: [Execution in the Kingdom of Nouns](http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html).
