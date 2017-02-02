@@ -8,28 +8,29 @@
 <a name="inclass-05"></a>
 #Lesson 5 In-Class Exercises
 
-### Whiteboarding
+## Whiteboarding
 - On the board, draw a diagram which represents how an AJAX request works. Make sure you represent the client, the server, get/post requests, responses, data which is passed from client to server and from server to client... and what else?
 - On the board, list as many methods for client/server communication as you can and compare/contrast them.
 
-### AJAX readings
+### Real Life Selector Practice
+- We are going to play around with the twitter homepage using jQuery
+- Work in a group and list out all of the commands that you come up with on the whiteboard, next to a description of what it did.
+- First, open [twitter](https://twitter.com) in an incognito tab, you should see a grid of popular tweets. Now click on "view all" in the Moments section.
+- Now lets open up the console and have some fun
+    - Use the elements pane of the console to explore how the page is set up. What are the classes you could use to [**select**](https://learn.jquery.com/using-jquery-core/selecting-elements/) all the tweets? A single tweet? The retweet count on a single tweet?
+    - Select the [**first**](https://api.jquery.com/first/) tweet, change it so that so that it has 9001 likes and -10 retweets
+    - Change the [**text**](https://api.jquery.com/text/) content of that tweet
+    - Attach a [**mouseover**](https://api.jquery.com/mouseover/) event to [**each**](https://api.jquery.com/children/) of the tweets in the whole page.
+    - [**clone**](https://api.jquery.com/clone/) the first tweet, change the image to be one of your choosing and add it back to the DOM [**before**](https://api.jquery.com/before/) the tweet you cloned
+
+## AJAX readings
 - A couple of readings (in ascending order of read time), choose the ones that appeal to you.
   - [learn jQuery: Ajax](https://learn.jquery.com/)
   - [TutorialsPoint jQuery Ajax](http://www.tutorialspoint.com/jquery/jquery-ajax.htm)
   - [jQuery Fundementals: Ajax](http://jqfundamentals.com/chapter/ajax-deferreds)
 
-### Adding HTML to a page using jQuery
+## Adding HTML to a page using jQuery
 - [Sample Exercise](https://jsfiddle.net/swalters4925/e8gzd6h9/1/)
-
-### Real Life Selector Practice
-- We are going to play around with the twitter homepage using jQuery
-- First, open [twitter](https://twitter.com) in an incognito tab, you should see a grid of popular tweets
-- Now lets open up the console and have some fun
-    - Use the elements pane of the console to explore how the page is set up. What are the classes you could use to [**select**](https://learn.jquery.com/using-jquery-core/selecting-elements/) all the tweets? A single tweet? The retweet count on a single tweet?
-    - Change the [**text**](https://api.jquery.com/text/) content of all of the tweet
-    - Attach a [**mouseover**](https://api.jquery.com/mouseover/) event to each of the tweets.
-    - Select the [**first**](https://api.jquery.com/first/) tweet, change it so that so that it has 9001 likes and -10 retweets
-    - [**clone**](https://api.jquery.com/clone/) the first tweet, change the image to be one of your choosing and add it back to the DOM [**before**](https://api.jquery.com/before/) the tweet you cloned
 
 <a name="help-05"></a>
 #Additional Information
