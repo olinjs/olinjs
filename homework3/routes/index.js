@@ -39,7 +39,7 @@ var createToy = function (req,res){
 }
 // create new cat
 var createCat = function (req,res){
-  var myCat = new Cat ({name: rand(catName), age: rand(catAge), colors: randColors(catColor)});
+  var myCat = new Cat ({name: rand(catName), age: rand(catAge), colors: randColors(catColor), toys:[]});
   myCat.save(function (err, myCat){
     if (err) return console.error(err);
   });
