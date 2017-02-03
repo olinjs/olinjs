@@ -1,0 +1,21 @@
+<h1>Jessisca's Burgers</h1>
+
+<h2>Current Ingredients</h2>
+<ul id="ingredient-list">
+  <li id="ingredient-template" style="display:none">
+    <div class="name"></div>
+    <div class="price"></div>
+    <input class="stock" type="checkbox" value="Out of Stock">
+    Out of Stock
+  </li>
+</ul>
+<div id="result">  
+</div>
+<hr>
+<h2>Don't see an ingredient you like?</h2>
+<form id="new-ingredient" action="ingredients" method="POST">
+  Request a New Ingredient: <input type="text" name="ingredient"/> 
+  Price: <input type="text" name="price"/></br>
+  <input type="submit" value="Submit"/>
+</form>
+<div id="result-new"></div>
