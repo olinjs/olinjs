@@ -450,3 +450,100 @@ $ npm i --save lodash
 and then use it in Node: ```var _ = require('lodash');```
 
 Read through the [lodash docs](https://lodash.com/docs) (or check out their [searchable interface](http://devdocs.io/lodash-array/)) to get an idea of some of the useful helper functions
+
+
+# Lesson 6 In-Class Exercises
+
+(We’re not expecting you to finish all of these activities! Pick the ones which are interesting and challenging to you, and feel free to work with the people around you.)
+
+### CSS Debugging Exercises
+
+The file `debugging.css` is a good start to a CSS file, but it could definitely be improved to look a little nicer.  Take a look at `debugging.html` to see how it displays, and fix some of the CSS to make it better according to design principles.  Some things to start with:
+- The text goes all the way to the end of the screen - doesn't look super good
+- Not a lot of whitespace between the italic summary and the main body
+- No formatting on the bullet points make them stick out into the whitespace
+- Might look better if the start of the paragraphs on the italic sumamry and the main body were aligned
+- The text in the main body is pretty squished - increase the space between lines for better visual?
+
+### Make a Webpage According to Spec
+
+Make a webpage for a simple blogging website using HTML and CSS/Sass, either locally or on [jsfiddle](https://jsfiddle.net).  It should have:
+- A navbar at the top of the page
+- A sidebar
+- Blog posts (placeholders)
+
+The sidebar:
+- Think about what a sidebar should contain.  Links to blog entries?  About the author?  Should it scroll with the posts or stay fixed at the top of the page?
+
+The blog posts:
+- Assume every blog post has a banner picture, title, date, and content
+
+Think about the design principles we talked about.  Think about using nice fonts and [web safe colors](http://websafecolors.info/).
+
+### Re-create one of [these](https://philipwalton.github.io/solved-by-flexbox/) Flexbox layouts
+
+Philip Walton has desribed a varity of common css challenges that are now made significantly simpler thanks to flexbox. Give one or two of the examples a try.
+
+### Add error handling to a previous app
+
+We've noticed that a large portion of the cat apps had very little in the way of error handling. If you fall into that category, now would be a great time to go back and use some of the strategies laid out in the README to some of your old code.
+
+### Lodash programming exercise
+
+[Lodash](https://lodash.com) is a very useful utility library that can dramatically simplify your javascript. [Here](https://egghead.io/lessons/core-javascript-introduction-to-lodash) is a great introductory video that demonstrates how useful lodash can be.
+
+Here is a [jsfiddle](https://jsfiddle.net/h9mkaxrz/4/) with inline comments describing the functionality of a program. Fill it it in.
+
+### Modularize some previous non-modular code you've written
+
+Now that you have learned so much on the burger app and in the most recent README, it would be a great time to go back to old projects and refactor it to be more modular.
+
+##Feedback
+When you're done, fill out this [feedback form]() and get started with the homework!
+
+# Before Next Class
+
+## Assignment
+
+You're going to make Twitter! Not quite. But we're going to get closer than you think.
+
+We're going to be a little more open-ended here, describing functionality and user experience rather than specific http endpoints.
+
+### Requirements
+
+A "twote" is a small piece of text written by a user. You can call it whatever you want, but probably not "tweet" for copyright reasons...
+
+- The main page displays:
+    - A list of all twotes, with the most recent at the top
+        - Each twote displays text and the author
+    - A form to post a twote (**Disabled or not visible if user is not logged in**)
+        - Including a display of the logged-in user
+    - A list of all users
+        - Clicking on a user highlights that user's twotes
+    - A logout button
+
+- The login page has:
+    - A form to log in
+        - There is zero authentication! Just enter a username to log in as that user — the user will be created if it doesn't exist. This is clearly not secure, but it'll let us play around with user/session management before we dive into the world of authentication and security starting next class.
+
+- A logged in user can:
+    - Post a twote (the twote will appear at the top of the list without a page refresh)
+    - Delete their twotes (a user can only delete their own twotes and only when logged in)
+    - Logout (with the logout button)
+
+- All actions happen without a page refresh! (Except for redirecting to/from the Login page)
+
+You're also going to make your clone look something like this:
+
+![Example](example.png)
+
+Using CSS! Some big things you should emulate:
+
+- The 2-column display of twotes and users
+- Each twote appears on its own line
+- Add styling to the form! Default forms are ugly
+- Nice fonts (see [Google fonts](https://www.google.com/fonts))
+- Try to follow principles from the reading
+
+When you're done with this homework and the next ([Homework 7](https://github.com/olinjs/olinjs/blob/master/lessons/07-apis-debugging/HOMEWORK.md)), fill out the [Twoter homework survey](). The survey is your submission for Twoter with OAuth.
+
