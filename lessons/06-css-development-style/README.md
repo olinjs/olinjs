@@ -525,6 +525,8 @@ You're going to make Twitter! Not quite. But we're going to get closer than you 
 
 We're going to be a little more open-ended here, describing functionality and user experience rather than specific http endpoints.
 
+This app is the culmination of all the lessons so far (jQuery, Handlebars, Mongo, CSS, etc) and marks the end of this "track" of the basics of web development.  Knowing this, we're expecting this app to look nice and have nice, readable code!
+
 ### Requirements
 
 A "twote" is a small piece of text written by a user. You can call it whatever you want, but probably not "tweet" for copyright reasons...
