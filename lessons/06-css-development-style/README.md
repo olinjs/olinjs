@@ -2,6 +2,24 @@
 
 In this lesson we're going to cover some big ideas that span front-end and back-end development (and life!), and also round out our front-end knowledge by learning about CSS.
 
+<!-- MarkdownTOC autolink="true" autoanchor="true"-->
+
+    - [Separation of Concerns][separation-of-concerns]
+    - [App file structure/hierarchy][app-file-structurehierarchy]
+    - [jQuery and `this`][jquery-and-this]
+    - [CSS][css]
+    - [Less and Sass][less-and-sass]
+    - [Stylesheets][stylesheets]
+    - [Design][design]
+    - [Error Handling][error-handling]
+    - [Debugging][debugging]
+    - [Modularity][modularity]
+- [Lesson 6 In-Class Exercises][lesson-6-in-class-exercises]
+- [Before Class 7 \(Friday 2/10/17\)][before-class-7-friday-21017]
+
+<!-- /MarkdownTOC -->
+
+<a name="separation-of-concerns"></a>
 ## Separation of Concerns
 
 ### Client-side technologies
@@ -16,6 +34,7 @@ This is why websites from the '90s look terrible.
 
 These three technologies embody the principle of _separation of concerns_ — they are each completely responsible for a single aspect of a complex web app.
 
+<a name="app-file-structurehierarchy"></a>
 ## App file structure/hierarchy
 
 Most of you have been using a folder structure like the one below.
@@ -33,6 +52,7 @@ Let's just briefly formalize it:
 
 There's room for variation in the organization of your static content (you may see an **assets** folder containing **images** and other folders if you have many different types of assets) but the other folders are fairly standard, and good for a variety of reasons.
 
+<a name="jquery-and-this"></a>
 ## jQuery and `this`
 
 A brief word on jQuery and the JavaScript variable `this`:
@@ -71,6 +91,7 @@ function clickHandler() {
 
 This is how we operate on the element that was clicked.
 
+<a name="css"></a>
 ## CSS
 
 Open up [Codepen](http://codepen.io/pen/), we're going to learn CSS!
@@ -230,6 +251,7 @@ What this CSS does is specify that links have a red background that becomes gree
 
 As you might imagine, this might get unwieldy after a while, in large stylesheets.  This is one example of a place where using a CSS pre-processer or extension language like Less or Sass comes in handy.
 
+<a name="less-and-sass"></a>
 ## Less and Sass
 
 These are CSS pre-processor languages that allow you to use simpler and more manageable syntax that converts to CSS.  Before class, please install Sass.  If you have Ruby installed, you can follow the [default installation guide](http://sass-lang.com/install).  To bypass the Ruby requirement, you can instead [install node-sass](https://github.com/sass/node-sass).  Also, please read about [Sass features](http://sass-lang.com/guide).  We'll cover some Sass usage in class.
@@ -245,10 +267,12 @@ $ node-sass input.scss output.css
 ```
 Based on whatever the input file is named, and what type it is.
 
+<a name="stylesheets"></a>
 ## Stylesheets
 
 Writing comprehensive CSS is a lot of work to make your webpage look nice.  That's why there are resources for easy use of boilerplate CSS to make your webpages clean and not 90s-esque.  Some of the most popular are [Bootstrap](http://getbootstrap.com/) or its simpler, lightweight friend [Skeleton](http://getskeleton.com/).
 
+<a name="design"></a>
 ## Design
 
 Erik Kennedy (actually Olin '10) wrote a great article on UI design targeted at engineers.
@@ -257,6 +281,7 @@ Erik Kennedy (actually Olin '10) wrote a great article on UI design targeted at 
 
 It's a great read with lots of tips based on lessons learned by the author after hours of practice and analysis. The Medium staff themselves call it "useful"! Read it and keep it as a reference as you design your website. Your sites should look better than the example. Have fun with it!
 
+<a name="error-handling"></a>
 ## Error Handling
 
 By now you've probably seen a lot of errors in your console.
@@ -315,6 +340,7 @@ Whenever possible, you should set the appropriate response status in this way.
 
 #### Joyent has great documentation on error handling in Node [here](https://www.joyent.com/developers/node/design/errors).
 
+<a name="debugging"></a>
 ## Debugging
 
 Learning how to debug is one of the most important things you can get out of learning to program.
@@ -417,6 +443,7 @@ _Starting with something that works_ and _making incremental changes_ are the tw
 
 **Git** is a fantastic enabler in this endeavor!
 
+<a name="modularity"></a>
 ## Modularity
 
 A simple way to keep your code modular and use namespaces to prevent overwriting variable names is through this structure:
@@ -452,6 +479,7 @@ and then use it in Node: ```var _ = require('lodash');```
 Read through the [lodash docs](https://lodash.com/docs) (or check out their [searchable interface](http://devdocs.io/lodash-array/)) to get an idea of some of the useful helper functions
 
 
+<a name="lesson-6-in-class-exercises"></a>
 # Lesson 6 In-Class Exercises
 
 (We’re not expecting you to finish all of these activities! Pick the ones which are interesting and challenging to you, and feel free to work with the people around you.)
@@ -498,13 +526,13 @@ Here is a [jsfiddle](https://jsfiddle.net/h9mkaxrz/4/) with inline comments desc
 
 Now that you have learned so much on the burger app and in the most recent README, it would be a great time to go back to old projects and refactor it to be more modular.
 
-##Feedback
+###Feedback
 When you're done, fill out this [feedback form]() and get started with the homework!
 
-# Before Next Class
+<a name="before-class-7-friday-21017"></a>
+# Before Class 7 (Friday 2/10/17)
 
-## Assignment
-
+### Twoter Part 1
 You're going to make Twitter! Not quite. But we're going to get closer than you think.
 
 We're going to be a little more open-ended here, describing functionality and user experience rather than specific http endpoints.
@@ -545,5 +573,5 @@ Using CSS! Some big things you should emulate:
 - Nice fonts (see [Google fonts](https://www.google.com/fonts))
 - Try to follow principles from the reading
 
-When you're done with this homework and the next ([Homework 7](https://github.com/olinjs/olinjs/blob/master/lessons/07-apis-debugging/HOMEWORK.md)), fill out the [Twoter homework survey](). The survey is your submission for Twoter with OAuth.
+When you're done with this homework, fill out the [Twoter homework survey](). The survey is your submission for Twoter with OAuth.
 
