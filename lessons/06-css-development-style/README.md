@@ -1,13 +1,11 @@
 ## Table of Contents
 <!-- MarkdownTOC -->
 
-- [Lesson 6 - CSS, Development Style and Grace](#lesson-6---css-development-style-and-grace)
-  - [Separation of Concerns](#separation-of-concerns)
-  - [App file structure/hierarchy](#app-file-structurehierarchy)
-  - [jQuery and `this`](#jquery-and-this)
+- [Lesson 6 - CSS and Development Style](#lesson-6---css-and-development-style)
+  - [Quick Review](#quick-review)
   - [CSS](#css)
-  - [Less and Sass](#less-and-sass)
-  - [Stylesheets](#stylesheets)
+  - [Sass](#sass)
+  - [CSS Frameworks](#css-frameworks)
   - [Design](#design)
   - [Error Handling](#error-handling)
   - [Debugging](#debugging)
@@ -17,13 +15,13 @@
 
 <!-- /MarkdownTOC -->
 
-# Lesson 6 - CSS, Development Style and Grace
+# Lesson 6 - CSS and Development Style
 
 In this lesson we're going to cover some big ideas that span front-end and back-end development (and life!), and also round out our front-end knowledge by learning about CSS.
 
-## Separation of Concerns
+## Quick Review
 
-### Client-side technologies
+### Separation of Concerns
 
 - **HTML** specifies the _structure_ and _content_ of a webpage.
 - **CSS** specifies the _presentation_ or _appearance_ of elements on a webpage.
@@ -35,7 +33,7 @@ This is why websites from the '90s look terrible.
 
 These three technologies embody the principle of _separation of concerns_ — they are each completely responsible for a single aspect of a complex web app.
 
-## App file structure/hierarchy
+### App file structure/hierarchy
 
 Most of you have been using a folder structure like the one below.
 Let's just briefly formalize it:
@@ -44,15 +42,15 @@ Let's just briefly formalize it:
 - **/views** - view templates
 - **/public** - all static content
 	- **/images**
-	- **/stylesheets**
-	- **/javascripts**
+	- **/stylesheets** - all CSS
+	- **/javascripts** - client-side javascript
 - **/routes** - all express routes, separated by app module/area
-- **/tests** - for unit-tests
+- **/tests** - for unit-tests (we'll talk about tests later)
 - **/node_modules** - created by `npm`
 
 There's room for variation in the organization of your static content (you may see an **assets** folder containing **images** and other folders if you have many different types of assets) but the other folders are fairly standard, and good for a variety of reasons.
 
-## jQuery and `this`
+### jQuery and `this`
 
 A brief word on jQuery and the JavaScript variable `this`:
 
@@ -77,7 +75,7 @@ function clickHandler() {
 
 Won't do. The selection `$('.my-class')` will always return an array containing every single element in the entire document with the class `my-class`. However, jQuery solves this problem elegantly:
 
-### Every jQuery event handler is passed the element that fired the event as `this`.
+**Every jQuery event handler is passed the element that fired the event as `this`.**
 
 In the example above, `clickHandler` is our event handler. When an element with `my-class` is clicked, jQuery handles the event by calling `clickHandler` and passing the clicked element to the function as `this`. So we can do this:
 
@@ -205,7 +203,7 @@ As the image above shows, the `width` property sets the width of the *content*, 
 This means that `padding` and `border` add to the apparent dimensions of the box.
 We can add the below property to change that:
 
-```css
+```
 box-sizing: border-box;
 ```
 
@@ -249,9 +247,9 @@ What this CSS does is specify that links have a red background that becomes gree
 
 As you might imagine, this might get unwieldy after a while, in large stylesheets.  This is one example of a place where using a CSS pre-processer or extension language like Less or Sass comes in handy.
 
-## Less and Sass
+## Sass
 
-These are CSS pre-processor languages that allow you to use simpler and more manageable syntax that converts to CSS.  Before class, please install Sass.  If you have Ruby installed, you can follow the [default installation guide](http://sass-lang.com/install).  To bypass the Ruby requirement, you can instead [install node-sass](https://github.com/sass/node-sass).  Also, please read about [Sass features](http://sass-lang.com/guide).  We'll cover some Sass usage in class.
+These are CSS pre-processor languages that allow you to use simpler and more manageable syntax that converts to CSS.  If you have Ruby installed, you can follow the [default installation guide](http://sass-lang.com/install) to install Sass.  To bypass the Ruby requirement, you can instead [install node-sass](https://github.com/sass/node-sass).  Also, please read about [Sass features](http://sass-lang.com/guide).  We'll cover some Sass usage in class.
 
 This class is going to focus just on Sass, because it's more widely used than Less, and the two have very similar features with slightly different syntax.  If you're interested in some comparisons between the two, the following articles are optional:
 - [Intro to Less + comparison to Sass](http://www.smashingmagazine.com/2011/09/an-introduction-to-less-and-comparison-to-sass/)
@@ -264,7 +262,7 @@ $ node-sass input.scss output.css
 ```
 Based on whatever the input file is named, and what type it is.
 
-## Stylesheets
+## CSS Frameworks
 
 Writing comprehensive CSS is a lot of work to make your webpage look nice.  That's why there are resources for easy use of boilerplate CSS to make your webpages clean and not 90s-esque.  Some of the most popular are [Bootstrap](http://getbootstrap.com/) or its simpler, lightweight friend [Skeleton](http://getskeleton.com/).
 
