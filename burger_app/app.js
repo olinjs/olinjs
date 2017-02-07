@@ -7,6 +7,7 @@ var exphbs  = require("express-handlebars");
 
 var index = require("./routes/index");
 var getIngredient = require("./routes/getIngredient.js");
+var orders = require("./routes/orders.js");
 var Ingredients = require("./models/ingredientModel");
 var mongoose = require('mongoose');
 
@@ -29,6 +30,11 @@ app.get("/ingredients", getIngredient.ingredients);
 app.post("/postIngredient", getIngredient.addIngredient);
 app.post("/outIngredient", getIngredient.outIngredient);
 app.post("/editIngredient", getIngredient.editIngredient);
+app.get("/order", orders.orders);
+app.post("/checkbox", orders.checkbox);
+app.post("/newOrder",orders.newOrder);
+app.get("/kitchen",orders.showList);
+app.post("/removeOrder",orders.removeOrder);
 
 app.listen(PORT, function() {
   console.log("App running on port:", PORT);
