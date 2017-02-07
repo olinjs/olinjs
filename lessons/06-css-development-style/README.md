@@ -560,4 +560,4 @@ Using CSS! Some big things you should emulate:
 - Nice fonts (see [Google fonts](https://www.google.com/fonts))
 - Try to follow principles from the reading
 
-When you're done with this homework, fill out the [Twoter part 1 homework survey]().
+When you're done with this homework, fill out the [Twoter part 1 homework survey](https://docs.google.com/forms/d/e/1FAIpQLSdQBOwppmjSrhaTcAGwRudRiPH9qzH2GtsHrKhiAwYEtMTtqw/viewform).
