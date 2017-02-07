@@ -515,9 +515,6 @@ Here is a [jsfiddle](https://jsfiddle.net/h9mkaxrz/4/) with inline comments desc
 
 Now that you have learned so much on the burger app and in the most recent README, it would be a great time to go back to old projects and refactor it to be more modular.
 
-###Feedback
-When you're done, fill out this [feedback form]() and get started with the homework!
-
 # Before Class 7 (Friday 2/10/17)
 
 ### Twoter Part 1
