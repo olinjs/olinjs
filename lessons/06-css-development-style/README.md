@@ -560,5 +560,4 @@ Using CSS! Some big things you should emulate:
 - Nice fonts (see [Google fonts](https://www.google.com/fonts))
 - Try to follow principles from the reading
 
-When you're done with this homework, fill out the [Twoter homework survey](). The survey is your submission for Twoter with OAuth.
-
+When you're done with this homework, fill out the [Twoter part 1 homework survey]().
