@@ -1,16 +1,42 @@
 #Lesson 7 - API Design and Sessions
 
 ## README Table of Contents
+* [OAuth](#oauth)
+* [REST](#rest)
 * [APIs](#apis)
 * [Designing APIs](#design-apis)
 * [Accessing APIs with OAuth](#access-apis)
 * [In-Class Activities](#inclass-07)
 * [Homework](#homework-07)
 
-Please read the following Readme and some of the following links on [Oauth](http://www.cubrid.org/blog/dev-platform/dancing-with-oauth-understanding-how-authorization-works/) and [REST](http://www.infoq.com/articles/rest-introduction)
+<a name="oauth"></a>
+##OAuth: What it is and how it works
+
+OAuth, which stands for "Open Authorization" is a simple and standard authentication process that provides users with a way to allow internet users to authorize external websites or applications to access their info without sharing their passwords. OAuth plays two roles in accessing data - **authentication** and **authorization**.
+
+Authentication is handled by assigning two unique values to each application when they are registered with the service. These values are known as a **key** and a **secret**. The key serves as a public identifier for the application, and the secret is used to reversibly encrypt information about an OAuth API request. If the service provider is able to correctly decrypt the data sent along with the request using the secret it has assigned to the application, it considers this verification that the requester is who it says it is. This method of authentication is known as signing.
+
+Authorization occurs after your application has been authenticated by the service, and requires that you redirect the user to their OAuth authorization page. There, the service can authenticate the user using their own auth flow, and ask their permission to give you access to their data. If the users says yes, they are redirected back to you, and you get a special access token that allows you to request data specific to that user.
+
+![Facebook authorization window](./images/facebook.png)
+*Example authorization page for Facebook.*
+
+You'll find that some services like Facebook have different levels of permissions, each of which will give you an access token which only allows access to data within each permission tier.
+
+The full exchange of requests involved in OAuth can be seen in the graphic below. You can read more about OAuth on the [official website](http://oauth.net/).
+
+![OAuth auth flow.](./images/oauth.png)
+*Image via oauth.net*
+
+Please read the following post on OAuth for more detailed information on how authorization works: [Oauth](http://www.cubrid.org/blog/dev-platform/dancing-with-oauth-understanding-how-authorization-works/)
+
+<a name="REST"></a>
+##REST
+
+Please read this introduction on REST to get more information:[REST](http://www.infoq.com/articles/rest-introduction)
 
 <a name="apis"></a>
-##APIs: Your *real* on-ramp to the information superhighway
+##APIs: You're *real* on-ramp to the information superhighway
 
 ![Take it to the moon, take it to the stars.](./images/tothemoon.jpg)
 
@@ -144,27 +170,10 @@ app.use('/api*', function(req, res, next) {
 });
 ```
 
+<a name="access-apis"></a>
 ##Accessing Public APIs with OAuth
 You might have noticed that some of the above APIs are listed as having an OAuth auth scheme, but you probably have no idea what that means. Sometimes, a 3rd party application might want access to private user data, but you can't reasonably expect web service providers to give that information out freely - we need a way for service providers' users to authorize 3d party applications to access their data. OAuth lets us do just that. **Note:** We're going to assume that throughout this course you will only be consuming APIs which require OAuth and not creating them.
 
-###A brief overview of OAuth
-OAuth plays two roles in accessing data - **authentication** and **authorization**.
-
-Authentication is handled by assigning two unique values to each application when they are registered with the service. These values are known as a **key** and a **secret**. The key serves as a public identifier for the application, and the secret is used to reversibly encrypt information about an OAuth API request. If the service provider is able to correctly decrypt the data sent along with the request using the secret it has assigned to the application, it considers this verification that the requester is who it says it is. This method of authentication is known as signing.
-
-Authorization occurs after your application has been authenticated by the service, and requires that you redirect the user to their OAuth authorization page. There, the service can authenticate the user using their own auth flow, and ask their permission to give you access to their data. If the users says yes, they are redirected back to you, and you get a special access token that allows you to request data specific to that user.
-
-![Facebook authorization window](./images/facebook.png)
-*Example authorization page for Facebook.*
-
-You'll find that some services like Facebook have different levels of permissions, each of which will give you an access token which only allows access to data within each permission tier.
-
-The full exchange of requests involved in OAuth can be seen in the graphic below. You can read more about OAuth on the [official website](http://oauth.net/), but I recommend this easy-to-follow, yet [comprehensive overview](http://www.cubrid.org/blog/dev-platform/dancing-with-oauth-understanding-how-authorization-works/), which is the same as the preclass link.
-
-![OAuth auth flow.](./images/oauth.png)
-*Image via oauth.net*
-
-<a name="access-apis"></a>
 ###Signing In with OAuth
 You can also use OAuth to handle user login. You've probably seen websites with "Log in with Google" or "Log in with Facebook" buttons -- those buttons access the Google or Facebook API to sign you in with your Google or Facebook credentials, then save your user information to session just like you would manually. We'll use an NPM package called Passport to handle OAuth-type user login.
 
@@ -285,9 +294,3 @@ When we start working on projects, you might want to have a live version of your
 
 #### Submitting
 When you're done with your app, fill out the [Twoter homework survey](http://goo.gl/forms/u5MDLduyFz). The survey is your submission for homeworks 6 and 7.
-
-#### Preclass Reading and Exercise
-- Read the [Class 8 README](https://github.com/olinjs/olinjs/blob/master/lessons/08-tests-tasks) before next class.
-- Send an email to [olinjs16@gmail.com](olinjs16@gmail.com) with the subject line "Preclass 8" telling us about...
-    - Something in the reading you felt confident about and easily grasped
-    - Something in the reading you're confused about or want to know more about
