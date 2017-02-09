@@ -1,10 +1,27 @@
-# Lesson 6 - CSS, Development Style and Grace
+## Table of Contents
+<!-- MarkdownTOC -->
+
+- [Lesson 6 - CSS and Development Style](#lesson-6---css-and-development-style)
+  - [Quick Review](#quick-review)
+  - [Error Handling](#error-handling)
+  - [Debugging](#debugging)
+  - [Modularity](#modularity)
+  - [CSS](#css)
+  - [Sass](#sass)
+  - [CSS Frameworks](#css-frameworks)
+  - [Design](#design)
+- [Lesson 6 In-Class Exercises](#lesson-6-in-class-exercises)
+- [Before Class 7 \(Friday 2/10/17\)](#before-class-7-friday-21017)
+
+<!-- /MarkdownTOC -->
+
+# Lesson 6 - CSS and Development Style
 
 In this lesson we're going to cover some big ideas that span front-end and back-end development (and life!), and also round out our front-end knowledge by learning about CSS.
 
-## Separation of Concerns
+## Quick Review
 
-### Client-side technologies
+### Separation of Concerns
 
 - **HTML** specifies the _structure_ and _content_ of a webpage.
 - **CSS** specifies the _presentation_ or _appearance_ of elements on a webpage.
@@ -16,7 +33,7 @@ This is why websites from the '90s look terrible.
 
 These three technologies embody the principle of _separation of concerns_ — they are each completely responsible for a single aspect of a complex web app.
 
-## App file structure/hierarchy
+### App file structure/hierarchy
 
 Most of you have been using a folder structure like the one below.
 Let's just briefly formalize it:
@@ -25,15 +42,15 @@ Let's just briefly formalize it:
 - **/views** - view templates
 - **/public** - all static content
 	- **/images**
-	- **/stylesheets**
-	- **/javascripts**
+	- **/stylesheets** - all CSS
+	- **/javascripts** - client-side javascript
 - **/routes** - all express routes, separated by app module/area
-- **/tests** - for unit-tests
+- **/tests** - for unit-tests (we'll talk about tests later)
 - **/node_modules** - created by `npm`
 
 There's room for variation in the organization of your static content (you may see an **assets** folder containing **images** and other folders if you have many different types of assets) but the other folders are fairly standard, and good for a variety of reasons.
 
-## jQuery and `this`
+### jQuery and `this`
 
 A brief word on jQuery and the JavaScript variable `this`:
 
@@ -58,7 +75,7 @@ function clickHandler() {
 
 Won't do. The selection `$('.my-class')` will always return an array containing every single element in the entire document with the class `my-class`. However, jQuery solves this problem elegantly:
 
-### Every jQuery event handler is passed the element that fired the event as `this`.
+**Every jQuery event handler is passed the element that fired the event as `this`.**
 
 In the example above, `clickHandler` is our event handler. When an element with `my-class` is clicked, jQuery handles the event by calling `clickHandler` and passing the clicked element to the function as `this`. So we can do this:
 
@@ -70,6 +87,200 @@ function clickHandler() {
 ```
 
 This is how we operate on the element that was clicked.
+
+## Error Handling
+
+By now you've probably seen a lot of errors in your console.
+Handling errors well is key to writing robust Node apps.
+
+### Operational vs. Programmer
+
+**Operational errors** are problems that the user can experience while running your program that are not caused by errors with your program's code.
+The user's system could be out of memory, or the user could supply invalid input.
+
+**Programmer errors** are bugs in the program code that can be resolved by fixing the code.
+
+Even correct programs cannot avoid all operation errors, so they must handle them correctly.
+It's up to the programmer both to avoid programmer errors (by writing good code and debugging effectively — we'll cover this later), and to _handle_ operational errors as gracefully as possible.
+
+### Asynchronous Error Handling
+
+The standard method signature for a Node callback is this:
+
+```node
+function(err, result) {
+    ...
+}
+```
+
+If there was no error, `err` is `null` and `result` is not.
+Otherwise, `err` is _not_ `null` and result is.
+This is about the simplest way to handle errors:
+
+```node
+function(err, result) {
+    if (err)
+        return console.error(err);
+    ...
+}
+```
+
+We can do much more sophisticated things, from attempting to recover from the error to simply informing the user of the error (`console.error` prints to the server console, so the client is never informed).
+
+Most of our functions are asynchronous (callbacks), so this is a very common way to handle errors in Node.
+We may cover other ways to handle errors in future classes or deep dives.
+
+### Response Status
+
+As we touched on in class 1, there are [many HTTP status codes](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes).
+Express makes it easy to set the status of a response.
+You can simply chain a call to `status` in your response, like this:
+
+```node
+res.status(404).render('error_404', { data })
+...
+res.status(500).json({ error: 'message' })
+```
+
+Whenever possible, you should set the appropriate response status in this way.
+
+#### Joyent has great documentation on error handling in Node [here](https://www.joyent.com/developers/node/design/errors).
+
+## Debugging
+
+Learning how to debug is one of the most important things you can get out of learning to program.
+It's a skill you'll use everywhere, every day.
+You already do.
+
+### Know your entire system
+
+Effectively debugging a system means debugging it in context.
+Your Node webserver runs from your UNIX terminal running on a distribution of Linux, on a computer connected to the internet through a wireless router or ethernet connection.
+To debug effectively, you have to acknowledge that any part of your system could break and cause problems.
+
+### Read error messages and stack traces
+
+Error messages are not bad.
+They exist to help you! Without them, you would have no indication of where to start when something went wrong — your app would just crash.
+
+So you should always read them.
+Focus on the parts of the error message that you understand.
+
+#### _Google error messages!_
+
+#### Stack Traces
+
+When an error means that the app can no longer function consistently, it should be "thrown". A thrown error produces an exception, and an uncaught exception will crash the app. Whenever your server crashes from an exception, you get a stack trace. The stack trace is kind of like a snapshot of the memory the program was using when and where it crashed — it shows the tree of functions containing the function that caused the crash. If the error was a simple syntactical one, Node might point it right out for you:
+
+```bash
+/Users/Enigmoid/Git/olinjs/classes/class06/sessions/app.js:26
+        req.session.counter++;
+        ^^^
+SyntaxError: Unexpected identifier
+    at Module._compile (module.js:439:25)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Function.Module.runMain (module.js:497:10)
+    at startup (node.js:119:16)
+    at node.js:929:3
+```
+
+In this case, we should clearly inspect around line 26 of `app.js`.
+I say around because it's common for the offending line to come _before_ the identified line, but rarely after.
+Syntax errors are usually caught when modules are "compiled" by Node for external use.
+
+Here's another stack trace from a slightly sneakier error:
+
+```bash
+TypeError: Cannot set property 'count' of undefined
+    at /Users/Enigmoid/Git/olinjs/classes/class06/sessions/app.js:25:26
+    at Layer.handle [as handle_request] (/Users/Enigmoid/Git/olinjs/classes/class06/sessions/node_modules/express/lib/router/layer.js:82:5)
+    at next (/Users/Enigmoid/Git/olinjs/classes/class06/sessions/node_modules/express/lib/router/route.js:110:13)
+    at Route.dispatch (/Users/Enigmoid/Git/olinjs/classes/class06/sessions/node_modules/express/lib/router/route.js:91:3)
+    at Layer.handle [as handle_request] (/Users/Enigmoid/Git/olinjs/classes/class06/sessions/node_modules/express/lib/router/layer.js:82:5)
+    at /Users/Enigmoid/Git/olinjs/classes/class06/sessions/node_modules/express/lib/router/index.js:267:22
+    at Function.proto.process_params (/Users/Enigmoid/Git/olinjs/classes/class06/sessions/node_modules/express/lib/router/index.js:321:12)
+    at next (/Users/Enigmoid/Git/olinjs/classes/class06/sessions/node_modules/express/lib/router/index.js:261:10)
+    at Object.<anonymous> (/Users/Enigmoid/Git/olinjs/classes/class06/sessions/node_modules/express-session/index.js:421:7)
+    at Object.immediate._onImmediate (timers.js:372:16)
+```
+
+At some point, you'll probably encounter an error message which mentions `undefined`, like `undefined is not a [function|object]`.
+The broken code (which should be your code) is usually at the top of the stack trace — here we can see that it is still in `app.js`, this time on line 25. The offending line tried to set a property of an undefined property on the `req.cookies` object.
+
+Stack traces are useful to find what line of code caused the app to crash. Depending on the error, this line could be all the information you need, or could be relatively useless. But the computer is always following a set of unbreakable rules, so no information should be completely discounted when bugging.
+
+### Remember that someone else has done this before
+
+Someone else has already found your error and asked about it on the internet — this is why Googling your error messages is so helpful.
+You'll often find an answered StackOverflow question.
+This is the best place to start — error messages are designed to be helpful, but they only contain so much information on their own.
+
+### Know your tools
+
+#### The Server Console
+
+Calls by your Node server to `console.log`, error messages, exceptions, and stack traces go to the server console.
+When you deploy to Heroku, you can access your server console output with `heroku logs`.
+
+#### The Browser Console
+
+When you write and debug front-end JavaScript, all `console.log` calls, error messages, exceptions, and stack traces go to the console in your browser, accessible through the web inspector.
+
+It's easy to go very far down a debugging path only to realize that it was the wrong path.
+One of the most difficult things about debugging is deciding where to start.
+
+### Know that you have full control
+
+The computer doesn't know what you mean, just what you say.
+Programming is an exercise of boiling down your understanding of a problem to something a machine can understand.
+The computer does exactly what you tell it to do, 100% of the time.
+
+_All the time._
+
+This means that no matter what, something you did is always responsible for the behavior of your program.
+In one sense, every error is your fault.
+But more importantly, _you always have complete control_.
+If you can break your program, you can make it run.
+
+_Starting with something that works_ and _making incremental changes_ are the two best ways to maintain an understanding of how the code you write controls the behavior of your program.
+
+**Git** is a fantastic enabler in this endeavor!
+
+## Modularity
+
+A simple way to keep your code modular and use namespaces to prevent overwriting variable names is through this structure:
+
+```node
+var yourNamespace = {
+
+    foo: function() {
+    },
+
+    bar: function() {
+    }
+};
+...
+
+yourNamespace.foo();
+```
+
+Read [this article on a similar design called the module pattern](https://toddmotto.com/mastering-the-module-pattern)
+
+Additionally, you can modularize your code by looking at [naming conventions like BEM](https://css-tricks.com/bem-101/), which is a generally accepted way to keep your CSS classes readable and easily usable.
+
+Another nice way to organize code is to use helper libraries like [**lodash**](https://lodash.com/) or [**underscore**](http://underscorejs.org/).  [This article does a comparison of the two](http://benmccormick.org/2014/11/12/underscore-vs-lodash/) and ends up recommending lodash.  The two have very similar functionalities and syntax.
+
+Install lodash through:
+```bash
+$ {sudo -H} npm i -g npm
+$ npm i --save lodash
+```
+
+and then use it in Node: ```var _ = require('lodash');```
+
+Read through the [lodash docs](https://lodash.com/docs) (or check out their [searchable interface](http://devdocs.io/lodash-array/)) to get an idea of some of the useful helper functions
 
 ## CSS
 
@@ -186,7 +397,7 @@ As the image above shows, the `width` property sets the width of the *content*, 
 This means that `padding` and `border` add to the apparent dimensions of the box.
 We can add the below property to change that:
 
-```css
+```
 box-sizing: border-box;
 ```
 
@@ -230,9 +441,9 @@ What this CSS does is specify that links have a red background that becomes gree
 
 As you might imagine, this might get unwieldy after a while, in large stylesheets.  This is one example of a place where using a CSS pre-processer or extension language like Less or Sass comes in handy.
 
-## Less and Sass
+## Sass
 
-These are CSS pre-processor languages that allow you to use simpler and more manageable syntax that converts to CSS.  Before class, please install Sass.  If you have Ruby installed, you can follow the [default installation guide](http://sass-lang.com/install).  To bypass the Ruby requirement, you can instead [install node-sass](https://github.com/sass/node-sass).  Also, please read about [Sass features](http://sass-lang.com/guide).  We'll cover some Sass usage in class.
+These are CSS pre-processor languages that allow you to use simpler and more manageable syntax that converts to CSS.  If you have Ruby installed, you can follow the [default installation guide](http://sass-lang.com/install) to install Sass.  To bypass the Ruby requirement, you can instead [install node-sass](https://github.com/sass/node-sass).  Also, please read about [Sass features](http://sass-lang.com/guide).  We'll cover some Sass usage in class.
 
 This class is going to focus just on Sass, because it's more widely used than Less, and the two have very similar features with slightly different syntax.  If you're interested in some comparisons between the two, the following articles are optional:
 - [Intro to Less + comparison to Sass](http://www.smashingmagazine.com/2011/09/an-introduction-to-less-and-comparison-to-sass/)
@@ -245,7 +456,7 @@ $ node-sass input.scss output.css
 ```
 Based on whatever the input file is named, and what type it is.
 
-## Stylesheets
+## CSS Frameworks
 
 Writing comprehensive CSS is a lot of work to make your webpage look nice.  That's why there are resources for easy use of boilerplate CSS to make your webpages clean and not 90s-esque.  Some of the most popular are [Bootstrap](http://getbootstrap.com/) or its simpler, lightweight friend [Skeleton](http://getskeleton.com/).
 
@@ -256,200 +467,6 @@ Erik Kennedy (actually Olin '10) wrote a great article on UI design targeted at 
 #### Read [part 1](https://medium.com/@erikdkennedy/7-rules-for-creating-gorgeous-ui-part-1-559d4e805cda#.j6zm0nv7s) and [part 2](https://medium.com/@erikdkennedy/7-rules-for-creating-gorgeous-ui-part-2-430de537ba96#.qeaf9bhlb).
 
 It's a great read with lots of tips based on lessons learned by the author after hours of practice and analysis. The Medium staff themselves call it "useful"! Read it and keep it as a reference as you design your website. Your sites should look better than the example. Have fun with it!
-
-## Error Handling
-
-By now you've probably seen a lot of errors in your console.
-Handling errors well is key to writing robust Node apps.
-
-### Operational vs. Programmer
-
-**Operational errors** are problems that the user can experience while running your program that are not caused by errors with your program's code.
-The user's system could be out of memory, or the user could supply invalid input.
-
-**Programmer errors** are bugs in the program code that can be resolved by fixing the code.
-
-Even correct programs cannot avoid all operation errors, so they must handle them correctly.
-It's up to the programmer both to avoid programmer errors (by writing good code and debugging effectively — we'll cover this later), and to _handle_ operational errors as gracefully as possible.
-
-### Asynchronous Error Handling
-
-The standard method signature for a Node callback is this:
-
-```node
-function(err, result) {
-	...
-}
-```
-
-If there was no error, `err` is `null` and `result` is not.
-Otherwise, `err` is _not_ `null` and result is.
-This is about the simplest way to handle errors:
-
-```node
-function(err, result) {
-	if (err)
-		return console.error(err);
-	...
-}
-```
-
-We can do much more sophisticated things, from attempting to recover from the error to simply informing the user of the error (`console.error` prints to the server console, so the client is never informed).
-
-Most of our functions are asynchronous (callbacks), so this is a very common way to handle errors in Node.
-We may cover other ways to handle errors in future classes or deep dives.
-
-### Response Status
-
-As we touched on in class 1, there are [many HTTP status codes](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes).
-Express makes it easy to set the status of a response.
-You can simply chain a call to `status` in your response, like this:
-
-```node
-res.status(404).render('error_404', { data })
-...
-res.status(500).json({ error: 'message' })
-```
-
-Whenever possible, you should set the appropriate response status in this way.
-
-#### Joyent has great documentation on error handling in Node [here](https://www.joyent.com/developers/node/design/errors).
-
-## Debugging
-
-Learning how to debug is one of the most important things you can get out of learning to program.
-It's a skill you'll use everywhere, every day.
-You already do.
-
-### Know your entire system
-
-Effectively debugging a system means debugging it in context.
-Your Node webserver runs from your UNIX terminal running on a distribution of Linux, on a computer connected to the internet through a wireless router or ethernet connection.
-To debug effectively, you have to acknowledge that any part of your system could break and cause problems.
-
-### Read error messages and stack traces
-
-Error messages are not bad.
-They exist to help you! Without them, you would have no indication of where to start when something went wrong — your app would just crash.
-
-So you should always read them.
-Focus on the parts of the error message that you understand.
-
-#### _Google error messages!_
-
-#### Stack Traces
-
-When an error means that the app can no longer function consistently, it should be "thrown". A thrown error produces an exception, and an uncaught exception will crash the app. Whenever your server crashes from an exception, you get a stack trace. The stack trace is kind of like a snapshot of the memory the program was using when and where it crashed — it shows the tree of functions containing the function that caused the crash. If the error was a simple syntactical one, Node might point it right out for you:
-
-```bash
-/Users/Enigmoid/Git/olinjs/classes/class06/sessions/app.js:26
-		req.session.counter++;
-		^^^
-SyntaxError: Unexpected identifier
-    at Module._compile (module.js:439:25)
-    at Object.Module._extensions..js (module.js:474:10)
-    at Module.load (module.js:356:32)
-    at Function.Module._load (module.js:312:12)
-    at Function.Module.runMain (module.js:497:10)
-    at startup (node.js:119:16)
-    at node.js:929:3
-```
-
-In this case, we should clearly inspect around line 26 of `app.js`.
-I say around because it's common for the offending line to come _before_ the identified line, but rarely after.
-Syntax errors are usually caught when modules are "compiled" by Node for external use.
-
-Here's another stack trace from a slightly sneakier error:
-
-```bash
-TypeError: Cannot set property 'count' of undefined
-    at /Users/Enigmoid/Git/olinjs/classes/class06/sessions/app.js:25:26
-    at Layer.handle [as handle_request] (/Users/Enigmoid/Git/olinjs/classes/class06/sessions/node_modules/express/lib/router/layer.js:82:5)
-    at next (/Users/Enigmoid/Git/olinjs/classes/class06/sessions/node_modules/express/lib/router/route.js:110:13)
-    at Route.dispatch (/Users/Enigmoid/Git/olinjs/classes/class06/sessions/node_modules/express/lib/router/route.js:91:3)
-    at Layer.handle [as handle_request] (/Users/Enigmoid/Git/olinjs/classes/class06/sessions/node_modules/express/lib/router/layer.js:82:5)
-    at /Users/Enigmoid/Git/olinjs/classes/class06/sessions/node_modules/express/lib/router/index.js:267:22
-    at Function.proto.process_params (/Users/Enigmoid/Git/olinjs/classes/class06/sessions/node_modules/express/lib/router/index.js:321:12)
-    at next (/Users/Enigmoid/Git/olinjs/classes/class06/sessions/node_modules/express/lib/router/index.js:261:10)
-    at Object.<anonymous> (/Users/Enigmoid/Git/olinjs/classes/class06/sessions/node_modules/express-session/index.js:421:7)
-    at Object.immediate._onImmediate (timers.js:372:16)
-```
-
-At some point, you'll probably encounter an error message which mentions `undefined`, like `undefined is not a [function|object]`.
-The broken code (which should be your code) is usually at the top of the stack trace — here we can see that it is still in `app.js`, this time on line 25. The offending line tried to set a property of an undefined property on the `req.cookies` object.
-
-Stack traces are useful to find what line of code caused the app to crash. Depending on the error, this line could be all the information you need, or could be relatively useless. But the computer is always following a set of unbreakable rules, so no information should be completely discounted when bugging.
-
-### Remember that someone else has done this before
-
-Someone else has already found your error and asked about it on the internet — this is why Googling your error messages is so helpful.
-You'll often find an answered StackOverflow question.
-This is the best place to start — error messages are designed to be helpful, but they only contain so much information on their own.
-
-### Know your tools
-
-#### The Server Console
-
-Calls by your Node server to `console.log`, error messages, exceptions, and stack traces go to the server console.
-When you deploy to Heroku, you can access your server console output with `heroku logs`.
-
-#### The Browser Console
-
-When you write and debug front-end JavaScript, all `console.log` calls, error messages, exceptions, and stack traces go to the console in your browser, accessible through the web inspector.
-
-It's easy to go very far down a debugging path only to realize that it was the wrong path.
-One of the most difficult things about debugging is deciding where to start.
-
-### Know that you have full control
-
-The computer doesn't know what you mean, just what you say.
-Programming is an exercise of boiling down your understanding of a problem to something a machine can understand.
-The computer does exactly what you tell it to do, 100% of the time.
-
-_All the time._
-
-This means that no matter what, something you did is always responsible for the behavior of your program.
-In one sense, every error is your fault.
-But more importantly, _you always have complete control_.
-If you can break your program, you can make it run.
-
-_Starting with something that works_ and _making incremental changes_ are the two best ways to maintain an understanding of how the code you write controls the behavior of your program.
-
-**Git** is a fantastic enabler in this endeavor!
-
-## Modularity
-
-A simple way to keep your code modular and use namespaces to prevent overwriting variable names is through this structure:
-
-```node
-var yourNamespace = {
-
-    foo: function() {
-    },
-
-    bar: function() {
-    }
-};
-...
-
-yourNamespace.foo();
-```
-
-Read [this article on a similar design called the module pattern](https://toddmotto.com/mastering-the-module-pattern)
-
-Additionally, you can modularize your code by looking at [naming conventions like BEM](https://css-tricks.com/bem-101/), which is a generally accepted way to keep your CSS classes readable and easily usable.
-
-Another nice way to organize code is to use helper libraries like [**lodash**](https://lodash.com/) or [**underscore**](http://underscorejs.org/).  [This article does a comparison of the two](http://benmccormick.org/2014/11/12/underscore-vs-lodash/) and ends up recommending lodash.  The two have very similar functionalities and syntax.
-
-Install lodash through:
-```bash
-$ {sudo -H} npm i -g npm
-$ npm i --save lodash
-```
-
-and then use it in Node: ```var _ = require('lodash');```
-
-Read through the [lodash docs](https://lodash.com/docs) (or check out their [searchable interface](http://devdocs.io/lodash-array/)) to get an idea of some of the useful helper functions
 
 
 # Lesson 6 In-Class Exercises
@@ -498,16 +515,14 @@ Here is a [jsfiddle](https://jsfiddle.net/h9mkaxrz/4/) with inline comments desc
 
 Now that you have learned so much on the burger app and in the most recent README, it would be a great time to go back to old projects and refactor it to be more modular.
 
-##Feedback
-When you're done, fill out this [feedback form]() and get started with the homework!
+# Before Class 7 (Friday 2/10/17)
 
-# Before Next Class
-
-## Assignment
-
+### Twoter Part 1
 You're going to make Twitter! Not quite. But we're going to get closer than you think.
 
 We're going to be a little more open-ended here, describing functionality and user experience rather than specific http endpoints.
+
+This app is the culmination of all the lessons so far (jQuery, Handlebars, Mongo, CSS, etc) and marks the end of this "track" of the basics of web development.  Knowing this, we're expecting this app to look nice and have nice, readable code!
 
 ### Requirements
 
@@ -545,5 +560,4 @@ Using CSS! Some big things you should emulate:
 - Nice fonts (see [Google fonts](https://www.google.com/fonts))
 - Try to follow principles from the reading
 
-When you're done with this homework and the next ([Homework 7](https://github.com/olinjs/olinjs/blob/master/lessons/07-apis-debugging/HOMEWORK.md)), fill out the [Twoter homework survey](). The survey is your submission for Twoter with OAuth.
-
+When you're done with this homework, fill out the [Twoter part 1 homework survey](https://docs.google.com/forms/d/e/1FAIpQLSdQBOwppmjSrhaTcAGwRudRiPH9qzH2GtsHrKhiAwYEtMTtqw/viewform).
