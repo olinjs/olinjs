@@ -14,7 +14,7 @@ module.exports = {
   }
 ```
 
-To get your ID and App Secret, go to the [Facebook developers page](https://developers.facebook.com/) and go to "My Apps" -> "Add a New App".  Choose website, and enter a name for your app.  
+To get your ID and App Secret, go to the [Facebook developers page](https://developers.facebook.com/). Sign up for an account if you don't have one already, and go to "My Apps" in the top right -> "Add a New App".  Choose website, and enter a name for your app.  
 
 Ignore the SDK step, and enter `localhost:3000` for the site URL.  
 
