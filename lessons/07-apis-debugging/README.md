@@ -33,7 +33,18 @@ Please read the following post on OAuth for more detailed information on how aut
 <a name="REST"></a>
 ##REST
 
-Please read this introduction on REST to get more information:[REST](http://www.infoq.com/articles/rest-introduction)
+REST, short for REpresentational State Transfer, is an architecture style for designing a web service. As a design pattern for how clients and servers should work, RESTful web services make requests to a URI which will retrieve a response that may be in XML, HTML, JSON, etc. with fast performance, reliability and the ability to grow.  
+
+Six Guiding Constraints of RESTful system:
+1. Client-Server: Separate user interface concerns from data storage concerns to help user interfaces be applicable for multiple platforms and server components to be scalable.
+2. Stateless: No client context should be stored on server during requests in client-server communication process. All info needed is in one request and session state is stored in the client
+3. Cacheable: Caching prevents needing to generate the same response twice, which improves speed and scalability.
+4. Layered system: Multiple layers of grouped components that provide functions and services that support functions and services of higher layers to enable load balancing, providing shared caches and other abilities that improve system scalability.
+5. Code on demand: Quote from [wiki](https://en.wikipedia.org/wiki/Representational_state_transfer) - "Servers can temporarily extend or customize the functionality of a client by the transfer of executable code."
+6. Uniform Interface: Follow a set of principles that include giving everything an ID, linking things together, using standard methods, having resources with multiple representations and having self-descriptive messages.
+
+There's so much more to learn about REST. Please read this introduction on REST to get more information on the principles in which RESTful APIs follow: [REST](http://www.infoq.com/articles/rest-introduction)
+
 
 <a name="apis"></a>
 ##APIs: You're *real* on-ramp to the information superhighway
@@ -287,10 +298,10 @@ This week we're going to be using Twoter as a base for your exercise and ask you
 6.  **DO NOT PUSH YOUR OAUTH KEYS TO GITHUB**
 
 ###### Getting set up with FB OAuth
-In order to use Passport with Facebook, you'll need an application ID and secret key. You can get these by signing up as a developer on [Facebook's developer website](https://developers.facebook.com/) and creating a new application (under 'My Apps'). The only setting you will need to change for this application is to set 'Site URL' to `http://localhost:3000` so Facebook knows where to redirect OAuth requests. Note that when you deploy to Heroku, you will need to change this to your apps `herokuapp.com` address.
+In order to use Passport with Facebook, you'll need an application ID and secret key. You can get these by signing up as a developer on [Facebook's developer website](https://developers.facebook.com/) and creating a new application (under 'My Apps'). The only setting you will need to change for this application is to set 'Site URL' to `http://localhost:3000` so Facebook knows where to redirect OAuth requests. Note that when you deploy to Heroku, you will need to change this to your apps `herokuapp.com` address, but we'll get to that later.
 
 When we start working on projects, you might want to have a live version of your site deployed while you continue to work on it locally. In order to do this, you might consider having two Facebook applications: `my-app` and `my-app-dev`. Then you can set up your local application to use `my-app-dev`, and your deployed site to use `my-app`.
 
 
 #### Submitting
-When you're done with your app, fill out the [Twoter homework survey](http://goo.gl/forms/u5MDLduyFz). The survey is your submission for homeworks 6 and 7.
+When you're done with your app, fill out the [Twoter homework survey](https://docs.google.com/forms/d/e/1FAIpQLSd2qC2OnpQatGZuVeC4SQbt05GwDwJb_a7BU3NhNIw_BH8KJw/viewform).
