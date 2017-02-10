@@ -295,7 +295,6 @@ This week we're going to be using Twoter as a base for your exercise and ask you
 3.  **DO NOT PUSH YOUR OAUTH KEYS TO GITHUB**
 4.  Only display Twotes on `/` if the user has been authenticated
 5.  Try to keep all of you Passport logic out of `app.js` like we've been doing with all of our other routes. How might you go about this?
-6.  Don't push to Heroku until we've had a chance to evaluate the functionality of Homework 6 separately. We will notify you when you can deploy.
 6.  **DO NOT PUSH YOUR OAUTH KEYS TO GITHUB**
 
 ###### Getting set up with FB OAuth
