@@ -9,9 +9,10 @@ Your teachers are Bill Wong and Cynthia Chen, with NINJAs Austin Greene, Brenna 
 
 ### Office Hours:
 - Zoher + Austin: 7-9 Mon
+- Brenna: 7-9 Wed
 - Zoher: 7-9 Thurs
 - Austin: 6-8 Thurs
-- Brenna: 7-9 Wed/Sun
+- Brenna: 2-4 Sun
 
 ### Course Learning Goals
 Students will improve their abilities to
