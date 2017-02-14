@@ -181,4 +181,4 @@ If you're done, start the homework!
 
 # Before Class 9
 ### Assignment
-Using the preclass and inclass exercises as examples, set up a test environment and write tests for Twoter or for the burger app. Then fill out the [Homework Survey]().
+Using the preclass and inclass exercises as examples, set up a test environment and write tests for Twoter. Then fill out the [Homework Survey]().
