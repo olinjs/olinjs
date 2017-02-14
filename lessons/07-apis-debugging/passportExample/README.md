@@ -14,13 +14,15 @@ module.exports = {
   }
 ```
 
-To get your ID and App Secret, go to the [Facebook developers page](https://developers.facebook.com/) and go to "My Apps" -> "Add a New App".  Choose website, and enter a name for your app.  
+To get your ID and App Secret, go to the [Facebook developers page](https://developers.facebook.com/). Sign up for an account if you don't have one already, and go to "My Apps" in the top right -> "Add a New App".  Choose website, and enter a name for your app.  
 
 Ignore the SDK step, and enter `localhost:3000` for the site URL.  
 
 Then, if you click "Skip Quick Start" at the top of the page, it will direct you to your app dashboard.  
 
-Select **Settings** from the sidebar menu and go to the **Advanced** tab.  
+In the dashboard, at the bottom left column **Product Settings**, click **+Add Product**
+
+Add **facebook Login**
 
 Scroll down to **Client OAuth Settings** and enable **Embedded Browser OAuth Login**.  In the box for **Valid OAuth redirect URIs**, enter `localhost:3000`.  Save changes
 

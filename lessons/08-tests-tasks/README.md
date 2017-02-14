@@ -1,12 +1,30 @@
+## Table of Contents
+<!-- MarkdownTOC -->
+
+- [Lesson 8 - Testing and Task Running](#lesson-8---testing-and-task-running)
+  - [Testing Philosophy](#testing-philosophy)
+  - [Types of Tests](#types-of-tests)
+  - [Test Driven Development \(TDD\)](#test-driven-development-tdd)
+  - [Testing Fundamentals](#testing-fundamentals)
+  - [Server-Side Testing with Mocha and Chai](#server-side-testing-with-mocha-and-chai)
+  - [Client-Side Testing with Karma](#client-side-testing-with-karma)
+  - [Running Tasks with `npm`](#running-tasks-with-npm)
+- [Lesson 8 In-Class Exercises](#lesson-8-in-class-exercises)
+- [Before Class 9](#before-class-9)
+
+<!-- /MarkdownTOC -->
+
+
 #Lesson 8 - Testing and Task Running
 
-##What is Testing?
+## Testing Philosophy
+###What is Testing?
 
 As you might expect, testing involves observing components of a system in use to ensure that they are working as they should or, if they aren't working, to help diagnose where they're failing and why.
 
 Most of you have probably have heard of software testing before -- you might be thinking of lots of print statements to see if things are equal, and a process which just takes a lot of time and isn't that important. Not so.
 
-##Why Test?
+###Why Test?
 
 Obviously testing helps catch bugs and make sure your code works, but it also provides other benefits in terms of overall code quality. Having a good test suite for a project increases maintainability as it becomes harder to introduce new bugs in new versions without breaking tests. Additionally, high quality code tends to be very well encapsulated, and well encapsulated code tends to be easier to test. That said, when you sit down to test something and realize that the test is going to be complicated to write, consider first refactoring the code you are testing so you end up with several tests that are all easier to write, and better code in general as a result.
 
@@ -48,7 +66,7 @@ The client-server divide causes problems when writing clientside unit tests. For
 
 As you can see, you have tons of choices when setting up a JavaScript testing environment. We'll proceed using an environment we recommend, but it really is only a recommendation -- when you start a new project, it's a good idea to survey your testing options to see what will be the best fit.
 
-##Getting Started with Mocha and Chai for Server-Side Testing
+##Server-Side Testing with Mocha and Chai
 
 That was a lot of high-level explanation of what we are trying to do, why, and what tools we'll be using, so now it's time to get into setting up our testing environment, starting with server-side tests, which are generally simpler.
 
@@ -151,3 +169,32 @@ The `cover-mocha` script also shows how to generate server-side code coverage us
   ...
 }
 ```
+
+
+# Lesson 8 In-Class Exercises
+
+### Burger App Testing:
+With a member of the teaching team and/or in small groups, talk through and implement different tests that you could have for the burger app.
+
+### Cat App Testing:
+We've built a testing framework for the cat app with a few example tests (the app and test suite are in the subdirectory `inclass`). Follow the instructions in `inclass/README.md` to get set up, then...
+- Add tests for the rest of the cat app.
+  - We've set up a tool called supertest for testing the routes modules; those tests live in `test/server/appSpec.js`. Check out the supertest documentation on Github or npm to learn more.
+- "Break" the cat app source code in several places to make sure your tests aren't passing when there are problems.
+- Trade cat apps with someone else and try to create a bug in the existing cat app code which their tests won't catch.
+
+### Task running:
+- We've added a code quality checker ([jshint](https://www.npmjs.com/package/jshint)), and we've fixed the cat app so it passes the task.
+  - Remove a semicolon at the end of a line somewhere in the code, then run `npm run jshint` -- jshint should catch the mistake for you!
+  - Now, add a style checker (e.g. [jscs](https://www.npmjs.com/package/jscs)), and fix your cat app code so it passes the style check.
+  - If you're interested, add a minification/bundling task, or a different task of your choice.
+- So far you've been running your tests manually with `npm test`... might be getting annoying by now. Fortunately, there are ways to run your test suite whenever you push a branch to Github or whenever your code changes!
+  - Set up [npm-watch](https://github.com/grncdr/npm-watch), a module which will run `npm test` when files you specify change.
+  - Challenge: Read about continuous integration and work through this [Travis CI tutorial](https://github.com/dwyl/learn-travis).
+- We've been using npm to run our tasks for the sake of simplicity (we're already familiar with the package.json file), but there are other task runners out there. [Check out this article](https://ponyfoo.com/articles/choose-grunt-gulp-or-npm) which compares npm to Grunt and Gulp (two other common task runners).
+  - Challenge: make a copy of the `inclass` directory and replace npm with a different task runner (e.g. grunt or gulp). What's different? Easier? Harder?
+- Many editors support code quality plugins! Try adding a linter (jshint is an option, as are eslint and jslint) to your editor of choice.
+
+# Before Class 9
+### Assignment
+Using the preclass and inclass exercises as examples, set up a test environment and write tests for Twoter. Then fill out the [Homework Survey](https://docs.google.com/forms/d/e/1FAIpQLSfZz_oUjcO5IWfwdq82ucR7_fZCiw_eVbvJlXcPdpiXY3rq0A/viewform).
