@@ -1,12 +1,30 @@
+## Table of Contents
+<!-- MarkdownTOC -->
+
+- [Lesson 8 - Testing and Task Running](#lesson-8---testing-and-task-running)
+  - [Testing Philosophy](#testing-philosophy)
+  - [Types of Tests](#types-of-tests)
+  - [Test Driven Development \(TDD\)](#test-driven-development-tdd)
+  - [Testing Fundamentals](#testing-fundamentals)
+  - [Server-Side Testing with Mocha and Chai](#server-side-testing-with-mocha-and-chai)
+  - [Client-Side Testing with Karma](#client-side-testing-with-karma)
+  - [Running Tasks with `npm`](#running-tasks-with-npm)
+- [Lesson 8 In-Class Exercises](#lesson-8-in-class-exercises)
+- [Before Class 9](#before-class-9)
+
+<!-- /MarkdownTOC -->
+
+
 #Lesson 8 - Testing and Task Running
 
-##What is Testing?
+## Testing Philosophy
+###What is Testing?
 
 As you might expect, testing involves observing components of a system in use to ensure that they are working as they should or, if they aren't working, to help diagnose where they're failing and why.
 
 Most of you have probably have heard of software testing before -- you might be thinking of lots of print statements to see if things are equal, and a process which just takes a lot of time and isn't that important. Not so.
 
-##Why Test?
+###Why Test?
 
 Obviously testing helps catch bugs and make sure your code works, but it also provides other benefits in terms of overall code quality. Having a good test suite for a project increases maintainability as it becomes harder to introduce new bugs in new versions without breaking tests. Additionally, high quality code tends to be very well encapsulated, and well encapsulated code tends to be easier to test. That said, when you sit down to test something and realize that the test is going to be complicated to write, consider first refactoring the code you are testing so you end up with several tests that are all easier to write, and better code in general as a result.
 
@@ -48,7 +66,7 @@ The client-server divide causes problems when writing clientside unit tests. For
 
 As you can see, you have tons of choices when setting up a JavaScript testing environment. We'll proceed using an environment we recommend, but it really is only a recommendation -- when you start a new project, it's a good idea to survey your testing options to see what will be the best fit.
 
-##Getting Started with Mocha and Chai for Server-Side Testing
+##Server-Side Testing with Mocha and Chai
 
 That was a lot of high-level explanation of what we are trying to do, why, and what tools we'll be using, so now it's time to get into setting up our testing environment, starting with server-side tests, which are generally simpler.
 
