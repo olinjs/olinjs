@@ -1,0 +1,38 @@
+<h1>Twotter</h1>
+
+<div id="log-in-out">
+<a href="/{{loggedIn}}">{{loggedIn}}</a>
+</div>
+
+<div id="new-twote">
+	<h3>Twote</h3>
+	<form id="new-twote-form" method="POST">
+		<input type="text" name="twote-text">
+		<input type="submit" name="make-twote">
+	</form>
+</div>
+
+<div id="sidebar">
+	<h2>Users</h2>
+	<ul id="users">
+	{{#each users}}
+		<li id="user-template">
+			<div class="user">{{this.username}}</div>
+		</li>
+	{{/each}}
+	</ul>
+</div>
+
+<div id="twote-display">
+	<h2>Twotes</h2>
+	<ul id="twotes">
+	{{#each twotes}}
+		<li id="twote-template">
+			<div class="twote-content">{{this.content}}</div>
+			<div class="twote-author">{{this.username}}</div>
+			<input type="checkbox" name="delete-twote" onclick="onDeletedTwote()">
+		</li>
+	{{/each}}
+	</ul>
+</div>
+
