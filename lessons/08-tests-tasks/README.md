@@ -173,15 +173,15 @@ The `cover-mocha` script also shows how to generate server-side code coverage us
 
 # Lesson 8 In-Class Exercises
 
+### Burger App Testing:
+With a member of the teaching team and/or in small groups, talk through and implement different tests that you could have for the burger app.
+
 ### Cat App Testing:
 We've built a testing framework for the cat app with a few example tests (the app and test suite are in the subdirectory `inclass`). Follow the instructions in `inclass/README.md` to get set up, then...
 - Add tests for the rest of the cat app.
   - We've set up a tool called supertest for testing the routes modules; those tests live in `test/server/appSpec.js`. Check out the supertest documentation on Github or npm to learn more.
 - "Break" the cat app source code in several places to make sure your tests aren't passing when there are problems.
 - Trade cat apps with someone else and try to create a bug in the existing cat app code which their tests won't catch.
-
-### Burger App Testing:
-With a member of the teaching team and/or in small groups, talk through and implement different tests that you could have for the burger app.
 
 ### Task running:
 - We've added a code quality checker ([jshint](https://www.npmjs.com/package/jshint)), and we've fixed the cat app so it passes the task.
@@ -197,4 +197,4 @@ With a member of the teaching team and/or in small groups, talk through and impl
 
 # Before Class 9
 ### Assignment
-Using the preclass and inclass exercises as examples, set up a test environment and write tests for Twoter. Then fill out the [Homework Survey]().
+Using the preclass and inclass exercises as examples, set up a test environment and write tests for Twoter. Then fill out the [Homework Survey](https://docs.google.com/forms/d/e/1FAIpQLSfZz_oUjcO5IWfwdq82ucR7_fZCiw_eVbvJlXcPdpiXY3rq0A/viewform).
