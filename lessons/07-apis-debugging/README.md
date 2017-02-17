@@ -286,7 +286,7 @@ If you have finished all of the above, start the homework for next time (adding 
 One of the great features of OAuth is that it allows us to use another service to authenticate users of our service. This means we can piggy back on someone else to handle the hard parts of signing in to a service. The library `Passport` makes this really easy, if not a bit complicated.
 
 #### Assignment
-Read a little bit [about Passport](https://github.com/jaredhanson/passport/blob/master/README.md#passport), and then [this tutorial](http://mherman.org/blog/2013/11/10/social-authentication-with-passport-dot-js) they've linked in the documentation. You should aim to understand how to integrate Passport into an Express application to handle user sign in. Don't get hung up on the term 'Strategy,' it's just Passport's way of saying 'method of authentication.'
+Read a little bit [about Passport](https://github.com/jaredhanson/passport/blob/master/README.md#passport), and then [this tutorial](http://mherman.org/blog/2013/11/10/social-authentication-with-passport-dot-js) they've linked in the documentation. You should aim to understand how to integrate Passport into an Express application to handle user sign in. Don't get hung up on the term 'Strategy,' it's just Passport's way of saying 'method of authentication.'Here is a more in-depth blog and github project for full passport and mongoose integration: [github](https://github.com/mjhea0/passport-local-express4) and [blog post](http://mherman.org/blog/2015/01/31/local-authentication-with-passport-and-express-4/#.WKZhG_ErJCU)
 
 This week we're going to be using Twoter as a base for your exercise and ask you to do the following things:
 
