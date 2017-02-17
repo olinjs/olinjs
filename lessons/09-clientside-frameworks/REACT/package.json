@@ -1,0 +1,22 @@
+{
+  "name": "react-tutorial",
+  "version": "1.0.0",
+  "description": "Starting code for react tutorial.",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Cynthia Chen for Olin.js 2016",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "path": "^0.12.7",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  },
+  "devDependencies": {
+    "react-dom": "^15.4.2"
+  }
+}

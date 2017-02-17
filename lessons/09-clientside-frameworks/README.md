@@ -68,34 +68,44 @@ Riot | https://github.com/muut/riotjs | https://muut.com/riotjs/
 
 Every framework has different features and organizational structures. Best way to understand these differences is to visit the webpage of the framework and just try to implement some very basic system in the framework. Let's look into more detail as to what Angular and React entail.
 
+
 ####Angular:
 
 Angular is developed by Google and has as its chief aim to make html what it would be if it was created today. It has several interesting qualities such as html directives. A primary focus of angular is to build for testability and it has functionality to help enable exactly that.
 
-> Highlight - Two-way data binding: Angular has event listeners attached to data changes in an application; whether it is by the user or by the database, Angular knows to update all relational content. Two-way data binding also reduces the amount of code needed to develop sleek interaction and content transitions.
+ **Highlight** - Two-way data binding: Angular has event listeners attached to data changes in an application; whether it is by the user or by the database, Angular knows to update all relational content. Two-way data binding also reduces the amount of code needed to develop sleek interaction and content transitions.
+
 
 ####React
 Developed by Facebook and focuses on the view part of MVC. Mission statement is to allow users to create large applications with data that changes over time. Allows its views to update as the data changes.
 
->Highlight - Virtual DOM: React works by creating a virtual DOM in pure JavaScript that acts as an intermediate representation of the DOM. This way, React is able to create a diff of your active DOM and your virtual DOM to decide which elements to change, thereby providing great rendering performance.
+**Highlight** - Virtual DOM: React works by creating a virtual DOM in pure JavaScript that acts as an intermediate representation of the DOM. This way, React is able to create a diff of your active DOM and your virtual DOM to decide which elements to change, thereby providing great rendering performance.
 
 ##Approaches to learning a framework
 As you almost certainly are aware, for any material (such as a framework) there are dozens of ways to learn a framework. A big part of the upcoming lab is learning a framework and presenting on what you found effective in learning that framework. There are a couple of approaches you can take to learning any new framework or library and we will be going over a few of them here.
 
-###Documentation
+**Documentation**
+
 Any framework or library will always have documentation that you can read through to understand the independent functions and components. If done well, this documentation can be useful towards helping you understand the options available to you, as well as being vital as a quick check on the signature of functions and such. The drawback of these is that documentation is often poor, technical, and doesn't give a very good high level idea of the patterns of the framework.
 
-###Third-Party Explanations / Courses
+**Third-Party Explanations / Courses**
+
 For lots of popular frameworks, there are often lots of people who have created excellent walkthroughs of the framework. They (often) do a good job of taking the listener through a logical explanation of the framework, building on top of content previously explained, and showing how you can build an actual application with the framework. These can, however, take some time to go through, cost money, and depending on your skill/ familiarity they can feel too fast or too slow. You should be able to find plenty by simply Googling "____ tutorial" but if you are stuck, here are some popular possibilities:
 - https://egghead.io/ (Angular and React)
 - https://www.codeschool.com/ (Backbone, Ember, & Angular)(warning: paid service)
 - http://emberjs.com/guides/ (Ember)
 - http://arturadib.com/hello-backbonejs/ (Backbone)
 
-###Sample Apps
+
+**Sample Apps**
+
 There are applications that are written specifically as example applications to show how to put an application together with actual functionality. These can be found often from the framework publishers themselves, but also from people who just want to share. One excellent page that has a sample app for many frameworks is: http://todomvc.com/
 
 Additionally, if the framework is popular enough, it likely also has hundreds of actual applications that have been written in the framework and are publically available. All these can be sources of learning from experts who likely are very familiar with the framework. They can, however, be very hard to dig through and are by no means necessarily well done or structured so you shouldn't take them as the only or best way to use the framework.
+
+##REACT
+**For this semester, we are going to be utilizing React as our client-side framework. React is widely used by software companies, and is extremely efficient due to the fact that it creates its own virtual DOM. Read and follow the tutorial in the following readme: [REACT](./REACT/README.md)**
+
 
 <a name="inclass-09"></a>
 
@@ -182,7 +192,7 @@ If you're done, start thinking about how you'll build your todo app for homework
 <a name="homework-09"></a>
 
 ----------------------
-# Before Class 10 (Tuesday 2/21/2017)
+# Before Class 10 (Friday 2/24/2017)
 
 #### Assignment
 Create a ToDo List App using a fronted framework, as for example shown [here](http://todomvc.com/examples/angularjs/#/), using Angular or React. Think about what routes your API needs to include for this application to function. Your app should be able to:
