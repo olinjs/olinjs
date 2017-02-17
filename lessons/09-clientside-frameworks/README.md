@@ -6,7 +6,10 @@
 * [Homework](#homework-09)
 
 <a name="client-side"></a>
+
+----------------------
 ##Introduction
+
 So far we have seen how to organize an increasingly complex system of components on our node server.
 We will now take a side step to discuss another organizational system in which instead of having lot of structure on the **server**, we have that structure on the **client**, providing a structure (a "framework") for organizing and manipulating the user interface.
 
@@ -65,21 +68,16 @@ Riot | https://github.com/muut/riotjs | https://muut.com/riotjs/
 
 Every framework has different features and organizational structures. Best way to understand these differences is to visit the webpage of the framework and just try to implement some very basic system in the framework. Let's look into more detail as to what Angular and React entail.
 
-###Angular
-Angular is developed by Google and has as its chief aim to make html what it would be if it was created today.
-It has several interesting qualities such as html directives.
-A primary focus of angular is to build for testability and it has functionality to help enable exactly that.
+####Angular:
 
-####Highlight - Two-way data binding
-Angular uses has event listeners attached to data changes in an application; whether it is by the user or by the database, Angular knows to update all relational content. Two-way data binding also reduces the amount of code needed to develop sleek interaction and content transitions.
+Angular is developed by Google and has as its chief aim to make html what it would be if it was created today. It has several interesting qualities such as html directives. A primary focus of angular is to build for testability and it has functionality to help enable exactly that.
 
-###React
-Developed by Facebook and focuses on the view part of MVC.
-Mission statement is to allow users to create large applications with data that changes over time.
-Allows its views to update as the data changes.
+> Highlight - Two-way data binding: Angular has event listeners attached to data changes in an application; whether it is by the user or by the database, Angular knows to update all relational content. Two-way data binding also reduces the amount of code needed to develop sleek interaction and content transitions.
 
-####Highlight - Virtual DOM
-React works by creating a virtual DOM in pure JavaScript that acts as an intermediate representation of the DOM. This way, React is able to create a diff of your active DOM and your virtual DOM to decide which elements to change, thereby providing great rendering performance.
+####React
+Developed by Facebook and focuses on the view part of MVC. Mission statement is to allow users to create large applications with data that changes over time. Allows its views to update as the data changes.
+
+>Highlight - Virtual DOM: React works by creating a virtual DOM in pure JavaScript that acts as an intermediate representation of the DOM. This way, React is able to create a diff of your active DOM and your virtual DOM to decide which elements to change, thereby providing great rendering performance.
 
 ##Approaches to learning a framework
 As you almost certainly are aware, for any material (such as a framework) there are dozens of ways to learn a framework. A big part of the upcoming lab is learning a framework and presenting on what you found effective in learning that framework. There are a couple of approaches you can take to learning any new framework or library and we will be going over a few of them here.
@@ -100,12 +98,30 @@ There are applications that are written specifically as example applications to 
 Additionally, if the framework is popular enough, it likely also has hundreds of actual applications that have been written in the framework and are publically available. All these can be sources of learning from experts who likely are very familiar with the framework. They can, however, be very hard to dig through and are by no means necessarily well done or structured so you shouldn't take them as the only or best way to use the framework.
 
 <a name="inclass-09"></a>
+
+----------------------
 # Lesson 8 In-Class Exercises
 
-##A Difficult Decision
-Comparing React and Angular is very difficult due to their fundementally different approaches to organizing your client side code. Both frameworks have pros and cons and which one you should use varies both on your personal taste and the project you are working on.
+##Endless possibilities
+React and Angular are two of the most popular client-side frameworks. While we will be using React in this class, it's useful to know how different approaches work. Comparing React and Angular is very difficult due to their fundementally different approaches to organizing your client-side code. Both frameworks have pros and cons and which one you should use varies both on your personal taste and the project you are working on. Pay particular attention to the following keywords:
 
-##History
+####Angular
+- Two-way data binding
+- Controllers
+- Services
+- Directives
+- Scopes
+
+####React
+- Virtual DOM
+- ReactComponents
+- JSX
+- State vs Props
+- Uni-directional Data flow
+- Flux
+
+
+<!-- ##History
 Angular has been around for a while. Since 2009, Angular has been assigning custom attributes, known as directives, to the HTML elements of the DOM to provide them with more advanced functionality. Angular is mature, commonly used, and there are a ton of great resources for getting up and running with it. React is quite young. Created by Facebook in 2013, React has presented itself as a new paradigm of web development. React eschews the normal separations of concerns, page layout in html, interaction in javascript, and style in css, for a new approach; self contained and modular components. These components define the layout and logic of a component (like a button) in one place. You can then reuse and nest these components to create complex interfaces. On top of this, React boasts a performance-minded view renderer capable of rendering large amounts of data without missing a beat. (Note, a new version of Angular, Angular 2, has recently entered beta which is a fundemental redesign of Angular, taking many cues from React. While we are excited to see Angular 2, we can't in good concious recommend using it yet as the documentation is still incomplete and not ready for production.)
 
 ##Research
@@ -154,11 +170,7 @@ Here's just about the simplest Angular app you can write. The words you type in 
 ```
 The first thing we notice is the use of an attribute **ng-app** with the html tag. This attribute, known as a directive, signals Angular to be active in this portion of the page. Another important thing to note is the use of the **ng-model** directive. **ng-model** binds the state of the textbox with the model value, i.e. "sometext". As a result, whenever the textbox value changes, Angular authomatically changes the model "sometext" to the respective value. This is what is known as Two-way Data Binding. Moreover, **{{sometext}}** tells Angular to bind the value of the model "sometext" in its place. Finally, the **ng-show** directive conditionally shows an element, depending on the value of the relative boolean expression. It's default state is False, and one could also use **ng-hide**, which does exactly the opposite of **ng-show**.
 
-##Hello React
-Try to find or write a similar hello world using React
-
-##Extra Practice
-Refactor your cat app to use one of the frameworks.
+ -->
 
 ##ToDo App
 If you're done, start thinking about how you'll build your todo app for homework. With your group, discuss:
@@ -167,11 +179,13 @@ If you're done, start thinking about how you'll build your todo app for homework
 - How will the server communicate with the client?
 - On the board, map out the "boilerplate" for an app which uses a framework.
 
-
 <a name="homework-09"></a>
-### Before Class 10 (Tuesday 2/21/2017)
+
+----------------------
+# Before Class 10 (Tuesday 2/21/2017)
+
 #### Assignment
-Create a ToDo List App using a fronted framework, as for example shown [here](http://todomvc.com/examples/angularjs/#/), using Angular. Think about what routes your API needs to include for this application to function. Your app should be able to:
+Create a ToDo List App using a fronted framework, as for example shown [here](http://todomvc.com/examples/angularjs/#/), using Angular or React. Think about what routes your API needs to include for this application to function. Your app should be able to:
 - **Add** an item to the list
 - **Edit** an item in the list
 - **Save** an edit that took place in an item in the list
