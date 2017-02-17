@@ -106,14 +106,13 @@ Additionally, if the framework is popular enough, it likely also has hundreds of
 ##REACT
 **For this semester, we are going to be utilizing React as our client-side framework. React is widely used by software companies, and is extremely efficient due to the fact that it creates its own virtual DOM. Read and follow the tutorial in the following readme: [REACT](./REACT/README.md)**
 
-
 <a name="inclass-09"></a>
 
 ----------------------
 # Lesson 8 In-Class Exercises
 
 ##Endless possibilities
-React and Angular are two of the most popular client-side frameworks. While we will be using React in this class, it's useful to know how different approaches work. Comparing React and Angular is very difficult due to their fundementally different approaches to organizing your client-side code. Both frameworks have pros and cons and which one you should use varies both on your personal taste and the project you are working on. Pay particular attention to the following keywords:
+React and Angular are two of the most popular client-side frameworks. While we will be using React in this class, it's useful to know how different approaches work. Comparing React and Angular is very difficult due to their fundementally different approaches to organizing your client-side code. Both frameworks have pros and cons and which one you should use varies both on your personal taste and the project you are working on. If you want to read some stuff about the history check out [this](./AngularReactHistory.md). Pay particular attention to the following keywords:
 
 ####Angular
 - Two-way data binding
@@ -130,57 +129,8 @@ React and Angular are two of the most popular client-side frameworks. While we w
 - Uni-directional Data flow
 - Flux
 
-
-<!-- ##History
-Angular has been around for a while. Since 2009, Angular has been assigning custom attributes, known as directives, to the HTML elements of the DOM to provide them with more advanced functionality. Angular is mature, commonly used, and there are a ton of great resources for getting up and running with it. React is quite young. Created by Facebook in 2013, React has presented itself as a new paradigm of web development. React eschews the normal separations of concerns, page layout in html, interaction in javascript, and style in css, for a new approach; self contained and modular components. These components define the layout and logic of a component (like a button) in one place. You can then reuse and nest these components to create complex interfaces. On top of this, React boasts a performance-minded view renderer capable of rendering large amounts of data without missing a beat. (Note, a new version of Angular, Angular 2, has recently entered beta which is a fundemental redesign of Angular, taking many cues from React. While we are excited to see Angular 2, we can't in good concious recommend using it yet as the documentation is still incomplete and not ready for production.)
-
-##Research
-- Find Angular and React documentation online. Pay particular attention to the following keywords:
-
-####Angular
-- Two-way data binding
-- Controllers
-- Services
-- Directives
-- Scopes
-
-####React
-- Virtual DOM
-- ReactComponents
-- JSX
-- State vs Props
-- Uni-directional Data flow
-- Flux
-
-Here are some links to start you out:
-- [Angular Conceptual Overview](https://docs.angularjs.org/guide/concepts)
-- [Angular Data Binding](https://docs.angularjs.org/guide/databinding)
-- [Why Build React?](http://facebook.github.io/react/blog/2013/06/05/why-react.html)
-- [A Closer Look into React by Pete Hunt](https://www.quora.com/profile/Pete-Hunt/Posts/Facebooks-React-vs-AngularJS-A-Closer-Look)
-- [JSX](https://facebook.github.io/react/docs/jsx-in-depth.html)
-
-##Hello Angular
-Here's just about the simplest Angular app you can write. The words you type in the textbox will show up after "Hello" in the `<h1>` tag.
-```html
-<!DOCTYPE html>
-<html ng-app>
-<head>
-    <title>Hello World, AngularJS</title>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-</head>
-<body>
-
-    Write some text in textbox:
-    <input type="text" ng-model="sometext" />
-
-    <h1 ng-show="sometext">Hello {{ sometext }}</h1>
-
-</body>
-</html>
-```
-The first thing we notice is the use of an attribute **ng-app** with the html tag. This attribute, known as a directive, signals Angular to be active in this portion of the page. Another important thing to note is the use of the **ng-model** directive. **ng-model** binds the state of the textbox with the model value, i.e. "sometext". As a result, whenever the textbox value changes, Angular authomatically changes the model "sometext" to the respective value. This is what is known as Two-way Data Binding. Moreover, **{{sometext}}** tells Angular to bind the value of the model "sometext" in its place. Finally, the **ng-show** directive conditionally shows an element, depending on the value of the relative boolean expression. It's default state is False, and one could also use **ng-hide**, which does exactly the opposite of **ng-show**.
-
- -->
+##React Practice
+Implement more components and functionalities (potentially a backend) to the React Tutorial that you did to get more React practice.
 
 ##ToDo App
 If you're done, start thinking about how you'll build your todo app for homework. With your group, discuss:
@@ -195,7 +145,7 @@ If you're done, start thinking about how you'll build your todo app for homework
 # Before Class 10 (Friday 2/24/2017)
 
 #### Assignment
-Create a ToDo List App using a fronted framework, as for example shown [here](http://todomvc.com/examples/angularjs/#/), using Angular or React. Think about what routes your API needs to include for this application to function. Your app should be able to:
+Create a ToDo List App using React, as for example shown [here](http://todomvc.com/examples/angularjs/#/) (note that the example is using Angular and not React). Think about what routes your API needs to include for this application to function. Your app should be able to:
 - **Add** an item to the list
 - **Edit** an item in the list
 - **Save** an edit that took place in an item in the list
@@ -209,4 +159,4 @@ Create a ToDo List App using a fronted framework, as for example shown [here](ht
 - Optional:
 	- Undo edits
 
-Fill out this [homework survey](https://docs.google.com/forms/d/1wivfR38EiZdwD3Gv5vZ3pWPSrSWORJil7a9P1xzTP-g/viewform?usp=send_form).
+Fill out this [homework survey]().
