@@ -1,6 +1,7 @@
 // login variables
-var $loginForm = $('#login-form');
-var $loginButton = $('#log-in-out').find('[name="login"]');
+var $facebookLoginForm = $('#facebook-login');
+var $localLoginForm = $('#local-login');
+var $registerForm = $('#register');
 
 // new twote form variables
 var $newTwoteForm = $('#new-twote-form');
@@ -8,6 +9,7 @@ var $newTwoteForm = $('#new-twote-form');
 // display twote variables
 var $twoteDiplayList = $('#twotes');
 var $twoteTemplate = $('#twote-template');
+var $deleteBox = $('.delete-button')
 
 
 var onError = function(data, status) {
@@ -16,9 +18,24 @@ var onError = function(data, status) {
 }
 
 var onLogin = function(data, status) {
-  if (typeof data.redirect == "string") {
-    window.location = data.redirect;
-  }
+  window.location = data;
+}
+ 
+var onDeleteTwote = function(data) {
+  console.log('delete Twote!!!!!!', data)
+  var $target = $(data.target); // the checkbox
+  var twoteId = $target.parent().attr('id'); // the div
+  var bodyData = {
+    id: twoteId
+  };
+  $.post('/delete', bodyData)
+    .done(function(data, status) {
+      console.log('delted?', data.deleted);
+      if (data.deleted == true) {
+        $target.parent().remove();
+    }
+  })
+    .error(onError);
 }
 
 var onNewTwote = function(data, status) {
@@ -33,36 +50,26 @@ var onNewTwote = function(data, status) {
   $twoteDiplayList.prepend($newTwote);
 }
 
-var onDeleteTwote = function(data) {
-  var $target = $(data.target); // the checkbox
-  var twoteId = $target.parent().attr('id'); // the div
-  console.log(twoteId);
-  var bodyData = {
-    id: twoteId
-  };
-  $.post('/delete', bodyData);
-  $target.parent().remove();
-}
+// var onDeleteTwote = function(data) {
+//   var $target = $(data.target); // the checkbox
+//   var twoteId = $target.parent().attr('id'); // the div
+//   console.log(twoteId);
+//   var bodyData = {
+//     id: twoteId
+//   };
+//   $.post('/delete', bodyData)
+//     .done()
+//     .error(onError);
+//   $target.parent().remove();
+// }
 
-$loginForm.submit(function(event) {
-  event.preventDefault();
-
-  var username = $loginForm.find('[name="username"]').val();
-  var password = $loginForm.find('[name="password"]').val();
-  var formData = {
-    username: username
-    password: password
-  };
-
-  $.post("/login", formData)
-    .done(onLogin)
-    .error(onError);
-});
+$deleteBox.click(onDeleteTwote);
 
 $newTwoteForm.submit(function (event) {
   event.preventDefault();
 
   var text = $newTwoteForm.find('[name="twote-text"]').val();
+  console.log("string");
   var dt = new Date;
   var time = dt.getTime();
 
@@ -74,15 +81,36 @@ $newTwoteForm.submit(function (event) {
   $.post("/new", formData)
     .done(onNewTwote)
     .error(onError);
-})
-
-$loginButton.click(function(data){
-  $.get('/login', function() {
-    console.log("log in");
-    window.location = '/login';
-  });
-})
-
-$.get('/', function(data) {
-  console.log(data);
 });
+
+$localLoginForm.submit(function (event) {
+  event.preventDefault();
+
+  var username = $localLoginForm.find('[name="username"]').val();
+  var password = $localLoginForm.find('[name="password"]').val();
+
+  var formData = {
+    username: username,
+    password: password
+  }
+
+  $.post('/login', formData)
+    .done(onLogin)
+    .error(onError);
+});
+
+$registerForm.submit(function (event) {
+  event.preventDefault();
+
+  var username = $registerForm.find('[name="username"]').val();
+  var password = $registerForm.find('[name="password"]').val();
+
+  var formData = {
+    username: username,
+    password: password
+  }
+
+  $.post('/register', formData)
+    .done(onLogin)
+    .error(onError);
+})

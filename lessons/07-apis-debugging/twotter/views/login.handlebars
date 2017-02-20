@@ -1,8 +1,23 @@
 <h1>Login</h1>
-<form id="login-form" method="POST">
-	<input type="text" name="username"/>
-	<input type="text" name="password"/>
+<h3>Login with Facebook</h3>
+<form id="facebook-login" action="/auth/facebook">
+    <input type="submit" value="Log in with Facebook" />
+</form>
+<h3>Login with Username</h3>
+<form id="local-login">
+	username: <input type="text" name="username">
+	<br><br>
+	password: <input type="password" name="password">
+	<br><br>
 	<input type="submit" name="login" value="Login">
 </form>
-<a href="/auth/facebook">Log in with Facebook</a>
+<h3>Register</h3>
+<form id="register">
+	username: <input type="text" name="username">
+	<br><br>
+	password: <input type="password" name="password">
+	<br><br>
+	<input type="submit" name="login" value="Login">
+</form>
+
 <div id="login-error"></div>

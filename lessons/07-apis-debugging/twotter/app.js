@@ -15,18 +15,13 @@ var User = require("./models/userModel");
 
 mongoose.connect('mongodb://localhost/twotter');
 
+// file containing facebook authorization parameters
 var auth = require('./auth');
-
+// file containing routes
 var index = require("./routes/index");
 
 var app = express();
-
 app.use(express.static(path.join(__dirname, "public")));
-app.use(session({ secret: 'this is not a secret ;)',
-  resave: false,
-  saveUninitialized: false }));
-app.use(passport.initialize());
-app.use(passport.session());
 
 
 app.engine("handlebars", exphbs({defaultLayout: "main"}));
@@ -36,13 +31,6 @@ app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
-app.use(session({
-	cookieName: 'session',
-	secret: 'random-string',
-	duration: 30 * 60 * 1000,
-	activeDuration: 5 * 60 * 1000,
-}));
 
 passport.use(new FacebookStrategy({
     clientID: auth.FACEBOOK_APP_ID,
@@ -50,23 +38,25 @@ passport.use(new FacebookStrategy({
     callbackURL: auth.FACEBOOK_CALLBACK_URL
   },
   function(accessToken, refreshToken, profile, done) {
-    //This is not what you want to do here. 
-    //Here you should search the connected DB if the user exists and load that in, or add it to db.
-    done(null, profile);
+    User.findOrCreate({username: profile.displayName}, function (err, user) {
+      console.log('user', user);
+      if (err) { return done(err);}
+      if (!user) {return done(null, false)}
+      return done(null, user);
+    })
   }
 ));
 
-passport.use(new LocalStrategy(
-  function(username, password, done) {
-    User.findOne({ username: username }, function (err, user) {
-		console.log(user);
-		if (err) { return done(err); }
-		if (!user) { return done(null, false); }
-		if (!(user.verifyPassword(password))) { return done(null, false); }
-		return done(null, user);
-    });
-  }
-));
+passport.use(new LocalStrategy(User.authenticate()));
+
+app.use(express.static(path.join(__dirname, "public")));
+app.use(session({ 
+  secret: 'this is not a secret ;)',
+  resave: false,
+  saveUninitialized: false
+  }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -76,27 +66,48 @@ passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 
+// should only load twotes when logged in
 app.get("/", index.home);
-app.get('/auth/facebook', passport.authenticate('facebook'));
+
+// logs in to Facebook
+app.get('/auth/facebook',
+  passport.authenticate('facebook')
+);
+
+// redirects to homw if the user can log in, otherwise redirects to login page
 app.get('/auth/facebook/callback',
   passport.authenticate('facebook', { successRedirect: '/',
                                       failureRedirect: '/login' })
 );
 
+// displays info about which user is logged in
 app.get('/user', index.ensureAuthenticated, function(req, res) {
   res.send(req.user);
 });
 
-app.post('/login', 
-  passport.authenticate('local', { failureRedirect: '/login' }),
-  function(req, res) {
-    res.redirect('/');
-  });
+// reroutes to login page
 app.get('/login', index.loginPage);
 
+app.post('/login', passport.authenticate('local'), index.login)
+
+app.post('/register', function (req, res) {
+  User.register(new User({username: req.body.username}), req.body.password, function(err, account) {
+    if (err) {
+      return res.render("login", {});
+    }
+
+    passport.authenticate('login', function(req, res) {
+      res.redirect('/');
+    });
+  });
+})
+// creates a new twote
 app.post('/new', index.newTwote);
+
+// deletes a twote
 app.post('/delete', index.deleteTwote);
 
+// log out user
 app.get('/logout', index.logout);
 
 var PORT = process.env.PORT || 3000;

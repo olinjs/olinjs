@@ -1,7 +1,7 @@
 <h1>Twotter</h1>
 
 <div id="log-in-out">
-<a href="/{{loggedIn}}">{{loggedIn}}</a>
+<a id="login-out-link" href="/{{loggedIn}}">{{loggedIn}}</a>
 </div>
 
 <div id="new-twote">
@@ -26,11 +26,16 @@
 <div id="twote-display">
 	<h2>Twotes</h2>
 	<ul id="twotes">
+		<li id="twote-template" style="display: none">
+			<div class="twote-content"></div>
+			<div class="twote-author"></div>
+			<input type="checkbox" name="delete-twote">
+		</li>
 	{{#each twotes}}
-		<li id="twote-template">
+		<li id={{this._id}}>
 			<div class="twote-content">{{this.content}}</div>
 			<div class="twote-author">{{this.username}}</div>
-			<input type="checkbox" name="delete-twote" onclick="onDeletedTwote()">
+			<input type="checkbox" name="delete-twote" class="delete-button">
 		</li>
 	{{/each}}
 	</ul>
