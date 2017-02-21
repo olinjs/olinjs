@@ -162,6 +162,13 @@ Be careful and remove `someRandomFunction={this.someRandomFunction}` unless you 
 
 Now, you should be able to see the text set!
 
+##Life Cycle
+We've talked about some of the attributes of React components, like `componentDidMount`, and since we're not going to talk about them all in this tutorial. Here's a diagram that outlines the life cycle of a React component:
+![lifecycleDiagram](../images/react-lifecycle.jpg)
+
+To learn more about lifecycle, checkout this website post on [understanding react](https://staminaloops.github.io/undefinedisnotafunction/understanding-react/)
+
+
 ##Advanced: JSX Work
 While you don't need to implement JSX, JSX is a preprocessor step that adds XML syntax to Javascript and makes React more elegant. In order to incorporate JSX, you need a transpiler, like babel, to compile the language to be javascript-current, and a bundler, like webpack, grunt or browserify, to write modular code and bundle it together into small packages to optimize load time.
 
