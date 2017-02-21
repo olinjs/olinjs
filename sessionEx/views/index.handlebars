@@ -1,0 +1,11 @@
+<h1>Hello {{name}}</h1>
+<h3>Cookie Expires On</h3>
+<p id="expires">{{time}}</p>
+
+<script type="text/javascript">
+var timeStr = document.getElementById('expires').innerHTML;
+setTimeout(function(){
+alert("You have been logged out!!");
+window.location = "/login";
+ }, Date.parse(timeStr)-Date.now());
+</script>

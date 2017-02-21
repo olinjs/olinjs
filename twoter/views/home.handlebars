@@ -1,0 +1,39 @@
+<div class="blog-header" style="text-align:center">
+  <h1 class="blog-title">Twoter</h1>
+  <div id="login-div">
+    {{#each newuser}}
+      <p id="{{this._id}}" class="loggedas" name="{{this.username}}">Welcome {{this.username}}</p>
+    {{/each}}
+  </div>
+</div>
+
+<div class="row">
+  <div id="twote-div">
+    <form id="twote-out">
+      <div>
+        <input type="text" name="addTwote">
+        <input type="submit" value="Twote">
+      </div>
+    </form>
+  </div>
+  <div id="logout-div">
+    <a href="/logout">Logout</a>
+  </div>
+
+  <h2>Twote List</h2>
+  <div id="allTwotes" class="col-sm-8 blog-main">
+    {{#each allTwotes}}
+    <div id={{this._id}}>
+      <div class="{{this.user_id}}"><p>{{this.text}}--{{this.user}}</p></div>
+      <input class="delete-button" id="{{this._id}}" type="button" value="Delete">
+    </div id={{this._id}}>
+    {{/each}}
+  </div>
+
+  <h2>Users</h2>
+  <div id="allUsers" class="col-sm-3 blog-sidebar">
+    {{#each allUsers}}
+      <div class="userTag" id="{{this._id}}">{{this.username}}</div>
+    {{/each}}
+  </div>
+</div>
