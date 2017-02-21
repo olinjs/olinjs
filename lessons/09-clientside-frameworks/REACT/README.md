@@ -162,10 +162,14 @@ Be careful and remove `someRandomFunction={this.someRandomFunction}` unless you 
 
 Now, you should be able to see the text set!
 
-##JSX
-<!-- While you don't need to implement JSX, JSX is a preprocessor step that adds XML syntax to Javascript and makes React more elegant. In order to incorporate JSX, you need a transpiler, like babel, to compile the language to be javascript-current, and a bundler, like webpack, grunt or browserify, to write modular code and bundle it together into small packages to optimize load time.
+##Advanced: JSX Work
+While you don't need to implement JSX, JSX is a preprocessor step that adds XML syntax to Javascript and makes React more elegant. In order to incorporate JSX, you need a transpiler, like babel, to compile the language to be javascript-current, and a bundler, like webpack, grunt or browserify, to write modular code and bundle it together into small packages to optimize load time.
 
-We highly recommend utilizing JSX once you grow more comfortable with React. -->
+We highly recommend utilizing JSX once you grow more comfortable with React.
+
+####Advanced Exercise: Do this tutorial with JSX, babel and webpack: [link](https://www.codementor.io/tamizhvendan/beginner-guide-setup-reactjs-environment-npm-babel-6-webpack-du107r9zr)
+
+
 
 ##MORE...
 Now that we've shown you the basics of React, there's still so much more to learn. Be sure to ask us tons of questions, and also look and utilize the internet when you do get stuck because there is tons of documentation and forums regarding React. Here are some guides:
