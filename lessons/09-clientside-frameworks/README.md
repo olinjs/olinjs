@@ -30,7 +30,7 @@ Another benefit of this application structure is that the API component can be u
 
 You may wonder why this is not how it has always been done. The simple answer to this is that it is only recently that Javascript, browsers, and computers have gotten good enough to reliably utilize these client-side frameworks. If you were going to do anything interesting, you had to do it on the server. In addition, this method may be more labor intensive for certain projects and can be a tricky adjustment to make. You will get to explore some of these strengths and weaknesses in the next lab assignment when you tackle one of these frameworks yourself.
 
-##Your First Client Templating
+##Routes as APIs
 So you are all very familiar with server side templating using handlebars. For review, in the Lesson 9 folder there is an in_class folder containing the cat app that you are all familiar with. The uncommented code transforms just one of the routes into an API endpoint and then use handlebars on the client side to render the content.
 
 You can probably imagine that organizing a very complex application with dozens of pages and models can get really complicated and messy really fast. Luckily, there are really fantastic publically available and free frameworks you can utilize to organize your application. We will explore these in a bit.
@@ -47,13 +47,12 @@ The source code for all of these frameworks are available on github (and yes, yo
 
 Framework | Github | Homepage
 --- |---|---|
-Angular | https://github.com/angular | https://angularjs.org/
+Angular | https://github.com/angular/angular.js | https://angularjs.org/
+Angular 2 | https://github.com/angular/angular | https://angular.io/
+Vue | https://github.com/vuejs/vue | https://vuejs.org/
 Backbone | https://github.com/jashkenas/backbone | http://backbonejs.org/
 Ember | https://github.com/emberjs/ember.js/ | http://emberjs.com/
 React | https://github.com/facebook/react | http://facebook.github.io/react/
-Flight | https://github.com/flightjs/flight | https://flightjs.github.io/
-Knockout | https://github.com/knockout/knockout | http://knockoutjs.com/
-Riot | https://github.com/muut/riotjs | https://muut.com/riotjs/
 
 Every framework has different features and organizational structures. Best way to understand these differences is to visit the webpage of the framework and just try to implement some very basic system in the framework. Let's look into more detail as to what React entail.
 
@@ -98,9 +97,9 @@ Additionally, if the framework is popular enough, it likely also has hundreds of
 <a name="inclass-09"></a>
 
 ----------------------
-# Lesson 8 In-Class Exercises
+# Lesson 9 In-Class Exercises
 
-##Endless possibilities
+<!-- ##Endless possibilities
 React and Angular are two of the most popular client-side frameworks. While we will be using React in this class, it's useful to know how different approaches work. Comparing React and Angular is very difficult due to their fundementally different approaches to organizing your client-side code. Both frameworks have pros and cons and which one you should use varies both on your personal taste and the project you are working on. If you want to read some stuff about the history check out [this](./AngularReactHistory.md). Pay particular attention to the following keywords:
 
 ####Angular
@@ -116,7 +115,7 @@ React and Angular are two of the most popular client-side frameworks. While we w
 - JSX
 - State vs Props
 - Uni-directional Data flow
-- Flux
+- Flux -->
 
 ##React Practice
 Implement more components and functionalities (potentially a backend) to the React Tutorial that you did to get more React practice.
