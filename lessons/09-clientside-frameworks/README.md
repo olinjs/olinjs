@@ -133,7 +133,7 @@ If you're done, start thinking about how you'll build your todo app for homework
 # Before Class 10 (Friday 2/24/2017)
 
 #### Assignment
-Create a ToDo List App using React, as for example shown [here](http://todomvc.com/examples/angularjs/#/) (note that the example is using Angular and not React). Think about what routes your API needs to include for this application to function. Your app should be able to:
+Create a ToDo List App using React, as for example shown [here](http://todomvc.com/examples/react/#/) (**update: now it's a react example**). Think about what routes your API needs to include for this application to function. Your app should be able to:
 - **Add** an item to the list
 - **Edit** an item in the list
 - **Save** an edit that took place in an item in the list
