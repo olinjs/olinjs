@@ -1,4 +1,4 @@
-#Lab 2: Mashup
+#MiniProject: Mashup
 
 ##Intro
 Most of the apps you've built so far (Twoter, WikiMVC) have been clones of existing applications. This lab will be a bit different: you'll be combining key features of two existing apps into a "mashup" which does something new and exciting. 
