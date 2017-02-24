@@ -109,7 +109,7 @@ Here are a bunch of services offered by Amazon:
 #Lesson 10 - In-Class Exercises
 
 ###Deploy to Heroku
-**We do actually want to check that you completed this exercise. When you're done deploying your app, send an email containing your Heroku link to [olinjs16@gmail.com](olinjs16@gmail.com) with the subject line "Deployed App".**
+**We do actually want to check that you completed this exercise. When you're done deploying your app, fill out [this survey](https://goo.gl/forms/GEMxtLlRw8wtJXEO2)**
 
 Deploying your app allows you to share it with other Internet users. So far you've been accessing your apps at `localhost:PORT` -- which is great for development purposes, but not so great for sharing your app. Once you deploy an app, you'll be able to access it at a `something.herokuapp.com` URL (where `something` is the name you give your app during the deployment process).
 
