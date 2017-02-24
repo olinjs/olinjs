@@ -1,7 +1,7 @@
 #MiniProject: Mashup
 
 ##Intro
-Most of the apps you've built so far (Twoter, WikiMVC) have been clones of existing applications. This lab will be a bit different: you'll be combining key features of two existing apps into a "mashup" which does something new and exciting. 
+Most of the apps you've built so far (Twoter, Todo) have been clones of existing applications. This lab will be a bit different: you'll be combining key features of two existing apps into a "mashup" which does something new and exciting. 
 
 ##Choosing Two Existing Apps
 Here's a list of ideas to get you started - feel free to come up with others.
@@ -29,3 +29,4 @@ Your mashup should have:
 
 We know that this isn't a particularly specific list of specifications - we're intentionally giving you room to be creative.
 
+##Due: Friday 3/10/17

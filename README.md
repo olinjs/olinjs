@@ -22,12 +22,11 @@ Feel free to submit a Github issue if you find any problems in the course and we
 * [Lesson 7 - Application Integration](./lessons/07-apis-debugging)
 * [Lesson 8 - Unit Testing and Task Running](./lessons/08-tests-tasks)
 * [Lesson 9 - Application Frameworks](./lessons/09-clientside-frameworks)
-* [Lesson 10 - Deployment and Scaling (Lab 1)](./lessons/10-deployment-scaling)
+* [Lesson 10 - Deployment and Scaling](./lessons/10-deployment-scaling)
 * [Lesson 11 - Security](./lessons/11-security)
 * [Lesson 12 - Agile Project Management](./lessons/12-agile)
 * [Lesson 13 - Architecture and Diagramming](./lessons/13-designs-diagrams)
-* [Lab 1](./lab1)
-* [Lab 2](./lab2)
+* [Mini Project](./miniproject)
 * [Final Project](./finalproject)
 
 
