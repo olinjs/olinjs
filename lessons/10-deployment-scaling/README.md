@@ -7,7 +7,6 @@
   - [Scaling](#scaling)
 - [Lesson 10 - In-Class Exercises](#lesson-10---in-class-exercises)
 - [Before Class 11 \(Tuesday 2/28/17\)](#before-class-11-tuesday-22817)
-- [Lab 1](#lab-1)
 
 <!-- /MarkdownTOC -->
 
@@ -119,13 +118,10 @@ Sign up for a free Heroku account and work through the following two tutorials t
 - [Intro to Heroku deployment](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction)
 - [Adding a Remote MongoLab Database](https://devcenter.heroku.com/articles/mongolab)
 
+# Before Class 11 (Tuesday 2/28/17)
 ###Catch Up & Synthesize
 - Keep working on anything which is still in progress (we're here to help) 
 - Look back through what you've learned so far and synthesize or review however is useful to you
 
-# Before Class 11 (Tuesday 2/28/17)
 ### Deploy to Heroku
 If you didn't finish [deploying an app to Heroku](#deploy-to-heroku) in class, please do so before next class. Feel free to ask us for help by email or Slack if you have any questions!
-
-# Lab 1
-Please complete [Lab 1](../../lab1/README.md) with your team before next class.
