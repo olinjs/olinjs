@@ -119,9 +119,6 @@ Sign up for a free Heroku account and work through the following two tutorials t
 - [Intro to Heroku deployment](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction)
 - [Adding a Remote MongoLab Database](https://devcenter.heroku.com/articles/mongolab)
 
-###Lab 1 Team Formation
-Form a team of 2 or 3 people to complete [Lab 1](../../lab1/README.md) with.
-
 ###Catch Up & Synthesize
 - Keep working on anything which is still in progress (we're here to help) 
 - Look back through what you've learned so far and synthesize or review however is useful to you
