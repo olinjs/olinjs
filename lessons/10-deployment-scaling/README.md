@@ -1,3 +1,17 @@
+## Table of Contents
+
+<!-- MarkdownTOC -->
+
+- [Lesson 10 - Deployment and Scaling](#lesson-10---deployment-and-scaling)
+  - [Deployment](#deployment)
+  - [Scaling](#scaling)
+- [Lesson 10 - In-Class Exercises](#lesson-10---in-class-exercises)
+- [Before Class 11 \(Tuesday 2/28/17\)](#before-class-11-tuesday-22817)
+- [Lab 1](#lab-1)
+
+<!-- /MarkdownTOC -->
+
+
 #Lesson 10 - Deployment and Scaling
 
 Once your applications are ready you will need a way to share them with the world.
