@@ -91,3 +91,30 @@ http://hadoop.apache.org/
 ###Hosting Services
 Here are a bunch of services offered by Amazon:
 ![AWS](./images/aws_services.png)
+
+#Lesson 10 - In-Class Exercises
+
+###Deploy to Heroku
+**We do actually want to check that you completed this exercise. When you're done deploying your app, send an email containing your Heroku link to [olinjs16@gmail.com](olinjs16@gmail.com) with the subject line "Deployed App".**
+
+Deploying your app allows you to share it with other Internet users. So far you've been accessing your apps at `localhost:PORT` -- which is great for development purposes, but not so great for sharing your app. Once you deploy an app, you'll be able to access it at a `something.heroku.com` URL (where `something` is the name you give your app during the deployment process).
+
+**Before deploying your app, move it _out_ of your main Git repository into its own folder and run `git init` in the new folder! Deploying to Heroku requires your app directory to be a git repository, and nesting git repositories within git repositories gets kind of tricky.**
+
+Sign up for a free Heroku account and work through the following two tutorials to deploy one of the apps you've written. 
+- [Intro to Heroku deployment](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction)
+- [Adding a Remote MongoLab Database](https://devcenter.heroku.com/articles/mongolab)
+
+###Lab 1 Team Formation
+Form a team of 2 or 3 people to complete [Lab 1](../../lab1/README.md) with.
+
+###Catch Up & Synthesize
+- Keep working on anything which is still in progress (we're here to help) 
+- Look back through what you've learned so far and synthesize or review however is useful to you
+
+# Before Class 11 (Tuesday 2/28/17)
+### Deploy to Heroku
+If you didn't finish [deploying an app to Heroku](#deploy-to-heroku) in class, please do so before next class. Feel free to ask us for help by email or Slack if you have any questions!
+
+# Lab 1
+Please complete [Lab 1](../../lab1/README.md) with your team before next class.
