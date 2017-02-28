@@ -1,6 +1,6 @@
 #Lesson 13 - Application Design and Diagramming
 
-As we begin to develop larger and more complex applications, we'll want to start being methodical about how we design and plan them. 
+As we begin to develop larger and more complex applications, we'll want to start being methodical about how we design and plan them.
 In this lesson we will talk about strategies for planning and documenting large applications to make developing and debugging as simple as possible.
 
 ##Planning
@@ -63,9 +63,9 @@ You might define routes and what you expect them to do, or font-end ui elements 
 
 
 ###TDD
-We learned a little bit about Test-Driven-Development last lesson, but we didn't go in to too much depth about using it for planning your application. 
-If you really take your TDD seriously, you can treat your tests as a high-level specification for the functionality of your application. 
-If you write all of your tests first, not only are you always validating your application, but you also have a fill-in-the-blank roadmap for development. 
+We learned a little bit about Test-Driven-Development last lesson, but we didn't go in to too much depth about using it for planning your application.
+If you really take your TDD seriously, you can treat your tests as a high-level specification for the functionality of your application.
+If you write all of your tests first, not only are you always validating your application, but you also have a fill-in-the-blank roadmap for development.
 How convenient!
 
 ###Diagramming
@@ -136,12 +136,12 @@ MyApp/
 +--package.json
 ```
 
-`public/` We all know that we've been using this folder to host all of our front-end javascript, css, and any other static content we want the user to have direct access to. 
-What we failed to mention before is what does **not** belong here. 
-Any files that you do not want your users to have public access to - files with secret keys, proprietary application logic, or authentication flow - should by no means end up here. 
+`public/` We all know that we've been using this folder to host all of our front-end javascript, css, and any other static content we want the user to have direct access to.
+What we failed to mention before is what does **not** belong here.
+Any files that you do not want your users to have public access to - files with secret keys, proprietary application logic, or authentication flow - should by no means end up here.
 We name this folder public for a reason - everything in it is publicly available.
 
-`views/` Again, we've gotten pretty good at this one. Keep all of your handlebars templates, layouts, and partials here. 
+`views/` Again, we've gotten pretty good at this one. Keep all of your handlebars templates, layouts, and partials here.
 If the top level starts to get out of hand with too many templates, consider creating subfolders for logical groups of templates.
 
 `models/` This folder should be the keeper of all of your database models, or schemas.

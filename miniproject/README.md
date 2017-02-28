@@ -18,7 +18,7 @@ Here's a list of ideas to get you started - feel free to come up with others.
 - Youtube
 
 ##Creating a Mashup
-We _don't_ want you to copy every feature of both existing apps! Instead, pick out one or two key features of each. For instance, if you chose New York Times and Tinder, you might build something like [TinderTimes](http://tindertimes.herokuapp.com/) made by Olin.js Alums.
+We _don't_ want you to copy every feature of both existing apps! Instead, pick out one or two key features of each. For instance, if you chose New York Times and Tinder, you might build something like [TinderTimes](http://tindertimes.herokuapp.com/). If you chose Google Maps and Soundcloud, you might build something like [DropTunes](http://droptune.herokuapp.com/#!/). If you chose Tinder and Spotify, you might build something like [Tindify](http://tindify.herokuapp.com/). These are all made by Olin.js Alums.
 
 ##Specifications
 Your mashup should have:

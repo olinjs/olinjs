@@ -1,3 +1,13 @@
+#Lesson 11 - Build Process
+
+## README Table of Contents
+* [Build Process](#build-process)
+* [In-Class Activities](#inclass-11)
+* [Homework](#homework-11)
+
+<a name="build-process"></a>
+
+----------------------
 # Deep Dive: The Build Process
 
 ## Why?
@@ -70,3 +80,18 @@ In contrast to Grunt, Gulp works by piping files through a series of specialized
 
 ## What Comes Next
 In this repo I have three complete build processes using ```Gulp```, ```Grunt```, and ```webpack``` respectively. They all have very similar features so that you can compare them to each other. Each process has an included package.json with the dependencies you will need to install in your projects to make them work. The examples won't run on their own, but each one has a README file which explains how to integrate it with your project and run it. Afterwards have a look at the exercises to practice modifying the build processes and taking advantage of the features they give you.
+
+<a name="inclass-11"></a>
+
+----------------------
+# Lesson 11 In-Class Exercises
+Get pumped! We're going to be forming teams for our mini project. The goal of the mini project is to utilize all of the information and skills that we have learned thus far, work with a partner, and allow you all to dictate what you want to create!
+
+In class, we're going to form teams. Checkout the miniproject [description](../../miniproject/README.md) to get started.
+
+
+<a name="homework-11"></a>
+
+----------------------
+# Before Class 10 (Friday 3/10/2017)
+Work on the [miniproject](../../miniproject/README.md)!
