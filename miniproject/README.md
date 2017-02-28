@@ -27,6 +27,7 @@ Your mashup should have:
 - Nice styling and a reasonable user interface
 - Documentation for each major component (minimum of a few sentences at the top of every file)
 - You should host your app on heroku
+- Use Reat, Babel and Webpack
 
 We know that this isn't a particularly specific list of specifications - we're intentionally giving you room to be creative.
 
