@@ -92,12 +92,13 @@ In this repo I have three complete build processes using ```Gulp```, ```Grunt```
 ##Incorporating Webpack
 Now that we have experience with React, we're going to incorporate build processes into our development process. Webpack is commonly used in software companies, and we are going to utilize it for the purpose of our mini-project and final project. Follow along this tutorial to add webpack to the previous React tutorial that we did last week in lesson 9.
 
-1. Using the [REACT project](../09-clientside-frameworks/REACT), add all of the necessary packages outlined in the `package.json` file in the [webpack folder in this directory](webpack/package.json) (You can copy and paste all of the devDependencies, and `npm install`).
-2. In `package.json` of our React App, we're going to add a build script, so add `"build": "webpack --config webpack.config.js"` above the start script. You will want to run `npm build` before running `npm start` everytime you make changes, so that your main script js file can be rebuilt.
+1. Using the [REACT project](../09-clientside-frameworks/REACT), add all of the necessary packages outlined in the `package.json` file from the [webpack folder in this directory](webpack/package.json) (You can copy and paste all of the devDependencies, and `npm install`).
+2. In `package.json` of our React App, we're going to add a build script, so add `"build": "webpack --config webpack.config.js,"` above the start script. This will use webpack to rebundle all of your changes. You will want to run `npm run build` before running `npm start` everytime you make changes, so that your main script js file can be rebuilt.
 3. Now is the important part! We want to add a `webpack.config.js` file to our root directory. Copy and paste the one from the [webpack folder](webpack/webpack.config.js). Notice a couple things:
-  - We now have an `APP_DIR`, which we want to house all of our react components now, which we can now use the `.jsx` extension for our components. So create a folder called `react_components/` and create a new file called `index.jsx` and paste everything you had in `public/scripts/main.js` into the file. Since we want to link `index.js` as our entry jsx file, note that we indicate that in the entry field: `entry: APP_DIR + '/index.jsx',`
-  - Next, in the output field of our config file, we specify that the path is `BUILD_DIR`, and our output filename is: `filename: "bundle.js",`. This is the standard for webpack, so we have to rename `main.js` in `public/scripts` to `bundle.js`. In addition, we have to change the script link that we put in the html to be `bundle.js`.
-4. When you run `npm build`, you should see:
+  - We now have an `APP_DIR` set to the path `react_components`, which we want to house all of our react components now, which we can now use the `.jsx` extension for our components. Since we want to link `index.js` as our entry jsx file, note that we indicate that in the entry field: `entry: APP_DIR + '/index.jsx',`
+    - So create a folder called `react_components/` and create a new file called `index.jsx` and paste everything you had in `public/scripts/main.js` into the file.
+  - Next, in the output field of our config file, we specify that the path `public/scripts/` is `BUILD_DIR`, and our output filename is: `filename: "bundle.js",`. This is the standard for webpack, so we have to rename `main.js` in `public/scripts` to `bundle.js`. In addition, we have to change the script link that we put in the html to be `bundle.js`.
+4. When you run `npm run build`, you should see something like this:
 
     ```
     Hash: 13238165efbaf652155d
