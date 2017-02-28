@@ -1,4 +1,12 @@
-#Lesson 10 - Application Security
+#Lesson 11 - Application Security
+
+## README Table of Contents
+* [Client-Side Frameworks](#security)
+* [In-Class Activities](#inclass-11)
+* [Homework](#homework-11)
+
+<a name="security"></a>
+
 Hello and welcome to possibly the most important lesson you will have in this course.
 All of the applications you make and all of the websites that you put out into the world will be vulnerable to some sort of attack, and it's important for you to know what those attacks are, and how you can mitigate against them.
 Before we get started, I'll take a moment to acknowledge one of the authoritative sources for all matters web security, [OWASP](https://www.owasp.org/index.php/Main_Page), the Open Web Application Security Project.
@@ -185,3 +193,19 @@ The Heartbleed bug in OpenSSL exploited the lack of a bounds check on a particul
 You can see how this is less than desirable.
 A patch was quickly put out, but there are still plenty of websites which still haven't updated.
 If you're worried a service might be vulnerable to Hearbleed, just make sure it's not using versions 1.0.1 through 1.0.1f of OpenSSL.
+
+
+<a name="inclass-11"></a>
+
+----------------------
+# Lesson 11 In-Class Exercises
+Get pumped! We're going to be forming teams for our mini project. The goal of the mini project is to utilize all of the information and skills that we have learned thus far, work with a partner, and allow you all to dictate what you want to create!
+
+In class, we're going to form teams. Checkout the miniproject [description](../../miniproject/README.md) to get started.
+
+
+<a name="homework-11"></a>
+
+----------------------
+# Before Class 10 (Friday 3/10/2017)
+Work on the [miniproject](../../miniproject/README.md)!
