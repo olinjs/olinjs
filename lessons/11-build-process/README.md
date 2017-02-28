@@ -2,6 +2,9 @@
 
 ## README Table of Contents
 * [Build Process](#build-process)
+  * [Compilers](#compilers)
+  * [Bundlers](#bundlers)
+  * [Task Runners](#task-runners)
 * [In-Class Activities](#inclass-11)
 * [Homework](#homework-11)
 
@@ -16,13 +19,13 @@ As you start to create more and more ambitious apps, the time you invest in a bu
 ## The Parts of the Process
 
 ### Compilers
-Broadly speaking, a compiler translates code written in one language to another. You may also see the term "transpiler" when reading about compilers (especially in javascript land) -- usually "compiling" refers to changing levels of abstraction (e.g.: you compile C into machine code), while "transpiling" does not change the level of abstraction (e.g. you transpile the latest Javascript ES6 or ES7, into the ES5 javascript syntax you are used to). You've probably already used compilers in Olin.js to convert SASS or LESS to CSS.
+Broadly speaking, a compiler translates code written in one language to another. You may also see the term "transpiler" when reading about compilers (especially in javascript land) -- usually "compiling" refers to changing levels of abstraction (e.g.: you compile C into machine code), while "transpiling" does not change the level of abstraction (e.g. you transpile the latest Javascript _ES6_ or _ES7_, into the _ES5_ javascript syntax you are used to). You've probably already used compilers in Olin.js to convert SASS or LESS to CSS.
 
-Speaking of ES6 and ES7: The most recent ECMAScript standards smoothed over some of the ugly parts of javascript (I'm looking at your Javascript Object Oriented Programming) while adding a ton of new features, functionality, and syntactical sugar. We'll get into how to use these new features in the exercises.
+Speaking of _ES6_ and _ES7_: The most recent ECMAScript standards smoothed over some of the ugly parts of javascript (I'm looking at your Javascript Object Oriented Programming) while adding a ton of new features, functionality, and syntactical sugar. We'll get into how to use these new features in the exercises.
 
 You may also run into Typescript, CoffeeScript, or Elm as you explore the world of javascript compilers. These are all languages (among many others) built on top of or to compile down to Javascript. They also require compilers or transpilers to be used on the web.
 
-For now, we are going to consider the most common use case, transpiling into ES5 javascript. In this case, the most popular tool is:
+For now, we are going to consider the most common use case, transpiling into _ES5_ javascript. In this case, the most popular tool is:
 
 ##### Babel
 ![Babel](https://avatars0.githubusercontent.com/u/9637642?v=3&s=400)
@@ -70,7 +73,7 @@ When you set up Grunt, you write a ```gruntfile```. This file defines a configur
 - [Grunt for People Who Think Things Like Grunt are Weird and Hard](https://24ways.org/2013/grunt-is-not-weird-and-hard/)
 
 ##### Gulp
-![Gulp](http://www.geekhive.com/~/media/Images/Buzz/Post%20Images/2014/9/gulp.ashx)
+![Gulp](https://cdn-images-1.medium.com/max/256/1*ChsbcZblo-_YsMqXNQXymg.png)
 
 In contrast to Grunt, Gulp works by piping files through a series of specialized plugins. It relies on some modern JavaScript features you might be familiar with -- namely, node streams and promises. Gulp can be harder to wrap your head around initially but generally the files are shorter and they run faster than Grunt. It's also a great way to get more hands on experience with streams and promises.
 
@@ -85,9 +88,35 @@ In this repo I have three complete build processes using ```Gulp```, ```Grunt```
 
 ----------------------
 # Lesson 11 In-Class Exercises
+
+##Incorporating Webpack
+Now that we have experience with React, we're going to incorporate build processes into our development process. Webpack is commonly used in software companies, and we are going to utilize it for the purpose of our mini-project and final project. Follow along this tutorial to add webpack to the previous React tutorial that we did last week in lesson 9.
+
+1. Using the [REACT project](../09-clientside-frameworks/REACT), add all of the necessary packages outlined in the `package.json` file in the [webpack folder in this directory](webpack/package.json) (You can copy and paste all of the devDependencies, and `npm install`).
+2. In `package.json` of our React App, we're going to add a build script, so add `"build": "webpack --config webpack.config.js"` above the start script. You will want to run `npm build` before running `npm start` everytime you make changes, so that your main script js file can be rebuilt.
+3. Now is the important part! We want to add a `webpack.config.js` file to our root directory. Copy and paste the one from the [webpack folder](webpack/webpack.config.js). Notice a couple things:
+  - We now have an `APP_DIR`, which we want to house all of our react components now, which we can now use the `.jsx` extension for our components. So create a folder called `react_components/` and create a new file called `index.jsx` and paste everything you had in `public/scripts/main.js` into the file. Since we want to link `index.js` as our entry jsx file, note that we indicate that in the entry field: `entry: APP_DIR + '/index.jsx',`
+  - Next, in the output field of our config file, we specify that the path is `BUILD_DIR`, and our output filename is: `filename: "bundle.js",`. This is the standard for webpack, so we have to rename `main.js` in `public/scripts` to `bundle.js`. In addition, we have to change the script link that we put in the html to be `bundle.js`.
+4. When you run `npm build`, you should see:
+
+    ```
+    Hash: 13238165efbaf652155d
+    Version: webpack 1.14.0
+    Time: 2913ms
+        Asset    Size  Chunks             Chunk Names
+    bundle.js  141 kB       0  [emitted]  main
+        + 32 hidden modules
+
+    ```
+  This means that the build was successful, and that `bundle.js` has all of the jsx files bundled into it.
+5. Lastly, run `npm start`, and you should be able to access `localhost:3000`
+
+Now, you can have more react components separated into jsx files, and link them into each other using `var OtherComponent = require('./othercomponent.jsx');`!
+
+##Mashup Mini-Project Team Formation
 Get pumped! We're going to be forming teams for our mini project. The goal of the mini project is to utilize all of the information and skills that we have learned thus far, work with a partner, and allow you all to dictate what you want to create!
 
-In class, we're going to form teams. Checkout the miniproject [description](../../miniproject/README.md) to get started.
+In class, we're going to form teams. If you've finished everything else in this readme, checkout the miniproject [description](../../miniproject/README.md) to get started.
 
 
 <a name="homework-11"></a>
