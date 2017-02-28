@@ -14,7 +14,7 @@
 # Deep Dive: The Build Process
 
 ## Why?
-As you start to create more and more ambitious apps, the time you invest in a build process which automates work for you, cleans up your code, and gives you access to more features becomes more and more worth it. These tools can be intimidating to learn at first, but with a bit of pre-work, they can make your life a ton easier.
+As you start to create more and more ambitious apps, the time you invest in a build process which automates work for you, cleans up your code, and gives you access to more features becomes more worth it. These tools can be intimidating to learn at first, but with a bit of pre-work, they can make your life a ton easier.
 
 ## The Parts of the Process
 
@@ -37,7 +37,7 @@ Babel can convert basically any javascript (including jsx!) you can imagine into
 - [What is Babel the Javascript Compiler](http://www.programwitherik.com/what-is-babel-the-javascript-compiler/)
 
 ### Bundlers
-You may have noticed that as the client-side portions of your apps get bigger, dealing with importing scripts, CSS, and images becomes a huge pain in the @#$. Wouldn't it be nice if we could require files like we can on our server? Well, do I have good news for you -- That's just what ```Browserify``` and ```webpack```.
+You may have noticed that as the client-side portions of your apps get bigger, dealing with importing scripts, CSS, and images becomes a huge pain in the @#$. Wouldn't it be nice if we could require files like we can on our server? Well, do I have good news for you -- That's just what ```Browserify``` and ```webpack``` do.
 
 ##### Browserify
 ![Browserify](http://derickbailey.com/wp-content/uploads/2014/06/NewImage.png)
@@ -52,7 +52,7 @@ Browserify aims to recreate the node-style ```require``` system on the client. B
 ##### Webpack
 ![Webpack](https://camo.githubusercontent.com/f1d103872f836f33dbff7a74ed819004f792a4ad/687474703a2f2f7765627061636b2e6769746875622e696f2f6173736574732f6c6f676f2e706e67)
 
-Webpack is the current darling of the frontend programming world. It is an incredibly powerful bundling tool, but initially grokking (understanding) it can be difficult. Webpack can be configured to deal with any file type using a variety of ```loaders```. These loaders can be very powerful -- for example, the Babel loader compiles/transpiles your javascript files before bundling them. You can use any module system with webpack, including the node-like ```require``` system and the new ES6 module syntax. Webpack is an incredibly versatile and powerful tool which can also do most of the things you would need a task runner (see below) to do. It if frequently used entirely on its own.
+Webpack is the current darling of the frontend programming world. It is an incredibly powerful bundling tool, but initially grokking (understanding) it can be stupidly difficult. Webpack can be configured to deal with any file type using a variety of ```loaders```. These loaders can be very powerful -- for example, the Babel loader compiles/transpiles your javascript files before bundling them. You can use any module system with webpack, including the node-like ```require``` system and the new ES6 module syntax. Webpack is an incredibly versatile and powerful tool which can also do most of the things you would need a task runner (see below) to do. It is frequently used entirely on its own.
 
 ###### Readings
 - [Docs](http://webpack.github.io/docs/)
