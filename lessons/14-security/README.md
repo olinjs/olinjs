@@ -1,8 +1,18 @@
-#Lesson 10 - Application Security
+#Lesson 14 - Application Security
+
+## README Table of Contents
+* [Security](#security)
+<!-- * [In-Class Activities](#inclass-14)
+* [Homework](#homework-14) -->
+
+<a name="security"></a>
+
+------
+#Security
 Hello and welcome to possibly the most important lesson you will have in this course.
 All of the applications you make and all of the websites that you put out into the world will be vulnerable to some sort of attack, and it's important for you to know what those attacks are, and how you can mitigate against them.
 Before we get started, I'll take a moment to acknowledge one of the authoritative sources for all matters web security, [OWASP](https://www.owasp.org/index.php/Main_Page), the Open Web Application Security Project.
-They've got in-depth explanations and mitigations for most of the known security vulnerabilities, including a handy [top 10 list](https://www.owasp.org/index.php/OWASP_Top_Ten_Cheat_Sheet).
+They've got in-depth explanations and mitigations for most of the known security vulnerabilities, including a handy [top 10 list](https://www.owasp.org/index.php/OWASP_Top_Ten_Cheat_Sheet). For React, here's an awesome article and recommendation for preventing XSS vulnerabilities: [here](https://medium.com/node-security/the-most-common-xss-vulnerability-in-react-js-applications-2bdffbcc1fa0#.o02ctm55c).
 
 ##Common Vulnerabilities
 We'll cover some of the most common vulnerabilities here, but if you're going to be developing a production application, and especially handling any sensitive user data, you'll want to read through OWASP's website and make sure you're not leaving any glaring holes in your application.
