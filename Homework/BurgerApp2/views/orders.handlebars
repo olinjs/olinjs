@@ -1,0 +1,18 @@
+<h2>Place an Order</h2>
+
+<h4>Ingredients</h4>
+
+<ul>
+  {{#each ingredients}}
+  <li>
+    <form id=orderIngredients>
+    <p>Ingredient: <span>{{this.name}}</span></p>
+    <p>Price: <span id='price'>${{this.price}}</span></p>
+      <input type="checkbox" value={{this.price}} class={{this._id}} {{#unless this.inStock}} disabled {{/unless}}>
+    {{/each}}
+    <br>
+    <p>Total Price: $<span id="total-price">0</span></p>
+    <input type="submit" value="Place Order">
+    </form>
+  </li>
+</ul>
