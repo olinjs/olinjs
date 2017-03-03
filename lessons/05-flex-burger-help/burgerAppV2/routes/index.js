@@ -1,3 +1,4 @@
+/* Look at my comments about using a router in the app.js file. It would also be good to have comments about each route's functionality, as well as group routes. Good use of advanced mongodb queries!*/
 var path = require('path');
 var Ingredient = require("../models/ingredientModel");
 var Order = require("../models/orderModel");
@@ -42,7 +43,7 @@ routes.getKitchen = function(req, res) {
 
 routes.flush = function(req, res) {
 	Ingredient.remove({}).exec(function(err, data) {
-	res.send("deleted");		
+	res.send("deleted");
 	});
 }
 
@@ -100,6 +101,7 @@ routes.postRefIngredients = function(req, res) {
 		idChoices.push(idObj);
 	}
 
+	//Good advanced query!
 	Ingredient.find({$or:idChoices}, function(err, data) {
 		if (err) {
 			console.log(err);

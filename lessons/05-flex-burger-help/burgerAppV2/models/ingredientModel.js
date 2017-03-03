@@ -7,4 +7,3 @@ var ingredientSchema = mongoose.Schema({
 });
 
 module.exports = mongoose.model("Ingredients", ingredientSchema);
-

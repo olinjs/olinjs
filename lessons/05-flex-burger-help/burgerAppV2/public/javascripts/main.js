@@ -1,3 +1,4 @@
+/*Remove or comment console.log, except for consoling errors. Good commenting elsewhere. Nice separating the "on" functions to the top. Might want to comment the sections.*/
 var $ingForm = $('#new-request');
 var $ingredientList = $('#ingredient-list');
 var $ingredientTemplate = $('#ingredient-template');
@@ -104,7 +105,7 @@ var onSuccess = function(data, status) {
 }
 
 var onKitchenLoad = function(data, status){
-  for (var i = 0; i < data.length; i++) { 
+  for (var i = 0; i < data.length; i++) {
     if (data[i].completed == false) {
 
       var ingredientIds = {
@@ -122,7 +123,7 @@ var refIngredients = function(data, status) {
   var names = [];
   for (var j = 0; j < data.names.length; j++) {
     names.push(data.names[j].name);
-  } 
+  }
   $listItem = $kitchenTemplate.clone()
   $listItem.removeAttr('id');
   $listItem.show();
@@ -193,7 +194,7 @@ $orderForm.submit(function(event) {
   orderIngredients = $(".ingredient-choice:checkbox:checked").each(function() {
     listOrder.push($(this).parent().attr('id'));
   });
-  
+
   var formData = {
     ingredients: JSON.stringify(listOrder)
   };
