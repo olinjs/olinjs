@@ -1,0 +1,12 @@
+Homework Feedback:
+
+Functionality:
+- Completion: Most of the features work!! Nice job! You are missing the edit ability for the ingredients page. (15/20)
+- Bug Free: The app does seem bug free. It's a good idea to remove your log statements when you are in production. (10/10)
+
+Quality:
+- Good Coding Practices: Good styling practices! It is pretty hard to have everything in one main.js, but now that we are using React, having different components is going to be a lot easier. (10/10)
+- Readability: Functions and variables are named well, good comments and lines are not too long. Have comments in your routes though.(10/10)
+
+
+Good work!!!!!!
