@@ -48,10 +48,10 @@ Say the user changes the filter by pressing the "active" button.  The React/Redu
 ```javascript
 var actionObj = {
   type: 'CHANGE_FILTER',
-  filter: 'ACTIVE'
+  payload: 'ACTIVE'
 };
 ```
-This is the **action object**.  It says that a `'CHANGE_FILTER'` action was performed and also gives some relevant data (in this case, what the new filter is).
+This is the **action object**.  It says that a `'CHANGE_FILTER'` action was performed and also gives some relevant data in the `payload` property (in this case, what the new filter is).
 
 The action object will then be passed into a **dispatcher** to be dispatched:
 ```javascript
@@ -64,7 +64,7 @@ var todoReducer = function(state, action) {
   switch (action.type) {
     case 'CHANGE_FILTER':
       return Object.assign({}, state, {
-        filter: action.filter
+        filter: action.payload
       });
 
     default:
