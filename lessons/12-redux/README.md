@@ -81,5 +81,7 @@ It is important to understand why we use `Object.assign()` here.  The philosophy
 ## Integrate into React
 Redux by itself has no relation to React.  So far, we've talked about Redux in general without React.  Now, you'll learn how to implement Redux into a React app with multiple components.  Read [this official guide](http://redux.js.org/docs/basics/UsageWithReact.html) on react-redux from the Redux docs.
 
+In the lecture and in the Redux docs a Todo app example was used.  [This](https://github.com/reactjs/redux/tree/master/examples/todos) is the directory of the full source code for a fully-functional Todo app using React/Redux.  Read this through to get a sense of the file organization in React/Redux.
+
 ## Dev Tools
 There is a very very powerful development environment of Redux called [Redux DevTools](https://github.com/gaearon/redux-devtools).  It lets you easily inspect every action and state change and allows you to "time travel" by undoing actions.
