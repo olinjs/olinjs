@@ -77,9 +77,7 @@ Normally a reducer has multiple `case`s in its `switch` statement to handle all 
 The [`Object.assign()` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) merges multiple object together.  In reducers, this is often used to merge the old state with the new properties that we change. In this case, the new property is that `filter` is now set to `'ACTIVE'`.  This new `{filter: 'ACTIVE'}` object is merged with the old state and overrides the previous filter while still containing all our todos.
 
 ## Integrate into React
-Redux by itself has no relation to React.  So far, we've talked about Redux in general without React.  Now, we'll go into how to implement Redux into a React app with multiple components.
-
-To learn about how to implement Redux in a React app, we recommend reading [this official guide](http://redux.js.org/docs/basics/UsageWithReact.html).
+Redux by itself has no relation to React.  So far, we've talked about Redux in general without React.  Now, you'll learn how to implement Redux into a React app with multiple components.  Read [this official guide](http://redux.js.org/docs/basics/UsageWithReact.html) on react-redux from the Redux docs.
 
 ## Dev Tools
 There is a very very powerful development environment of Redux called [Redux DevTools](https://github.com/gaearon/redux-devtools).  It lets you easily inspect every action and state change and allows you to "time travel" by undoing actions.
