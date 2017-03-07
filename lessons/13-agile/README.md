@@ -1,4 +1,4 @@
-#Lesson 12 - Agile
+#Lesson 13 - Agile
 
 ##Intro
 In the most simple interpretation, agile is a project management methodology and attitude. 
