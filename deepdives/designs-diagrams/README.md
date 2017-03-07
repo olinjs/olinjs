@@ -1,4 +1,4 @@
-#Lesson 13 - Application Design and Diagramming
+#Application Design and Diagramming
 
 As we begin to develop larger and more complex applications, we'll want to start being methodical about how we design and plan them.
 In this lesson we will talk about strategies for planning and documenting large applications to make developing and debugging as simple as possible.
@@ -63,7 +63,7 @@ You might define routes and what you expect them to do, or font-end ui elements 
 
 
 ###TDD
-We learned a little bit about Test-Driven-Development last lesson, but we didn't go in to too much depth about using it for planning your application.
+We learned a little bit about Test-Driven-Development before, but we didn't go in to too much depth about using it for planning your application.
 If you really take your TDD seriously, you can treat your tests as a high-level specification for the functionality of your application.
 If you write all of your tests first, not only are you always validating your application, but you also have a fill-in-the-blank roadmap for development.
 How convenient!

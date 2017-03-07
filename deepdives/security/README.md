@@ -1,4 +1,4 @@
-#Lesson 14 - Application Security
+#Application Security
 
 ## README Table of Contents
 * [Security](#security)
