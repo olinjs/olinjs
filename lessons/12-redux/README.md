@@ -51,7 +51,7 @@ var actionObj = {
   payload: 'ACTIVE'
 };
 ```
-This is the **action object**.  It says that a `'CHANGE_FILTER'` action was performed and also gives some relevant data in the `payload` property (in this case, what the new filter is).
+This is the **action object**.  It says that a `'CHANGE_FILTER'` action was performed and also gives some relevant data (in this case, what the new filter is).  Data is often passed in a `payload` property, but this is not required!  Redux doesn't dictate naming, so you can name your properties whatever you want.
 
 The action object will then be passed into a **dispatcher** to be dispatched:
 ```javascript
