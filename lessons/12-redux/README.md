@@ -21,9 +21,9 @@ Since Flux is not its own framework, many different frameworks have come out to 
 
 ## Overview
 ### Three Core Principles
-1) The whole state of your app is contained in a single state object in a **store**.
-2) When the user does something that should change the state, an **action** is dispatched.
-3) The action is sent through a **reducer** function, which specifies how to change the state.
+1. The whole state of your app is contained in a single state object in a **store**.
+2. When the user does something that should change the state, an **action** is dispatched.
+3. The action is sent through a **reducer** function, which specifies how to change the state.
 
 ### Todo Example
 If you're making a Todo app, the state of your app might look like this:
