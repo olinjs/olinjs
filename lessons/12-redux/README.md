@@ -72,7 +72,7 @@ var todoReducer = function(state, action) {
   }
 }
 ```
-Normally a reducer has multiple `case`s in its `switch` statement to handle all the different action types.
+Normally a reducer has multiple `case`s in its `switch` statement to handle all the different action types. (The "reducer" name comes from the Javascript [Array.reduce()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce) function)
 
 The [`Object.assign()` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) merges multiple object together.  In reducers, this is often used to merge the old state with the new properties that we change. In this case, the new property is that `filter` is now set to `'ACTIVE'`.  This new `{filter: 'ACTIVE'}` object is merged with the old state and overrides the previous filter while still containing all our todos.
 
