@@ -9,9 +9,9 @@ var $addToOrder = $('#orderIngredients');
 
 $outOfStockForm.submit(function(event) {
   event.preventDefault();
-  // var formId = '#'+data;
-  console.log(event.target);
-  // $.post('/ingredients/remove', event.target.id)
+  var formId = event.target.id;
+  console.log(formId);
+  $.post('/ingredients/remove', formId)
   // .done(outOfStock)
   // .error(onError);
 });
@@ -20,14 +20,17 @@ $editForm.submit(function(event) {
   event.preventDefault();
   // var formId = '#'+data;
   console.log(event.target);
-  // $.post('/ingredients/remove', event.target.id)
+  $.post('/ingredients/remove', event.target.id)
   // .done(outOfStock)
   // .error(onError);
 });
 
 $addToOrder.click(function(event) {
-  event.preventDefault();
-  var price = Number($('#total-price').html()) + Number(event.target.value);
+  if($addToOrder.attr('checked')) {
+    var price = Number($('#total-price').html()) + Number(event.target.value);
+  } else {
+    var price = Number(event.target.value) - Number($('#total-price').html());
+  }  
   $('#total-price').html(price);
 })
 

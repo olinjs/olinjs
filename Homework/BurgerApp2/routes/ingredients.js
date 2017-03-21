@@ -33,7 +33,7 @@ routes.addIngredient = function(req, res) {
 };
 
 routes.removeIngredient = function(req, res) {
-	
+  Ingredient.findOneAndUpdate(req.)
 }
 
 module.exports = routes;
