@@ -1,17 +1,17 @@
 Olin.js
 ===
 
-##Course Description
+## Course Description
 Olin.js is a project oriented approach to learning modern web application development. With server and client technology advancing so rapidly, the modern website looks very different from that of even a few years ago, and the web will only become a bigger part of our lives in the near future. Olin.js will quickly familiarize students with Node.js as a web server framework and ES5 JavaScript as a responsive client-side language with three weeks of introductory instruction and four weeks of partner labs.
 
 Along the way, students will learn the basic layout of the web, how to deploy and maintain large applications, important development strategies, skills, and technologies, and how to design and manage complex, multi-developer software projects. Students will spend the last six weeks of the course putting their knowledge and skills to the test by designing and developing their own web applications.
 
-###Learn Web Development
+### Learn Web Development
 If you stumbled across this repository and feel like learning some web development, please follow along with us!
 This repository contains all of the lesson material and assignments to get you going.
 Feel free to submit a Github issue if you find any problems in the course and we'll do our best to fix it up.
 
-##Course Contents
+## Course Contents
 * [Lesson 0 - Getting Ready for the Course](./lessons/00-getting-ready)
 * [Lesson 1 - Course Introduction and The Internet](./lessons/01-welcome-internet)
 * [Lesson 2 - Express and Templating](./lessons/02-express-templating)
@@ -30,7 +30,7 @@ Feel free to submit a Github issue if you find any problems in the course and we
 * [Final Project](./finalproject)
 
 
-##Learning Objectives
+## Learning Objectives
 1. Understand the modern internet and web applications
 2. Learn software design skills and strategies, such as Javascript, Node and database technologies, that are relevant to web infrastructure
 3. Find connections between current coursework with future professional applications
