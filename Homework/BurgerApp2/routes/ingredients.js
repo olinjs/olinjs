@@ -3,6 +3,8 @@ var Ingredient = require('../models/ingredientModel.js');
 
 var routes = {};
 
+var ObjectId = require('mongoose').Types.ObjectId; 
+
 routes.getIngredients = function(req, res) {
   Ingredient.find({}, function(err, ingredients) {
     if (err) return console.error(err);
@@ -33,7 +35,27 @@ routes.addIngredient = function(req, res) {
 };
 
 routes.removeIngredient = function(req, res) {
-  // Ingredient.findOneAndUpdate(req.)
+  formId = req.body['formId'];
+  Ingredient.findOneAndUpdate({'_id': formId}, {$set:{inStock: false}}, function(err, doc){
+    if (err) return console.error(err);
+    console.log(doc)
+  });
+  res.end();
+}
+
+routes.editIngredient = function(req, res) {
+  formId = req.body['formId'];
+  name = req.body['name'];
+  price = parseInt(req.body['price']);
+  Ingredient.findOneAndUpdate({'_id': formId}, {$set:{name: name, price: price}}, function(err, doc){
+    if (err) return console.error(err);
+    console.log(doc)
+  });
+  res.end();
+  // Ingredient.findOneAndUpdate({'_id': formId}, {$set:{inStock: false}}, function(err, doc){
+  //   if (err) return console.error(err);
+  //   console.log(doc)
+  // });
 }
 
 module.exports = routes;

@@ -12,13 +12,43 @@
 
 <h4>In Stock:</h4>
 
+
 <ul id="ingredient-list">
+  <li id="hidden-template-li" style="display:none">
+    <div id={{this._id}}>
+      <p id="ingredient">Ingredient: <span class="ingredient">Meat</span></p>
+      <p id="ingredient">Price: $<span class="price">100</span></p>
+      <input type="button" value="Out of Stock" class="remove-button">
+     <input type="button" value="Edit" class="edit-button">
+    </div>
+  </li>
+</ul>
+
+<ul>
+{{#each inStock}}
+  <li>
+    <form id={{this._id}} class="remove-ingredient">
+      <p id="ingredient">{{this.name}}</p>
+      <p id="price">${{this.price}}</p>
+
+<!--       <p id="ingredient">Ingredient: <span class="ingredient">{{this.name}}</span></p>
+      <p id="ingredient">Price: $<span class="price">{{this.price}}</span></p>
+ -->      <input type="submit" value="Out of Stock" class="remove-button">
+      <input type="button" value="Edit" class="edit-button">
+    </form>
+  </li>
+{{/each}}
+</ul>
+
+
+<!-- <ul id="ingredient-list">
   <li id="hidden-template-li" style="display:none">
     <form id={{this._id}} class="remove-ingredient">
       <p>Ingredient: <span class="ingredient">Meat</span></p>
       <p>Price: <span class="price">$100</span></p>
       <input type="submit" value="Out of Stock">
-      <input type="submit" value="Edit" id="edit-button">
+     <input type="button" value="Edit" id="edit-button">
+
     </form>
   </li>
 </ul>
@@ -35,7 +65,7 @@
   </li>
 {{/each}}
 </ul>
-
+ -->
 
 <h4>Out of Stock:</h4>
 

@@ -1,5 +1,12 @@
+var onError = function(data, status) { 
+  console.log('status', status);
+  console.log('error', data);
+}
+
+
+
 var $newIngForm = $("#add-ingredient");
-var $outOfStockForm = $(".remove-ingredient");
+var $outOfStockForm = $("#remove-ingredient");
 var $editForm = $("input.edit-button");
 var $templateLi = $('#hidden-template-li');
 var $templateLiOut = $('#hidden-template-li-out');
@@ -7,22 +14,107 @@ var $ingredientList = $('#ingredient-list');
 var $outOfStockList = $('#out-of-stock-list');
 var $addToOrder = $('#orderIngredients');
 
-$outOfStockForm.submit(function(event) {
-  event.preventDefault();
-  var formId = event.target.id;
-  console.log(formId);
-  $.post('/ingredients/remove', formId)
-  // .done(outOfStock)
-  // .error(onError);
+$('body').on('click', '.remove-button', function(){
+  //Changes an ingredient to out of stock
+  //when button is clicked
+  formId = $(this).parent().attr('id');
+  $.post('ingredients/remove', {formId:formId})
+    .done()
+    .error(onError);
+  // $.ajax({
+  //   type: 'POST',
+  //   url: '/ingredients/remove',
+  //   data: {formId:formId},
+  //   dataType: 'json',
+  //   cache: false,
+  //   success: function(data) {
+  //     console.log('Successfully added');
+  //   },
+  //   error: function(xhr, status, err) {
+  //     console.error(status, err.toString());
+  //   }
+  // });
 });
+
+$('body').on('click', '.edit-button', function(){
+  //User can edit ingredient when edit button is clicked
+  var newName = $(this).siblings("#ingredient").html();
+  var newPrice = $(this).siblings("#price").html().slice(1);
+  var name = prompt("Please enter the new ingredient name:", newName);
+  if (name != "") {
+    newName = name;
+  }
+  var price = prompt("Please enter the new price:", newPrice);
+  if (price != "") {
+    newPrice = name;
+  }
+  formId = $(this).parent().attr('id');
+  $.ajax({
+    type: 'POST',
+    url: '/ingredients/edit',
+    data: {
+              formId: formId, 
+              name: name,
+              price: price 
+            },
+    dataType: 'json',
+    cache: false,
+    success: function(data) {
+      console.log('Successfully added');
+    },
+    error: function(xhr, status, err) {
+      console.error(status, err.toString());
+    }
+  });
+});
+
+  // formId = $(this).parent().attr('id');
+  // $.ajax({
+  //   type: 'POST',
+  //   url: '/ingredients/remove',
+  //   data: {formId:formId},
+  //   dataType: 'json',
+  //   cache: false,
+  //   success: function(data) {
+  //     console.log('Successfully added');
+  //   },
+  //   error: function(xhr, status, err) {
+  //     console.error(status, err.toString());
+  //   }
+  // });
+// });
+
+
+// $outOfStockForm.submit(function(event) {
+
+
+//   // event.preventDefault();
+//   // var formId = event.target.id;
+
+
+//   // .done(outOfStock)
+//   // .error(onError);
+// });
 
 $editForm.submit(function(event) {
   event.preventDefault();
   // var formId = '#'+data;
-  console.log(event.target);
-  $.post('/ingredients/remove', event.target.id)
-  // .done(outOfStock)
-  // .error(onError);
+  $.ajax({
+      type: 'POST',
+      url: '/ingredients/edit',
+      data: {
+              formId: event.target.id, 
+              name: event.target.name, 
+            },
+      dataType: 'json',
+      cache: false,
+      success: function(data) {
+        console.log('Successfully added');
+      },
+      error: function(xhr, status, err) {
+        console.error(status, err.toString());
+      }
+    });
 });
 
 $addToOrder.click(function(event) {
