@@ -6,13 +6,18 @@
   {{#each ingredients}}
   <li>
     <form id=orderIngredients>
-    <p>Ingredient: <span>{{this.name}}</span></p>
-    <p>Price: <span id='price'>${{this.price}}</span></p>
+    <p id='ingredient-wrapper'>Ingredient: <span id='ingredient'>{{this.name}}</span></p>
+    <p id='price-wrapper'>Price: $<span id='price'>{{this.price}}</span></p>
       <input type="checkbox" value={{this.price}} class={{this._id}} {{#unless this.inStock}} disabled {{/unless}}>
     {{/each}}
     <br>
     <p>Total Price: $<span id="total-price">0</span></p>
-    <input type="submit" value="Place Order">
     </form>
+    
+    <form id='submitOrder'>
+      <input type="submit" value="Place Order" id='submitOrder'>
+    </form>
+
+
   </li>
 </ul>
