@@ -1,0 +1,57 @@
+body {
+	background-color: white;
+	font-family: "Helvetica", sans-serif;
+}
+
+div {
+	background-color: white;
+}
+
+#new-twote {
+	width: 75%%;
+	height: 80px;
+	padding: 10px 10px 10px 10px;
+	font-size: 20;
+}
+
+#sidebar {
+	width: 30%;
+	height: 400px;
+	float: right;
+	display: inline-block;
+	padding-left: 20px;
+}
+
+ul {
+	list-style: none;
+	font-size: 20px;
+}
+
+ul #user {
+	text-align: center;
+	font-size: 30px;
+}
+
+li .user {
+	padding-bottom: 20px;
+}
+
+div #twote-display {
+	width: 65%;
+	height: 500px;
+	display: inline-block;
+	overflow: scroll;
+}
+
+div #login-form {
+
+}
+
+input[type="submit"] {
+	border-radius: 5px;
+	text-align: center;
+	display: inline-block;
+	background-color: lightgray;
+	color: black
+	font-size: 15px;
+}

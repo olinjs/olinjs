@@ -1,0 +1,11 @@
+<h1>"Cats:"</h1>
+<hr>
+<ul>
+{{#each cats}}
+  	<li>{{this.name}}: {{this.age}} 
+  	<ul>{{#each this.colors}}
+  		<li>{{this}}</li>{{/each}}
+	</ul>
+	</li>
+{{/each}}
+</ul>

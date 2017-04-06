@@ -1,0 +1,25 @@
+{
+  "name": "catapp",
+  "version": "1.0.0",
+  "description": "An app that lets the user add and remove stray cats to their family. The user has the option of viewing the cats by age or color.",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^4.8.0",
+    "morgan": "^1.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cats",
+    "kitties",
+    "hairball"
+  ],
+  "author": "Ariana Olson",
+  "license": "ISC"
+}
