@@ -1,30 +1,30 @@
-#Lesson 1 - Welcome! The Internet and JavaScript
+# Lesson 1 - Welcome! The Internet and JavaScript
 
-##Goals
+## Goals
 After this class, you should:
 - Understand the course plan and resources
 - Have your development environments ready
 - Be familiar with the fundamentals of Node and JavaScript
 
-##Welcome to Olin.js!
+## Welcome to Olin.js!
 We are excited to have you following along with these lessons and hope that this proves to be a useful resource for learning application development with Node.js.
 
-##Introduction to the Internet
+## Introduction to the Internet
 ![Series of tubes](http://gajitz.com/wp-content/uploads/2010/01/internet-a-series-of-tubes.jpg)
 
 This is obviously a [comic](http://www.cc.com/video-clips/uo1ore/the-daily-show-with-jon-stewart-headlines---internet) [misconception](http://www.cc.com/video-clips/sokn5t/the-daily-show-with-jon-stewart-party-pooper) about the true nature of the internet, so let's dive deeper and have a look at the true nature of our old friend.
 
-###TCP/IP
+### TCP/IP
 The underlying backbone of what we call the internet is the **Internet Protocol**, also known as **IP**. Under IP, every device that connects to the network through a router or gateway is assigned an **IP address** by the router or gateway it connects to. When one device wants to connect to another over the internet, it simply needs to know its address and it can use that to request a connection on a specific **port** over IP. For all intents and purposes, think of a port as a numbered slot on a computer that can host multiple IP connections. Most devices have ports numbered 1-65535 with some sections reserved.
 
 With a connection established, the devices can start sending arbitrary data to each other. In order to ensure that all of the data is transmitted correctly and in order, we use the **Transmission Control Protocol**, or **TCP**. TCP on the sender's side takes care of organizing data into packets, numbering them, and sending them out over IP. On the receiver's side, as packets come in, they are put in order and checked for any missing data. If there's a packet missing, the receiver will ask the sender to send another copy until it has all of the packets.
 
 Together TCP/IP is known as the Internet Protocol Suite. There are many other protocols that you can use to communicate over the internet, but this suite is the backbone of most connections, and as we'll see, of HTTP. That's about all you'll need to know about TCP/IP for this class. If you'd like to know a little more about how TCP/IP works, [here's a good analogy](http://bpastudio.csudh.edu/fac/lpress/471/hout/netech/postofficelayers.htm).
 
-###HTTP
+### HTTP
 The **HyperText Transfer Protocol** (**HTTP**) is the popular protocol used for exchanging resources - like web pages, images, and even raw data - over the web. Yes, it's yet another protocol and it lays out the format of data to be sent out over TCP. HTTP is designed for a **client-server** architecture, in which a client makes a **request** to a server, to which the server sends a **response**. Requests and responses have a simple plaintext format that is divided into a **header** section, and a **body** section.
 
-#####HTTP Requests
+##### HTTP Requests
 To understand an HTTP request, let's see what one looks like!
 
 ```
@@ -192,10 +192,10 @@ Running `git stash apply` will apply the latest stash (`stash@{0}`).  If you wan
 
 A example of using stashing could be if you have a bug and you want to see if you just created the bug or if the bug is in your last commit, you can `git stash`, re-run your code and check if the bug still exists, and then `git stash apply` to get back to where you were before.
 
-#In-Class Exercises
+# In-Class Exercises
 (We’re not expecting you to finish all of these activities! Pick the ones which are interesting and challenging to you, and feel free to work with the people around you.)
 
-##Git and Github:
+## Git and Github:
 - If you find a bug in the Olin.js repo at any point, please make a pull request to fix it!
 - Draw out how each of the commands you know works
 - Find a git command you don’t know about, read the documentation, and call over a teaching team member to explain it to
@@ -205,11 +205,11 @@ A example of using stashing could be if you have a bug and you want to see if yo
   - using only a master branch between the two of you
   - using branching/merging
 
-##Internet:
+## Internet:
 - Pick a website, open the "Network" tab of the developer console, and identify what some of the requests are doing (this won’t be easy for all of the requests -- don’t worry if it’s not obvious what some of them do)
   - Challenge: find requests which aren’t GET
 
-##Javascript:
+## Javascript:
 - Write some simple JavaScript functions in https://jsfiddle.net/ (remember: ctrl+shift+j opens the developer console -- that’s where your console.logs will print). If you need function ideas, try the first couple of these problems: https://projecteuler.net/archives
 - If you like learning from textbooks, this one is pretty good: http://eloquentjavascript.net/
 - Practice debugging JavaScript (Please fork the jsfiddles before editing them!)
@@ -222,7 +222,7 @@ A example of using stashing could be if you have a bug and you want to see if yo
 # Before Class 2 (Friday 1/20/17)
 Go through the following introductory tutorials on JavaScript and Node.
 
-##JavaScript Tutorial
+## JavaScript Tutorial
 
 For details about the JavaScript tutorial, check out its [GitHub repo](https://github.com/sethvincent/javascripting).
 
@@ -232,7 +232,7 @@ $ sudo npm install -g javascripting
 $ javascripting
 ```
 
-##Node Tutorial
+## Node Tutorial
 
 The Node tutorial process is similar.
 
@@ -243,6 +243,6 @@ $ sudo npm install -g learnyounode
 $ learnyounode
 ```
 
-##Submission
+## Submission
 
 When you're finished, fill out [the Homework Submission Survey](https://goo.gl/forms/vgZjAWGNHS1x03We2).
