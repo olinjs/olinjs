@@ -1,3 +1,4 @@
+//You should section and comment this file into packages, middleware, mongo-related stuff, auth stuff, routes stuff, etc.
 var express = require("express");
 var path = require("path");
 var logger = require("morgan");
@@ -58,6 +59,7 @@ app.get("/",function(req,res){
   }
 });
 
+//Your local login doesn't work, because you aren't hooking your login form to anything.
 app.get("/login", twote.login);
 app.get("/twotes", twote.twoteshome);
 app.post("/postTwote", twote.addTwote);

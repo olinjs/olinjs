@@ -1,0 +1,13 @@
+Homework Feedback:
+
+Functionality:
+- Completion: You are missing a lot of your dependencies in your package.json file. You should "npm install --save <package>" Most of the features work, except your local login page. You styled your login page and it looks super nice, and I like that you cleaned up your twotes page to be split up into divs.  (17/20)
+- Bug Free: Remove your log statements when you are in production. You didn't have local login working, but everything else is good. (10/10)
+
+Quality:
+- Good Coding Practices: Nice folder structure. The different functions that you use is good. (10/10)
+- Readability: Try to have more detailed comments for your route functions and in your main.js. Your functions and variables are named well. (8/10)
+
+Also, I ended up using my own auth info, but don't forget to add teaching team as collabs to the developer site, so we can access your stuff.
+
+Good work!!!!!!

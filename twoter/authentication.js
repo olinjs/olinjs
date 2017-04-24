@@ -1,3 +1,4 @@
+//I like that you kept this all in a different file!
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
 

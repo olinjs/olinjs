@@ -1,3 +1,4 @@
+//Be sure to comment what each route does. Good simple routes though!
 var Twotes = require('../models/twoteModel.js');
 var Users = require('../models/userModel.js');
 var routes = {};
@@ -10,11 +11,11 @@ routes.twoteshome = function(req, res){
   var username = (req.session.passport.user.displayName);
 
   Users.count({username: username}, function(err, i){
-    if (i==0){
+    if (i==0){ //good use of checking if username exists
       var newUser = new Users({username:username});
       newUser.save(function(err){
         if (err){
-          res.sendStatus(500);
+          res.sendStatus(500); //nice!
           return;
         }
         Twotes.find(function(err,twotes){
@@ -35,6 +36,7 @@ routes.twoteshome = function(req, res){
             })
           }
         })
+        //Remove this if not using:
         //res.send(newUser);
       })
     } else {

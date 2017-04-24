@@ -1,3 +1,4 @@
+//Comment the different components of this file, and remove unnecessary console log statements
 var onError = function(err,status){
   console.log("status",status);
   console.log("error",err);
@@ -14,7 +15,7 @@ $("#twote-out").submit(function(event){
     user_id: user_id,
   }).done(function(data){
     var div = "<div id='"+data._id+"'div><div class='"+data.user_id+"'><p>"+data.text+"--"+data.user+"</p></div><input class='delete-button' id='"+data._id+"' type='button' value='Delete'></div>";
-    $('#allTwotes').prepend(div);
+    $('#allTwotes').prepend(div); //nice use of prepend
   }).error(onError)
 });
 
