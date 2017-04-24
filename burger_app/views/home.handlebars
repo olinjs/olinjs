@@ -1,0 +1,22 @@
+<h1>Delicious Burgers</h1>
+<h2>Ingredients</h2>
+<form id="ajax-form">
+  Name: <input type="text" name="addName"/><br/>
+  Price: <input type="text" name="addPrice"/><br/>
+  <input type="submit" value="Add">
+</form>
+
+<ul id='ingredientList'>
+  {{#each ingredients}}
+    <div id={{this._id}} class="ingredientItem">
+      <input id="name" value={{this.name}}>
+      <input id="price" value={{this.price}}><br>
+      <form id={{this._id}} class='form-out'>
+        <input type="submit" value="Out of Stock"></input>
+      </form>
+      <form id={{this._id}} class='form-edit'>
+        <input type="submit" value="Edit"></input>
+      </form>
+    </div>
+  {{/each}}
+</ul>

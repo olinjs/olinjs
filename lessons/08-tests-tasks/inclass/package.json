@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Olin.js class3 homework solution.",
   "main": "app.js",
+  "watch": {
+    "test": "{src,test}/*.js"
+  },
   "dependencies": {
     "body-parser": "^1.14.2",
     "cookie-parser": "^1.4.0",
@@ -20,6 +23,7 @@
     "supertest": "^1.1.0"
   },
   "scripts": {
+    "watch": "npm-watch",
     "jshint": "jshint --exclude-path ./.gitignore . || exit 0",
     "mocha": "./node_modules/mocha/bin/mocha tests/server --recursive || exit 0",
     "cover-mocha": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha tests/server -- --recursive -R spec || exit 0",

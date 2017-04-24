@@ -1,0 +1,17 @@
+<h1>Order your Burger!</h1>
+
+<form>
+<ul id='ingredientList'>
+  {{#each ingredients}}
+    <div id={{this._id}} class="ingredientItem">
+      {{this.name}} - ${{this.price}}
+      <input type="checkbox" class="checkbox" id={{this._id}} name={{this.name}} {{this.disabled}}>
+    </div>
+  {{/each}}
+</ul>
+</form>
+<div id="total">{{total}}</div>
+<div id="submitMessage"></div>
+<form id="addOrder">
+  <input type="submit" value="submit">
+<form>

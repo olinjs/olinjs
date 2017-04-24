@@ -1,0 +1,11 @@
+<h1>Kitchen</h1>
+
+<ul>
+{{#each order}}
+<div id = {{this._id}}>{{this.ingredients}} - ${{this.price}}
+  <form class = "orderForm" id = {{this._id}}>
+    <input type = "submit" value = "Done">
+  </form>
+</div>
+{{/each}}
+</ul>
