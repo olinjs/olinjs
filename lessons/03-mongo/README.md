@@ -3,6 +3,9 @@
 2. [In-Class Activities](#inclass)
 3. [Homework](#homework)
 
+## Goals
+![ConceptTower](../images/lesson3.png)
+
 <a name="lesson"></a>
 # Lesson 3 - MongoDB and Mongoose
 
@@ -18,7 +21,7 @@ When we want to retrieve data from persistent storage quickly, we need a solutio
 
 MongoDB is a NoSQL database, which means that instead of tabular data, it stores data in JSON-like documents, and offers useful features for production level systems. We're going to use it for these reasons, but also because it is very easy to integrate with Node and doesn't require learning too much about data storage. Alternatives, for example the ubiquitous MySQL and PostgreSQL, are also very common database solutions, but tend to take a bit more time to get set up in a Node environment and require you to learn a query language (SQL) to access your data. You will likely see them in any internships or jobs doing web-dev, but MongoDB more than suits our purposes and will teach you the basics of data storage without taking a couple weeks of class time to get comfortable with.
 
-##Mongo
+## Mongo
 So, let's get Mongo running and see what we can do with it:
 
 ```sh
@@ -180,7 +183,7 @@ Today we will be playing around with mongoDB by writing mongoose queries, before
 
 If you find useful resources online while you're working on these exercises, please post them in the #olinjs slack channel!
 
-##Queries in Mongoose
+## Queries in Mongoose
 In mongoose, you create a schema to define the structure of your mongo collection. For this exercise, you will be working with a schema that has various robot features.
 
 ```javascript
@@ -193,12 +196,12 @@ var robotSchema = mongoose.Schema({
 
 Follow along at the end of the Readme to connect a copy of your boilerplate app to mongoose. Try writing out a few queries to select certain robots, and pass them to render in a handlebars file. You can now use mongo/mongoose to persist data for any application.
 
-##Advanced Queries
+## Advanced Queries
 Now that you've got the basics of mongoose working, organize into groups and have each member research an advanced mongoose query to present to the group. You can implement this if you want, or move on to working on the cat app (where you will eventually need to implement an advanced query for this weeks homework).
 
 We're defining an advanced query as something that builds on basic queries by using query operators such as **and** and **or**. You can find a full list of query operators [here](https://docs.mongodb.org/manual/reference/operator/query/#query-selectors). You can also see examples of what that looks like in mongoose syntax at the main queries [doc page](http://mongoosejs.com/docs/queries.html) and in the [page](https://docs.mongodb.org/manual/tutorial/query-documents/) dedicated to building specific queries.
 
-##Cat App
+## Cat App
 Once you are comfortable with using mongoose in your boilerplate application and building different types of queries, start working on integrating a database into your cat app. Follow the [getting started guide](http://mongoosejs.com/docs/index.html) that mongoose provides to hook the in-class app up to your database.
 
 In groups, discuss the models you will use to store data for your cat app. It can be helpful to diagram your models on the board.

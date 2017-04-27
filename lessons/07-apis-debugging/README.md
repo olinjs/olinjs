@@ -1,4 +1,4 @@
-#Lesson 7 - API Design and Sessions
+# Lesson 7 - API Design and Sessions
 
 ## README Table of Contents
 * [OAuth](#oauth)
@@ -10,7 +10,7 @@
 * [Homework](#homework-07)
 
 <a name="oauth"></a>
-##OAuth: What it is and how it works
+## OAuth: What it is and how it works
 
 OAuth, which stands for "Open Authorization" is a simple and standard authentication process that provides users with a way to allow internet users to authorize external websites or applications to access their info without sharing their passwords. OAuth plays two roles in accessing data - **authentication** and **authorization**.
 
@@ -31,7 +31,7 @@ The full exchange of requests involved in OAuth can be seen in the graphic below
 Please read the following post on OAuth for more detailed information on how authorization works: [Oauth](http://www.cubrid.org/blog/dev-platform/dancing-with-oauth-understanding-how-authorization-works/)
 
 <a name="REST"></a>
-##REST
+## REST
 
 REST, short for REpresentational State Transfer, is an architecture style for designing a web service. As a design pattern for how clients and servers should work, RESTful web services make requests to a URI which will retrieve a response that may be in XML, HTML, JSON, etc. with fast performance, reliability and the ability to grow.  
 
@@ -56,13 +56,13 @@ There's so much more to learn about REST. Please read this introduction on REST 
 
 So we've spent some time making our own web services that deliver static and dynamic page content, and we've done it all with the semantics of REST (GET, POST, PUT, DELETE). Today we see how we can use REST APIs to deliver content other than webpages (data!), and how we can access existing APIs set up by some of our favorite websites. Let's get started.
 
-##What's an API?
+## What's an API?
 Generally the acronym API (Application Programming Interface) is used to describe the way in which one piece of software exposes some of its functionality for another piece of software to use. When we talk about APIs in this class we're going to be specifically referring to web APIs, which most commonly expose their functionality through a specific URL or set of URLs. The APIs we'll be working with will allow you to programmatically (read: without a browser) GET and POST data from 3rd party web services.
 
-##Some Examples
+## Some Examples
 There are a lot of APIs out there that give you access to more types of data than you'll ever know what to do with. You can check out a long but by no means exhaustive list [here](http://www.programmableweb.com/category/all/apis?data_format=21190). That's a lot of data sitting there for the taking!
 
-###Twitter
+### Twitter
 Search for tweets and users, post statuses, read entire timelines (all tweets from a user's following list), and more. Useful for gathering large amounts of data for natural language processing, creating a better interface for twitter, analytics platforms, or tweeting bots! **Examples:** [Tweetbot Twitter client](http://tapbots.com/software/tweetbot/), [Tospy Analytics](http://topsy.com/analytics), [Pixelsorter Bot](https://twitter.com/pixelsorter)
 
 >**URL Endpoint:** https://api.twitter.com/1.1
@@ -75,7 +75,7 @@ Search for tweets and users, post statuses, read entire timelines (all tweets fr
 
 >**Documentation:** https://dev.twitter.com/rest/public
 
-###Last.fm
+### Last.fm
 Get information on music artist, albums, and individual tracks. Get listening trend data, even venue and event info. You can also use this API to record users' track listens (called scrobbling) to Last.fm. **Examples:** [Tastebuds Music-based Dating](http://tastebuds.fm/), [Last.fm Extra Stats](http://www.last.fm/user/C26000/journal/2006/07/30/383m_last.fm_extra_stats), [Spotibot Playlist Generator](http://www.spotibot.com/)
 
 >**URL Endpoint:** http://ws.audioscrobbler.com/2.0/
@@ -88,7 +88,7 @@ Get information on music artist, albums, and individual tracks. Get listening tr
 
 >**Documentation:** http://www.last.fm/api
 
-###Dropbox
+### Dropbox
 Access all your files stored online! Put them up, take them down, share them with others, read metadata and revision history. The possibilities really are endless on this one. **Examples:** [Filepicker upload plugin](https://www.filepicker.io/), [Gimmebar Browse Plugin](https://gimmebar.com/), [Droptunes Music Streaming](http://droptun.es/)
 
 >**URL Endpoint:** https://api.dropbox.com/1
@@ -101,10 +101,10 @@ Access all your files stored online! Put them up, take them down, share them wit
 
 >**Documentation:** https://www.dropbox.com/developers
 
-###US Gov
+### US Gov
 A lot of government agencies have created APIs to access public data. You can see a list [here](https://www.data.gov/).
 
-###CURL
+### CURL
 When first accessing an API (especially one with poor documentation), you don't want to have to write a lot of code just to view the output of the request. You can use the command line tool CURL to quickly make requests.
 
 Example GET request:
@@ -115,19 +115,19 @@ curl http://services.faa.gov/airport/status/SAN?format=application/json
 You can actually use curl to test your own server's routes too. Just start your server in one terminal, and in a separate terminal window, point curl at localhost:PORT/routeYouWantToTest. Later we will learn how to programatically test routes, but curl is nice if you want to see how the data looks to the client.
 
 <a name="design-apis"></a>
-##Designing APIs with REST-ful Semantics
+## Designing APIs with REST-ful Semantics
 Up until now, we've only had experience using URL routes that we created ourselves, all used for interacting with web pages. In this lesson, we've started exposing you to APIs other people have designed specifically for you to use. What about when *you* want to create an API for *other people* to use? We won't go into detail about picking what kind of data or functionality to expose, as that will vary based on your application, but what we will cover is _how_ to expose that data and functionality in a way that is easy for others to understand and use.
 
-###GET and PUT
+### GET and PUT
 When designing a REST API, it's best to think of GET and PUT routes as reciprocal methods. When you ask to PUT a resource at a specific route, you should get that same resource back when you GET it. Of course, this really only applies to those routes in which we match some identifier for a resource (like `/cats/bycolor/:color` in homework 3). As an example, suppose we have a messaging website that has a unique id for every message created. We can see any specific message through our API by GET-ing `/messages/:id`. Similarly we could update a message by PUT-ing the updated information to `/messages/:id`.
 
-###POST
+### POST
 One thing a lot of people struggle with is knowing when to use POST vs. PUT. If you think of the example above, however, it should be pretty obvious to you. If PUT is used for putting a resource at a route, a POST request is used for any route where you might want do something that modifies the database or server in some way, but not in a way that is reciprocal with a GET request. For example, you could provide a single route for creating messages `/messages/new`, which will take care of making a message that could then be GET-ed and PUT-ed by its assigned id. You can't really think of any reasonable reciprocal for `/messages/new`, can you? It wouldn't make sense to return the last message created, so we would just have the one method available on routes like that.
 
-###DELETE
+### DELETE
 Probably the most self-explanatory method available to us. DELETE requests should only be used when we want to remove the resource at the URL we send the request to. Say we accidentally sent a _really_ embarrassing message to one of our professors. With a DELETE request we can make sure that `/messages/:embarrassing_message_id` returns a 404 by getting rid of the message altogether. Crisis averted!
 
-###Naming Routes
+### Naming Routes
 To get started designing an API, you're going to need to come up with some routes that describe the content or functionality we are going to provide. One strategy we will try to stick to throughout the course is using **semantic routes**. This means that you should read the route, along with the method you'll use to request it, and from that alone have a good idea of what the result will be. What would you expect the following requests to do?
 
 ```
@@ -165,7 +165,7 @@ Resource | GET | PUT | POST | DELETE
 
 *Source: http://en.wikipedia.org/wiki/Representational_state_transfer*
 
-###Versioning with Accept headers
+### Versioning with Accept headers
 One thing you almost always see API providers doing in a way that is not semantic is specifying the version of the API to be used for the request by prefixing it to the resource route. Can you guess why this isn't semantic? That's right - the route is supposed to describe the resource, and our API version does not (or should not) do that. Thankfully, we know better than that, so where else can we put it? In the HTTP headers! Specifically the `Accept` header. The API version value would look something like `application/vnd.myapp.v1`, added to whatever values need to be sent in the `Accept` header. Then in our application, we can check it easily with the `accepts` package (install via npm):
 ```js
 var accepts = require('accepts');
@@ -183,10 +183,10 @@ app.use('/api*', function(req, res, next) {
 ```
 
 <a name="access-apis"></a>
-##Accessing Public APIs with OAuth
+## Accessing Public APIs with OAuth
 You might have noticed that some of the above APIs are listed as having an OAuth auth scheme, but you probably have no idea what that means. Sometimes, a 3rd party application might want access to private user data, but you can't reasonably expect web service providers to give that information out freely - we need a way for service providers' users to authorize 3d party applications to access their data. OAuth lets us do just that. **Note:** We're going to assume that throughout this course you will only be consuming APIs which require OAuth and not creating them.
 
-###Signing In with OAuth
+### Signing In with OAuth
 You can also use OAuth to handle user login. You've probably seen websites with "Log in with Google" or "Log in with Facebook" buttons -- those buttons access the Google or Facebook API to sign you in with your Google or Facebook credentials, then save your user information to session just like you would manually. We'll use an NPM package called Passport to handle OAuth-type user login.
 
 #### Sessions and Cookies
@@ -240,10 +240,10 @@ You can also set sessions to expire, forcing the user to login again, which you 
 #### Using Passport
 Passport lets you ask your users to log in via Google or Facebook, then manages the relevant sessions for you. That's it! All of the OAuth craziness is abstracted away.
 
-###OAuth By Hand
+### OAuth By Hand
 We have an small example application using OAuth in the `word_cloud` folder in this lesson folder that will use Twitter's API to generate a word cloud. This example will show you how to build an OAuth request from scratch. While we hope you won't have to do that out in the real world unless absolutely necessary, we thought it might be nice to show you one so you can appreciate all of the heavy lifting some of the OAuth libraries take care of for you.
 
-###Can I set up my own OAuth server?
+### Can I set up my own OAuth server?
 So you want to use OAuth to authenticate and authorize your API users, huh? Unfortunately that's _just_ outside the scope of this class, but know that if you do get to that point someday, there are some great packages available (on npm) that can help you get a basic setup running fairly quickly.
 
 <a name="inclass-07"></a>
@@ -251,7 +251,7 @@ So you want to use OAuth to authenticate and authorize your API users, huh? Unfo
 ##Facebook Design Activity
 You are designing Facebook's Page API. Come up with a set of routes to "Publish and send content as a Page. Manage Facebook Pages from your app." (Facebook's Page API documentation). When done, read and compare [Facebook's API](https://developers.facebook.com/docs/pages) documentation to your mock API, and have a discussion in your group about what is different and what is the same.
 
-##Simple Session App
+## Simple Session App
 Create a simple app that does the following:
 * Redirects to /login if user tries to access / without logging in.
 * Lets a user login by entering their name into a form.
@@ -260,15 +260,15 @@ Create a simple app that does the following:
 
 If you'd like to see how we implemented a simple session app, check out [this example](https://github.com/olinjs/olinjs/tree/master/lessons/07-apis-debugging/sessionExample).
 
-##Aging Cookies
+## Aging Cookies
 Discuss with your group the difference between a cookie and a session, and when are cookies and sessions created and destroyed. Play around with your app; how can you remove the session/cookie so the user has to login again?
 
-##Passport Example
+## Passport Example
 Check out the [Passport example](https://github.com/olinjs/olinjs/tree/master/lessons/07-apis-debugging/passportExample) -- pull it and follow the instructions in the readme in that folder to get it running.
 
 Read through the code -- what makes sense to you? What's confusing? How will you add Passport to Twoter?
 
-##OPTIONAL: Production
+## OPTIONAL: Production
 We haven't discussed creating/deploying apps for production yet, but it is important to highlight the following point. If you read the documentation of   `express-session` you might have seen something like:
 
 **Warning** The default server-side session storage, MemoryStore, is purposely not designed for a production environment. It will leak memory under most conditions, does not scale past a single process, and is meant for debugging and developing.

@@ -1,11 +1,11 @@
-#Getting Ready for Olin.js
+# Getting Ready for Olin.js
 
-##Ubuntu
+## Ubuntu
 If you need help installing Ubuntu check out this [guide](https://gist.github.com/benkahle/892fdb2531c5f388296a) written specifically for Olin laptops. It also includes some other useful packages and tips if you are new to Ubuntu.
 
 If you'd rather use a virtual machine, a different distribution of Linux, or a Mac, you're welcome to -- just be aware that the teaching team is most prepared to support Ubuntu dual boots.
 
-##Node
+## Node
 We recommend installing node using [NVM](https://github.com/creationix/nvm) (Node Version Manager). NVM is easy to use and will provide version management for node.
 
 1. Install nvm via curl in your terminal:
@@ -14,10 +14,10 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | b
 ```
 2. Install node using NVM: `nvm install node`
 
-##Github
+## Github
 We recommend you follow along on the course with your own version of this git repo. The way this will work is that you will fork this git repo into your own account and then you will push your work to that repository when you finish it.
 
-###1. Setting up Git, Github, and SSH keys
+### 1. Setting up Git, Github, and SSH keys
 To start out you will need a Github account. Either log in or create a new one at https://github.com.
 
 If you don't have git on your computer already, it can be installed with:
@@ -27,7 +27,7 @@ sudo apt-get install git
 
 Lastly, follow [this guide](https://help.github.com/articles/generating-ssh-keys/) to set up SSH communication with Github. SSH is a communication protocol that ensures secure transfer of information but doesn't require you to enter your username and password every time you push.
 
-###2. Forking
+### 2. Forking
 
 "Forking" makes your own personal copy of a repository. The term is "forking" because you copy the entire history of the project, but from here on out, any changes you make to your new repository are distinct from those made in the original repository. It's totally fine to keep two repositories ongoing with the same history, it's just data!
 
@@ -37,7 +37,7 @@ Github makes this very easy. Do this:
 
 This will bring you to your own copy of this lesson. When you make changes to your version, it won't mess with anyone else's work.
 
-###3. Cloning
+### 3. Cloning
 Now that you have your own copy of the repository, it's time to "clone" it, aka, download a copy to your computer. It's termed "cloning" because your downloaded copy and the version that exists on Github have a special relationship: you can "push", aka upload, all of your changes to the server with a single command.
 
 Now, clone your copy of the Olin.js repository. You might have cloned with the remote URL which starts with `https` before; this time, we're asking you to clone with the one which starts with `ssh`. This is why you set up SSH keys in step 1 -- you'll be able to push your work without entering your username and password.
@@ -57,14 +57,14 @@ cd ~/olinjs # go to your newly cloned repository
 git remote add upstream git@github.com:olinjs/olinjs.git
 ```
 
-###5. Pulling from upstream
+### 5. Pulling from upstream
 To pull any new additions from the upstream remote, simply run
 ```sh
 git pull upstream master
 ```
 If everything is going according to plan, there shouldn't be any conflicts, but if there are, you will have to resolve them.
 
-##Git Best Practices
+## Git Best Practices
 
 In the real world (and in this class), it's not good practice to commit directly to the `master` branch. If a real project is under version control, committing a bug to `master` could break live code. Usually, you'll work in a branch, test your code, then make a pull request to merge your work into the `master` branch.
 
@@ -150,9 +150,9 @@ node_modules
 
 Which will ignore the `node_modules` folder — standard for a Node repository.
 
-##Class Overview
+## Class Overview
 
-###What will class look like?
+### What will class look like?
 We'll spend the first ~five weeks of class on a series of topics which are central to web development, including JavaScript, Node and Express, databases, jQuery and Ajax, templating and CSS, APIs, clientside frameworks, and deployment and scaling.
 
 For the three or four weeks after that, you'll work on labs in pairs, then you'll spend the rest of the semester on a team project.

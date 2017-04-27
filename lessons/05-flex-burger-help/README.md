@@ -1,5 +1,8 @@
 # The Client and Burger Application Continuation:
 
+## Goals
+![ConceptTower](../images/lesson5.png)
+
 ## README Table of Contents
 * [In-Class Activities](#inclass-05)
 * [Additional Readings and Information](#help-05)
@@ -36,10 +39,10 @@
 #Additional Information
 We went over the confusions and questions that you all had that we hadn't really addressed, and wanted to provide answers and resources for all of you, regarding them and other useful information.
 
-###Pre-Populating Your Database
+### Pre-Populating Your Database
 Some of you have had questions about how to get data into your database as you work on developing your apps. There are two main methods we can suggest.
 
-####Faking It
+#### Faking It
 If you just want data in your database so you can play around with formatting your Handlebars templates or JQuery selectors, it is really easy to fake what your data would look like by creating an object to pass to Handlebars. The one caveat with this approach is that your database output might not look exactly like you expect, but once you have something that works with Handlebars, you can format the data from the database in the same pattern.
 
 To implement this, you just pass your fake data object to Handlebars in `res.render`:

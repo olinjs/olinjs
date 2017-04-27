@@ -1,6 +1,9 @@
-#Lesson 2 - Express and Templating
+# Lesson 2 - Express and Templating
 
-##Express
+## Goals
+![ConceptTower](../images/lesson2.png)
+
+## Express
 Now that we've explored Node.js a little, we will abstract the details away with the [Express](http://expressjs.com/) development framework. Before, in learnyounode, our code looked a lot like this:
 ```javascript
 var http = require("http");
@@ -14,7 +17,7 @@ http.createServer(function(request, response) {
 
 Now let's see what the same app would look like using Express.
 
-###package.json
+### package.json
 To start we'll set up a new application using `npm init`. This will ask you a series of questions that will populate your `package.json` file, you can use the defaults for all of them. The `package.json` file manages many things. If you publish your module on npm (like any of the modules which you `npm install`) this file will include the meta information about your module. We won't be doing much of that in this class, but that's why it seems like there are a lot of unnecessary fields. The main purpose we will use the `package.json` for is dependency management.
 
 After you exit the init setup, run `npm install express --save`. If you check your `package.json` again, you'll see the following was added:
@@ -27,7 +30,7 @@ The `--save` argument will add the module to your list of dependencies and is ge
 
 Once installed, your modules live inside the `node_modules` directory.  These modules generally include a lot of large files, so it's good practice to not commit your `node_modules` directory to git. For other people to run your app with the necessary modules, they would read and install the modules from your `package.json` using `npm install`.
 
-###app.js
+### app.js
 Now that we're set up, create a file called `app.js` and and paste in the following:
 ```javascript
 var express = require('express');
@@ -58,7 +61,7 @@ app.get('/olin', function(req, res){
 });
 ```
 
-###Routing
+### Routing
 Routing is the process of serving up different pages for different URLs. When you go to www.mycoolsite.com/, your computer goes out on the internet and asks mycoolsite's server for a page. Mycoolsite's server then sees that request and sends back information to your computer in the form of html. This HTML is then rendered in your browser.
 
 If you go to www.mycoolsite.com/, mycoolsite's servers obviously can't send you the same data they sent www.mycoolsite.com/olin. So mycoolsite's servers needs to differentiate `/` from `/olin`. This process is known as routing.
@@ -174,7 +177,7 @@ This is Morgan logging the request. This will really come in handy while trying 
 Now go ahead and copy the image `cat.jpg` from the `expressintro/public/images` folder in this directory and place it in your new images folder. Then navigate to http://localhost:3000/images/cat.jpg. That is your static folder doing work!
 
 ## Templating
-###Handlebars Basics
+### Handlebars Basics
 
 Now I imagine you may be asking yourself, *"This is a web-dev course, right? Where's the HTML?"* Well its coming, but doing it smart is not as simple as putting some `<p>` tags in a file and calling it a day. We will be using a technique called templating. Templating allows us to put some logic behind what is otherwise entirely a layout language. This will greatly reduce the overall quantity of HTML you write, thereby reducing errors, and making it much easier to make a change to an element that appears on many pages in your app. Most importantly however, it allows us to dynamically customize the contents of our HTML. Think about Facebook profiles. When you load your profile, you are looking at a static page of HTML. But Facebook's servers aren't full of files called `bill-wong-profile.html`, and `cynthia-chen-profile.html`; that wouldn't exactly scale very well. They have a single profile template into which they inject your personal profile information, render it as HTML and then send it to your browser. Let's learn the basics!
 
@@ -321,10 +324,10 @@ If you find useful resources online while you're working on these exercises, ple
 
 4. If you want more practice and understanding of Javascript, read through [Javascript.md](./Javascript.md).  There you'll find the Node Beginner Book, the Airbnb Javascript Style Guide, and more information on the syntax and theory of Javascript.
 
-#Before Class 3 (Friday 1/27/17)
+# Before Class 3 (Friday 1/27/17)
 In this homework you will begin building your first Express application, and create dynamic Handlebars templates.
 
-##Before You Start
+## Before You Start
 This assignment asks you to create, access, and modify data on your server when certain routes in your web app are visited. To do this and have your data be truly persistent, you'll need tools like MongoDB and Mongoose. We haven't gotten there yet, so for this assignment we're providing you with some code that will act somewhat like a database.
 
 Create a file named 'fakeDatabase.js' in the top level directory of your express application and paste in the following code:
@@ -389,7 +392,7 @@ module.exports = router;
 
 Carefully reading the code above should be enough to get you started. Note that handlebars templating is not used in the example above, but you are required to use handlebars templating for your assignment. So you should be using *res.render*, not *res.send*! And though it isn't nessecary to, you can modify the fakeDatabase.js code if you wish.
 
-##Assignment 
+## Assignment 
 Create an Express application that has the following routes:
 * GET `/cats/new` => Creates a new cat record. A cat should have a random age, a name, and a list of colors.
   * These should be generated upon creation, not hardcoded.
@@ -404,7 +407,7 @@ In this assignment we are doing something very bad. GET should be a [safe method
 
 We are using GET requests in this horrible way because without writing a front end, sending other types of requests becomes much more difficult. We'll get there soon though.
 
-##Some Parting Words
+## Some Parting Words
 In order to complete this assignment, you're going to have to figure out
 how to filter and sort data. We didn't cover this in class, but it's not much of a stretch to Google.
 
@@ -414,5 +417,5 @@ Are you running into errors that the first page of Google results doesn't solve?
 
 As always, ask for help in Slack or come to office hours if this feels like an overwhelming amout of work, if you are running into trouble, or if you need some guidance with this assignment.
 
-##Submission
+## Submission
 Your app will be graded according to the [Homework Rubric](../../Syllabus.md#homework-rubric-50-points-total). When you're finished, fill out [the Homework 2 submission survey](https://goo.gl/forms/qeYlmnt2n0ioqj1t1).

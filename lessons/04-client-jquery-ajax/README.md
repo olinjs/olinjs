@@ -3,6 +3,9 @@ Web Applications handle much of their database communication and logic on the se
 
 Today we are going to learn the basics of building and manipulating the client and building communication routes between the client and server.
 
+## Goals
+![ConceptTower](../images/lesson4.png)
+
 ## README Table of Contents
 * [HTML Reprise](#html-reprise)
 * [HTML Forms](#html-forms)
@@ -342,7 +345,7 @@ Let's work through this file one step at a time, and if any of this is confusing
 
 Putting all of this together allows us to communicate with the server without sending GET requests from the URL bar and without reloading the page. We can then dynamically change the contents of the DOM without changing the entire page. That is just a taste of the power of client-side JavaScript and AJAX.
 
-##Additional and Alternative learning Resources
+## Additional and Alternative learning Resources
 A free Google-sponsered course on the devtools: https://www.codeschool.com/courses/discover-devtools
 
 <a name="inclass-04"></a>
@@ -351,10 +354,10 @@ Follow along above to finish up your forms app and ask any questions if you need
 
 As always, pick the exercises which are interesting and challenging to you, and feel free to work with the people around you. **If you feel done or comfortable with these exercises, move on to the homework -- it is fairly lengthy.**
 
-##Folder Structure
+## Folder Structure
 Last class we discussed folder structure, so as a refresher, draw out the folder structure for a typical app on the board in small groups, indicating what belongs in each folder. Pay particular attention to which JavaScript files are clientside and which are serverside (we haven't done much clientside work yet).
 
-##jQuery and AJAX
+## jQuery and AJAX
 - Practice jQuery JSFiddles. Fork before editing!
   - [Selectors and CSS](https://jsfiddle.net/swalters4925/zf52yaa0/3/)
   - [Selectors and click handlers](https://jsfiddle.net/swalters4925/ejgenk5c/2/)

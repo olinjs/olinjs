@@ -6,6 +6,8 @@ After this class, you should:
 - Have your development environments ready
 - Be familiar with the fundamentals of Node and JavaScript
 
+![ConceptTower](..images/lesson1.png)
+
 ## Welcome to Olin.js!
 We are excited to have you following along with these lessons and hope that this proves to be a useful resource for learning application development with Node.js.
 

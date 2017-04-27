@@ -15,20 +15,20 @@
 <!-- /MarkdownTOC -->
 
 
-#Lesson 8 - Testing and Task Running
+# Lesson 8 - Testing and Task Running
 
 ## Testing Philosophy
-###What is Testing?
+### What is Testing?
 
 As you might expect, testing involves observing components of a system in use to ensure that they are working as they should or, if they aren't working, to help diagnose where they're failing and why.
 
 Most of you have probably have heard of software testing before -- you might be thinking of lots of print statements to see if things are equal, and a process which just takes a lot of time and isn't that important. Not so.
 
-###Why Test?
+### Why Test?
 
 Obviously testing helps catch bugs and make sure your code works, but it also provides other benefits in terms of overall code quality. Having a good test suite for a project increases maintainability as it becomes harder to introduce new bugs in new versions without breaking tests. Additionally, high quality code tends to be very well encapsulated, and well encapsulated code tends to be easier to test. That said, when you sit down to test something and realize that the test is going to be complicated to write, consider first refactoring the code you are testing so you end up with several tests that are all easier to write, and better code in general as a result.
 
-##Types of Tests
+## Types of Tests
 
 Tests are generally classified according to how much code they target. The less code a test targets, the easier it is to diagnose what's going wrong when the test fails and the easier the test will probably be to maintain.
 
@@ -40,13 +40,13 @@ A common philosophy (check out [this blog post from Google](http://googletesting
 
 That said, a lot of people have a lot of strong (and contradictory) opinions about testing -- don't be surprised if you encounter different practices in different contexts.
 
-##Test Driven Development (TDD)
+## Test Driven Development (TDD)
 
 A common development workflow is to write a bunch of code and then test that code. TDD turns that workflow on its head, calling instead for the tests to be written before a piece of functionality is implemented. This approach has several benefits, most notably that tests get written for everything during the process of development, not as an afterthought. Additionally, writing tests before functionality effectively specifies interfaces for the code you have not written yet, so by the time you need to implement functionality, you already have a very clear understanding of how the code needs to behave. TDD certainly has its disadvantages -- for instance, implementing one feature at a time focusing on passing tests probably won't lead to well organized code. We will not require that you use TDD, but it's common enough that we think it's worth trying out. If you want to read more, [Wikipedia](http://en.wikipedia.org/wiki/Test-driven_development) is a good place to start.
 
 Remember we mentioned that people have strong opinions about testing? Here's a [rant from a former TDD enthusiast](http://david.heinemeierhansson.com/2014/tdd-is-dead-long-live-testing.html) who's changed his mind (and, incidentally, is moving away from unit testing towards system testing).
 
-##Testing Fundamentals
+## Testing Fundamentals
 
 There are several terms used in association with testing that are useful to understand:
 
@@ -66,7 +66,7 @@ The client-server divide causes problems when writing clientside unit tests. For
 
 As you can see, you have tons of choices when setting up a JavaScript testing environment. We'll proceed using an environment we recommend, but it really is only a recommendation -- when you start a new project, it's a good idea to survey your testing options to see what will be the best fit.
 
-##Server-Side Testing with Mocha and Chai
+## Server-Side Testing with Mocha and Chai
 
 That was a lot of high-level explanation of what we are trying to do, why, and what tools we'll be using, so now it's time to get into setting up our testing environment, starting with server-side tests, which are generally simpler.
 
@@ -104,7 +104,7 @@ A quick aside on conventions: you'll notice that test names should sound like a 
 
 Those are the basics of Mocha and Chai, so now you can write server-side tests!
 
-##Client-Side Testing with Karma
+## Client-Side Testing with Karma
 
 Client-side tests are a lot more complicated, since we need to run things in browsers... but thankfully, we can configure Karma to deal with most of that for us. We also won't go into much detail for client-side testing for now, beyond just setting it up and running trivial tests, since dealing with DOM manipulation gets complicated when you are used to rendering templates server-side and don't actually have a server to talk to. So, don't worry if this is a little confusing.
 
@@ -126,7 +126,7 @@ The rest of the options are pretty much defaults, but if you want to read about 
 
 We can run our test suite with `./node_modules/karma/bin/karma start karma.conf.js`, similar to how we ran our Mocha suite earlier. In addition to reporting the test results, since we set up the `coverage` reporter in our conf file, we also now have a `coverage` folder which contains code coverage data as html files. You can take a look at the html files, but they aren't very exciting since there isn't actually any code in our `javascripts` directory to cover. Coverage didn't take much effort to set up, though, and when you're testing real code it's nice to have.
 
-##Running Tasks with `npm`
+## Running Tasks with `npm`
 
 We can configure `npm` to do quite a bit more than just manage packages. In your `package.json`, you can specify scripts for `npm` to run.
 

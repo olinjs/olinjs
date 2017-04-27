@@ -11,7 +11,7 @@
 <!-- /MarkdownTOC -->
 
 
-#Lesson 12 - Redux
+# Lesson 12 - Redux
 ![Redux Logo](https://raw.githubusercontent.com/reactjs/redux/master/logo/logo-title-dark.png)
 [Redux](http://redux.js.org/) is a state management tool meant to be used on top of React.
 ## History

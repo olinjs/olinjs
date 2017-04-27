@@ -19,6 +19,9 @@
 
 In this lesson we're going to cover some big ideas that span front-end and back-end development (and life!), and also round out our front-end knowledge by learning about CSS.
 
+## Goals
+![ConceptTower](../images/lesson6.png)
+
 ## Quick Review
 
 ### Separation of Concerns
