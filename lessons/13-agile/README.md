@@ -1,7 +1,7 @@
 # Lesson 13 - Agile
 
 ## Goals
-![ConceptTower](./images/lesson11.png)
+![ConceptTower](/images/lesson11.png)
 
 ## Intro
 In the most simple interpretation, agile is a project management methodology and attitude.

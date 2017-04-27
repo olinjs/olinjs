@@ -4,7 +4,7 @@
 3. [Homework](#homework)
 
 ## Goals
-![ConceptTower](./images/lesson3.png)
+![ConceptTower](/images/lesson3.png)
 
 <a name="lesson"></a>
 # Lesson 3 - MongoDB and Mongoose

@@ -4,7 +4,7 @@ Web Applications handle much of their database communication and logic on the se
 Today we are going to learn the basics of building and manipulating the client and building communication routes between the client and server.
 
 ## Goals
-![ConceptTower](./images/lesson4.png)
+![ConceptTower](/images/lesson4.png)
 
 ## README Table of Contents
 * [HTML Reprise](#html-reprise)

@@ -1,7 +1,7 @@
 # The Client and Burger Application Continuation:
 
 ## Goals
-![ConceptTower](./images/lesson5.png)
+![ConceptTower](/images/lesson5.png)
 
 ## README Table of Contents
 * [In-Class Activities](#inclass-05)
