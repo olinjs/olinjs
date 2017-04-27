@@ -1,7 +1,7 @@
 # Lesson 2 - Express and Templating
 
 ## Goals
-![ConceptTower](../images/lesson2.png)
+![ConceptTower](./images/lesson2.png)
 
 ## Express
 Now that we've explored Node.js a little, we will abstract the details away with the [Express](http://expressjs.com/) development framework. Before, in learnyounode, our code looked a lot like this:
