@@ -7,6 +7,9 @@
 
 <a name="client-side"></a>
 
+## Goals
+![ConceptTower](./images/lesson9.png)
+
 ----------------------
 ## Introduction
 

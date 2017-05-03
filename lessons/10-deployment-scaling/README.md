@@ -13,6 +13,9 @@
 
 # Lesson 10 - Deployment and Scaling
 
+## Goals
+![ConceptTower](./images/lesson10.png)
+
 Once your applications are ready you will need a way to share them with the world.
 There is more to consider than just running your app on a remote server with its own URL.
 But what happens when your application gets super popular and needs to handle millions of requests per day?

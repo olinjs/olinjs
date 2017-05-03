@@ -10,6 +10,9 @@
 
 <a name="build-process"></a>
 
+## Goals
+![ConceptTower](./images/lesson11.png)
+
 ----------------------
 # Deep Dive: The Build Process
 

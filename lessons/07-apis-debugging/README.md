@@ -10,6 +10,10 @@
 * [Homework](#homework-07)
 
 <a name="oauth"></a>
+
+## Goals
+![ConceptTower](./images/lesson7.png)
+
 ## OAuth: What it is and how it works
 
 OAuth, which stands for "Open Authorization" is a simple and standard authentication process that provides users with a way to allow internet users to authorize external websites or applications to access their info without sharing their passwords. OAuth plays two roles in accessing data - **authentication** and **authorization**.

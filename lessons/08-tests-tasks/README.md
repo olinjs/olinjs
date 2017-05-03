@@ -17,6 +17,9 @@
 
 # Lesson 8 - Testing and Task Running
 
+## Goals
+![ConceptTower](./images/lesson8.png)
+
 ## Testing Philosophy
 ### What is Testing?
 
