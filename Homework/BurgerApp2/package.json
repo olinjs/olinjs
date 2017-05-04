@@ -1,0 +1,19 @@
+{
+  "name": "boilerplate",
+  "version": "1.0.0",
+  "description": "boilerplate code",
+  "main": "index.js",
+  "scripts": {
+    "test": "console.log(\"Test\");"
+  },
+  "author": "Robert Siegel",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "kerberos": "0.0.22",
+    "morgan": "^1.7.0"
+  }
+}

@@ -1,0 +1,16 @@
+<h2>Current Orders</h2>
+
+<ul>
+  {{#each orders}}
+  <li id={{this.id}}>
+    <p>
+      {{#if this.completed}}<del>{{this.ingredients}}</del>{{/if}} 
+      {{#unless this.completed}}{{this.ingredients}}{{/unless}}
+    </p>
+    <p>Price: <span id='price'>${{this.price}}</span></p>
+   <form class='orderList'>
+      <input type="submit" value="Order Completed" {{#if this.completed}} disabled {{/if}}>
+    </form>
+  </li>
+  {{/each}}
+</ul>

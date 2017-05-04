@@ -1,0 +1,52 @@
+
+<h2>Add an ingredient:</h2>
+<form id="add-ingredient">
+  Ingredient: <input type="text" name="ingredient"><br>
+  Price: <input type="text" name="price"><br>
+  <input type="submit" value="Add Ingredient">
+</form>
+
+<br>
+
+<h2>Ingredients:</h2>
+
+<h4>In Stock:</h4>
+
+<ul id="ingredient-list">
+  <li id="hidden-template-li" style="display:none">
+    <p>Ingredient: <span class="ingredient">Meat</span></p>
+    <p>Price: <span class="price">$100</span></p>
+    <form id="remove-ingredient">
+      <input type="submit" value="Out of Stock" id="remove-ingredient">
+      <input type="submit" value="Edit" id="edit-button">
+    </form>
+  </li>
+</ul>
+
+<ul>
+{{#each inStock}}
+  <li>
+    <p>Ingredient: <span>{{this.name}}</span></p>
+    <p>Price: <span>${{this.price}}</span></p>
+    <form id={{this._id}}>
+      <input type="submit" value="Out of Stock" class="remove-ingredient">
+      <input type="button" value="Edit" class="edit-button">
+    </form>
+  </li>
+{{/each}}
+</ul>
+
+
+<h4>Out of Stock:</h4>
+<ul>
+{{#each outOfStock}}
+  <li>
+    <p>Ingredient: <span>{{this.name}}</span></p>
+    <p>Price: <span>${{this.price}}</span></p>
+    <form id={{this._id}}>
+      <input type="submit" value="Out of Stock" class='remove-ingredient'}>
+      <input type="submit" value="Edit" class="edit-button">
+    </form>
+  </li>
+{{/each}}
+</ul>

@@ -1,0 +1,13 @@
+Do not merge this pull request! It is just for me to add my feedback on your Burger App.
+ 
+Homework Feedback for Burger App:
+ 
+Functionality:
+ - Completion: All of your features appear to work. (20/20)
+ - Bug Free: Your app is bug free. (10/10)
+
+Quality:
+ - Good Coding Practices: Your back-end was incredibly well organized and I liked that you split all of your routes up based on what page the user was on. In terms of client-side, your /public/javascripts/main.js is really clean and minimalistic. Just as a side note that doesn't impact functionality, I just wanted to make sure you were aware that right now in main.js, you occassionally use jQuery to make AJAX requests and then have an empty .done() function. Whenever you have to update the content of a page, you have that run before or after your AJAX request, which is an optimistic thing to do assuming nothing goes wrong with the request. You could only update the HTML of the page once the request has been made successfully, which makes sure your user is never confused about the state of the database as it perfectly matches the page they are seeing. (10/10)
+ - Readability: Your routes are well named and your code is well-commented in addition to being really clean. Fantastic job! (10/10)
+
+Nice work!
