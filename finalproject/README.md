@@ -1,4 +1,4 @@
-#Final Project
+# Final Project
 
 Congratulations! You have now learned many new skills and are ready to put them into practice.
 To do so you will form groups of 4-5 and spend 6 weeks designing, architecting, and building a fully functional web application.
@@ -19,14 +19,14 @@ Week 5 | Friday 4/22 | Informal Check-in 3
 Week 6 | Tuesday 4/26 | Project Work (last class period!)
 Week 7 | Final Block - TBD | Final Presentations |
 
-###Deliverables
+### Deliverables
 * [Design Review 1](./designreview1.md)
 * [Design Review 2](./designreview2.md)
 * Final Presentation
 * Deployed application
 * Git repository
 
-####Grading
+#### Grading
 Category | Percent
 ---|---
 Features | 40%
@@ -37,5 +37,5 @@ Design Review 1 | 15%
 Design Review 2 | 15%
 
 
-###Project Ideation
+### Project Ideation
 * [Team Formation Survey](http://goo.gl/forms/MZvHkLS7N9)

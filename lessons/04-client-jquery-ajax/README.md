@@ -342,19 +342,19 @@ Let's work through this file one step at a time, and if any of this is confusing
 
 Putting all of this together allows us to communicate with the server without sending GET requests from the URL bar and without reloading the page. We can then dynamically change the contents of the DOM without changing the entire page. That is just a taste of the power of client-side JavaScript and AJAX.
 
-##Additional and Alternative learning Resources
+## Additional and Alternative learning Resources
 A free Google-sponsered course on the devtools: https://www.codeschool.com/courses/discover-devtools
 
 <a name="inclass-04"></a>
-#Lesson 4 In-Class Exercises
+# Lesson 4 In-Class Exercises
 Follow along above to finish up your forms app and ask any questions if you need to. Our solution to the walkthrough is [here](./formsAppWalkthrough).
 
 As always, pick the exercises which are interesting and challenging to you, and feel free to work with the people around you. **If you feel done or comfortable with these exercises, move on to the homework -- it is fairly lengthy.**
 
-##Folder Structure
+## Folder Structure
 Last class we discussed folder structure, so as a refresher, draw out the folder structure for a typical app on the board in small groups, indicating what belongs in each folder. Pay particular attention to which JavaScript files are clientside and which are serverside (we haven't done much clientside work yet).
 
-##jQuery and AJAX
+## jQuery and AJAX
 - Practice jQuery JSFiddles. Fork before editing!
   - [Selectors and CSS](https://jsfiddle.net/swalters4925/zf52yaa0/3/)
   - [Selectors and click handlers](https://jsfiddle.net/swalters4925/ejgenk5c/2/)
@@ -382,6 +382,6 @@ For Friday, your application will need the following http endpoint:
   * Out-of-Stock button will tell the server to label the ingredient as disabled. The ingredient should be removed from the current page without refreshing. (Optional: make it toggleable to "add" more of the ingredient. In this case, do not remove the ingredient from the page, but make note through words or style that it is unavailable.)
   * Edit button allows the user to submit a new name or price for the ingredient which the server will update. The edits should change the ingredient list without refreshing.
 
-The next homework that you will be doing will build off of this homework. If you'd like to see the other endpoints that the application will need, look [here] (../05-flex-burger-help/README.md#L58).
+The next homework that you will be doing will build off of this homework. If you'd like to see the other endpoints that the application will need, look [here](../05-flex-burger-help/README.md#L58).
 
-When you're finished, fill out the [Homework 4 Submission Survey] (https://docs.google.com/forms/d/e/1FAIpQLSd-ths9fq5m28ooRoiDwiYjRc6s48JBZDgCmFQqNEGUqOb6hw/viewform).
+When you're finished, fill out the [Homework 4 Submission Survey](https://docs.google.com/forms/d/e/1FAIpQLSd-ths9fq5m28ooRoiDwiYjRc6s48JBZDgCmFQqNEGUqOb6hw/viewform).

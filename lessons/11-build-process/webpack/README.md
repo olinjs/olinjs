@@ -1,4 +1,4 @@
-##To Adapt to Your Project:
+## To Adapt to Your Project:
 
 - Replace the entry property of the config object with your entry clientside file
 

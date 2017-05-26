@@ -1,4 +1,4 @@
-#Lecture
+# Lecture
 These are the notes from today's lecture.
 
 ## Development Console
@@ -20,7 +20,7 @@ We'll start with the basic tabs that you use most often:
 * Console: A full JavaScript console that operates in the current scope of the Javascript on the page (including inside breakpoints). Run commands, and read through your client-side `console.logs` in this window. **Server-side javascript `console.log` statements will log in your terminal. When you have `console.log` statements in client-side javascript (which we'll discuss more below), they will show up in your developer console.** 
 As a bonus, if you click the "console icon" ![console icon](images/consoleicon.png) in the upper-right corner, the console will pop up below whatever other tab you want to reference.
 
-###Javascript Code in Console
+### Javascript Code in Console
 With the developer console, you can actually interface and inject your own javascript into a webpage. If you open up the console (as described in last bullet point above) you can type in your own commands and have them execute. Try typing in:
 ```
 alert('hi there')

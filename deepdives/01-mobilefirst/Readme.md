@@ -111,7 +111,7 @@ The [Mozilla media query guide](https://developer.mozilla.org/en-US/docs/Web/Gui
 
 A media query essentially allows different CSS to act based on certain qualities of the viewer's screen, like width, height, or device type. See and play with the [example code](./example/) to get a better idea, or read the guide above.
 
-##Bootstrap
+## Bootstrap
 In their own words, "Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web." 
 It is important, however, to keep in mind this does not mean that is always the best option. Bootstrap has a ton of functionality that are based on both css and javascript. 
 The documentation is excellent, filled with examples, and should be the your first goto when working with bootstrap. 

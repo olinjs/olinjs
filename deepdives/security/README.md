@@ -1,4 +1,4 @@
-#Application Security
+# Application Security
 
 ## README Table of Contents
 * [Security](#security)
@@ -8,31 +8,31 @@
 <a name="security"></a>
 
 ------
-#Security
+# Security
 Hello and welcome to possibly the most important lesson you will have in this course.
 All of the applications you make and all of the websites that you put out into the world will be vulnerable to some sort of attack, and it's important for you to know what those attacks are, and how you can mitigate against them.
 Before we get started, I'll take a moment to acknowledge one of the authoritative sources for all matters web security, [OWASP](https://www.owasp.org/index.php/Main_Page), the Open Web Application Security Project.
 They've got in-depth explanations and mitigations for most of the known security vulnerabilities, including a handy [top 10 list](https://www.owasp.org/index.php/OWASP_Top_Ten_Cheat_Sheet). For React, here's an awesome article and recommendation for preventing XSS vulnerabilities: [here](https://medium.com/node-security/the-most-common-xss-vulnerability-in-react-js-applications-2bdffbcc1fa0#.o02ctm55c).
 
-##Common Vulnerabilities
+## Common Vulnerabilities
 We'll cover some of the most common vulnerabilities here, but if you're going to be developing a production application, and especially handling any sensitive user data, you'll want to read through OWASP's website and make sure you're not leaving any glaring holes in your application.
 
-##Script Injection
+## Script Injection
 One of the most common and dangerous attacks on a website is what is known as a script injection.
 This involves the attacker finding a way to get their code executing within the scope of your application, either on your servers, or being served up to your users on the client.
 Let's look at some of the ways that can happen.
 
-###XSS
+### XSS
 A cross-site scripting (XSS) vulnerability is any vulnerability that allows an attacker some means of getting their code to be served by your application to another user.
 How exactly this is accomplished depends on the application, but most commonly it is the result of submitting html or javascript through a form and having your application then render it in a page for someone else to execute.
 
-###eval( )
+### eval( )
 We haven't yet talked about how or when to use the `eval()` statement in this class so let's do that now.
 Don't use it.
 `eval()` takes a string as it's argument and will evaluate it as JavaScript code.
 If you avoid using it, that will help mitigate any possibility of arbitrary injected code from running on your servers.
 
-###SQL/NoSQL Injection
+### SQL/NoSQL Injection
 If you've ever worked with a SQL database before you might be able to relate to this XKCD comic:
 
 ![Little Bobby Tables](http://imgs.xkcd.com/comics/exploits_of_a_mom.png)
@@ -44,11 +44,11 @@ Now, you might say to yourself "why, we're not using SQL databases, so we must b
 That's right, laugh it up.
 Keep laughing right up until you realize that MongoDB is queried with a structured JavaScript API that lends itself to [its own kind of injection](http://blog.websecurify.com/2014/08/hacking-nodejs-and-mongodb.html), as well as [arbitrary code execution](https://media.blackhat.com/bh-us-11/Sullivan/BH_US_11_Sullivan_Server_Side_WP.pdf) not just against your database, but potentially in your application as well! Many database abstraction layers (like Mongoose) inherently escape inputs to guard against inject attacks. These help to make development easier, but you should still code defensively against user inputs.
 
-###Avoid Script Injection With Input Sanitization
+### Avoid Script Injection With Input Sanitization
 The easiest way to prevent a script injection from happening in your application is to validate all inputs and catch any potential attacks.
 There are [plenty](https://www.npmjs.com/search?q=sanitization) of npm [libraries](https://www.npmjs.com/search?q=sanitize) for both front end validation (this field expects a number, don't submit unless it is just a number), as well as back end sanitization (escape html tags and other special characters like `\/?(){}`). Check out OWASP's [super detailed rules](https://www.owasp.org/index.php/XSS_%28Cross_Site_Scripting%29_Prevention_Cheat_Sheet) for preventing XSS generally.
 
-###Don't leak stack traces
+### Don't leak stack traces
 Now, I'm going to preface this section by telling you a truth that most people struggle with and usually end up paying dearly for misunderstanding:
 **[security through obscurity is a myth](http://en.wikipedia.org/wiki/Security_through_obscurity)**.
 That is to say, your codebase can (and should) be entirely open source, and still be secure.
@@ -87,7 +87,7 @@ app.use(function(err, req, res, next) {
 });
 ```
 
-##Cross Site Request Forgery
+## Cross Site Request Forgery
 Cross Site Request Forgery, or CSRF, is a way of hijacking an existing user session to get around authentication requirements and make route/API calls as users they don't have authorization from.
 For example, suppose you're an attacker and you know of a banking website that has a form that submits a GET request to transfer money from one account to another.
 You know that this bank stores user sessions in a cookie that doesn't expire in any short amount of time.
@@ -112,7 +112,7 @@ You store the tokens (usually in memory), and when you receive a POST request yo
 If not, then send back an error in the response.
 Now the only way to submit data or trigger an action on the server through an existing session is to include a  valid CSRF token.
 
-###Samy the Myspace Worm
+### Samy the Myspace Worm
 One of the greatest (and mostly harmless) examples of both XSS and CSRF in action in recent memory is that of Samy the Myspace worm.
 In 2005, a man by the name of Samy Kamkar found an XSS vulnerability in Myspace that would allow him to inject JavaScript into his profile to trigger a CSRF vulnerability by anyone who visited it.
 The CSRF request would send Samy a friend request as the viewer, as well as append the text "Samy is my hero" to the end of their profile.
@@ -120,13 +120,13 @@ Not only that, but it would in turn exploit the same XSS vulnerability, only thi
 The effect is that within 24 hours, Samy had over a million friend requests and the FBI knocking at his door.
 [Check out what Samy had to say about it.](https://www.youtube.com/watch?v=nC0i81eMLb8)
 
-##Password Phishing
+## Password Phishing
 I'm sure we've all seen a phishing site at one time in our lives or another.
 If you're unfamiliar, a phishing site is a web page designed to look exactly like the login page of another website, with the goal of getting an unwitting internet user to type their username and password for the actual website, and send it straight to the creator of the phishing page - unencrypted.
 There's not much you can do to prevent phishing attacks from being successful on your users other than educating them as much as possible.
 However, you can do your part by reporting any suspicious or definitely malicious websites to [OpenPhish](https://openphish.com/), which many browsers will check against to issue warnings to anyone attempting to visit them.
 
-##Encrypt Sensitive Data
+## Encrypt Sensitive Data
 Rule number one of information security: **don't store sensitive data in plaintext**.
 We've all seen the fallout many major companies have faced over the past couple of years because they stored emails, credit card data, passwords, etc. as plaintext.
 Instead, they should have stored them as encrypted value.
@@ -152,7 +152,7 @@ The point of the encryption - or hashing - step, is that it is one way in that i
 By repeating the process over and over, you're (kind of but not really) guaranteeing that no (modern) computer running any (publicly) known algorithm will crack your data before the heat death of the universe.
 Doesn't that sound handy?
 
-###Don't use Math.random( )
+### Don't use Math.random( )
 When generating encryption keys or other random information used for security purposes, never ever ever ever ever use `Math.random()`.
 `Math.random()` will only generate pseudo-random numbers, and these numbers are not "cryptographically safe", as there are methods for recreating them given enough information about the conditions under which they were formed.
 
@@ -160,7 +160,7 @@ Instead, we will prefer to use `crypto.randomBytes()` from node's standard `cryp
 `crypto.randomBytes()` will generate "cryptographycally safe" random numbers (insofar as we know).
 There is a lot that we don't yet know about cryptography, but we do know for certain that `Math.random()` is not good enough.
 
-##SSL/TLS/HTTPS
+## SSL/TLS/HTTPS
 At this point, you might be asking yourself, "how do we get the plaintext password/other sensitive data to the server without any spies on the network finding out?"
 The answer to that is encryption and HTTPS!
 HTTPS, or HTTP Secure as it's less commonly known, is a method for sending encrypted information over HTTP, where the only plain information is source and destination IP/Port pairs, as well as the length of the information being sent (though this can easily be obfuscated).
@@ -177,7 +177,7 @@ Note that when you set up an application on heroku, by default it will not use H
 
 If you think this all sounds awesome and you want to learn more, check out [this awesome readable overview of how HTTP/TLS works](http://security.stackexchange.com/questions/20803/how-does-ssl-tls-work).
 
-###Wireshark and Firesheep
+### Wireshark and Firesheep
 Back in the wild west days of the internet, before the majority of websites knew to use HTTPS when transferring sensitive data between users and their servers, collecting login credentials was like shooting fish in a barrel for an attacker.
 With tools like [Firesheep](http://en.wikipedia.org/wiki/Firesheep) and [Wireshark](https://www.wireshark.org/), an attacker can sit on a public network and sniff all of the traffic being sent on it.
 Want a ton of Myspace passwords being sent over HTTP?
@@ -188,7 +188,7 @@ Now that we all know better, so that's not really an issue.
 There are probably some websites out there that don't use HTTPS for login pages or other pages containing private user data, and you should just avoid them altogether.
 Most browsers will display a green padlock next to a URL if it's secured with TLS or SSL.
 
-###Heartbleed
+### Heartbleed
 You might have heard about a very dangerous vulnerability called Heartbleed that was discovered in 2014, and that it had something to do with SSL.
 The actual vulnerability was in OpenSSL, a *very* popular SSL library, and not the protocol itself (though other vulnerabilities have been found for SSL generally).
 The Heartbleed bug in OpenSSL exploited the lack of a bounds check on a particular variable, which would allow an attacker to read arbitrary data stored in memory on a server and have it sent back through the SSL process.

@@ -1,4 +1,4 @@
-#Lesson 11 - Build Process
+# Lesson 11 - Build Process
 
 ## README Table of Contents
 * [Build Process](#build-process)
@@ -89,7 +89,7 @@ In this repo I have three complete build processes using ```Gulp```, ```Grunt```
 ----------------------
 # Lesson 11 In-Class Exercises
 
-##Incorporating Webpack
+## Incorporating Webpack
 Now that we have experience with React, we're going to incorporate build processes into our development process. Webpack is commonly used in software companies, and we are going to utilize it for the purpose of our mini-project and final project. Follow along this tutorial to add webpack to the previous React tutorial that we did last week in lesson 9.
 
 1. Using the [REACT project](../09-clientside-frameworks/REACT), add all of the necessary packages outlined in the `package.json` file from the [webpack folder in this directory](webpack/package.json) (You can copy and paste all of the devDependencies, and `npm install`).
@@ -114,7 +114,7 @@ Now that we have experience with React, we're going to incorporate build process
 
 Now, you can have more react components separated into jsx files, and link them into each other using `var OtherComponent = require('./othercomponent.jsx');`!
 
-##Mashup Mini-Project Team Formation
+## Mashup Mini-Project Team Formation
 Get pumped! We're going to be forming teams for our mini project. The goal of the mini project is to utilize all of the information and skills that we have learned thus far, work with a partner, and allow you all to dictate what you want to create!
 
 In class, we're going to form teams. If you've finished everything else in this readme, checkout the miniproject [description](../../miniproject/README.md) to get started.
