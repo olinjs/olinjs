@@ -1,0 +1,101 @@
+2015-01-29T02:11:27.176770+00:00 app[web.1]: [0mGET /cats [32m- [0m- ms - -[0m
+2015-01-29T02:11:28.480223+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=GET path="/cats" host=damp-falls-9966.herokuapp.com request_id=c6dec991-8860-43d4-bfde-4095efb5f9ac fwd="208.91.53.130" dyno=web.1 connect=1ms service=30000ms status=503 bytes=0
+2015-01-29T02:11:28.486720+00:00 app[web.1]: [0mGET /cats [32m- [0m- ms - -[0m
+2015-01-29T02:11:37.129434+00:00 app[web.1]: [0mGET /cats [32m- [0m- ms - -[0m
+2015-01-29T02:11:37.117380+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=GET path="/cats" host=damp-falls-9966.herokuapp.com request_id=af9b4678-c250-489e-94e6-f657ad713110 fwd="208.91.53.130" dyno=web.1 connect=1ms service=30000ms status=503 bytes=0
+2015-01-29T02:11:41.808385+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=GET path="/cats" host=damp-falls-9966.herokuapp.com request_id=84d910e3-e1e6-4197-98eb-73dbc3162602 fwd="208.91.53.130" dyno=web.1 connect=1ms service=30001ms status=503 bytes=0
+2015-01-29T02:11:41.825326+00:00 app[web.1]: [0mGET /cats [32m- [0m- ms - -[0m
+2015-01-29T02:11:43.086077+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=GET path="/cats" host=damp-falls-9966.herokuapp.com request_id=8615b4ba-90b3-4171-94fa-5b591e7df9ea fwd="208.91.53.130" dyno=web.1 connect=1ms service=30001ms status=503 bytes=0
+2015-01-29T02:11:43.102537+00:00 app[web.1]: [0mGET /cats [32m- [0m- ms - -[0m
+2015-01-29T02:11:48.396989+00:00 app[web.1]: [0mGET /cats/bycolor/olive [32m- [0m- ms - -[0m
+2015-01-29T02:11:48.376708+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=GET path="/cats/bycolor/olive" host=damp-falls-9966.herokuapp.com request_id=add67daf-5ace-4e95-bf03-d20e0503e926 fwd="208.91.53.130" dyno=web.1 connect=1ms service=30000ms status=503 bytes=0
+2015-01-29T02:11:56.786776+00:00 heroku[router]: at=info method=GET path="/" host=damp-falls-9966.herokuapp.com request_id=a1cd66ed-fa50-4bf5-8e38-a869e31fed20 fwd="208.91.53.193" dyno=web.1 connect=1ms service=13ms status=200 bytes=583
+2015-01-29T02:11:56.787802+00:00 app[web.1]: [0mGET / [32m200 [0m12.359 ms - 400[0m
+2015-01-29T02:11:56.965599+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=damp-falls-9966.herokuapp.com request_id=88579070-fa5f-463d-9e11-4012cd27ccde fwd="208.91.53.193" dyno=web.1 connect=2ms service=2ms status=404 bytes=222
+2015-01-29T02:11:56.966703+00:00 app[web.1]: [0mGET /favicon.ico [33m404 [0m1.337 ms - 24[0m
+2015-01-29T02:12:10.394663+00:00 app[web.1]: [0mGET /cats/delete/old [32m- [0m- ms - -[0m
+2015-01-29T02:12:10.377240+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=GET path="/cats/delete/old" host=damp-falls-9966.herokuapp.com request_id=bbd1e6a0-cd4c-4524-99d4-982456599235 fwd="208.91.53.130" dyno=web.1 connect=1ms service=30000ms status=503 bytes=0
+2015-01-29T02:12:13.625263+00:00 heroku[router]: at=info method=GET path="/cats/bycolor" host=damp-falls-9966.herokuapp.com request_id=f2d25ed6-a627-4f46-835a-a3aa2fbbb7ed fwd="208.91.53.193" dyno=web.1 connect=2ms service=6ms status=200 bytes=1359
+2015-01-29T02:12:13.632416+00:00 app[web.1]: [0mGET /cats/bycolor [32m200 [0m5.153 ms - 1163[0m
+2015-01-29T02:12:19.343764+00:00 app[web.1]: HELLOaquamarine
+2015-01-29T02:12:19.341777+00:00 app[web.1]: Requested color: aquamarine
+2015-01-29T02:12:28.783826+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=GET path="/cats" host=damp-falls-9966.herokuapp.com request_id=8dec5252-bc4d-43df-b014-8348414e343a fwd="208.91.53.193" dyno=web.1 connect=0ms service=30001ms status=503 bytes=0
+2015-01-29T02:12:28.787795+00:00 app[web.1]: [0mGET /cats [32m- [0m- ms - -[0m
+2015-01-29T02:12:49.026931+00:00 heroku[router]: at=info method=GET path="/cats/new" host=damp-falls-9966.herokuapp.com request_id=12e22f27-3993-4961-a6fd-1e982fedb4ef fwd="208.91.53.193" dyno=web.1 connect=1ms service=7ms status=200 bytes=656
+2015-01-29T02:12:49.043428+00:00 app[web.1]: [0mGET /cats/new [32m200 [0m3.922 ms - 473[0m
+2015-01-29T02:12:49.332442+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=GET path="/cats/bycolor/aquamarine" host=damp-falls-9966.herokuapp.com request_id=e3a80725-a487-4f87-82f2-94e7e6cf64e4 fwd="208.91.53.193" dyno=web.1 connect=1ms service=30001ms status=503 bytes=0
+2015-01-29T02:12:49.342091+00:00 app[web.1]: [0mGET /cats/bycolor/aquamarine [32m- [0m- ms - -[0m
+2015-01-29T03:17:07.706913+00:00 heroku[web.1]: Idling
+2015-01-29T03:17:07.707523+00:00 heroku[web.1]: State changed from up to down
+2015-01-29T03:17:11.649050+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2015-01-29T03:17:13.714979+00:00 heroku[web.1]: Process exited with status 143
+2015-02-01T20:50:13.637596+00:00 heroku[api]: Release v8 created by gredelston@gmail.com
+2015-02-01T20:50:13.637596+00:00 heroku[api]: Deploy a80b027 by gredelston@gmail.com
+2015-02-01T20:50:41.966067+00:00 heroku[web.1]: Unidling
+2015-02-01T20:50:41.966358+00:00 heroku[web.1]: State changed from down to starting
+2015-02-01T20:50:47.231821+00:00 heroku[web.1]: Starting process with command `node app`
+2015-02-01T20:50:49.409949+00:00 app[web.1]: Application running on port: 30178
+2015-02-01T20:50:49.416508+00:00 app[web.1]: connection error: [Error: failed to connect to [ds053648.mongolab.com:27017]]
+2015-02-01T20:50:49.648489+00:00 heroku[web.1]: State changed from starting to up
+2015-02-01T20:50:51.073058+00:00 heroku[router]: at=info method=GET path="/" host=damp-falls-9966.herokuapp.com request_id=153d0387-9c4f-4e74-92d7-88fb7883cf99 fwd="208.91.53.130" dyno=web.1 connect=1ms service=35ms status=304 bytes=132
+2015-02-01T20:50:51.056935+00:00 app[web.1]: [0mGET / [36m304 [0m28.723 ms - -[0m
+2015-02-01T20:50:51.409998+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=damp-falls-9966.herokuapp.com request_id=4ef88921-667f-43b8-b5d8-29d29eb7edeb fwd="208.91.53.130" dyno=web.1 connect=2ms service=4ms status=404 bytes=222
+2015-02-01T20:50:51.450261+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=damp-falls-9966.herokuapp.com request_id=e70f4455-361f-45ed-97a3-3eb46f914273 fwd="208.91.53.130" dyno=web.1 connect=3ms service=2ms status=404 bytes=222
+2015-02-01T20:50:51.396860+00:00 app[web.1]: [0mGET /favicon.ico [33m404 [0m2.788 ms - 24[0m
+2015-02-01T20:50:51.436668+00:00 app[web.1]: [0mGET /favicon.ico [33m404 [0m0.778 ms - 24[0m
+2015-02-01T20:50:55.446016+00:00 heroku[router]: at=info method=GET path="/cats/new" host=damp-falls-9966.herokuapp.com request_id=b803caca-67b6-4877-b311-cec244c8d072 fwd="208.91.53.130" dyno=web.1 connect=0ms service=16ms status=200 bytes=700
+2015-02-01T20:50:55.431450+00:00 app[web.1]: [0mGET /cats/new [32m200 [0m15.450 ms - 517[0m
+2015-02-01T20:51:24.138436+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=GET path="/cats/delete/old" host=damp-falls-9966.herokuapp.com request_id=89b8540d-f12a-4cb9-8c01-3766145a3a91 fwd="208.91.53.130" dyno=web.1 connect=2ms service=30000ms status=503 bytes=0
+2015-02-01T20:51:24.127922+00:00 app[web.1]: [0mGET /cats/delete/old [32m- [0m- ms - -[0m
+2015-02-01T20:51:26.699222+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=GET path="/cats" host=damp-falls-9966.herokuapp.com request_id=5182ce68-4259-446d-a611-ffe27ca4f1a7 fwd="208.91.53.130" dyno=web.1 connect=1ms service=30001ms status=503 bytes=0
+2015-02-01T20:51:26.687661+00:00 app[web.1]: [0mGET /cats [32m- [0m- ms - -[0m
+2015-02-01T20:51:42.636938+00:00 app[web.1]: [0mGET /cats [32m- [0m- ms - -[0m
+2015-02-01T20:51:42.641232+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=GET path="/cats" host=damp-falls-9966.herokuapp.com request_id=5fc66af5-02df-40d2-8477-810363ac69c6 fwd="208.91.53.130" dyno=web.1 connect=1ms service=30001ms status=503 bytes=0
+2015-02-01T20:54:06.774239+00:00 heroku[web.1]: State changed from up to starting
+2015-02-01T20:54:06.656069+00:00 heroku[api]: Deploy 4a4273c by gredelston@gmail.com
+2015-02-01T20:54:06.656069+00:00 heroku[api]: Release v9 created by gredelston@gmail.com
+2015-02-01T20:54:09.076609+00:00 heroku[web.1]: Starting process with command `node app`
+2015-02-01T20:54:09.040500+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2015-02-01T20:54:10.183142+00:00 heroku[web.1]: Process exited with status 143
+2015-02-01T20:54:11.250409+00:00 app[web.1]: connection error: [Error: failed to connect to [ds053648.mongolab.com:27017]]
+2015-02-01T20:54:11.243091+00:00 app[web.1]: Application running on port: 45077
+2015-02-01T20:54:11.400685+00:00 heroku[web.1]: State changed from starting to up
+2015-02-01T20:54:35.839040+00:00 heroku[router]: at=info method=GET path="/" host=damp-falls-9966.herokuapp.com request_id=c1d1da88-8042-48bf-b08f-fb3626bfb989 fwd="208.91.53.130" dyno=web.1 connect=2ms service=49ms status=304 bytes=132
+2015-02-01T20:54:35.855374+00:00 app[web.1]: [0mGET / [36m304 [0m41.952 ms - -[0m
+2015-02-01T20:54:37.820742+00:00 heroku[router]: at=info method=GET path="/cats/new" host=damp-falls-9966.herokuapp.com request_id=dea27a88-1563-40da-9678-203f870de464 fwd="208.91.53.130" dyno=web.1 connect=2ms service=23ms status=200 bytes=700
+2015-02-01T20:54:37.835861+00:00 app[web.1]: [0mGET /cats/new [32m200 [0m20.708 ms - 517[0m
+2015-02-01T20:55:08.555977+00:00 app[web.1]: [0mGET /cats [32m- [0m- ms - -[0m
+2015-02-01T20:55:08.535669+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=GET path="/cats" host=damp-falls-9966.herokuapp.com request_id=92044415-de5b-4c3e-835a-b511478333be fwd="208.91.53.130" dyno=web.1 connect=2ms service=30001ms status=503 bytes=0
+2015-02-01T20:55:42.431848+00:00 heroku[router]: at=info method=GET path="/" host=damp-falls-9966.herokuapp.com request_id=4f67c52d-ccfb-414e-bc0a-aef9f46fba85 fwd="208.91.53.130" dyno=web.1 connect=2ms service=6ms status=304 bytes=132
+2015-02-01T20:55:42.446555+00:00 app[web.1]: [0mGET / [36m304 [0m3.700 ms - -[0m
+2015-02-01T20:55:44.796548+00:00 heroku[router]: at=info method=GET path="/cats/new" host=damp-falls-9966.herokuapp.com request_id=b5bcc1ea-3d6f-4cfe-92b9-233bb9ff1857 fwd="208.91.53.130" dyno=web.1 connect=3ms service=10ms status=200 bytes=700
+2015-02-01T20:55:44.809549+00:00 app[web.1]: [0mGET /cats/new [32m200 [0m6.081 ms - 517[0m
+2015-02-01T20:56:16.868237+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=GET path="/cats" host=damp-falls-9966.herokuapp.com request_id=2811cd3c-84cc-4c39-953d-6187efcf7448 fwd="208.91.53.130" dyno=web.1 connect=2ms service=30001ms status=503 bytes=0
+2015-02-01T20:56:16.886439+00:00 app[web.1]: [0mGET /cats [32m- [0m- ms - -[0m
+2015-02-01T20:57:57.606209+00:00 heroku[router]: at=info method=GET path="/" host=damp-falls-9966.herokuapp.com request_id=c6f0bdcc-0b92-41bd-ab23-deb3762cbfd9 fwd="208.91.53.130" dyno=web.1 connect=2ms service=9ms status=304 bytes=132
+2015-02-01T20:57:57.613365+00:00 app[web.1]: [0mGET / [36m304 [0m3.593 ms - -[0m
+2015-02-01T20:58:34.271208+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=GET path="/cats" host=damp-falls-9966.herokuapp.com request_id=6cf16ea0-140b-41c1-ad95-1c65ba221ad0 fwd="208.91.53.130" dyno=web.1 connect=3ms service=30001ms status=503 bytes=0
+2015-02-01T20:58:34.285898+00:00 app[web.1]: [0mGET /cats [32m- [0m- ms - -[0m
+2015-02-01T20:58:50.440888+00:00 heroku[api]: Deploy 4fc670f by gredelston@gmail.com
+2015-02-01T20:58:50.440888+00:00 heroku[api]: Release v10 created by gredelston@gmail.com
+2015-02-01T20:58:50.788442+00:00 heroku[web.1]: State changed from up to starting
+2015-02-01T20:58:52.145910+00:00 heroku[web.1]: Starting process with command `node app`
+2015-02-01T20:58:53.999361+00:00 app[web.1]: connection error: [Error: failed to connect to [ds053648.mongolab.com:27017]]
+2015-02-01T20:58:53.992101+00:00 app[web.1]: Application running on port: 3190
+2015-02-01T20:58:54.576117+00:00 heroku[web.1]: State changed from starting to up
+2015-02-01T20:58:54.947830+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2015-02-01T20:58:56.923981+00:00 heroku[web.1]: Process exited with status 143
+2015-02-01T21:00:00.230657+00:00 heroku[router]: at=info method=GET path="/" host=damp-falls-9966.herokuapp.com request_id=abe0f424-164b-4273-9d74-614cb70ad86a fwd="208.91.53.130" dyno=web.1 connect=1ms service=41ms status=200 bytes=608
+2015-02-01T21:00:00.222528+00:00 app[web.1]: [0mGET / [32m200 [0m36.511 ms - 425[0m
+2015-02-01T21:01:50.050465+00:00 heroku[router]: at=info method=GET path="/cats/new" host=damp-falls-9966.herokuapp.com request_id=2148a384-91b0-4165-a449-3f646cfbfa64 fwd="208.91.53.130" dyno=web.1 connect=1ms service=19ms status=200 bytes=664
+2015-02-01T21:01:50.037482+00:00 app[web.1]: [0mGET /cats/new [32m200 [0m15.744 ms - 481[0m
+2015-02-01T21:01:52.146338+00:00 heroku[router]: at=info method=GET path="/cats/new" host=damp-falls-9966.herokuapp.com request_id=cdf79c35-925e-490e-beba-8df4ced4945a fwd="208.91.53.130" dyno=web.1 connect=1ms service=6ms status=200 bytes=681
+2015-02-01T21:01:52.136170+00:00 app[web.1]: [0mGET /cats/new [32m200 [0m5.247 ms - 498[0m
+2015-02-01T21:01:56.344735+00:00 heroku[router]: at=info method=GET path="/cats/new" host=damp-falls-9966.herokuapp.com request_id=0d5c3eef-1386-43ee-a61a-0739c8061101 fwd="208.91.53.130" dyno=web.1 connect=1ms service=18ms status=200 bytes=697
+2015-02-01T21:01:56.341816+00:00 app[web.1]: [0mGET /cats/new [32m200 [0m15.318 ms - 514[0m
+2015-02-01T21:01:57.243533+00:00 heroku[router]: at=info method=GET path="/cats/bycolor" host=damp-falls-9966.herokuapp.com request_id=3d4501c8-a27c-4cd3-b8a2-46b766e661b1 fwd="208.91.53.130" dyno=web.1 connect=1ms service=18ms status=200 bytes=1359
+2015-02-01T21:01:57.240149+00:00 app[web.1]: [0mGET /cats/bycolor [32m200 [0m13.319 ms - 1163[0m
+2015-02-01T21:02:23.095165+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=GET path="/cats/delete/old" host=damp-falls-9966.herokuapp.com request_id=117f0b7b-81b2-4af2-bead-9f0a96f21a57 fwd="208.91.53.130" dyno=web.1 connect=6ms service=30000ms status=503 bytes=0
+2015-02-01T21:02:23.087894+00:00 app[web.1]: [0mGET /cats/delete/old [32m- [0m- ms - -[0m
+2015-02-01T21:02:25.105733+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=GET path="/cats" host=damp-falls-9966.herokuapp.com request_id=55f43ca6-08e3-46e4-b657-8e751e977839 fwd="208.91.53.130" dyno=web.1 connect=1ms service=30001ms status=503 bytes=0
+2015-02-01T21:02:25.101690+00:00 app[web.1]: [0mGET /cats [32m- [0m- ms - -[0m
