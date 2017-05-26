@@ -1,6 +1,6 @@
-#Lesson 1.5 - JavaScript
+# Lesson 1.5 - JavaScript
 
-##Goals
+## Goals
 After this class you should:
 - Understand how JavaScript relates to languages you already know
 - See the quirks of JavaScript
@@ -668,7 +668,7 @@ The moral of the story is that JavaScript is remarkably robust, whether you like
   - Come up with a simple task such as displaying the current time. Write two small jsfiddles to complete the task: one in an object-oriented fashion, the other in a functional one.
   - Read through and understand the documentation for some of JavaScript's functional tools (for instance, `Array.prototype.map()` and `Array.prototype.reduce()`) and practice using them in jsfiddle.
 
-##Debugging Exercises
+## Debugging Exercises
 - Try some or all of these exercises (Please fork the jsfiddles before editing them)
   - [Exercise 1](https://jsfiddle.net/q0mj0arL/1/)
   - [Exercise 2](https://jsfiddle.net/tr6Lvu2t/1/)
@@ -677,12 +677,12 @@ The moral of the story is that JavaScript is remarkably robust, whether you like
 	- Write a similar simple debugging exercise
 	- Exchange them
 
-#Further Reading
-##Node Beginner Book
+# Further Reading
+## Node Beginner Book
 Read the Node Beginner Book (in `Public/+Courses/Olinjs16/`) up to page 58 (the section marked **Handling file uploads** — the methods used there are old and no longer relevant). This resource ties together a lot of what we covered in class 1 by implementing a basic web server in Node. You'll learn how Node handles browser requests — and how Node is unique — while flexing your newly acquired JavaScript muscle. You should follow along by writing and running the code examples given.
 
-##Style Guide
+## Style Guide
 Read the [Airbnb Javascript Style Guide](https://github.com/airbnb/javascript/tree/es5-deprecated/es5). Try to incorporate these styles into your work in this class. While the current scripting language standard is ES6, we will be using ES5 styling for the majority of the course.
 
-##More Reading
+## More Reading
 This is a fun, well-written article on how naming conventions affect the way we think and code: [Execution in the Kingdom of Nouns](http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html).

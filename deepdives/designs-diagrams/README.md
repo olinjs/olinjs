@@ -1,11 +1,11 @@
-#Application Design and Diagramming
+# Application Design and Diagramming
 
 As we begin to develop larger and more complex applications, we'll want to start being methodical about how we design and plan them.
 In this lesson we will talk about strategies for planning and documenting large applications to make developing and debugging as simple as possible.
 
-##Planning
+## Planning
 
-###Specifications
+### Specifications
 Writing a specification - or spec - for your application before you write any code can help not only you and your whole team understand the context for your application, but also serve as a road map for development.
 As our applications grow in size and complexity, having a document to refer to can keep you on track with developing features and managing complexity.
 
@@ -62,13 +62,13 @@ You might define routes and what you expect them to do, or font-end ui elements 
 - **Test Cases:** How you plan to validate both your code and potentially the use cases?
 
 
-###TDD
+### TDD
 We learned a little bit about Test-Driven-Development before, but we didn't go in to too much depth about using it for planning your application.
 If you really take your TDD seriously, you can treat your tests as a high-level specification for the functionality of your application.
 If you write all of your tests first, not only are you always validating your application, but you also have a fill-in-the-blank roadmap for development.
 How convenient!
 
-###Diagramming
+### Diagramming
 Many of us understand systems better when we're able to visualize them.
 To this end, diagramming different aspects of your application can be a very effective means of creating an easy to understand, meaningful representation.
 In the past you might have used tools like PowerPoint or Visio to create flow charts or UML diagrams, but in this class we're rocking our Windows-free dev environments, so let's check out [draw.io](http://draw.io).
@@ -80,7 +80,7 @@ We aren't going to require any one specific type of diagram for your projects in
 Instead, we're going to recommend a couple of different options that you might consider diagramming for managing complexity in your application.
 Let's look at things you might consider diagramming.
 
-####Logic Flow
+#### Logic Flow
 if your application involves a lot of different routes and middleware, you might consider mapping how a request moves through your application.
 As an example, let's look at how we might diagram a simple application with a few routes and a few pieces of middleware.
 ![Example application logic flow](images/app_flow.png)
@@ -88,25 +88,25 @@ If we follow a request in from the user, we can clearly see how it moves through
 You can pick and choose which components inside your application you choose to represent, but make sure that the amount of information you show is useful.
 Too much information and the diagram might be difficult to follow, too little and it might not be useful, or could even be misleading.
 
-####Interactions
+#### Interactions
 If you anticipate having a lot of different interfaces you might want to create a diagram that represents what the user will see happen in response to certain actions.
 You might find it easier to draw these out by hand at first, or use a tool like [balsamiq](https://balsamiq.com/) or [inVision](http://www.invisionapp.com/), but don't think you need a high resolution representation to make something of value.
 ![](http://www.seanlemme.com/assets/img/portfolio/nurse2.png)
 *Image via seanlemme.com*
 
-####Network Layout
+#### Network Layout
 If you ever get to the point that you're working on a *really* big application that's distributed across multiple different severs, you'll need to start diagramming a map of all of your different servers, databases, and other networked components, and how they all connect.
 We'll never get around to anything remotely close to the system shown below (in fact I'd be surprised if anyone has a configuration like that), but the principle is still there.
 ![AWS network layout](images/AWSexample.png)
 
-##Refactoring
+## Refactoring
 As you develop (or let's be honest - have been developing), you might find yourself doing hacky things just to get your code to work.
 Avoid this if you can.
 However if you do, it's valuable to take a few minutes to **refactor** your code.
 If you're unfamiliar with this term, refactoring basically refers to restructuring how your code is laid out across files, functions, modules, etc. without necessarily modifying any functionality.
 In order for you to be effective at refactoring, let's go through a typical folder structure for one of our applications and look at what goes where.
 
-###Folder Structure
+### Folder Structure
 ```
 MyApp/
 +--public/
@@ -162,7 +162,7 @@ This folder would be a great place to put that script.
 
 So there we have it - some simple guidlines for keeping your application neat and orderly.
 
-##Exercise
+## Exercise
 Select one of the following websites.
 We're going to deconstruct these websites and design a simple specification for these sites as if we were going to implement them ourselves.
 Don't worry about trying to capture all of the functionality of these sites and instead focus on a few core features that you might reasonably be able to implement at this time.

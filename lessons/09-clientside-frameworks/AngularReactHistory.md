@@ -1,17 +1,17 @@
-##History
+## History
 Angular has been around for a while. Since 2009, Angular has been assigning custom attributes, known as directives, to the HTML elements of the DOM to provide them with more advanced functionality. Angular is mature, commonly used, and there are a ton of great resources for getting up and running with it. React is quite young. Created by Facebook in 2013, React has presented itself as a new paradigm of web development. React eschews the normal separations of concerns, page layout in html, interaction in javascript, and style in css, for a new approach; self contained and modular components. These components define the layout and logic of a component (like a button) in one place. You can then reuse and nest these components to create complex interfaces. On top of this, React boasts a performance-minded view renderer capable of rendering large amounts of data without missing a beat. (Note, a new version of Angular, Angular 2, has recently entered beta which is a fundemental redesign of Angular, taking many cues from React. While we are excited to see Angular 2, we can't in good concious recommend using it yet as the documentation is still incomplete and not ready for production.)
 
-##Research
+## Research
 - Find Angular and React documentation online. Pay particular attention to the following keywords:
 
-####Angular
+#### Angular
 - Two-way data binding
 - Controllers
 - Services
 - Directives
 - Scopes
 
-####React
+#### React
 - Virtual DOM
 - ReactComponents
 - JSX
@@ -26,7 +26,7 @@ Here are some links to start you out:
 - [A Closer Look into React by Pete Hunt](https://www.quora.com/profile/Pete-Hunt/Posts/Facebooks-React-vs-AngularJS-A-Closer-Look)
 - [JSX](https://facebook.github.io/react/docs/jsx-in-depth.html)
 
-##Hello Angular
+## Hello Angular
 Here's just about the simplest Angular app you can write. The words you type in the textbox will show up after "Hello" in the `<h1>` tag.
 ```html
 <!DOCTYPE html>

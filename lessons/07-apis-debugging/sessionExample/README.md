@@ -1,4 +1,4 @@
-#Session Example App
+# Session Example App
 
 This is an example app using the express-session library to manage sessions. To run the example first run
 ```

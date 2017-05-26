@@ -1,4 +1,4 @@
-##To Adapt to Your Project:
+## To Adapt to Your Project:
 
 - Replace the src property of the browersify task to be the directory where you keep your clientside javascript
 
