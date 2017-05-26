@@ -1,0 +1,79 @@
+<html>
+	<head>
+		<meta charset="utf-8"></meta>
+		<title>WebGl Example</title>
+	</head>
+	<script id="shader-vs" type="x-shader/x-vertex">
+	precision mediump float;
+
+	attribute vec3 position;
+	attribute vec3 normal;
+
+	uniform mat4 model;
+	uniform mat4 view;
+	uniform mat4 projection;
+
+	uniform mat4 inverseModel;
+	uniform mat4 inverseView;
+	uniform mat4 inverseProjection;
+
+	uniform vec3 lightPosition;
+
+	varying vec3 lightDirection;
+	varying vec3 viewNormal;
+	varying vec3 eyeDirection;
+
+	void main() {
+	  vec4 viewPosition = view*model*vec4(position, 1);
+	  vec4 surfPosition = projection*viewPosition;
+	  gl_Position = surfPosition;
+
+	  
+	  lightDirection = normalize((view*vec4(lightPosition,1.0)).xyz - (viewPosition).xyz);
+	  viewNormal = normalize((vec4(normal, 0.0) * inverseModel * inverseView).xyz);
+	  eyeDirection = normalize(viewPosition.xyz);
+	}
+
+	</script>
+	  
+	<script id="shader-fs" type="x-shader/x-fragment">
+	precision mediump float;
+
+	uniform mat4 model;
+	uniform mat4 view;
+	uniform mat4 projection;
+
+	uniform mat4 inverseModel;
+	uniform mat4 inverseView;
+	uniform mat4 inverseProjection;
+
+	uniform vec3 ambient;
+	uniform vec3 diffuse;
+	uniform vec3 specular;
+
+	uniform vec3 lightPosition;
+
+	uniform float shininess;
+
+	varying vec3 lightDirection;
+	varying vec3 viewNormal;
+	varying vec3 eyeDirection;
+
+	void main(void) {
+	    float lambert;
+  		float phong;
+  		vec3 color = ambient;
+
+  		lambert = dot(viewNormal, lightDirection);
+    	phong = pow(max(dot(reflect(lightDirection, viewNormal), eyeDirection), 0.0), shininess);
+    	color += diffuse*lambert+specular*phong;
+
+    	gl_FragColor = vec4(color,1);
+	 }
+	</script>
+	<script type="text/javascript" src="/javascripts/gl-matrix-min.js"></script>
+	<script type="text/javascript" src="/javascripts/teapot_phong.js"></script>
+	<body>
+		<canvas id="view" width="800" height="800"></canvas>	
+	</body>
+</html>
