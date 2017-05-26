@@ -1,0 +1,19 @@
+<center>
+	<h1><font size="7" color="#87CEFA">List of cats sorted based on their age</font></h1>
+</center>
+
+<ul>
+	{{#each cats}}
+	  <li>
+	  	<font size="4" color="#A52A2A">Name:</font> {{this.name}}<br>
+		<font size="4" color="#A52A2A">Age:</font> {{this.age}}<br>
+		<font size="4" color="#A52A2A">Colors:</font> {{this.colorlist}}<br><br>
+</li>
+	{{/each}}
+</ul>
+
+<br>
+<center>
+	<a href="/cats/delete/old"><button name="button" value="Menu" type="button">Put a Cat out of its Misery</button></a>
+	<a href="/"><button name="button" value="Menu" type="button">Back to Menu Page</button></a>
+</center>

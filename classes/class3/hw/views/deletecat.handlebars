@@ -1,0 +1,28 @@
+<center>
+	<h1>
+		<font size="7" color="#87CEFA">The following cat just died...</font>
+	</h1>
+
+	<h4>The cat named <font size="4" color="#A52A2A">{{deadcat.name}}</font> had a very bad accident and is no longer with us in the Node world. The cat was <font size="4" color="#A52A2A">{{deadcat.age}}</font> years old.</h3>
+</center>
+
+<center>
+	<h1>
+		<font size="7" color="#87CEFA">The remaining alive cats are listed below!</font>
+	</h1>
+</center>
+
+<ul>
+	{{#each newcats}}
+	  <li>
+	  	<font size="4" color="#A52A2A">Name:</font> {{this.name}}<br>
+		<font size="4" color="#A52A2A">Age:</font> {{this.age}}<br>
+		<font size="4" color="#A52A2A">Colors:</font> {{this.colorlist}}<br><br>
+</li>
+	{{/each}}
+</ul>
+
+<center>
+	<a href="/"><button name="button" value="Menu" type="button">Back to Menu Page</button></a>
+	<a href="/cats/delete/old"><button name="button" value="Menu" type="button">Put another cat out of its misery</button></a>
+</center>
