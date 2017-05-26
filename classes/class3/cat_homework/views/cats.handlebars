@@ -1,0 +1,8 @@
+<h2>All cats from youngest to oldest.</h2>
+<ul>
+{{#each sortedCats}}
+	{{#with this}}
+		<li>{{name}}, Age {{age}}, Colors: {{color}}</li>
+	{{/with}}
+{{/each}}
+</ul>
