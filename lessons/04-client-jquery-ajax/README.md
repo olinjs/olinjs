@@ -382,6 +382,6 @@ For Friday, your application will need the following http endpoint:
   * Out-of-Stock button will tell the server to label the ingredient as disabled. The ingredient should be removed from the current page without refreshing. (Optional: make it toggleable to "add" more of the ingredient. In this case, do not remove the ingredient from the page, but make note through words or style that it is unavailable.)
   * Edit button allows the user to submit a new name or price for the ingredient which the server will update. The edits should change the ingredient list without refreshing.
 
-The next homework that you will be doing will build off of this homework. If you'd like to see the other endpoints that the application will need, look [here] (../05-flex-burger-help/README.md#L58).
+The next homework that you will be doing will build off of this homework. If you'd like to see the other endpoints that the application will need, look [here](../05-flex-burger-help/README.md#L58).
 
-When you're finished, fill out the [Homework 4 Submission Survey] (https://docs.google.com/forms/d/e/1FAIpQLSd-ths9fq5m28ooRoiDwiYjRc6s48JBZDgCmFQqNEGUqOb6hw/viewform).
+When you're finished, fill out the [Homework 4 Submission Survey](https://docs.google.com/forms/d/e/1FAIpQLSd-ths9fq5m28ooRoiDwiYjRc6s48JBZDgCmFQqNEGUqOb6hw/viewform).

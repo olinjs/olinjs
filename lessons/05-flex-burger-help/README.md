@@ -90,4 +90,4 @@ For Tuesday, complete your burger app by adding the following http endpoints:
 
 If you want to challenge yourself, feel free to add additional functionalities to your burger application. Even though we haven't talked too much about CSS, if you're interested in beautifying your app, feel free to do so (bootstrap might be a good start if you aren't too familiar with styling).
 
-When you're finished, fill out the [Homework 5 Submission Survey] (https://docs.google.com/forms/d/e/1FAIpQLSfa_Ia5YbvwsdJ8qfe0-i3Fi-KFsgdbwiczYpR4fe7tvxCQsw/viewform).
+When you're finished, fill out the [Homework 5 Submission Survey](https://docs.google.com/forms/d/e/1FAIpQLSfa_Ia5YbvwsdJ8qfe0-i3Fi-KFsgdbwiczYpR4fe7tvxCQsw/viewform).
