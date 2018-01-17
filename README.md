@@ -1,6 +1,8 @@
 Olin.js
 ===
 
+## I am adding something to test it
+
 ## Course Description
 Olin.js is a project oriented approach to learning modern web application development. With server and client technology advancing so rapidly, the modern website looks very different from that of even a few years ago, and the web will only become a bigger part of our lives in the near future. Olin.js will quickly familiarize students with Node.js as a web server framework and ES5 JavaScript as a responsive client-side language with three weeks of introductory instruction and four weeks of partner labs.
 
